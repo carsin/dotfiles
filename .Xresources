@@ -6,6 +6,9 @@
 ! Leave them as they are if a file ~/.extend.Xresources is being used on your system.
 ! config can be added there or also here below.
 ! For comments use "!"
+!
+
+URxvt.font:     xft:xos4 terminess powerline:size=12:antialias=true
 
 Xft.dpi: 96
 Xft.antialias: true

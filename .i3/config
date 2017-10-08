@@ -2,7 +2,8 @@
 # made with <3
 set $mod Mod1
 
-font pango: xos4 Terminess Powerline 12
+font pango: xos4 Terminess Powerline 19
+for_window [class=".*"] title_format "<span font='xos4 Terminess Powerline 12'> > %title</span>"
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -17,7 +18,24 @@ bindsym $mod+Shift+q kill
 bindsym $mod+d exec dmenu_run
 
 # small borders
-new_window none
+for_window [class="^.*"] border normal 0
+
+# Set colors from Xresources
+# Change 'color7' and 'color2' to whatever colors you want i3 to use 
+# from the generated scheme.
+# NOTE: The '#f0f0f0' in the lines below is the color i3 will use if
+# it fails to get colors from Xresources.
+set_from_resource $fg i3wm.color7 #f0f0f0
+set_from_resource $bg i3wm.color2 #f0f0f0
+
+# class                 border  backgr. text indicator child_border
+client.focused          $bg     $bg     $fg  $bg       $bg
+client.focused_inactive $bg     $bg     $fg  $bg       $bg
+client.unfocused        $bg     $bg     $fg  $bg       $bg
+client.urgent           $bg     $bg     $fg  $bg       $bg
+client.placeholder      $bg     $bg     $fg  $bg       $bg
+
+client.background       $bg
 
 # change focus
 bindsym $mod+h focus left
@@ -35,7 +53,7 @@ bindsym $mod+Shift+l move right
 bindsym $mod+b split h
 
 # split in vertical orientation
-bindsym $mod+v split v
+bindsym $mod+v split v11
 
 # enter fullscreen mode for the focused container
 bindsym $mod+f fullscreen toggle
@@ -149,8 +167,8 @@ mode "$mode_gaps_outer" {
 }
 
 # default gaps
-gaps inner 5
-gaps outer 50
+gaps inner 15
+gaps outer 25
 
 # Set workspaces on specific monitors
 workspace 1 output DP-4
