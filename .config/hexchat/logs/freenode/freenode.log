@@ -1,0 +1,12 @@
+**** BEGIN LOGGING AT Sun Oct  8 11:10:19 2017
+
+Oct 08 11:10:19 *	*** Looking up your hostname...
+Oct 08 11:10:19 *	*** Checking Ident
+Oct 08 11:10:19 *	*** Couldn't look up your hostname
+Oct 08 11:10:22 FiSHLiM plugin unloaded
+Oct 08 11:10:22 Sysinfo plugin unloaded
+Oct 08 11:10:22 Checksum plugin unloaded
+Oct 08 11:10:22 Perl interface unloaded
+Oct 08 11:10:22 Python interface unloaded
+**** ENDING LOGGING AT Sun Oct  8 11:10:22 2017
+

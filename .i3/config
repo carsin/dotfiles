@@ -149,8 +149,8 @@ mode "$mode_gaps_outer" {
 }
 
 # default gaps
-gaps inner 10
-gaps outer 30
+gaps inner 5
+gaps outer 50
 
 # Set workspaces on specific monitors
 workspace 1 output DP-4
@@ -163,3 +163,7 @@ exec ~/.screenlayout/3monitor1vert.sh
 bar {
 	status_command i3status
 }
+
+# Exec programs
+exec --no-startup-id compton
+exec --no-startup-id compton

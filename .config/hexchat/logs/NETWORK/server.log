@@ -1,0 +1,30 @@
+**** BEGIN LOGGING AT Sun Oct  8 11:10:19 2017
+
+Oct 08 11:10:19 Python interface loaded
+Oct 08 11:10:19 Lua version 1.3/5.3 loaded.
+Oct 08 11:10:19 Perl interface loaded
+Oct 08 11:10:19 Checksum plugin loaded
+Oct 08 11:10:19 Sysinfo plugin loaded
+Oct 08 11:10:19 FiSHLiM plugin loaded
+**** BEGIN LOGGING AT Sun Oct  8 11:10:25 2017
+
+Oct 08 11:10:25 Python interface loaded
+Oct 08 11:10:25 Lua version 1.3/5.3 loaded.
+Oct 08 11:10:25 Perl interface loaded
+Oct 08 11:10:25 Checksum plugin loaded
+Oct 08 11:10:25 Sysinfo plugin loaded
+Oct 08 11:10:25 FiSHLiM plugin loaded
+Oct 08 11:10:25 *	Looking up chat.freenode.net
+Oct 08 11:10:26 *	Connecting to chat.freenode.net (2001:708:40:2001::f5ee:d0de:6667)
+Oct 08 11:10:26 *	Connected. Now logging in.
+Oct 08 11:10:26 *	*** Looking up your hostname...
+Oct 08 11:10:26 *	*** Checking Ident
+Oct 08 11:10:26 *	*** Couldn't look up your hostname
+Oct 08 11:10:29 No channel joined. Try /join #<channel>
+Oct 08 11:10:30 FiSHLiM plugin unloaded
+Oct 08 11:10:30 Sysinfo plugin unloaded
+Oct 08 11:10:30 Checksum plugin unloaded
+Oct 08 11:10:30 Perl interface unloaded
+Oct 08 11:10:30 Python interface unloaded
+**** ENDING LOGGING AT Sun Oct  8 11:10:30 2017
+
