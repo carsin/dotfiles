@@ -8,7 +8,8 @@
 ! For comments use "!"
 !
 
-URxvt.font:     xft:xos4 terminess powerline:size=12:antialias=true
+URxvt.font: xft:xos4 terminess powerline:size=12:antialias=true
+URxvt.internalBorder: 15
 
 Xft.dpi: 96
 Xft.antialias: true
