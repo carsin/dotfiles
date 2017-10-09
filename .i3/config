@@ -2,8 +2,8 @@
 # made with <3
 set $mod Mod1
 
-font pango: xos4 Terminess Powerline 19
-for_window [class=".*"] title_format "<span font='xos4 Terminess Powerline 9'> > %title</span>"
+font pango: xos4 Terminess Powerline 20
+for_window [class=".*"] title_format "<span font='xos4 Terminess Powerline 10'> > %title</span>"
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
