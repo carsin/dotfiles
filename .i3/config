@@ -3,7 +3,7 @@
 set $mod Mod1
 
 font pango: xos4 Terminess Powerline 19
-for_window [class=".*"] title_format "<span font='xos4 Terminess Powerline 12'> > %title</span>"
+for_window [class=".*"] title_format "<span font='xos4 Terminess Powerline 9'> > %title</span>"
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -15,7 +15,7 @@ bindsym $mod+Return exec urxvt
 bindsym $mod+Shift+q kill
 
 # start dmenu (a program launcher)
-bindsym $mod+d exec dmenu_run
+bindsym $mod+d exec rofi -show run
 
 # small borders
 for_window [class="^.*"] border normal 0
@@ -184,4 +184,5 @@ bar {
 
 # Exec programs
 exec --no-startup-id compton
-exec --no-startup-id compton
+exec --no-startup-id wal -R
+exec --no-startup-id nitrogen --restore &

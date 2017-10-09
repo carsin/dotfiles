@@ -1,3 +1,4 @@
+(wal -r &)
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
@@ -84,3 +85,14 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias config="/usr/bin/git --git-dir=/home/carson/.cfg/ --work-tree=/home/carson"
+
+wal-set() {
+    wal -n -i "$@"
+    nitrogen --head=0 --set-scaled "$(< "${HOME}/.cache/wal/wal")"
+    nitrogen --head=1 --set-zoom-fill "$(< "${HOME}/.cache/wal/wal")"
+    nitrogen --head=2 --set-scaled "$(< "${HOME}/.cache/wal/wal")"
+}
+
+randwal() {
+    wal-set "$HOME/.wallpaper"
+}
