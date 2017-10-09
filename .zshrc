@@ -86,13 +86,13 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias config="/usr/bin/git --git-dir=/home/carson/.cfg/ --work-tree=/home/carson"
 
-wal-set() {
+setwal() {
     wal -n -i "$@"
-    nitrogen --head=0 --set-scaled "$(< "${HOME}/.cache/wal/wal")"
+    nitrogen --head=0 --set-zoom-fill "$(< "${HOME}/.cache/wal/wal")"
     nitrogen --head=1 --set-zoom-fill "$(< "${HOME}/.cache/wal/wal")"
-    nitrogen --head=2 --set-scaled "$(< "${HOME}/.cache/wal/wal")"
+    nitrogen --head=2 --set-zoom-fill "$(< "${HOME}/.cache/wal/wal")"
 }
 
 randwal() {
-    wal-set "$HOME/.wallpaper"
+    setwal "$HOME/.wallpaper"
 }

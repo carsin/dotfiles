@@ -21,7 +21,7 @@ bindsym $mod+d exec rofi -show run
 for_window [class="^.*"] border normal 0
 
 # Set colors from Xresources
-# Change 'color7' and 'color2' to whatever colors you want i3 to use 
+# Change 'color7' and 'color2' to whatever colors you want i3 to use
 # from the generated scheme.
 # NOTE: The '#f0f0f0' in the lines below is the color i3 will use if
 # it fails to get colors from Xresources.
@@ -177,10 +177,6 @@ workspace 3 output DP-1
 
 # Set monitor config
 exec ~/.screenlayout/3monitor1vert.sh
-
-bar {
-	status_command i3status
-}
 
 # Exec programs
 exec --no-startup-id compton
