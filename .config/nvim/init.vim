@@ -1,13 +1,8 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => General
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-set nocompatible " dont be vi
-
 " syntax highlighting based on file names
 filetype on
-filetype plugin on
-filetype indent on
 syntax on
 
 set hidden " keep more info in memory to speed things up
@@ -20,6 +15,8 @@ set nobackup
 set nowb
 set noswapfile
 
+colorscheme wal " use wal colors
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Editing
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -31,9 +28,9 @@ set smarttab " Be smart when using tabs ;)
 set shiftwidth=4
 set tabstop=4
 
-set ai "Auto indent
-set si "Smart indent
-set wrap "Wrap lines
+set ai " Auto indent
+set si " Smart indent
+set wrap " Wrap lines
 
 " Linebreak on 500 characters
 set lbr
@@ -93,20 +90,8 @@ inoremap jk <ESC>
 " Remap VIM 0 to first non-blank character
 map 0 ^
 
-" Move a line of text using ALT+[jk] or Command+[jk] on mac
-nmap <M-j> mz:m+<cr>`z
-nmap <M-k> mz:m-2<cr>`z
-vmap <M-j> :m'>+<cr>`<my`>mzgv`yo`z
-vmap <M-k> :m'<-2<cr>`>my`<mzgv`yo`z
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Helper functions
+" => Sourcing
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-" Returns true if paste mode is enabled
-function! HasPaste()
-    if &paste
-        return 'PASTE MODE  '
-    endif
-    return ''
-endfunction
+source ~/.config/nvim/plugins.vim
