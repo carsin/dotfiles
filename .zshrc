@@ -84,6 +84,8 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+alias vim="nvim"
+alias vi="nvim"
 alias config="/usr/bin/git --git-dir=/home/carson/.cfg/ --work-tree=/home/carson"
 
 setwal() {
