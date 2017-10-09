@@ -71,12 +71,6 @@ set noeb vb t_vb= " no visual bell or beeping (thank god)
 set ruler " Always show current position
 set magic " For regular expressions turn magic on
 
-" Always show the status line
-set laststatus=2
-
-" Format the status line
-set statusline=\ %{HasPaste()}%F%m%r%h\ %w\ \ CWD:\ %r%{getcwd()}%h\ \ \ Line:\ %l\ \ Column:\ %c
-
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Binds & Mappings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
