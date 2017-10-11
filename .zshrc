@@ -86,6 +86,7 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias vim="nvim"
 alias vi="nvim"
+alias tmux="tmux -2"
 alias t="tmux"
 alias gpom="git push origin master"
 alias cpom="config push origin master"
