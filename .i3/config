@@ -182,6 +182,6 @@ workspace 3 output DP-1
 exec ~/.screenlayout/3monitor1vert.sh
 
 # Exec programs
-exec --no-startup-id compton
+exec --no-startup-id compton --config ~/.config/compton.conf
 exec --no-startup-id wal -R
 exec --no-startup-id nitrogen --restore &

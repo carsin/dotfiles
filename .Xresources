@@ -24,3 +24,7 @@ XTerm*foreground: #e7e7e7
 XTerm*pointerColor: #16A085
 XTerm*faceName: Fixed
 XTerm*faceSize: 11
+
+URxvt.keysym.Shift-Control-V: perl:clipboard:paste
+URxvt.iso14755: False
+URxvt.perl-ext-common: default,clipboard
