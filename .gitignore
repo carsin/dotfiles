@@ -1,3 +1,5 @@
-~/.config/nvim
 ~/.config/pulse
 .cfg
+~/.config/nvim/autoload/
+~/.config/nvim/.netrwhist
+~/.config/nvim/plugged/

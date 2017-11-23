@@ -93,6 +93,7 @@ alias gpom="git push origin master"
 alias cpom="config push origin master"
 alias config="/usr/bin/git --git-dir=/home/carson/.cfg/ --work-tree=/home/carson"
 alias mongostart="systemctl start mongodb.service"
+alias rxsrc="xrdb ~/.Xresources"
 
 setwal() {
     wal -n -i "$@"

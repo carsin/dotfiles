@@ -8,7 +8,30 @@
 ! For comments use "!"
 !
 
+URxvt*loginShell: true
+URxvt*scrollstyle: plain
+URxvt*scrollTtyKeypress: true
+URxvt*scrollTtyOutput: false
+URxvt*scrollWithBuffer: false
+URxvt*secondaryScreen: true
+URxvt*secondaryScroll: true
+URxvt*skipScroll: true
+URxvt*scrollBar: false
+URxvt*scrollBar_right: false
+URxvt*scrollBar_floating: false
+URxvt*fading: 30
+URxvt*utmpInhibit: false
+URxvt*urgentOnBell: false
+URxvt*visualBell: true
+URxvt*mapAlert: true
+URxvt*mouseWheelScrollPage: false
 URxvt.font: xft:xos4 terminess powerline:size=12:antialias=true
+URxvt*saveLines: 0
+URxvt*buffered: true
+URxvt*hold: false
+URxvt*print-pipe: cat > $HOME/$(echo urxvt.dump.$(date +'%Y%M%d%H%m%S'))
+URxvt*perl-ext-common:
+URxvt*perl-ext:
 URxvt.internalBorder: 20
 
 Xft.dpi: 96
@@ -18,12 +41,6 @@ Xft.rgba: rgb
 Xft.autohint: false
 Xft.hintstyle: hintslight
 Xft.lcdfilter: lcddefault
-
-XTerm*background: #2b2b2b
-XTerm*foreground: #e7e7e7
-XTerm*pointerColor: #16A085
-XTerm*faceName: Fixed
-XTerm*faceSize: 11
 
 URxvt.keysym.Shift-Control-V: perl:clipboard:paste
 URxvt.iso14755: False
