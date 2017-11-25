@@ -12,6 +12,9 @@ floating_modifier $mod
 bindsym $mod+Return exec urxvt
 bindsym $mod+Shift+Return exec urxvt -e tmux -2
 
+# screenshot on printscreen bind
+bindsym --release Print exec "scrot -s 'screenshot_%Y%m%d_%H%M%S.png' -e 'mv $f ~/printscreens/'"
+
 # kill focused window
 bindsym $mod+Shift+q kill
 
