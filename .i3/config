@@ -12,9 +12,6 @@ floating_modifier $mod
 bindsym $mod+Return exec urxvt
 bindsym $mod+Shift+Return exec urxvt -e tmux -2
 
-# screenshot on printscreen bind
-bindsym --release Print exec "scrot -s 'screenshot_%Y%m%d_%H%M%S.png' -e 'mv $f ~/printscreens/'"
-
 # kill focused window
 bindsym $mod+Shift+q kill
 
@@ -26,6 +23,7 @@ for_window [class="^.*"] border normal 0
 for_window [class="(G|g)oogle-chrome"] border none, new_window none
 for_window [class="(G|g)oogle-chrome(G|g)oogle-chrome" window_role="pop-up"] floating enable
 
+# switch wal papes & colors
 bindsym $mod+t exec ~/.i3/scripts/switchwal.sh
 
 # Set colors from Xresources
@@ -116,6 +114,9 @@ bindsym $mod+Shift+c reload
 bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+
+# screenshot on printscreen bind
+bindsym --release Print exec "scrot -s 'screenshot_%Y%m%d_%H%M%S.png' -e 'mv $f ~/printscreens/'"
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
