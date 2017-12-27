@@ -179,6 +179,9 @@ mode "$mode_gaps_outer" {
 gaps inner 15
 gaps outer 25
 
+# focus doesn't follow mouse
+focus_follows_mouse no
+
 # Set workspaces on specific monitors
 workspace 1 output DP-4
 workspace 2 output DP-2
