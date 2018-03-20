@@ -21,8 +21,8 @@ bindsym $mod+d exec rofi -show run
 
 # small borders
 for_window [class="^.*"] border normal 0
-for_window [class="(G|g)oogle-chrome"] border none, new_window none
-for_window [class="(G|g)oogle-chrome(G|g)oogle-chrome" window_role="pop-up"] floating enable
+# for_window [class="(G|g)oogle-chrome"] border none, new_window none
+# for_window [class="(G|g)oogle-chrome(G|g)oogle-chrome" window_role="pop-up"] floating enable
 
 # switch wal papes & colors
 bindsym $mod+t exec ~/.i3/scripts/switchwal.sh
