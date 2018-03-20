@@ -2,9 +2,9 @@
 # made with <3
 set $mod Mod1
 
-font pango: xos4 Terminess Powerline 0
+font pango: xos4 Terminess Powerline 12
+# make titlebar bigger than font size
 # for_window [class=".*"] title_format "<span font='xos4 Terminess Powerline 10'> > %title</span>"
-
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -20,9 +20,10 @@ bindsym $mod+Shift+q kill
 bindsym $mod+d exec rofi -show run
 
 # small borders
-for_window [class="^.*"] border normal 0
+for_window [class="^.*"] border pixel 1, new_window
+for_window [class="(G|g)oogle-chrome(G|g)oogle-chrome" window_role="pop-up"] floating enable
+# no border for chrome
 # for_window [class="(G|g)oogle-chrome"] border none, new_window none
-# for_window [class="(G|g)oogle-chrome(G|g)oogle-chrome" window_role="pop-up"] floating enable
 
 # switch wal papes & colors
 bindsym $mod+t exec ~/.i3/scripts/switchwal.sh
