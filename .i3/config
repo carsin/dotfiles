@@ -1,6 +1,6 @@
 # Carson's i3 config
 # made with <3
-set $mod Mod1
+set $mod Mod4
 
 font pango: xos4 Terminess Powerline 12
 # make titlebar bigger than font size
