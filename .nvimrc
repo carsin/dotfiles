@@ -97,3 +97,7 @@ nnoremap <C-L> :nohl<CR><C-L>
 " Enter normal mode with jk or kj
 inoremap jk <ESC>
 inoremap kj <ESC>
+
+" If the current buffer has never been saved, it will have no name,
+" call the file browser to save it, otherwise just save it.
+nnoremap <silent> <C-S> :if expand("%") == ""<CR>browse confirm w<CR>else<CR>confirm w<CR>endif<CR>
