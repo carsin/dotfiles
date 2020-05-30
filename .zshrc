@@ -17,10 +17,11 @@ ZSH_THEME="carsin"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(git web-search tmux z npm nvm python pip rand-quote github git ubuntu vscode)
 
+export PATH=/home/carson/.local/bin:$PATH
+
 source $ZSH/oh-my-zsh.sh
 
 # Aliases
-alias vim="nvim"
-alias vi="nvim"
+alias vi="vim"
 alias ls="ls -a"
 alias config="/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME"
