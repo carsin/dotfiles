@@ -19,6 +19,15 @@ else
     set shell=/bin/sh
 endif
 
+set history=500 " How many lines of history vim has to remember
+
+set autoread " Set to auto read when a file is changed from the outside
+
+" Turn backup off, since most stuff is in SVN, git etc anyway...
+set nobackup
+set nowb
+set noswapfile
+
 " ───
 " ─── EDITOR ──────────────────────────────────────────────────────────────────────
 " ───
