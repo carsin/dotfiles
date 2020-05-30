@@ -19,6 +19,7 @@ if exists('$SHELL')
 else
     set shell=/bin/sh
 endif
+
 "*****************************************************************************
 "" Editing
 "*****************************************************************************"
@@ -52,33 +53,24 @@ set incsearch
 set ignorecase
 set smartcase
 
+" Enable persistent undo so that undo history persists across vim sessions
+set undofile
+set undodir=~/.vim/undo
+
 "*****************************************************************************
 "" Visual Settings
 "*****************************************************************************
 syntax on
-set ruler
-set number
 
-"" Status bar
-set laststatus=2
-
-" Disable visualbell
-set noerrorbells visualbell t_vb=
-
-"*****************************************************************************
-"" Abbreviations
-"*****************************************************************************
-"" QOL Shortcuts
-cnoreabbrev W! w!
-cnoreabbrev Q! q!
-cnoreabbrev Qall! qall!
-cnoreabbrev Wq wq
-cnoreabbrev Wa wa
-cnoreabbrev wQ wq
-cnoreabbrev WQ wq
-cnoreabbrev W w
-cnoreabbrev Q q
-cnoreabbrev Qall qall
+set so=15 " Scroll with j/k up or down within 15 lines of top or bottom of vim
+set number " line numbering
+set wildmenu " visual auto complete for command menu
+set lazyredraw " redraw only when needed
+set showmatch " highlight matching [{()}]
+set noeb vb t_vb= " no visual bell or beeping (thank god)
+set ruler " Always show current position
+set magic " For regular expressions turn magic on
+set laststatus=2 " statusbar
 
 "*****************************************************************************
 "" Mappings
@@ -109,3 +101,21 @@ vmap > >gv
 " move vertically by visual line
 nnoremap j gj
 nnoremap k gk
+
+" Remap VIM 0 to first non-blank character
+map 0 ^
+
+"*****************************************************************************
+"" Abbreviations
+"*****************************************************************************
+"" QOL Shortcuts
+cnoreabbrev W! w!
+cnoreabbrev Q! q!
+cnoreabbrev Qall! qall!
+cnoreabbrev Wq wq
+cnoreabbrev Wa wa
+cnoreabbrev wQ wq
+cnoreabbrev WQ wq
+cnoreabbrev W w
+cnoreabbrev Q q
+cnoreabbrev Qall qall
