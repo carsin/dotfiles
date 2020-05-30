@@ -1,5 +1,5 @@
-" Required:
-filetype plugin indent on
+" Required
+filetype on
 
 "*****************************************************************************
 "" Basic Setup
@@ -9,28 +9,8 @@ set encoding=utf-8
 set fileencoding=utf-8
 set fileencodings=utf-8
 
-"" Fix backspace indent
-set backspace=indent,eol,start
-
-" Indentation settings for using 4 spaces instead of tabs.
-set tabstop=4             " tab spacing
-set softtabstop=4         " unify
-set shiftwidth=4          " indent/outdent by 4 columns
-set shiftround            " always indent/outdent to the nearest tabstop
-set expandtab             " use spaces instead of tabs
-set nowrap                " don't wrap text
-
-"" Map leader to space
-let mapleader=" "
-
 "" Enable hidden buffers
 set hidden
-
-"" Searching
-set hlsearch
-set incsearch
-set ignorecase
-set smartcase
 
 set fileformats=unix,dos,mac
 
@@ -39,6 +19,38 @@ if exists('$SHELL')
 else
     set shell=/bin/sh
 endif
+"*****************************************************************************
+"" Editing
+"*****************************************************************************"
+
+" Configure backspace so it acts as it should act
+set backspace=eol,start,indent
+set whichwrap+=<,>,h,l
+
+set expandtab " Use spaces instead of tabs
+set smarttab " Be smart when using tabs
+
+" 1 tab == 4 spaces
+set shiftwidth=4
+set tabstop=4
+set softtabstop=4         " unify
+set shiftround            " always indent/outdent to the nearest tabstop
+
+set ai " Auto indent
+set si " Smart indent
+set wrap " Wrap lines
+
+" Line break on 500 characters
+set lbr
+set tw=500
+
+autocmd BufWritePre * :%s/\s\+$//e " remove trailing whitespace on save
+
+"" Searching
+set hlsearch
+set incsearch
+set ignorecase
+set smartcase
 
 "*****************************************************************************
 "" Visual Settings
@@ -71,7 +83,10 @@ cnoreabbrev Qall qall
 "*****************************************************************************
 "" Mappings
 "*****************************************************************************
-"
+
+" Map leader to space
+let mapleader=" "
+
 " Center search nexts
 nnoremap n nzzzv
 nnoremap N Nzzzv
@@ -90,3 +105,7 @@ nnoremap <silent> <leader><space> :noh<cr>
 "" Vmap for maintain Visual Mode after shifting > and <
 vmap < <gv
 vmap > >gv
+
+" move vertically by visual line
+nnoremap j gj
+nnoremap k gk
