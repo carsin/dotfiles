@@ -1,6 +1,13 @@
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => General
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" ▄▄▄▄· ▄• ▄▌▪  ▄▄▌ ▄▄▄▄▄▄ ▄▄▄·  ▄· ▄▌ ▄▄·  ▄▄▄· ▄▄▄  .▄▄ ·        ▐ ▄     ▄▄·       • ▌ ▄ ·.
+" ▐█ ▀█▪█▪██▌██ ██•  •██  ▐█ ▀█▪▐█▪██▌▐█ ▌▪▐█ ▀█ ▀▄ █·▐█ ▀. ▪     •█▌▐█   ▐█ ▌▪▪     ·██ ▐███▪
+" ▐█▀▀█▄█▌▐█▌▐█·██▪   ▐█.▪▐█▀▀█▄▐█▌▐█▪██ ▄▄▄█▀▀█ ▐▀▀▄ ▄▀▀▀█▄ ▄█▀▄ ▐█▐▐▌   ██ ▄▄ ▄█▀▄ ▐█ ▌▐▌▐█·
+" ██▄▪▐█▐█▄█▌▐█▌▐█▌▐▌ ▐█▌·██▄▪▐█ ▐█▀·.▐███▌▐█ ▪▐▌▐█•█▌▐█▄▪▐█▐█▌.▐▌██▐█▌   ▐███▌▐█▌.▐▌██ ██▌▐█▌
+" ·▀▀▀▀  ▀▀▀ ▀▀▀.▀▀▀  ▀▀▀ ·▀▀▀▀   ▀ • ·▀▀▀  ▀  ▀ .▀  ▀ ▀▀▀▀  ▀█▄▀▪▀▀ █▪ ▀ ·▀▀▀  ▀█▄▀▪▀▀  █▪▀▀▀
+" A vimrc carefully created for optimal productivity and speed
+" that utilizes vim's best features.
+" https://github.com/carsin/dotfiles
+
+" General {{{
 " syntax highlighting based on file names
 filetype plugin on
 filetype indent on
@@ -22,9 +29,8 @@ set ffs=unix,dos,mac " Use Unix as the standard file type
 
 set mouse=a
 set updatetime=300 " Fast updatetime for snappier experience
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Plugins
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" }}}
+" Plugins {{{
 call plug#begin('~/.vim/plugged') " Specify a directory for plugins
 
 Plug 'sainnhe/gruvbox-material' " Colorscheme
@@ -39,15 +45,13 @@ Plug 'rust-lang/rust.vim' " Nice rust files
 Plug 'neoclide/coc.nvim', {'branch': 'release'} " Autocomplete
 
 call plug#end() " Initialize plugin system
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Plugin Settings
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" }}}
+" Plugin Settings {{{
 let g:lightline = {'colorscheme' : 'gruvbox_material'}
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif " Close vim if nerdtree is the only window left
 map <C-n> :NERDTreeToggle<CR>
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Editing
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" }}}
+" Editing {{{
 set expandtab " Use spaces instead of tabs
 set smarttab " Be smart when using tabs ;)
 set ai " Auto indent
@@ -78,9 +82,8 @@ set whichwrap+=<,>,h,l
 set undofile
 set undodir=~/.vim/undo
 autocmd BufWritePre * :%s/\s\+$//e " remove trailing whitespace on save
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => UI
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" }}}
+" UI {{{
 " Set up gruvbox material colorscheme
 if has('termguicolors')
     set termguicolors
@@ -106,9 +109,11 @@ set ruler " Always show current position
 set magic " For regular expressions turn magic on
 set laststatus=2 " Set status bar
 set noshowmode " Remove redundant status bar elements
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Binds & Mappings
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+set foldenable " Fold code
+set foldmethod=marker " Fold code with {{{}}}
+set linespace=0 " No extra space between lines
+" }}}
+" Binds & Mappings {{{
 let mapleader=" " "leader = space
 
 " save file
@@ -125,3 +130,4 @@ inoremap jk <ESC>
 
 " Remap VIM 0 to first non-blank character
 map 0 ^
+" }}}
