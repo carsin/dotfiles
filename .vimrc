@@ -99,11 +99,16 @@ autocmd BufWritePre * :%s/\s\+$//e " remove trailing whitespace on save
 
 " UI {{{
 
-" Set up gruvbox material colorscheme
-if has('termguicolors')
+" Enable true color
+if exists('+termguicolors')
+    " Fix color bugs in tmux
+    let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+    let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
     set termguicolors
 endif
+
 set background=dark
+set t_Co=256
 colorscheme gruvbox-material
 
 " Fix cursor on windows terminal
@@ -112,7 +117,6 @@ if &term =~ '^xterm'
     let &t_SI .= "\<Esc>[6 q"
 endif
 
-set t_Co=256 " 256 colors
 set so=10 " Set 10 lines to the cursor - when moving vertically using j/k
 set number " line numbering
 set showcmd " show last entered command
