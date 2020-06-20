@@ -8,4 +8,4 @@ function fish_greeting
     fortune | cowsay
 end
 
-cd ~
+export PATH="$HOME/.cargo/bin:$PATH"
