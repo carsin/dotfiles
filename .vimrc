@@ -44,11 +44,13 @@ Plug 'scrooloose/nerdtree' " File tree navigator
 Plug 'mattn/emmet-vim' " Emmet integration
 Plug 'preservim/nerdcommenter' " Easy commenting
 Plug 'jiangmiao/auto-pairs' " Auto pairs
-Plug 'rust-lang/rust.vim' " Nice rust files
 Plug 'neoclide/coc.nvim', {'branch': 'release'} " Autocomplete
 Plug 'mhinz/vim-startify' " Fancy start page
 Plug 'chaoren/vim-wordmotion' " Improve vim word motion (ex: snake_case and camelCase)
 Plug 'ctrlpvim/ctrlp.vim' " Fuzzy file, buffer, mru, etc finder.
+Plug 'sheerun/vim-polyglot' " Syntax for various languages
+Plug 'psliwka/vim-smoothie' " Nice scrolling animation
+Plug 'airblade/vim-rooter' " Changes Vim working directory to project root
 
 call plug#end() " Initialize plugin system
 
@@ -59,6 +61,23 @@ call plug#end() " Initialize plugin system
 let g:lightline = {'colorscheme' : 'gruvbox_material'}
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif " Close vim if nerdtree is the only window left
 map <C-n> :NERDTreeToggle<CR>
+
+" use <tab> for trigger completion and navigate to the next complete item
+function! s:check_back_space() abort
+    let col = col('.') - 1
+    return !col || getline('.')[col - 1]  =~ '\s'
+endfunction
+
+inoremap <silent><expr> <Tab>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<Tab>" :
+      \ coc#refresh()
+
+" Makes <cr> select the first completion item, confirm when no item selected, and formats the code:
+inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm() : "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+" Close the preview window when completion is done.
+autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif
+
 
 " }}}
 
@@ -111,11 +130,12 @@ set background=dark
 set t_Co=256
 colorscheme gruvbox-material
 
+" TODO: Fix this its broken
 " Fix cursor on windows terminal
-if &term =~ '^xterm'
-    let &t_EI .= "\<Esc>[0 q"
-    let &t_SI .= "\<Esc>[6 q"
-endif
+"if &term =~ '^xterm'
+    "let &t_EI .= "\<Esc>[0 q"
+    "let &t_SI .= "\<Esc>[6 q"
+"endif
 
 set so=10 " Set 10 lines to the cursor - when moving vertically using j/k
 set number " line numbering
