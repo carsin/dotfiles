@@ -32,7 +32,6 @@ set mouse=a
 set updatetime=300 " Fast updatetime for snappier experience
 
 " }}}
-
 " Plugins {{{
 
 call plug#begin('~/.vim/plugged') " Specify a directory for plugins
@@ -51,11 +50,11 @@ Plug 'ctrlpvim/ctrlp.vim' " Fuzzy file, buffer, mru, etc finder.
 Plug 'sheerun/vim-polyglot' " Syntax for various languages
 Plug 'psliwka/vim-smoothie' " Nice scrolling animation
 Plug 'airblade/vim-rooter' " Changes Vim working directory to project root
+Plug 'wellle/tmux-complete.vim' " Autocomplete from adjacent tmux panes
 
 call plug#end() " Initialize plugin system
 
 " }}}
-
 " Plugin Settings {{{
 
 let g:lightline = {'colorscheme' : 'gruvbox_material'}
@@ -80,7 +79,6 @@ autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif
 
 
 " }}}
-
 " Editing {{{
 
 set expandtab " Use spaces instead of tabs
@@ -114,8 +112,28 @@ set undofile
 set undodir=~/.vim/undo
 autocmd BufWritePre * :%s/\s\+$//e " remove trailing whitespace on save
 
-" }}}
+function! WrapForTmux(s)
+    if !exists('$TMUX')
+        return a:s
+    endif
 
+    let tmux_start = "\<Esc>Ptmux;"
+    let tmux_end = "\<Esc>\\"
+    return tmux_start . substitute(a:s, "\<Esc>", "\<Esc>\<Esc>", 'g') . tmux_end
+endfunction
+
+let &t_SI .= WrapForTmux("\<Esc>[?2004h")
+let &t_EI .= WrapForTmux("\<Esc>[?2004l")
+
+function! XTermPasteBegin()
+    set pastetoggle=<Esc>[201~
+    set paste
+    return ""
+endfunction
+
+inoremap <special> <expr> <Esc>[200~ XTermPasteBegin()
+
+" }}}
 " UI {{{
 
 " Enable true color
@@ -153,7 +171,6 @@ set foldmethod=marker " Fold code with {{{}}}
 set linespace=0 " No extra space between lines
 
 " }}}
-
 " Binds & Mappings {{{
 
 let mapleader=" " "leader = space
