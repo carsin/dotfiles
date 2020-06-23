@@ -51,8 +51,6 @@ Plug 'sheerun/vim-polyglot' " Syntax for various languages
 Plug 'psliwka/vim-smoothie' " Nice scrolling animation
 Plug 'airblade/vim-rooter' " Changes Vim working directory to project root
 Plug 'junegunn/goyo.vim' " Distraction-free writing mode
-Plug 'godlygeek/tabular' " Vim script for text filtering and alignment
-Plug 'plasticboy/vim-markdown' " Markdown Vim Mode
 
 call plug#end() " Initialize plugin system
 
@@ -79,6 +77,11 @@ inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm() : "\<C-g>u\<CR
 " Close the preview window when completion is done.
 autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif
 
+" Disable CoC for certain filetypes
+autocmd BufNew,BufEnter *.md,*.txt execute "silent! CocDisable"
+autocmd BufLeave *.md,*.txt execute "silent! CocEnable"
+
+" Close Goyo with :q
 function! s:goyo_enter()
     let b:quitting = 0
     let b:quitting_bang = 0
@@ -99,6 +102,9 @@ endfunction
 
 autocmd! User GoyoEnter call <SID>goyo_enter()
 autocmd! User GoyoLeave call <SID>goyo_leave()
+
+let g:goyo_height = '100%'
+let g:goyo_width= '40%'
 
 " }}}
 " Editing {{{
@@ -213,5 +219,8 @@ inoremap jk <ESC>
 map 0 ^
 
 set pastetoggle=<F2> " Toggle pastemode with f2
+
+" Toggle goyo
+nnoremap <leader>go :Goyo<cr>
 
 " }}}
