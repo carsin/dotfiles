@@ -50,7 +50,9 @@ Plug 'ctrlpvim/ctrlp.vim' " Fuzzy file, buffer, mru, etc finder.
 Plug 'sheerun/vim-polyglot' " Syntax for various languages
 Plug 'psliwka/vim-smoothie' " Nice scrolling animation
 Plug 'airblade/vim-rooter' " Changes Vim working directory to project root
-Plug 'wellle/tmux-complete.vim' " Autocomplete from adjacent tmux panes
+Plug 'junegunn/goyo.vim' " Distraction-free writing mode
+Plug 'godlygeek/tabular' " Vim script for text filtering and alignment
+Plug 'plasticboy/vim-markdown' " Markdown Vim Mode
 
 call plug#end() " Initialize plugin system
 
