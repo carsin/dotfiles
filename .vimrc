@@ -113,8 +113,7 @@ map <C-n> :NERDTreeToggle<CR>
 au BufNewFile ~/vimwiki/diary/*.md :silent 0r !~/.vim/bin/generate-vimwiki-diary-template '%'
 
 " Use markdown for vimwiki
-let g:vimwiki_list = [{'path': '~/vimwiki/',
-                      \ 'syntax': 'markdown', 'ext': '.md'}]
+let g:vimwiki_list = [{'path': '~/vimwiki/', 'syntax': 'markdown', 'ext': '.md'}]
 
 " }}}
 " Editing {{{
@@ -150,27 +149,6 @@ set undofile
 set undodir=~/.vim/undo
 autocmd BufWritePre * :%s/\s\+$//e " remove trailing whitespace on save
 
-function! WrapForTmux(s)
-    if !exists('$TMUX')
-        return a:s
-    endif
-
-    let tmux_start = "\<Esc>Ptmux;"
-    let tmux_end = "\<Esc>\\"
-    return tmux_start . substitute(a:s, "\<Esc>", "\<Esc>\<Esc>", 'g') . tmux_end
-endfunction
-
-let &t_SI .= WrapForTmux("\<Esc>[?2004h")
-let &t_EI .= WrapForTmux("\<Esc>[?2004l")
-
-function! XTermPasteBegin()
-    set pastetoggle=<Esc>[201~
-    set paste
-    return ""
-endfunction
-
-inoremap <special> <expr> <Esc>[200~ XTermPasteBegin()
-
 " }}}
 " UI {{{
 
@@ -186,12 +164,8 @@ set background=dark
 set t_Co=256
 colorscheme gruvbox-material
 
-" TODO: Fix this its broken
-" Fix cursor on windows terminal
-"if &term =~ '^xterm'
-    "let &t_EI .= "\<Esc>[0 q"
-    "let &t_SI .= "\<Esc>[6 q"
-"endif
+let &t_EI .= "\<Esc>[0 q"
+let &t_SI .= "\<Esc>[6 q"
 
 set so=10 " Set 10 lines to the cursor - when moving vertically using j/k
 set number " line numbering
@@ -222,7 +196,7 @@ nmap <leader>s :w!<cr>
 map <leader>r :source ~/.vimrc<CR>
 
  " clear search
-nnoremap <leader><space> :noh<CR><CR>
+nnoremap <leader><space> :let @/ = ""<CR>
 
 " jk is escape
 inoremap jk <ESC>
@@ -231,7 +205,7 @@ inoremap jk <ESC>
 map 0 ^
 
 " unbind annoying help page
-:nmap <F1> <nop>
+nmap <F1> <nop>
 
 set pastetoggle=<F2> " Toggle pastemode with f2
 
