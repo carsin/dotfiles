@@ -242,7 +242,7 @@ nnoremap <leader>go :Goyo<cr>
 noremap <F3> :setlocal spell! spelllang=en_us<CR>
 
 " Insert date / time
-nnoremap <leader>id "=strftime("%a, %b %d %Y")<CR>P
-nnoremap <leader>it "=strftime("%I:%M:%S %p")<CR>P
+nnoremap <leader>id "=strftime("%a, %b %d %Y")<CR>p
+nnoremap <leader>it "=strftime("%I:%M %p")<CR>p
 
 " }}}
