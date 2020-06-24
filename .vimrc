@@ -58,11 +58,6 @@ call plug#end() " Initialize plugin system
 
 " }}}
 " Plugin Settings {{{
-
-let g:lightline = {'colorscheme' : 'gruvbox_material'}
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif " Close vim if nerdtree is the only window left
-map <C-n> :NERDTreeToggle<CR>
-
 " CoC {{{
 " use <tab> for trigger completion and navigate to the next complete item
 function! s:check_back_space() abort
@@ -85,16 +80,14 @@ autocmd BufNew,BufEnter *.md,*.txt execute "silent! CocDisable"
 autocmd BufLeave *.md,*.txt execute "silent! CocEnable"
 " }}}
 " Goyo {{{
-" Close Goyo with :q
+" Close Goyo with :wq
 function! s:goyo_enter()
     let b:quitting = 0
     let b:quitting_bang = 0
     autocmd QuitPre <buffer> let b:quitting = 1
-    cabbrev <buffer> q! let b:quitting_bang = 1 <bar> q!
+    cabbrev <buffer> wq! let b:quitting_bang = 1 <bar> q!
 endfunction
-
 function! s:goyo_leave()
-    " Quit Vim if this is the only remaining buffer
     if b:quitting && len(filter(range(1, bufnr('$')), 'buflisted(v:val)')) == 1
         if b:quitting_bang
             qa!
@@ -110,6 +103,12 @@ autocmd! User GoyoLeave call <SID>goyo_leave()
 let g:goyo_height = '100%'
 let g:goyo_width= '40%'
 " }}}
+
+let g:lightline = {'colorscheme' : 'gruvbox_material'}
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif " Close vim if nerdtree is the only window left
+map <C-n> :NERDTreeToggle<CR>
+
+
 " Use a template when generating new vimwiki diary files
 au BufNewFile ~/vimwiki/diary/*.md :silent 0r !~/.vim/bin/generate-vimwiki-diary-template '%'
 
@@ -121,16 +120,16 @@ let g:vimwiki_list = [{'path': '~/vimwiki/',
 " Editing {{{
 
 set expandtab " Use spaces instead of tabs
-set smarttab " Be smart when using tabs ;)
+set smarttab " Be smart when using tabs
 set ai " Auto indent
 set si " Smart indent
 set wrap " Wrap lines
 " 1 tab == 4 spaces
 set shiftwidth=4
 set tabstop=4
-" Line break on 500 characters
+" Line break on a lot of characters
 set lbr
-set tw=500
+set tw=5000000
 
 set incsearch " search as characters are entered
 set hlsearch " highlight matches
@@ -231,12 +230,19 @@ inoremap jk <ESC>
 " Remap VIM 0 to first non-blank character
 map 0 ^
 
+" unbind annoying help page
+:nmap <F1> <nop>
+
 set pastetoggle=<F2> " Toggle pastemode with f2
 
 " Toggle goyo
 nnoremap <leader>go :Goyo<cr>
 
 " Toggle Spellcheck
-:noremap <F5> :setlocal spell! spelllang=en_us<CR>
+noremap <F3> :setlocal spell! spelllang=en_us<CR>
+
+" Insert date / time
+nnoremap <leader>id "=strftime("%a, %b %d %Y")<CR>P
+nnoremap <leader>it "=strftime("%I:%M:%S %p")<CR>P
 
 " }}}
