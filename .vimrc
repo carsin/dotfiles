@@ -8,6 +8,7 @@
 " https://github.com/carsin/dotfiles
 
 " General {{{
+set nocompatible
 
 " syntax highlighting based on file names
 filetype plugin on
@@ -51,6 +52,7 @@ Plug 'sheerun/vim-polyglot' " Syntax for various languages
 Plug 'psliwka/vim-smoothie' " Nice scrolling animation
 Plug 'airblade/vim-rooter' " Changes Vim working directory to project root
 Plug 'junegunn/goyo.vim' " Distraction-free writing mode
+Plug 'vimwiki/vimwiki' " Personal wiki
 
 call plug#end() " Initialize plugin system
 
@@ -61,6 +63,7 @@ let g:lightline = {'colorscheme' : 'gruvbox_material'}
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif " Close vim if nerdtree is the only window left
 map <C-n> :NERDTreeToggle<CR>
 
+" CoC {{{
 " use <tab> for trigger completion and navigate to the next complete item
 function! s:check_back_space() abort
     let col = col('.') - 1
@@ -80,7 +83,8 @@ autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif
 " Disable CoC for certain filetypes
 autocmd BufNew,BufEnter *.md,*.txt execute "silent! CocDisable"
 autocmd BufLeave *.md,*.txt execute "silent! CocEnable"
-
+" }}}
+" Goyo {{{
 " Close Goyo with :q
 function! s:goyo_enter()
     let b:quitting = 0
@@ -105,6 +109,13 @@ autocmd! User GoyoLeave call <SID>goyo_leave()
 
 let g:goyo_height = '100%'
 let g:goyo_width= '40%'
+" }}}
+" Use a template when generating new vimwiki diary files
+au BufNewFile ~/vimwiki/diary/*.md :silent 0r !~/.vim/bin/generate-vimwiki-diary-template '%'
+
+" Use markdown for vimwiki
+let g:vimwiki_list = [{'path': '~/vimwiki/',
+                      \ 'syntax': 'markdown', 'ext': '.md'}]
 
 " }}}
 " Editing {{{
@@ -204,7 +215,9 @@ set linespace=0 " No extra space between lines
 let mapleader=" " "leader = space
 
 " save file
-nmap <leader>w :w!<cr>
+nmap <c-s> :w<CR>
+imap <c-s> <Esc>:w<CR>a
+nmap <leader>s :w!<cr>
 
 " reload vim configuration
 map <leader>r :source ~/.vimrc<CR>
@@ -222,5 +235,8 @@ set pastetoggle=<F2> " Toggle pastemode with f2
 
 " Toggle goyo
 nnoremap <leader>go :Goyo<cr>
+
+" Toggle Spellcheck
+:noremap <F5> :setlocal spell! spelllang=en_us<CR>
 
 " }}}
