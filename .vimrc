@@ -38,7 +38,6 @@ set updatetime=300 " Fast updatetime for snappier experience
 call plug#begin('~/.vim/plugged') " Specify a directory for plugins
 
 Plug 'tpope/vim-surround' " Easy matching pairs
-Plug 'itchyny/lightline.vim' " Nice status bar
 Plug 'scrooloose/nerdtree' " File tree navigator
 Plug 'mattn/emmet-vim' " Emmet integration
 Plug 'preservim/nerdcommenter' " Easy commenting
@@ -180,12 +179,33 @@ set showmatch " highlight matching [{()}]
 set noeb vb t_vb= " no visual bell or beeping (thank god)
 set ruler " Always show current position
 set magic " For regular expressions turn magic on
-set laststatus=2 " Set status bar
 set noshowmode " Remove redundant status bar elements
 set foldenable " Fold code
 set foldmethod=marker " Fold code with {{{}}}
 set linespace=0 " No extra space between lines
 
+" Custom statusline {{{
+set statusline=
+set statusline+=%#DiffAdd#%{(mode()=='n')?'\ \ NORMAL\ ':''}
+set statusline+=%#DiffChange#%{(mode()=='i')?'\ \ INSERT\ ':''}
+set statusline+=%#DiffDelete#%{(mode()=='r')?'\ \ RPLACE\ ':''}
+set statusline+=%#CursorIM#%{(mode()=='v')?'\ \ VISUAL\ ':''}
+"set statusline+=\ %n\           " buffer number
+"set statusline+=%#Visual#       " colour
+set statusline+=%{&paste?'\ \ PASTE\ ':''}
+set statusline+=%{&spell?'\ \ SPELL\ ':''}
+set statusline+=%#CursorIM#     " colour
+set statusline+=%R                        " readonly flag
+set statusline+=%#Cursor#               " colour
+set statusline+=%#CursorLine#     " colour
+set statusline+=\ %t\                   " short file name
+set statusline+=%=                          " right align
+set statusline+=%#CursorLine#   " colour
+set statusline+=\ %Y\                   " file type
+set statusline+=%#CursorIM#     " colour
+set statusline+=\ %3l:%-2c\         " line + column
+set statusline+=\ %3p%%\                " percentage
+"}}}
 " }}}
 " Binds & Mappings {{{
 
