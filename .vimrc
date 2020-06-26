@@ -37,7 +37,6 @@ set updatetime=300 " Fast updatetime for snappier experience
 
 call plug#begin('~/.vim/plugged') " Specify a directory for plugins
 
-Plug 'sainnhe/gruvbox-material' " Colorscheme
 Plug 'tpope/vim-surround' " Easy matching pairs
 Plug 'itchyny/lightline.vim' " Nice status bar
 Plug 'scrooloose/nerdtree' " File tree navigator
@@ -53,6 +52,10 @@ Plug 'psliwka/vim-smoothie' " Nice scrolling animation
 Plug 'airblade/vim-rooter' " Changes Vim working directory to project root
 Plug 'junegunn/goyo.vim' " Distraction-free writing mode
 Plug 'vimwiki/vimwiki' " Personal wiki
+
+" COLORS:
+Plug 'sainnhe/gruvbox-material' " Colorscheme
+Plug 'morhetz/gruvbox' " Gruvbox
 
 call plug#end() " Initialize plugin system
 
@@ -104,10 +107,11 @@ let g:goyo_height = '100%'
 let g:goyo_width= '40%'
 " }}}
 
-let g:lightline = {'colorscheme' : 'gruvbox_material'}
+"let g:lightline = {'colorscheme' : 'gruvbox_material'}
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif " Close vim if nerdtree is the only window left
 map <C-n> :NERDTreeToggle<CR>
 
+autocmd vimenter * colorscheme gruvbox
 
 " Use a template when generating new vimwiki diary files
 au BufNewFile ~/vimwiki/diary/*.md :silent 0r !~/.vim/bin/generate-vimwiki-diary-template '%'
@@ -162,7 +166,7 @@ endif
 
 set background=dark
 set t_Co=256
-colorscheme gruvbox-material
+autocmd vimenter * colorscheme gruvbox
 
 let &t_EI .= "\<Esc>[0 q"
 let &t_SI .= "\<Esc>[6 q"
