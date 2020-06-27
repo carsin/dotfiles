@@ -4,6 +4,7 @@ alias ls="ls -A --color"
 alias config="/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME"
 alias tmux="tmux -2"
 alias cr="cargo run"
+alias gst="git status"
 
 function fish_greeting
     fortune | cowsay
