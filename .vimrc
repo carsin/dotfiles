@@ -183,6 +183,7 @@ set noshowmode " Remove redundant status bar elements
 set foldenable " Fold code
 set foldmethod=marker " Fold code with {{{}}}
 set linespace=0 " No extra space between lines
+set laststatus=2 " Show statusline
 
 " Custom statusline {{{
 set statusline=
@@ -212,8 +213,6 @@ set statusline+=\ %3p%%\                " percentage
 let mapleader=" " "leader = space
 
 " save file
-nmap <c-s> :w<CR>
-imap <c-s> <Esc>:w<CR>a
 nmap <leader>s :w!<cr>
 
 " reload vim configuration
