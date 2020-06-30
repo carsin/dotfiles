@@ -157,6 +157,10 @@ autocmd BufWritePre * :%s/\s\+$//e " remove trailing whitespace on save
 
 set mousefocus " Focus follows mouse
 
+set timeout " Do time out on mappings and others
+set ttimeoutlen=0 " Make escape timeout faster
+set timeoutlen=1000 " Wait {num} ms before timing out a mapping
+
 " }}}
 " UI {{{
 
@@ -239,9 +243,6 @@ nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
-
-" close buffer
-nmap <leader>Q :bd!<cr>
 
 " Open new empty buffer
 nmap <leader>T :enew<cr>
