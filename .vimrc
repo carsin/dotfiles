@@ -188,15 +188,14 @@ set noshowmode " Remove redundant status bar elements
 set foldenable " Fold code
 set foldmethod=marker " Fold code with {{{}}}
 set linespace=0 " No extra space between lines
+set laststatus=2 " Show statusline
 " More natural split opening
 set splitbelow
 set splitright
 
-set winheight=1    "Make room for minheight change
-set winminheight=0 "Set the height of inactive window
-set winheight=999  "Maximize active window
+" Change vertical split character to solid line instead of line with gaps
+set fillchars+=vert:│
 
-set laststatus=2 " Show statusline
 " Custom statusline {{{
 set statusline=
 set statusline+=%#DiffAdd#%{(mode()=='n')?'\ \ NORMAL\ ':''}
@@ -219,7 +218,6 @@ set statusline+=%#CursorIM#     " colour
 set statusline+=\ %3l:%-2c\         " line + column
 set statusline+=\ %3p%%\                " percentage
 "}}}
-
 " }}}
 " Binds & Mappings {{{
 
@@ -255,11 +253,11 @@ noremap <F3> :setlocal spell! spelllang=en_us<CR>
 nnoremap <leader>id " =strftime("%a, %b %d %Y")<CR>p
 nnoremap <leader>it " =strftime("%I:%M %p")<CR>p
 
-" Easy split navigations
-nnoremap <C-J> <C-W><C-J>
-nnoremap <C-K> <C-W><C-K>
-nnoremap <C-L> <C-W><C-L>
-nnoremap <C-H> <C-W><C-H>
+" Split navigation
+nnoremap <silent> <C-h> :call WinMove('h')<cr>
+nnoremap <silent> <C-j> :call WinMove('j')<cr>
+nnoremap <silent> <C-k> :call WinMove('k')<cr>
+nnoremap <silent> <C-l> :call WinMove('l')<cr>
 
 " close buffer
 nmap <leader>Q :bd!<cr>
@@ -274,3 +272,19 @@ nmap <leader>l :bnext<CR>
 nmap <leader>h :bprevious<CR>
 
 " }}}
+" Helper functions {{{
+
+" Move to a window in a direction or create a new split if none exists
+func! WinMove(key)
+    let t:curwin = winnr()
+    exec "wincmd ".a:key
+    if (t:curwin == winnr())
+        if (match(a:key,'[jk]'))
+            wincmd v
+        else
+            wincmd s
+        endif
+        exec "wincmd ".a:key
+    endif
+endfu
+"}}}
