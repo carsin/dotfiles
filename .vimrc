@@ -54,6 +54,7 @@ Plug 'psliwka/vim-smoothie' " Nice scrolling animation
 Plug 'airblade/vim-rooter' " Changes Vim working directory to project root
 Plug 'junegunn/goyo.vim' " Distraction-free writing mode
 Plug 'vimwiki/vimwiki' " Personal wiki
+Plug 'vim-airline/vim-airline' " lean & mean status/tabline
 
 " COLORS:
 Plug 'sainnhe/gruvbox-material' " Colorscheme
@@ -109,11 +110,10 @@ let g:goyo_height = '100%'
 let g:goyo_width= '40%'
 " }}}
 
-"let g:lightline = {'colorscheme' : 'gruvbox_material'}
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif " Close vim if nerdtree is the only window left
-map <C-n> :NERDTreeToggle<CR>
 
-autocmd vimenter * colorscheme gruvbox
+let g:airline#extensions#tabline#enabled = 1 " Enable tab line buffer display
+let g:airline#extensions#tabline#formatter = 'unique_tail' " Better tab line buffer format
 
 " Use a template when generating new vimwiki diary files
 au BufNewFile ~/vimwiki/diary/*.md :silent 0r !~/.vim/bin/generate-vimwiki-diary-template '%'
@@ -170,7 +170,7 @@ endif
 
 set background=dark
 set t_Co=256
-autocmd vimenter * colorscheme gruvbox
+colorscheme gruvbox
 
 let &t_EI .= "\<Esc>[0 q"
 let &t_SI .= "\<Esc>[6 q"
@@ -196,30 +196,11 @@ set splitright
 " Change vertical split character to solid line instead of line with gaps
 set fillchars+=vert:│
 
-" Custom statusline {{{
-set statusline=
-set statusline+=%#DiffAdd#%{(mode()=='n')?'\ \ NORMAL\ ':''}
-set statusline+=%#DiffChange#%{(mode()=='i')?'\ \ INSERT\ ':''}
-set statusline+=%#DiffDelete#%{(mode()=='r')?'\ \ RPLACE\ ':''}
-set statusline+=%#CursorIM#%{(mode()=='v')?'\ \ VISUAL\ ':''}
-"set statusline+=\ %n\           " buffer number
-"set statusline+=%#Visual#       " colour
-set statusline+=%{&paste?'\ \ PASTE\ ':''}
-set statusline+=%{&spell?'\ \ SPELL\ ':''}
-set statusline+=%#CursorIM#     " colour
-set statusline+=%R                        " readonly flag
-set statusline+=%#Cursor#               " colour
-set statusline+=%#CursorLine#     " colour
-set statusline+=\ %t\                   " short file name
-set statusline+=%=                          " right align
-set statusline+=%#CursorLine#   " colour
-set statusline+=\ %Y\                   " file type
-set statusline+=%#CursorIM#     " colour
-set statusline+=\ %3l:%-2c\         " line + column
-set statusline+=\ %3p%%\                " percentage
-"}}}
 " }}}
 " Binds & Mappings {{{
+
+" Open nerd tree
+map <C-n> :NERDTreeToggle<CR>
 
 let mapleader=" " "leader = space
 
@@ -266,10 +247,10 @@ nmap <leader>Q :bd!<cr>
 nmap <leader>T :enew<cr>
 
 " Move to the next buffer
-nmap <leader>l :bnext<CR>
+nmap <leader>n :bnext<CR>
 
 " Move to the previous buffer
-nmap <leader>h :bprevious<CR>
+nmap <leader>p :bprevious<CR>
 
 " Split binds
 nmap <leader>- :split<CR>
