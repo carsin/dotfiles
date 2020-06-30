@@ -250,14 +250,14 @@ nnoremap <leader>go :Goyo<cr>
 noremap <F3> :setlocal spell! spelllang=en_us<CR>
 
 " Insert date / time
-nnoremap <leader>id " =strftime("%a, %b %d %Y")<CR>p
-nnoremap <leader>it " =strftime("%I:%M %p")<CR>p
+nnoremap <leader>id "=strftime("%a, %b %d %Y")<CR>p
+nnoremap <leader>it "=strftime("%I:%M %p")<CR>p
 
 " Split navigation
-nnoremap <silent> <C-h> :call WinMove('h')<cr>
-nnoremap <silent> <C-j> :call WinMove('j')<cr>
-nnoremap <silent> <C-k> :call WinMove('k')<cr>
-nnoremap <silent> <C-l> :call WinMove('l')<cr>
+nnoremap <C-h> <C-w>h
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
 
 " close buffer
 nmap <leader>Q :bd!<cr>
@@ -271,20 +271,8 @@ nmap <leader>l :bnext<CR>
 " Move to the previous buffer
 nmap <leader>h :bprevious<CR>
 
-" }}}
-" Helper functions {{{
+" Split binds
+nmap <leader>- :split<CR>
+nmap <leader>\| :vsplit<CR>
 
-" Move to a window in a direction or create a new split if none exists
-func! WinMove(key)
-    let t:curwin = winnr()
-    exec "wincmd ".a:key
-    if (t:curwin == winnr())
-        if (match(a:key,'[jk]'))
-            wincmd v
-        else
-            wincmd s
-        endif
-        exec "wincmd ".a:key
-    endif
-endfu
-"}}}
+" }}}

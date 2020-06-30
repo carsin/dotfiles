@@ -1,3 +1,8 @@
+# Start tmux or reopen tmux
+if not set -q TMUX
+    tmux attach -t base || tmux new -s base
+end
+
 alias vi="vim"
 alias v="vim"
 alias ls="ls -A --color"
