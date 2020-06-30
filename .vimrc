@@ -29,8 +29,11 @@ set noswapfile
 set encoding=utf8 " Set utf8 as standard encoding and en_US as the standard language
 set ffs=unix,dos,mac " Use Unix as the standard file type
 
-set mouse=a
 set updatetime=300 " Fast updatetime for snappier experience
+
+" Set proper mouse mode
+set mouse=a
+set ttymouse=xterm2
 
 " }}}
 " Plugins {{{
@@ -152,6 +155,8 @@ set undofile
 set undodir=~/.vim/undo
 autocmd BufWritePre * :%s/\s\+$//e " remove trailing whitespace on save
 
+set mousefocus " Focus follows mouse
+
 " }}}
 " UI {{{
 
@@ -183,8 +188,15 @@ set noshowmode " Remove redundant status bar elements
 set foldenable " Fold code
 set foldmethod=marker " Fold code with {{{}}}
 set linespace=0 " No extra space between lines
-set laststatus=2 " Show statusline
+" More natural split opening
+set splitbelow
+set splitright
 
+set winheight=1    "Make room for minheight change
+set winminheight=0 "Set the height of inactive window
+set winheight=999  "Maximize active window
+
+set laststatus=2 " Show statusline
 " Custom statusline {{{
 set statusline=
 set statusline+=%#DiffAdd#%{(mode()=='n')?'\ \ NORMAL\ ':''}
@@ -207,6 +219,7 @@ set statusline+=%#CursorIM#     " colour
 set statusline+=\ %3l:%-2c\         " line + column
 set statusline+=\ %3p%%\                " percentage
 "}}}
+
 " }}}
 " Binds & Mappings {{{
 
@@ -239,7 +252,25 @@ nnoremap <leader>go :Goyo<cr>
 noremap <F3> :setlocal spell! spelllang=en_us<CR>
 
 " Insert date / time
-nnoremap <leader>id "=strftime("%a, %b %d %Y")<CR>p
-nnoremap <leader>it "=strftime("%I:%M %p")<CR>p
+nnoremap <leader>id " =strftime("%a, %b %d %Y")<CR>p
+nnoremap <leader>it " =strftime("%I:%M %p")<CR>p
+
+" Easy split navigations
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
+
+" close buffer
+nmap <leader>Q :bd!<cr>
+
+" Open new empty buffer
+nmap <leader>T :enew<cr>
+
+" Move to the next buffer
+nmap <leader>l :bnext<CR>
+
+" Move to the previous buffer
+nmap <leader>h :bprevious<CR>
 
 " }}}
