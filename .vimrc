@@ -47,7 +47,6 @@ Plug 'preservim/nerdcommenter' " Easy commenting
 Plug 'jiangmiao/auto-pairs' " Auto pairs
 Plug 'neoclide/coc.nvim', {'branch': 'release'} " Autocomplete
 Plug 'mhinz/vim-startify' " Fancy start page
-Plug 'chaoren/vim-wordmotion' " Improve vim word motion (ex: snake_case and camelCase)
 Plug 'ctrlpvim/ctrlp.vim' " Fuzzy file, buffer, mru, etc finder.
 Plug 'sheerun/vim-polyglot' " Syntax for various languages
 Plug 'psliwka/vim-smoothie' " Nice scrolling animation
