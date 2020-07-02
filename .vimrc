@@ -16,7 +16,7 @@ filetype indent on
 syntax on
 syntax enable
 
-set hidden " keep more info in memory to speed things up
+set hidden " hide buffers even if they're edited
 set history=500 " How many lines of history vim has to remember
 
 set autoread " Set to auto read when a file is changed from the outside
@@ -49,7 +49,6 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'} " Autocomplete
 Plug 'mhinz/vim-startify' " Fancy start page
 Plug 'ctrlpvim/ctrlp.vim' " Fuzzy file, buffer, mru, etc finder.
 Plug 'sheerun/vim-polyglot' " Syntax for various languages
-Plug 'psliwka/vim-smoothie' " Nice scrolling animation
 Plug 'airblade/vim-rooter' " Changes Vim working directory to project root
 Plug 'junegunn/goyo.vim' " Distraction-free writing mode
 Plug 'vimwiki/vimwiki' " Personal wiki
@@ -225,7 +224,8 @@ map 0 ^
 " unbind annoying help page
 nmap <F1> <nop>
 
-set pastetoggle=<F2> " Toggle pastemode with f2
+" Toggle pastemode
+nnoremap <silent><leader>tp :set invpaste <CR>
 
 " Toggle goyo
 nnoremap <leader>go :Goyo<cr>
