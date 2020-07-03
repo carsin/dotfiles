@@ -48,20 +48,24 @@ Plug 'jiangmiao/auto-pairs' " Auto pairs
 Plug 'neoclide/coc.nvim', {'branch': 'release'} " Autocomplete
 Plug 'mhinz/vim-startify' " Fancy start page
 Plug 'ctrlpvim/ctrlp.vim' " Fuzzy file, buffer, mru, etc finder.
-Plug 'sheerun/vim-polyglot' " Syntax for various languages
 Plug 'airblade/vim-rooter' " Changes Vim working directory to project root
 Plug 'junegunn/goyo.vim' " Distraction-free writing mode
 Plug 'vimwiki/vimwiki' " Personal wiki
 Plug 'vim-airline/vim-airline' " lean & mean status/tabline
 
+" LANGUAGES:
+Plug 'sheerun/vim-polyglot' " Syntax for various languages
+Plug 'arzg/vim-rust-syntax-ext' " Enhances Rust syntax highlighting
+
 " COLORS:
-Plug 'sainnhe/gruvbox-material' " Colorscheme
-Plug 'morhetz/gruvbox' " Gruvbox
+Plug 'sainnhe/gruvbox-material'
+Plug 'gruvbox-community/gruvbox' " Actively maintained fork of morhetz's gruvboPlugCx
+Plug 'arcticicestudio/nord-vim'
 
 call plug#end() " Initialize plugin system
 
 " }}}
-" Plugin Settings {{{
+ "Plugin Settings {{{
 " CoC {{{
 " use <tab> for trigger completion and navigate to the next complete item
 function! s:check_back_space() abort
@@ -172,7 +176,7 @@ endif
 
 set background=dark
 set t_Co=256
-colorscheme gruvbox
+colorscheme nord
 
 let &t_EI .= "\<Esc>[0 q"
 let &t_SI .= "\<Esc>[6 q"
