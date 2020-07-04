@@ -47,7 +47,7 @@ Plug 'preservim/nerdcommenter' " Easy commenting
 Plug 'jiangmiao/auto-pairs' " Auto pairs
 Plug 'neoclide/coc.nvim', {'branch': 'release'} " Autocomplete
 Plug 'mhinz/vim-startify' " Fancy start page
-Plug 'ctrlpvim/ctrlp.vim' " Fuzzy file, buffer, mru, etc finder.
+Plug 'junegunn/fzf', { 'do': { -> fzf#install()  }  } " Fuzzy file finder
 Plug 'airblade/vim-rooter' " Changes Vim working directory to project root
 Plug 'junegunn/goyo.vim' " Distraction-free writing mode
 Plug 'vimwiki/vimwiki' " Personal wiki
@@ -209,6 +209,10 @@ set fillchars+=vert:│
 map <C-n> :NERDTreeToggle<CR>
 
 let mapleader=" " "leader = space
+
+" Start fzf with ctrl+p
+nnoremap <C-p> :<C-u>FZF<CR>
+
 
 " save file
 nmap <leader>s :w!<cr>
