@@ -184,7 +184,7 @@ colorscheme nord
 let &t_EI .= "\<Esc>[0 q"
 let &t_SI .= "\<Esc>[6 q"
 
-set so=10 " Set 10 lines to the cursor - when moving vertically using j/k
+set so=7 " How many lines from cursor to top / bottom of the screen before scrolling
 set number " line numbering
 set showcmd " show last entered command
 set wildmenu " visual auto complete for command menu
@@ -266,5 +266,11 @@ nmap <leader>p :bprevious<CR>
 " Split binds
 nmap <leader>- :split<CR>
 nmap <leader>\| :vsplit<CR>
+
+" Change size of vim splits with alt+,/.
+execute "set <a-,>=\<esc>,"
+execute "set <a-.>=\<esc>."
+nnoremap <silent> <a-,> :<c-u>vert res -<c-r>=v:count?v:count1:5<cr><cr>
+nnoremap <silent> <a-.> :<c-u>vert res +<c-r>=v:count?v:count1:5<cr><cr>
 
 " }}}
