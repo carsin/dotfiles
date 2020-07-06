@@ -54,7 +54,7 @@ Plug 'vimwiki/vimwiki' " Personal wiki
 Plug 'vim-airline/vim-airline' " lean & mean status/tabline
 Plug 'unblevable/quick-scope' " highlights a unique character in every word on a line to help you use f
 Plug 'chaoren/vim-wordmotion' " better word motions for snake_case and camelCase
-
+Plug 'justinmk/vim-sneak' " jump to any location specified by two characters
 
 " LANGUAGES:
 Plug 'sheerun/vim-polyglot' " Syntax for various languages
