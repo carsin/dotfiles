@@ -41,6 +41,7 @@ set ttymouse=xterm2
 call plug#begin('~/.vim/plugged') " Specify a directory for plugins
 
 Plug 'tpope/vim-surround' " Easy matching pairs
+Plug 'tpope/vim-fugitive' " Git integration
 Plug 'scrooloose/nerdtree' " File tree navigator
 Plug 'mattn/emmet-vim' " Emmet integration
 Plug 'preservim/nerdcommenter' " Easy commenting
@@ -62,8 +63,9 @@ Plug 'arzg/vim-rust-syntax-ext' " Enhances Rust syntax highlighting
 
 " COLORS:
 Plug 'sainnhe/gruvbox-material'
-Plug 'gruvbox-community/gruvbox' " Actively maintained fork of morhetz's gruvboPlugCx
+Plug 'gruvbox-community/gruvbox'
 Plug 'arcticicestudio/nord-vim'
+Plug 'sainnhe/gruvbox-material'
 
 call plug#end() " Initialize plugin system
 
@@ -91,6 +93,7 @@ autocmd BufNew,BufEnter *.md,*.txt execute "silent! CocDisable"
 autocmd BufLeave *.md,*.txt execute "silent! CocEnable"
 " }}}
 " Goyo {{{
+
 " Close Goyo with :wq
 function! s:goyo_enter()
     let b:quitting = 0
@@ -112,7 +115,7 @@ autocmd! User GoyoEnter call <SID>goyo_enter()
 autocmd! User GoyoLeave call <SID>goyo_leave()
 
 let g:goyo_height = '100%'
-let g:goyo_width= '40%'
+let g:goyo_width= '50%'
 " }}}
 
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif " Close vim if nerdtree is the only window left
@@ -125,6 +128,13 @@ au BufNewFile ~/vimwiki/diary/*.md :silent 0r !~/.vim/bin/generate-vimwiki-diary
 
 " Use markdown for vimwiki
 let g:vimwiki_list = [{'path': '~/vimwiki/', 'syntax': 'markdown', 'ext': '.md'}]
+
+" Configure gruvbox colorscheme
+let g:gruvbox_material_background = 'hard'
+let g:gruvbox_material_statusline_style = 'default'
+let g:gruvbox_material_palette = 'mix'
+
+let g:gruvbox_contrast_dark = 'hard'
 
 " }}}
 " Editing {{{
@@ -179,13 +189,15 @@ endif
 
 set background=dark
 set t_Co=256
-colorscheme nord
+
+colorscheme gruvbox-material
 
 let &t_EI .= "\<Esc>[0 q"
 let &t_SI .= "\<Esc>[6 q"
 
 set so=7 " How many lines from cursor to top / bottom of the screen before scrolling
 set number " line numbering
+set rnu
 set showcmd " show last entered command
 set wildmenu " visual auto complete for command menu
 set lazyredraw " redraw only when needed
@@ -272,5 +284,8 @@ execute "set <a-,>=\<esc>,"
 execute "set <a-.>=\<esc>."
 nnoremap <silent> <a-,> :<c-u>vert res -<c-r>=v:count?v:count1:5<cr><cr>
 nnoremap <silent> <a-.> :<c-u>vert res +<c-r>=v:count?v:count1:5<cr><cr>
+
+" Open git status in fugitive
+nmap <leader>gs :G<CR>
 
 " }}}
