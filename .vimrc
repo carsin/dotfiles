@@ -10,11 +10,8 @@
 " General {{{
 set nocompatible
 
-" syntax highlighting based on file names
-filetype plugin on
-filetype indent on
-syntax on
-syntax enable
+filetype plugin indent on  " Load plugins according to detected filetype.
+syntax on                  " Enable syntax highlighting.
 
 set hidden " hide buffers even if they're edited
 set history=500 " How many lines of history vim has to remember
@@ -46,6 +43,8 @@ Plug 'scrooloose/nerdtree' " File tree navigator
 Plug 'mattn/emmet-vim' " Emmet integration
 Plug 'preservim/nerdcommenter' " Easy commenting
 Plug 'jiangmiao/auto-pairs' " Auto pairs
+Plug 'Shougo/echodoc.vim' " Displays function signatures from completions in the command line
+Plug 'rhysd/clever-f.vim' " extends f, F, t and T mappings for more convenience
 Plug 'neoclide/coc.nvim', {'branch': 'release'} " Autocomplete
 Plug 'mhinz/vim-startify' " Fancy start page
 Plug 'junegunn/fzf', { 'do': { -> fzf#install()  }  } " Fuzzy file finder
@@ -139,10 +138,11 @@ let g:gruvbox_contrast_dark = 'hard'
 " }}}
 " Editing {{{
 
-set expandtab " Use spaces instead of tabs
-set smarttab " Be smart when using tabs
-set ai " Auto indent
-set si " Smart indent
+set autoindent             " Indent according to previous line.
+set expandtab              " Use spaces instead of tabs.
+set softtabstop=4         " Tab key indents by 4 spaces.
+set shiftwidth=4         " >> indents by 4 spaces.
+set shiftround             " >> indents to next multiple of 'shiftwidth'.
 set wrap " Wrap lines
 " 1 tab == 4 spaces
 set shiftwidth=4
@@ -157,11 +157,6 @@ set ignorecase " Ignore case when searching
 set smartcase " When searching try to be smart about cases
 set clipboard=unnamed " yank across instances
 
-" move vertically by visual line
-nnoremap j gj
-nnoremap k gk
-" highlight last insert text
-nnoremap gV `[v`]
 " Configure backspace so it acts as it should act
 set backspace=eol,start,indent
 set whichwrap+=<,>,h,l
@@ -175,6 +170,9 @@ set mousefocus " Focus follows mouse
 set timeout " Do time out on mappings and others
 set ttimeoutlen=0 " Make escape timeout faster
 set timeoutlen=1000 " Wait {num} ms before timing out a mapping
+
+set wrapscan               " Searches wrap around end-of-file.
+set report=0               " Always report changed lines.
 
 " }}}
 " UI {{{
@@ -220,6 +218,10 @@ set fillchars+=vert:│
 " }}}
 " Binds & Mappings {{{
 
+" Intuitive j/k behavior with wrapping
+nnoremap <expr> j v:count ? (v:count > 5 ? "m'" . v:count : '') . 'j' : 'gj'
+nnoremap <expr> k v:count ? (v:count > 5 ? "m'" . v:count : '') . 'k' : 'gk'
+
 " Open nerd tree
 map <C-n> :NERDTreeToggle<CR>
 
@@ -227,7 +229,6 @@ let mapleader=" " "leader = space
 
 " Start fzf with ctrl+p
 nnoremap <C-p> :<C-u>FZF<CR>
-
 
 " save file
 nmap <leader>s :w!<cr>
