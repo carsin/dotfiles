@@ -32,11 +32,17 @@ set updatetime=300 " Fast updatetime for snappier experience
 set mouse=a
 set ttymouse=xterm2
 
+" The fish shell is not very compatible to other shells and unexpectedly breaks things that use 'shell'.
+if &shell =~# 'fish$'
+  set shell=/bin/bash
+endif
+
 " }}}
 " Plugins {{{
 
 call plug#begin('~/.vim/plugged') " Specify a directory for plugins
 
+Plug 'tpope/vim-sensible' " Defualts everyone can agree on
 Plug 'tpope/vim-surround' " Easy matching pairs
 Plug 'tpope/vim-fugitive' " Git integration
 Plug 'scrooloose/nerdtree' " File tree navigator
@@ -214,6 +220,13 @@ set splitright
 
 " Change vertical split character to solid line instead of line with gaps
 set fillchars+=vert:│
+
+set list                   " Show non-printable characters.
+if has('multi_byte') && &encoding ==# 'utf-8'
+  let &listchars = 'tab:▸ ,extends:❯,precedes:❮,nbsp:±'
+else
+  let &listchars = 'tab:> ,extends:>,precedes:<,nbsp:.'
+endif
 
 " }}}
 " Binds & Mappings {{{
