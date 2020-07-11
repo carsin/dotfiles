@@ -70,7 +70,6 @@ Plug 'arzg/vim-rust-syntax-ext' " Enhances Rust syntax highlighting
 Plug 'sainnhe/gruvbox-material'
 Plug 'gruvbox-community/gruvbox'
 Plug 'arcticicestudio/nord-vim'
-Plug 'sainnhe/gruvbox-material'
 
 call plug#end() " Initialize plugin system
 
