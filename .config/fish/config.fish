@@ -12,7 +12,6 @@ alias cr="cargo run"
 alias gst="git status"
 alias gp="git push"
 alias cst="config status"
-alias cp="config push"
 
 function fish_greeting
     fortune | cowsay
