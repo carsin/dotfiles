@@ -135,7 +135,7 @@ let g:vimwiki_list = [{'path': '~/vimwiki/', 'syntax': 'markdown', 'ext': '.md'}
 " Configure gruvbox colorscheme
 let g:gruvbox_material_background = 'hard'
 let g:gruvbox_material_statusline_style = 'default'
-let g:gruvbox_material_palette = 'mix'
+let g:gruvbox_material_palette = 'original'
 
 let g:gruvbox_contrast_dark = 'hard'
 
@@ -291,6 +291,8 @@ nmap <leader>p :bprevious<CR>
 nmap <leader>- :split<CR>
 nmap <leader>\| :vsplit<CR>
 
+nmap <leader>\| :vsplit<CR>
+
 " Change size of vim splits with alt+,/.
 execute "set <a-,>=\<esc>,"
 execute "set <a-.>=\<esc>."
@@ -299,5 +301,9 @@ nnoremap <silent> <a-.> :<c-u>vert res +<c-r>=v:count?v:count1:5<cr><cr>
 
 " Open git status in fugitive
 nmap <leader>gs :G<CR>
+
+" Vim plug ease of use bindings
+nmap <leader>ii :PlugInstall<CR>
+nmap <leader>ic :PlugClean<CR>
 
 " }}}
