@@ -50,7 +50,6 @@ Plug 'mattn/emmet-vim' " Emmet integration
 Plug 'preservim/nerdcommenter' " Easy commenting
 Plug 'jiangmiao/auto-pairs' " Auto pairs
 Plug 'Shougo/echodoc.vim' " Displays function signatures from completions in the command line
-Plug 'rhysd/clever-f.vim' " extends f, F, t and T mappings for more convenience
 Plug 'neoclide/coc.nvim', {'branch': 'release'} " Autocomplete
 Plug 'mhinz/vim-startify' " Fancy start page
 Plug 'junegunn/fzf', { 'do': { -> fzf#install()  }  } " Fuzzy file finder
