@@ -10,23 +10,18 @@
 " General {{{
 set nocompatible
 
-filetype plugin indent on  " Load plugins according to detected filetype.
-syntax on                  " Enable syntax highlighting.
+filetype plugin indent on " Load plugins according to detected filetype.
+syntax on                 " Enable syntax highlighting.
 
-set hidden " hide buffers even if they're edited
-set history=500 " How many lines of history vim has to remember
+set hidden                " hide buffers even if they're edited
+set history=500           " How many lines of history vim has to remember
 
-set autoread " Set to auto read when a file is changed from the outside
+set autoread              " Set to auto read when a file is changed from the outside
 
-" Turn backup off, since most stuff is in SVN, git etc anyway...
-set nobackup
-set nowb
-set noswapfile
+set encoding=utf8         " Set utf8 as standard encoding and en_US as the standard language
+set ffs=unix,dos,mac      " Use Unix as the standard file type
 
-set encoding=utf8 " Set utf8 as standard encoding and en_US as the standard language
-set ffs=unix,dos,mac " Use Unix as the standard file type
-
-set updatetime=300 " Fast updatetime for snappier experience
+set updatetime=300        " Fast updatetime for snappier experience
 
 " Set proper mouse mode
 set mouse=a
@@ -37,36 +32,41 @@ if &shell =~# 'fish$'
   set shell=/bin/bash
 endif
 
+" Turn backup off, since most stuff is in SVN, git etc anyway...
+set nobackup
+set nowb
+set noswapfile
+
 " }}}
 " Plugins {{{
 
 call plug#begin('~/.vim/plugged') " Specify a directory for plugins
 
-Plug 'tpope/vim-sensible' " Defualts everyone can agree on
-Plug 'tpope/vim-surround' " Easy matching pairs
-Plug 'tpope/vim-fugitive' " Git integration
-Plug 'scrooloose/nerdtree' " File tree navigator
-Plug 'mattn/emmet-vim' " Emmet integration
-Plug 'preservim/nerdcommenter' " Easy commenting
-Plug 'jiangmiao/auto-pairs' " Auto pairs
-Plug 'Shougo/echodoc.vim' " Displays function signatures from completions in the command line
-Plug 'neoclide/coc.nvim', {'branch': 'release'} " Autocomplete
-Plug 'mhinz/vim-startify' " Fancy start page
+Plug 'tpope/vim-sensible'                             " Defualts everyone can agree on
+Plug 'tpope/vim-surround'                             " Easy matching pairs
+Plug 'tpope/vim-fugitive'                             " Git integration
+Plug 'scrooloose/nerdtree'                            " File tree navigator
+Plug 'mattn/emmet-vim'                                " Emmet integration
+Plug 'preservim/nerdcommenter'                        " Easy commenting
+Plug 'jiangmiao/auto-pairs'                           " Auto pairs
+Plug 'Shougo/echodoc.vim'                             " Displays function signatures from completions in the command line
+Plug 'neoclide/coc.nvim', {'branch': 'release'}       " Autocomplete
+Plug 'mhinz/vim-startify'                             " Fancy start page
 Plug 'junegunn/fzf', { 'do': { -> fzf#install()  }  } " Fuzzy file finder
-Plug 'airblade/vim-rooter' " Changes Vim working directory to project root
-Plug 'vimwiki/vimwiki' " Personal wiki
-Plug 'vim-airline/vim-airline' " lean & mean status/tabline
-Plug 'unblevable/quick-scope' " highlights a unique character in every word on a line to help you use f
-Plug 'chaoren/vim-wordmotion' " better word motions for snake_case and camelCase
-Plug 'justinmk/vim-sneak' " jump to any location specified by two characters
+Plug 'airblade/vim-rooter'                            " Changes Vim working directory to project root
+Plug 'vimwiki/vimwiki'                                " Personal wiki
+Plug 'vim-airline/vim-airline'                        " lean & mean status/tabline
+Plug 'unblevable/quick-scope'                         " highlights a unique character in every word on a line to help you use f
+Plug 'chaoren/vim-wordmotion'                         " better word motions for snake_case and camelCase
+Plug 'justinmk/vim-sneak'                             " jump to any location specified by two characters
 
-Plug 'junegunn/goyo.vim' " Distraction-free writing mode
-Plug 'godlygeek/tabular' " Vim script for text filtering and alignment
-Plug 'plasticboy/vim-markdown' " Syntax highlighting, matching rules and mappings for the original Markdown and extensions.
+Plug 'junegunn/goyo.vim'                              " Distraction-free writing mode
+Plug 'godlygeek/tabular'                              " Vim script for text filtering and alignment
+Plug 'plasticboy/vim-markdown'                        " Syntax highlighting, matching rules and mappings for the original Markdown and extensions.
 
 " LANGUAGES:
-Plug 'sheerun/vim-polyglot' " Syntax for various languages
-Plug 'arzg/vim-rust-syntax-ext' " Enhances Rust syntax highlighting
+Plug 'sheerun/vim-polyglot'                           " Syntax for various languages
+Plug 'arzg/vim-rust-syntax-ext'                       " Enhances Rust syntax highlighting
 
 " COLORS:
 Plug 'sainnhe/gruvbox-material'
@@ -164,41 +164,38 @@ let g:vim_markdown_toc_autofit = 1
 " }}}
 " Editing {{{
 
-set autoindent             " Indent according to previous line.
-set expandtab              " Use spaces instead of tabs.
-set softtabstop=4         " Tab key indents by 4 spaces.
-set shiftwidth=4         " >> indents by 4 spaces.
-set shiftround             " >> indents to next multiple of 'shiftwidth'.
-set wrap " Wrap lines
-" 1 tab == 4 spaces
-set shiftwidth=4
-set tabstop=4
+set autoindent                    " Indent according to previous line.
+set expandtab                     " Use spaces instead of tabs.
+set softtabstop=4                 " Tab key indents by 4 spaces.
+set shiftwidth=4                  " >> indents by 4 spaces.
+set shiftround                    " >> indents to next multiple of 'shiftwidth'.
+set wrap                          " Wrap lines
+set shiftwidth=4                  " 1 tab == 4 spaces
+set tabstop=4                     " for sure.
+set incsearch                     " search as characters are entered
+set hlsearch                      " highlight matches
+set ignorecase                    " Ignore case when searching
+set smartcase                     " When searching try to be smart about cases
+set clipboard=unnamed             " yank across instances
+autocmd BufWritePre * %s/\s\+$//e " remove trailing whitespace on save
+set mousefocus                    " Focus follows mouse
+set timeout                       " Do time out on mappings and others
+set ttimeoutlen=0                 " Make escape timeout faster
+set timeoutlen=1000               " Wait {num} ms before timing out a mapping
+set wrapscan                      " Searches wrap around end-of-file.
+set report=0                      " Always report changed lines.
+
 " Line break on a lot of characters
 set lbr
 set tw=5000000
 
-set incsearch " search as characters are entered
-set hlsearch " highlight matches
-set ignorecase " Ignore case when searching
-set smartcase " When searching try to be smart about cases
-set clipboard=unnamed " yank across instances
-
 " Configure backspace so it acts as it should act
 set backspace=eol,start,indent
 set whichwrap+=<,>,h,l
+
 " Enable persistent undo so that undo history persists across vim sessions
 set undofile
 set undodir=~/.vim/undo
-autocmd BufWritePre * :%s/\s\+$//e " remove trailing whitespace on save
-
-set mousefocus " Focus follows mouse
-
-set timeout " Do time out on mappings and others
-set ttimeoutlen=0 " Make escape timeout faster
-set timeoutlen=1000 " Wait {num} ms before timing out a mapping
-
-set wrapscan               " Searches wrap around end-of-file.
-set report=0               " Always report changed lines.
 
 " }}}
 " UI {{{
@@ -219,29 +216,26 @@ colorscheme gruvbox-material
 let &t_EI .= "\<Esc>[0 q"
 let &t_SI .= "\<Esc>[6 q"
 
-set so=7 " How many lines from cursor to top / bottom of the screen before scrolling
-set number " line numbering
-set rnu
-set showcmd " show last entered command
-set wildmenu " visual auto complete for command menu
-set lazyredraw " redraw only when needed
-set showmatch " highlight matching [{()}]
-set noeb vb t_vb= " no visual bell or beeping (thank god)
-set ruler " Always show current position
-set magic " For regular expressions turn magic on
-set noshowmode " Remove redundant status bar elements
-set foldenable " Fold code
+set so=7              " How many lines from cursor to top / bottom of the screen before scrolling
+set number            " file line numbering
+set rnu               " relative line numbers
+set showcmd           " show last entered command
+set wildmenu          " visual auto complete for command menu
+set lazyredraw        " redraw only when needed
+set showmatch         " highlight matching [{()}]
+set noeb vb t_vb=     " no visual bell or beeping (thank god)
+set ruler             " Always show current position
+set magic             " For regular expressions turn magic on
+set noshowmode        " Remove redundant status bar elements
+set foldenable        " Fold code
 set foldmethod=marker " Fold code with {{{}}}
-set linespace=0 " No extra space between lines
-set laststatus=2 " Show statusline
-" More natural split opening
-set splitbelow
-set splitright
-
-" Change vertical split character to solid line instead of line with gaps
-set fillchars+=vert:│
-
-set list                   " Show non-printable characters.
+set linespace=0       " No extra space between lines
+set laststatus=2      " Show statusline
+set splitbelow        " Always vertically split below
+set splitright        " Always horizontally split to the right
+set fillchars+=vert:│ " Change vertical split character to solid line instead of line with gaps
+" Show non-printable characters
+set list
 if has('multi_byte') && &encoding ==# 'utf-8'
   let &listchars = 'tab:▸ ,extends:❯,precedes:❮,nbsp:±'
 else
