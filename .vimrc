@@ -309,7 +309,10 @@ nmap <leader>p :bprevious<CR>
 nmap <leader>- :split<CR>
 nmap <leader>\| :vsplit<CR>
 
-nmap <leader>\| :vsplit<CR>
+" Move to the next buffer
+nmap <leader>q :close<CR>
+
+nmap <leader>bd :bd<CR>
 
 " Change size of vim splits with alt+,/.
 execute "set <a-,>=\<esc>,"
