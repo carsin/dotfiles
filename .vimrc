@@ -44,27 +44,23 @@ au CursorHold * checktime
 
 call plug#begin('~/.vim/plugged') " Specify a directory for plugins
 
-Plug 'tpope/vim-sensible'                             " Defualts everyone can agree on
 Plug 'tpope/vim-surround'                             " Easy matching pairs
-Plug 'tpope/vim-fugitive'                             " Git integration
-Plug 'scrooloose/nerdtree'                            " File tree navigator
-Plug 'mattn/emmet-vim'                                " Emmet integration
 Plug 'preservim/nerdcommenter'                        " Easy commenting
-Plug 'jiangmiao/auto-pairs'                           " Auto pairs
-Plug 'Shougo/echodoc.vim'                             " Displays function signatures from completions in the command line
 Plug 'neoclide/coc.nvim', {'branch': 'release'}       " Autocomplete
 Plug 'mhinz/vim-startify'                             " Fancy start page
-Plug 'junegunn/fzf', { 'do': { -> fzf#install()  }  } " Fuzzy file finder
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }   " Fuzzy file finder
+Plug 'junegunn/fzf.vim'                               " fzf based commands and mappings
 Plug 'airblade/vim-rooter'                            " Changes Vim working directory to project root
 Plug 'vimwiki/vimwiki'                                " Personal wiki
-Plug 'vim-airline/vim-airline'                        " lean & mean status/tabline
-Plug 'unblevable/quick-scope'                         " highlights a unique character in every word on a line to help you use f
-Plug 'chaoren/vim-wordmotion'                         " better word motions for snake_case and camelCase
-Plug 'justinmk/vim-sneak'                             " jump to any location specified by two characters
-
+Plug 'vim-airline/vim-airline'                        " Lean & mean status/tabline
+Plug 'unblevable/quick-scope'                         " Highlights a unique character in every word on a line to help you use f
+Plug 'chaoren/vim-wordmotion'                         " Better word motions for snake_case and camelCase
+Plug 'justinmk/vim-sneak'                             " Jump to any location specified by two characters
 Plug 'junegunn/goyo.vim'                              " Distraction-free writing mode
 Plug 'godlygeek/tabular'                              " Vim script for text filtering and alignment
 Plug 'plasticboy/vim-markdown'                        " Syntax highlighting, matching rules and mappings for the original Markdown and extensions.
+Plug 'tmsvg/pear-tree'                                " Auto complete pairs sensibly
+Plug 'mhinz/vim-signify'                              " Display git changes in gutter & status bar
 
 " LANGUAGES:
 Plug 'sheerun/vim-polyglot'                           " Syntax for various languages
@@ -138,7 +134,8 @@ autocmd! User GoyoLeave call <SID>goyo_leave()
 let g:goyo_height = '100%'
 let g:goyo_width= '50%'
 " }}}
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif " Close vim if nerdtree is the only window left
+
+let g:pear_tree_repeatable_expand = 0 " Make pair expansion not weird
 
 let g:airline#extensions#tabline#enabled = 1 " Enable tab line buffer display
 let g:airline#extensions#tabline#formatter = 'unique_tail' " Better tab line buffer format
@@ -159,9 +156,14 @@ let g:gruvbox_contrast_dark = 'hard'
 " Don't let vimwiki change .md filetypes
 autocmd FileType vimwiki set ft=markdown
 
+" Proper folding defaults in vimwiki
 let g:vim_markdown_folding_style_pythonic = 1
 let g:vim_markdown_folding_level = 3
 let g:vim_markdown_toc_autofit = 1
+
+" Open FZF with bat preview window (syntax highlighting + more)
+command! -bang -nargs=? -complete=dir Files
+    \ call fzf#vim#files(<q-args>, {'options': ['--preview', '~/.vim/plugged/fzf.vim/bin/preview.sh {}']}, <bang>0)
 
 " }}}
 " Editing {{{
@@ -251,13 +253,10 @@ endif
 nnoremap <expr> j v:count ? (v:count > 5 ? "m'" . v:count : '') . 'j' : 'gj'
 nnoremap <expr> k v:count ? (v:count > 5 ? "m'" . v:count : '') . 'k' : 'gk'
 
-" Open nerd tree
-map <C-n> :NERDTreeToggle<CR>
-
 let mapleader=" " "leader = space
 
 " Start fzf with ctrl+p
-nnoremap <C-p> :<C-u>FZF<CR>
+nnoremap <C-p> :Files<CR>
 
 " save file
 nmap <leader>s :w!<cr>
@@ -309,19 +308,17 @@ nmap <leader>p :bprevious<CR>
 nmap <leader>- :split<CR>
 nmap <leader>\| :vsplit<CR>
 
-" Move to the next buffer
+" Close window
 nmap <leader>q :close<CR>
 
-nmap <leader>bd :bd<CR>
+" Close buffer
+nmap <leader>Q :bd<CR>
 
 " Change size of vim splits with alt+,/.
 execute "set <a-,>=\<esc>,"
 execute "set <a-.>=\<esc>."
 nnoremap <silent> <a-,> :<c-u>vert res -<c-r>=v:count?v:count1:5<cr><cr>
 nnoremap <silent> <a-.> :<c-u>vert res +<c-r>=v:count?v:count1:5<cr><cr>
-
-" Open git status in fugitive
-nmap <leader>gs :G<CR>
 
 " Vim plug ease of use bindings
 nmap <leader>ii :PlugInstall<CR>
