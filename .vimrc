@@ -44,8 +44,8 @@ au CursorHold * checktime
 
 call plug#begin('~/.vim/plugged') " Specify a directory for plugins
 
-Plug 'tpope/vim-surround'                             " Easy matching pairs
-Plug 'preservim/nerdcommenter'                        " Easy commenting
+Plug 'tpope/vim-surround'                             " Commands for matching & surrounding pairs
+Plug 'tpope/vim-commentary'                           " Simply toggle comments with gc
 Plug 'neoclide/coc.nvim', {'branch': 'release'}       " Autocomplete
 Plug 'mhinz/vim-startify'                             " Fancy start page
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }   " Fuzzy file finder
