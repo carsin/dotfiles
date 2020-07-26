@@ -162,8 +162,7 @@ let g:vim_markdown_folding_level = 3
 let g:vim_markdown_toc_autofit = 1
 
 " Open FZF with bat preview window (syntax highlighting + more)
-command! -bang -nargs=? -complete=dir Files
-    \ call fzf#vim#files(<q-args>, {'options': ['--preview', '~/.vim/plugged/fzf.vim/bin/preview.sh {}']}, <bang>0)
+command! -bang -nargs=? -complete=dir Files call fzf#vim#files(<q-args>, {'options': ['--preview', '~/.vim/plugged/fzf.vim/bin/preview.sh {}']}, <bang>0)
 
 " }}}
 " Editing {{{
@@ -181,13 +180,13 @@ set hlsearch                      " highlight matches
 set ignorecase                    " Ignore case when searching
 set smartcase                     " When searching try to be smart about cases
 set clipboard=unnamed             " yank across instances
-autocmd BufWritePre * %s/\s\+$//e " remove trailing whitespace on save
 set mousefocus                    " Focus follows mouse
 set timeout                       " Do time out on mappings and others
 set ttimeoutlen=0                 " Make escape timeout faster
 set timeoutlen=1000               " Wait {num} ms before timing out a mapping
 set wrapscan                      " Searches wrap around end-of-file.
 set report=0                      " Always report changed lines.
+autocmd BufWritePre * %s/\s\+$//e " remove trailing whitespace on save
 
 " Line break on a lot of characters
 set lbr
@@ -238,6 +237,7 @@ set laststatus=2      " Show statusline
 set splitbelow        " Always vertically split below
 set splitright        " Always horizontally split to the right
 set fillchars+=vert:│ " Change vertical split character to solid line instead of line with gaps
+
 " Show non-printable characters
 set list
 if has('multi_byte') && &encoding ==# 'utf-8'
