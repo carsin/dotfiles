@@ -44,23 +44,23 @@ au CursorHold * checktime
 
 call plug#begin('~/.vim/plugged') " Specify a directory for plugins
 
-Plug 'tpope/vim-surround'                             " Commands for matching & surrounding pairs
-Plug 'tpope/vim-commentary'                           " Simply toggle comments with gc
-Plug 'neoclide/coc.nvim', {'branch': 'release'}       " Autocomplete
-Plug 'mhinz/vim-startify'                             " Fancy start page
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }   " Fuzzy file finder
-Plug 'junegunn/fzf.vim'                               " fzf based commands and mappings
-Plug 'airblade/vim-rooter'                            " Changes Vim working directory to project root
-Plug 'vimwiki/vimwiki'                                " Personal wiki
-Plug 'vim-airline/vim-airline'                        " Lean & mean status/tabline
-Plug 'unblevable/quick-scope'                         " Highlights a unique character in every word on a line to help you use f
-Plug 'chaoren/vim-wordmotion'                         " Better word motions for snake_case and camelCase
-Plug 'justinmk/vim-sneak'                             " Jump to any location specified by two characters
-Plug 'junegunn/goyo.vim'                              " Distraction-free writing mode
-Plug 'godlygeek/tabular'                              " Vim script for text filtering and alignment
-Plug 'plasticboy/vim-markdown'                        " Syntax highlighting, matching rules and mappings for the original Markdown and extensions.
-Plug 'tmsvg/pear-tree'                                " Auto complete pairs sensibly
-Plug 'mhinz/vim-signify'                              " Display git changes in gutter & status bar
+Plug 'tpope/vim-surround'                               " Commands for matching & surrounding pairs
+Plug 'tpope/vim-commentary'                             " Simply toggle comments with gc
+Plug 'neoclide/coc.nvim', {'branch': 'release'}         " Autocomplete
+Plug 'mhinz/vim-startify'                               " Fancy start page
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }     " Fuzzy file finder
+Plug 'junegunn/fzf.vim'                                 " fzf based commands and mappings
+Plug 'airblade/vim-rooter'                              " Changes Vim working directory to project root
+Plug 'vimwiki/vimwiki'                                  " Personal wiki
+Plug 'vim-airline/vim-airline'                          " Lean & mean status/tabline
+Plug 'unblevable/quick-scope'                           " Highlights a unique character in every word on a line to help you use f
+Plug 'chaoren/vim-wordmotion'                           " Better word motions for snake_case and camelCase
+Plug 'justinmk/vim-sneak'                               " Jump to any location specified by two characters
+Plug 'junegunn/goyo.vim'                                " Distraction-free writing mode
+Plug 'godlygeek/tabular'                                " Vim script for text filtering and alignment
+Plug 'plasticboy/vim-markdown'                          " Syntax highlighting, matching rules and mappings for the original Markdown and extensions.
+Plug 'tmsvg/pear-tree'                                  " Auto complete pairs sensibly
+Plug 'mhinz/vim-signify'                                " Display git changes in gutter & status bar
 
 " LANGUAGES:
 Plug 'sheerun/vim-polyglot'                           " Syntax for various languages
@@ -161,8 +161,10 @@ let g:vim_markdown_folding_style_pythonic = 1
 let g:vim_markdown_folding_level = 3
 let g:vim_markdown_toc_autofit = 1
 
+let g:fzf_layout = {'window': { 'width': 0.5, 'height': 0.6}}
+
 " Open FZF with bat preview window (syntax highlighting + more)
-command! -bang -nargs=? -complete=dir Files call fzf#vim#files(<q-args>, {'options': ['--preview', '~/.vim/plugged/fzf.vim/bin/preview.sh {}']}, <bang>0)
+command! -bang -nargs=? -complete=dir Files call fzf#vim#files(<q-args>, {'options': ['--layout=reverse', '--preview', '~/.vim/plugged/fzf.vim/bin/preview.sh {}']}, <bang>0)
 
 " }}}
 " Editing {{{
