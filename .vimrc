@@ -44,11 +44,10 @@ au CursorHold * checktime
 
 call plug#begin('~/.vim/plugged') " Specify a directory for plugins
 
-
+Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'                               " Commands for matching & surrounding pairs
 Plug 'tpope/vim-commentary'                             " Simply toggle comments with gc
 Plug 'neoclide/coc.nvim', {'branch': 'release'}         " Autocomplete
-Plug 'mhinz/vim-startify'                               " Fancy start page
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }     " Fuzzy file finder
 Plug 'junegunn/fzf.vim'                                 " fzf based commands and mappings
 Plug 'airblade/vim-rooter'                              " Changes Vim working directory to project root
@@ -62,6 +61,8 @@ Plug 'tmsvg/pear-tree'                                  " Auto complete pairs se
 Plug 'mhinz/vim-signify'                                " Display git changes in gutter & status bar
 Plug 'machakann/vim-highlightedyank'                    " Make the yanked region apparent!
 Plug '907th/vim-auto-save'                              " Auto save
+Plug 'itchyny/lightline.vim'                            " Light and configurable statusline/tabline
+Plug 'mengelbrecht/lightline-bufferline'                " Provides bufferline functionality for lightline
 
 " LANGUAGES:
 Plug 'sheerun/vim-polyglot'                             " Syntax for various languages
@@ -73,14 +74,13 @@ Plug 'gruvbox-community/gruvbox'
 Plug 'arcticicestudio/nord-vim'
 
 " TODO: Remove:
-Plug 'vim-airline/vim-airline'                          " Lean & mean status/tabline
-Plug 'vim-airline/vim-airline-themes'                   " Themes for said lean & mean status line
 Plug 'vimwiki/vimwiki'                                  " Personal wiki
 
 call plug#end() " Initialize plugin system
 
 " }}}
- "Plugin Settings {{{
+" Plugin Settings {{{
+" TODO: Put plugin specific configuration in seperate file then source into main
 " CoC {{{
 " Don't pass messages to |ins-completion-menu|.
 set shortmess+=c
@@ -140,21 +140,43 @@ autocmd! User GoyoLeave call <SID>goyo_leave()
 let g:goyo_height = '100%'
 let g:goyo_width= '50%'
 " }}}
+" Lightline {{{
+let g:lightline#bufferline#show_number  = 2
+let g:lightline#bufferline#unnamed      = '[Unnamed]'
+let g:lightline#bufferline#filename_modifier = ':t'
+
+let g:lightline = {
+      \ 'colorscheme': 'gruvbox_material',
+      \ 'tabline': {
+      \   'left': [ ['buffers'] ],
+      \   'right': [ [] ]
+      \ },
+      \ 'active': {
+      \   'left': [ [ 'mode', 'paste' ],
+      \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ],
+      \   'right': [['lineinfo'],
+      \             ['percent'],
+      \             [ 'fileformat', 'fileencoding', 'filetype'] ]
+      \ },
+      \ 'component_function': {
+      \   'gitbranch': 'FugitiveHead'
+      \ },
+      \ 'component_expand': {
+      \   'buffers': 'lightline#bufferline#buffers'
+      \ },
+      \ 'component_type': {
+      \   'buffers': 'tabsel'
+      \ }
+      \ }
+" }}}
 
 let g:pear_tree_repeatable_expand = 0 " Make pair expansion not weird
-
 " Make pear tree smart
 let g:pear_tree_smart_backspace   = 1
 let g:pear_tree_smart_closers     = 1
 let g:pear_tree_smart_openers     = 1
 
-let g:airline#extensions#tabline#enabled = 1 " Enable tab line buffer display
-let g:airline#extensions#tabline#formatter = 'unique_tail' " Better tab line buffer format
-
 let g:fzf_layout = {'window': { 'width': 0.6, 'height': 0.8}} " Nice FZF Preview window
-let g:vimwiki_list = [{'path': '~/vimwiki/', 'syntax': 'markdown', 'ext': '.md'}] " Use markdown for vimwiki
-
-let g:airline_theme = 'transparent'
 
 let g:auto_save = 1
 let g:auto_save_events = ["InsertLeave", "TextChanged", "FocusLost"]
@@ -165,8 +187,9 @@ let g:highlightedyank_highlight_duration = 150
 let g:gruvbox_material_background = 'hard'
 let g:gruvbox_material_statusline_style = 'default'
 let g:gruvbox_material_palette = 'original'
-
 let g:gruvbox_contrast_dark = 'hard'
+
+let g:vimwiki_list = [{'path': '~/vimwiki/', 'syntax': 'markdown', 'ext': '.md'}] " Use markdown for vimwiki
 
 " Proper folding defaults in vimwiki
 let g:vim_markdown_folding_style_pythonic = 1
@@ -237,6 +260,7 @@ colorscheme gruvbox-material
 let &t_EI .= "\<Esc>[0 q"
 let &t_SI .= "\<Esc>[6 q"
 
+set showtabline=2
 set so=7              " How many lines from cursor to top / bottom of the screen before scrolling
 set number            " file line numbering
 set rnu               " relative line numbers
@@ -268,6 +292,18 @@ endif
 " Binds & Mappings {{{
 
 let mapleader=" " "leader = space
+
+" Navigate to specific numbered buffer
+nmap <Leader>1 <Plug>lightline#bufferline#go(1)
+nmap <Leader>2 <Plug>lightline#bufferline#go(2)
+nmap <Leader>3 <Plug>lightline#bufferline#go(3)
+nmap <Leader>4 <Plug>lightline#bufferline#go(4)
+nmap <Leader>5 <Plug>lightline#bufferline#go(5)
+nmap <Leader>6 <Plug>lightline#bufferline#go(6)
+nmap <Leader>7 <Plug>lightline#bufferline#go(7)
+nmap <Leader>8 <Plug>lightline#bufferline#go(8)
+nmap <Leader>9 <Plug>lightline#bufferline#go(9)
+nmap <Leader>0 <Plug>lightline#bufferline#go(10)
 
 " Intuitive j/k behavior with wrapping
 nnoremap <expr> j v:count ? (v:count > 5 ? "m'" . v:count : '') . 'j' : 'gj'
@@ -335,7 +371,7 @@ nmap <leader>- :split<CR>
 nmap <leader>\| :vsplit<CR>
 
 " Close window
-nmap <leader>Q :close<CR>
+nmap <leader>c :close<CR>
 
 " Close buffer
 nmap <leader>q :bd<CR>
