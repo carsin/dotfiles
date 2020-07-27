@@ -53,6 +53,7 @@ Plug 'junegunn/fzf.vim'                                 " fzf based commands and
 Plug 'airblade/vim-rooter'                              " Changes Vim working directory to project root
 Plug 'vimwiki/vimwiki'                                  " Personal wiki
 Plug 'vim-airline/vim-airline'                          " Lean & mean status/tabline
+Plug 'vim-airline/vim-airline-themes'                   " Themes for said lean & mean status line
 Plug 'unblevable/quick-scope'                           " Highlights a unique character in every word on a line to help you use f
 Plug 'chaoren/vim-wordmotion'                           " Better word motions for snake_case and camelCase
 Plug 'justinmk/vim-sneak'                               " Jump to any location specified by two characters
@@ -62,6 +63,7 @@ Plug 'plasticboy/vim-markdown'                          " Syntax highlighting, m
 Plug 'tmsvg/pear-tree'                                  " Auto complete pairs sensibly
 Plug 'mhinz/vim-signify'                                " Display git changes in gutter & status bar
 Plug 'machakann/vim-highlightedyank'                    " Make the yanked region apparent!
+Plug 'AlphaMycelium/pathfinder.vim'                     " Provides suggestion for improvements to your movements
 
 " LANGUAGES:
 Plug 'sheerun/vim-polyglot'                             " Syntax for various languages
@@ -144,6 +146,8 @@ let g:airline#extensions#tabline#formatter = 'unique_tail' " Better tab line buf
 let g:fzf_layout = {'window': { 'width': 0.5, 'height': 0.6}} " Nice FZF Preview window
 let g:vimwiki_list = [{'path': '~/vimwiki/', 'syntax': 'markdown', 'ext': '.md'}] " Use markdown for vimwiki
 
+let g:airline_theme = 'transparent'
+
 let g:highlightedyank_highlight_duration = 200
 
 " Configure gruvbox colorscheme
@@ -160,6 +164,11 @@ autocmd FileType vimwiki set ft=markdown
 let g:vim_markdown_folding_style_pythonic = 1
 let g:vim_markdown_folding_level = 3
 let g:vim_markdown_toc_autofit = 1
+
+" Make vim pathfinder suggestions quicker and more responsive
+let g:pf_popup_time = 1500
+let g:pf_autorun_delay = 1000
+
 
 command! -bang -nargs=? -complete=dir Files call fzf#vim#files(<q-args>, {'options': ['--layout=reverse', '--preview', '~/.vim/plugged/fzf.vim/bin/preview.sh {}']}, <bang>0) " Open FZF with bat preview window (syntax highlighting + more)
 au BufNewFile ~/vimwiki/diary/*.md :silent 0r !~/.vim/bin/generate-vimwiki-diary-template '%' " Use a template when generating new vimwiki diary files
@@ -253,6 +262,10 @@ let mapleader=" " "leader = space
 " Intuitive j/k behavior with wrapping
 nnoremap <expr> j v:count ? (v:count > 5 ? "m'" . v:count : '') . 'j' : 'gj'
 nnoremap <expr> k v:count ? (v:count > 5 ? "m'" . v:count : '') . 'k' : 'gk'
+
+" More convenient
+nnoremap J }
+nnoremap K {
 
 " Proper indentation when moving lines in visual mode
 vnoremap K :m '<-2<CR>gv=gv
