@@ -61,10 +61,11 @@ Plug 'godlygeek/tabular'                                " Vim script for text fi
 Plug 'plasticboy/vim-markdown'                          " Syntax highlighting, matching rules and mappings for the original Markdown and extensions.
 Plug 'tmsvg/pear-tree'                                  " Auto complete pairs sensibly
 Plug 'mhinz/vim-signify'                                " Display git changes in gutter & status bar
+Plug 'machakann/vim-highlightedyank'                    " Make the yanked region apparent!
 
 " LANGUAGES:
-Plug 'sheerun/vim-polyglot'                           " Syntax for various languages
-Plug 'arzg/vim-rust-syntax-ext'                       " Enhances Rust syntax highlighting
+Plug 'sheerun/vim-polyglot'                             " Syntax for various languages
+Plug 'arzg/vim-rust-syntax-ext'                         " Enhances Rust syntax highlighting
 
 " COLORS:
 Plug 'sainnhe/gruvbox-material'
@@ -140,11 +141,10 @@ let g:pear_tree_repeatable_expand = 0 " Make pair expansion not weird
 let g:airline#extensions#tabline#enabled = 1 " Enable tab line buffer display
 let g:airline#extensions#tabline#formatter = 'unique_tail' " Better tab line buffer format
 
-" Use a template when generating new vimwiki diary files
-au BufNewFile ~/vimwiki/diary/*.md :silent 0r !~/.vim/bin/generate-vimwiki-diary-template '%'
+let g:fzf_layout = {'window': { 'width': 0.5, 'height': 0.6}} " Nice FZF Preview window
+let g:vimwiki_list = [{'path': '~/vimwiki/', 'syntax': 'markdown', 'ext': '.md'}] " Use markdown for vimwiki
 
-" Use markdown for vimwiki
-let g:vimwiki_list = [{'path': '~/vimwiki/', 'syntax': 'markdown', 'ext': '.md'}]
+let g:highlightedyank_highlight_duration = 200
 
 " Configure gruvbox colorscheme
 let g:gruvbox_material_background = 'hard'
@@ -161,11 +161,8 @@ let g:vim_markdown_folding_style_pythonic = 1
 let g:vim_markdown_folding_level = 3
 let g:vim_markdown_toc_autofit = 1
 
-let g:fzf_layout = {'window': { 'width': 0.5, 'height': 0.6}}
-
-" Open FZF with bat preview window (syntax highlighting + more)
-command! -bang -nargs=? -complete=dir Files call fzf#vim#files(<q-args>, {'options': ['--layout=reverse', '--preview', '~/.vim/plugged/fzf.vim/bin/preview.sh {}']}, <bang>0)
-
+command! -bang -nargs=? -complete=dir Files call fzf#vim#files(<q-args>, {'options': ['--layout=reverse', '--preview', '~/.vim/plugged/fzf.vim/bin/preview.sh {}']}, <bang>0) " Open FZF with bat preview window (syntax highlighting + more)
+au BufNewFile ~/vimwiki/diary/*.md :silent 0r !~/.vim/bin/generate-vimwiki-diary-template '%' " Use a template when generating new vimwiki diary files
 " }}}
 " Editing {{{
 
