@@ -248,11 +248,15 @@ endif
 " }}}
 " Binds & Mappings {{{
 
+let mapleader=" " "leader = space
+
 " Intuitive j/k behavior with wrapping
 nnoremap <expr> j v:count ? (v:count > 5 ? "m'" . v:count : '') . 'j' : 'gj'
 nnoremap <expr> k v:count ? (v:count > 5 ? "m'" . v:count : '') . 'k' : 'gk'
 
-let mapleader=" " "leader = space
+" Proper indentation when moving lines in visual mode
+vnoremap K :m '<-2<CR>gv=gv
+vnoremap J :m '>+1<CR>gv=gv
 
 " Start fzf with ctrl+p
 nnoremap <C-p> :Files<CR>
