@@ -44,7 +44,6 @@ au CursorHold * checktime
 
 call plug#begin('~/.vim/plugged') " Specify a directory for plugins
 
-Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'                               " Commands for matching & surrounding pairs
 Plug 'tpope/vim-commentary'                             " Simply toggle comments with gc
 Plug 'neoclide/coc.nvim', {'branch': 'release'}         " Autocomplete
@@ -63,6 +62,7 @@ Plug 'machakann/vim-highlightedyank'                    " Make the yanked region
 Plug '907th/vim-auto-save'                              " Auto save
 Plug 'itchyny/lightline.vim'                            " Light and configurable statusline/tabline
 Plug 'mengelbrecht/lightline-bufferline'                " Provides bufferline functionality for lightline
+Plug 'tpope/vim-fugitive'                               " A Git wrapper so awesome, it should be illegal
 
 " LANGUAGES:
 Plug 'sheerun/vim-polyglot'                             " Syntax for various languages
@@ -391,5 +391,11 @@ nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
+
+" Browse git commits with fzf + fugitive
+nmap <leader>gg :BCommits!<CR>
+
+" Filter lines with search in current buffer
+nmap // :BLines!<CR>
 
 " }}}

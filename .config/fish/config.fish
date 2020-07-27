@@ -10,8 +10,10 @@ alias config="/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME"
 alias tmux="tmux -2"
 alias cr="cargo run"
 alias gst="git status"
+alias gd="git status"
 alias gp="git push"
 alias cst="config status"
+alias lg="lazygit"
 
 function fish_greeting
     fortune | cowsay
