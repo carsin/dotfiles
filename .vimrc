@@ -19,7 +19,7 @@ set history=500           " How many lines of history vim has to remember
 set encoding=utf8         " Set utf8 as standard encoding and en_US as the standard language
 set ffs=unix,dos,mac      " Use Unix as the standard file type
 
-set updatetime=300        " Fast updatetime for snappier experience
+set updatetime=100        " Fast updatetime for snappier experience
 
 " Set proper mouse mode
 set mouse=a
@@ -44,6 +44,7 @@ au CursorHold * checktime
 
 call plug#begin('~/.vim/plugged') " Specify a directory for plugins
 
+
 Plug 'tpope/vim-surround'                               " Commands for matching & surrounding pairs
 Plug 'tpope/vim-commentary'                             " Simply toggle comments with gc
 Plug 'neoclide/coc.nvim', {'branch': 'release'}         " Autocomplete
@@ -51,9 +52,6 @@ Plug 'mhinz/vim-startify'                               " Fancy start page
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }     " Fuzzy file finder
 Plug 'junegunn/fzf.vim'                                 " fzf based commands and mappings
 Plug 'airblade/vim-rooter'                              " Changes Vim working directory to project root
-Plug 'vimwiki/vimwiki'                                  " Personal wiki
-Plug 'vim-airline/vim-airline'                          " Lean & mean status/tabline
-Plug 'vim-airline/vim-airline-themes'                   " Themes for said lean & mean status line
 Plug 'unblevable/quick-scope'                           " Highlights a unique character in every word on a line to help you use f
 Plug 'chaoren/vim-wordmotion'                           " Better word motions for snake_case and camelCase
 Plug 'justinmk/vim-sneak'                               " Jump to any location specified by two characters
@@ -63,7 +61,7 @@ Plug 'plasticboy/vim-markdown'                          " Syntax highlighting, m
 Plug 'tmsvg/pear-tree'                                  " Auto complete pairs sensibly
 Plug 'mhinz/vim-signify'                                " Display git changes in gutter & status bar
 Plug 'machakann/vim-highlightedyank'                    " Make the yanked region apparent!
-Plug 'AlphaMycelium/pathfinder.vim'                     " Provides suggestion for improvements to your movements
+Plug '907th/vim-auto-save'                              " Auto save
 
 " LANGUAGES:
 Plug 'sheerun/vim-polyglot'                             " Syntax for various languages
@@ -73,6 +71,11 @@ Plug 'arzg/vim-rust-syntax-ext'                         " Enhances Rust syntax h
 Plug 'sainnhe/gruvbox-material'
 Plug 'gruvbox-community/gruvbox'
 Plug 'arcticicestudio/nord-vim'
+
+" TODO: Remove:
+Plug 'vim-airline/vim-airline'                          " Lean & mean status/tabline
+Plug 'vim-airline/vim-airline-themes'                   " Themes for said lean & mean status line
+Plug 'vimwiki/vimwiki'                                  " Personal wiki
 
 call plug#end() " Initialize plugin system
 
@@ -140,15 +143,23 @@ let g:goyo_width= '50%'
 
 let g:pear_tree_repeatable_expand = 0 " Make pair expansion not weird
 
+" Make pear tree smart
+let g:pear_tree_smart_backspace   = 1
+let g:pear_tree_smart_closers     = 1
+let g:pear_tree_smart_openers     = 1
+
 let g:airline#extensions#tabline#enabled = 1 " Enable tab line buffer display
 let g:airline#extensions#tabline#formatter = 'unique_tail' " Better tab line buffer format
 
-let g:fzf_layout = {'window': { 'width': 0.5, 'height': 0.6}} " Nice FZF Preview window
+let g:fzf_layout = {'window': { 'width': 0.6, 'height': 0.8}} " Nice FZF Preview window
 let g:vimwiki_list = [{'path': '~/vimwiki/', 'syntax': 'markdown', 'ext': '.md'}] " Use markdown for vimwiki
 
 let g:airline_theme = 'transparent'
 
-let g:highlightedyank_highlight_duration = 200
+let g:auto_save = 1
+let g:auto_save_events = ["InsertLeave", "TextChanged", "FocusLost"]
+
+let g:highlightedyank_highlight_duration = 150
 
 " Configure gruvbox colorscheme
 let g:gruvbox_material_background = 'hard'
@@ -157,21 +168,20 @@ let g:gruvbox_material_palette = 'original'
 
 let g:gruvbox_contrast_dark = 'hard'
 
-" Don't let vimwiki change .md filetypes
-autocmd FileType vimwiki set ft=markdown
-
 " Proper folding defaults in vimwiki
 let g:vim_markdown_folding_style_pythonic = 1
 let g:vim_markdown_folding_level = 3
 let g:vim_markdown_toc_autofit = 1
 
-" Make vim pathfinder suggestions quicker and more responsive
-let g:pf_popup_time = 1500
-let g:pf_autorun_delay = 1000
+" Open FZF with bat preview window (syntax highlighting + more)
+command! -bang -nargs=? -complete=dir Files call fzf#vim#files(<q-args>, {'options': ['--layout=reverse', '--preview', '~/.vim/plugged/fzf.vim/bin/preview.sh {}']}, <bang>0)
 
+" Use a template when generating new vimwiki diary files
+au BufNewFile ~/vimwiki/diary/*.md :silent 0r !~/.vim/bin/generate-vimwiki-diary-template '%'
 
-command! -bang -nargs=? -complete=dir Files call fzf#vim#files(<q-args>, {'options': ['--layout=reverse', '--preview', '~/.vim/plugged/fzf.vim/bin/preview.sh {}']}, <bang>0) " Open FZF with bat preview window (syntax highlighting + more)
-au BufNewFile ~/vimwiki/diary/*.md :silent 0r !~/.vim/bin/generate-vimwiki-diary-template '%' " Use a template when generating new vimwiki diary files
+" Don't let vimwiki change .md filetypes
+autocmd FileType vimwiki set ft=markdown
+
 " }}}
 " Editing {{{
 
@@ -275,7 +285,7 @@ vnoremap J :m '>+1<CR>gv=gv
 nnoremap <C-p> :Files<CR>
 
 " save file
-nmap <leader>s :w!<cr>
+" nmap <leader>s :w!<cr>
 
 " reload vim configuration
 map <leader>r :source ~/.vimrc<CR>
@@ -325,10 +335,10 @@ nmap <leader>- :split<CR>
 nmap <leader>\| :vsplit<CR>
 
 " Close window
-nmap <leader>q :close<CR>
+nmap <leader>Q :close<CR>
 
 " Close buffer
-nmap <leader>Q :bd<CR>
+nmap <leader>q :bd<CR>
 
 " Change size of vim splits with alt+,/.
 execute "set <a-,>=\<esc>,"
