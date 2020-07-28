@@ -175,8 +175,6 @@ let g:vim_markdown_folding_style_pythonic = 1
 let g:vim_markdown_folding_level = 3
 let g:vim_markdown_toc_autofit = 1
 
-let g:vimwiki_global_ext = 0 " Don't treat every markdown file as a wiki page
-
 " Don't let vimwiki change .md filetypes
 autocmd FileType vimwiki set ft=markdown
 
@@ -300,9 +298,6 @@ vnoremap J :m '>+1<CR>gv=gv
 " Start fzf with ctrl+p
 nnoremap <leader>f :Files<CR>
 
-" save file
-" nmap <leader>s :w!<cr>
-
 " reload vim configuration
 nnoremap <leader>r :source ~/.vimrc<CR>
 
@@ -338,23 +333,23 @@ nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 
 " Open new empty buffer
-nmap <leader>T :enew<cr>
+nnoremap <leader>T :enew<cr>
 
 " Move to the next buffer
-nmap <leader>n :bnext<CR>
+nnoremap <leader>n :bnext<CR>
 
 " Move to the previous buffer
-nmap <leader>p :bprevious<CR>
+nnoremap <leader>p :bprevious<CR>
 
 " Split binds
-nmap <leader>- :split<CR>
-nmap <leader>\| :vsplit<CR>
+nnoremap <leader>- :split<CR>
+nnoremap <leader>\| :vsplit<CR>
 
 " Close window
-nmap <leader>c :close<CR>
+nnoremap <leader>c :close<CR>
 
 " Close buffer
-nmap <leader>q :bd<CR>
+nnoremap <leader>q :bd<CR>
 
 " Change size of vim splits with alt+,/.
 execute "set <a-,>=\<esc>,"
@@ -363,8 +358,8 @@ nnoremap <silent> <a-,> :<c-u>vert res -<c-r>=v:count?v:count1:5<cr><cr>
 nnoremap <silent> <a-.> :<c-u>vert res +<c-r>=v:count?v:count1:5<cr><cr>
 
 " Vim plug ease of use bindings
-nmap <leader>ii :PlugInstall<CR>
-nmap <leader>ic :PlugClean<CR>
+nnoremap <leader>ii :PlugInstall<CR>
+nnoremap <leader>ic :PlugClean<CR>
 
 " GoTo code navigation.
 nmap <silent> gd <Plug>(coc-definition)
@@ -373,9 +368,12 @@ nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
 
 " Browse git commits with fzf + fugitive
-nmap <leader>gg :BCommits!<CR>
+nnoremap <leader>gg :BCommits!<CR>
 
 " Filter lines with search in current buffer
 nmap // :BLines!<CR>
+
+" Open coc-explorer
+nnoremap <leader>e :CocCommand explorer<CR>
 
 " }}}
