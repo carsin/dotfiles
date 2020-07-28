@@ -175,9 +175,6 @@ let g:vim_markdown_folding_style_pythonic = 1
 let g:vim_markdown_folding_level = 3
 let g:vim_markdown_toc_autofit = 1
 
-" Don't let vimwiki change .md filetypes
-autocmd FileType vimwiki set ft=markdown
-
 " Open FZF with bat preview window (syntax highlighting + more)
 command! -bang -nargs=? -complete=dir Files call fzf#vim#files(<q-args>, {'options': ['--layout=reverse', '--preview', '~/.vim/plugged/fzf.vim/bin/preview.sh {}']}, <bang>0)
 
