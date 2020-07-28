@@ -63,6 +63,7 @@ Plug '907th/vim-auto-save'                              " Auto save
 Plug 'itchyny/lightline.vim'                            " Light and configurable statusline/tabline
 Plug 'mengelbrecht/lightline-bufferline'                " Provides bufferline functionality for lightline
 Plug 'tpope/vim-fugitive'                               " A Git wrapper so awesome, it should be illegal
+Plug 'vimwiki/vimwiki'                                  " Personal wiki
 
 " LANGUAGES:
 Plug 'sheerun/vim-polyglot'                             " Syntax for various languages
@@ -72,9 +73,6 @@ Plug 'arzg/vim-rust-syntax-ext'                         " Enhances Rust syntax h
 Plug 'sainnhe/gruvbox-material'
 Plug 'gruvbox-community/gruvbox'
 Plug 'arcticicestudio/nord-vim'
-
-" TODO: Remove:
-Plug 'vimwiki/vimwiki'                                  " Personal wiki
 
 call plug#end() " Initialize plugin system
 
@@ -117,28 +115,9 @@ autocmd CursorHold * silent call CocActionAsync('highlight')
 " }}}
 " Goyo {{{
 
-" Close Goyo with :wq
-function! s:goyo_enter()
-    let b:quitting = 0
-    let b:quitting_bang = 0
-    autocmd QuitPre <buffer> let b:quitting = 1
-    cabbrev <buffer> wq! let b:quitting_bang = 1 <bar> q!
-endfunction
-function! s:goyo_leave()
-    if b:quitting && len(filter(range(1, bufnr('$')), 'buflisted(v:val)')) == 1
-        if b:quitting_bang
-            qa!
-        else
-            qa
-        endif
-    endif
-endfunction
-
-autocmd! User GoyoEnter call <SID>goyo_enter()
-autocmd! User GoyoLeave call <SID>goyo_leave()
-
 let g:goyo_height = '100%'
 let g:goyo_width= '50%'
+
 " }}}
 " Lightline {{{
 let g:lightline#bufferline#show_number  = 2
@@ -196,15 +175,16 @@ let g:vim_markdown_folding_style_pythonic = 1
 let g:vim_markdown_folding_level = 3
 let g:vim_markdown_toc_autofit = 1
 
+let g:vimwiki_global_ext = 0 " Don't treat every markdown file as a wiki page
+
+" Don't let vimwiki change .md filetypes
+autocmd FileType vimwiki set ft=markdown
+
 " Open FZF with bat preview window (syntax highlighting + more)
 command! -bang -nargs=? -complete=dir Files call fzf#vim#files(<q-args>, {'options': ['--layout=reverse', '--preview', '~/.vim/plugged/fzf.vim/bin/preview.sh {}']}, <bang>0)
 
 " Use a template when generating new vimwiki diary files
 au BufNewFile ~/vimwiki/diary/*.md :silent 0r !~/.vim/bin/generate-vimwiki-diary-template '%'
-
-" Don't let vimwiki change .md filetypes
-autocmd FileType vimwiki set ft=markdown
-
 " }}}
 " Editing {{{
 
@@ -318,13 +298,13 @@ vnoremap K :m '<-2<CR>gv=gv
 vnoremap J :m '>+1<CR>gv=gv
 
 " Start fzf with ctrl+p
-nnoremap <C-p> :Files<CR>
+nnoremap <leader>f :Files<CR>
 
 " save file
 " nmap <leader>s :w!<cr>
 
 " reload vim configuration
-map <leader>r :source ~/.vimrc<CR>
+nnoremap <leader>r :source ~/.vimrc<CR>
 
  " clear search
 nnoremap <silent><leader><space> :let @/ = ""<CR>
@@ -339,17 +319,17 @@ map 0 ^
 nmap <F1> <nop>
 
 " Toggle pastemode
-nnoremap <silent><leader>tp :set invpaste <CR>
+map <silent> <C-p> :set invpaste <CR>
 
 " Toggle goyo
-nnoremap <leader>go :Goyo<cr>
+nnoremap <leader>z :Goyo<cr>
 
 " Toggle Spellcheck
 noremap <F3> :setlocal spell! spelllang=en_us<CR>
 
 " Insert date / time
 nnoremap <leader>id "=strftime("%a, %b %d %Y")<CR>p
-nnoremap <leader>it "=strftime("%I:%M %p")<CR>p
+nnoremap <leader>it "=strftime(" %I:%M %p")<CR>p
 
 " Split navigation
 nnoremap <C-h> <C-w>h
