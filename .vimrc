@@ -148,7 +148,9 @@ let g:lightline = {
       \ }
       \ }
 " }}}
+
 let g:workspace_autosave_always = 1
+let g:workspace_session_directory = $HOME . '/.vim/sessions/'
 
 let g:pear_tree_repeatable_expand = 0 " Make pair expansion not weird
 " Make pear tree smart
@@ -276,16 +278,16 @@ endif
 let mapleader=" " "leader = space
 
 " Navigate to specific numbered buffer
-nmap <Leader>1 <Plug>lightline#bufferline#go(1)
-nmap <Leader>2 <Plug>lightline#bufferline#go(2)
-nmap <Leader>3 <Plug>lightline#bufferline#go(3)
-nmap <Leader>4 <Plug>lightline#bufferline#go(4)
-nmap <Leader>5 <Plug>lightline#bufferline#go(5)
-nmap <Leader>6 <Plug>lightline#bufferline#go(6)
-nmap <Leader>7 <Plug>lightline#bufferline#go(7)
-nmap <Leader>8 <Plug>lightline#bufferline#go(8)
-nmap <Leader>9 <Plug>lightline#bufferline#go(9)
-nmap <Leader>0 <Plug>lightline#bufferline#go(10)
+" nmap <Leader>1 <Plug>lightline#bufferline#go(1)
+" nmap <Leader>2 <Plug>lightline#bufferline#go(2)
+" nmap <Leader>3 <Plug>lightline#bufferline#go(3)
+" nmap <Leader>4 <Plug>lightline#bufferline#go(4)
+" nmap <Leader>5 <Plug>lightline#bufferline#go(5)
+" nmap <Leader>6 <Plug>lightline#bufferline#go(6)
+" nmap <Leader>7 <Plug>lightline#bufferline#go(7)
+" nmap <Leader>8 <Plug>lightline#bufferline#go(8)
+" nmap <Leader>9 <Plug>lightline#bufferline#go(9)
+" nmap <Leader>0 <Plug>lightline#bufferline#go(10)
 
 " Intuitive j/k behavior with wrapping
 nnoremap <expr> j v:count ? (v:count > 5 ? "m'" . v:count : '') . 'j' : 'gj'
@@ -340,10 +342,12 @@ nnoremap <C-l> <C-w>l
 nnoremap <leader>T :enew<cr>
 
 " Move to the next buffer
-nnoremap <leader>n :bnext<CR>
+nnoremap <leader>m :bnext<CR>
+nnoremap <right> :bnext<CR>
 
 " Move to the previous buffer
 nnoremap <leader>p :bprevious<CR>
+nnoremap <left> :bprevious<CR>
 
 " Split binds
 nnoremap <leader>- :split<CR>
@@ -382,5 +386,8 @@ nmap // :BLines!<CR>
 
 " Open coc-explorer
 nnoremap <leader>e :CocCommand explorer<CR>
+
+" Quit everything with :q
+cmap q qa
 
 " }}}
