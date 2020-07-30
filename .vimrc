@@ -59,7 +59,6 @@ Plug 'plasticboy/vim-markdown'                          " Syntax highlighting, m
 Plug 'tmsvg/pear-tree'                                  " Auto complete pairs sensibly
 Plug 'mhinz/vim-signify'                                " Display git changes in gutter & status bar
 Plug 'machakann/vim-highlightedyank'                    " Make the yanked region apparent!
-Plug '907th/vim-auto-save'                              " Auto save
 Plug 'itchyny/lightline.vim'                            " Light and configurable statusline/tabline
 Plug 'mengelbrecht/lightline-bufferline'                " Provides bufferline functionality for lightline
 Plug 'tpope/vim-fugitive'                               " A Git wrapper so awesome, it should be illegal
@@ -157,9 +156,6 @@ let g:pear_tree_smart_openers     = 1
 
 let g:fzf_layout = {'window': { 'width': 0.6, 'height': 0.8}} " Nice FZF Preview window
 
-let g:auto_save = 1
-let g:auto_save_events = ["InsertLeave", "TextChanged", "FocusLost"]
-
 let g:highlightedyank_highlight_duration = 150
 
 " Configure gruvbox colorscheme
@@ -215,6 +211,12 @@ set whichwrap+=<,>,h,l
 " Enable persistent undo so that undo history persists across vim sessions
 set undofile
 set undodir=~/.vim/undo
+
+" Auto save buffer
+augroup autosave
+    autocmd!
+    autocmd TextChanged,InsertLeave,WinLeave,FocusLost * update
+augroup END
 
 " }}}
 " UI {{{
