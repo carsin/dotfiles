@@ -63,6 +63,7 @@ Plug 'itchyny/lightline.vim'                            " Light and configurable
 Plug 'mengelbrecht/lightline-bufferline'                " Provides bufferline functionality for lightline
 Plug 'tpope/vim-fugitive'                               " A Git wrapper so awesome, it should be illegal
 Plug 'vimwiki/vimwiki'                                  " Personal wiki
+Plug 'thaerkh/vim-workspace'                            " Automated workspace management & nifty QOL features
 
 " LANGUAGES:
 Plug 'sheerun/vim-polyglot'                             " Syntax for various languages
@@ -147,6 +148,7 @@ let g:lightline = {
       \ }
       \ }
 " }}}
+let g:workspace_autosave_always = 1
 
 let g:pear_tree_repeatable_expand = 0 " Make pair expansion not weird
 " Make pear tree smart
@@ -212,14 +214,14 @@ set undofile
 set undodir=~/.vim/undo
 
 " Auto save buffer
-autocmd TextChanged,InsertLeave,WinLeave,FocusLost <buffer> :call Save()
+" autocmd TextChanged,InsertLeave,WinLeave,FocusLost <buffer> :call Save()
 
-fun! Save()
-    let l:save = winsaveview()          " Save current window view
-    silent keeppatterns %s/\s\+$//e     " Strip trailing whitespace
-    call winrestview(l:save)            " Restore window view
-    silent write                        " Save
-endfun
+" fun! Save()
+"     let l:save = winsaveview()          " Save current window view
+"     silent keeppatterns %s/\s\+$//e     " Strip trailing whitespace
+"     call winrestview(l:save)            " Restore window view
+"     silent write                        " Save
+" endfun
 
 " }}}
 " UI {{{
@@ -352,6 +354,9 @@ nnoremap <leader>c :close<CR>
 
 " Close buffer
 nnoremap <leader>q :bd<CR>
+
+" Toggle workspace
+nnoremap <leader>tw :ToggleWorkspace<CR>
 
 " Change size of vim splits with alt+,/.
 execute "set <a-,>=\<esc>,"
