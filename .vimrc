@@ -198,7 +198,6 @@ set ttimeoutlen=0                 " Make escape timeout faster
 set timeoutlen=1000               " Wait {num} ms before timing out a mapping
 set wrapscan                      " Searches wrap around end-of-file.
 set report=0                      " Always report changed lines.
-autocmd BufWritePre * %s/\s\+$//e " remove trailing whitespace on save
 
 " Line break on a lot of characters
 set lbr
@@ -213,10 +212,14 @@ set undofile
 set undodir=~/.vim/undo
 
 " Auto save buffer
-augroup autosave
-    autocmd!
-    autocmd TextChanged,InsertLeave,WinLeave,FocusLost * update
-augroup END
+autocmd TextChanged,InsertLeave,WinLeave,FocusLost <buffer> :call Save()
+
+fun! Save()
+    let l:save = winsaveview()          " Save current window view
+    silent keeppatterns %s/\s\+$//e     " Strip trailing whitespace
+    call winrestview(l:save)            " Restore window view
+    silent write                        " Save
+endfun
 
 " }}}
 " UI {{{
