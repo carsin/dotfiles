@@ -76,6 +76,12 @@ Plug 'arcticicestudio/nord-vim'
 
 call plug#end() " Initialize plugin system
 
+" Don't load CoC immediately
+augroup LazyLoadCoc
+    autocmd!
+    autocmd InsertEnter * call plug#load('coc.nvim')
+augroup END
+
 " }}}
 " Plugin Settings {{{
 " TODO: Put plugin specific configuration in seperate file then source into main
@@ -148,6 +154,10 @@ let g:lightline = {
       \ }
       \ }
 " }}}
+
+let g:signify_sign_add = '+'
+let g:signify_sign_delete = '─'
+let g:signify_sign_change = '~'
 
 let g:workspace_autosave_always = 1
 let g:workspace_session_directory = $HOME . '/.vim/sessions/'
@@ -263,6 +273,15 @@ set laststatus=2      " Show statusline
 set splitbelow        " Always vertically split below
 set splitright        " Always horizontally split to the right
 set fillchars+=vert:│ " Change vertical split character to solid line instead of line with gaps
+set signcolumn=yes    " Column for git diff
+
+" Clean up sign column (git gutter)
+highlight SignColumn ctermbg=NONE guibg=NONE
+
+" Clean up signify symbol backgrounds in sign column (git gutter)
+highlight SignifySignAdd ctermfg=green ctermbg=NONE guibg=NONE
+highlight SignifySignDelete ctermfg=red ctermbg=NONE guibg=NONE
+highlight SignifySignChange ctermfg=blue ctermbg=NONE guibg=NONE
 
 " Show non-printable characters
 set list
