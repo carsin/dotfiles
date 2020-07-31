@@ -346,7 +346,7 @@ nnoremap <leader>m :bnext<CR>
 nnoremap <right> :bnext<CR>
 
 " Move to the previous buffer
-nnoremap <leader>p :bprevious<CR>
+nnoremap <leader>n :bprevious<CR>
 nnoremap <left> :bprevious<CR>
 
 " Split binds
