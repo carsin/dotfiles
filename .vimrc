@@ -19,7 +19,7 @@ set history=500           " How many lines of history vim has to remember
 set encoding=utf8         " Set utf8 as standard encoding and en_US as the standard language
 set ffs=unix,dos,mac      " Use Unix as the standard file type
 
-set updatetime=100        " Fast updatetime for snappier experience
+set updatetime=1000        " Fast updatetime for snappier experience
 
 " Set proper mouse mode
 set mouse=a
@@ -41,7 +41,6 @@ au CursorHold * checktime
 
 " }}}
 " Plugins {{{
-
 call plug#begin('~/.vim/plugged') " Specify a directory for plugins
 
 Plug 'tpope/vim-surround'                               " Commands for matching & surrounding pairs
@@ -63,6 +62,7 @@ Plug 'itchyny/lightline.vim'                            " Light and configurable
 Plug 'mengelbrecht/lightline-bufferline'                " Provides bufferline functionality for lightline
 Plug 'tpope/vim-fugitive'                               " A Git wrapper so awesome, it should be illegal
 Plug 'vimwiki/vimwiki'                                  " Personal wiki
+Plug '907th/vim-auto-save'                              " Auto save
 
 " LANGUAGES:
 Plug 'sheerun/vim-polyglot'                             " Syntax for various languages
@@ -154,9 +154,8 @@ let g:lightline = {
       \ }
 " }}}
 
-let g:lens#disabled = 0
-let g:lens#animate = 0
-let g:lens#disabled_filetypes = ['coc-explorer', 'fzf']
+let g:auto_save = 1
+let g:auto_save_silent = 1
 
 let g:signify_sign_add = '+'
 let g:signify_sign_delete = '─'
@@ -226,14 +225,14 @@ set undofile
 set undodir=~/.vim/undo
 
 " Auto save buffer
-autocmd TextChanged,InsertLeave,WinLeave,FocusLost <buffer> :call Save()
+" autocmd TextChanged,InsertLeave,WinLeave,FocusLost <buffer> :call Save()
 
-fun! Save()
-    let l:save = winsaveview()          " Save current window view
-    silent keeppatterns %s/\s\+$//e     " Strip trailing whitespace
-    call winrestview(l:save)            " Restore window view
-    silent write                        " Save
-endfun
+" fun! Save()
+"     let l:save = winsaveview()          " Save current window view
+"     silent keeppatterns %s/\s\+$//e     " Strip trailing whitespace
+"     call winrestview(l:save)            " Restore window view
+"     silent write                        " Save
+" endfun
 
 " }}}
 " UI {{{
