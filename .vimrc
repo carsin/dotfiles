@@ -156,6 +156,7 @@ let g:lightline = {
 
 let g:auto_save = 1
 let g:auto_save_silent = 1
+let g:auto_save_postsave_hook = 'call StripTrailingWhitespace()'
 
 let g:signify_sign_add = '+'
 let g:signify_sign_delete = '─'
@@ -233,6 +234,13 @@ set undodir=~/.vim/undo
 "     call winrestview(l:save)            " Restore window view
 "     silent write                        " Save
 " endfun
+
+fun! StripTrailingWhitespace()
+    let l:save = winsaveview()          " Save current window view
+    silent keeppatterns %s/\s\+$//e     " Strip trailing whitespace
+    call winrestview(l:save)            " Restore window view
+    " echo "Trailing whitespace stripped"
+endfun
 
 " }}}
 " UI {{{
