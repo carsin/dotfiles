@@ -63,7 +63,6 @@ Plug 'itchyny/lightline.vim'                            " Light and configurable
 Plug 'mengelbrecht/lightline-bufferline'                " Provides bufferline functionality for lightline
 Plug 'tpope/vim-fugitive'                               " A Git wrapper so awesome, it should be illegal
 Plug 'vimwiki/vimwiki'                                  " Personal wiki
-" Plug 'camspiers/lens.vim'                             " Automatically auto resize active window
 
 " LANGUAGES:
 Plug 'sheerun/vim-polyglot'                             " Syntax for various languages
