@@ -5,12 +5,11 @@
 export ZSH="/Users/carson/.oh-my-zsh"
 
 ZSH_THEME="carson"
-# Themes I like: dieter eastwood geoffgarside maran 
-plugins=(git safe-paste z osx)
+# Themes I like: dieter eastwood geoffgarside maran
+plugins=(git safe-paste osx)
 
 source $ZSH/oh-my-zsh.sh
 
 alias vim="nvim"
-alias ls="ls -a"
-alias cfg="/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME"
-
+alias ls="ls -a -G"
+alias dots="/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME"
