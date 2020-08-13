@@ -6,7 +6,7 @@ export ZSH="/Users/carson/.oh-my-zsh"
 
 ZSH_THEME="carson"
 # Themes I like: dieter eastwood geoffgarside maran 
-plugins=(git)
+plugins=(git safe-paste z osx)
 
 source $ZSH/oh-my-zsh.sh
 
