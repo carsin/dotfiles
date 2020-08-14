@@ -178,7 +178,7 @@ let g:gruvbox_material_statusline_style = 'default'
 let g:gruvbox_material_palette = 'original'
 let g:gruvbox_contrast_dark = 'hard'
 
-let g:vimwiki_list = [{'path': '~/vimwiki/', 'syntax': 'markdown', 'ext': '.md'}] " Use markdown for vimwiki
+let g:vimwiki_list = [{'path': '~/exo/', 'syntax': 'markdown', 'ext': '.md'}] " Use markdown for vimwiki
 
 " Proper folding defaults in vimwiki
 let g:vim_markdown_folding_style_pythonic = 1
@@ -189,7 +189,7 @@ let g:vim_markdown_toc_autofit = 1
 command! -bang -nargs=? -complete=dir Files call fzf#vim#files(<q-args>, {'options': ['--layout=reverse', '--preview', '~/.vim/plugged/fzf.vim/bin/preview.sh {}']}, <bang>0)
 
 " Use a template when generating new vimwiki diary files
-au BufNewFile ~/vimwiki/diary/*.md :silent 0r !~/.vim/bin/generate-vimwiki-diary-template '%'
+au BufNewFile ~/exo/diary/*.md :silent 0r !~/.config/nvim/bin/generate-diary-template '%'
 " }}}
 " Editing {{{
 
@@ -223,7 +223,7 @@ set whichwrap+=<,>,h,l
 
 " Enable persistent undo so that undo history persists across vim sessions
 set undofile
-set undodir=~/.vim/undo
+set undodir=~/.config/nvim/undo
 
 " Auto save buffer
 " autocmd TextChanged,InsertLeave,WinLeave,FocusLost <buffer> :call Save()
@@ -304,16 +304,16 @@ endif
 let mapleader=" " "leader = space
 
 " Navigate to specific numbered buffer
-" nmap <Leader>1 <Plug>lightline#bufferline#go(1)
-" nmap <Leader>2 <Plug>lightline#bufferline#go(2)
-" nmap <Leader>3 <Plug>lightline#bufferline#go(3)
-" nmap <Leader>4 <Plug>lightline#bufferline#go(4)
-" nmap <Leader>5 <Plug>lightline#bufferline#go(5)
-" nmap <Leader>6 <Plug>lightline#bufferline#go(6)
-" nmap <Leader>7 <Plug>lightline#bufferline#go(7)
-" nmap <Leader>8 <Plug>lightline#bufferline#go(8)
-" nmap <Leader>9 <Plug>lightline#bufferline#go(9)
-" nmap <Leader>0 <Plug>lightline#bufferline#go(10)
+nmap <Leader>1 <Plug>lightline#bufferline#go(1)
+nmap <Leader>2 <Plug>lightline#bufferline#go(2)
+nmap <Leader>3 <Plug>lightline#bufferline#go(3)
+nmap <Leader>4 <Plug>lightline#bufferline#go(4)
+nmap <Leader>5 <Plug>lightline#bufferline#go(5)
+nmap <Leader>6 <Plug>lightline#bufferline#go(6)
+nmap <Leader>7 <Plug>lightline#bufferline#go(7)
+nmap <Leader>8 <Plug>lightline#bufferline#go(8)
+nmap <Leader>9 <Plug>lightline#bufferline#go(9)
+nmap <Leader>0 <Plug>lightline#bufferline#go(10)
 
 " Intuitive j/k behavior with wrapping
 nnoremap <expr> j v:count ? (v:count > 5 ? "m'" . v:count : '') . 'j' : 'gj'
