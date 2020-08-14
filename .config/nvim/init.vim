@@ -258,8 +258,8 @@ set t_Co=256
 
 colorscheme gruvbox-material
 
-let &t_EI .= "\<Esc>[0 q"
-let &t_SI .= "\<Esc>[6 q"
+" let &t_EI .= "\<Esc>[0 q"
+" let &t_SI .= "\<Esc>[6 q"
 
 set showtabline=2
 set so=7              " How many lines from cursor to top / bottom of the screen before scrolling
@@ -331,7 +331,7 @@ vnoremap J :m '>+1<CR>gv=gv
 nnoremap <leader>f :Files<CR>
 
 " reload vim configuration
-nnoremap <leader>r :source ~/.vimrc<CR>
+nnoremap <leader>r :source ~/.config/nvim/init.vim<CR>
 
  " clear search
 nnoremap <silent><leader><space> :let @/ = ""<CR>
