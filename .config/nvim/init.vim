@@ -178,7 +178,7 @@ let g:gruvbox_material_statusline_style = 'default'
 let g:gruvbox_material_palette = 'original'
 let g:gruvbox_contrast_dark = 'hard'
 
-let g:vimwiki_list = [{'path': '~/exo/', 'syntax': 'markdown', 'ext': '.md'}] " Use markdown for vimwiki
+let g:vimwiki_list = [{'path': '~/Exo/', 'syntax': 'markdown', 'ext': '.md'}] " Use markdown for vimwiki
 
 " Proper folding defaults in vimwiki
 let g:vim_markdown_folding_style_pythonic = 1
@@ -189,7 +189,7 @@ let g:vim_markdown_toc_autofit = 1
 command! -bang -nargs=? -complete=dir Files call fzf#vim#files(<q-args>, {'options': ['--layout=reverse', '--preview', '~/.vim/plugged/fzf.vim/bin/preview.sh {}']}, <bang>0)
 
 " Use a template when generating new vimwiki diary files
-au BufNewFile ~/exo/diary/*.md :silent 0r !~/.config/nvim/bin/generate-diary-template '%'
+au BufNewFile ~/Exo/diary/*.md :silent 0r !~/.config/nvim/bin/generate-diary-template '%'
 " }}}
 " Editing {{{
 
