@@ -23,12 +23,6 @@ set updatetime=1000        " Fast updatetime for snappier experience
 
 " Set proper mouse mode
 set mouse=a
-" set ttymouse=xterm2
-
-" The fish shell is not very compatible to other shells and unexpectedly breaks things that use 'shell'.
-if &shell =~# 'fish$'
-  set shell=/bin/bash
-endif
 
 " Turn backup off, since most stuff is in SVN, git etc anyway...
 set nobackup
@@ -186,7 +180,7 @@ let g:vim_markdown_folding_level = 3
 let g:vim_markdown_toc_autofit = 1
 
 " Open FZF with bat preview window (syntax highlighting + more)
-command! -bang -nargs=? -complete=dir Files call fzf#vim#files(<q-args>, {'options': ['--layout=reverse', '--preview', '~/.vim/plugged/fzf.vim/bin/preview.sh {}']}, <bang>0)
+command! -bang -nargs=? -complete=dir Files call fzf#vim#files(<q-args>, {'options': ['--layout=reverse', '--preview', '~/.config/nvim/plugged/fzf.vim/bin/preview.sh {}']}, <bang>0)
 
 " Use a template when generating new vimwiki diary files
 au BufNewFile ~/Exo/diary/*.md :silent 0r !~/.config/nvim/bin/generate-diary-template '%'
@@ -205,11 +199,11 @@ set incsearch                     " search as characters are entered
 set hlsearch                      " highlight matches
 set ignorecase                    " Ignore case when searching
 set smartcase                     " When searching try to be smart about cases
-set clipboard=unnamed             " yank across instances
+set clipboard=unnamed             " yank to macos clipboard
 set mousefocus                    " Focus follows mouse
 set timeout                       " Do time out on mappings and others
 set ttimeoutlen=0                 " Make escape timeout faster
-set timeoutlen=1000               " Wait {num} ms before timing out a mapping
+set timeoutlen=1000               " Wait before timing out a mapping
 set wrapscan                      " Searches wrap around end-of-file.
 set report=0                      " Always report changed lines.
 
@@ -246,23 +240,15 @@ endfun
 " UI {{{
 
 " Enable true color
-if exists('+termguicolors')
-    " Fix color bugs in tmux
-    let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
-    let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
-    set termguicolors
-endif
+set termguicolors
 
 set background=dark
 set t_Co=256
 
 colorscheme gruvbox-material
 
-" let &t_EI .= "\<Esc>[0 q"
-" let &t_SI .= "\<Esc>[6 q"
-
 set showtabline=2
-set so=7              " How many lines from cursor to top / bottom of the screen before scrolling
+set so=10             " How many lines from cursor to top / bottom of the screen before scrolling
 set number            " file line numbering
 set rnu               " relative line numbers
 set showcmd           " show last entered command
@@ -290,14 +276,6 @@ highlight SignifySignAdd ctermfg=green ctermbg=NONE guibg=NONE
 highlight SignifySignDelete ctermfg=red ctermbg=NONE guibg=NONE
 highlight SignifySignChange ctermfg=blue ctermbg=NONE guibg=NONE
 
-" Show non-printable characters
-set list
-if has('multi_byte') && &encoding ==# 'utf-8'
-  let &listchars = 'tab:▸ ,extends:❯,precedes:❮,nbsp:±'
-else
-  let &listchars = 'tab:> ,extends:>,precedes:<,nbsp:.'
-endif
-
 " }}}
 " Binds & Mappings {{{
 
@@ -324,8 +302,8 @@ nnoremap J }
 nnoremap K {
 
 " Proper indentation when moving lines in visual mode
-vnoremap K :m '<-2<CR>gv=gv
 vnoremap J :m '>+1<CR>gv=gv
+vnoremap K :m '<-2<CR>gv=gv
 
 " Start fzf with ctrl+p
 nnoremap <leader>f :Files<CR>
@@ -355,7 +333,7 @@ nnoremap <leader>z :Goyo<cr>
 noremap <F3> :setlocal spell! spelllang=en_us<CR>
 
 " Insert date / time
-nnoremap <leader>id "=strftime("%a, %b %d %Y")<CR>p
+nnoremap <leader>id "=strftime(" %a, %b %d %Y")<CR>p
 nnoremap <leader>it "=strftime(" %I:%M %p")<CR>p
 
 " Split navigation
@@ -385,15 +363,9 @@ nnoremap <leader>c :close<CR>
 " Close buffer
 nnoremap <leader>q :bd<CR>
 
-" Change size of vim splits with alt+,/.
-" execute "set <a-,>=\<esc>,"
-" execute "set <a-.>=\<esc>."
-" nnoremap <silent> <a-,> :<c-u>vert res -<c-r>=v:count?v:count1:5<cr><cr>
-" nnoremap <silent> <a-.> :<c-u>vert res +<c-r>=v:count?v:count1:5<cr><cr>
-
 " Vim plug ease of use bindings
-nnoremap <leader>ii :PlugInstall<CR>
-nnoremap <leader>ic :PlugClean<CR>
+nnoremap <leader>pi :PlugInstall<CR>
+nnoremap <leader>pc :PlugClean<CR>
 
 " GoTo code navigation.
 nmap <silent> gd <Plug>(coc-definition)
