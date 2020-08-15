@@ -35,7 +35,7 @@ au CursorHold * checktime
 
 " }}}
 " Plugins {{{
-call plug#begin('~/.config/nvim/plugged') " Specify a directory for plugins
+call plug#begin('~/.config/nvim/plugins/installed') " Specify a directory for plugins
 
 Plug 'tpope/vim-commentary'                             " Simply toggle comments with gc
 Plug 'neoclide/coc.nvim', {'branch': 'release'}         " Autocomplete
@@ -64,100 +64,17 @@ call plug#end() " Initialize plugin system
 
 " }}}
 " Plugin Settings {{{
-" TODO: Put plugin specific configuration in seperate file then source into main
-" CoC {{{
 
-" Don't load CoC immediately
-augroup LazyLoadCoc
-    autocmd!
-    autocmd InsertEnter * call plug#load('coc.nvim')
-augroup END
-
-
-" Use tab for trigger completion with characters ahead and navigate.
-inoremap <silent><expr> <TAB> pumvisible() ? "\<C-n>" : <SID>check_back_space() ? "\<TAB>" : coc#refresh()
-inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
-function! s:check_back_space() abort
-    let col = col('.') - 1
-    return !col || getline('.')[col - 1]  =~# '\s'
-endfunction
-
-" Makes <cr> select the first completion item, confirm when no item selected, and formats the code:
-inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm() : "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
-" Close the preview window when completion is done.
-autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif
-" Disable CoC for certain filetypes
-autocmd BufNew,BufEnter *.md,*.txt execute "silent! CocDisable"
-autocmd BufLeave *.md,*.txt execute "silent! CocEnable"
-" Highlight the symbol and its references when holding the cursor.
-autocmd CursorHold * silent call CocActionAsync('highlight')
-" }}}
-" Goyo {{{
-
-let g:goyo_height = '100%'
-let g:goyo_width= '40%'
-
-" }}}
-" Lightline {{{
-let g:lightline#bufferline#show_number  = 2
-let g:lightline#bufferline#unnamed      = '[Unnamed]'
-let g:lightline#bufferline#filename_modifier = ':t'
-
-let g:lightline = {
-      \ 'colorscheme': 'gruvbox_material',
-      \ 'tabline': {
-      \   'left': [ ['buffers'] ],
-      \   'right': [ [] ]
-      \ },
-      \ 'active': {
-      \   'left': [ [ 'mode', 'paste' ],
-      \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ],
-      \   'right': [['lineinfo'],
-      \             ['percent'],
-      \             [ 'fileformat', 'fileencoding', 'filetype'] ]
-      \ },
-      \ 'component_function': {
-      \   'gitbranch': 'FugitiveHead'
-      \ },
-      \ 'component_expand': {
-      \   'buffers': 'lightline#bufferline#buffers'
-      \ },
-      \ 'component_type': {
-      \   'buffers': 'tabsel'
-      \ }
-      \ }
-" }}}
-
-let g:auto_save = 1
-let g:auto_save_silent = 1
-
-let g:signify_sign_add = '+'
-let g:signify_sign_delete = '─'
-let g:signify_sign_change = '~'
-
-let g:pear_tree_repeatable_expand = 0 " Make pair expansion not weird
-" Make pear tree smart
-let g:pear_tree_smart_backspace   = 1
-let g:pear_tree_smart_closers     = 1
-let g:pear_tree_smart_openers     = 1
-
-let g:fzf_layout = {'window': { 'width': 0.6, 'height': 0.8}} " Nice FZF Preview window
-
-let g:highlightedyank_highlight_duration = 150
-
-" Configure gruvbox colorscheme
-let g:gruvbox_material_background = 'hard'
-let g:gruvbox_material_statusline_style = 'default'
-let g:gruvbox_material_palette = 'original'
-let g:gruvbox_contrast_dark = 'hard'
-
-let g:vimwiki_list = [{'path': '~/Exo/', 'syntax': 'markdown', 'ext': '.md'}] " Use markdown for vimwiki
-
-" Use a template when generating new vimwiki diary files
-au BufNewFile ~/Exo/diary/*.md :silent 0r !~/.config/nvim/bin/generate-diary-template '%'
-
-" Open FZF with bat preview window (syntax highlighting + more)
-command! -bang -nargs=? -complete=dir Files call fzf#vim#files(<q-args>, {'options': ['--layout=reverse', '--preview', '~/.config/nvim/plugged/fzf.vim/bin/preview.sh {}']}, <bang>0)
+source $HOME/.config/nvim/plugins/settings/coc.vim
+source $HOME/.config/nvim/plugins/settings/goyo.vim
+source $HOME/.config/nvim/plugins/settings/lightline.vim
+source $HOME/.config/nvim/plugins/settings/vim-auto-save.vim
+source $HOME/.config/nvim/plugins/settings/vim-signify.vim
+source $HOME/.config/nvim/plugins/settings/pear-tree.vim
+source $HOME/.config/nvim/plugins/settings/fzf.vim
+source $HOME/.config/nvim/plugins/settings/vim-highlightedyank.vim
+source $HOME/.config/nvim/plugins/settings/gruvbox-material.vim
+source $HOME/.config/nvim/plugins/settings/gruvbox.vim
 
 " }}}
 " Editing {{{
