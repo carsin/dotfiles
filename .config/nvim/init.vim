@@ -43,12 +43,9 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}         " Autocomplete
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }     " Fuzzy file finder
 Plug 'junegunn/fzf.vim'                                 " fzf based commands and mappings
 Plug 'airblade/vim-rooter'                              " Changes Vim working directory to project root
-Plug 'unblevable/quick-scope'                           " Highlights a unique character in every word on a line to help you use f
-Plug 'chaoren/vim-wordmotion'                           " Better word motions for snake_case and camelCase
 Plug 'justinmk/vim-sneak'                               " Jump to any location specified by two characters
 Plug 'junegunn/goyo.vim'                                " Distraction-free writing mode
 Plug 'godlygeek/tabular'                                " Vim script for text filtering and alignment
-Plug 'plasticboy/vim-markdown'                          " Syntax highlighting, matching rules and mappings for the original Markdown and extensions.
 Plug 'tmsvg/pear-tree'                                  " Auto complete pairs sensibly
 Plug 'mhinz/vim-signify'                                " Display git changes in gutter & status bar
 Plug 'machakann/vim-highlightedyank'                    " Make the yanked region apparent!
@@ -69,39 +66,26 @@ Plug 'arcticicestudio/nord-vim'
 
 call plug#end() " Initialize plugin system
 
+" }}}
+" Plugin Settings {{{
+" TODO: Put plugin specific configuration in seperate file then source into main
+" CoC {{{
+
 " Don't load CoC immediately
 augroup LazyLoadCoc
     autocmd!
     autocmd InsertEnter * call plug#load('coc.nvim')
 augroup END
 
-" }}}
-" Plugin Settings {{{
-" TODO: Put plugin specific configuration in seperate file then source into main
-" CoC {{{
-" Don't pass messages to |ins-completion-menu|.
-set shortmess+=c
-
-" Always show the signcolumn
-if has("patch-8.1.1564")
-  set signcolumn=number
-else
-  set signcolumn=yes
-endif
 
 " Use tab for trigger completion with characters ahead and navigate.
 inoremap <silent><expr> <TAB> pumvisible() ? "\<C-n>" : <SID>check_back_space() ? "\<TAB>" : coc#refresh()
 inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
 function! s:check_back_space() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~# '\s'
+    let col = col('.') - 1
+    return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
-" Use <c-space> to trigger completion.
-if has('nvim')
-  inoremap <silent><expr> <c-space> coc#refresh()
-else
-  inoremap <silent><expr> <c-@> coc#refresh()
-endif
+
 " Makes <cr> select the first completion item, confirm when no item selected, and formats the code:
 inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm() : "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 " Close the preview window when completion is done.
@@ -111,6 +95,7 @@ autocmd BufNew,BufEnter *.md,*.txt execute "silent! CocDisable"
 autocmd BufLeave *.md,*.txt execute "silent! CocEnable"
 " Highlight the symbol and its references when holding the cursor.
 autocmd CursorHold * silent call CocActionAsync('highlight')
+
 " }}}
 " Goyo {{{
 
@@ -150,7 +135,6 @@ let g:lightline = {
 
 let g:auto_save = 1
 let g:auto_save_silent = 1
-let g:auto_save_postsave_hook = 'call StripTrailingWhitespace()'
 
 let g:signify_sign_add = '+'
 let g:signify_sign_delete = '─'
@@ -174,16 +158,12 @@ let g:gruvbox_contrast_dark = 'hard'
 
 let g:vimwiki_list = [{'path': '~/Exo/', 'syntax': 'markdown', 'ext': '.md'}] " Use markdown for vimwiki
 
-" Proper folding defaults in vimwiki
-let g:vim_markdown_folding_style_pythonic = 1
-let g:vim_markdown_folding_level = 3
-let g:vim_markdown_toc_autofit = 1
+" Use a template when generating new vimwiki diary files
+au BufNewFile ~/Exo/diary/*.md :silent 0r !~/.config/nvim/bin/generate-diary-template '%'
 
 " Open FZF with bat preview window (syntax highlighting + more)
 command! -bang -nargs=? -complete=dir Files call fzf#vim#files(<q-args>, {'options': ['--layout=reverse', '--preview', '~/.config/nvim/plugged/fzf.vim/bin/preview.sh {}']}, <bang>0)
 
-" Use a template when generating new vimwiki diary files
-au BufNewFile ~/Exo/diary/*.md :silent 0r !~/.config/nvim/bin/generate-diary-template '%'
 " }}}
 " Editing {{{
 
@@ -219,23 +199,6 @@ set whichwrap+=<,>,h,l
 set undofile
 set undodir=~/.config/nvim/undo
 
-" Auto save buffer
-" autocmd TextChanged,InsertLeave,WinLeave,FocusLost <buffer> :call Save()
-
-" fun! Save()
-"     let l:save = winsaveview()          " Save current window view
-"     silent keeppatterns %s/\s\+$//e     " Strip trailing whitespace
-"     call winrestview(l:save)            " Restore window view
-"     silent write                        " Save
-" endfun
-
-fun! StripTrailingWhitespace()
-    let l:save = winsaveview()          " Save current window view
-    silent keeppatterns %s/\s\+$//e     " Strip trailing whitespace
-    call winrestview(l:save)            " Restore window view
-    " echo "Trailing whitespace stripped"
-endfun
-
 " }}}
 " UI {{{
 
@@ -247,7 +210,7 @@ set t_Co=256
 
 colorscheme gruvbox-material
 
-set showtabline=2
+set showtabline=2     " Show top tab line
 set so=10             " How many lines from cursor to top / bottom of the screen before scrolling
 set number            " file line numbering
 set rnu               " relative line numbers
@@ -267,6 +230,7 @@ set splitbelow        " Always vertically split below
 set splitright        " Always horizontally split to the right
 set fillchars+=vert:│ " Change vertical split character to solid line instead of line with gaps
 set signcolumn=yes    " Column for git diff
+set shortmess+=c      " Don't pass messages to ins-completion-menu.
 
 " Clean up sign column (git gutter)
 highlight SignColumn ctermbg=NONE guibg=NONE
@@ -384,5 +348,14 @@ nnoremap <leader>e :CocCommand explorer<CR>
 
 " Quit everything with :q
 cmap q qa
+
+fun! StripTrailingWhitespace()
+    let l:save = winsaveview()          " Save current window view
+    silent keeppatterns %s/\s\+$//e     " Strip trailing whitespace
+    call winrestview(l:save)            " Restore window view
+    echo "Stripped trailing whitespace"
+endfun
+
+cmap stw call StripTrailingWhitespace()
 
 " }}}
