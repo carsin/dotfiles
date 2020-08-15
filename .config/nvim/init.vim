@@ -37,6 +37,7 @@ au CursorHold * checktime
 " Plugins {{{
 call plug#begin('~/.config/nvim/plugged') " Specify a directory for plugins
 
+Plug 'tpope/vim-commentary'                             " Simply toggle comments with gc
 Plug 'neoclide/coc.nvim', {'branch': 'release'}         " Autocomplete
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }     " Fuzzy file finder
 Plug 'junegunn/fzf.vim'                                 " fzf based commands and mappings
@@ -49,13 +50,6 @@ Plug 'itchyny/lightline.vim'                            " Light and configurable
 Plug 'mengelbrecht/lightline-bufferline'                " Provides bufferline functionality for lightline
 Plug 'vimwiki/vimwiki'                                  " Personal wiki
 Plug '907th/vim-auto-save'                              " Auto save
-
-" OTI:
-Plug 'tpope/vim-fugitive'                               " A Git wrapper so awesome, it should be illegal
-Plug 'godlygeek/tabular'                                " Vim script for text filtering and alignment
-Plug 'tpope/vim-surround'                               " Commands for matching & surrounding pairs
-Plug 'tpope/vim-commentary'                             " Simply toggle comments with gc
-Plug 'airblade/vim-rooter'                              " Changes Vim working directory to project root
 
 " LANGUAGES:
 Plug 'sheerun/vim-polyglot'                             " Syntax for various languages
