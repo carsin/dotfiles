@@ -19,7 +19,7 @@ set history=500           " How many lines of history vim has to remember
 set encoding=utf8         " Set utf8 as standard encoding and en_US as the standard language
 set ffs=unix,dos,mac      " Use Unix as the standard file type
 
-set updatetime=1000        " Fast updatetime for snappier experience
+set updatetime=500        " Fast updatetime for snappier experience
 
 " Set proper mouse mode
 set mouse=a
@@ -37,23 +37,25 @@ au CursorHold * checktime
 " Plugins {{{
 call plug#begin('~/.config/nvim/plugged') " Specify a directory for plugins
 
-Plug 'tpope/vim-surround'                               " Commands for matching & surrounding pairs
-Plug 'tpope/vim-commentary'                             " Simply toggle comments with gc
 Plug 'neoclide/coc.nvim', {'branch': 'release'}         " Autocomplete
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }     " Fuzzy file finder
 Plug 'junegunn/fzf.vim'                                 " fzf based commands and mappings
-Plug 'airblade/vim-rooter'                              " Changes Vim working directory to project root
 Plug 'justinmk/vim-sneak'                               " Jump to any location specified by two characters
 Plug 'junegunn/goyo.vim'                                " Distraction-free writing mode
-Plug 'godlygeek/tabular'                                " Vim script for text filtering and alignment
 Plug 'tmsvg/pear-tree'                                  " Auto complete pairs sensibly
 Plug 'mhinz/vim-signify'                                " Display git changes in gutter & status bar
 Plug 'machakann/vim-highlightedyank'                    " Make the yanked region apparent!
 Plug 'itchyny/lightline.vim'                            " Light and configurable statusline/tabline
 Plug 'mengelbrecht/lightline-bufferline'                " Provides bufferline functionality for lightline
-Plug 'tpope/vim-fugitive'                               " A Git wrapper so awesome, it should be illegal
 Plug 'vimwiki/vimwiki'                                  " Personal wiki
 Plug '907th/vim-auto-save'                              " Auto save
+
+" OTI:
+Plug 'tpope/vim-fugitive'                               " A Git wrapper so awesome, it should be illegal
+Plug 'godlygeek/tabular'                                " Vim script for text filtering and alignment
+Plug 'tpope/vim-surround'                               " Commands for matching & surrounding pairs
+Plug 'tpope/vim-commentary'                             " Simply toggle comments with gc
+Plug 'airblade/vim-rooter'                              " Changes Vim working directory to project root
 
 " LANGUAGES:
 Plug 'sheerun/vim-polyglot'                             " Syntax for various languages
@@ -95,7 +97,6 @@ autocmd BufNew,BufEnter *.md,*.txt execute "silent! CocDisable"
 autocmd BufLeave *.md,*.txt execute "silent! CocEnable"
 " Highlight the symbol and its references when holding the cursor.
 autocmd CursorHold * silent call CocActionAsync('highlight')
-
 " }}}
 " Goyo {{{
 
@@ -179,7 +180,7 @@ set incsearch                     " search as characters are entered
 set hlsearch                      " highlight matches
 set ignorecase                    " Ignore case when searching
 set smartcase                     " When searching try to be smart about cases
-set clipboard=unnamed             " yank to macos clipboard
+set clipboard=unnamedplus         " yank to macos clipboard
 set mousefocus                    " Focus follows mouse
 set timeout                       " Do time out on mappings and others
 set ttimeoutlen=0                 " Make escape timeout faster
@@ -263,11 +264,9 @@ nnoremap <expr> k v:count ? (v:count > 5 ? "m'" . v:count : '') . 'k' : 'gk'
 
 " More convenient
 nnoremap J }
+vnoremap J }
 nnoremap K {
-
-" Proper indentation when moving lines in visual mode
-vnoremap J :m '>+1<CR>gv=gv
-vnoremap K :m '<-2<CR>gv=gv
+vnoremap K {
 
 " Start fzf with ctrl+p
 nnoremap <leader>f :Files<CR>
