@@ -66,15 +66,16 @@ call plug#end() " Initialize plugin system
 " Plugin Settings {{{
 
 source $HOME/.config/nvim/plugins/settings/coc.vim
-source $HOME/.config/nvim/plugins/settings/goyo.vim
-source $HOME/.config/nvim/plugins/settings/lightline.vim
-source $HOME/.config/nvim/plugins/settings/vim-auto-save.vim
-source $HOME/.config/nvim/plugins/settings/vim-signify.vim
-source $HOME/.config/nvim/plugins/settings/pear-tree.vim
 source $HOME/.config/nvim/plugins/settings/fzf.vim
-source $HOME/.config/nvim/plugins/settings/vim-highlightedyank.vim
+source $HOME/.config/nvim/plugins/settings/goyo.vim
 source $HOME/.config/nvim/plugins/settings/gruvbox-material.vim
 source $HOME/.config/nvim/plugins/settings/gruvbox.vim
+source $HOME/.config/nvim/plugins/settings/lightline.vim
+source $HOME/.config/nvim/plugins/settings/pear-tree.vim
+source $HOME/.config/nvim/plugins/settings/vim-auto-save.vim
+source $HOME/.config/nvim/plugins/settings/vim-highlightedyank.vim
+source $HOME/.config/nvim/plugins/settings/vim-signify.vim
+source $HOME/.config/nvim/plugins/settings/vimwiki.vim
 
 " }}}
 " Editing {{{
