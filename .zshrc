@@ -18,5 +18,5 @@ source $ZSH/oh-my-zsh.sh
 plugins=(git safe-paste osx)
 
 alias vim="nvim"
-alias ls="ls -a -G"
+alias ls="gls -AhFh --color --group-directories-first"
 alias dots="/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME"
