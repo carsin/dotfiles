@@ -9,12 +9,12 @@ export ZSH="/Users/carson/.oh-my-zsh"
 # Use better directory for customizations
 ZSH_CUSTOM=$HOME/.config/ohmyzsh
 
+# Themes I like: dieter eastwood geoffgarside maran
 ZSH_THEME="carson"
 
 # Load oh my zsh
 source $ZSH/oh-my-zsh.sh
 
-# Themes I like: dieter eastwood geoffgarside maran
 plugins=(git safe-paste osx)
 
 alias vim="nvim"
