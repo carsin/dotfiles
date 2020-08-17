@@ -50,6 +50,7 @@ Plug 'itchyny/lightline.vim'                            " Light and configurable
 Plug 'mengelbrecht/lightline-bufferline'                " Provides bufferline functionality for lightline
 Plug 'vimwiki/vimwiki'                                  " Personal wiki
 Plug '907th/vim-auto-save'                              " Auto save
+Plug 'qpkorr/vim-bufkill'                               " Keeps split layout intact when closing buffer
 
 " LANGUAGES:
 Plug 'sheerun/vim-polyglot'                             " Syntax for various languages
@@ -236,7 +237,7 @@ nnoremap <leader>\| :vsplit<CR>
 nnoremap <leader>c :close<CR>
 
 " Close buffer
-nnoremap <leader>q :bd<CR>
+nnoremap <leader>q :BW<CR>
 
 " Vim plug ease of use bindings
 nnoremap <leader>pi :PlugInstall<CR>
