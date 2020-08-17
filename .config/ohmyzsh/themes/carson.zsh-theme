@@ -1,5 +1,5 @@
 # Left side
-PROMPT="%{$fg[red]%}%n%{$reset_color%}@%{$fg[blue]%}%m %{$fg[cyan]%}[%{$fg[blue]%}%~%{$fg[cyan]%}] %f$ "
+PROMPT="%{$fg[red]%}%n%{$reset_color%}@%{$fg[blue]%}%m %{$fg[cyan]%}[ %{$fg[green]%}%~%{$fg[cyan]%} ] %f$ "
 # Right side
 RPROMPT='$(git_prompt_info) %F{cyan}[ %F{green}%D{%L:%M:%S} %D{%p} %F{cyan}]%f'
 
