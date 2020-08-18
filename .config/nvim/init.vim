@@ -51,6 +51,7 @@ Plug 'mengelbrecht/lightline-bufferline'                " Provides bufferline fu
 Plug 'vimwiki/vimwiki'                                  " Personal wiki
 Plug '907th/vim-auto-save'                              " Auto save
 Plug 'qpkorr/vim-bufkill'                               " Keeps split layout intact when closing buffer
+Plug 'airblade/vim-rooter'                              " Automatically sets vim working directory to the project root
 
 " LANGUAGES:
 Plug 'sheerun/vim-polyglot'                             " Syntax for various languages
