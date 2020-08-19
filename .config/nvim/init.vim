@@ -52,6 +52,7 @@ Plug 'vimwiki/vimwiki'                                  " Personal wiki
 Plug '907th/vim-auto-save'                              " Auto save
 Plug 'qpkorr/vim-bufkill'                               " Keeps split layout intact when closing buffer
 Plug 'airblade/vim-rooter'                              " Automatically sets vim working directory to the project root
+Plug 'mhinz/vim-startify'                               " Nice looking start screen
 
 " LANGUAGES:
 Plug 'sheerun/vim-polyglot'                             " Syntax for various languages
@@ -125,27 +126,34 @@ set t_Co=256
 
 colorscheme gruvbox-material
 
-set showtabline=2     " Show top tab line
-set so=10             " How many lines from cursor to top / bottom of the screen before scrolling
-set number            " file line numbering
-set rnu               " relative line numbers
-set showcmd           " show last entered command
-set wildmenu          " visual auto complete for command menu
-set lazyredraw        " redraw only when needed
-set showmatch         " highlight matching [{()}]
-set noeb vb t_vb=     " no visual bell or beeping (thank god)
-set ruler             " Always show current position
-set magic             " For regular expressions turn magic on
-set noshowmode        " Remove redundant status bar elements
-set foldenable        " Fold code
-set foldmethod=marker " Fold code with {{{}}}
-set linespace=0       " No extra space between lines
-set laststatus=2      " Show statusline
-set splitbelow        " Always vertically split below
-set splitright        " Always horizontally split to the right
-set fillchars+=vert:│ " Change vertical split character to solid line instead of line with gaps
-set signcolumn=yes    " Column for git diff
-set shortmess+=c      " Don't pass messages to ins-completion-menu.
+set showtabline=2      " Show top tab line
+set so=10              " How many lines from cursor to top / bottom of the screen before scrolling
+set number             " file line numbering
+set showcmd            " show last entered command
+set wildmenu           " visual auto complete for command menu
+set lazyredraw         " redraw only when needed
+set showmatch          " highlight matching [{()}]
+set noeb vb t_vb=      " no visual bell or beeping (thank god)
+set ruler              " Always show current position
+set magic              " For regular expressions turn magic on
+set noshowmode         " Remove redundant status bar elements
+set foldenable         " Fold code
+set foldmethod=marker  " Fold code with {{{}}}
+set linespace=0        " No extra space between lines
+set laststatus=2       " Show statusline
+set splitbelow         " Always vertically split below
+set splitright         " Always horizontally split to the right
+set fillchars+=vert:│  " Change vertical split character to solid line instead of line with gaps
+set signcolumn=yes     " Column for git diff
+set shortmess+=c       " Don't pass messages to ins-completion-menu.
+set formatoptions-=cro " Disable auto insert comment
+
+" Only show relative numbers in focused normal mode
+augroup numbertoggle
+    autocmd!
+    autocmd BufEnter,FocusGained,InsertLeave * set rnu
+    autocmd BufLeave,FocusLost,InsertEnter * set nornu
+augroup END
 
 " Clean up sign column (git gutter)
 highlight SignColumn ctermbg=NONE guibg=NONE
@@ -210,8 +218,8 @@ nnoremap <leader>z :Goyo<cr>
 noremap <F3> :setlocal spell! spelllang=en_us<CR>
 
 " Insert date / time
-nnoremap <leader>id "=strftime(" %a, %b %d %Y")<CR>p
-nnoremap <leader>it "=strftime(" %I:%M %p")<CR>p
+nnoremap <leader>id "=strftime("%a, %b %d %Y")<CR>p
+nnoremap <leader>it "=strftime("%I:%M %p")<CR>p
 
 " Split navigation
 nnoremap <C-h> <C-w>h
@@ -261,6 +269,9 @@ nnoremap <leader>e :CocCommand explorer<CR>
 
 " Quit everything with :q
 cmap q qa
+
+" Toggle folds in normal mode with tab
+nnoremap <Tab> za
 
 fun! StripTrailingWhitespace()
     let l:save = winsaveview()          " Save current window view
