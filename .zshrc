@@ -17,7 +17,7 @@ source $ZSH/oh-my-zsh.sh
 
 plugins=(git safe-paste osx zsh-syntax-highlighting zsh-autosuggestions)
 
+alias ..="cd .."
 alias vim="nvim"
-# alias ls="gls -AhF --color --group-directories-first"
 alias ls="exa -aF --color=always --sort=type --group-directories-first"
 alias dots="/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME"

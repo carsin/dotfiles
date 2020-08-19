@@ -29,7 +29,7 @@ set nobackup
 set nowb
 set noswapfile
 
-" check file change every 4 seconds ('CursorHold') and reload the buffer upon detecting change
+" Check file change every 4 seconds ('CursorHold') and reload the buffer upon detecting change
 set autoread
 au CursorHold * checktime
 
@@ -99,7 +99,7 @@ set clipboard=unnamedplus         " yank to macos clipboard
 set mousefocus                    " Focus follows mouse
 set timeout                       " Do time out on mappings and others
 set ttimeoutlen=0                 " Make escape timeout faster
-set timeoutlen=1000               " Wait before timing out a mapping
+set timeoutlen=500                " Wait before timing out a mapping
 set wrapscan                      " Searches wrap around end-of-file.
 set report=0                      " Always report changed lines.
 
@@ -270,9 +270,6 @@ nnoremap <leader>e :CocCommand explorer<CR>
 " Quit everything with :q
 cmap q qa
 
-" Toggle folds in normal mode with tab
-nnoremap <Tab> za
-
 fun! StripTrailingWhitespace()
     let l:save = winsaveview()          " Save current window view
     silent keeppatterns %s/\s\+$//e     " Strip trailing whitespace
@@ -281,5 +278,8 @@ fun! StripTrailingWhitespace()
 endfun
 
 cmap stw call StripTrailingWhitespace()
+
+" Toggle folds in normal mode with tab
+nnoremap <Tab> za
 
 " }}}
