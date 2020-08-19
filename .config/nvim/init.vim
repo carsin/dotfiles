@@ -164,6 +164,9 @@ highlight SignifySignAdd ctermfg=green ctermbg=NONE guibg=NONE
 highlight SignifySignDelete ctermfg=red ctermbg=NONE guibg=NONE
 highlight SignifySignChange ctermfg=blue ctermbg=NONE guibg=NONE
 
+" Remove current line background highlight in number gutter
+highlight CursorLineNr ctermbg=NONE guibg=NONE
+
 " }}}
 " Binds & Mappings {{{
 
@@ -213,7 +216,7 @@ nmap <F1> <nop>
 map <silent> <C-p> :set invpaste <CR>
 
 " Toggle goyo
-nnoremap <leader>z :Goyo<cr>
+nnoremap <silent><leader>z :Goyo<cr>
 
 " Toggle Spellcheck
 noremap <F3> :setlocal spell! spelllang=en_us<CR>

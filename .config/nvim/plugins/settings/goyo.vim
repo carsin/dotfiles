@@ -23,6 +23,7 @@ function! s:goyo_leave()
 
     set so=10
     highlight SignColumn ctermbg=NONE guibg=NONE
+    highlight CursorLineNr ctermbg=NONE guibg=NONE
 endfunction
 
 autocmd! User GoyoEnter nested call <SID>goyo_enter()
