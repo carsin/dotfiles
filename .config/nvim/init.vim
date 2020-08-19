@@ -282,4 +282,10 @@ cmap stw call StripTrailingWhitespace()
 " Toggle folds in normal mode with tab
 nnoremap <Tab> za
 
+" Replace default f & t motions with vim-sneak's
+map f <Plug>Sneak_f
+map F <Plug>Sneak_F
+map t <Plug>Sneak_t
+map T <Plug>Sneak_T
+
 " }}}
