@@ -53,6 +53,7 @@ Plug '907th/vim-auto-save'                              " Auto save
 Plug 'qpkorr/vim-bufkill'                               " Keeps split layout intact when closing buffer
 Plug 'airblade/vim-rooter'                              " Automatically sets vim working directory to the project root
 Plug 'mhinz/vim-startify'                               " Nice looking start screen
+Plug 'christoomey/vim-tmux-navigator'                   " Seamlessly navigate between tmux & vim splits
 
 " LANGUAGES:
 Plug 'sheerun/vim-polyglot'                             " Syntax for various languages
@@ -222,10 +223,10 @@ nnoremap <leader>id "=strftime("%a, %b %d %Y")<CR>p
 nnoremap <leader>it "=strftime("%I:%M %p")<CR>p
 
 " Split navigation
-nnoremap <C-h> <C-w>h
-nnoremap <C-j> <C-w>j
-nnoremap <C-k> <C-w>k
-nnoremap <C-l> <C-w>l
+" nnoremap <C-h> <C-w>h
+" nnoremap <C-j> <C-w>j
+" nnoremap <C-k> <C-w>k
+" nnoremap <C-l> <C-w>l
 
 " Open new empty buffer
 nnoremap <leader>T :enew<cr>
