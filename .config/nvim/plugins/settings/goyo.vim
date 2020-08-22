@@ -1,5 +1,5 @@
 let g:goyo_height = '100%'
-let g:goyo_width= '50%'
+let g:goyo_width= '45%'
 
 function! s:goyo_enter()
     let b:quitting = 0

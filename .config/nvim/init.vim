@@ -167,6 +167,9 @@ highlight SignifySignChange ctermfg=blue ctermbg=NONE guibg=NONE
 " Remove current line background highlight in number gutter
 highlight CursorLineNr ctermbg=NONE guibg=NONE
 
+" Overrides vimwiki and forces use of markdown syntax highlighting on markdown vimwiki files
+au BufEnter *.md setl syntax=markdown
+
 " }}}
 " Binds & Mappings {{{
 
