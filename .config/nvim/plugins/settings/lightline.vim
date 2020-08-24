@@ -1,6 +1,7 @@
-let g:lightline#bufferline#show_number  = 2
-let g:lightline#bufferline#unnamed      = '[Unnamed]'
+let g:lightline#bufferline#show_number = 2
+let g:lightline#bufferline#unnamed = '[Unnamed]'
 let g:lightline#bufferline#filename_modifier = ':t'
+let g:lightline#bufferline#smart_path = 1
 
 let g:lightline = {
       \ 'colorscheme': 'gruvbox_material',
