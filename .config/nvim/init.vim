@@ -44,7 +44,6 @@ Plug 'junegunn/fzf.vim'                                 " fzf based commands and
 Plug 'justinmk/vim-sneak'                               " Jump to any location specified by two characters
 Plug 'junegunn/goyo.vim'                                " Distraction-free writing mode
 Plug 'tmsvg/pear-tree'                                  " Auto complete pairs sensibly
-Plug 'mhinz/vim-signify'                                " Display git changes in gutter & status bar
 Plug 'machakann/vim-highlightedyank'                    " Make the yanked region apparent!
 Plug 'itchyny/lightline.vim'                            " Light and configurable statusline/tabline
 Plug 'mengelbrecht/lightline-bufferline'                " Provides bufferline functionality for lightline
@@ -78,7 +77,6 @@ source $HOME/.config/nvim/plugins/settings/lightline.vim
 source $HOME/.config/nvim/plugins/settings/pear-tree.vim
 source $HOME/.config/nvim/plugins/settings/vim-auto-save.vim
 source $HOME/.config/nvim/plugins/settings/vim-highlightedyank.vim
-source $HOME/.config/nvim/plugins/settings/vim-signify.vim
 source $HOME/.config/nvim/plugins/settings/vimwiki.vim
 
 " }}}
@@ -145,7 +143,6 @@ set laststatus=2       " Show statusline
 set splitbelow         " Always vertically split below
 set splitright         " Always horizontally split to the right
 set fillchars+=vert:│  " Change vertical split character to solid line instead of line with gaps
-set signcolumn=yes     " Column for git diff
 set shortmess+=c       " Don't pass messages to ins-completion-menu.
 set formatoptions-=cro " Disable auto insert comment
 
@@ -155,21 +152,6 @@ augroup numbertoggle
     autocmd BufEnter,FocusGained,InsertLeave * set rnu
     autocmd BufLeave,FocusLost,InsertEnter * set nornu
 augroup END
-
-" Clean up sign column (git gutter)
-highlight SignColumn ctermbg=NONE guibg=NONE
-
-" Clean up signify symbol backgrounds in sign column (git gutter)
-" highlight SignifySignAdd guifg=GreenSign ctermfg=LightGreen ctermbg=NONE guibg=NONE
-" highlight SignifySignDelete guifg=LightRed ctermfg=LightRed ctermbg=NONE guibg=NONE
-" highlight SignifySignChange guifg=LightBlue ctermfg=LightBlue ctermbg=NONE guibg=NONE
-
-" highlight SignifySignAdd ctermfg=10 ctermbg=NONE guibg=NONE
-" highlight SignifySignDelete ctermfg=12 ctermbg=NONE guibg=NONE
-" highlight SignifySignChange ctermfg=9 ctermbg=NONE guibg=NONE
-
-" Remove current line background highlight in number gutter
-highlight CursorLineNr ctermbg=NONE guibg=NONE
 
 " Overrides vimwiki and forces use of markdown syntax highlighting on markdown vimwiki files
 au BufEnter *.md setl syntax=markdown
