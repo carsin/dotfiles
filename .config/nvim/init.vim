@@ -160,9 +160,13 @@ augroup END
 highlight SignColumn ctermbg=NONE guibg=NONE
 
 " Clean up signify symbol backgrounds in sign column (git gutter)
-highlight SignifySignAdd ctermfg=green ctermbg=NONE guibg=NONE
-highlight SignifySignDelete ctermfg=red ctermbg=NONE guibg=NONE
-highlight SignifySignChange ctermfg=blue ctermbg=NONE guibg=NONE
+" highlight SignifySignAdd guifg=GreenSign ctermfg=LightGreen ctermbg=NONE guibg=NONE
+" highlight SignifySignDelete guifg=LightRed ctermfg=LightRed ctermbg=NONE guibg=NONE
+" highlight SignifySignChange guifg=LightBlue ctermfg=LightBlue ctermbg=NONE guibg=NONE
+
+" highlight SignifySignAdd ctermfg=10 ctermbg=NONE guibg=NONE
+" highlight SignifySignDelete ctermfg=12 ctermbg=NONE guibg=NONE
+" highlight SignifySignChange ctermfg=9 ctermbg=NONE guibg=NONE
 
 " Remove current line background highlight in number gutter
 highlight CursorLineNr ctermbg=NONE guibg=NONE
