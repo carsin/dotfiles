@@ -24,3 +24,5 @@ alias ..="cd .."
 alias vim="nvim"
 alias ls="exa -aF --color=always --sort=type --group-directories-first"
 alias dots="/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME"
+
+alias cr="cargo run"
