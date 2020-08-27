@@ -214,12 +214,6 @@ noremap <F3> :setlocal spell! spelllang=en_us<CR>
 nnoremap <leader>id "=strftime("%a, %b %d %Y")<CR>p
 nnoremap <leader>it "=strftime("%I:%M %p")<CR>p
 
-" Split navigation
-" nnoremap <C-h> <C-w>h
-" nnoremap <C-j> <C-w>j
-" nnoremap <C-k> <C-w>k
-" nnoremap <C-l> <C-w>l
-
 " Open new empty buffer
 nnoremap <leader>T :enew<cr>
 
@@ -232,8 +226,13 @@ nnoremap <leader>n :bprevious<CR>
 nnoremap <left> :bprevious<CR>
 
 " Split binds
-nnoremap <leader>- :split<CR>
-nnoremap <leader>\| :vsplit<CR>
+nnoremap <leader>hs :split<CR>
+nnoremap <leader>vs :vsplit<CR>
+
+" Vimwiki: Add keybinds for opening a link into split
+nmap <silent> <leader>w- <Plug>VimwikiSplitLink
+nmap <silent> <leader>w\| <Plug>VimwikiVSplitLink
+nmap <silent> <leader>wc :VimwikiTOC<CR>
 
 " Close window
 nnoremap <leader>c :close<CR>

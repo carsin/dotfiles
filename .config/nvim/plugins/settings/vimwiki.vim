@@ -3,3 +3,4 @@ let g:vimwiki_list = [{'path': '~/Exo/', 'syntax': 'markdown', 'ext': '.md', 'di
 
 " Use a template when generating new vimwiki diary files
 au BufNewFile ~/Exo/log/*.md :silent 0r !~/.config/nvim/bin/generate-diary-template '%'
+
