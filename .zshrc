@@ -2,6 +2,8 @@ fortune ~/.config/fortune/fortunes
 
 # Append to path
 path+=($HOME/bin:/usr/local/bin:$PATH)
+path+=($HOME/.emacs.d/bin:$PATH)
+# path+="/Applications/MacPorts/Emacs.app/Contents/MacOS:$PATH"
 # path+=(/Library/Frameworks/Python.framework/Versions/3.8/bin:$PATH)
 
 export PATH
