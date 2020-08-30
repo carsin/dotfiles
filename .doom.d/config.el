@@ -8,6 +8,7 @@
 
 (setq-default
       delete-by-moving-to-trash t                 ; Delete files to trash
+      indent-tabs-mode nil                        ; Don't use tabs
       tab-width 4                                 ; Set width for tabs
       uniquify-buffer-name-style 'forward         ; Uniquify buffer names
       window-combination-resize t                 ; take new window space from all other windows (not just current)
@@ -28,6 +29,7 @@
 
 ;; Font settings
 (setq doom-font (font-spec :family "SF Mono" :size 12 :weight 'semi-light)
+      doom-big-font (font-spec :family "SF Mono" :size 20)
       doom-variable-pitch-font (font-spec :family "SF Mono" :size 12))
 
 ;; Set theme
@@ -38,3 +40,23 @@
 
 ;; Show absolute line numbering
 (setq display-line-numbers-type t)
+
+;; Split to bottom and right always
+(setq evil-vsplit-window-right t
+      evil-split-window-below t)
+
+;; Open ivy to select buffer on new split
+(defadvice! prompt-for-buffer (&rest _)
+  :after '(evil-window-split evil-window-vsplit)
+  (+ivy/switch-buffer))
+
+;; Buffer previews in ivy
+(setq +ivy-buffer-preview t)
+
+(defun doom-modeline-conditional-buffer-encoding ()
+  "We expect the encoding to be LF UTF-8, so only show the modeline when this is not the case"
+  (setq-local doom-modeline-buffer-encoding
+              (unless (or (eq buffer-file-coding-system 'utf-8-unix)
+                          (eq buffer-file-coding-system 'utf-8)))))
+
+(add-hook 'after-change-major-mode-hook #'doom-modeline-conditional-buffer-encoding)
