@@ -15,7 +15,7 @@
 
 (setq undo-limit 80000000                         ; Raise undo-limit to 80Mb
       evil-want-fine-undo t                       ; By default while in insert all changes are one big blob. Be more granular
-      auto-save-default t                         ; Nobody likes to loose work, I certainly don't
+      auto-save-default t)                         ; Nobody likes to loose work, I certainly don't
 
 (delete-selection-mode 1)                         ; Replace selection when inserting text
 (display-time-mode 1)                             ; Enable time in the mode-line
@@ -32,7 +32,7 @@
       doom-variable-pitch-font (font-spec :family "Monaco" :size 12))
 
 ;; Set theme
-(setq doom-theme 'doom-gruvbox)
+(setq doom-theme 'doom-tomorrow-night)
 
 ;; Set org directory
 (setq org-directory "~/org/")
