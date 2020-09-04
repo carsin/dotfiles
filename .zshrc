@@ -3,9 +3,9 @@ fortune ~/.config/fortune/fortunes
 # Append to path
 path+=($HOME/bin:/usr/local/bin:$PATH)
 path+=($HOME/.emacs.d/bin:$PATH)
+path+=($HOME/Library/Python/3.8/bin)
 # path+="/Applications/MacPorts/Emacs.app/Contents/MacOS:$PATH"
 # path+=(/Library/Frameworks/Python.framework/Versions/3.8/bin:$PATH)
-
 export PATH
 
 # Path to your oh-my-zsh installation.
