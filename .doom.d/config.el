@@ -28,9 +28,9 @@
   (toggle-frame-fullscreen))
 
 ;; Font settings
-(setq doom-font (font-spec :family "SF Mono" :size 12 :weight 'semi-light)
-      doom-big-font (font-spec :family "SF Mono" :size 20)
-      doom-variable-pitch-font (font-spec :family "SF Mono" :size 12))
+(setq doom-font (font-spec :family "Menlo" :size 12 :weight 'semi-light)
+      doom-big-font (font-spec :family "SF Pro" :size 20)
+      doom-variable-pitch-font (font-spec :family "New York" :size 12))
 
 ;; Set theme
 (setq doom-theme 'doom-tomorrow-night)
