@@ -21,12 +21,14 @@
 
        :completion
        (company            ; the ultimate code completion backend
-        +childframe)
+        +auto              ; as-you-type code completion
+        +childframe        ; a nicer company UI (Emacs 26+ only)
+        )
        ;;helm              ; the *other* search engine for love and life
        ;;ido               ; the other *other* search engine...
-       (ivy               ; a search engine for love and life
-        +icons            ; ... icons are nice
-        +prescient        ; ... I know what I want(ed)
+       (ivy                ; a search engine for love and life
+        +icons             ; ... icons are nice
+        +prescient         ; ... I know what I want(ed)
         +childframe)
 
        :ui
@@ -41,7 +43,7 @@
        ;;ligatures         ; ligatures and symbols to make your code pretty again
        ;;minimap           ; show a map of the code on the side
        modeline          ; snazzy, Atom-inspired modeline, plus API
-       ;;nav-flash         ; blink cursor line after big motions
+       nav-flash         ; blink cursor line after big motions
        ;;neotree           ; a project drawer, like NERDTree for vim
        ophints           ; highlight the region an operation acts on
        (popup             ; tame sudden yet inevitable temporary windows
@@ -52,7 +54,7 @@
        ;;unicode           ; extended unicode support for various languages
        vc-gutter         ; vcs diff in the fringe
        vi-tilde-fringe   ; fringe tildes to mark beyond EOB
-       ;;window-select     ; visually switch windows
+       window-select     ; visually switch windows
        workspaces        ; tab emulation, persistence & separate workspaces
        zen               ; distraction-free coding or writing
 
@@ -60,18 +62,20 @@
        (evil +everywhere); come to the dark side, we have cookies
        file-templates    ; auto-snippets for empty files
        fold              ; (nigh) universal code folding
-       ;;(format +onsave)  ; automated prettiness
+       (format +onsave)  ; automated prettiness
        ;;god               ; run Emacs commands without modifier keys
        ;;lispy             ; vim for lisp, for people who don't like vim
        ;;multiple-cursors  ; editing in many places at once
        ;;objed             ; text object editing for the innocent
        ;;parinfer          ; turn lisp into python, sort of
-       ;;rotate-text       ; cycle region at point between text candidates
+       rotate-text       ; cycle region at point between text candidates
        snippets          ; my elves. They type so I don't have to
        ;;word-wrap         ; soft wrapping with language-aware indent
 
        :emacs
-       dired             ; making dired pretty [functional]
+       (dired            ; making dired pretty [functional]
+        +ranger          ; bringing the goodness of ranger to dired
+        +icons)          ; colorful icons for dired-mode
        electric          ; smarter, keyword-based electric-indent
        (ibuffer +icons); interactive buffer management
        undo              ; persistent, smarter undo for your inevitable mistakes
@@ -84,34 +88,38 @@
        vterm             ; the best terminal emulation in Emacs
 
        :checkers
-       syntax              ; tasing you for every semicolon you forget
+       (syntax            ; tasing you for every semicolon you forget
+        +childframe)
        spell              ; tasing you for misspelling mispelling
        grammar            ; tasing grammar mistake every you make
 
        :tools
        ;;ansible
        ;;debugger          ; FIXME stepping through code, to help you add bugs
-       ;;direnv
+       direnv
        ;;docker
-       ;;editorconfig      ; let someone else argue about tabs vs spaces
+       editorconfig      ; let someone else argue about tabs vs spaces
        ;;ein               ; tame Jupyter notebooks with emacs
        (eval +overlay)     ; run code, run (also, repls)
        ;;gist              ; interacting with github gists
-       lookup              ; navigate your code and its documentation
+       (lookup           ; helps you navigate your code and documentation
+        ;;+dictionary      ; enable word definition and thesaurus lookup functionality
+        +devdocs         ; ...on devdocs.io online
+        +docsets)        ; ...or in Dash docsets locally
        lsp
        magit             ; a git porcelain for Emacs
        ;;make              ; run make tasks from Emacs
        ;;pass              ; password manager for nerds
-       ;;pdf               ; pdf enhancements
+       pdf               ; pdf enhancements
        ;;prodigy           ; FIXME managing external services & code builders
        ;;rgb               ; creating color strings
        ;;taskrunner        ; taskrunner for all your projects
        ;;terraform         ; infrastructure as code
-       ;;tmux              ; an API for interacting with tmux
+       tmux              ; an API for interacting with tmux
        ;;upload            ; map local to remote projects via ssh/ftp
 
        :os
-        macos             ; improve compatibility with macOS
+       macos             ; improve compatibility with macOS
        ;;tty               ; improve the terminal Emacs experience
 
        :lang
@@ -151,7 +159,8 @@
        ;;nim               ; python + lisp at the speed of c
        ;;nix               ; I hereby declare "nix geht mehr!"
        ;;ocaml             ; an objective camel
-       org               ; organize your plain life in plain text
+       (org                ; organize your plain life in plain text
+        +dragndrop)        ; drag & drop files/images into org buffers
        ;;php               ; perl's insecure younger brother
        ;;plantuml          ; diagrams for confusing people more
        ;;purescript        ; javascript, but functional
