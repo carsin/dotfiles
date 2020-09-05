@@ -37,6 +37,7 @@
       org-journal-date-prefix "#+title: "
       org-journal-file-format "%Y-%m-%d.org"
       org-journal-dir "~/org/notes/"
+      org-journal-time-format "%I:%M %p"
       org-journal-date-format "%A, %d %B %Y")
 
 (add-to-list 'safe-local-variable-values
