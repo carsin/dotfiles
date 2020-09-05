@@ -17,10 +17,10 @@ ZSH_CUSTOM=$HOME/.config/ohmyzsh
 # Themes I like: dieter eastwood geoffgarside maran
 ZSH_THEME="carson"
 
+plugins=(git safe-paste osx zsh-syntax-highlighting zsh-autosuggestions z you-should-use $plugins)
+
 # Load oh my zsh
 source $ZSH/oh-my-zsh.sh
-
-plugins=(git safe-paste osx zsh-syntax-highlighting zsh-autosuggestions)
 
 alias ..="cd .."
 alias vim="nvim"
