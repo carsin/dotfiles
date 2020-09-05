@@ -14,11 +14,7 @@
 ;;      Alternatively, press 'gd' (or 'C-c c d') on a module to browse its
 ;;      directory (for easy access to its source code).
 
-(doom! :input
-       ;;chinese
-       ;;japanese
-       ;;layout            ; auie,ctsrnm is the superior home row
-
+(doom!
        :completion
        (company            ; the ultimate code completion backend
         +auto              ; as-you-type code completion
@@ -27,7 +23,6 @@
        ;;helm              ; the *other* search engine for love and life
        ;;ido               ; the other *other* search engine...
        (ivy                ; a search engine for love and life
-        +icons             ; ... icons are nice
         +prescient         ; ... I know what I want(ed)
         +childframe)
 
@@ -77,7 +72,7 @@
         +ranger          ; bringing the goodness of ranger to dired
         +icons)          ; colorful icons for dired-mode
        electric          ; smarter, keyword-based electric-indent
-       (ibuffer +icons); interactive buffer management
+       ibuffer           ; interactive buffer management
        undo              ; persistent, smarter undo for your inevitable mistakes
        vc                ; version-control and Emacs, sitting in a tree
 
@@ -115,7 +110,7 @@
        ;;rgb               ; creating color strings
        ;;taskrunner        ; taskrunner for all your projects
        ;;terraform         ; infrastructure as code
-       tmux              ; an API for interacting with tmux
+       ;;tmux              ; an API for interacting with tmux
        ;;upload            ; map local to remote projects via ssh/ftp
 
        :os

@@ -2,9 +2,6 @@
 (setq user-full-name "Carson Freedman"
       user-mail-address "carsin@users.noreply.github.com")
 
-;; Some nice display defaults
-;; (display-time-mode 1)
-;; (setq display-time-day-and-date t)
 
 (setq-default
       delete-by-moving-to-trash t                 ; Delete files to trash
@@ -19,18 +16,14 @@
       auto-save-default t)                        ; Nobody likes to lose work, I certainly don't
 
 (delete-selection-mode 1)                         ; Replace selection when inserting text
-;; (unless (equal "Battery status not available"
-;;         (battery))
-;;         (display-battery-mode 1))                 ; On laptops it's nice to know how much power you have
 (global-subword-mode 1)                           ; Iterate through CamelCase words
 
-(if (eq initial-window-system 'x)                 ; if started by emacs command or desktop file
-  (toggle-frame-fullscreen))
+(add-to-list 'default-frame-alist '(fullscreen . maximized))
 
 ;; Font settings
 (setq doom-font (font-spec :family "Menlo" :size 12 :weight 'semi-light)
       doom-big-font (font-spec :family "SF Pro" :size 20)
-      doom-variable-pitch-font (font-spec :family "New York" :size 12))
+      doom-variable-pitch-font (font-spec :family "SF Pro" :size 12))
 
 ;; Set theme
 (setq doom-theme 'doom-tomorrow-night)
@@ -44,11 +37,6 @@
 ;; Split to bottom and right always
 (setq evil-vsplit-window-right t
       evil-split-window-below t)
-
-;; Open ivy to select buffer on new split
-(defadvice! prompt-for-buffer (&rest _)
-  :after '(evil-window-split evil-window-vsplit)
-  (+ivy/switch-buffer))
 
 ;; Buffer previews in ivy
 (setq +ivy-buffer-preview t)
