@@ -1,7 +1,7 @@
+;;; ~/.doom.d/config.el -*- lexical-binding: t; -*-
 ;; User Information
 (setq user-full-name "Carson Freedman"
       user-mail-address "carsin@users.noreply.github.com")
-
 
 (setq-default
       delete-by-moving-to-trash t                 ; Delete files to trash
@@ -18,12 +18,14 @@
 (delete-selection-mode 1)                         ; Replace selection when inserting text
 (global-subword-mode 1)                           ; Iterate through CamelCase words
 
+;; Maximize Emacs window on startup
 (add-to-list 'default-frame-alist '(fullscreen . maximized))
 
 ;; Font settings
 (setq doom-font (font-spec :family "Menlo" :size 12 :weight 'semi-light)
-      doom-big-font (font-spec :family "SF Pro" :size 20)
-      doom-variable-pitch-font (font-spec :family "SF Pro" :size 12))
+      doom-variable-pitch-font (font-spec :family "SF Pro" :size 12)
+      doom-serif-font (font-spec :family "New York" :size 12)
+      doom-big-font (font-spec :family "Menlo" :size 20))
 
 ;; Set theme
 (setq doom-theme 'doom-tomorrow-night)
