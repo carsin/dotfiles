@@ -35,13 +35,13 @@
        ;;unicode           ; extended unicode support for various languages
        vc-gutter         ; vcs diff in the fringe
        ;;vi-tilde-fringe   ; fringe tildes to mark beyond EOB
-       window-select     ; visually switch windows
+       ;; window-select     ; visually switch windows
        workspaces        ; tab emulation, persistence & separate workspaces
        zen               ; distraction-free coding or writing
 
        :editor
        (evil +everywhere); come to the dark side, we have cookies
-       file-templates    ; auto-snippets for empty files
+       ;; file-templates    ; auto-snippets for empty files
        fold              ; (nigh) universal code folding
        (format +onsave)  ; automated prettiness
        ;;god               ; run Emacs commands without modifier keys
@@ -54,11 +54,11 @@
        ;;word-wrap         ; soft wrapping with language-aware indent
 
        :emacs
-       (dired            ; making dired pretty [functional]
-        +ranger          ; bringing the goodness of ranger to dired
-        +icons)          ; colorful icons for dired-mode
+       dired            ; making dired pretty [functional]
+        ;; +ranger          ; bringing the goodness of ranger to dired
+        ;; +icons)          ; colorful icons for dired-mode
        electric          ; smarter, keyword-based electric-indent
-       ibuffer           ; interactive buffer management
+       ;; ibuffer           ; interactive buffer management
        undo              ; persistent, smarter undo for your inevitable mistakes
        vc                ; version-control and Emacs, sitting in a tree
 
@@ -72,7 +72,7 @@
        (syntax            ; tasing you for every semicolon you forget
         +childframe)
        spell              ; tasing you for misspelling mispelling
-       grammar            ; tasing grammar mistake every you make
+       ;; grammar            ; tasing grammar mistake every you make
 
        :tools
        ;;ansible
@@ -111,7 +111,7 @@
        ;;coq               ; proofs-as-programs
        ;;crystal           ; ruby at the speed of c
        ;;csharp            ; unity, .NET, and mono shenanigans
-       ;;data              ; config/data formats
+       data              ; config/data formats
        ;;(dart +flutter)   ; paint ui and not much else
        ;;elixir            ; erlang done right
        ;;elm               ; care for a cup of TEA?
@@ -158,7 +158,7 @@
        (rust              ; Fe2O3.unwrap().unwrap().unwrap().unwrap()
         +lsp)             ; use lsp (rust-analyzer, then rls)
        ;;scala             ; java, but good
-       ;;scheme  g         ; a fully conniving family of lisps
+       ;;scheme            ; a fully conniving family of lisps
        sh                ; she sells {ba,z,fi}sh shells on the C xor
        ;;sml
        ;;solidity          ; do you need a blockchain? No.
@@ -181,3 +181,4 @@
        :config
        ;;literate
        (default +bindings +smartparens))
+)
