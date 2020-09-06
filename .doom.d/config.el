@@ -62,7 +62,3 @@
               (unless (or (eq buffer-file-coding-system 'utf-8-unix)
                           (eq buffer-file-coding-system 'utf-8)))))
 (add-hook 'after-change-major-mode-hook #'doom-modeline-conditional-buffer-encoding)
-
-;; Define function that inserts current date
-(defun insert-current-date () (interactive)
-    (insert (format-time-string "%B %d, %Y")))
