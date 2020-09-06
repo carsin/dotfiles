@@ -12,6 +12,7 @@
 
 (setq undo-limit 80000000                         ; Raise undo-limit to 80Mb
       evil-want-fine-undo t                       ; By default while in insert all changes are one big blob. Be more granular
+      company-idle-delay nil                      ; No delay for autocomplete
       auto-save-default t)                        ; Nobody likes to lose work, I certainly don't
 
 (delete-selection-mode 1)                         ; Replace selection when inserting text
@@ -27,13 +28,15 @@
       doom-big-font (font-spec :family "Menlo" :size 20))
 
 ;; Set theme
-(setq doom-theme 'doom-tomorrow-night)
+(setq doom-theme 'doom-solarized-dark)
 
-;; Set org directory
+;; Configure org settings
 (setq org-directory "~/org/"
+      org-ellipsis " ▼ "
       org-roam-tag-sources '(prop last-directory)
       org-roam-directory "~/org/notes/"
       org-roam-db-location "~/.emacs.d/roam.db"
+      org-journal-file-type 'weekly
       org-journal-date-prefix "#+title: "
       org-journal-file-format "%Y-%m-%d.org"
       org-journal-dir "~/org/notes/"
@@ -59,3 +62,7 @@
               (unless (or (eq buffer-file-coding-system 'utf-8-unix)
                           (eq buffer-file-coding-system 'utf-8)))))
 (add-hook 'after-change-major-mode-hook #'doom-modeline-conditional-buffer-encoding)
+
+;; Define function that inserts current date
+(defun insert-current-date () (interactive)
+    (insert (format-time-string "%B %d, %Y")))
