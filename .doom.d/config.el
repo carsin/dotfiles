@@ -36,7 +36,7 @@
       org-roam-tag-sources '(prop last-directory)
       org-roam-directory "~/org/notes/"
       org-roam-db-location "~/.emacs.d/roam.db"
-      org-journal-file-type 'weekly
+      org-journal-file-type 'daily
       org-journal-date-prefix "#+title: "
       org-journal-file-format "%Y-%m-%d.org"
       org-journal-dir "~/org/notes/"
