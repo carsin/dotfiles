@@ -12,7 +12,7 @@
 
 (setq undo-limit 80000000                         ; Raise undo-limit to 80Mb
       evil-want-fine-undo t                       ; By default while in insert all changes are one big blob. Be more granular
-      company-idle-delay nil                      ; No delay for autocomplete
+      company-idle-delay 0                        ; No delay for autocomplete
       auto-save-default t)                        ; Nobody likes to lose work, I certainly don't
 
 (delete-selection-mode 1)                         ; Replace selection when inserting text
@@ -37,7 +37,7 @@
       org-roam-directory "~/org/notes/"
       org-roam-db-location "~/.emacs.d/roam.db"
       org-journal-file-type 'daily
-      org-journal-date-prefix "#+title: "
+      org-journal-date-prefix "#+title: Journal: "
       org-journal-file-format "%Y-%m-%d.org"
       org-journal-dir "~/org/notes/"
       org-journal-time-format "%I:%M %p"
