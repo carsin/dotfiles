@@ -32,7 +32,7 @@
 
 ;; Configure org settings
 (setq org-directory "~/org/"
-      org-ellipsis " ▼ "
+      org-ellipsis " ... "
       org-roam-tag-sources '(prop last-directory)
       org-roam-directory "~/org/notes/"
       org-roam-db-location "~/.emacs.d/roam.db"
