@@ -23,7 +23,7 @@
 
 ;; Font settings
 (setq doom-font (font-spec :family "Menlo" :size 12 :weight 'semi-light)
-      doom-variable-pitch-font (font-spec :family "SF Pro" :size 12)
+      doom-variable-pitch-font (font-spec :family "Monaco" :size 12)
       doom-serif-font (font-spec :family "New York" :size 12)
       doom-big-font (font-spec :family "Menlo" :size 20))
 
