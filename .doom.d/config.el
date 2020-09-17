@@ -23,9 +23,9 @@
 (add-to-list 'default-frame-alist '(fullscreen . maximized))
 
 ;; Font settings
-(setq doom-font (font-spec :family "Menlo" :size 13 :weight 'semi-light)
-      doom-variable-pitch-font (font-spec :family "Monaco" :size 13)
-      doom-serif-font (font-spec :family "New York" :size 13)
+(setq doom-font (font-spec :family "Menlo" :size 14 :weight 'semi-light)
+      doom-variable-pitch-font (font-spec :family "Monaco" :size 14)
+      doom-serif-font (font-spec :family "New York" :size 14)
       doom-big-font (font-spec :family "Menlo" :size 20))
 
 ;; Set theme
