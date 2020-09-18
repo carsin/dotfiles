@@ -24,8 +24,8 @@
 
 ;; Font settings
 (setq doom-font (font-spec :family "Menlo" :size 14 :weight 'semi-light)
-      doom-variable-pitch-font (font-spec :family "Monaco" :size 14)
-      doom-serif-font (font-spec :family "New York" :size 14)
+      doom-variable-pitch-font (font-spec :family "Monaco" :size 12)
+      doom-serif-font (font-spec :family "New York" :size 12)
       doom-big-font (font-spec :family "Menlo" :size 20))
 
 ;; Set theme
@@ -37,6 +37,7 @@
       org-roam-tag-sources '(prop last-directory)
       org-roam-directory "~/org/notes/"
       org-roam-db-location "~/.emacs.d/roam.db"
+      org-hide-emphasis-markers t
       org-journal-file-type 'daily
       org-journal-date-prefix "#+title: Journal: "
       org-journal-file-format "%Y-%m-%d.org"
