@@ -19,6 +19,7 @@
 
 (delete-selection-mode 1)                         ; Replace selection when inserting text
 (global-subword-mode 1)                           ; Iterate through CamelCase words
+(auto-save-visited-mode +1)                       ; Enable autosaving on all buffers opened
 
 ;; Maximize Emacs window on startup
 (add-to-list 'default-frame-alist '(fullscreen . maximized))
@@ -48,7 +49,7 @@
       org-journal-date-format "%A, %d %B %Y")
 
 (add-to-list 'safe-local-variable-values
-'(org-roam-directory . "."))
+             '(org-roam-directory . "."))
 
 ;; Show absolute line numbering
 (setq display-line-numbers-type t)
@@ -85,3 +86,8 @@
        (let ((project-name (projectile-project-name)))
          (unless (string= "-" project-name)
            (format (if (buffer-modified-p)  " ◉ %s" "  ●  %s") project-name))))))
+
+;; Save when entering normal mode
+(add-hook 'evil-insert-state-exit-hook
+          (lambda ()
+            (call-interactively #'save-buffer)))
