@@ -37,6 +37,7 @@
       org-ellipsis " ... "
       org-roam-tag-sources '(prop last-directory)
       org-roam-directory "~/org/notes/"
+      deft-directory "~/org/notes/"
       org-roam-db-location "~/.emacs.d/roam.db"
       org-hide-emphasis-markers t
       org-journal-file-type 'daily
@@ -71,3 +72,16 @@
 (define-key evil-normal-state-map (kbd "<remap> <evil-previous-line>") 'evil-previous-visual-line)
 (define-key evil-motion-state-map (kbd "<remap> <evil-next-line>") 'evil-next-visual-line)
 (define-key evil-motion-state-map (kbd "<remap> <evil-previous-line>") 'evil-previous-visual-line)
+
+
+;; Show buffer name / project folder in window title
+(setq frame-title-format
+    '(""
+      (:eval
+       (if (s-contains-p org-roam-directory (or buffer-file-name ""))
+           (replace-regexp-in-string ".*/[0-9]*-?" "🢔 " buffer-file-name)
+         "%b"))
+      (:eval
+       (let ((project-name (projectile-project-name)))
+         (unless (string= "-" project-name)
+           (format (if (buffer-modified-p)  " ◉ %s" "  ●  %s") project-name))))))
