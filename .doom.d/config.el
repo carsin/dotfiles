@@ -85,9 +85,4 @@
       (:eval
        (let ((project-name (projectile-project-name)))
          (unless (string= "-" project-name)
-           (format (if (buffer-modified-p)  " ◉ %s" "  ●  %s") project-name))))))
-
-;; Save when entering normal mode
-(add-hook 'evil-insert-state-exit-hook
-          (lambda ()
-            (call-interactively #'save-buffer)))
+           (format (if (buffer-modified-p)  " - %s" " - %s") project-name))))))
