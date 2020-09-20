@@ -17,7 +17,7 @@ ZSH_CUSTOM=$HOME/.config/ohmyzsh
 # Themes I like: dieter eastwood geoffgarside maran
 ZSH_THEME="carson"
 
-plugins=(git safe-paste osx zsh-syntax-highlighting zsh-autosuggestions z you-should-use $plugins)
+plugins=(git safe-paste osx zsh-syntax-highlighting z you-should-use $plugins)
 
 # Load oh my zsh
 source $ZSH/oh-my-zsh.sh
@@ -28,3 +28,6 @@ alias ls="exa -aF --color=always --sort=type --group-directories-first"
 alias dots="/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME"
 
 alias cr="cargo run"
+
+alias killglobal="launchctl unload /Library/LaunchAgents/com.paloaltonetworks.gp.pangp*"
+alias startglobal="launchctl load /Library/LaunchAgents/com.paloaltonetworks.gp.pangp*"
