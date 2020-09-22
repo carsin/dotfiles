@@ -12,7 +12,7 @@
 
 (setq undo-limit 80000000                         ; Raise undo-limit to 80Mb
       evil-want-fine-undo t                       ; By default while in insert all changes are one big blob. Be more granular
-      evil-cross-lines t                          ; Makes horizontal movement not stop at EOL
+      ;; evil-cross-lines t                          ; Makes horizontal movement not stop at EOL
       default-directory: "~"                      ; Home :)
       company-idle-delay 0                        ; No delay for autocomplete
       auto-save-default t)                        ; Nobody likes to lose work, I certainly don't
