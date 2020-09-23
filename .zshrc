@@ -28,6 +28,9 @@ alias ls="exa -aF --color=always --sort=type --group-directories-first"
 alias dots="/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME"
 
 alias cr="cargo run"
+alias crr="cargo run --release"
 
 alias killglobal="launchctl unload /Library/LaunchAgents/com.paloaltonetworks.gp.pangp*"
 alias startglobal="launchctl load /Library/LaunchAgents/com.paloaltonetworks.gp.pangp*"
+
+alias calpoly="ssh ckfreedm@unix3.csc.calpoly.edu"
