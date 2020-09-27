@@ -31,7 +31,7 @@
       doom-big-font (font-spec :family "Menlo" :size 20))
 
 ;; Set theme
-(setq doom-theme 'doom-solarized-dark)
+(setq doom-theme 'doom-one)
 
 ;; Configure org settings
 (setq org-directory "~/org/"
