@@ -34,19 +34,23 @@
 (setq doom-theme 'doom-one)
 
 ;; Configure org settings
-(setq org-directory "~/org/"
-      org-ellipsis " ... "
-      org-roam-tag-sources '(prop last-directory)
-      org-roam-directory "~/org/notes/"
-      deft-directory "~/org/notes/"
-      org-roam-db-location "~/.emacs.d/roam.db"
-      org-hide-emphasis-markers t
-      org-journal-file-type 'daily
-      org-journal-date-prefix "#+title: Journal: "
-      org-journal-file-format "%Y-%m-%d.org"
-      org-journal-dir "~/org/notes/"
-      org-journal-time-format "%I:%M %p"
-      org-journal-date-format "%A, %d %B %Y")
+(after! org
+        (setq org-directory "~/org/"
+              org-ellipsis " ... "
+              org-roam-tag-sources '(prop last-directory)
+              org-roam-directory "~/org/notes/"
+              deft-directory "~/org/notes/"
+              org-roam-db-location "~/.emacs.d/roam.db"
+              org-hide-emphasis-markers t
+              org-journal-file-type 'daily
+              org-journal-date-prefix "#+title: Journal: "
+              org-journal-file-format "%Y-%m-%d.org"
+              org-journal-dir "~/org/notes/"
+              org-journal-time-format "%I:%M %p"
+              org-journal-date-format "%A, %d %B %Y"
+              org-log-done 'time
+              org-todo-keywords '((sequence "TODO(t)" "INPROG(p)" "WAIT(w)" "|" "DONE(d)" "CANCELLED(c)"))))
+
 
 (add-to-list 'safe-local-variable-values
              '(org-roam-directory . "."))
