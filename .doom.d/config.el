@@ -26,7 +26,7 @@
 
 ;; Font settings
 (setq doom-font (font-spec :family "Menlo" :size 14 :weight 'semi-light)
-      doom-variable-pitch-font (font-spec :family "Monaco" :size 12)
+      doom-variable-pitch-font (font-spec :family "Monaco" :size 10)
       doom-serif-font (font-spec :family "New York" :size 12)
       doom-big-font (font-spec :family "Menlo" :size 20))
 
@@ -49,7 +49,15 @@
               org-journal-time-format "%I:%M %p"
               org-journal-date-format "%A, %d %B %Y"
               org-log-done 'time
-              org-todo-keywords '((sequence "TODO(t)" "INPROG(p)" "WAIT(w)" "|" "DONE(d)" "CANCELLED(c)"))))
+              org-agenda-skip-scheduled-if-done t
+              org-agenda-skip-deadline-if-done t
+              org-agenda-include-deadlines t
+              org-agenda-block-separator nil
+              org-agenda-tags-column 100
+              org-agenda-compact-blocks t
+              org-pretty-entities t
+              org-use-sub-superscripts t
+              org-todo-keywords '((sequence "TODO(t)" "INPROG(i)" "NEXT(n)" "HOLD(h)""|" "DONE(d)" "CANCELLED(c)"))))
 
 
 (add-to-list 'safe-local-variable-values
