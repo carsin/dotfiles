@@ -14,7 +14,7 @@
       evil-want-fine-undo t                       ; By default while in insert all changes are one big blob. Be more granular
       ;; evil-cross-lines t                          ; Makes horizontal movement not stop at EOL
       default-directory: "~"                      ; Home :)
-      company-idle-delay 0                        ; No delay for autocomplete
+      company-idle-delay 100                      ; No delay for autocomplete
       auto-save-default t)                        ; Nobody likes to lose work, I certainly don't
 
 (delete-selection-mode 1)                         ; Replace selection when inserting text
@@ -41,7 +41,6 @@
               org-roam-directory "~/org/notes/"
               deft-directory "~/org/notes/"
               org-roam-db-location "~/.emacs.d/roam.db"
-              org-hide-emphasis-markers t
               org-journal-file-type 'daily
               org-journal-date-prefix "#+title: Journal: "
               org-journal-file-format "%Y-%m-%d.org"
@@ -55,8 +54,9 @@
               org-agenda-block-separator nil
               org-agenda-tags-column 100
               org-agenda-compact-blocks t
-              org-pretty-entities t
-              org-use-sub-superscripts t
+              org-hide-emphasis-markers t
+              ;; org-pretty-entities t
+              ;; org-use-sub-superscripts t
               org-todo-keywords '((sequence "TODO(t)" "INPROG(i)" "NEXT(n)" "HOLD(h)""|" "DONE(d)" "CANCELLED(c)"))))
 
 
