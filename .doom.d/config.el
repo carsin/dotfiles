@@ -31,7 +31,7 @@
       doom-big-font (font-spec :family "Menlo" :size 20))
 
 ;; Set theme
-(setq doom-theme 'doom-one)
+(setq doom-theme 'doom-tomorrow-night)
 
 ;; Configure org settings
 (after! org
