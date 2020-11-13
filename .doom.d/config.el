@@ -14,7 +14,10 @@
       evil-want-fine-undo t                       ; By default while in insert all changes are one big blob. Be more granular
       ;; evil-cross-lines t                          ; Makes horizontal movement not stop at EOL
       default-directory: "~"                      ; Home :)
-      company-idle-delay 100                      ; No delay for autocomplete
+      company-idle-delay nil                      ; No delay for autocomplete
+      lsp-ui-sideline-enable nil
+      load-prefer-newer t
+      lsp-enable-symbol-highlighting nil
       auto-save-default t)                        ; Nobody likes to lose work, I certainly don't
 
 (delete-selection-mode 1)                         ; Replace selection when inserting text
@@ -25,7 +28,7 @@
 (add-to-list 'default-frame-alist '(fullscreen . maximized))
 
 ;; Font settings
-(setq doom-font (font-spec :family "Menlo" :size 14 :weight 'semi-light)
+(setq doom-font (font-spec :family "Menlo" :size 14)
       doom-variable-pitch-font (font-spec :family "Monaco" :size 10)
       doom-serif-font (font-spec :family "New York" :size 12)
       doom-big-font (font-spec :family "Menlo" :size 20))
