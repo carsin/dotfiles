@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+echo "Running .macos configuration script"
 
 # Close any open System Preferences panes, to prevent them from overriding
 # settings we’re about to change
@@ -13,7 +14,7 @@ while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 ###############################################################################
 # General UI/UX                                                               #
 ###############################################################################
-
+echo "Updating UI/UX settings..."
 # Disable transparency in the menu bar and elsewhere on Yosemite
 # defaults write com.apple.universalaccess reduceTransparency -bool true
 
@@ -42,11 +43,12 @@ defaults write com.apple.systempreferences NSQuitAlwaysKeepsWindows -bool false
 
 # Improve font rendering
 defaults write -g CGFontRenderingFontSmoothingDisabled -bool NO
-defaults -currentHost write -globalDomain AppleFontSmoothing -int 3
+defaults -currentHost write -globalDomain AppleFontSmoothing -int 2
 
 ###############################################################################
 # Trackpad, mouse, keyboard, Bluetooth accessories, and input                 #
 ###############################################################################
+echo "Updating input settings..."
 
 # Increase sound quality for Bluetooth headphones/headsets
 defaults write com.apple.BluetoothAudioAgent "Apple Bitpool Min (editable)" -int 40
@@ -54,6 +56,7 @@ defaults write com.apple.BluetoothAudioAgent "Apple Bitpool Min (editable)" -int
 ###############################################################################
 # Finder                                                                      #
 ###############################################################################
+echo "Updating Finder settings..."
 
 # Set Desktop as the default location for new Finder windows
 # For other paths, use `PfLo` and `file:///full/path/here/`
@@ -91,6 +94,7 @@ chflags nohidden ~/Library
 ###############################################################################
 # Safari & WebKit                                                             #
 ###############################################################################
+echo "Updating Safari settings..."
 # Privacy: don’t send search queries to Apple
 defaults write com.apple.Safari UniversalSearchEnabled -bool false
 defaults write com.apple.Safari SuppressSearchSuggestions -bool true
@@ -110,3 +114,4 @@ defaults write com.apple.Safari AutoOpenSafeDownloads -bool false
 
 # Enable “Do Not Track”
 defaults write com.apple.Safari SendDoNotTrackHTTPHeader -bool true
+echo "Finished updating macOS settings"
