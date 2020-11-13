@@ -12,6 +12,8 @@ export PATH
 # Path to your oh-my-zsh installation.
 export ZSH="/Users/carson/.oh-my-zsh"
 
+export GPG_TTY=$(tty)
+
 # Use better directory for customizations
 ZSH_CUSTOM=$HOME/.config/ohmyzsh
 
