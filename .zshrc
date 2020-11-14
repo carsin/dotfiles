@@ -1,5 +1,12 @@
 fortune ~/.config/fortune/fortunes
 
+# Set up auto GPG signing
+if [ -f ~/.gnupg/.gpg-agent-info ] && [ -n "$(pgrep gpg-agent)" ]; then
+    source ~/.gnupg/.gpg-agent-info > /dev/null 2>&1
+    export GPG_AGENT_INFO > /dev/null 2>&1
+else
+    eval $(gpg-agent --daemon --write-env-file ~/.gnupg/.gpg-agent-info > /dev/null 2>&1)
+fi
 # Append to path
 path+=($HOME/bin:/usr/local/bin:$PATH)
 path+=($HOME/.emacs.d/bin:$PATH)
@@ -8,7 +15,6 @@ path+=("/usr/local/sbin:$PATH")
 # path+="/Applications/MacPorts/Emacs.app/Contents/MacOS:$PATH"
 # path+=(/Library/Frameworks/Python.framework/Versions/3.8/bin:$PATH)
 export PATH
-
 # Path to your oh-my-zsh installation.
 export ZSH="/Users/carson/.oh-my-zsh"
 
