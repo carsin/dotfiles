@@ -7,14 +7,19 @@ if [ -f ~/.gnupg/.gpg-agent-info ] && [ -n "$(pgrep gpg-agent)" ]; then
 else
     eval $(gpg-agent --daemon --write-env-file ~/.gnupg/.gpg-agent-info > /dev/null 2>&1)
 fi
+
+# Automatically start tmux or connect to existing tmux session
+if [ -z "$TMUX" ]
+then
+    tmux attach -t TMUX || tmux new -s TMUX
+fi
+
 # Append to path
 path+=($HOME/bin:/usr/local/bin:$PATH)
 path+=($HOME/.emacs.d/bin:$PATH)
 path+=($HOME/Library/Python/3.8/bin)
 path+=("/usr/local/sbin:$PATH")
-# path+="/Applications/MacPorts/Emacs.app/Contents/MacOS:$PATH"
 # path+=(/Library/Frameworks/Python.framework/Versions/3.8/bin:$PATH)
-export PATH
 # Path to your oh-my-zsh installation.
 export ZSH="/Users/carson/.oh-my-zsh"
 
@@ -43,3 +48,5 @@ alias killglobal="launchctl unload /Library/LaunchAgents/com.paloaltonetworks.gp
 alias startglobal="launchctl load /Library/LaunchAgents/com.paloaltonetworks.gp.pangp*"
 
 alias calpoly="ssh ckfreedm@unix3.csc.calpoly.edu"
+
+export PATH
