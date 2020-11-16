@@ -8,10 +8,13 @@ else
     eval $(gpg-agent --daemon --write-env-file ~/.gnupg/.gpg-agent-info > /dev/null 2>&1)
 fi
 
-# Automatically start tmux or connect to existing tmux session
-if [ -z "$TMUX" ]
+# If opening iTerm, automatically start tmux or connect to existing tmux session
+if [ $TERM_PROGRAM = iTerm.app ]
 then
-    tmux attach -t TMUX || tmux new -s TMUX
+    if [ -z "$TMUX" ]
+    then
+        tmux attach -t TMUX || tmux new -s TMUX
+    fi
 fi
 
 # Append to path
