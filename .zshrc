@@ -9,13 +9,13 @@ else
 fi
 
 # If opening iTerm, automatically start tmux or connect to existing tmux session
-if [ $TERM_PROGRAM = iTerm.app ]
-then
-    if [ -z "$TMUX" ]
-    then
-        tmux attach -t TMUX || tmux new -s TMUX
-    fi
-fi
+# if [ $TERM_PROGRAM = iTerm.app ]
+# then
+#     if [ -z "$TMUX" ]
+#     then
+#         tmux attach -t TMUX || tmux new -s TMUX
+#     fi
+# fi
 
 # Append to path
 path+=($HOME/bin:/usr/local/bin:$PATH)
