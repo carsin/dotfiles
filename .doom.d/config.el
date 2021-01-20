@@ -42,7 +42,7 @@
               org-ellipsis " ... "
               org-roam-tag-sources '(prop last-directory)
               org-roam-directory "~/org/notes/"
-              deft-directory "~/org/notes/"
+              ;; deft-directory "~/org/notes/"
               org-roam-db-location "~/.emacs.d/roam.db"
               org-journal-file-type 'daily
               org-journal-date-prefix "#+title: Journal: "
@@ -51,16 +51,17 @@
               org-journal-time-format "%I:%M %p"
               org-journal-date-format "%A, %d %B %Y"
               org-log-done 'time
-              org-agenda-skip-scheduled-if-done t
-              org-agenda-skip-deadline-if-done t
-              org-agenda-include-deadlines t
-              org-agenda-block-separator nil
-              org-agenda-tags-column 100
-              org-agenda-compact-blocks t
+              ;; org-agenda-skip-scheduled-if-done t
+              ;; org-agenda-skip-deadline-if-done t
+              ;; org-agenda-include-deadlines t
+              ;; org-agenda-block-separator nil
+              ;; org-agenda-tags-column 100
+              ;; org-agenda-compact-blocks t
               org-hide-emphasis-markers t
               ;; org-pretty-entities t
               ;; org-use-sub-superscripts t
-              org-todo-keywords '((sequence "TODO(t)" "INPROG(i)" "NEXT(n)" "HOLD(h)""|" "DONE(d)" "CANCELLED(c)"))))
+              ;; org-todo-keywords '((sequence "TODO(t)" "INPROG(i)" "NEXT(n)" "HOLD(h)""|" "DONE(d)" "CANCELLED(c)"))
+              ))
 
 
 (add-to-list 'safe-local-variable-values
