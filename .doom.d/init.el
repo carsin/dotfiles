@@ -1,4 +1,4 @@
-;; ~/.doom.d/init.el -*- lexical-binding: t; -*-
+;;; ~/.doom.d/init.el -*- lexical-binding: t; -*-
 
 (doom!
        :completion
