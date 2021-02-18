@@ -3,6 +3,7 @@
 (setq user-full-name "Carson Freedman"
       user-mail-address "carsin@users.noreply.github.com")
 
+(setq comp-speed 2)
 (setq-default delete-by-moving-to-trash t                 ; Delete files to trash
               indent-tabs-mode nil                        ; Don't use tabs
               tab-width 4                                 ; Set width for tabs
@@ -34,7 +35,7 @@
       doom-big-font (font-spec :family "Menlo" :size 20))
 
 ;; Set theme
-(setq doom-theme 'doom-tomorrow-night)
+(setq doom-theme 'doom-nord)
 
 ;; Configure org settings
 (after! org
@@ -60,9 +61,28 @@
               org-hide-emphasis-markers t
               ;; org-pretty-entities t
               ;; org-use-sub-superscripts t
-              ;; org-todo-keywords '((sequence "TODO(t)" "INPROG(i)" "NEXT(n)" "HOLD(h)""|" "DONE(d)" "CANCELLED(c)"))
+              org-todo-keywords '((sequence "TODO(t)" "WAITING(w)" "INPROGRESS(i)" "|" "DONE(d)" "CANCELLED(c)"))
               ))
 
+;; set up agenda location
+(setq org-agenda-files '("~/org/gtd/inbox.org"
+                         "~/org/gtd/todo.org"
+                         "~/org/gtd/projects.org"
+                         "~/org/gtd/someday.org"
+                         "~/org/gtd/tickler.org"))
+
+(setq org-refile-targets '(("~/org/gtd/projects.org" :maxlevel . 3)
+                           ("~/org/gtd/inbox.org" :level . 2)
+                           ("~/org/gtd/todo.org" :level . 1)
+                           ("~/org/gtd/someday.org" :level . 1)
+                           ("~/org/gtd/tickler.org" :maxlevel . 2)))
+
+(setq org-capture-templates '(("t" "Todo [inbox]" entry
+                               (file+headline "~/org/gtd/inbox.org" "Tasks")
+                               "* TODO %i%?")
+                              ("T" "Tickler" entry
+                               (file+headline "~/org/gtd/tickler.org" "Tickler")
+                               "* %i%? \n %U")))
 
 (add-to-list 'safe-local-variable-values
              '(org-roam-directory . "."))
@@ -91,3 +111,26 @@
 (define-key evil-motion-state-map (kbd "<remap> <evil-previous-line>") 'evil-previous-visual-line)
 
 (setq rustic-lsp-server 'rls)
+(setq python-shell-interpreter "python3")
+
+If you want to change the size according to resolution you can do something like this (adjusting the preferred width and resolutions according to your specific needs):
+
+(defun set-frame-size-according-to-resolution ()
+  (interactive)
+  (if window-system
+  (progn
+    ;; use 120 char wide window for largeish displays
+    ;; and smaller 80 column windows for smaller displays
+    ;; pick whatever numbers make sense for you
+    (if (> (x-display-pixel-width) 1280)
+           (add-to-list 'default-frame-alist (cons 'width 120))
+           (add-to-list 'default-frame-alist (cons 'width 80)))
+    ;; for the height, subtract a couple hundred pixels
+    ;; from the screen height (for panels, menubars and
+    ;; whatnot), then divide by the height of a char to
+    ;; get the height we want
+    (add-to-list 'default-frame-alist
+         (cons 'height (/ (- (x-display-pixel-height) 200)
+                             (frame-char-height)))))))
+
+(set-frame-size-according-to-resolution)
