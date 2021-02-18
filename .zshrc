@@ -22,6 +22,7 @@ path+=($HOME/bin:/usr/local/bin:$PATH)
 path+=($HOME/.emacs.d/bin:$PATH)
 path+=($HOME/Library/Python/3.8/bin)
 path+=("/usr/local/sbin:$PATH")
+path+=($HOME/.emacs.d/bin)
 # path+=(/Library/Frameworks/Python.framework/Versions/3.8/bin:$PATH)
 # Path to your oh-my-zsh installation.
 export ZSH="/Users/carson/.oh-my-zsh"
@@ -51,5 +52,20 @@ alias killglobal="launchctl unload /Library/LaunchAgents/com.paloaltonetworks.gp
 alias startglobal="launchctl load /Library/LaunchAgents/com.paloaltonetworks.gp.pangp*"
 
 alias calpoly="ssh ckfreedm@unix3.csc.calpoly.edu"
+alias python="python3"
+
+if [ -f "/Applications/Emacs.app/Contents/MacOS/Emacs" ]; then
+  export EMACS="/Applications/Emacs.app/Contents/MacOS/Emacs"
+  alias emacs="$EMACS -nw"
+fi
+
+if [ -f "/Applications/Emacs.app/Contents/MacOS/bin/emacsclient" ]; then
+  alias emacsclient="/Applications/Emacs.app/Contents/MacOS/bin/emacsclient"
+fi
+
+alias open="open ."
 
 export PATH
+
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+
