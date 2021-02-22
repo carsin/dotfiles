@@ -14,11 +14,12 @@
 (setq undo-limit 80000000                         ; Raise undo-limit to 80Mb
       evil-want-fine-undo t                       ; By default while in insert all changes are one big blob. Be more granular
       ;; evil-cross-lines t                          ; Makes horizontal movement not stop at EOL
-      default-directory: "~"                      ; Home :)
-      company-idle-delay nil                      ; No delay for autocomplete
+      ;; default-directory: "~"                      ; Home :)
+      company-idle-delay 0.1                       ; delay for autocomplete
       lsp-ui-sideline-enable nil
       load-prefer-newer t
       lsp-enable-symbol-highlighting nil
+      company-dabbrev-downcase 0
       auto-save-default t)                        ; Nobody likes to lose work, I certainly don't
 
 (delete-selection-mode 1)                         ; Replace selection when inserting text
@@ -35,7 +36,7 @@
       doom-big-font (font-spec :family "Menlo" :size 20))
 
 ;; Set theme
-(setq doom-theme 'doom-nord)
+(setq doom-theme 'darktooth)
 
 ;; Configure org settings
 (after! org
@@ -61,28 +62,8 @@
               org-hide-emphasis-markers t
               ;; org-pretty-entities t
               ;; org-use-sub-superscripts t
-              org-todo-keywords '((sequence "TODO(t)" "WAITING(w)" "INPROGRESS(i)" "|" "DONE(d)" "CANCELLED(c)"))
+              ;; org-todo-keywords '((sequence "TODO(t)" "WAITING(w)" "INPROGRESS(i)" "|" "DONE(d)" "CANCELLED(c)"))
               ))
-
-;; set up agenda location
-(setq org-agenda-files '("~/org/gtd/inbox.org"
-                         "~/org/gtd/todo.org"
-                         "~/org/gtd/projects.org"
-                         "~/org/gtd/someday.org"
-                         "~/org/gtd/tickler.org"))
-
-(setq org-refile-targets '(("~/org/gtd/projects.org" :maxlevel . 3)
-                           ("~/org/gtd/inbox.org" :level . 2)
-                           ("~/org/gtd/todo.org" :level . 1)
-                           ("~/org/gtd/someday.org" :level . 1)
-                           ("~/org/gtd/tickler.org" :maxlevel . 2)))
-
-(setq org-capture-templates '(("t" "Todo [inbox]" entry
-                               (file+headline "~/org/gtd/inbox.org" "Tasks")
-                               "* TODO %i%?")
-                              ("T" "Tickler" entry
-                               (file+headline "~/org/gtd/tickler.org" "Tickler")
-                               "* %i%? \n %U")))
 
 (add-to-list 'safe-local-variable-values
              '(org-roam-directory . "."))
@@ -97,6 +78,9 @@
 ;; Buffer previews in ivy
 (setq +ivy-buffer-preview t)
 
+;; How many lines from cursor to top / bottom of the screen before scrolling
+(setq scroll-margin 10)
+
 (defun doom-modeline-conditional-buffer-encoding ()
   ;; We expect the encoding to be LF UTF-8, so only show the modeline when this is not the case
   (setq-local doom-modeline-buffer-encoding
@@ -105,30 +89,28 @@
 (add-hook 'after-change-major-mode-hook #'doom-modeline-conditional-buffer-encoding)
 
 ;; Navigate by visual line
-(define-key evil-normal-state-map (kbd "<remap> <evil-next-line>") 'evil-next-visual-line)
-(define-key evil-normal-state-map (kbd "<remap> <evil-previous-line>") 'evil-previous-visual-line)
-(define-key evil-motion-state-map (kbd "<remap> <evil-next-line>") 'evil-next-visual-line)
-(define-key evil-motion-state-map (kbd "<remap> <evil-previous-line>") 'evil-previous-visual-line)
+;; (define-key evil-normal-state-map (kbd "<remap> <evil-next-line>") 'evil-next-visual-line)
+;; (define-key evil-normal-state-map (kbd "<remap> <evil-previous-line>") 'evil-previous-visual-line)
+;; (define-key evil-motion-state-map (kbd "<remap> <evil-next-line>") 'evil-next-visual-line)
+;; (define-key evil-motion-state-map (kbd "<remap> <evil-previous-line>") 'evil-previous-visual-line)
 
-(setq rustic-lsp-server 'rls)
-(setq python-shell-interpreter "python3")
+(setq rustic-lsp-server 'rust-analyzer)
 
-(defun set-frame-size-according-to-resolution ()
-  (interactive)
-  (if window-system
-  (progn
-    ;; use 120 char wide window for largeish displays
-    ;; and smaller 80 column windows for smaller displays
-    ;; pick whatever numbers make sense for you
-    (if (> (x-display-pixel-width) 1280)
-           (add-to-list 'default-frame-alist (cons 'width 120))
-           (add-to-list 'default-frame-alist (cons 'width 80)))
-    ;; for the height, subtract a couple hundred pixels
-    ;; from the screen height (for panels, menubars and
-    ;; whatnot), then divide by the height of a char to
-    ;; get the height we want
-    (add-to-list 'default-frame-alist
-         (cons 'height (/ (- (x-display-pixel-height) 200)
-                             (frame-char-height)))))))
+; enable everything on sideline
+(setq lsp-ui-sideline-enable t)
+(setq lsp-ui-sideline-show-diagnostics t)
+(setq lsp-ui-sideline-show-hover t)
+(setq lsp-ui-sideline-show-code-actions t)
+(setq lsp-ui-sideline-delay 0)
+(setq company-minimum-prefix-length 1) ; how many characters to start completing after
 
-(set-frame-size-according-to-resolution)
+(add-to-list 'company-backends 'company-tabnine)
+(add-to-list 'company-backends 'company-files)
+;; (add-hook 'rustic-mode-hook
+;;           (lambda ()
+;;              (setq-local company-backends '((company-tabnine company-capf company-files company-yasnippet)))))
+
+;; (defun tabnine-rust-hook ()
+;;     (set (make-local-variable))
+
+(setq global-hl-line-mode nil)

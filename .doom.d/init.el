@@ -1,19 +1,23 @@
 ;;; ~/.doom.d/init.el -*- lexical-binding: t; -*-
 
-(doom!
+(doom! :input
+       ;;chinese
+       ;;japanese
+       ;;layout
+
        :completion
        (company            ; the ultimate code completion backend
-        +auto              ; as-you-type code completion
         +childframe        ; a nicer company UI (Emacs 26+ only)
         )
        ;;helm              ; the *other* search engine for love and life
        ;;ido               ; the other *other* search engine...
        (ivy                ; a search engine for love and life
+        +fuzzy             ; anables fuzzy completion
         +prescient         ; ... I know what I want(ed)
         +childframe)
 
        :ui
-       ;; deft              ; notational velocity for Emacs
+       deft              ; notational velocity for Emacs
        doom              ; what makes DOOM look the way it does
        doom-dashboard    ; a nifty splash screen for Emacs
        doom-quit         ; DOOM quit-message prompts when you quit Emacs
@@ -22,16 +26,16 @@
        ;;hydra
        ;;indent-guides     ; highlighted indent columns
        ;;ligatures         ; ligatures and symbols to make your code pretty again
-       ;;minimap           ; show a map of the code on the side
+       ;; minimap           ; show a map of the code on the side
        modeline          ; snazzy, Atom-inspired modeline, plus API
        nav-flash         ; blink cursor line after big motions
-       ;;neotree           ; a project drawer, like NERDTree for vim
+       neotree           ; a project drawer, like NERDTree for vim
        ophints           ; highlight the region an operation acts on
        (popup             ; tame sudden yet inevitable temporary windows
         +all              ; catch all popups that start with an asterix
         +defaults)        ; default popup rules
-       ;;tabs              ; a tab bar for Emacs
-       treemacs          ; a project drawer, like neotree but cooler
+       ;; tabs              ; a tab bar for Emacs
+       ;; treemacs          ; a project drawer, like neotree but cooler
        ;;unicode           ; extended unicode support for various languages
        vc-gutter         ; vcs diff in the fringe
        ;;vi-tilde-fringe   ; fringe tildes to mark beyond EOB
@@ -41,7 +45,7 @@
 
        :editor
        (evil +everywhere); come to the dark side, we have cookies
-       ;; file-templates    ; auto-snippets for empty files
+       ;; file-templates    ; auto-snippets for empty files, use __ to invoke
        fold              ; (nigh) universal code folding
        ;;(format +onsave)  ; automated prettiness
        ;;god               ; run Emacs commands without modifier keys
@@ -50,23 +54,23 @@
        ;;objed             ; text object editing for the innocent
        ;;parinfer          ; turn lisp into python, sort of
        rotate-text       ; cycle region at point between text candidates
-       snippets          ; my elves. They type so I don't have to
-       ;;word-wrap         ; soft wrapping with language-aware indent
+       ;; snippets          ; my elves. They type so I don't have to
+       word-wrap         ; soft wrapping with language-aware indent
 
        :emacs
        dired            ; making dired pretty [functional]
         ;; +ranger          ; bringing the goodness of ranger to dired
         ;; +icons)          ; colorful icons for dired-mode
        electric          ; smarter, keyword-based electric-indent
-       ;; ibuffer           ; interactive buffer management
+       ibuffer           ; interactive buffer management
        undo              ; persistent, smarter undo for your inevitable mistakes
        vc                ; version-control and Emacs, sitting in a tree
 
        :term
        ;; eshell            ; the elisp shell that works everywhere
        ;;shell             ; simple shell REPL for Emacs
-       ;;term              ; basic terminal emulator for Emacs
-       vterm             ; the best terminal emulation in Emacs
+       term              ; basic terminal emulator for Emacs
+       ;; vterm             ; the best terminal emulation in Emacs
 
        :checkers
        (syntax            ; tasing you for every semicolon you forget
@@ -83,10 +87,10 @@
        ;;ein               ; tame Jupyter notebooks with emacs
        (eval +overlay)     ; run code, run (also, repls)
        ;;gist              ; interacting with github gists
-       (lookup           ; helps you navigate your code and documentation
+       lookup           ; helps you navigate your code and documentation
         ;;+dictionary      ; enable word definition and thesaurus lookup functionality
-        +devdocs         ; ...on devdocs.io online
-        +docsets)        ; ...or in Dash docsets locally
+        ;; +devdocs         ; ...on devdocs.io online
+        ;; +docsets)        ; ...or in Dash docsets locally
        lsp
        magit             ; a git porcelain for Emacs
        ;;make              ; run make tasks from Emacs
@@ -100,7 +104,8 @@
        ;;upload            ; map local to remote projects via ssh/ftp
 
        :os
-       macos             ; improve compatibility with macOS ;;tty               ; improve the terminal Emacs experience
+       macos             ; improve compatibility with macOS
+       ;;tty               ; improve the terminal Emacs experience
 
        :lang
        ;;agda              ; types of types of types of types...
@@ -141,13 +146,16 @@
        ;;ocaml             ; an objective camel
        (org                ; organize your plain life in plain text
         +journal           ; functions to maintain a simple personal diary / journal
+        ;; +pretty           ; Enables pretty unicode symbols for bullets and priorities, and better syntax highlighting for latex. Keep in mind: this can be expensive. If org becomes too slow, it’d be wise to disable this flag.
         +roam              ; a plain-text personal knowledge management system.
-        +present           ; Emacs for presentations!
+        ;; +present           ; Emacs for presentations!
         +dragndrop)        ; drag & drop files/images into org buffers
        ;;php               ; perl's insecure younger brother
        ;;plantuml          ; diagrams for confusing people more
        ;;purescript        ; javascript, but functional
-       python            ; beautiful is better than ugly
+       (python            ; beautiful is better than ugly
+        +lsp
+        +pyright)
        ;;qt                ; the 'cutest' gui framework ever
        ;;racket            ; a DSL for DSLs
        ;;raku              ; the artist formerly known as perl6
@@ -172,7 +180,7 @@
        ;;(wanderlust +gmail)
 
        :app
-       ;;calendar
+       calendar
        ;;irc               ; how neckbeards socialize
        ;;(rss +org)        ; emacs as an RSS reader
        ;;twitter           ; twitter client https://twitter.com/vnought
