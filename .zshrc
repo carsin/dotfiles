@@ -1,5 +1,4 @@
 fortune ~/.config/fortune/fortunes
-
 # Set up auto GPG signing
 if [ -f ~/.gnupg/.gpg-agent-info ] && [ -n "$(pgrep gpg-agent)" ]; then
     source ~/.gnupg/.gpg-agent-info > /dev/null 2>&1
@@ -8,14 +7,20 @@ else
     eval $(gpg-agent --daemon --write-env-file ~/.gnupg/.gpg-agent-info > /dev/null 2>&1)
 fi
 
-# If opening iTerm, automatically start tmux or connect to existing tmux session
-# if [ $TERM_PROGRAM = iTerm.app ]
-# then
-#     if [ -z "$TMUX" ]
-#     then
-#         tmux attach -t TMUX || tmux new -s TMUX
-#     fi
-# fi
+# let pyenv manage python versions
+if command -v pyenv 1>/dev/null 2>&1; then
+  eval "$(pyenv init -)"
+fi
+
+# if detected, set emacs shell variables so things like doom can find it
+if [ -f "/Applications/Emacs.app/Contents/MacOS/Emacs" ]; then
+  export EMACS="/Applications/Emacs.app/Contents/MacOS/Emacs"
+  alias emacs="$EMACS -nw"
+fi
+
+if [ -f "/Applications/Emacs.app/Contents/MacOS/bin/emacsclient" ]; then
+  alias emacsclient="/Applications/Emacs.app/Contents/MacOS/bin/emacsclient"
+fi
 
 # Append to path
 path+=($HOME/bin:/usr/local/bin:$PATH)
@@ -51,18 +56,9 @@ alias crr="cargo run --release"
 alias killglobal="launchctl unload /Library/LaunchAgents/com.paloaltonetworks.gp.pangp*"
 alias startglobal="launchctl load /Library/LaunchAgents/com.paloaltonetworks.gp.pangp*"
 
-alias calpoly="ssh ckfreedm@unix3.csc.calpoly.edu"
 alias python="python3"
-
-if [ -f "/Applications/Emacs.app/Contents/MacOS/Emacs" ]; then
-  export EMACS="/Applications/Emacs.app/Contents/MacOS/Emacs"
-  alias emacs="$EMACS -nw"
-fi
-
-if [ -f "/Applications/Emacs.app/Contents/MacOS/bin/emacsclient" ]; then
-  alias emacsclient="/Applications/Emacs.app/Contents/MacOS/bin/emacsclient"
-fi
-
+alias calpoly="ssh ckfreedm@unix3.csc.calpoly.edu"
+alias pip="/usr/local/bin/pip3"
 alias open="open ."
 
 export PATH
