@@ -5,7 +5,6 @@
 ;; on the command line, then restart Emacs for the changes to take effect -- or
 ;; use 'M-x doom/reload'.
 
-;; (package! org-super-agenda)
 
 ;; To install SOME-PACKAGE from MELPA, ELPA or emacsmirror:
 ;(package! some-package)
@@ -51,4 +50,4 @@
 ;(unpin! t)
 
 (package! company-tabnine) ; ai powered code completion
-(package! darktooth-theme)
+(package! darktooth-theme) ; theme based off gruvbox
