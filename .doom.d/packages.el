@@ -51,3 +51,4 @@
 
 (package! company-tabnine) ; ai powered code completion
 (package! darktooth-theme) ; theme based off gruvbox
+(package! beacon) ; Highlight the cursor whenever the window scrolls
