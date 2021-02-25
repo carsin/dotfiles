@@ -60,6 +60,7 @@ alias python="python3"
 alias calpoly="ssh ckfreedm@unix3.csc.calpoly.edu"
 alias pip="/usr/local/bin/pip3"
 alias open="open ."
+alias npm="pnpm"
 
 export PATH
 
