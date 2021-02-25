@@ -1,4 +1,5 @@
 ;;; init.el -*- lexical-binding: t; -*-
+(setq comp-speed 2)
 
 ;; NOTE Press 'SPC h d h' (or 'C-h d h' for non-vim users) to access Doom's
 ;;      documentation. There you'll find a "Module Index" link where you'll find
@@ -149,7 +150,7 @@
        ;;nix               ; I hereby declare "nix geht mehr!"
        ;;ocaml             ; an objective camel
        (org                ; organize your plain life in plain text
-        +brain             ; Enables org-brain integration
+        +roam              ; Enables org-roam integration
         +journal           ; Enables org-journal integration
         +noter             ; Enables org-noter integration. Keeps notes in sync with a document
         +dragndrop         ; Enables drag-and-drop support for images and files
