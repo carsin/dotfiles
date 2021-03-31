@@ -55,6 +55,7 @@
 (global-hl-line-mode 0) ; Don't highlight the entire current line the cursor is on
 (beacon-mode 1) ; Highlight the cursor after disorienting cursor movements
 (blink-cursor-mode 1) ; Blink the cursor while idle
+(display-fill-column-indicator-mode 1) ; Blink the cursor while idle
 
 
 ;; Configure org settings
@@ -63,7 +64,7 @@
         (setq org-ellipsis  " ... ")
         (setq org-roam-directory "~/Files/Org/notes")
         (setq org-roam-tag-sources '(prop last-directory))
-        (setq org-roam-db-location "~/Files/Org/notes/roam.db")
+        (setq org-roam-db-location "~/Files/Org/db/roam.db")
     )
 
 (after! rust
