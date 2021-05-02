@@ -62,7 +62,6 @@ Plug 'arzg/vim-rust-syntax-ext'                         " Enhances Rust syntax h
 Plug 'sainnhe/gruvbox-material'
 Plug 'gruvbox-community/gruvbox'
 Plug 'arcticicestudio/nord-vim'
-Plug 'chriskempson/base16-vim'
 
 call plug#end() " Initialize plugin system
 
@@ -123,9 +122,8 @@ set termguicolors
 
 set background=dark
 set t_Co=256
-let base16colorspace=256  " Access colors present in 256 colorspace
 
-colorscheme base16-darktooth
+colorscheme gruvbox-material
 
 set showtabline=2      " Show top tab line
 set so=10              " How many lines from cursor to top / bottom of the screen before scrolling
