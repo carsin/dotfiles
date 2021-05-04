@@ -27,11 +27,11 @@
 (setq evil-split-window-below t) ; New horizontal splits always open below
 (setq +ivy-buffer-preview t) ; Buffer previews in ivy
 (setq scroll-margin 10) ; How many lines from cursor to top / bottom of the screen before scrolling
-(setq doom-font (font-spec :family "Menlo" :size 14))
-(setq doom-variable-pitch-font (font-spec :family "Monaco" :size 10))
+(setq doom-font (font-spec :family "Monaco" :size 16))
+(setq doom-variable-pitch-font (font-spec :family "Monac" :size 16))
 (setq doom-serif-font (font-spec :family "New York" :size 12))
 (setq doom-big-font (font-spec :family "Menlo" :size 20))
-(setq doom-theme 'darktooth)
+(setq doom-theme 'doom-gruvbox)
 
 ;;
 ;; Hooks
