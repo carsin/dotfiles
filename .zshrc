@@ -13,14 +13,14 @@ if command -v pyenv 1>/dev/null 2>&1; then
 fi
 
 # if detected, set emacs shell variables so things like doom can find it
-if [ -f "/Applications/Emacs.app/Contents/MacOS/Emacs" ]; then
-  export EMACS="/Applications/Emacs.app/Contents/MacOS/Emacs"
-  alias emacs="$EMACS -nw"
-fi
+# if [ -f "/Applications/Emacs.app/Contents/MacOS/Emacs" ]; then
+#   export EMACS="/Applications/Emacs.app/Contents/MacOS/Emacs"
+#   alias emacs="$EMACS -nw"
+# fi
 
-if [ -f "/Applications/Emacs.app/Contents/MacOS/bin/emacsclient" ]; then
-  alias emacsclient="/Applications/Emacs.app/Contents/MacOS/bin/emacsclient"
-fi
+# if [ -f "/Applications/Emacs.app/Contents/MacOS/bin/emacsclient" ]; then
+#   alias emacsclient="/Applications/Emacs.app/Contents/MacOS/bin/emacsclient"
+# fi
 
 # Append to path
 path+=($HOME/bin:/usr/local/bin:$PATH)
@@ -64,5 +64,5 @@ alias npm="pnpm"
 
 export PATH
 
-test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+# test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
