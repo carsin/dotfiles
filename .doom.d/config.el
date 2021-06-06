@@ -21,14 +21,14 @@
 (setq display-line-numbers-type t)  ; Enable line numbers
 (setq undo-limit 80000000)                         ; Raise undo-limit to 80Mb
 (setq evil-want-fine-undo t)                       ; By default while in insert all changes are one big blob. Be more granular
-(setq company-idle-delay 0.1)                       ; delay for autocomplete
+(setq company-idle-delay 0.5)                       ; delay for autocomplete
 (setq load-prefer-newer t)          ; Load newest version of file that exists
 (setq evil-vsplit-window-right t) ; New vertical splits always open on the right
 (setq evil-split-window-below t) ; New horizontal splits always open below
 (setq +ivy-buffer-preview t) ; Buffer previews in ivy
 (setq scroll-margin 10) ; How many lines from cursor to top / bottom of the screen before scrolling
 (setq doom-font (font-spec :family "Monaco" :size 16))
-(setq doom-variable-pitch-font (font-spec :family "Monac" :size 16))
+(setq doom-variable-pitch-font (font-spec :family "Monaco" :size 16))
 (setq doom-serif-font (font-spec :family "New York" :size 12))
 (setq doom-big-font (font-spec :family "Menlo" :size 20))
 (setq doom-theme 'doom-gruvbox)
