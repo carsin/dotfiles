@@ -43,7 +43,7 @@ defaults write com.apple.systempreferences NSQuitAlwaysKeepsWindows -bool false
 
 # Improve font rendering
 defaults write -g CGFontRenderingFontSmoothingDisabled -bool NO
-defaults -currentHost write -globalDomain AppleFontSmoothing -int 3
+defaults -currentHost write -globalDomain AppleFontSmoothing -int 2
 
 ###############################################################################
 # Trackpad, mouse, keyboard, Bluetooth accessories, and input                 #
@@ -58,9 +58,9 @@ defaults write .GlobalPreferences com.apple.mouse.scaling -1
 
 # Quicker key repeat
 # 105 ms delay
-defaults write -g InitialKeyRepeat -int 10 
+defaults write -g InitialKeyRepeat -int 10
 # 15 ms key repeat rate
-defaults write -g KeyRepeat -int 3
+defaults write -g KeyRepeat -int 2
 
 # Turn off press and hold for special characters
 defaults write -g ApplePressAndHoldEnabled -bool false
@@ -101,7 +101,7 @@ defaults write com.apple.finder FXPreferredViewStyle -string "Nlsv"
 defaults write com.apple.NetworkBrowser BrowseAllInterfaces -bool true
 
 # Show the ~/Library folder
-chflags nohidden ~/Library 
+chflags nohidden ~/Library
 
 ###############################################################################
 # Safari & WebKit                                                             #
