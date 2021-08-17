@@ -43,7 +43,7 @@ defaults write com.apple.systempreferences NSQuitAlwaysKeepsWindows -bool false
 
 # Improve font rendering
 defaults write -g CGFontRenderingFontSmoothingDisabled -bool NO
-defaults -currentHost write -globalDomain AppleFontSmoothing -int 2
+defaults -currentHost write -globalDomain AppleFontSmoothing -int 3
 
 ###############################################################################
 # Trackpad, mouse, keyboard, Bluetooth accessories, and input                 #
@@ -55,6 +55,15 @@ defaults write com.apple.BluetoothAudioAgent "Apple Bitpool Min (editable)" -int
 
 # Turn off mouse acceleration
 defaults write .GlobalPreferences com.apple.mouse.scaling -1
+
+# Quicker key repeat
+# 105 ms delay
+defaults write -g InitialKeyRepeat -int 8 
+# 15 ms key repeat rate
+defaults write -g KeyRepeat -int 2
+
+# Turn off press and hold for special characters
+defaults write -g ApplePressAndHoldEnabled -bool false
 
 ###############################################################################
 # Finder                                                                      #

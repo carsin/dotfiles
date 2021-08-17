@@ -1,5 +1,6 @@
 fortune ~/.config/fortune/fortunes
 
+
 # Append to path
 path+=($HOME/bin:/usr/local/bin:$PATH)
 # path+=($HOME/Library/Python/3.8/bin)
@@ -21,8 +22,19 @@ RPROMPT='%F{blue}[ %F{red}%D{%L:%M:%S} %D{%p} %F{blue}]%f'
 export GPG_TTY=$(tty)
 
 alias ..="cd .."
+alias ~="cd ~"
 alias vim="nvim"
 alias ls="exa -aF --color=always --sort=type --group-directories-first"
+alias cp="cp -iv"
+alias mv="mv -iv"
+alias rm="rm -v"
+alias bc="bc -ql"
+alias mkdir="mkdir -pv"
+
+alias grep="grep --color=auto"
+alias diff="diff --color=auto"
+
+alias g="git"
 alias config="/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME"
 
 alias cr="cargo run"

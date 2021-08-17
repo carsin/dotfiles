@@ -42,12 +42,10 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}         " Autocomplete
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }     " Fuzzy file finder
 Plug 'junegunn/fzf.vim'                                 " fzf based commands and mappings
 Plug 'justinmk/vim-sneak'                               " Jump to any location specified by two characters
-Plug 'junegunn/goyo.vim'                                " Distraction-free writing mode
 Plug 'tmsvg/pear-tree'                                  " Auto complete pairs sensibly
 Plug 'machakann/vim-highlightedyank'                    " Make the yanked region apparent!
 Plug 'itchyny/lightline.vim'                            " Light and configurable statusline/tabline
 Plug 'mengelbrecht/lightline-bufferline'                " Provides bufferline functionality for lightline
-Plug 'vimwiki/vimwiki'                                  " Personal wiki
 Plug '907th/vim-auto-save'                              " Auto save
 Plug 'qpkorr/vim-bufkill'                               " Keeps split layout intact when closing buffer
 Plug 'airblade/vim-rooter'                              " Automatically sets vim working directory to the project root
@@ -68,16 +66,97 @@ call plug#end() " Initialize plugin system
 " }}}
 " Plugin Settings {{{
 
-source $HOME/.config/nvim/plugins/settings/coc.vim
-source $HOME/.config/nvim/plugins/settings/fzf.vim
-source $HOME/.config/nvim/plugins/settings/goyo.vim
-source $HOME/.config/nvim/plugins/settings/gruvbox-material.vim
-source $HOME/.config/nvim/plugins/settings/gruvbox.vim
-source $HOME/.config/nvim/plugins/settings/lightline.vim
-source $HOME/.config/nvim/plugins/settings/pear-tree.vim
-source $HOME/.config/nvim/plugins/settings/vim-auto-save.vim
-source $HOME/.config/nvim/plugins/settings/vim-highlightedyank.vim
-source $HOME/.config/nvim/plugins/settings/vimwiki.vim
+" CoC {{{
+" Don't load CoC immediately
+augroup LazyLoadCoc
+    autocmd!
+    autocmd InsertEnter * call plug#load('coc.nvim')
+augroup END
+
+" Use tab for trigger completion with characters ahead and navigate.
+inoremap <silent><expr> <TAB> pumvisible() ? "\<C-n>" : <SID>check_back_space() ? "\<TAB>" : coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+function! s:check_back_space() abort
+    let col = col('.') - 1
+    return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+" Use <cr> to confirm completion, `<C-g>u` means break undo chain at current
+" position. Coc only does snippet and additional edit on confirm.
+" <cr> could be remapped by other vim plugin, try `:verbose imap <CR>`.
+if exists('*complete_info')
+    inoremap <expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
+else
+    inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+endif
+
+" Close the preview window when completion is done.
+autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif
+" Disable CoC for certain filetypes
+autocmd BufNew,BufEnter *.md,*.txt execute "silent! CocDisable"
+autocmd BufLeave *.md,*.txt execute "silent! CocEnable"
+" Highlight the symbol and its references when holding the cursor.
+autocmd CursorHold * silent call CocActionAsync('highlight')
+" }}}
+" FZF {{{
+let g:fzf_layout = {'window': { 'width': 0.6, 'height': 0.8}} " Nice FZF Preview window
+
+" Open FZF with bat preview window (syntax highlighting + more)
+command! -bang -nargs=? -complete=dir Files call fzf#vim#files(<q-args>, {'options': ['--layout=reverse', '--preview', '~/.config/nvim/plugins/installed/fzf.vim/bin/preview.sh {}']}, <bang>0)
+" }}}
+" Gruvbox Material {{{
+let g:gruvbox_material_background = 'hard'
+let g:gruvbox_material_statusline_style = 'default'
+let g:gruvbox_material_palette = 'original'
+" }}}
+" Gruvbox {{{
+" let g:gruvbox_contrast_dark = 'hard'
+" }}}
+" Lightline {{{
+let g:lightline#bufferline#show_number = 2
+let g:lightline#bufferline#unnamed = '[Unnamed]'
+let g:lightline#bufferline#filename_modifier = ':t'
+let g:lightline#bufferline#smart_path = 1
+
+let g:lightline = {
+      \ 'colorscheme': 'gruvbox_material',
+      \ 'tabline': {
+      \   'left': [ ['buffers'] ],
+      \   'right': [ [] ]
+      \ },
+      \ 'active': {
+      \   'left': [ [ 'mode', 'paste' ],
+      \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ],
+      \   'right': [['lineinfo'],
+      \             ['percent'],
+      \             [ 'fileformat', 'fileencoding', 'filetype'] ]
+      \ },
+      \ 'component_function': {
+      \   'gitbranch': 'FugitiveHead'
+      \ },
+      \ 'component_expand': {
+      \   'buffers': 'lightline#bufferline#buffers'
+      \ },
+      \ 'component_type': {
+      \   'buffers': 'tabsel'
+      \ }
+      \ }
+" }}}
+" Pear tree {{{
+" Make pair expansion not weird
+let g:pear_tree_repeatable_expand = 0 
+" Make pear tree smart
+let g:pear_tree_smart_backspace   = 1
+let g:pear_tree_smart_closers     = 1
+let g:pear_tree_smart_openers     = 1
+" }}}
+" Auto save {{{
+let g:auto_save = 1
+let g:auto_save_silent = 1
+" }}}
+" Highlighted yank {{{
+let g:highlightedyank_highlight_duration = 150
+" }}}
 
 " }}}
 " Editing {{{
@@ -153,9 +232,6 @@ augroup numbertoggle
     autocmd BufLeave,FocusLost,InsertEnter * set nornu
 augroup END
 
-" Overrides vimwiki and forces use of markdown syntax highlighting on markdown vimwiki files
-au BufEnter *.md setl syntax=markdown
-
 " }}}
 " Binds & Mappings {{{
 
@@ -228,11 +304,6 @@ nnoremap <left> :bprevious<CR>
 " Split binds
 nnoremap <leader>hs :split<CR>
 nnoremap <leader>vs :vsplit<CR>
-
-" Vimwiki: Add keybinds for opening a link into split
-nmap <silent> <leader>w- <Plug>VimwikiSplitLink
-nmap <silent> <leader>w\| <Plug>VimwikiVSplitLink
-nmap <silent> <leader>wc :VimwikiTOC<CR>
 
 " Close window
 nnoremap <leader>c :close<CR>
