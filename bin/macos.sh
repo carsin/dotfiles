@@ -58,9 +58,9 @@ defaults write .GlobalPreferences com.apple.mouse.scaling -1
 
 # Quicker key repeat
 # 105 ms delay
-defaults write -g InitialKeyRepeat -int 8 
+defaults write -g InitialKeyRepeat -int 10 
 # 15 ms key repeat rate
-defaults write -g KeyRepeat -int 2
+defaults write -g KeyRepeat -int 3
 
 # Turn off press and hold for special characters
 defaults write -g ApplePressAndHoldEnabled -bool false
