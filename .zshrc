@@ -62,7 +62,8 @@ alias pip="/usr/local/bin/pip3"
 alias open="open ."
 alias npm="pnpm"
 
+eval "$(pyenv init -)"
+
 export PATH
 
 # test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
-
