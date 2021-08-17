@@ -1,11 +1,74 @@
+# run fortune at startup as welcome message
 fortune ~/.config/fortune/fortunes
 
+# History in cache directory:
+HISTSIZE=10000000
+SAVEHIST=10000000
+HISTFILE=~/.cache/zsh/history
 
-# Append to path
+# Basic auto/tab complete:
+autoload -U compinit
+zstyle ':completion:*' menu select
+zmodload zsh/complist
+compinit
+_comp_options+=(globdots)		# Include hidden files.
+
+# vi mode
+bindkey -v
+export KEYTIMEOUT=10
+
+# Use vim keys in tab complete menu:
+bindkey -M menuselect 'h' vi-backward-char
+bindkey -M menuselect 'k' vi-up-line-or-history
+bindkey -M menuselect 'l' vi-forward-char
+bindkey -M menuselect 'j' vi-down-line-or-history
+bindkey -v '^?' backward-delete-char
+# jk/kj as escape
+bindkey -M viins 'jk' vi-cmd-mode  # @todo - THIS DOES NOT WORK?
+bindkey -M viins 'kj' vi-cmd-mode  # @todo - THIS DOES NOT WORK?
+
+# Change cursor shape for different vi modes.
+function zle-keymap-select () {
+    case $KEYMAP in
+        vicmd) echo -ne '\e[1 q';;      # block
+        viins|main) echo -ne '\e[5 q';; # beam
+    esac
+}
+zle -N zle-keymap-select
+zle-line-init() {
+    zle -K viins # initiate `vi insert` as keymap (can be removed if `bindkey -V` has been set elsewhere)
+    echo -ne "\e[5 q"
+}
+zle -N zle-line-init
+echo -ne '\e[5 q' # Use beam shape cursor on startup.
+preexec() { echo -ne '\e[5 q' ;} # Use beam shape cursor for each new prompt.
+
+# Use lf to switch directories and bind it to ctrl-o
+lfcd () {
+    tmp="$(mktemp)"
+    lf -last-dir-path="$tmp" "$@"
+    if [ -f "$tmp" ]; then
+        dir="$(cat "$tmp")"
+        rm -f "$tmp" >/dev/null
+        [ -d "$dir" ] && [ "$dir" != "$(pwd)" ] && cd "$dir"
+    fi
+}
+bindkey -s '^o' 'lfcd\n'
+
+bindkey -s '^a' 'bc -lq\n'
+
+bindkey -s '^f' 'cd "$(dirname "$(fzf)")"\n'
+
+bindkey '^[[P' delete-char
+
+# Edit line in vim with ctrl-e:
+autoload edit-command-line; zle -N edit-command-line
+bindkey '^e' edit-command-line
+
+# Append bin dirs to path
 path+=($HOME/bin:/usr/local/bin:$PATH)
 # path+=($HOME/Library/Python/3.8/bin)
 path+=("/usr/local/sbin:$PATH")
-# path+=($HOME/.emacs.d/bin)
 # path+=(/Library/Frameworks/Python.framework/Versions/3.8/bin:$PATH)
 
 # Left side
@@ -13,13 +76,6 @@ PROMPT="%B%{$fg[red]%}%n%b%{$reset_color%}@%{$fg[magenta]%}%m %{$fg[blue]%}[%{$f
 # Right side
 # PROMPT='$(git_prompt_info) %F{blue}[ %F{red}%D{%L:%M:%S} %D{%p} %F{blue}]%f'
 RPROMPT='%F{blue}[ %F{red}%D{%L:%M:%S} %D{%p} %F{blue}]%f'
-
-# ZSH_THEME_GIT_PROMPT_PREFIX="%F{yellow}"
-# ZSH_THEME_GIT_PROMPT_SUFFIX="%f"
-# ZSH_THEME_GIT_PROMPT_DIRTY=" %F{red}*%f"
-# ZSH_THEME_GIT_PROMPT_CLEAN=""
-
-export GPG_TTY=$(tty)
 
 alias ..="cd .."
 alias ~="cd ~"
@@ -47,4 +103,6 @@ alias python="python3"
 alias calpoly="ssh ckfreedm@unix3.csc.calpoly.edu"
 alias open="open ."
 
+export FZF_DEFAULT_COMMAND='rg --files --hidden -g "!.git" '
+export GPG_TTY=$(tty)
 export PATH
