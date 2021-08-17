@@ -13,6 +13,7 @@ set nocompatible
 filetype plugin indent on " Load plugins according to detected filetype.
 syntax on                 " Enable syntax highlighting.
 
+set title                 " report title to terminal
 set hidden                " hide buffers even if they're edited
 set history=500           " How many lines of history vim has to remember
 
@@ -33,9 +34,12 @@ set noswapfile
 set autoread
 au CursorHold * checktime
 
+" Save file as sudo on files that require root permission
+cnoremap w!! execute 'silent! write !sudo tee % >/dev/null' <bar> edit!
+
 " }}}
 " Plugins {{{
-call plug#begin('~/.config/nvim/plugins/installed') " Specify a directory for plugins
+call plug#begin('~/.config/nvim/plugins/installed')     " Specify a directory for plugins
 
 Plug 'tpope/vim-commentary'                             " Simply toggle comments with gc
 Plug 'neoclide/coc.nvim', {'branch': 'release'}         " Autocomplete
@@ -99,7 +103,7 @@ autocmd BufLeave *.md,*.txt execute "silent! CocEnable"
 autocmd CursorHold * silent call CocActionAsync('highlight')
 " }}}
 " FZF {{{
-let g:fzf_layout = {'window': { 'width': 0.6, 'height': 0.8}} " Nice FZF Preview window
+let g:fzf_layout = {'window': { 'width': 0.8, 'height': 0.7}} " Nice FZF Preview window
 
 " Open FZF with bat preview window (syntax highlighting + more)
 command! -bang -nargs=? -complete=dir Files call fzf#vim#files(<q-args>, {'options': ['--layout=reverse', '--preview', '~/.config/nvim/plugins/installed/fzf.vim/bin/preview.sh {}']}, <bang>0)
@@ -144,7 +148,7 @@ let g:lightline = {
 " }}}
 " Pear tree {{{
 " Make pair expansion not weird
-let g:pear_tree_repeatable_expand = 0 
+let g:pear_tree_repeatable_expand = 0
 " Make pear tree smart
 let g:pear_tree_smart_backspace   = 1
 let g:pear_tree_smart_closers     = 1
@@ -177,13 +181,11 @@ set clipboard=unnamedplus         " yank to macos clipboard
 set mousefocus                    " Focus follows mouse
 set timeout                       " Do time out on mappings and others
 set ttimeoutlen=0                 " Make escape timeout faster
-set timeoutlen=1000               " Wait before timing out a mapping
+set timeoutlen=300                " Wait before timing out a mapping
 set wrapscan                      " Searches wrap around end-of-file.
 set report=0                      " Always report changed lines.
-
-" Line break on a lot of characters
-set lbr
-set tw=5000000
+set lbr                           " Break at end of line
+set tw=80                         " Lines should be 80 chars
 
 " Configure backspace so it acts as it should act
 set backspace=eol,start,indent
@@ -191,7 +193,15 @@ set whichwrap+=<,>,h,l
 
 " Enable persistent undo so that undo history persists across vim sessions
 set undofile
-set undodir=~/.config/nvim/undo
+set undodir=~/.cache/nvim/undo
+
+" Disables automatic commenting on newline:
+autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
+
+" Delete trailing whitespace and newlines on save
+autocmd BufWritePre * %s/\s\+$//e
+autocmd BufWritePre * %s/\n\+\%$//e
+autocmd BufWritePre *.[ch] %s/\%$/\r/e
 
 " }}}
 " UI {{{
@@ -224,6 +234,7 @@ set splitright         " Always horizontally split to the right
 set fillchars+=vert:│  " Change vertical split character to solid line instead of line with gaps
 set shortmess+=c       " Don't pass messages to ins-completion-menu.
 set formatoptions-=cro " Disable auto insert comment
+set colorcolumn=80     " 80 char column guide
 
 " Only show relative numbers in focused normal mode
 augroup numbertoggle
@@ -259,8 +270,8 @@ vnoremap J }
 nnoremap K {
 vnoremap K {
 
-" Start fzf with ctrl+p
-nnoremap <leader>f :Files<CR>
+" Start fzf
+nnoremap <C-f> :Files<CR>
 
 " reload vim configuration
 nnoremap <leader>r :source ~/.config/nvim/init.vim<CR>
@@ -268,8 +279,9 @@ nnoremap <leader>r :source ~/.config/nvim/init.vim<CR>
  " clear search
 nnoremap <silent><leader><space> :let @/ = ""<CR>
 
-" jk is escape
+" jk/kj is escape
 inoremap jk <ESC>
+inoremap kj <ESC>
 
 " Remap VIM 0 to first non-blank character
 map 0 ^
@@ -279,9 +291,6 @@ nmap <F1> <nop>
 
 " Toggle pastemode
 map <silent> <C-p> :set invpaste <CR>
-
-" Toggle goyo
-nnoremap <silent><leader>z :Goyo<cr>
 
 " Toggle Spellcheck
 noremap <F3> :setlocal spell! spelllang=en_us<CR>
@@ -294,11 +303,11 @@ nnoremap <leader>it "=strftime("%I:%M %p")<CR>p
 nnoremap <leader>T :enew<cr>
 
 " Move to the next buffer
-nnoremap <leader>m :bnext<CR>
+nnoremap <leader>l :bnext<CR>
 nnoremap <right> :bnext<CR>
 
 " Move to the previous buffer
-nnoremap <leader>n :bprevious<CR>
+nnoremap <leader>h :bprevious<CR>
 nnoremap <left> :bprevious<CR>
 
 " Split binds
@@ -328,19 +337,10 @@ nnoremap <leader>gg :BCommits!<CR>
 nmap // :BLines!<CR>
 
 " Open coc-explorer
-nnoremap <leader>e :CocCommand explorer<CR>
+" nnoremap <leader>e :CocCommand explorer<CR>
 
 " Quit everything with :q
 cmap q qa
-
-fun! StripTrailingWhitespace()
-    let l:save = winsaveview()          " Save current window view
-    silent keeppatterns %s/\s\+$//e     " Strip trailing whitespace
-    call winrestview(l:save)            " Restore window view
-    echo "Stripped trailing whitespace"
-endfun
-
-cmap stw call StripTrailingWhitespace()
 
 " Toggle folds in normal mode with tab
 nnoremap <Tab> za
@@ -351,4 +351,20 @@ map F <Plug>Sneak_F
 map t <Plug>Sneak_t
 map T <Plug>Sneak_T
 
+" Perform dot commands over visual blocks:
+vnoremap . :normal .<CR>
+
+" Replace ex mode with gq (shorten long line)
+map Q gq
+
+" Replace all on S
+nnoremap S :%s//g<Left><Left>
+
+" Perform dot commands over visual blocks:
+vnoremap . :normal .<CR>
+
+" Turns off highlighting on the bits of code that are changed, so the line that is changed is highlighted but the actual text that has changed stands out on the line and is readable.
+if &diff
+    highlight! link DiffText MatchParen
+endif
 " }}}
