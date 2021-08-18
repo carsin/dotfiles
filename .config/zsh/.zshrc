@@ -1,6 +1,9 @@
 # run fortune at startup as welcome message
 fortune ~/.config/fortune/fortunes
 
+# Import colorscheme from wal asynchronously
+(cat ~/.cache/wal/sequences &)
+
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.config/zsh/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
@@ -15,9 +18,6 @@ setopt interactive_comments
 # import functions
 source "$ZDOTDIR/zsh-functions"
 
-# Import colorscheme from wal asynchronously
-(cat ~/.cache/wal/sequences &)
-
 # Syntax highlighting
 source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
@@ -29,6 +29,7 @@ HISTFILE=~/.cache/zsh/history
 # Plugins
 zsh_add_plugin "zsh-users/zsh-autosuggestions"
 zsh_add_plugin "hlissner/zsh-autopair"
+zsh_add_plugin "agkozak/zsh-z"
 
 # completions
 autoload -Uz compinit
@@ -37,6 +38,9 @@ zstyle ':completion:*' menu select
 zmodload zsh/complist
 # compinit
 _comp_options+=(globdots)		# Include hidden files.
+
+# Don't show inverted % when zsh inserts a newline
+PROMPT_EOL_MARK=''
 
 # vi mode
 bindkey -v
@@ -61,8 +65,9 @@ lfcd () {
 bindkey -s '^f' 'cd "$(dirname "$(fzf)")"\n'
 bindkey -s '^o' 'lfcd\n'
 
-# Don't show inverted % when zsh inserts a newline
-PROMPT_EOL_MARK=''
+# shift-tab to accept suggestion
+bindkey '<Shift-Tab>' autosuggest-accept
+
 
 # Edit line in vim with ctrl-e:
 autoload edit-command-line; zle -N edit-command-line
@@ -108,6 +113,8 @@ alias w3="wal --backend colorthief -i ~/files/photos/wallpapers/wal/"
 # load p10k
 source /usr/local/opt/powerlevel10k/powerlevel10k.zsh-theme
 [[ ! -f ~/.config/zsh/.p10k.zsh ]] || source ~/.config/zsh/.p10k.zsh
+
+kitty @ set-colors ~/.cache/wal/colors-kitty.conf
 
 export FZF_DEFAULT_COMMAND='rg --files --hidden -g "!.git" '
 export GPG_TTY=$TTY
