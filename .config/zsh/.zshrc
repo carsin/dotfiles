@@ -8,11 +8,15 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
+# Useful options & defaults
+setopt autocd extendedglob nomatch menucomplete
+setopt interactive_comments
+
+# import functions
+source "$ZDOTDIR/zsh-functions"
+
 # Import colorscheme from wal asynchronously
 (cat ~/.cache/wal/sequences &)
-
-# Add wal support for TTYs
-source ~/.cache/wal/colors-tty.sh
 
 # Syntax highlighting
 source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
@@ -22,11 +26,16 @@ HISTSIZE=10000000
 SAVEHIST=10000000
 HISTFILE=~/.cache/zsh/history
 
-# Basic auto/tab complete:
-autoload -U compinit
+# Plugins
+zsh_add_plugin "zsh-users/zsh-autosuggestions"
+zsh_add_plugin "hlissner/zsh-autopair"
+
+# completions
+autoload -Uz compinit
 zstyle ':completion:*' menu select
+# zstyle ':completion::complete:lsof:*' menu yes select
 zmodload zsh/complist
-compinit
+# compinit
 _comp_options+=(globdots)		# Include hidden files.
 
 # vi mode
@@ -66,14 +75,6 @@ path+=("/usr/local/sbin:$PATH")
 path+=("/Users/carson/Library/Python/3.9/bin")
 # path+=(/Library/Frameworks/Python.framework/Versions/3.8/bin:$PATH)
 
-# Left side
-# PROMPT="%B%{$fg[red]%}%n%b%{$reset_color%}@%{$fg[magenta]%}%m %{$fg[blue]%}[%{$fg[blue]%}%B %~ %b%{$fg[blue]%}]  %f$ "
-# Right side
-# PROMPT='$(git_prompt_info) %F{blue}[ %F{red}%D{%L:%M:%S} %D{%p} %F{blue}]%f'
-# RPROMPT='%F{blue}[ %F{red}%D{%L:%M:%S} %D{%p} %F{blue}]%f'
-
-source /usr/local/opt/powerlevel10k/powerlevel10k.zsh-theme
-
 alias ..="cd .."
 alias ~="cd ~"
 alias vim="nvim"
@@ -104,7 +105,8 @@ alias w1="wal --backend haishoku -i ~/files/photos/wallpapers/wal/"
 alias w2="wal --backend colorz -i ~/files/photos/wallpapers/wal/"
 alias w3="wal --backend colorthief -i ~/files/photos/wallpapers/wal/"
 
-# Load p10k config
+# load p10k
+source /usr/local/opt/powerlevel10k/powerlevel10k.zsh-theme
 [[ ! -f ~/.config/zsh/.p10k.zsh ]] || source ~/.config/zsh/.p10k.zsh
 
 export FZF_DEFAULT_COMMAND='rg --files --hidden -g "!.git" '
