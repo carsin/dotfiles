@@ -52,6 +52,9 @@ lfcd () {
 bindkey -s '^f' 'cd "$(dirname "$(fzf)")"\n'
 bindkey -s '^o' 'lfcd\n'
 
+# Don't show inverted % when zsh inserts a newline
+PROMPT_EOL_MARK=''
+
 # Edit line in vim with ctrl-e:
 autoload edit-command-line; zle -N edit-command-line
 bindkey '^e' edit-command-line
