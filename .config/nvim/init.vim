@@ -64,6 +64,7 @@ Plug 'arzg/vim-rust-syntax-ext'                         " Enhances Rust syntax h
 Plug 'sainnhe/gruvbox-material'
 Plug 'gruvbox-community/gruvbox'
 Plug 'arcticicestudio/nord-vim'
+Plug 'dylanaraps/wal.vim'
 
 call plug#end() " Initialize plugin system
 
@@ -207,15 +208,15 @@ autocmd BufWritePre *.[ch] %s/\%$/\r/e
 " UI {{{
 
 " Enable true color
-set termguicolors
+" set termguicolors // disabled for wal
 
 set background=dark
 set t_Co=256
 
-colorscheme gruvbox-material
+colorscheme wal
 
 set showtabline=2      " Show top tab line
-set so=10              " How many lines from cursor to top / bottom of the screen before scrolling
+set so=5               " How many lines from cursor to top / bottom of the screen before scrolling
 set number             " file line numbering
 set showcmd            " show last entered command
 set wildmenu           " visual auto complete for command menu
@@ -265,10 +266,10 @@ nnoremap <expr> j v:count ? (v:count > 5 ? "m'" . v:count : '') . 'j' : 'gj'
 nnoremap <expr> k v:count ? (v:count > 5 ? "m'" . v:count : '') . 'k' : 'gk'
 
 " More convenient
-nnoremap J }
-vnoremap J }
-nnoremap K {
-vnoremap K {
+" nnoremap J }
+" vnoremap J }
+" nnoremap K {
+" vnoremap K {
 
 " Start fzf
 nnoremap <C-f> :Files<CR>
@@ -363,8 +364,26 @@ nnoremap S :%s//g<Left><Left>
 " Perform dot commands over visual blocks:
 vnoremap . :normal .<CR>
 
-" Turns off highlighting on the bits of code that are changed, so the line that is changed is highlighted but the actual text that has changed stands out on the line and is readable.
-if &diff
-    highlight! link DiffText MatchParen
-endif
+" Don't yank <CR>
+nnoremap Y yg_
+
+" Center cursor when doing jumpy motions
+nnoremap n nzzzv
+nnoremap N Nzzzv
+nnoremap J mzJ`z
+
+" Add undo break points when inserting punctuation
+inoremap , ,<c-g>u
+inoremap . .<c-g>u
+inoremap [ [<c-g>u
+inoremap { {<c-g>u
+inoremap ! !<c-g>u
+inoremap ? ?<c-g>u
+
+" Intuitive text movement
+vnoremap J :m '>+1<CR>gv=gv
+vnoremap K :m '<-2<CR>gv=gv
+inoremap <C-j> <esc>:m .+1<CR>==
+inoremap <C-k> <esc>:m .-2<CR>==
+
 " }}}
