@@ -60,6 +60,7 @@ bindkey '^e' edit-command-line
 path+=($HOME/bin:/usr/local/bin:$PATH)
 # path+=($HOME/Library/Python/3.8/bin)
 path+=("/usr/local/sbin:$PATH")
+path+=("/Users/carson/Library/Python/3.9/bin")
 # path+=(/Library/Frameworks/Python.framework/Versions/3.8/bin:$PATH)
 
 # Left side
@@ -94,6 +95,11 @@ alias calpoly="ssh ckfreedm@unix3.csc.calpoly.edu"
 alias open="open ."
 
 alias sp="spt"
+
+alias w="wal -i ~/files/photos/wallpapers/wal/"
+alias w1="wal --backend haishoku -i ~/files/photos/wallpapers/wal/"
+alias w2="wal --backend colorz -i ~/files/photos/wallpapers/wal/"
+alias w3="wal --backend colorthief -i ~/files/photos/wallpapers/wal/"
 
 # Load p10k config
 [[ ! -f ~/.config/zsh/.p10k.zsh ]] || source ~/.config/zsh/.p10k.zsh

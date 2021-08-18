@@ -124,7 +124,7 @@ let g:lightline#bufferline#filename_modifier = ':t'
 let g:lightline#bufferline#smart_path = 1
 
 let g:lightline = {
-      \ 'colorscheme': 'gruvbox_material',
+      \ 'colorscheme': 'wal',
       \ 'tabline': {
       \   'left': [ ['buffers'] ],
       \   'right': [ [] ]
@@ -235,7 +235,7 @@ set splitright         " Always horizontally split to the right
 set fillchars+=vert:│  " Change vertical split character to solid line instead of line with gaps
 set shortmess+=c       " Don't pass messages to ins-completion-menu.
 set formatoptions-=cro " Disable auto insert comment
-set colorcolumn=80     " 80 char column guide
+" set colorcolumn=80     " 80 char column guide
 
 " Only show relative numbers in focused normal mode
 augroup numbertoggle
