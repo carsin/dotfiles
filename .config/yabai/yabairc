@@ -21,8 +21,8 @@ yabai -m config mouse_drop_action            swap
 
 # General space settings
 yabai -m config layout                       bsp
-yabai -m config top_padding                  31
-yabai -m config bottom_padding               5
+yabai -m config top_padding                  5
+yabai -m config bottom_padding               31
 yabai -m config left_padding                 5
 yabai -m config right_padding                5
 yabai -m config window_gap                   5
@@ -50,3 +50,7 @@ CFORE=$(echo $foreground | sed 's/#//')
 CACTV=$(echo $color3 | sed 's/#//')
 CNORM=$(echo $color1 | sed 's/#//')
 CINSE=$(echo $foreground | sed 's/#//')
+
+yabai -m config active_window_border_color   0xff$CACTV
+yabai -m config normal_window_border_color   0xff$CNORM
+yabai -m config insert_window_border_color   0xff$CINSE

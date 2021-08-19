@@ -44,9 +44,9 @@ ctrl + alt - space : \
 alt - f         : yabai -m window --toggle zoom-fullscreen
 shift + alt - f : yabai -m window --toggle native-fullscreen
 
-# create and destroy spaces with n/N
+# create and destroy spaces with n/m
 alt - n : yabai -m space --create
-alt + shift - n : yabai -m space --destroy
+alt - m : yabai -m space --destroy
 
 # Switch workspaces
 alt - 1 : yabai -m space --focus 1

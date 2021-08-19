@@ -8,12 +8,12 @@ CACTV=$(echo $color3 | sed 's/#//')
 CNORM=$(echo $color1 | sed 's/#//')
 CINSE=$(echo $foreground | sed 's/#//')
 
-spacebar -m config background_color     0x96$CBACK
-spacebar -m config foreground_color     0xff$CFORE
-spacebar -m config space_icon_color     0xff$CACTV
-spacebar -m config power_icon_color     0xff$CFORE
-spacebar -m config battery_icon_color   0xff$CFORE
-spacebar -m config dnd_icon_color       0xff$CFORE
-spacebar -m config clock_icon_color     0xff$CFORE
+spacebar -m config background_color     0xAF$CBACK
+spacebar -m config foreground_color     0xC8$CFORE
+spacebar -m config space_icon_color     0xC8$CACTV
+spacebar -m config power_icon_color     0xC8$CFORE
+spacebar -m config battery_icon_color   0xC8$CFORE
+spacebar -m config dnd_icon_color       0xC8$CFORE
+spacebar -m config clock_icon_color     0xC8$CFORE
 
 echo "spacebar: colors loaded"
