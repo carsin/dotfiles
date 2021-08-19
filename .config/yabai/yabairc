@@ -1,41 +1,33 @@
 # Load scripting addition
 sudo yabai --load-sa
 yabai -m signal --add event=dock_did_restart action="sudo yabai --load-sa"
+
 # global settings
 yabai -m config mouse_follows_focus          off
 yabai -m config focus_follows_mouse          off
 yabai -m config window_placement             second_child
-yabai -m config window_topmost               off
-yabai -m config window_shadow                on
-yabai -m config window_opacity               off
+yabai -m config window_topmost               on # floating windows above all
+yabai -m config window_shadow                float
+yabai -m config window_opacity               on
 yabai -m config window_opacity_duration      0.0
 yabai -m config active_window_opacity        1.0
-yabai -m config normal_window_opacity        0.90
-yabai -m config split_ratio                  0.50
+yabai -m config normal_window_opacity        0.9
+yabai -m config split_ratio                  0.5
 yabai -m config auto_balance                 on
 yabai -m config mouse_modifier               fn
 yabai -m config mouse_action1                move
 yabai -m config mouse_action2                resize
 yabai -m config mouse_drop_action            swap
 
-# general space settings
+# General space settings
 yabai -m config layout                       bsp
-yabai -m config top_padding                  6
-yabai -m config bottom_padding               6
-yabai -m config left_padding                 6
-yabai -m config right_padding                6
-yabai -m config window_gap                   6
+yabai -m config top_padding                  31
+yabai -m config bottom_padding               5
+yabai -m config left_padding                 5
+yabai -m config right_padding                5
+yabai -m config window_gap                   5
 
-# wal settings
-source ~/.cache/wal/colors.sh # pywal scheme - update if needed
-
-# yabai template colours
-CBACK=$(echo $background | sed 's/#//')
-CFORE=$(echo $foreground | sed 's/#//')
-CACTV=$(echo $color3 | sed 's/#//')
-CNORM=$(echo $color1 | sed 's/#//')
-CINSE=$(echo $foreground | sed 's/#//')
-
+# Application management
 yabai -m rule --add label="Finder" app="^Finder$" title="(Co(py|nnect)|Move|Info|Pref)" manage=off
 yabai -m rule --add label="Safari" app="^Safari$" title="^(General|(Tab|Password|Website|Extension)s|AutoFill|Se(arch|curity)|Privacy|Advance)$" manage=off
 yabai -m rule --add label="System Preferences" app="^System Preferences$" title=".*" manage=off
@@ -48,14 +40,13 @@ yabai -m rule --add label="Software Update" title="Software Update" manage=off
 yabai -m rule --add label="About This Mac" app="System Information" title="About This Mac" manage=off
 yabai -m rule --add app='Alfred Preferences' manage=off
 yabai -m rule --add app='BitWarden' manage=off
-yabai -m rule --add app='VIA' manage=off
 
-# yabai -m config status_bar                   on
-# yabai -m config status_bar_background_color  0xff$CBACK
-# yabai -m config status_bar_foreground_color  0xff$CFORE
+# wal settings
+source ~/.cache/wal/colors.sh # pywal scheme - update if needed
 
-# yabai -m config window_border                on
-# yabai -m config window_border_width          2
-# yabai -m config active_window_border_color   0xff$CACTV
-# yabai -m config normal_window_border_color   0xff$CNORM
-# yabai -m config insert_window_border_color   0xff$CINSE
+# yabai template colours
+CBACK=$(echo $background | sed 's/#//')
+CFORE=$(echo $foreground | sed 's/#//')
+CACTV=$(echo $color3 | sed 's/#//')
+CNORM=$(echo $color1 | sed 's/#//')
+CINSE=$(echo $foreground | sed 's/#//')

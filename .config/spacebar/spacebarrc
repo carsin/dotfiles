@@ -1,0 +1,26 @@
+#!/usr/bin/env sh
+
+spacebar -m config position             top
+spacebar -m config height               26
+spacebar -m config title                on
+spacebar -m config spaces               on
+spacebar -m config clock                on
+spacebar -m config power                on
+spacebar -m config padding_left         10
+spacebar -m config padding_right        10
+spacebar -m config spacing_left         25
+spacebar -m config spacing_right        25
+spacebar -m config text_font            "Tamzen:Medium:14.0"
+spacebar -m config icon_font            "Tamzen Nerd Font:Medium:16.0"
+spacebar -m config power_icon_strip      
+spacebar -m config space_icon_strip     I II III IV V VI VII VIII IX X
+spacebar -m config space_icon           
+spacebar -m config clock_icon           
+spacebar -m config dnd_icon             望
+spacebar -m config clock_format         "%a %b %d,%l:%M:%S %p"
+spacebar -m config right_shell          off
+spacebar -m config right_shell_icon     
+spacebar -m config right_shell_command  "whoami"
+
+source ~/.config/spacebar/spacebarcolors
+echo "spacebar configuration loaded.."

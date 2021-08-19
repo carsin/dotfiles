@@ -9,10 +9,15 @@ alt - k : yabai -m window --focus north || yabai -m display --focus north
 alt - l : yabai -m window --focus east || yabai -m display --focus east
 
 # Move window
-alt + shift - j : yabai -m window --swap west || $(yabai -m window --display west; yabai -m display --focus west)
+alt + shift - h : yabai -m window --swap west || $(yabai -m window --display west; \
+                                                   yabai -m display --focus west; \
+                                                   yabai -m window --warp last)
+
 alt + shift - j : yabai -m window --swap south || $(yabai -m window --display south; yabai -m display --focus south)
 alt + shift - k : yabai -m window --swap north || $(yabai -m window --display north; yabai -m display --focus north)
-alt + shift - j : yabai -m window --swap east || $(yabai -m window --display east; yabai -m display --focus east)
+alt + shift - l : yabai -m window --swap east || $(yabai -m window --display east; \
+                                                   yabai -m display --focus east; \
+                                                   yabai -m window --warp last)
 
 # Close current window
 alt - q : $(yabai -m window $(yabai -m query --windows --window | jq -re ".id") --close)
@@ -28,7 +33,7 @@ lctrl + alt - l : yabai -m window --resize right:50:0; yabai -m window --resize 
 cmd + alt - e : yabai -m space --balance
 
 # Enable / Disable gaps in current workspace
-cmd + alt - g : yabai -m space --toggle padding; yabai -m space --toggle gap
+lctrl + alt - g : yabai -m space --toggle padding; yabai -m space --toggle gap
 
 # Float / Unfloat window
 ctrl + alt - space : \

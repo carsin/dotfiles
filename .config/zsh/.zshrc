@@ -71,7 +71,6 @@ bindkey -s '^o' 'lfcd\n'
 # shift-tab to accept suggestion
 bindkey '<Shift-Tab>' autosuggest-accept
 
-
 # Edit line in vim with ctrl-e:
 autoload edit-command-line; zle -N edit-command-line
 bindkey '^e' edit-command-line
@@ -83,6 +82,7 @@ path+=("/usr/local/sbin:$PATH")
 path+=("/Users/carson/Library/Python/3.9/bin")
 # path+=(/Library/Frameworks/Python.framework/Versions/3.8/bin:$PATH)
 
+# TODO: seperate into zsh aliases file
 alias ..="cd .."
 alias ~="cd ~"
 alias vim="nvim"
@@ -108,10 +108,10 @@ alias open="open ."
 
 alias sp="spt"
 
-alias w="wal -i ~/files/photos/wallpapers/wal/"
-alias w1="wal --backend haishoku -i ~/files/photos/wallpapers/wal/"
-alias w2="wal --backend colorz -i ~/files/photos/wallpapers/wal/"
-alias w3="wal --backend colorthief -i ~/files/photos/wallpapers/wal/"
+alias w="wal -i ~/files/photos/wallpapers/wal/ && source ~/.config/spacebar/spacebarcolors"
+alias w1="wal --backend haishoku -i ~/files/photos/wallpapers/wal/ && source ~/.config/spacebar/spacebarcolors"
+alias w2="wal --backend colorz -i ~/files/photos/wallpapers/wal/ && source ~/.config/spacebar/spacebarcolors"
+alias w3="wal --backend colorthief -i ~/files/photos/wallpapers/wal/ && source ~/.config/spacebar/spacebarcolors"
 
 # load p10k
 source /usr/local/opt/powerlevel10k/powerlevel10k.zsh-theme
