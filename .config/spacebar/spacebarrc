@@ -17,7 +17,7 @@ spacebar -m config space_icon_strip     I II III IV V VI VII VIII IX X
 spacebar -m config space_icon           
 spacebar -m config clock_icon           
 spacebar -m config dnd_icon             望
-spacebar -m config clock_format         "%a %b %d,%l:%M:%S %p"
+spacebar -m config clock_format         "%a %b %d, %H:%M:%S"
 spacebar -m config right_shell          off
 spacebar -m config right_shell_icon     
 spacebar -m config right_shell_command  "whoami"

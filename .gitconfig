@@ -19,3 +19,18 @@
 [mergetool "nvimdiff"]
 	cmd = nvim -d \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
 	trustExitCode = true
+[color]
+    ui = auto
+[alias]
+    a = add
+    rm = rm -r
+    d = diff
+    co = checkout
+    c = commit
+    cm = commit -m
+    ca = commit -a
+    cam = commit -a -m
+    p = push origin
+    pl = pull origin
+    s = status
+    st = status

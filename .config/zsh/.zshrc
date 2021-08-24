@@ -80,6 +80,7 @@ path+=($HOME/bin:/usr/local/bin:$PATH)
 # path+=($HOME/Library/Python/3.8/bin)
 path+=("/usr/local/sbin:$PATH")
 path+=("/Users/carson/Library/Python/3.9/bin")
+path+=("/usr/local/opt/llvm/bin/")
 # path+=(/Library/Frameworks/Python.framework/Versions/3.8/bin:$PATH)
 
 # TODO: seperate into zsh aliases file
@@ -105,13 +106,17 @@ alias startglobal="launchctl load /Library/LaunchAgents/com.paloaltonetworks.gp.
 alias python="python3"
 alias calpoly="ssh ckfreedm@unix3.csc.calpoly.edu"
 alias open="open ."
+alias top="bpytop"
 
 alias sp="spt"
+alias o="open"
+alias t="taskwarrior-tui"
 
-alias w="wal -i ~/files/photos/wallpapers/wal/ && source ~/.config/spacebar/spacebarcolors"
-alias w1="wal --backend haishoku -i ~/files/photos/wallpapers/wal/ && source ~/.config/spacebar/spacebarcolors"
-alias w2="wal --backend colorz -i ~/files/photos/wallpapers/wal/ && source ~/.config/spacebar/spacebarcolors"
-alias w3="wal --backend colorthief -i ~/files/photos/wallpapers/wal/ && source ~/.config/spacebar/spacebarcolors"
+alias w="wal -i ~/files/photos/wallpapers/wal/ && source ~/.config/spacebar/spacebarcolors && kitty @ set-colors ~/.cache/wal/colors-kitty.conf"
+alias w1="wal --backend haishoku -i ~/files/photos/wallpapers/wal/ && source ~/.config/spacebar/spacebarcolors && kitty @ set-colors ~/.cache/wal/colors-kitty.conf"
+alias w2="wal --backend colorz -i ~/files/photos/wallpapers/wal/ && source ~/.config/spacebar/spacebarcolors && kitty @ set-colors ~/.cache/wal/colors-kitty.conf"
+alias w3="wal --backend colorthief -i ~/files/photos/wallpapers/wal/ && source ~/.config/spacebar/spacebarcolors && kitty @ set-colors ~/.cache/wal/colors-kitty.conf"
+alias luamake=/Users/carson/.local/bin/lua-language-server/3rd/luamake/luamake
 
 # load p10k
 source /usr/local/opt/powerlevel10k/powerlevel10k.zsh-theme
@@ -121,4 +126,6 @@ kitty @ set-colors ~/.cache/wal/colors-kitty.conf
 
 export FZF_DEFAULT_COMMAND='rg --files --hidden -g "!.git" '
 export GPG_TTY=$TTY
+export TASKRC=~/.config/taskwarrior-tui/.taskrc
+export TASKDATA=~/.config/taskwarrior-tui/.task
 export PATH

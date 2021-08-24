@@ -3,15 +3,15 @@ sudo yabai --load-sa
 yabai -m signal --add event=dock_did_restart action="sudo yabai --load-sa"
 
 # global settings
-yabai -m config mouse_follows_focus          off
-yabai -m config focus_follows_mouse          off
+yabai -m config mouse_follows_focus          on
+yabai -m config focus_follows_mouse          autoraise
 yabai -m config window_placement             second_child
-yabai -m config window_topmost               on # floating windows above all
+yabai -m config window_topmost               off # floating windows above all
 yabai -m config window_shadow                float
 yabai -m config window_opacity               on
 yabai -m config window_opacity_duration      0.0
 yabai -m config active_window_opacity        1.0
-yabai -m config normal_window_opacity        0.9
+yabai -m config normal_window_opacity        0.95
 yabai -m config split_ratio                  0.5
 yabai -m config auto_balance                 on
 yabai -m config mouse_modifier               fn
@@ -21,11 +21,11 @@ yabai -m config mouse_drop_action            swap
 
 # General space settings
 yabai -m config layout                       bsp
-yabai -m config top_padding                  5
-yabai -m config bottom_padding               31
-yabai -m config left_padding                 5
-yabai -m config right_padding                5
-yabai -m config window_gap                   5
+yabai -m config top_padding 3
+yabai -m config bottom_padding 29
+yabai -m config left_padding 3
+yabai -m config right_padding 3
+yabai -m config window_gap 4
 
 # Application management
 yabai -m rule --add label="Finder" app="^Finder$" title="(Co(py|nnect)|Move|Info|Pref)" manage=off
@@ -40,6 +40,12 @@ yabai -m rule --add label="Software Update" title="Software Update" manage=off
 yabai -m rule --add label="About This Mac" app="System Information" title="About This Mac" manage=off
 yabai -m rule --add app='Alfred Preferences' manage=off
 yabai -m rule --add app='BitWarden' manage=off
+yabai -m rule --add app='Flux' manage=off
+yabai -m rule --add app="Digital Colour Meter" manage=off
+yabai -m rule --add app="Activity Monitor" manage=off
+yabai -m rule --add app="Font Book" manage=off
+yabai -m rule --add app="System Information" manage=off
+yabai -m rule --add app="Logi Options" manage=off
 
 # wal settings
 source ~/.cache/wal/colors.sh # pywal scheme - update if needed
@@ -54,3 +60,10 @@ CINSE=$(echo $foreground | sed 's/#//')
 yabai -m config active_window_border_color   0xff$CACTV
 yabai -m config normal_window_border_color   0xff$CNORM
 yabai -m config insert_window_border_color   0xff$CINSE
+
+# Focus window after active space changes
+yabai -m signal --add event=space_changed \
+    action="yabai -m window --focus \$(yabai -m query --windows --space | jq .[0].id)"
+# Focus window after active display changes
+yabai -m signal --add event=display_changed \
+    action="yabai -m window --focus \$(yabai -m query --windows --space | jq .[0].id)"

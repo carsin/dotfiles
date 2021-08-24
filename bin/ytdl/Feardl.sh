@@ -1,1 +1,0 @@
-/Users/carson/Files/Music/Spotify Local Files/Fear/dl.sh
