@@ -151,6 +151,9 @@ augroup END
 " Don't take up scrollbar with match
 let g:matchup_matchparen_offscreen = { 'method': 'popup' }
 
+" Hide ~ on nonexistant lines
+highlight EndOfBuffer ctermfg=black ctermbg=black
+
 " }}}
 " Binds & Mappings
 source ~/.config/nvim/mappings.vim

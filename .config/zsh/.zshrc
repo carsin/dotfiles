@@ -4,12 +4,10 @@ fortune ~/.config/fortune/fortunes
 # Import colorscheme from wal asynchronously
 (cat ~/.cache/wal/sequences &)
 
-# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.config/zsh/.zshrc.
-# Initialization code that may require console input (password prompts, [y/n]
-# confirmations, etc.) must go above this block; everything else may go below.
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-fi
+# Enable Powerlevel10k instant prompt.
+# if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+#   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+# fi
 
 # Useful options & defaults
 setopt autocd extendedglob nomatch menucomplete
@@ -46,14 +44,15 @@ PROMPT_EOL_MARK=''
 bindkey -v
 export KEYTIMEOUT=10
 
+# jk/kj as escape
+bindkey -M viins 'jk' vi-cmd-mode
+bindkey -M viins 'kj' vi-cmd-mode
+
 # Use vim keys in tab complete menu:
 bindkey -M menuselect 'h' vi-backward-char
 bindkey -M menuselect 'k' vi-up-line-or-history
 bindkey -M menuselect 'l' vi-forward-char
 bindkey -M menuselect 'j' vi-down-line-or-history
-# jk/kj as escape
-bindkey -M viins 'jk' vi-cmd-mode
-bindkey -M viins 'kj' vi-cmd-mode
 
 # Use lf to switch directories and bind it to ctrl-f
 lfcd () {
@@ -68,8 +67,8 @@ lfcd () {
 bindkey -s '^f' 'cd "$(dirname "$(fzf)")"\n'
 bindkey -s '^o' 'lfcd\n'
 
-# shift-tab to accept suggestion
-bindkey '<Shift-Tab>' autosuggest-accept
+# tab to accept suggestion
+# bindkey '<Tab>' autosuggest-accept
 
 # Edit line in vim with ctrl-e:
 autoload edit-command-line; zle -N edit-command-line
@@ -118,11 +117,15 @@ alias w2="wal --backend colorz -i ~/files/photos/wallpapers/wal/ && source ~/.co
 alias w3="wal --backend colorthief -i ~/files/photos/wallpapers/wal/ && source ~/.config/spacebar/spacebarcolors && kitty @ set-colors ~/.cache/wal/colors-kitty.conf"
 alias luamake=/Users/carson/.local/bin/lua-language-server/3rd/luamake/luamake
 
-# load p10k
-source /usr/local/opt/powerlevel10k/powerlevel10k.zsh-theme
-[[ ! -f ~/.config/zsh/.p10k.zsh ]] || source ~/.config/zsh/.p10k.zsh
-
-kitty @ set-colors ~/.cache/wal/colors-kitty.conf
+if [[ $TERM =~ 'xterm-kitty' ]];
+then
+    # load p10k
+    source /usr/local/opt/powerlevel10k/powerlevel10k.zsh-theme
+    [[ ! -f ~/.config/zsh/.p10k.zsh ]] || source ~/.config/zsh/.p10k.zsh
+    kitty @ set-colors ~/.cache/wal/colors-kitty.conf
+else
+    source ~/.config/zsh/themes/vimterm.zsh-theme
+fi
 
 export FZF_DEFAULT_COMMAND='rg --files --hidden -g "!.git" '
 export GPG_TTY=$TTY
