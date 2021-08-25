@@ -46,6 +46,7 @@ yabai -m rule --add app="Activity Monitor" manage=off
 yabai -m rule --add app="Font Book" manage=off
 yabai -m rule --add app="System Information" manage=off
 yabai -m rule --add app="Logi Options" manage=off
+yabai -m rule --add title="--yabai$" manage=off
 
 # wal settings
 source ~/.cache/wal/colors.sh # pywal scheme - update if needed
