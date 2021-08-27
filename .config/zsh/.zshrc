@@ -80,6 +80,7 @@ path+=($HOME/bin:/usr/local/bin:$PATH)
 path+=("/usr/local/sbin:$PATH")
 path+=("/Users/carson/Library/Python/3.9/bin")
 path+=("/usr/local/opt/llvm/bin/")
+path+=("/usr/local/opt/binutils/bin:$PATH")
 # path+=(/Library/Frameworks/Python.framework/Versions/3.8/bin:$PATH)
 
 # TODO: seperate into zsh aliases file
@@ -98,6 +99,7 @@ alias config="/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME"
 
 alias cr="cargo run"
 alias crr="cargo run --release"
+alias mr="make && ./run"
 
 alias killglobal="launchctl unload /Library/LaunchAgents/com.paloaltonetworks.gp.pangp*"
 alias startglobal="launchctl load /Library/LaunchAgents/com.paloaltonetworks.gp.pangp*"

@@ -21,11 +21,9 @@ nnoremap <silent><leader>w :silent :call WriteSavePosition()<cr>
 
  " Clear search highlight
 nnoremap <silent><leader><space> :let @/ = ""<CR>
-nnoremap <ESC> :nohlsearch<CR>
 
-" jk/kj is escape
-" inoremap jk <ESC>
-" inoremap kj <ESC>
+" Multifunctional escape!
+nnoremap <ESC> :nohlsearch \| :cclose<CR>
 
 " Remap VIM 0 to first non-blank character
 map 0 ^
@@ -111,6 +109,7 @@ inoremap <silent><expr> <CR>      compe#confirm(lexima#expand('<LT>CR>', 'i'))
 " Telescope
 " Find files using Telescope command-line sugar.
 nnoremap <leader>f <cmd>Telescope find_files<cr>
+nnoremap <C-f> <cmd>Telescope find_files<cr>
 nnoremap <leader>g <cmd>Telescope live_grep<cr>
 nnoremap <leader>b <cmd>Telescope buffers<cr>
 " nnoremap <leader>h <cmd>Telescope help_tags<cr>
