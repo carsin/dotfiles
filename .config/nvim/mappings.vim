@@ -124,4 +124,6 @@ nmap <expr> T reg_recording() . reg_executing() == "" ? "<Plug>Lightspeed_T" : "
 " Floating terminal
 nnoremap <silent> <leader>t <CMD>lua require("FTerm").toggle()<CR>
 tnoremap <silent> <leader>t <CMD>lua require("FTerm").toggle()<CR>
+nnoremap <silent> <F3> <CMD>lua require("FTerm").toggle()<CR>
+tnoremap <silent> <F3> <CMD>lua require("FTerm").toggle()<CR>
 tnoremap <silent> <ESC> <CMD>lua require("FTerm").toggle()<CR>
