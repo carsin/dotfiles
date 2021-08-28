@@ -68,9 +68,9 @@ set undodir=~/.cache/nvim/undo
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 
 " Delete trailing whitespace and newlines on save
-autocmd BufWritePre * %s/\s\+$//e
-autocmd BufWritePre * %s/\n\+\%$//e
-autocmd BufWritePre *.[ch] %s/\%$/\r/e
+" autocmd BufWritePre * %s/\s\+$//e
+" autocmd BufWritePre * %s/\n\+\%$//e
+" autocmd BufWritePre *.[ch] %s/\%$/\r/e
 
 " Turn off paste mode when leaving insert
 autocmd InsertLeave * set nopaste
@@ -123,7 +123,11 @@ set fillchars+=vert:│  " Change vertical split character to solid line instead
 set shortmess+=W       " Don't pass messages to ins-completion-menu.
 set formatoptions-=cro " Disable auto insert comment
 set signcolumn=yes     " Column for diagnostics
-set pumheight=15        " Shorten number of autocomplete suggestions
+set pumheight=15       " Shorten number of autocomplete suggestions
+
+" Never make windows completely empty
+set winheight=999
+set winminheight=15
 " set colorcolumn=80   " 80 char column guide
 
 " Set completeopt to have a better completion experience
@@ -154,6 +158,11 @@ let g:matchup_matchparen_offscreen = { 'method': 'popup' }
 " Hide ~ on nonexistant lines
 highlight EndOfBuffer ctermfg=black ctermbg=black
 
+augroup remember_folds
+  autocmd!
+  autocmd BufWinLeave *.* mkview
+  autocmd BufWinEnter *.* silent! loadview
+augroup END
 " }}}
 " Binds & Mappings
 source ~/.config/nvim/mappings.vim

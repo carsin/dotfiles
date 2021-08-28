@@ -23,7 +23,7 @@ nnoremap <silent><leader>w :silent :call WriteSavePosition()<cr>
 nnoremap <silent><leader><space> :let @/ = ""<CR>
 
 " Multifunctional escape!
-nnoremap <ESC> :nohlsearch \| :cclose<CR>
+nnoremap <silent><ESC> :nohlsearch \| :cclose<CR>
 
 " Remap VIM 0 to first non-blank character
 map 0 ^
@@ -126,3 +126,17 @@ tnoremap <silent> <leader>t <CMD>lua require("FTerm").toggle()<CR>
 nnoremap <silent> <F3> <CMD>lua require("FTerm").toggle()<CR>
 tnoremap <silent> <F3> <CMD>lua require("FTerm").toggle()<CR>
 tnoremap <silent> <ESC> <CMD>lua require("FTerm").toggle()<CR>
+
+" Split navigation
+map <C-H> <C-W>h<C-W>_
+map <C-J> <C-W>j<C-W>_
+map <C-K> <C-W>k<C-W>_
+map <C-L> <C-W>l<C-W>_
+
+" Trouble
+nnoremap <leader>xx <cmd>TroubleToggle<cr>
+nnoremap <leader>xw <cmd>TroubleToggle lsp_workspace_diagnostics<cr>
+nnoremap <leader>xd <cmd>TroubleToggle lsp_document_diagnostics<cr>
+nnoremap <leader>xq <cmd>TroubleToggle quickfix<cr>
+nnoremap <leader>xl <cmd>TroubleToggle loclist<cr>
+nnoremap gr <cmd>TroubleToggle lsp_references<cr>

@@ -1,5 +1,5 @@
 # Open application
-alt + shift - return : open -n /Applications/LibreWolf.app
+alt + shift - return : open -n /Applications/LibreWolf.app && yabai -m space --focus recent
 alt - return : /Applications/kitty.app/Contents/MacOS/kitty --single-instance -d ~
 
 # Focus window
