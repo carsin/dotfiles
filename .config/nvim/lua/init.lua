@@ -75,20 +75,20 @@ return packer.startup(function(use)
       require('gitsigns').setup()
     end,
   }
-  use { -- lualine
-    'hoob3rt/lualine.nvim',
-    requires = {'kyazdani42/nvim-web-devicons', opt = true},
-    config = function()
-      require'lualine'.setup {
-        options = {
-          icons_enabled = false,
-          theme = 'gruvbox',
-          component_separators = {'│', '│'},
-          section_separators = {'▓░', '░▓'},
-        },
-    }
-    end,
-  }
+  -- use { -- lualine
+  --   'hoob3rt/lualine.nvim',
+  --   requires = {'kyazdani42/nvim-web-devicons', opt = true},
+  --   config = function()
+  --     require'lualine'.setup {
+  --       options = {
+  --         icons_enabled = false,
+  --         theme = 'gruvbox',
+  --         component_separators = {'│', '│'},
+  --         section_separators = {'▓░', '░▓'},
+  --       },
+  --   }
+  --   end,
+  -- }
   use { -- lspkind
     'onsails/lspkind-nvim',
     config = function()
@@ -136,14 +136,10 @@ return packer.startup(function(use)
     end,
   }
   use 'm-pilia/vim-ccls'
-  -- use {
-  --   "folke/trouble.nvim",
-  --   config = function()
-  --     require("trouble").setup {
-  --       -- your configuration comes here
-  --       -- or leave it empty to use the default settings
-  --       -- refer to the configuration section below
-  --     }
-  --   end
-  -- }
+  use {
+    "famiu/feline.nvim",
+    config = function()
+      require "plugins.feline"
+    end,
+  }
 end)
