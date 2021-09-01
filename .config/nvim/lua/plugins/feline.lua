@@ -1,4 +1,5 @@
 local lsp = require('feline.providers.lsp')
+
 local vi_mode_utils = require('feline.providers.vi_mode')
 
 local properties = {
@@ -100,8 +101,8 @@ components.left.active[1] = {
   provider = 'vi_mode',
   hl = function()
     local val = {}
-    val.name = require('feline.providers.vi_mode').get_mode_highlight_name()
-    val.bg = require('feline.providers.vi_mode').get_mode_color()
+    val.name = vi_mode_utils.get_mode_highlight_name()
+    val.bg = vi_mode_utils.get_mode_color()
     val.fg = 'bg'
     val.style = 'bold'
     return val
@@ -127,9 +128,8 @@ components.left.active[2] = {
 }
 -- filename
 components.left.active[3] = {
-  provider = function()
-    return vim.fn.expand("%:F")
-  end,
+  provider = 'file_info',
+  file_modified_icon = "+",
   hl = {
     fg = 'white',
     bg = 'bg',
@@ -180,7 +180,7 @@ components.left.active[7] = {
 components.mid.active[1] = {
   provider = 'lsp_client_names',
   hl = {
-    fg = 'yellow',
+    fg = 'green',
     bg = 'bg',
     style = 'bold'
   },
@@ -209,7 +209,7 @@ components.mid.active[4] = {
   provider = 'diagnostic_hints',
   enabled = function() return lsp.diagnostics_exist('Hint') end,
   hl = {
-    fg = 'cyan',
+    fg = 'magenta',
     style = 'bold'
   }
 }
@@ -218,7 +218,7 @@ components.mid.active[5] = {
   provider = 'diagnostic_info',
   enabled = function() return lsp.diagnostics_exist('Information') end,
   hl = {
-    fg = 'skyblue',
+    fg = 'cyan',
     style = 'bold'
   }
 }
@@ -226,34 +226,34 @@ components.mid.active[5] = {
 -- RIGHT
 
 -- fileIcon
-components.right.active[1] = {
-  provider = function()
-    local filename = vim.fn.expand('%:t')
-    local extension = vim.fn.expand('%:e')
-    local icon  = require'nvim-web-devicons'.get_icon(filename, extension)
-    if icon == nil then
-      icon = ''
-    end
-    return icon
-  end,
-  hl = function()
-    local val = {}
-    local filename = vim.fn.expand('%:t')
-    local extension = vim.fn.expand('%:e')
-    local icon, name  = require'nvim-web-devicons'.get_icon(filename, extension)
-    if icon ~= nil then
-      val.fg = vim.fn.synIDattr(vim.fn.hlID(name), 'fg')
-    else
-      val.fg = 'white'
-    end
-    val.bg = 'bg'
-    val.style = 'bold'
-    return val
-  end,
-  right_sep = ' '
-}
+-- components.right.active[1] = {
+--   provider = function()
+--     local filename = vim.fn.expand('%:t')
+--     local extension = vim.fn.expand('%:e')
+--     local icon  = require'nvim-web-devicons'.get_icon(filename, extension)
+--     if icon == nil then
+--       icon = ''
+--     end
+--     return icon
+--   end,
+--   hl = function()
+--     local val = {}
+--     local filename = vim.fn.expand('%:t')
+--     local extension = vim.fn.expand('%:e')
+--     local icon, name  = require'nvim-web-devicons'.get_icon(filename, extension)
+--     if icon ~= nil then
+--       val.fg = vim.fn.synIDattr(vim.fn.hlID(name), 'fg')
+--     else
+--       val.fg = 'white'
+--     end
+--     val.bg = 'bg'
+--     val.style = 'bold'
+--     return val
+--   end,
+--   right_sep = ' '
+-- }
 -- fileType
-components.right.active[2] = {
+components.right.active[1] = {
   provider = 'file_type',
   hl = function()
     local val = {}
@@ -272,7 +272,7 @@ components.right.active[2] = {
   right_sep = ' '
 }
 -- fileSize
-components.right.active[3] = {
+components.right.active[2] = {
   provider = 'file_size',
   enabled = function() return vim.fn.getfsize(vim.fn.expand('%:t')) > 0 end,
   hl = {
@@ -280,26 +280,29 @@ components.right.active[3] = {
     bg = 'bg',
     style = 'bold'
   },
+  left_sep = ' ',
   right_sep = ' '
 }
 -- fileFormat
-components.right.active[4] = {
+components.right.active[3] = {
   provider = function() return '' .. vim.bo.fileformat:upper() .. '' end,
   hl = {
     fg = 'white',
     bg = 'bg',
     style = 'bold'
   },
+  left_sep = ' ',
   right_sep = ' '
 }
 -- fileEncode
-components.right.active[5] = {
+components.right.active[4] = {
   provider = 'file_encoding',
   hl = {
     fg = 'white',
     bg = 'bg',
     style = 'bold'
   },
+  left_sep = ' ',
   right_sep = ' '
 }
 -- rubyVersion
@@ -315,32 +318,34 @@ components.right.active[5] = {
 --   right_sep = ' '
 -- }
 -- lineInfo
-components.right.active[6] = {
+components.right.active[5] = {
   provider = 'position',
   hl = {
     fg = 'white',
     bg = 'bg',
     style = 'bold'
   },
+  left_sep = ' ',
   right_sep = ' '
 }
 -- linePercent
-components.right.active[7] = {
+components.right.active[6] = {
   provider = 'line_percentage',
   hl = {
     fg = 'white',
     bg = 'bg',
     style = 'bold'
   },
-  right_sep = ' '
+  left_sep = ' ',
 }
 -- scrollBar
-components.right.active[8] = {
+components.right.active[7] = {
   provider = 'scroll_bar',
   hl = {
-    fg = 'yellow',
+    fg = 'cyan',
     bg = 'bg',
   },
+  left_sep = ' ',
 }
 
 -- INACTIVE

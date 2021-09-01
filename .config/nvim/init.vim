@@ -87,7 +87,7 @@ set t_Co=256
 
 let g:gruvbox_material_transparent_background = 1
 let g:gruvbox_material_enable_italic = 1
-let g:gruvbox_material_enable_bold = 1
+let g:gruvbox_material_enable_bold = 0
 let g:gruvbox_material_background = 'hard'
 let g:gruvbox_material_visual = 'reverse'
 let g:gruvbox_material_diagnostic_virtual_text = 'colored'
@@ -102,7 +102,7 @@ colorscheme gruvbox-material
 " hi TSRepeat ctermbg=NONE ctermfg=5
 " hi TSOperator ctermbg=NONE ctermfg=4
 
-set showtabline=2      " Show top tab line
+set showtabline=0      " DONT Show top tab line (2 = show)
 set so=5               " How many lines from cursor to top / bottom of the screen before scrolling
 set number             " file line numbering
 set showcmd            " show last entered command
@@ -156,7 +156,7 @@ augroup END
 let g:matchup_matchparen_offscreen = { 'method': 'popup' }
 
 " Hide ~ on nonexistant lines
-highlight EndOfBuffer ctermfg=black ctermbg=black
+" highlight EndOfBuffer ctermfg=black ctermbg=black
 
 augroup remember_folds
   autocmd!
@@ -166,3 +166,4 @@ augroup END
 " }}}
 " Binds & Mappings
 source ~/.config/nvim/mappings.vim
+lua require'init'

@@ -70,9 +70,8 @@ return packer.startup(function(use)
   -- use 'nvim-treesitter/nvim-treesitter-textobjects'
   use { -- gitsigns
     'lewis6991/gitsigns.nvim',
-    requires = { { 'nvim-lua/plenary.nvim' } } ,
     confug = function()
-      require('gitsigns').setup()
+      require "plugins.gitsigns"
     end,
   }
   -- use { -- lualine
@@ -101,20 +100,17 @@ return packer.startup(function(use)
       require "lsp_signature".setup()
     end,
   }
-  use { -- rust tools
-    'simrat39/rust-tools.nvim',
-    config = function()
-      require('rust-tools').setup({})
-      require('rust-tools.inlay_hints').disable_inlay_hints()
-      -- require('rust-tools.runnables').runnables()
-      require('rust-tools.hover_actions').hover_actions()
-    end,
-  }
   use { -- telescope
     'nvim-telescope/telescope.nvim',
     requires = { {'nvim-lua/plenary.nvim'} },
     config = function()
       require "plugins.telescope"
+    end,
+  }
+  use { -- rust tools
+    'simrat39/rust-tools.nvim',
+    config = function()
+      require "plugins.rust-tools"
     end,
   }
   use { -- matchup
