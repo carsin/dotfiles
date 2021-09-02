@@ -179,6 +179,7 @@ components.left.active[7] = {
 -- LspName
 components.mid.active[1] = {
   provider = 'lsp_client_names',
+  icon = '',
   hl = {
     fg = 'green',
     bg = 'bg',

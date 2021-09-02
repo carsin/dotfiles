@@ -132,10 +132,17 @@ return packer.startup(function(use)
     end,
   }
   use 'm-pilia/vim-ccls'
-  use {
+  use { -- Feline
     "famiu/feline.nvim",
     config = function()
       require "plugins.feline"
     end,
+  }
+  use { -- Trouble
+    "folke/trouble.nvim",
+    requires = "kyazdani42/nvim-web-devicons",
+    config = function()
+      require "plugins.trouble"
+    end
   }
 end)

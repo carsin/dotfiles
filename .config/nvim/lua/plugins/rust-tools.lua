@@ -1,7 +1,7 @@
 local opts = {
     tools = { -- rust-tools options
         -- Automatically set inlay hints (type hints)
-        autoSetHints = false,
+        autoSetHints = true,
         -- Whether to show hover actions inside the hover window
         hover_with_actions = true,
         runnables = {
