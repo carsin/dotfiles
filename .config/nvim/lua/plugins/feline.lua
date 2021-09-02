@@ -120,7 +120,7 @@ components.left.active[2] = {
     local val = {}
     val.fg = vi_mode_utils.get_mode_color()
     val.bg = 'bg'
-    val.style = 'bold'
+    -- val.style = 'bold'
     return val
   end,
   left_sep = ' ',
@@ -133,7 +133,7 @@ components.left.active[3] = {
   hl = {
     fg = 'white',
     bg = 'bg',
-    style = 'bold'
+    -- style = 'bold'
   },
   right_sep = ''
 }
@@ -143,7 +143,7 @@ components.left.active[4] = {
   hl = {
     fg = 'yellow',
     bg = 'bg',
-    style = 'bold'
+    -- style = 'bold'
   }
 }
 -- diffAdd
@@ -152,7 +152,7 @@ components.left.active[5] = {
   hl = {
     fg = 'green',
     bg = 'bg',
-    style = 'bold'
+    -- style = 'bold'
   }
 }
 -- diffModfified
@@ -161,7 +161,7 @@ components.left.active[6] = {
   hl = {
     fg = 'orange',
     bg = 'bg',
-    style = 'bold'
+    -- style = 'bold'
   }
 }
 -- diffRemove
@@ -170,7 +170,7 @@ components.left.active[7] = {
   hl = {
     fg = 'red',
     bg = 'bg',
-    style = 'bold'
+    -- style = 'bold'
   }
 }
 
@@ -181,37 +181,40 @@ components.mid.active[1] = {
   provider = 'lsp_client_names',
   icon = '',
   hl = {
-    fg = 'green',
+    fg = 'skyblue',
     bg = 'bg',
     style = 'bold'
   },
-  right_sep = ' '
+  right_sep = ''
 }
 -- diagnosticErrors
 components.mid.active[2] = {
   provider = 'diagnostic_errors',
   enabled = function() return lsp.diagnostics_exist('Error') end,
+  icon = " E ",
   hl = {
     fg = 'red',
-    style = 'bold'
+    -- style = 'bold'
   }
 }
 -- diagnosticWarn
 components.mid.active[3] = {
   provider = 'diagnostic_warnings',
   enabled = function() return lsp.diagnostics_exist('Warning') end,
+  icon = " ! ",
   hl = {
-    fg = 'yellow',
-    style = 'bold'
+    fg = 'orange',
+    -- style = 'bold'
   }
 }
 -- diagnosticHint
 components.mid.active[4] = {
   provider = 'diagnostic_hints',
   enabled = function() return lsp.diagnostics_exist('Hint') end,
+  icon = " ? ",
   hl = {
-    fg = 'magenta',
-    style = 'bold'
+    fg = 'green',
+    -- style = 'bold'
   }
 }
 -- diagnosticInfo
@@ -220,7 +223,7 @@ components.mid.active[5] = {
   enabled = function() return lsp.diagnostics_exist('Information') end,
   hl = {
     fg = 'cyan',
-    style = 'bold'
+    -- style = 'bold'
   }
 }
 
@@ -267,7 +270,7 @@ components.right.active[1] = {
       val.fg = 'white'
     end
     val.bg = 'bg'
-    val.style = 'bold'
+    -- val.style = 'bold'
     return val
   end,
   right_sep = ' '
@@ -277,9 +280,9 @@ components.right.active[2] = {
   provider = 'file_size',
   enabled = function() return vim.fn.getfsize(vim.fn.expand('%:t')) > 0 end,
   hl = {
-    fg = 'skyblue',
+    fg = 'red',
     bg = 'bg',
-    style = 'bold'
+    -- style = 'bold'
   },
   left_sep = ' ',
   right_sep = ' '
@@ -306,19 +309,6 @@ components.right.active[4] = {
   left_sep = ' ',
   right_sep = ' '
 }
--- rubyVersion
--- components.right.active[6] = {
---   provider = function()
---     return ' '..vim.fn['rvm#string']()
---   end,
---   hl = {
---     fg = 'red',
---     bg = 'bg',
---     style = 'bold'
---   },
---   right_sep = ' '
--- }
--- lineInfo
 components.right.active[5] = {
   provider = 'position',
   hl = {
@@ -357,7 +347,7 @@ components.left.inactive[1] = {
   hl = {
     fg = 'black',
     bg = 'cyan',
-    style = 'bold'
+    -- style = 'bold'
   },
   left_sep = {
     str = ' ',

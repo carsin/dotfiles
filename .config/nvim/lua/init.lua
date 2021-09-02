@@ -11,13 +11,11 @@ end
 vim.cmd 'autocmd BufWritePost init.lua PackerCompile'
 
 local packer = require('packer')
-
 return packer.startup(function(use)
   use 'wbthomason/packer.nvim'
-  use 'dylanaraps/wal.vim'
-  use 'kyazdani42/nvim-web-devicons'
   use 'nvim-lua/popup.nvim'
   use 'nvim-lua/plenary.nvim'
+  use 'kyazdani42/nvim-web-devicons'
   use 'tpope/vim-commentary'
   use 'jose-elias-alvarez/null-ls.nvim'
   use 'cohama/lexima.vim'
@@ -68,12 +66,6 @@ return packer.startup(function(use)
     end,
   }
   -- use 'nvim-treesitter/nvim-treesitter-textobjects'
-  use { -- gitsigns
-    'lewis6991/gitsigns.nvim',
-    confug = function()
-      require "plugins.gitsigns"
-    end,
-  }
   -- use { -- lualine
   --   'hoob3rt/lualine.nvim',
   --   requires = {'kyazdani42/nvim-web-devicons', opt = true},
@@ -144,5 +136,14 @@ return packer.startup(function(use)
     config = function()
       require "plugins.trouble"
     end
+  }
+  use { -- gitsigns
+    'lewis6991/gitsigns.nvim',
+    confug = function()
+      require('gitsigns').setup {
+        debug_mode = true,
+        sign_priority = 100,
+      }
+    end,
   }
 end)

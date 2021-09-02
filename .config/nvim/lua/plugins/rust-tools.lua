@@ -51,6 +51,9 @@ local opts = {
             -- whether the hover action window gets automatically focused
             auto_focus = false
         },
+        server = {
+          on_attach = require("lspconfig").on_attach,
+        }
     },
 }
 

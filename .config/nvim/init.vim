@@ -93,7 +93,6 @@ let g:gruvbox_material_visual = 'reverse'
 let g:gruvbox_material_diagnostic_virtual_text = 'colored'
 let g:gruvbox_material_palette = 'original'
 
-colorscheme wal
 colorscheme gruvbox-material
 
 " Highlight treesitter with wal colors
@@ -101,6 +100,15 @@ colorscheme gruvbox-material
 " hi TSNamespace ctermbg=NONE ctermfg=4
 " hi TSRepeat ctermbg=NONE ctermfg=5
 " hi TSOperator ctermbg=NONE ctermfg=4
+
+hi Normal guibg=none ctermbg=none
+hi LineNr guibg=none ctermbg=none
+hi Folded guibg=none ctermbg=none
+hi NonText guibg=none ctermbg=none
+hi SpecialKey guibg=none ctermbg=none
+hi VertSplit guibg=none ctermbg=none
+hi SignColumn guibg=none ctermbg=none
+hi EndOfBuffer guibg=none ctermbg=none
 
 set showtabline=0      " DONT Show top tab line (2 = show)
 set so=5               " How many lines from cursor to top / bottom of the screen before scrolling
@@ -122,7 +130,7 @@ set splitright         " Always horizontally split to the right
 set fillchars+=vert:│  " Change vertical split character to solid line instead of line with gaps
 set shortmess+=W       " Don't pass messages to ins-completion-menu.
 set formatoptions-=cro " Disable auto insert comment
-set signcolumn=yes     " Column for diagnostics
+set signcolumn=yes:1  " Column for diagnostics & git gutter
 set pumheight=15       " Shorten number of autocomplete suggestions
 
 " Never make windows completely empty
