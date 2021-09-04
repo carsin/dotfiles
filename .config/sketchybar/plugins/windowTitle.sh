@@ -1,16 +1,15 @@
 #!/usr/bin/env bash
 
-WINDOW_INFO=$(osascript -e '
-global frontApp, frontAppName, windowTitle
-tell application "System Events"
-    set frontApp to first application process whose frontmost is true
-    set frontAppName to name of frontApp
-    tell process frontAppName
-        tell (1st window whose value of attribute "AXMain" is true)
-            set windowTitle to value of attribute "AXTitle"
-        end tell
-    end tell
-end tell
-return {frontAppName, windowTitle}')
+APP_NAME=$(yabai -m query --windows --window | jq '.app' | sed -E 's/^"(.*)"$/\1/')
+WINDOW_TITLE=$(yabai -m query --windows --window | jq '.title' | sed -E 's/^"(.*)"$/\1/')
 
-sketchybar -m set windowTitle label "$WINDOW_INFO"
+if [[ $WINDOW_TITLE = "" ]]; then
+  sketchybar -m set title label " >$APP_NAME"
+else
+  if [[ ${#WINDOW_TITLE} -gt 50 ]]; then
+    WINDOW_TITLE=$(echo "$WINDOW_TITLE" | cut -c 1-50)
+    sketchybar -m set title label " > $WINDOW_TITLE"…
+  else
+    sketchybar -m set title label " > $WINDOW_TITLE"
+  fi
+fi

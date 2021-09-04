@@ -2,18 +2,18 @@
 
 source ~/.cache/wal/colors.sh # pywal scheme - update if needed
 
-CBACK=$(echo $background | sed 's/#//')
-CFORE=$(echo $foreground | sed 's/#//')
-CACTV=$(echo $color3 | sed 's/#//')
-CNORM=$(echo $color1 | sed 's/#//')
-CINSE=$(echo $foreground | sed 's/#//')
+cback=$(echo $background | sed 's/#//')
+cfore=$(echo $foreground | sed 's/#//')
+cactv=$(echo $color3 | sed 's/#//')
+cnorm=$(echo $color1 | sed 's/#//')
+cinse=$(echo $foreground | sed 's/#//')
 
-spacebar -m config background_color     0xAF$CBACK
-spacebar -m config foreground_color     0xFF$CFORE
-spacebar -m config space_icon_color     0xE6$CACTV
-spacebar -m config power_icon_color     0xE6$CFORE
-spacebar -m config battery_icon_color   0xE6$CFORE
-spacebar -m config dnd_icon_color       0xE6$CFORE
-spacebar -m config clock_icon_color     0xE6$CFORE
+spacebar -m config background_color     0xaf$cback
+spacebar -m config foreground_color     0xff$cfore
+spacebar -m config space_icon_color     0xe6$cactv
+spacebar -m config power_icon_color     0xe6$cfore
+spacebar -m config battery_icon_color   0xe6$cfore
+spacebar -m config dnd_icon_color       0xe6$cfore
+spacebar -m config clock_icon_color     0xe6$cfore
 
 echo "spacebar: colors loaded"

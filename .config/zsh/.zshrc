@@ -113,10 +113,10 @@ alias sp="spt"
 alias o="open"
 alias t="taskwarrior-tui"
 
-alias w="wal -i ~/files/photos/wallpapers/wal/ && kitty @ set-colors ~/.cache/wal/colors-kitty.conf"
-alias w1="wal --backend haishoku -i ~/files/photos/wallpapers/wal/ && kitty @ set-colors ~/.cache/wal/colors-kitty.conf"
-alias w2="wal --backend colorz -i ~/files/photos/wallpapers/wal/ && kitty @ set-colors ~/.cache/wal/colors-kitty.conf"
-alias w3="wal --backend colorthief -i ~/files/photos/wallpapers/wal/ && kitty @ set-colors ~/.cache/wal/colors-kitty.conf"
+alias w="wal -i ~/files/photos/wallpapers/wal/ && kitty @ set-colors ~/.cache/wal/colors-kitty.conf && source ~/.config/sketchybar/sketchybarcolors"
+alias w1="wal --backend haishoku -i ~/files/photos/wallpapers/wal/ && kitty @ set-colors ~/.cache/wal/colors-kitty.conf && source ~/.config/sketchybar/sketchybarcolors"
+alias w2="wal --backend colorz -i ~/files/photos/wallpapers/wal/ && kitty @ set-colors ~/.cache/wal/colors-kitty.conf && source ~/.config/sketchybar/sketchybarcolors"
+alias w3="wal --backend colorthief -i ~/files/photos/wallpapers/wal/ && kitty @ set-colors ~/.cache/wal/colors-kitty.conf && source ~/.config/sketchybar/sketchybarcolors"
 # alias w3="wal --backend schemer2 -i ~/files/photos/wallpapers/wal/ && kitty @ set-colors ~/.cache/wal/colors-kitty.conf"
 alias luamake=/Users/carson/.local/bin/lua-language-server/3rd/luamake/luamake
 
@@ -134,4 +134,5 @@ export FZF_DEFAULT_COMMAND='rg --files --hidden -g "!.git" '
 export GPG_TTY=$TTY
 export TASKRC=~/.config/taskwarrior-tui/.taskrc
 export TASKDATA=~/.config/taskwarrior-tui/.task
+export VIT_DIR=~/.config/vit
 export PATH

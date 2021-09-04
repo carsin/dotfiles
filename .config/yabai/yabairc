@@ -28,7 +28,7 @@ yabai -m config right_padding 3
 yabai -m config window_gap 4
 
 # Application management
-yabai -m rule --add label="Finder" app="^Finder$" title="(Co(py|nnect)|Move|Info|Pref)" manage=off
+yabai -m rule --add label="Finder" app="Finder$" manage=off
 yabai -m rule --add label="Safari" app="^Safari$" title="^(General|(Tab|Password|Website|Extension)s|AutoFill|Se(arch|curity)|Privacy|Advance)$" manage=off
 yabai -m rule --add label="System Preferences" app="^System Preferences$" title=".*" manage=off
 yabai -m rule --add label="App Store" app="^App Store$" manage=off
@@ -68,3 +68,7 @@ yabai -m signal --add event=space_changed \
 # Focus window after active display changes
 yabai -m signal --add event=display_changed \
     action="yabai -m window --focus \$(yabai -m query --windows --space | jq .[0].id)"
+
+# Sketchybar events
+yabai -m signal --add event=window_focused action="sketchybar -m trigger window_focus &> /dev/null"
+yabai -m signal --add event=window_title_changed action="sketchybar -m trigger title_change &> /dev/null"

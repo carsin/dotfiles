@@ -57,7 +57,7 @@ sketchybar -m add component space five left
 sketchybar -m set five associated_display 2
 sketchybar -m set five associated_space 5
 sketchybar -m set five icon V
-sketchybar -m set five icon_highlight_color 0xffff06ef
+sketchybar -m set five icon_highlight_color 0xff48aa2a
 # sketchybar -m set five label ???
 sketchybar -m set four click_script "yabai -m space --focus 5"
 # sketchybar -m set five icon_padding_left 0
@@ -79,63 +79,42 @@ sketchybar -m set title enabled on
 sketchybar -m add item clock right
 sketchybar -m set clock update_freq 1
 sketchybar -m set clock script "~/.config/sketchybar/plugins/clock.sh"
-sketchybar -m set clock label_padding_left 5
+sketchybar -m set clock label_padding_left 3
 
-# sketchybar -m default icon_padding_left 4
-
-sketchybar -m add component graph cpu_user right 200 nospace
+sketchybar -m add component graph cpu_user right 150 nospace
 sketchybar -m set cpu_user script "~/.config/sketchybar/plugins/cpu_graph.sh"
 sketchybar -m set cpu_user graph_color 0xffffffff
-sketchybar -m set cpu_user update_freq 1
-sketchybar -m set cpu_user associated_space 1
-sketchybar -m set cpu_user label_padding_left 0
-# sketchybar -m set cpu_user icon 
+sketchybar -m set cpu_user update_freq 5
+# sketchybar -m set cpu_user associated_space 1
+sketchybar -m set cpu_user label_padding_left 3
+sketchybar -m set cpu_user icon_padding_left 3
+sketchybar -m set cpu_user icon 
 
-sketchybar -m add component graph cpu_sys right 200
+sketchybar -m add component graph cpu_sys right 150
 sketchybar -m set cpu_sys graph_color 0xff48aa2a
-sketchybar -m set cpu_sys label_padding_left 0
-sketchybar -m set cpu_sys associated_space 1
-# sketchybar -m set cpu_sys icon 
-
-sketchybar -m add item topproc right
-sketchybar -m set topproc associated_space 1
-sketchybar -m set topproc icon_padding_left 10
-sketchybar -m set topproc label_padding_right 5
-sketchybar -m set topproc script "~/.config/sketchybar/plugins/topproc.sh"
-sketchybar -m set topproc update_freq 15
+sketchybar -m set cpu_sys label_padding_left 3
+sketchybar -m set cpu_sys icon_padding_left 3
+# sketchybar -m set cpu_sys associated_space 1
+sketchybar -m set cpu_sys icon 
 
 # Network graph
-sketchybar -m add component graph network_down right 200 nospace
-sketchybar -m set network_down associated_space 2
-sketchybar -m set network_down label_padding_left 0
-# sketchybar -m set network_down icon 
-sketchybar -m set network_down update_freq 1
+sketchybar -m add component graph network_down right 150 nospace
+# sketchybar -m set network_down associated_space 2
+sketchybar -m set network_down label_padding_left 3
+sketchybar -m set network_down icon ⮁
+sketchybar -m set network_down icon_padding_left 3
+sketchybar -m set network_down update_freq 5
 sketchybar -m set network_down graph_color 0xffffffff
 sketchybar -m set network_down script "~/.config/sketchybar/plugins/network_graph.sh"
 
-sketchybar -m add component graph network_up right 200
-# sketchybar -m set network_up icon 
-sketchybar -m set network_up label_padding_left 0
-sketchybar -m set network_up associated_space 2
+sketchybar -m add component graph network_up right 150
+sketchybar -m set network_up icon ⮁
+sketchybar -m set network_up label_padding_left 3
+sketchybar -m set network_up icon_padding_left 3
+# sketchybar -m set network_up associated_space 2
 sketchybar -m set network_up graph_color 0xff48aa2a
 
-sketchybar -m add item topmem right
-sketchybar -m set topmem script "~/.config/sketchybar/plugins/topmem.sh"
-sketchybar -m set topmem update_freq 15
-
-sketchybar -m add item githubIndicator right
-sketchybar -m set githubIndicator script "~/.config/sketchybar/plugins/githubIndicator.sh"
-sketchybar -m set githubIndicator update_freq 1000
-sketchybar -m set githubIndicator icon ■
-sketchybar -m set githubIndicator associated_display 1
-sketchybar -m set githubIndicator icon_padding_right 5
-sketchybar -m set githubIndicator click_script "open https://github.com"
-sketchybar -m subscribe githubIndicator system_woke
-
 ###################### CENTER ITEMS ###################
-sketchybar -m default label_padding_right 15
-sketchybar -m default icon_padding_right 4
-
 # Spotify
 sketchybar -m add event spotify_change "com.spotify.client.PlaybackStateChanged"
 sketchybar -m add item spotifyIndicator center
