@@ -8,7 +8,7 @@ cactv=$(echo $color3 | sed 's/#//')
 cnorm=$(echo $color1 | sed 's/#//')
 cinse=$(echo $foreground | sed 's/#//')
 
-sketchybar -m config bar_color     0xB2$cback
+sketchybar -m config bar_color 0xA0$cback
 sketchybar -m default icon_color 0xff$cfore
 sketchybar -m default label_color 0xff$cfore
 

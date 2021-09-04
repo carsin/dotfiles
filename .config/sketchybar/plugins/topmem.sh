@@ -5,6 +5,8 @@ MEM=$(echo $TOPMEM | sed -nr 's/([^MB]+).*/\1/p')
 
 if [ $MEM -gt 2048 ]; then
   sketchybar -m set topmem label " $TOPMEM"
+  sketchybar -m set topmem icon 
 else
   sketchybar -m set topmem label ""
+  sketchybar -m set topmem icon
 fi
