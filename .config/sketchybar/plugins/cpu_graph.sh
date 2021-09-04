@@ -7,6 +7,3 @@ CPU_USER=$(echo "$CPU_INFO" | grep $(whoami) | sed "s/[^ 0-9\.]//g" | awk "{sum+
 
 sketchybar -m push cpu_sys $CPU_SYS
 sketchybar -m push cpu_user $CPU_USER
- 
-
-
