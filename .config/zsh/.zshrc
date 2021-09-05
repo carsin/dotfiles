@@ -83,6 +83,7 @@ path+=("/usr/local/sbin:$PATH")
 path+=("/Users/carson/Library/Python/3.9/bin")
 path+=("/usr/local/opt/llvm/bin/")
 path+=("/usr/local/opt/binutils/bin:$PATH")
+path+=("/Users/carson/.cargo/bin")
 # path+=(/Library/Frameworks/Python.framework/Versions/3.8/bin:$PATH)
 
 # TODO: seperate into zsh aliases file
@@ -97,6 +98,7 @@ alias bc="bc -ql"
 alias mkdir="mkdir -pv"
 
 alias g="git"
+alias cfg="/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME"
 alias config="/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME"
 
 alias cr="cargo run"
@@ -115,22 +117,27 @@ alias sp="spt"
 alias o="open"
 alias t="taskwarrior-tui"
 
+# alias w3="wal --backend schemer2 -i ~/files/photos/wallpapers/wal/ && kitty @ set-colors ~/.cache/wal/colors-kitty.conf"
 alias w="wal -i ~/files/photos/wallpapers/wal/ && kitty @ set-colors ~/.cache/wal/colors-kitty.conf && source ~/.config/sketchybar/sketchybarcolors"
 alias w1="wal --backend haishoku -i ~/files/photos/wallpapers/wal/ && kitty @ set-colors ~/.cache/wal/colors-kitty.conf && source ~/.config/sketchybar/sketchybarcolors"
 alias w2="wal --backend colorz -i ~/files/photos/wallpapers/wal/ && kitty @ set-colors ~/.cache/wal/colors-kitty.conf && source ~/.config/sketchybar/sketchybarcolors"
 alias w3="wal --backend colorthief -i ~/files/photos/wallpapers/wal/ && kitty @ set-colors ~/.cache/wal/colors-kitty.conf && source ~/.config/sketchybar/sketchybarcolors"
-# alias w3="wal --backend schemer2 -i ~/files/photos/wallpapers/wal/ && kitty @ set-colors ~/.cache/wal/colors-kitty.conf"
+
 alias luamake=/Users/carson/.local/bin/lua-language-server/3rd/luamake/luamake
 
 if [[ $TERM =~ 'xterm-kitty' ]];
 then
+    kitty @ set-colors ~/.cache/wal/colors-kitty.conf
     # load p10k
     source /usr/local/opt/powerlevel10k/powerlevel10k.zsh-theme
     [[ ! -f ~/.config/zsh/.p10k.zsh ]] || source ~/.config/zsh/.p10k.zsh
-    kitty @ set-colors ~/.cache/wal/colors-kitty.conf
 else
     # basic prompt
     source ~/.config/zsh/themes/vimterm.zsh-theme
+    alias w="wal -i ~/files/photos/wallpapers/wal/ && source ~/.config/sketchybar/sketchybarcolors"
+    alias w1="wal --backend haishoku -i ~/files/photos/wallpapers/wal/ && source ~/.config/sketchybar/sketchybarcolors"
+    alias w2="wal --backend colorz -i ~/files/photos/wallpapers/wal/ && source ~/.config/sketchybar/sketchybarcolors"
+    alias w3="wal --backend colorthief -i ~/files/photos/wallpapers/wal/ && source ~/.config/sketchybar/sketchybarcolors"
 fi
 
 export FZF_DEFAULT_COMMAND='rg --files --hidden -g "!.git" '

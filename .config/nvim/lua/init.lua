@@ -119,7 +119,10 @@ return packer.startup(function(use)
     end,
   }
 
-  use 'm-pilia/vim-ccls'
+  use {
+    'm-pilia/vim-ccls',
+    after = "nvim-lspconfig"
+  }
 
   use { -- Feline
     'famiu/feline.nvim',
@@ -153,5 +156,9 @@ return packer.startup(function(use)
     config = function()
       require('numb').setup()
     end,
+  }
+
+  use {
+    'wfxr/minimap.vim',
   }
 end)

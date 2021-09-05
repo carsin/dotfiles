@@ -19,17 +19,17 @@ local components = {
 local colors = {
   bg = '#282828',
   black = '#282828',
-  yellow = '#d8a657',
-  cyan = '#89b482',
-  oceanblue = '#45707a',
-  green = '#a9b665',
-  orange = '#e78a4e',
-  violet = '#d3869b',
-  magenta = '#c14a4a',
+  yellow = '#fadb2f',
+  cyan = '#689d6a',
+  oceanblue = '#458588',
+  green = '#b8bb26',
+  orange = '#d65d0e',
+  violet = '#b16286',
+  magenta = '#d3869b',
   white = '#a89984',
   fg = '#a89984',
-  skyblue = '#7daea3',
-  red = '#ea6962',
+  skyblue = '#83a598',
+  red = '#fb4934',
 }
 
 local vi_mode_colors = {
@@ -38,6 +38,7 @@ local vi_mode_colors = {
   INSERT = 'red',
   VISUAL = 'skyblue',
   BLOCK = 'skyblue',
+  LINES = 'magenta',
   REPLACE = 'violet',
   ['V-REPLACE'] = 'violet',
   ENTER = 'cyan',
@@ -54,6 +55,7 @@ local vi_mode_text = {
   OP = '<|',
   INSERT = '|>',
   VISUAL = '<>',
+  LINES = '<>',
   BLOCK = '<>',
   REPLACE = '<>',
   ['V-REPLACE'] = '<>',
@@ -316,6 +318,7 @@ components.right.active[4] = {
   left_sep = ' ',
   right_sep = ' '
 }
+
 components.right.active[5] = {
   provider = 'position',
   hl = {
@@ -375,10 +378,24 @@ components.left.inactive[1] = {
   }
 }
 
+-- filename
 components.left.inactive[2] = {
   icon = '',
   provider = 'file_info',
   file_modified_icon = "+",
+}
+
+-- fileSize
+components.right.inactive[1] = {
+  provider = 'file_size',
+  enabled = function() return vim.fn.getfsize(vim.fn.expand('%:t')) > 0 end,
+  hl = {
+    fg = 'white',
+    bg = 'bg',
+    -- style = 'bold'
+  },
+  left_sep = ' ',
+  right_sep = ' '
 }
 
 require('feline').setup({
@@ -389,4 +406,3 @@ require('feline').setup({
   components = components,
   properties = properties,
 })
-

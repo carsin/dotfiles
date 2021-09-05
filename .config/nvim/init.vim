@@ -4,17 +4,13 @@ set nocompatible
 filetype plugin indent on " Load plugins according to detected filetype.
 syntax on                 " Enable syntax highlighting.
 
-set title                 " report title to terminal
-set hidden                " hide buffers even if they're edited
-set history=500           " How many lines of history vim has to remember
-
-set encoding=utf8         " Set utf8 as standard encoding and en_US as the standard language
-set ffs=unix,dos,mac      " Use Unix as the standard file type
-
-set updatetime=150        " Fast updatetime for snappier experience
-
-" Set proper mouse mode
-set mouse=a
+set title            " report title to terminal
+set hidden           " hide buffers even if they're edited
+set history=500      " How many lines of history vim has to remember
+set encoding=utf8    " Set utf8 as standard encoding and en_US as the standard language
+set ffs=unix,dos,mac " Use Unix as the standard file type
+set updatetime=150   " Fast updatetime for snappier experience
+set mouse=a          " Set proper mouse mode
 
 " Turn backup off, since most stuff is in SVN, git etc anyway...
 set nobackup
@@ -30,12 +26,16 @@ cnoremap w!! execute 'silent! write !sudo tee % >/dev/null' <bar> edit!
 
 " }}}
 
-let g:coq_settings = { 'auto_start': v:true, 'display.pum.fast_close': v:false }
+let g:coq_settings = { 'auto_start': 'shut-up', 'display.pum.fast_close': v:false }
+let g:minimap_width = 7
+let g:minimap_auto_start = 1
+let g:minimap_highlight_range = 1
+let g:minimap_auto_start_win_enter = 1
+let g:minimap_block_filetypes = ['startify']
 " Load plugins
 lua require'init'
 
 " Editing
-
 set autoindent                    " Indent according to previous line.
 set expandtab                     " Use spaces instead of tabs.
 set softtabstop=4                 " Tab key indents by 4 spaces.
@@ -88,7 +88,8 @@ set t_Co=256
 
 let g:gruvbox_material_transparent_background = 1
 let g:gruvbox_material_enable_italic = 1
-let g:gruvbox_material_enable_bold = 0
+let g:gruvbox_material_enable_bold = 1
+let g:gruvbox_material_show_eob = 0
 let g:gruvbox_material_background = 'hard'
 let g:gruvbox_material_visual = 'reverse'
 let g:gruvbox_material_diagnostic_virtual_text = 'colored'
@@ -119,6 +120,7 @@ set formatoptions-=cro " Disable auto insert comment
 set signcolumn=yes:1   " Column for diagnostics & git gutter
 set pumheight=10       " Shorten number of autocomplete suggestions
 set pumblend=10        " Autocomplete background transparency
+let &fcs='eob: '       " No idiotic eob tildas
 
 " Never make windows completely empty
 set winheight=999
@@ -150,7 +152,7 @@ augroup END
 " Don't take up scrollbar with match
 let g:matchup_matchparen_offscreen = { 'method': 'popup' }
 
-" Hide ~ on nonexistant lines
+" Hide ~ on non-existent lines
 " highlight EndOfBuffer ctermfg=black ctermbg=black
 
 augroup remember_folds

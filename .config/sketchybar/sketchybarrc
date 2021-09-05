@@ -106,7 +106,7 @@ sketchybar -m set cpu_user graph_color 0xffffffff
 sketchybar -m set cpu_user update_freq 5
 sketchybar -m set cpu_user associated_space 1
 sketchybar -m set cpu_user associated_space 3
-sketchybar -m set cpu_user associated_space 4
+# sketchybar -m set cpu_user associated_space 4
 sketchybar -m set cpu_user associated_space 5
 sketchybar -m set cpu_user label_padding_left 3
 sketchybar -m set cpu_user icon_padding_left 3
@@ -118,13 +118,14 @@ sketchybar -m set cpu_sys label_padding_left 3
 sketchybar -m set cpu_sys icon_padding_left 3
 sketchybar -m set cpu_sys associated_space 1
 sketchybar -m set cpu_sys associated_space 3
-sketchybar -m set cpu_sys associated_space 4
+# sketchybar -m set cpu_sys associated_space 4
 sketchybar -m set cpu_sys associated_space 5
 sketchybar -m set cpu_sys icon 
 
 # Network graph
 sketchybar -m add component graph network_down right 150 nospace
 sketchybar -m set network_down associated_space 2
+sketchybar -m set network_down associated_space 4
 sketchybar -m set network_down label_padding_left 3
 sketchybar -m set network_down icon ⮁
 sketchybar -m set network_down icon_padding_left 3
@@ -137,6 +138,7 @@ sketchybar -m set network_up icon ⮁
 sketchybar -m set network_up label_padding_left 3
 sketchybar -m set network_up icon_padding_left 3
 sketchybar -m set network_up associated_space 2
+sketchybar -m set network_up associated_space 4
 sketchybar -m set network_up graph_color 0xff48aa2a
 
 sketchybar -m add item topproc right

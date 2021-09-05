@@ -38,7 +38,7 @@ local on_attach = function(bufnr)
   buf_set_keymap('n', '<space>cr', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
   buf_set_keymap('n', '<space>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
   -- buf_set_keymap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
-  buf_set_keymap('n', '<space>e', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>', opts)
+  -- buf_set_keymap('n', '<space>e', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>', opts)
   buf_set_keymap('n', '[d', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', opts)
   buf_set_keymap('n', ']d', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', opts)
   -- buf_set_keymap('n', '<space>c', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
@@ -47,7 +47,9 @@ end
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities.textDocument.completion.completionItem.snippetSupport = true
+
 local nvim_lsp = require 'lspconfig'
+local coq = require "coq"
 
 -- Load sumneko (custom lua lsp)
 local sumneko_root_path = vim.fn.getenv("HOME").."/.local/bin/lua-language-server"
@@ -57,7 +59,7 @@ table.insert(runtime_path, 'lua/?.lua')
 table.insert(runtime_path, 'lua/?/init.lua')
 
 -- Set up sumneko
-require('lspconfig').sumneko_lua.setup {
+nvim_lsp.sumneko_lua.setup {
   cmd = { sumneko_binary, '-E', sumneko_root_path .. '/main.lua' },
   on_attach = on_attach,
   capabilities = capabilities,
@@ -80,13 +82,12 @@ require('lspconfig').sumneko_lua.setup {
   },
 }
 
-local coq = require "coq"
 -- Enable the following language servers
-local servers = { 'ccls', 'rust_analyzer', 'pyright', }
+local servers = { 'rust_analyzer', 'pyright', 'ccls' }
 for _, lsp in ipairs(servers) do
-  nvim_lsp[lsp].setup(coq.lsp_ensure_capabilities {
+  nvim_lsp[lsp].setup(coq.lsp_ensure_capabilities({
     on_attach = on_attach,
     capabilities = capabilities,
     flags = { debounce_text_changes = 150 }
-  })
+  }))
 end
