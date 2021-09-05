@@ -10,15 +10,18 @@ temp="${temp// /}"
 
 # add more conditions here as appropriate
 case "${condition}" in
-  "sunny")
-    icon=""
-    ;;
-  "partlycloudy")
-    icon=" "
-    ;;
-  *)
-    icon="$condition"
-    ;;
+    "sunny")
+        icon=""
+        ;;
+    "partlycloudy")
+        icon=" "
+        ;;
+    "lightrain")
+        icon=""
+        ;;
+    *)
+        icon="$condition"
+        ;;
 esac
 
 sketchybar -m set weather icon "$icon"

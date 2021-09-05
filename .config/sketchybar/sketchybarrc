@@ -90,7 +90,7 @@ sketchybar -m set clock icon
 
 # Weather
 sketchybar -m add item weather right
-sketchybar -m set weather update_freq 1800
+sketchybar -m set weather update_freq 600
 sketchybar -m set weather script "~/.config/sketchybar/plugins/weather.sh"
 sketchybar -m set weather click_script "open https://darksky.net/forecast/22.2109,-159.4081/us12/en"
 # Battery

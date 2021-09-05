@@ -71,7 +71,7 @@ return packer.startup(function(use)
       require 'plugins.treesitter'
     end,
   }
-
+  use 'nvim-treesitter/nvim-treesitter-textobjects'
   use { -- lspkind
     'onsails/lspkind-nvim',
     config = function()

@@ -130,8 +130,9 @@ set splitright         " Always horizontally split to the right
 set fillchars+=vert:│  " Change vertical split character to solid line instead of line with gaps
 set shortmess+=W       " Don't pass messages to ins-completion-menu.
 set formatoptions-=cro " Disable auto insert comment
-set signcolumn=yes:1  " Column for diagnostics & git gutter
+set signcolumn=yes:1   " Column for diagnostics & git gutter
 set pumheight=15       " Shorten number of autocomplete suggestions
+set pumblend=10        " Autocomplete background transparency
 
 " Never make windows completely empty
 set winheight=999
