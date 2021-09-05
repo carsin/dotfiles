@@ -45,24 +45,24 @@ return packer.startup(function(use)
     end,
   }
 
-  use { -- vsnip snippets
-    'hrsh7th/vim-vsnip',
-    event = 'InsertEnter'
-  }
+  -- use { -- vsnip snippets
+  --   'hrsh7th/vim-vsnip',
+  --   event = 'InsertEnter'
+  -- }
 
-  use { -- friendly snippets
-    'rafamadriz/friendly-snippets',
-    event = 'InsertEnter'
-  }
+  -- use { -- friendly snippets
+  --   'rafamadriz/friendly-snippets',
+  --   event = 'InsertEnter'
+  -- }
 
-  use { -- compe
-    'hrsh7th/nvim-compe',
-    event = 'InsertEnter',
-    requires = { { '' } },
-    config = function()
-      require 'plugins.compe'
-    end,
-  }
+  -- use { -- compe
+  --   'hrsh7th/nvim-compe',
+  --   event = 'InsertEnter',
+  --   requires = { { '' } },
+  --   config = function()
+  --     require 'plugins.compe'
+  --   end,
+  -- }
 
   use { -- treesitter
     'nvim-treesitter/nvim-treesitter',
@@ -71,13 +71,18 @@ return packer.startup(function(use)
       require 'plugins.treesitter'
     end,
   }
+
   use 'nvim-treesitter/nvim-treesitter-textobjects'
-  use { -- lspkind
-    'onsails/lspkind-nvim',
-    config = function()
-      require 'plugins.lspkind'
-    end,
-  }
+
+  -- use { -- lspkind
+  --   'onsails/lspkind-nvim',
+  --   config = function()
+  --     require 'plugins.lspkind'
+  --   end,
+  -- }
+
+  use { 'ms-jpq/coq_nvim', branch = 'coq'} -- main one
+  use { 'ms-jpq/coq.artifacts', branch= 'artifacts'} -- 9000+ Snippets
 
   use { -- lsp signature
     'ray-x/lsp_signature.nvim',
@@ -135,7 +140,11 @@ return packer.startup(function(use)
     'lewis6991/gitsigns.nvim',
     requires = 'nvim-lua/plenary.nvim',
     config = function()
-      require('gitsigns').setup()
+      require('gitsigns').setup {
+        keymaps = {
+          noremap = false,
+        }
+      }
     end,
   }
 

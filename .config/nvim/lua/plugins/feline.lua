@@ -375,6 +375,12 @@ components.left.inactive[1] = {
   }
 }
 
+components.left.inactive[2] = {
+  icon = '',
+  provider = 'file_info',
+  file_modified_icon = "+",
+}
+
 require('feline').setup({
   colors = colors,
   default_bg = bg,

@@ -5,9 +5,11 @@ fortune ~/.config/fortune/fortunes
 (cat ~/.cache/wal/sequences &)
 
 # Enable Powerlevel10k instant prompt.
-# if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-#   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-# fi
+if [[ $TERM =~ 'xterm-kitty' ]]; then
+    if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+        source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+    fi
+fi
 
 # Useful options & defaults
 setopt autocd extendedglob nomatch menucomplete
@@ -127,6 +129,7 @@ then
     [[ ! -f ~/.config/zsh/.p10k.zsh ]] || source ~/.config/zsh/.p10k.zsh
     kitty @ set-colors ~/.cache/wal/colors-kitty.conf
 else
+    # basic prompt
     source ~/.config/zsh/themes/vimterm.zsh-theme
 fi
 

@@ -80,12 +80,13 @@ require('lspconfig').sumneko_lua.setup {
   },
 }
 
+local coq = require "coq"
 -- Enable the following language servers
 local servers = { 'ccls', 'rust_analyzer', 'pyright', }
 for _, lsp in ipairs(servers) do
-  nvim_lsp[lsp].setup {
+  nvim_lsp[lsp].setup(coq.lsp_ensure_capabilities {
     on_attach = on_attach,
     capabilities = capabilities,
     flags = { debounce_text_changes = 150 }
-  }
+  })
 end

@@ -30,7 +30,9 @@ cnoremap w!! execute 'silent! write !sudo tee % >/dev/null' <bar> edit!
 
 " }}}
 
-lua require('init')
+let g:coq_settings = { 'auto_start': v:true, 'display.pum.fast_close': v:false }
+" Load plugins
+lua require'init'
 
 " Editing
 
@@ -75,7 +77,6 @@ autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 " Turn off paste mode when leaving insert
 autocmd InsertLeave * set nopaste
 
-
 " }}}
 " UI {{{
 
@@ -94,21 +95,6 @@ let g:gruvbox_material_diagnostic_virtual_text = 'colored'
 let g:gruvbox_material_palette = 'original'
 
 colorscheme gruvbox-material
-
-" Highlight treesitter with wal colors
-" hi TSInclude ctermbg=NONE ctermfg=5
-" hi TSNamespace ctermbg=NONE ctermfg=4
-" hi TSRepeat ctermbg=NONE ctermfg=5
-" hi TSOperator ctermbg=NONE ctermfg=4
-
-hi Normal guibg=none ctermbg=none
-hi LineNr guibg=none ctermbg=none
-hi Folded guibg=none ctermbg=none
-hi NonText guibg=none ctermbg=none
-hi SpecialKey guibg=none ctermbg=none
-hi VertSplit guibg=none ctermbg=none
-hi SignColumn guibg=none ctermbg=none
-hi EndOfBuffer guibg=none ctermbg=none
 
 set showtabline=0      " DONT Show top tab line (2 = show)
 set so=5               " How many lines from cursor to top / bottom of the screen before scrolling
@@ -131,12 +117,12 @@ set fillchars+=vert:│  " Change vertical split character to solid line instead
 set shortmess+=W       " Don't pass messages to ins-completion-menu.
 set formatoptions-=cro " Disable auto insert comment
 set signcolumn=yes:1   " Column for diagnostics & git gutter
-set pumheight=15       " Shorten number of autocomplete suggestions
+set pumheight=10       " Shorten number of autocomplete suggestions
 set pumblend=10        " Autocomplete background transparency
 
 " Never make windows completely empty
 set winheight=999
-set winminheight=15
+set winminheight=20
 " set colorcolumn=80   " 80 char column guide
 
 " Set completeopt to have a better completion experience
@@ -178,4 +164,3 @@ autocmd CursorHold * lua vim.lsp.diagnostic.show_line_diagnostics({focusable = f
 " }}}
 " Binds & Mappings
 source ~/.config/nvim/mappings.vim
-lua require'init'

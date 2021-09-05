@@ -1,11 +1,8 @@
 let mapleader=" "
 
 " Intuitive j/k behavior with wrapping
-nnoremap <expr> j v:count ? (v:count > 5 ? "m'" . v:count : '') . 'j' : 'gj'
-nnoremap <expr> k v:count ? (v:count > 5 ? "m'" . v:count : '') . 'k' : 'gk'
-
-" Start fzf
-" nnoremap <Leader>f :Files<CR>
+nnoremap <expr> j v:count ? (v:count > 5 ? "m'" . v:count : '') . 'j' : 'j'
+nnoremap <expr> k v:count ? (v:count > 5 ? "m'" . v:count : '') . 'k' : 'k'
 
 " Reload vim configuration
 nnoremap <leader>r :source ~/.config/nvim/init.vim<CR>
@@ -16,7 +13,6 @@ function! WriteSavePosition()
     :wa
     call setpos('.', pos)
 endfunction
-
 nnoremap <silent><leader>w :silent :call WriteSavePosition()<cr>
 
  " Clear search highlight
@@ -45,16 +41,22 @@ nnoremap <leader>it "=strftime("%I:%M %p")<CR>p
 nnoremap <leader>T :enew<cr>
 
 " Move to the next buffer
-nnoremap <leader>l :bnext<CR>
+" nnoremap <leader>l :bnext<CR>
 nnoremap <right> :bnext<CR>
 
 " Move to the previous buffer
-nnoremap <leader>h :bprevious<CR>
+" nnoremap <leader>h :bprevious<CR>
 nnoremap <left> :bprevious<CR>
 
-" Split binds
-nnoremap <leader>hs :split<CR>
-nnoremap <leader>vs :vsplit<CR>
+" nnoreSplit binds
+nnoremap <leader>sh :split<CR>
+nnoremap <leader>sv :vsplit<CR>
+
+" Split navigation
+nmap <leader>h <C-W>h<C-W>_
+nmap <leader>j <C-W>j<C-W>_
+nmap <leader>k <C-W>k<C-W>_
+nmap <leader>l <C-W>l<C-W>_
 
 " Close window
 nnoremap <leader>q :close<CR>
@@ -101,11 +103,7 @@ inoremap ? ?<c-g>u
 vnoremap J :m '>+1<CR>gv=gv
 vnoremap K :m '<-2<CR>gv=gv
 
-" Lexima stuff
-let g:lexima_no_default_rules = v:true
-call lexima#set_default_rules()
-inoremap <silent><expr> <CR>      compe#confirm(lexima#expand('<LT>CR>', 'i'))
-
+" --- PLUGINS
 " Telescope
 " Find files using Telescope command-line sugar.
 nnoremap <leader>f <cmd>Telescope find_files<cr>
@@ -126,12 +124,6 @@ tnoremap <silent> <leader>t <CMD>lua require("FTerm").toggle()<CR>
 nnoremap <silent> <F3> <CMD>lua require("FTerm").toggle()<CR>
 tnoremap <silent> <F3> <CMD>lua require("FTerm").toggle()<CR>
 tnoremap <silent> <ESC> <CMD>lua require("FTerm").toggle()<CR>
-
-" Split navigation
-map <C-H> <C-W>h<C-W>_
-map <C-J> <C-W>j<C-W>_
-map <C-K> <C-W>k<C-W>_
-map <C-L> <C-W>l<C-W>_
 
 " Trouble
 nnoremap <leader>xx <cmd>TroubleToggle<cr>
