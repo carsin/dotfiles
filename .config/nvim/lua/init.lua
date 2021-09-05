@@ -27,6 +27,8 @@ return packer.startup(function(use)
   use 'mhinz/vim-startify'
   use 'chaoren/vim-wordmotion'
   use 'tpope/vim-surround'
+  use 'tpope/vim-speeddating'
+
   use { -- better escape
     'jdhao/better-escape.vim',
     event = 'InsertEnter',
@@ -35,82 +37,70 @@ return packer.startup(function(use)
       vim.g.better_escape_shortcut = { 'jk' }
     end,
   }
+
   use { --lsp config
-    "neovim/nvim-lspconfig",
+    'neovim/nvim-lspconfig',
     config = function()
-      require "plugins.lspconfig"
+      require 'plugins.lspconfig'
     end,
   }
+
   use { -- vsnip snippets
     'hrsh7th/vim-vsnip',
-    event = "InsertEnter"
+    event = 'InsertEnter'
   }
+
   use { -- friendly snippets
     'rafamadriz/friendly-snippets',
-    event = "InsertEnter"
+    event = 'InsertEnter'
   }
+
   use { -- compe
-    "hrsh7th/nvim-compe",
-    event = "InsertEnter",
-    requires = { { "" } },
+    'hrsh7th/nvim-compe',
+    event = 'InsertEnter',
+    requires = { { '' } },
     config = function()
-      require "plugins.compe"
+      require 'plugins.compe'
     end,
   }
+
   use { -- treesitter
-    "nvim-treesitter/nvim-treesitter",
-    event = "BufRead",
-    run = ":TSUpdate",
+    'nvim-treesitter/nvim-treesitter',
+    run = ':TSUpdate',
     config = function()
-      require "plugins.treesitter"
+      require 'plugins.treesitter'
     end,
   }
-  -- use 'nvim-treesitter/nvim-treesitter-textobjects'
-  -- use { -- lualine
-  --   'hoob3rt/lualine.nvim',
-  --   requires = {'kyazdani42/nvim-web-devicons', opt = true},
-  --   config = function()
-  --     require'lualine'.setup {
-  --       options = {
-  --         icons_enabled = false,
-  --         theme = 'gruvbox',
-  --         component_separators = {'│', '│'},
-  --         section_separators = {'▓░', '░▓'},
-  --       },
-  --   }
-  --   end,
-  -- }
+
   use { -- lspkind
     'onsails/lspkind-nvim',
     config = function()
-      require "plugins.lspkind"
+      require 'plugins.lspkind'
     end,
   }
+
   use { -- lsp signature
-    "ray-x/lsp_signature.nvim",
+    'ray-x/lsp_signature.nvim',
     config = function()
-      require "lsp_signature".setup()
+      require 'lsp_signature'.setup()
     end,
   }
+
   use { -- telescope
     'nvim-telescope/telescope.nvim',
     requires = { {'nvim-lua/plenary.nvim'} },
     config = function()
-      require "plugins.telescope"
+      require 'plugins.telescope'
     end,
   }
-  use { -- rust tools
-    'simrat39/rust-tools.nvim',
-    config = function()
-      require "plugins.rust-tools"
-    end,
-  }
+
   use { -- matchup
-    "andymass/vim-matchup",
-    event = "CursorMoved",
+    'andymass/vim-matchup',
+    event = 'CursorMoved',
   }
+
   use { -- FTerm
-    "numtostr/FTerm.nvim",
+    'numtostr/FTerm.nvim',
     config = function()
       require'FTerm'.setup({
         dimensions = {
@@ -123,27 +113,36 @@ return packer.startup(function(use)
       })
     end,
   }
+
   use 'm-pilia/vim-ccls'
+
   use { -- Feline
-    "famiu/feline.nvim",
+    'famiu/feline.nvim',
     config = function()
-      require "plugins.feline"
+      require 'plugins.feline'
     end,
   }
+
   use { -- Trouble
-    "folke/trouble.nvim",
-    requires = "kyazdani42/nvim-web-devicons",
+    'folke/trouble.nvim',
+    requires = 'kyazdani42/nvim-web-devicons',
     config = function()
-      require "plugins.trouble"
+      require 'plugins.trouble'
     end
   }
+
   use { -- gitsigns
     'lewis6991/gitsigns.nvim',
-    confug = function()
-      require('gitsigns').setup {
-        debug_mode = true,
-        sign_priority = 100,
-      }
+    requires = 'nvim-lua/plenary.nvim',
+    config = function()
+      require('gitsigns').setup()
+    end,
+  }
+
+  use { -- numb
+    'nacro90/numb.nvim',
+    config = function()
+      require('numb').setup()
     end,
   }
 end)

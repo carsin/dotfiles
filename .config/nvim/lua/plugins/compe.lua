@@ -36,6 +36,7 @@ require'compe'.setup {
 -- Use (s-)tab to:
 --- move to prev/next item in completion menuone
 --- jump to prev/next snippet's placeholder
+
 local t = function(str)
   return vim.api.nvim_replace_termcodes(str, true, true, true)
 end

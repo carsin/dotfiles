@@ -144,34 +144,41 @@ components.left.active[4] = {
     fg = 'yellow',
     bg = 'bg',
     -- style = 'bold'
-  }
+  },
+  right_sep = ' '
 }
 -- diffAdd
 components.left.active[5] = {
   provider = 'git_diff_added',
+  icon = "+",
   hl = {
     fg = 'green',
     bg = 'bg',
     -- style = 'bold'
-  }
+  },
+  right_sep = ' '
 }
--- diffModfified
+-- diffModified
 components.left.active[6] = {
   provider = 'git_diff_changed',
+  icon = "~",
   hl = {
     fg = 'orange',
     bg = 'bg',
     -- style = 'bold'
-  }
+  },
+  right_sep = ' '
 }
 -- diffRemove
 components.left.active[7] = {
   provider = 'git_diff_removed',
+  icon = "-",
   hl = {
     fg = 'red',
     bg = 'bg',
     -- style = 'bold'
-  }
+  },
+  right_sep = ' '
 }
 
 -- MID

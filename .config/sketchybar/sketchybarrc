@@ -106,6 +106,8 @@ sketchybar -m set cpu_user graph_color 0xffffffff
 sketchybar -m set cpu_user update_freq 5
 sketchybar -m set cpu_user associated_space 1
 sketchybar -m set cpu_user associated_space 3
+sketchybar -m set cpu_user associated_space 4
+sketchybar -m set cpu_user associated_space 5
 sketchybar -m set cpu_user label_padding_left 3
 sketchybar -m set cpu_user icon_padding_left 3
 sketchybar -m set cpu_user icon 
