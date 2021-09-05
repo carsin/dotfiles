@@ -157,8 +157,4 @@ return packer.startup(function(use)
       require('numb').setup()
     end,
   }
-
-  use {
-    'wfxr/minimap.vim',
-  }
 end)

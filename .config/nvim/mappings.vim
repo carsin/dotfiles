@@ -49,8 +49,8 @@ nnoremap <right> :bnext<CR>
 nnoremap <left> :bprevious<CR>
 
 " nnoreSplit binds
-nnoremap <leader>sh :split<CR>
-nnoremap <leader>sv :vsplit<CR>
+nnoremap <leader>wh :split<CR>
+nnoremap <leader>wv :vsplit<CR>
 
 " Split navigation
 nmap <leader>h <C-W>h<C-W>_

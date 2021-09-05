@@ -27,11 +27,6 @@ cnoremap w!! execute 'silent! write !sudo tee % >/dev/null' <bar> edit!
 " }}}
 
 let g:coq_settings = { 'auto_start': 'shut-up', 'display.pum.fast_close': v:false }
-let g:minimap_width = 7
-let g:minimap_auto_start = 1
-let g:minimap_highlight_range = 1
-let g:minimap_auto_start_win_enter = 1
-let g:minimap_block_filetypes = ['startify']
 " Load plugins
 lua require'init'
 
@@ -137,11 +132,11 @@ set foldmethod=expr
 set foldexpr=nvim_treesitter#foldexpr()
 
 " Only show relative numbers in focused normal mode
-augroup numbertoggle
-    autocmd!
-    autocmd BufEnter,FocusGained,InsertLeave * set rnu
-    autocmd BufLeave,FocusLost,InsertEnter * set nornu
-augroup END
+" augroup numbertoggle
+"     autocmd!
+"     autocmd BufEnter,FocusGained,InsertLeave * set rnu
+"     autocmd BufLeave,FocusLost,InsertEnter * set nornu
+" augroup END
 
 " Highlight yank
 augroup highlight_yank

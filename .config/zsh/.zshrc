@@ -86,51 +86,15 @@ path+=("/usr/local/opt/binutils/bin:$PATH")
 path+=("/Users/carson/.cargo/bin")
 # path+=(/Library/Frameworks/Python.framework/Versions/3.8/bin:$PATH)
 
-# TODO: seperate into zsh aliases file
-alias ..="cd .."
-alias ~="cd ~"
-alias vim="nvim"
-alias ls="exa -aF --color=always --sort=type --group-directories-first"
-alias cp="cp -iv"
-alias mv="mv -iv"
-alias rm="rm -v"
-alias bc="bc -ql"
-alias mkdir="mkdir -pv"
-
-alias g="git"
-alias cfg="/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME"
-alias config="/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME"
-
-alias cr="cargo run"
-alias crr="cargo run --release"
-alias mr="make && ./run"
-
-alias killglobal="launchctl unload /Library/LaunchAgents/com.paloaltonetworks.gp.pangp*"
-alias startglobal="launchctl load /Library/LaunchAgents/com.paloaltonetworks.gp.pangp*"
-
-alias python="python3"
-alias calpoly="ssh ckfreedm@unix3.csc.calpoly.edu"
-alias open="open ."
-alias top="bpytop"
-
-alias sp="spt"
-alias o="open"
-alias t="taskwarrior-tui"
-
-# alias w3="wal --backend schemer2 -i ~/files/photos/wallpapers/wal/ && kitty @ set-colors ~/.cache/wal/colors-kitty.conf"
-alias w="wal -i ~/files/photos/wallpapers/wal/ && kitty @ set-colors ~/.cache/wal/colors-kitty.conf && source ~/.config/sketchybar/sketchybarcolors"
-alias w1="wal --backend haishoku -i ~/files/photos/wallpapers/wal/ && kitty @ set-colors ~/.cache/wal/colors-kitty.conf && source ~/.config/sketchybar/sketchybarcolors"
-alias w2="wal --backend colorz -i ~/files/photos/wallpapers/wal/ && kitty @ set-colors ~/.cache/wal/colors-kitty.conf && source ~/.config/sketchybar/sketchybarcolors"
-alias w3="wal --backend colorthief -i ~/files/photos/wallpapers/wal/ && kitty @ set-colors ~/.cache/wal/colors-kitty.conf && source ~/.config/sketchybar/sketchybarcolors"
-
-alias luamake=/Users/carson/.local/bin/lua-language-server/3rd/luamake/luamake
+# import aliases
+source "$ZDOTDIR/zsh-aliases"
 
 if [[ $TERM =~ 'xterm-kitty' ]];
 then
-    kitty @ set-colors ~/.cache/wal/colors-kitty.conf
     # load p10k
     source /usr/local/opt/powerlevel10k/powerlevel10k.zsh-theme
     [[ ! -f ~/.config/zsh/.p10k.zsh ]] || source ~/.config/zsh/.p10k.zsh
+    kitty @ set-colors ~/.cache/wal/colors-kitty.conf
 else
     # basic prompt
     source ~/.config/zsh/themes/vimterm.zsh-theme
