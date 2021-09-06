@@ -9,7 +9,7 @@ cnorm=$(echo $color1 | sed 's/#//')
 cinse=$(echo $foreground | sed 's/#//')
 
 sketchybar -m config bar_color 0xD8$cback
-sketchybar -m default icon_color 0xff$cfore
-sketchybar -m default label_color 0xff$cfore
+sketchybar -m default icon_color 0x5A$cfore
+sketchybar -m default label_color 0x5A$cfore
 
 echo "sketchybar: colors loaded"

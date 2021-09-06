@@ -13,7 +13,7 @@ function! WriteSavePosition()
     :wa
     call setpos('.', pos)
 endfunction
-nnoremap <silent><leader>w :silent :call WriteSavePosition()<cr>
+nnoremap <silent><leader>s :silent :call WriteSavePosition()<cr>
 
  " Clear search highlight
 nnoremap <silent><leader><space> :let @/ = ""<CR>
@@ -38,7 +38,7 @@ nnoremap <leader>id "=strftime("%a, %b %d %Y")<CR>p
 nnoremap <leader>it "=strftime("%I:%M %p")<CR>p
 
 " Open new empty buffer
-nnoremap <leader>T :enew<cr>
+" nnoremap <leader>T :enew<cr>
 
 " Move to the next buffer
 " nnoremap <leader>l :bnext<CR>
@@ -120,7 +120,9 @@ nmap <expr> T reg_recording() . reg_executing() == "" ? "<Plug>Lightspeed_T" : "
 
 " Floating terminal
 nnoremap <silent> <leader>t <CMD>lua require("FTerm").toggle()<CR>
-tnoremap <silent> <leader>t <CMD>lua require("FTerm").toggle()<CR>
+nnoremap <silent> <C-t> <CMD>lua require("FTerm").toggle()<CR>
+tnoremap <silent> <C-t> <CMD>lua require("FTerm").toggle()<CR>
+tnoremap <silent> <C-q> <CMD>lua require("FTerm").toggle()<CR>
 nnoremap <silent> <F3> <CMD>lua require("FTerm").toggle()<CR>
 tnoremap <silent> <F3> <CMD>lua require("FTerm").toggle()<CR>
 tnoremap <silent> <ESC> <CMD>lua require("FTerm").toggle()<CR>

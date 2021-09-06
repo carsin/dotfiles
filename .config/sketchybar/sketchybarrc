@@ -1,7 +1,7 @@
 echo "sketchybar: loading configuration..."
 ############## BAR ##################
-sketchybar -m config height               20
-sketchybar -m config position             bottom
+sketchybar -m config height               18
+sketchybar -m config position             top
 sketchybar -m config padding_left         5
 sketchybar -m config padding_right        5
 sketchybar -m config blur_radius 5
@@ -80,7 +80,7 @@ sketchybar -m set title enabled on
 
 ################# RIGHT ITEMS ####################
 sketchybar -m add item clock right
-sketchybar -m set clock update_freq 1
+sketchybar -m set clock update_freq 59
 sketchybar -m set clock script "~/.config/sketchybar/plugins/clock.sh"
 sketchybar -m set clock label_padding_left 3
 sketchybar -m set clock label_padding_right 0
@@ -105,9 +105,6 @@ sketchybar -m set cpu_user script "~/.config/sketchybar/plugins/cpu_graph.sh"
 sketchybar -m set cpu_user graph_color 0xffffffff
 sketchybar -m set cpu_user update_freq 5
 sketchybar -m set cpu_user associated_space 1
-sketchybar -m set cpu_user associated_space 3
-# sketchybar -m set cpu_user associated_space 4
-sketchybar -m set cpu_user associated_space 5
 sketchybar -m set cpu_user label_padding_left 3
 sketchybar -m set cpu_user icon_padding_left 3
 sketchybar -m set cpu_user icon 
@@ -117,9 +114,7 @@ sketchybar -m set cpu_sys graph_color 0xff48aa2a
 sketchybar -m set cpu_sys label_padding_left 3
 sketchybar -m set cpu_sys icon_padding_left 3
 sketchybar -m set cpu_sys associated_space 1
-sketchybar -m set cpu_sys associated_space 3
-# sketchybar -m set cpu_sys associated_space 4
-sketchybar -m set cpu_sys associated_space 5
+sketchybar -m set cpu_sys update_freq 5
 sketchybar -m set cpu_sys icon 
 
 # Network graph
@@ -138,12 +133,13 @@ sketchybar -m set network_up icon ⮁
 sketchybar -m set network_up label_padding_left 3
 sketchybar -m set network_up icon_padding_left 3
 sketchybar -m set network_up associated_space 2
+sketchybar -m set network_up update_freq 5
 sketchybar -m set network_up associated_space 4
 sketchybar -m set network_up graph_color 0xff48aa2a
 
-sketchybar -m add item topproc right
-sketchybar -m set topproc script "~/.config/sketchybar/plugins/topproc.sh"
-sketchybar -m set topproc update_freq 15
+# sketchybar -m add item topproc right
+# sketchybar -m set topproc script "~/.config/sketchybar/plugins/topproc.sh"
+# sketchybar -m set topproc update_freq 15
 
 ###################### CENTER ITEMS ###################
 # Spotify

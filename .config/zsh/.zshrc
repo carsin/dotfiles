@@ -5,7 +5,7 @@ fortune ~/.config/fortune/fortunes
 (cat ~/.cache/wal/sequences &)
 
 # Enable Powerlevel10k instant prompt.
-if [[ $TERM =~ 'xterm-kitty' ]]; then
+if [[ $TERM =~ 'xterm-kitty' || $TERM =~ 'alacritty' ]]; then
     if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
         source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
     fi
@@ -25,11 +25,6 @@ source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 HISTSIZE=10000000
 SAVEHIST=10000000
 HISTFILE=~/.cache/zsh/history
-
-# Plugins
-zsh_add_plugin "zsh-users/zsh-autosuggestions"
-zsh_add_plugin "hlissner/zsh-autopair"
-zsh_add_plugin "agkozak/zsh-z"
 
 # completions
 autoload -Uz compinit
@@ -55,6 +50,19 @@ bindkey -M menuselect 'h' vi-backward-char
 bindkey -M menuselect 'k' vi-up-line-or-history
 bindkey -M menuselect 'l' vi-forward-char
 bindkey -M menuselect 'j' vi-down-line-or-history
+
+# Go up and down in history with ctrl+j & ctrl+k
+bindkey '^k' history-search-backward
+bindkey '^j' history-search-forward
+
+# Plugins
+zsh_add_plugin "zsh-users/zsh-autosuggestions"
+zsh_add_plugin "hlissner/zsh-autopair"
+zsh_add_plugin "agkozak/zsh-z"
+
+# Accept autosuggestion
+bindkey '^ ' autosuggest-accept
+bindkey '^l' autosuggest-accept
 
 # Use lf to switch directories and bind it to ctrl-f
 lfcd () {
@@ -89,12 +97,14 @@ path+=("/Users/carson/.cargo/bin")
 # import aliases
 source "$ZDOTDIR/zsh-aliases"
 
-if [[ $TERM =~ 'xterm-kitty' ]];
+if [[ $TERM =~ 'xterm-kitty' || $TERM =~ 'alacritty' ]];
 then
     # load p10k
     source /usr/local/opt/powerlevel10k/powerlevel10k.zsh-theme
     [[ ! -f ~/.config/zsh/.p10k.zsh ]] || source ~/.config/zsh/.p10k.zsh
-    kitty @ set-colors ~/.cache/wal/colors-kitty.conf
+    if [[ $TERM =~ 'xterm-kitty' ]]; then
+        kitty @ set-colors ~/.cache/wal/colors-kitty.conf
+    fi
 else
     # basic prompt
     source ~/.config/zsh/themes/vimterm.zsh-theme
