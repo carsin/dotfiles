@@ -46,10 +46,10 @@ local on_attach = function(bufnr)
 end
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 
 local nvim_lsp = require 'lspconfig'
-local coq = require "coq"
 
 -- Load sumneko (custom lua lsp)
 local sumneko_root_path = vim.fn.getenv("HOME").."/.local/bin/lua-language-server"
@@ -57,6 +57,16 @@ local sumneko_binary = sumneko_root_path .. '/bin/macOS/lua-language-server'
 local runtime_path = vim.split(package.path, ';')
 table.insert(runtime_path, 'lua/?.lua')
 table.insert(runtime_path, 'lua/?/init.lua')
+
+-- Enable the following language servers
+local servers = { 'rust_analyzer', 'pyright', 'ccls' }
+for _, lsp in ipairs(servers) do
+  nvim_lsp[lsp].setup {
+    on_attach = on_attach,
+    capabilities = capabilities,
+    flags = { debounce_text_changes = 150 }
+  }
+end
 
 -- Set up sumneko
 nvim_lsp.sumneko_lua.setup {
@@ -82,12 +92,3 @@ nvim_lsp.sumneko_lua.setup {
   },
 }
 
--- Enable the following language servers
-local servers = { 'rust_analyzer', 'pyright', 'ccls' }
-for _, lsp in ipairs(servers) do
-  nvim_lsp[lsp].setup(coq.lsp_ensure_capabilities({
-    on_attach = on_attach,
-    capabilities = capabilities,
-    flags = { debounce_text_changes = 150 }
-  }))
-end

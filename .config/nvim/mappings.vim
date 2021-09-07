@@ -109,7 +109,7 @@ vnoremap K :m '<-2<CR>gv=gv
 nnoremap <leader>f <cmd>Telescope find_files<cr>
 nnoremap <C-f> <cmd>Telescope find_files<cr>
 nnoremap <leader>g <cmd>Telescope live_grep<cr>
-nnoremap <leader>b <cmd>Telescope buffers<cr>
+" nnoremap <leader>b <cmd>Telescope buffers<cr>
 nnoremap <leader>o <cmd>Telescope projects<cr>
 nnoremap <leader>pp <cmd>Telescope projects<cr>
 " nnoremap <leader>h <cmd>Telescope help_tags<cr>
@@ -121,6 +121,7 @@ nmap <expr> t reg_recording() . reg_executing() == "" ? "<Plug>Lightspeed_t" : "
 nmap <expr> T reg_recording() . reg_executing() == "" ? "<Plug>Lightspeed_T" : "T"
 
 " Floating terminal
+
 nnoremap <silent> <leader>t <CMD>lua require("FTerm").toggle()<CR>
 nnoremap <silent> <C-t> <CMD>lua require("FTerm").toggle()<CR>
 tnoremap <silent> <C-t> <CMD>lua require("FTerm").toggle()<CR>

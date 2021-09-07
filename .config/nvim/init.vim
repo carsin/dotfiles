@@ -26,9 +26,8 @@ cnoremap w!! execute 'silent! write !sudo tee % >/dev/null' <bar> edit!
 
 " }}}
 
-let g:coq_settings = { 'auto_start': 'shut-up', 'display.pum.fast_close': v:false }
 " Load plugins
-lua require'init'
+lua require'plugins'
 
 " Editing
 set autoindent                    " Indent according to previous line.
@@ -79,7 +78,7 @@ autocmd InsertLeave * set nopaste
 set termguicolors
 
 set background=dark
-set t_Co=256
+" set t_Co=256
 
 let g:gruvbox_material_transparent_background = 1
 let g:gruvbox_material_enable_italic = 1
@@ -114,6 +113,7 @@ set shortmess+=W       " Don't pass messages to ins-completion-menu.
 set formatoptions-=cro " Disable auto insert comment
 set signcolumn=yes:1   " Column for diagnostics & git gutter
 set pumheight=10       " Shorten number of autocomplete suggestions
+set pumwidth=15       " Shorten number of autocomplete suggestions
 set pumblend=10        " Autocomplete background transparency
 let &fcs='eob: '       " No idiotic eob tildas
 
@@ -132,11 +132,11 @@ set foldmethod=expr
 set foldexpr=nvim_treesitter#foldexpr()
 
 " Only show relative numbers in focused normal mode
-" augroup numbertoggle
-"     autocmd!
-"     autocmd BufEnter,FocusGained,InsertLeave * set rnu
-"     autocmd BufLeave,FocusLost,InsertEnter * set nornu
-" augroup END
+augroup numbertoggle
+    autocmd!
+    autocmd BufEnter,FocusGained,InsertLeave * set rnu
+    autocmd BufLeave,FocusLost,InsertEnter * set nornu
+augroup END
 
 " Highlight yank
 augroup highlight_yank
@@ -146,9 +146,6 @@ augroup END
 
 " Don't take up scrollbar with match
 let g:matchup_matchparen_offscreen = { 'method': 'popup' }
-
-" Hide ~ on non-existent lines
-" highlight EndOfBuffer ctermfg=black ctermbg=black
 
 augroup remember_folds
   autocmd!

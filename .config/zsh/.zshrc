@@ -120,5 +120,5 @@ export TASKDATA=~/.config/taskwarrior-tui/.task
 export VIT_DIR=~/.config/vit
 export SPICETIFY_CONFIG=~/.config/spicetify
 export LC_ALL=en_US.UTF-8
-export TERM=xterm-256color
+# export TERM=xterm-256color
 export PATH
