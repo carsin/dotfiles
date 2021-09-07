@@ -36,7 +36,7 @@ return packer.startup(function(use)
     end,
   }
 
-  use {
+  use { -- autopairs
     'windwp/nvim-autopairs',
     config = function()
       require 'plugins.autopairs'
@@ -52,13 +52,12 @@ return packer.startup(function(use)
 
   use { -- treesitter
     'nvim-treesitter/nvim-treesitter',
+    requires = { { 'nvim-treesitter/nvim-treesitter-textobjects' } },
     run = ':TSUpdate',
     config = function()
       require 'plugins.treesitter'
     end,
   }
-
-  use 'nvim-treesitter/nvim-treesitter-textobjects'
 
   use { -- lsp signature
     'ray-x/lsp_signature.nvim',
@@ -68,7 +67,7 @@ return packer.startup(function(use)
             border = 'none',
         },
         floating_window_above_first = true,
-        hint_prefix = ' ',
+        hint_prefix = '? ',
         zindex = 50,
       })
     end,
@@ -87,10 +86,23 @@ return packer.startup(function(use)
     event = 'CursorMoved',
   }
 
-  use {
+  use { -- lspkind
     'onsails/lspkind-nvim',
     config = function()
       require 'plugins.lspkind'
+    end,
+  }
+
+  use { -- nvim-cmp
+    "hrsh7th/nvim-cmp",
+    requires = {
+      "hrsh7th/cmp-buffer",
+      'hrsh7th/cmp-path',
+      'saadparwaiz1/cmp_luasnip',
+      'hrsh7th/cmp-nvim-lsp'
+    },
+    config = function()
+      require 'plugins.cmp'
     end,
   }
 
@@ -99,21 +111,6 @@ return packer.startup(function(use)
     requires = {
       "rafamadriz/friendly-snippets",
     },
-    config = function()
-      require 'plugins.snippets'
-    end,
-  }
-
-  use { -- nvim-cmp
-    "hrsh7th/nvim-cmp",
-    requires = {
-      "hrsh7th/cmp-buffer",
-      'saadparwaiz1/cmp_luasnip',
-      'hrsh7th/cmp-nvim-lsp'
-    },
-    config = function()
-      require 'plugins.cmp'
-    end,
   }
 
   use {

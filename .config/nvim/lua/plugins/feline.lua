@@ -26,6 +26,7 @@ local colors = {
   bg = '#282828',
   black = '#282828',
   yellow = '#d79921',
+  byellow = '#fadb2f',
   cyan = '#689d6a',
   oceanblue = '#458588',
   bgreen = '#b8bb26',
@@ -51,7 +52,7 @@ local vi_mode_colors = {
   ENTER = 'cyan',
   MORE = 'cyan',
   SELECT = 'orange',
-  COMMAND = 'green',
+  COMMAND = 'cyan',
   SHELL = 'green',
   TERM = 'green',
   NONE = 'yellow'
@@ -282,34 +283,9 @@ table.insert(components.active[3], {
     bg = 'bg',
     -- style = 'bold'
   },
-  left_sep = ' ',
+  left_sep = '',
   right_sep = ' '
 })
-
--- fileFormat
-table.insert(components.active[3], {
-  provider = function() return '' .. vim.bo.fileformat:upper() .. '' end,
-  hl = {
-    fg = 'white',
-    bg = 'bg',
-    style = 'bold'
-  },
-  left_sep = ' ',
-  right_sep = ' '
-})
-
--- fileEncode
-table.insert(components.active[3], {
-  provider = 'file_encoding',
-  hl = {
-    fg = 'white',
-    bg = 'bg',
-    style = 'bold'
-  },
-  left_sep = ' ',
-  right_sep = ' '
-})
-
 
 table.insert(components.active[3], {
   provider = 'position',
@@ -318,7 +294,7 @@ table.insert(components.active[3], {
     bg = 'bg',
     style = 'bold'
   },
-  left_sep = ' ',
+  left_sep = '',
   right_sep = ' '
 })
 
@@ -330,7 +306,7 @@ table.insert(components.active[3], {
     bg = 'bg',
     style = 'bold'
   },
-  left_sep = ' ',
+  left_sep = '',
 })
 
 -- scrollBar
@@ -339,6 +315,7 @@ table.insert(components.active[3], {
   hl = {
     fg = 'cyan',
     bg = 'bg',
+    style = 'bold'
   },
   left_sep = ' ',
 })
@@ -351,7 +328,7 @@ table.insert(components.inactive[1], {
   hl = {
     fg = 'black',
     bg = 'cyan',
-    -- style = 'bold'
+    style = 'bold'
   },
   left_sep = {
     str = ' ',
