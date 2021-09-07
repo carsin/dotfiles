@@ -110,6 +110,8 @@ nnoremap <leader>f <cmd>Telescope find_files<cr>
 nnoremap <C-f> <cmd>Telescope find_files<cr>
 nnoremap <leader>g <cmd>Telescope live_grep<cr>
 nnoremap <leader>b <cmd>Telescope buffers<cr>
+nnoremap <leader>o <cmd>Telescope projects<cr>
+nnoremap <leader>pp <cmd>Telescope projects<cr>
 " nnoremap <leader>h <cmd>Telescope help_tags<cr>
 
 " Lightspeed

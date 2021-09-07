@@ -45,25 +45,6 @@ return packer.startup(function(use)
     end,
   }
 
-  -- use { -- vsnip snippets
-  --   'hrsh7th/vim-vsnip',
-  --   event = 'InsertEnter'
-  -- }
-
-  -- use { -- friendly snippets
-  --   'rafamadriz/friendly-snippets',
-  --   event = 'InsertEnter'
-  -- }
-
-  -- use { -- compe
-  --   'hrsh7th/nvim-compe',
-  --   event = 'InsertEnter',
-  --   requires = { { '' } },
-  --   config = function()
-  --     require 'plugins.compe'
-  --   end,
-  -- }
-
   use { -- treesitter
     'nvim-treesitter/nvim-treesitter',
     run = ':TSUpdate',
@@ -73,14 +54,6 @@ return packer.startup(function(use)
   }
 
   use 'nvim-treesitter/nvim-treesitter-textobjects'
-
-  -- use { -- lspkind
-  --   'onsails/lspkind-nvim',
-  --   config = function()
-  --     require 'plugins.lspkind'
-  --   end,
-  -- }
-
   use { 'ms-jpq/coq_nvim', branch = 'coq'} -- main one
   use { 'ms-jpq/coq.artifacts', branch= 'artifacts'} -- 9000+ Snippets
 
@@ -156,5 +129,17 @@ return packer.startup(function(use)
     config = function()
       require('numb').setup()
     end,
+  }
+
+  use { -- project
+    "ahmedkhalf/project.nvim",
+    config = function()
+      require("project_nvim").setup {
+        silent_chdir = true,
+        show_hidden = true,
+        ignore_lsp = { "sumneko_lua" },
+        exclude_dirs = { "~/.config/nvim/lua" }
+      }
+    end
   }
 end)

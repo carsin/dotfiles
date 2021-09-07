@@ -19,7 +19,7 @@ local components = {
 local colors = {
   bg = '#282828',
   black = '#282828',
-  yellow = '#fadb2f',
+  yellow = '#d79921',
   cyan = '#689d6a',
   oceanblue = '#458588',
   green = '#b8bb26',
@@ -165,7 +165,7 @@ components.left.active[6] = {
   provider = 'git_diff_changed',
   icon = "~",
   hl = {
-    fg = 'orange',
+    fg = 'yellow',
     bg = 'bg',
     -- style = 'bold'
   },

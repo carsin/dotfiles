@@ -1,5 +1,6 @@
 local telescope = require('telescope')
 local actions = require 'telescope.actions'
+telescope.load_extension('projects')
 
 telescope.setup{
   defaults = {
@@ -40,15 +41,15 @@ telescope.setup{
     file_previewer = require'telescope.previewers'.vim_buffer_cat.new,
     grep_previewer = require'telescope.previewers'.vim_buffer_vimgrep.new,
     qflist_previewer = require'telescope.previewers'.vim_buffer_qflist.new,
-  },
-  pickers = {
     mappings = {
       i = {
-        ["<c-d>"] = actions.delete_buffer,
+        ["J"] = actions.move_selection_next,
+        ["K"] = actions.move_selection_previous,
+        ["<C-j>"] = actions.move_selection_next,
+        ["<C-k>"] = actions.move_selection_previous,
+        ["<esc>"] = actions.close,
       },
-      n = {
-        ["<c-d>"] = actions.delete_buffer,
-      }
+      n = {},
     }
-  }
+  },
 }

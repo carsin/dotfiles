@@ -158,6 +158,7 @@ augroup END
 
 " Show diagnostic on hover
 autocmd CursorHold * lua vim.lsp.diagnostic.show_line_diagnostics({focusable = false})
+let g:BASH_Ctrl_j = 'off'
 " }}}
 " Binds & Mappings
 source ~/.config/nvim/mappings.vim
