@@ -9,6 +9,7 @@ alias bc="bc -ql"
 alias mkdir="mkdir -pv"
 alias find="fd"
 
+alias lg="lazygit"
 alias g="git"
 alias cfg="/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME"
 alias config="/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME"

@@ -18,9 +18,6 @@ setopt interactive_comments
 # import functions
 source "$ZDOTDIR/zsh-functions"
 
-# Syntax highlighting
-source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-
 # History in cache directory:
 HISTSIZE=10000000
 SAVEHIST=10000000
@@ -55,14 +52,17 @@ bindkey -M menuselect 'j' vi-down-line-or-history
 bindkey '^k' history-search-backward
 bindkey '^j' history-search-forward
 
+# Syntax highlighting
+source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
 # Plugins
-zsh_add_plugin "zsh-users/zsh-autosuggestions"
+# zsh_add_plugin "zsh-users/zsh-autosuggestions"
 zsh_add_plugin "hlissner/zsh-autopair"
 zsh_add_plugin "agkozak/zsh-z"
 
 # Accept autosuggestion
-bindkey '^ ' autosuggest-accept
-bindkey '^l' autosuggest-accept
+# bindkey '^ ' autosuggest-accept
+# bindkey '^l' autosuggest-accept
 
 # Use lf to switch directories and bind it to ctrl-f
 lfcd () {
@@ -97,14 +97,11 @@ path+=("/Users/carson/.cargo/bin")
 # import aliases
 source "$ZDOTDIR/zsh-aliases"
 
-if [[ $TERM =~ 'xterm-kitty' || $TERM =~ 'alacritty' ]];
+if [[ $TERM =~ 'xterm-kitty' || $TERM =~ 'alacritty' || "$TMUX" ]];
 then
     # load p10k
     source /usr/local/opt/powerlevel10k/powerlevel10k.zsh-theme
     [[ ! -f ~/.config/zsh/.p10k.zsh ]] || source ~/.config/zsh/.p10k.zsh
-    if [[ $TERM =~ 'xterm-kitty' ]]; then
-        kitty @ set-colors ~/.cache/wal/colors-kitty.conf
-    fi
 else
     # basic prompt
     source ~/.config/zsh/themes/vimterm.zsh-theme
@@ -114,9 +111,15 @@ else
     alias w3="wal --backend colorthief -i ~/files/photos/wallpapers/wal/ && source ~/.config/sketchybar/sketchybarcolors"
 fi
 
+if [[ $TERM =~ 'xterm-kitty' ]]; then
+    kitty @ set-colors ~/.cache/wal/colors-kitty.conf
+fi
+
 export FZF_DEFAULT_COMMAND='rg --files --hidden -g "!.git" '
 export GPG_TTY=$TTY
 export TASKRC=~/.config/taskwarrior-tui/.taskrc
 export TASKDATA=~/.config/taskwarrior-tui/.task
 export VIT_DIR=~/.config/vit
+export SPICETIFY_CONFIG=~/.config/spicetify
+export LC_ALL=en_US.UTF-8
 export PATH
