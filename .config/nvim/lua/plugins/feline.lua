@@ -9,12 +9,18 @@ local properties = {
     bufnames = {}
   }
 }
-
 local components = {
-  left = {active = {}, inactive = {}},
-  mid = {active = {}, inactive = {}},
-  right = {active = {}, inactive = {}}
+    active = {},
+    inactive = {}
 }
+-- Insert three sections (left, mid and right) for the active statusline
+table.insert(components.active, {})
+table.insert(components.active, {})
+table.insert(components.active, {})
+
+-- Insert two sections (left and right) for the inactive statusline
+table.insert(components.inactive, {})
+table.insert(components.inactive, {})
 
 local colors = {
   bg = '#282828',
@@ -22,7 +28,8 @@ local colors = {
   yellow = '#d79921',
   cyan = '#689d6a',
   oceanblue = '#458588',
-  green = '#b8bb26',
+  bgreen = '#b8bb26',
+  green = '#98971a',
   orange = '#d65d0e',
   violet = '#b16286',
   magenta = '#d3869b',
@@ -33,7 +40,7 @@ local colors = {
 }
 
 local vi_mode_colors = {
-  NORMAL = 'green',
+  NORMAL = 'bgreen',
   OP = 'green',
   INSERT = 'red',
   VISUAL = 'skyblue',
@@ -99,7 +106,7 @@ properties.force_inactive.buftypes = {
 -- LEFT
 
 -- vi-mode
-components.left.active[1] = {
+table.insert(components.active[1], {
   provider = 'vi_mode',
   hl = function()
     local val = {}
@@ -112,9 +119,10 @@ components.left.active[1] = {
   left_sep = '░▒▓█',
   right_sep = '█▓▒░',
   icon = ''
-}
+})
+
 -- vi-symbol
-components.left.active[2] = {
+table.insert(components.active[1], {
   provider = function()
     return vi_mode_text[vi_mode_utils.get_vim_mode()]
   end,
@@ -127,9 +135,10 @@ components.left.active[2] = {
   end,
   left_sep = ' ',
   right_sep = ' ',
-}
+})
+
 -- filename
-components.left.active[3] = {
+table.insert(components.active[1], {
   provider = 'file_info',
   file_modified_icon = "+",
   hl = {
@@ -138,9 +147,10 @@ components.left.active[3] = {
     -- style = 'bold'
   },
   right_sep = ''
-}
+})
+
 -- gitBranch
-components.left.active[4] = {
+table.insert(components.active[1], {
   provider = 'git_branch',
   hl = {
     fg = 'yellow',
@@ -148,9 +158,10 @@ components.left.active[4] = {
     -- style = 'bold'
   },
   right_sep = ' '
-}
+})
+
 -- diffAdd
-components.left.active[5] = {
+table.insert(components.active[1], {
   provider = 'git_diff_added',
   icon = "+",
   hl = {
@@ -159,9 +170,10 @@ components.left.active[5] = {
     -- style = 'bold'
   },
   right_sep = ' '
-}
+})
+
 -- diffModified
-components.left.active[6] = {
+table.insert(components.active[1], {
   provider = 'git_diff_changed',
   icon = "~",
   hl = {
@@ -170,9 +182,10 @@ components.left.active[6] = {
     -- style = 'bold'
   },
   right_sep = ' '
-}
+})
+
 -- diffRemove
-components.left.active[7] = {
+table.insert(components.active[1], {
   provider = 'git_diff_removed',
   icon = "-",
   hl = {
@@ -181,12 +194,11 @@ components.left.active[7] = {
     -- style = 'bold'
   },
   right_sep = ' '
-}
+})
 
 -- MID
-
 -- LspName
-components.mid.active[1] = {
+table.insert(components.active[2], {
   provider = 'lsp_client_names',
   icon = '',
   hl = {
@@ -195,9 +207,10 @@ components.mid.active[1] = {
     style = 'bold'
   },
   right_sep = ''
-}
+})
+
 -- diagnosticErrors
-components.mid.active[2] = {
+table.insert(components.active[2], {
   provider = 'diagnostic_errors',
   enabled = function() return lsp.diagnostics_exist('Error') end,
   icon = " E ",
@@ -205,9 +218,10 @@ components.mid.active[2] = {
     fg = 'red',
     -- style = 'bold'
   }
-}
+})
+
 -- diagnosticWarn
-components.mid.active[3] = {
+table.insert(components.active[2], {
   provider = 'diagnostic_warnings',
   enabled = function() return lsp.diagnostics_exist('Warning') end,
   icon = " ! ",
@@ -215,9 +229,10 @@ components.mid.active[3] = {
     fg = 'orange',
     -- style = 'bold'
   }
-}
+})
+
 -- diagnosticHint
-components.mid.active[4] = {
+table.insert(components.active[2], {
   provider = 'diagnostic_hints',
   enabled = function() return lsp.diagnostics_exist('Hint') end,
   icon = " ? ",
@@ -225,48 +240,21 @@ components.mid.active[4] = {
     fg = 'green',
     -- style = 'bold'
   }
-}
+})
+
 -- diagnosticInfo
-components.mid.active[5] = {
+table.insert(components.active[2], {
   provider = 'diagnostic_info',
   enabled = function() return lsp.diagnostics_exist('Information') end,
   hl = {
     fg = 'cyan',
     -- style = 'bold'
   }
-}
+})
 
 -- RIGHT
-
--- fileIcon
--- components.right.active[1] = {
---   provider = function()
---     local filename = vim.fn.expand('%:t')
---     local extension = vim.fn.expand('%:e')
---     local icon  = require'nvim-web-devicons'.get_icon(filename, extension)
---     if icon == nil then
---       icon = ''
---     end
---     return icon
---   end,
---   hl = function()
---     local val = {}
---     local filename = vim.fn.expand('%:t')
---     local extension = vim.fn.expand('%:e')
---     local icon, name  = require'nvim-web-devicons'.get_icon(filename, extension)
---     if icon ~= nil then
---       val.fg = vim.fn.synIDattr(vim.fn.hlID(name), 'fg')
---     else
---       val.fg = 'white'
---     end
---     val.bg = 'bg'
---     val.style = 'bold'
---     return val
---   end,
---   right_sep = ' '
--- }
 -- fileType
-components.right.active[1] = {
+table.insert(components.active[3], {
   provider = 'file_type',
   hl = function()
     local val = {}
@@ -283,9 +271,10 @@ components.right.active[1] = {
     return val
   end,
   right_sep = ' '
-}
+})
+
 -- fileSize
-components.right.active[2] = {
+table.insert(components.active[3], {
   provider = 'file_size',
   enabled = function() return vim.fn.getfsize(vim.fn.expand('%:t')) > 0 end,
   hl = {
@@ -295,9 +284,10 @@ components.right.active[2] = {
   },
   left_sep = ' ',
   right_sep = ' '
-}
+})
+
 -- fileFormat
-components.right.active[3] = {
+table.insert(components.active[3], {
   provider = function() return '' .. vim.bo.fileformat:upper() .. '' end,
   hl = {
     fg = 'white',
@@ -306,9 +296,10 @@ components.right.active[3] = {
   },
   left_sep = ' ',
   right_sep = ' '
-}
+})
+
 -- fileEncode
-components.right.active[4] = {
+table.insert(components.active[3], {
   provider = 'file_encoding',
   hl = {
     fg = 'white',
@@ -317,9 +308,10 @@ components.right.active[4] = {
   },
   left_sep = ' ',
   right_sep = ' '
-}
+})
 
-components.right.active[5] = {
+
+table.insert(components.active[3], {
   provider = 'position',
   hl = {
     fg = 'white',
@@ -328,9 +320,10 @@ components.right.active[5] = {
   },
   left_sep = ' ',
   right_sep = ' '
-}
+})
+
 -- linePercent
-components.right.active[6] = {
+table.insert(components.active[3], {
   provider = 'line_percentage',
   hl = {
     fg = 'white',
@@ -338,21 +331,22 @@ components.right.active[6] = {
     style = 'bold'
   },
   left_sep = ' ',
-}
+})
+
 -- scrollBar
-components.right.active[7] = {
+table.insert(components.active[3], {
   provider = 'scroll_bar',
   hl = {
     fg = 'cyan',
     bg = 'bg',
   },
   left_sep = ' ',
-}
+})
 
 -- INACTIVE
-
+-- LEFT
 -- fileType
-components.left.inactive[1] = {
+table.insert(components.inactive[1], {
   provider = 'file_type',
   hl = {
     fg = 'black',
@@ -376,17 +370,18 @@ components.left.inactive[1] = {
     },
     ' '
   }
-}
+})
 
 -- filename
-components.left.inactive[2] = {
+table.insert(components.inactive[1], {
   icon = '',
   provider = 'file_info',
   file_modified_icon = "+",
-}
+})
 
+-- RIGHT
 -- fileSize
-components.right.inactive[1] = {
+table.insert(components.inactive[2], {
   provider = 'file_size',
   enabled = function() return vim.fn.getfsize(vim.fn.expand('%:t')) > 0 end,
   hl = {
@@ -396,12 +391,12 @@ components.right.inactive[1] = {
   },
   left_sep = ' ',
   right_sep = ' '
-}
+})
 
 require('feline').setup({
   colors = colors,
-  default_bg = bg,
-  default_fg = fg,
+  default_bg = colors.bg,
+  default_fg = colors.fg,
   vi_mode_colors = vi_mode_colors,
   components = components,
   properties = properties,

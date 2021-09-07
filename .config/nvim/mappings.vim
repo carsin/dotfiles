@@ -1,8 +1,8 @@
 let mapleader=" "
 
 " Intuitive j/k behavior with wrapping
-nnoremap <expr> j v:count ? (v:count > 5 ? "m'" . v:count : '') . 'j' : 'j'
-nnoremap <expr> k v:count ? (v:count > 5 ? "m'" . v:count : '') . 'k' : 'k'
+nnoremap <expr> j v:count ? (v:count > 5 ? "m'" . v:count : '') . 'j' : 'gj'
+nnoremap <expr> k v:count ? (v:count > 5 ? "m'" . v:count : '') . 'k' : 'gk'
 
 " Reload vim configuration
 nnoremap <leader>r :source ~/.config/nvim/init.vim<CR>
@@ -53,10 +53,10 @@ nnoremap <leader>wh :split<CR>
 nnoremap <leader>wv :vsplit<CR>
 
 " Split navigation
-nmap <leader>h <C-W>h<C-W>_
-nmap <leader>j <C-W>j<C-W>_
-nmap <leader>k <C-W>k<C-W>_
-nmap <leader>l <C-W>l<C-W>_
+" nmap <leader>h <C-W>h<C-W>_
+" nmap <leader>j <C-W>j<C-W>_
+" nmap <leader>k <C-W>k<C-W>_
+" nmap <leader>l <C-W>l<C-W>_
 
 " Close window
 nnoremap <leader>q :close<CR>

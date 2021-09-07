@@ -8,7 +8,7 @@ if fn.empty(fn.glob(install_path)) > 0 then
 end
 
 -- Auto compile when there are changes in plugins.lua
--- vim.cmd 'autocmd BufWritePost init.lua PackerCompile'
+vim.cmd 'autocmd BufWritePost plugins.lua PackerCompile'
 
 local packer = require('packer')
 return packer.startup(function(use)
@@ -17,17 +17,15 @@ return packer.startup(function(use)
   use 'nvim-lua/plenary.nvim'
   use 'kyazdani42/nvim-web-devicons'
   use 'tpope/vim-commentary'
-  use 'jose-elias-alvarez/null-ls.nvim'
-  use 'cohama/lexima.vim'
   use 'sainnhe/gruvbox-material'
   use 'norcalli/nvim-colorizer.lua'
   use 'editorconfig/editorconfig-vim'
-  use 'airblade/vim-rooter'
   use 'ggandor/lightspeed.nvim'
   use 'mhinz/vim-startify'
   use 'chaoren/vim-wordmotion'
   use 'tpope/vim-surround'
   use 'tpope/vim-speeddating'
+  use 'christoomey/vim-tmux-navigator'
 
   use { -- better escape
     'jdhao/better-escape.vim',
@@ -35,6 +33,13 @@ return packer.startup(function(use)
     config = function()
       vim.g.better_escape_interval = 150
       vim.g.better_escape_shortcut = { 'jk' }
+    end,
+  }
+
+  use {
+    'windwp/nvim-autopairs',
+    config = function()
+      require 'plugins.autopairs'
     end,
   }
 
@@ -58,7 +63,14 @@ return packer.startup(function(use)
   use { -- lsp signature
     'ray-x/lsp_signature.nvim',
     config = function()
-      require 'lsp_signature'.setup()
+      require('lsp_signature').setup({
+        handler_opts = {
+            border = 'none',
+        },
+        floating_window_above_first = true,
+        hint_prefix = ' ',
+        zindex = 50,
+      })
     end,
   }
 
@@ -82,7 +94,7 @@ return packer.startup(function(use)
     end,
   }
 
-  use {
+  use { -- luasnip
     "L3MON4D3/LuaSnip",
     requires = {
       "rafamadriz/friendly-snippets",
@@ -92,7 +104,7 @@ return packer.startup(function(use)
     end,
   }
 
-  use {
+  use { -- nvim-cmp
     "hrsh7th/nvim-cmp",
     requires = {
       "hrsh7th/cmp-buffer",
@@ -102,6 +114,16 @@ return packer.startup(function(use)
     config = function()
       require 'plugins.cmp'
     end,
+  }
+
+  use {
+    'jose-elias-alvarez/null-ls.nvim',
+    after = "nvim-lspconfig"
+  }
+
+  use {
+    'm-pilia/vim-ccls',
+    after = "nvim-lspconfig"
   }
 
   use { -- FTerm
@@ -119,11 +141,6 @@ return packer.startup(function(use)
       })
       end,
     }
-
-  use {
-    'm-pilia/vim-ccls',
-    after = "nvim-lspconfig"
-  }
 
   use { -- Feline
     'famiu/feline.nvim',

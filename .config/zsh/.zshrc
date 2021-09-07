@@ -56,12 +56,12 @@ bindkey '^j' history-search-forward
 source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 # Plugins
-# zsh_add_plugin "zsh-users/zsh-autosuggestions"
+zsh_add_plugin "zsh-users/zsh-autosuggestions"
 zsh_add_plugin "hlissner/zsh-autopair"
 zsh_add_plugin "agkozak/zsh-z"
 
 # Accept autosuggestion
-# bindkey '^ ' autosuggest-accept
+bindkey '^ ' autosuggest-accept
 # bindkey '^l' autosuggest-accept
 
 # Use lf to switch directories and bind it to ctrl-f

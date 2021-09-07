@@ -11,6 +11,7 @@ require'nvim-treesitter.configs'.setup {
       node_decremental = "grm",
     },
   },
+  autopairs = { enable = true },
   indent = {
     enable = true,
   },
