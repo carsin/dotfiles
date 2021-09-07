@@ -8,6 +8,7 @@ alias rm="rm -v"
 alias bc="bc -ql"
 alias mkdir="mkdir -pv"
 alias find="fd"
+alias nf="neofetch"
 
 alias lg="lazygit"
 alias g="git"
@@ -21,6 +22,9 @@ alias mr="make && ./run"
 alias killglobal="launchctl unload /Library/LaunchAgents/com.paloaltonetworks.gp.pangp*"
 alias startglobal="launchctl load /Library/LaunchAgents/com.paloaltonetworks.gp.pangp*"
 
+alias bsr="brew services restart"
+alias ka="killall"
+
 alias python="python3"
 alias calpoly="ssh ckfreedm@unix3.csc.calpoly.edu"
 alias open="open ."
@@ -31,9 +35,10 @@ alias o="open"
 alias t="taskwarrior-tui"
 
 # alias w3="wal --backend schemer2 -i ~/files/photos/wallpapers/wal/ && kitty @ set-colors ~/.cache/wal/colors-kitty.conf"
-alias w="wal -i ~/files/photos/wallpapers/wal/ && kitty @ set-colors ~/.cache/wal/colors-kitty.conf && source ~/.config/sketchybar/sketchybarcolors"
-alias w1="wal --backend haishoku -i ~/files/photos/wallpapers/wal/ && kitty @ set-colors ~/.cache/wal/colors-kitty.conf && source ~/.config/sketchybar/sketchybarcolors"
-alias w2="wal --backend colorz -i ~/files/photos/wallpapers/wal/ && kitty @ set-colors ~/.cache/wal/colors-kitty.conf && source ~/.config/sketchybar/sketchybarcolors"
-alias w3="wal --backend colorthief -i ~/files/photos/wallpapers/wal/ && kitty @ set-colors ~/.cache/wal/colors-kitty.conf && source ~/.config/sketchybar/sketchybarcolors"
+alias w="wal -i ~/files/photos/wallpapers/wal/ && source ~/.config/sketchybar/sketchybarcolors && kitty @ --to unix:/tmp/mykitty set-colors ~/.cache/wal/colors-kitty.conf"
+alias w1="wal --backend haishoku -i ~/files/photos/wallpapers/wal/ && source ~/.config/sketchybar/sketchybarcolors && kitty @ --to unix:/tmp/mykitty set-colors ~/.cache/wal/colors-kitty.conf"
+alias w2="wal --backend colorz -i ~/files/photos/wallpapers/wal/ && source ~/.config/sketchybar/sketchybarcolors && kitty @ --to unix:/tmp/mykitty set-colors ~/.cache/wal/colors-kitty.conf"
+alias w3="wal --backend colorthief -i ~/files/photos/wallpapers/wal/ && source ~/.config/sketchybar/sketchybarcolors && kitty @ --to unix:/tmp/mykitty set-colors ~/.cache/wal/colors-kitty.conf"
 
+# alias w3="wal --backend colorthief -i ~/files/photos/wallpapers/wal/ && source ~/.config/sketchybar/sketchybarcolors && kitty @ --to unix:/tmp/mykitty set-colors ~/.cache/wal/colors-kitty.conf && if [[ $TMUX ]]; then tmux send-keys 'kitty @ --to unix:/tmp/mykitty set-colors ~/.cache/wal/colors-kitty.conf' Enter; fi"
 alias luamake=/Users/carson/.local/bin/lua-language-server/3rd/luamake/luamake

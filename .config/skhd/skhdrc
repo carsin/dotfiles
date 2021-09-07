@@ -1,6 +1,6 @@
 # Open application
 alt + shift - return : open -n /Applications/Firefox.app
-alt - return : /Applications/kitty.app/Contents/MacOS/kitty --single-instance -d ~
+alt - return : /Applications/kitty.app/Contents/MacOS/kitty --single-instance --listen-on unix:/tmp/mykitty -d ~
 
 # Focus window
 alt - h : yabai -m window --focus west || yabai -m display --focus west

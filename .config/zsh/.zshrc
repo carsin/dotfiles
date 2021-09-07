@@ -105,15 +105,13 @@ then
 else
     # basic prompt
     source ~/.config/zsh/themes/vimterm.zsh-theme
-    alias w="wal -i ~/files/photos/wallpapers/wal/ && source ~/.config/sketchybar/sketchybarcolors"
-    alias w1="wal --backend haishoku -i ~/files/photos/wallpapers/wal/ && source ~/.config/sketchybar/sketchybarcolors"
-    alias w2="wal --backend colorz -i ~/files/photos/wallpapers/wal/ && source ~/.config/sketchybar/sketchybarcolors"
-    alias w3="wal --backend colorthief -i ~/files/photos/wallpapers/wal/ && source ~/.config/sketchybar/sketchybarcolors"
 fi
 
 if [[ $TERM =~ 'xterm-kitty' ]]; then
-    kitty @ set-colors ~/.cache/wal/colors-kitty.conf
+    kitty @ --to unix:/tmp/mykitty --to unix:/tmp/mykitty set-colors ~/.cache/wal/colors-kitty.conf
 fi
+
+source ~/.cache/wal/colors-tty.sh
 
 export FZF_DEFAULT_COMMAND='rg --files --hidden -g "!.git" '
 export GPG_TTY=$TTY
@@ -122,4 +120,5 @@ export TASKDATA=~/.config/taskwarrior-tui/.task
 export VIT_DIR=~/.config/vit
 export SPICETIFY_CONFIG=~/.config/spicetify
 export LC_ALL=en_US.UTF-8
+export TERM=xterm-256color
 export PATH
