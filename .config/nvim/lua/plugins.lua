@@ -117,12 +117,12 @@ return packer.startup(function(use)
     },
   }
 
-  use {
+  use { -- null ls
     'jose-elias-alvarez/null-ls.nvim',
     after = "nvim-lspconfig"
   }
 
-  use {
+  use { -- ccls
     'm-pilia/vim-ccls',
     after = "nvim-lspconfig"
   }
@@ -157,6 +157,7 @@ return packer.startup(function(use)
       require 'plugins.trouble'
     end
   }
+
   use { -- project
     "ahmedkhalf/project.nvim",
     config = function()
@@ -171,23 +172,28 @@ return packer.startup(function(use)
     end
   }
 
-  use { -- gitsigns
-    'lewis6991/gitsigns.nvim',
-    requires = 'nvim-lua/plenary.nvim',
-    config = function()
-      require('gitsigns').setup {
-        keymaps = {
-          noremap = false,
-        }
-      }
-    end,
-  }
-
-  use {
+  use { -- bufferline
     'akinsho/bufferline.nvim',
     requires = 'kyazdani43/nvim-web-devicons',
     config = function()
       require 'plugins.bufferline'
     end,
   }
+
+  use { -- nvim tree
+    'kyazdani42/nvim-tree.lua',
+    requires = 'kyazdani42/nvim-web-devicons',
+    config = function()
+      require 'plugins.nvimtree'
+    end,
+  }
+
+  -- use { -- gitsigns
+  --   'lewis6991/gitsigns.nvim',
+  --   requires = 'nvim-lua/plenary.nvim',
+  --   event = 'BufEnter',
+  --   config = function()
+  --     require 'plugins.gitsigns'
+  --   end,
+  -- }
 end)

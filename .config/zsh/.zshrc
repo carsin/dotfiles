@@ -97,7 +97,7 @@ path+=("/Users/carson/.cargo/bin")
 # import aliases
 source "$ZDOTDIR/zsh-aliases"
 
-if [[ $TERM =~ 'xterm-kitty' || $TERM =~ 'alacritty' || "$TMUX" ]];
+if [[ $TERM =~ 'xterm-kitty' || $TERM =~ 'alacritty' ||$TERM =~ 'screen-256color' ]];
 then
     # load p10k
     source /usr/local/opt/powerlevel10k/powerlevel10k.zsh-theme

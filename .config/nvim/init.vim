@@ -1,4 +1,5 @@
 " General {{{
+
 set nocompatible
 
 filetype plugin indent on " Load plugins according to detected filetype.
