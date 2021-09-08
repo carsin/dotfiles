@@ -46,7 +46,7 @@ local vi_mode_colors = {
   INSERT = 'red',
   VISUAL = 'skyblue',
   BLOCK = 'skyblue',
-  LINES = 'magenta',
+  LINES = 'violet',
   REPLACE = 'violet',
   ['V-REPLACE'] = 'violet',
   ENTER = 'cyan',
@@ -227,7 +227,7 @@ table.insert(components.active[2], {
   enabled = function() return lsp.diagnostics_exist('Warning') end,
   icon = " ! ",
   hl = {
-    fg = 'orange',
+    fg = 'yellow',
     -- style = 'bold'
   }
 })
@@ -238,7 +238,7 @@ table.insert(components.active[2], {
   enabled = function() return lsp.diagnostics_exist('Hint') end,
   icon = " ? ",
   hl = {
-    fg = 'green',
+    fg = 'bgreen',
     -- style = 'bold'
   }
 })
@@ -247,6 +247,7 @@ table.insert(components.active[2], {
 table.insert(components.active[2], {
   provider = 'diagnostic_info',
   enabled = function() return lsp.diagnostics_exist('Information') end,
+  icon = " i ",
   hl = {
     fg = 'cyan',
     -- style = 'bold'

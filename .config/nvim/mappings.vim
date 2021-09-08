@@ -1,3 +1,4 @@
+" --- MAPS {{{
 let mapleader=" "
 
 " Intuitive j/k behavior with wrapping
@@ -59,7 +60,7 @@ nnoremap <leader>wv :vsplit<CR>
 " nmap <leader>l <C-W>l<C-W>_
 
 " Close window
-nnoremap <leader>q :close<CR>
+nnoremap <leader>c :close<CR>
 
 " Vim plug ease of use bindings
 nnoremap <leader>ps :PackerSync<CR>
@@ -103,7 +104,7 @@ inoremap ? ?<c-g>u
 vnoremap J :m '>+1<CR>gv=gv
 vnoremap K :m '<-2<CR>gv=gv
 
-" --- PLUGINS
+" --- PLUGINS {{{
 " Telescope
 " Find files using Telescope command-line sugar.
 nnoremap <leader>f <cmd>Telescope find_files<cr>
@@ -119,8 +120,7 @@ nmap <expr> F reg_recording() . reg_executing() == "" ? "<Plug>Lightspeed_F" : "
 nmap <expr> t reg_recording() . reg_executing() == "" ? "<Plug>Lightspeed_t" : "t"
 nmap <expr> T reg_recording() . reg_executing() == "" ? "<Plug>Lightspeed_T" : "T"
 
-" Floating terminal
-
+" FTerm
 nnoremap <silent> <leader>t <CMD>lua require("FTerm").toggle()<CR>
 nnoremap <silent> <C-t> <CMD>lua require("FTerm").toggle()<CR>
 tnoremap <silent> <C-t> <CMD>lua require("FTerm").toggle()<CR>
@@ -136,3 +136,24 @@ nnoremap <leader>xd <cmd>TroubleToggle lsp_document_diagnostics<cr>
 nnoremap <leader>xq <cmd>TroubleToggle quickfix<cr>
 nnoremap <leader>xl <cmd>TroubleToggle loclist<cr>
 nnoremap gr <cmd>TroubleToggle lsp_references<cr>
+
+" Bufferline
+nnoremap <leader>l :BufferLineCycleNext<CR>
+nnoremap <leader>h :BufferLineCyclePrev<CR>
+nnoremap <silent>[b :BufferLineCyclePrev<CR>
+nnoremap <silent>]b :BufferLineCycleNext<CR>
+nnoremap <leader>H :BufferLineMovePrev<CR>
+nnoremap <leader>L :BufferLineMoveNext<CR>
+nnoremap <silent><leader>q <CMD>lua require('bufdelete').bufdelete(0, false)<CR>
+nnoremap <silent><leader>bd <CMD>lua require('bufdelete').bufdelete(0, true)<CR>
+nnoremap <silent><leader>bw <CMD>lua require('bufdelete').bufwipeout(0)<CR>
+nnoremap <silent><leader>1 <Cmd>BufferLineGoToBuffer 1<CR>
+nnoremap <silent><leader>2 <Cmd>BufferLineGoToBuffer 2<CR>
+nnoremap <silent><leader>3 <Cmd>BufferLineGoToBuffer 3<CR>
+nnoremap <silent><leader>4 <Cmd>BufferLineGoToBuffer 4<CR>
+nnoremap <silent><leader>5 <Cmd>BufferLineGoToBuffer 5<CR>
+nnoremap <silent><leader>6 <Cmd>BufferLineGoToBuffer 6<CR>
+nnoremap <silent><leader>7 <Cmd>BufferLineGoToBuffer 7<CR>
+nnoremap <silent><leader>8 <Cmd>BufferLineGoToBuffer 8<CR>
+nnoremap <silent><leader>9 <Cmd>BufferLineGoToBuffer 9<CR>
+" "

@@ -16,7 +16,6 @@ return packer.startup(function(use)
   use 'nvim-lua/popup.nvim'
   use 'nvim-lua/plenary.nvim'
   use 'kyazdani42/nvim-web-devicons'
-  use 'tpope/vim-commentary'
   use 'sainnhe/gruvbox-material'
   use 'norcalli/nvim-colorizer.lua'
   use 'editorconfig/editorconfig-vim'
@@ -25,7 +24,9 @@ return packer.startup(function(use)
   use 'chaoren/vim-wordmotion'
   use 'tpope/vim-surround'
   use 'tpope/vim-speeddating'
+  use 'tpope/vim-commentary'
   use 'christoomey/vim-tmux-navigator'
+  use 'famiu/bufdelete.nvim'
 
   use { -- better escape
     'jdhao/better-escape.vim',
@@ -43,7 +44,7 @@ return packer.startup(function(use)
     end,
   }
 
-  use { --lsp config
+  use { -- lsp config
     'neovim/nvim-lspconfig',
     config = function()
       require 'plugins.lspconfig'
@@ -75,7 +76,10 @@ return packer.startup(function(use)
 
   use { -- telescope
     'nvim-telescope/telescope.nvim',
-    requires = { {'nvim-lua/plenary.nvim'} },
+    requires = {
+      'nvim-lua/plenary.nvim',
+      { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' },
+    },
     config = function()
       require 'plugins.telescope'
     end,
@@ -153,6 +157,19 @@ return packer.startup(function(use)
       require 'plugins.trouble'
     end
   }
+  use { -- project
+    "ahmedkhalf/project.nvim",
+    config = function()
+      require("project_nvim").setup {
+        silent_chdir = true,
+        show_hidden = true,
+        detection_methods = { "lsp", "pattern" },
+        patterns = { ".git", "_darcs", ".hg", ".bzr", ".svn", "Makefile", "package.json", "init.vim" },
+        ignore_lsp = { "sumneko_lua" },
+        exclude_dirs = { "~/.config/nvim/lua", "~/.config/nvim/lua/plugins", ".git/" },
+      }
+    end
+  }
 
   use { -- gitsigns
     'lewis6991/gitsigns.nvim',
@@ -166,15 +183,11 @@ return packer.startup(function(use)
     end,
   }
 
-  use { -- project
-    "ahmedkhalf/project.nvim",
+  use {
+    'akinsho/bufferline.nvim',
+    requires = 'kyazdani43/nvim-web-devicons',
     config = function()
-      require("project_nvim").setup {
-        silent_chdir = true,
-        show_hidden = true,
-        ignore_lsp = { "sumneko_lua" },
-        exclude_dirs = { "~/.config/nvim/lua", "~/.config/nvim/lua/plugins", ".git/" }
-      }
-    end
+      require 'plugins.bufferline'
+    end,
   }
 end)
