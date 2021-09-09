@@ -27,6 +27,7 @@ return packer.startup(function(use)
   use 'tpope/vim-commentary'
   use 'christoomey/vim-tmux-navigator'
   use 'famiu/bufdelete.nvim'
+  use 'antoinemadec/FixCursorHold.nvim' -- Needed while issue https://github.com/neovim/neovim/issues/12587 is still open
 
   use { -- better escape
     'jdhao/better-escape.vim',
@@ -34,13 +35,6 @@ return packer.startup(function(use)
     config = function()
       vim.g.better_escape_interval = 150
       vim.g.better_escape_shortcut = { 'jk' }
-    end,
-  }
-
-  use { -- autopairs
-    'windwp/nvim-autopairs',
-    config = function()
-      require 'plugins.autopairs'
     end,
   }
 
@@ -64,12 +58,8 @@ return packer.startup(function(use)
     'ray-x/lsp_signature.nvim',
     config = function()
       require('lsp_signature').setup({
-        handler_opts = {
-            border = 'none',
-        },
-        floating_window_above_first = true,
+        floating_window_above_cur_line = true,
         hint_prefix = '? ',
-        zindex = 50,
       })
     end,
   }
@@ -97,25 +87,38 @@ return packer.startup(function(use)
     end,
   }
 
-  use { -- luasnip
-    "L3MON4D3/LuaSnip",
-    requires = {
-      "rafamadriz/friendly-snippets",
-    },
-  }
+  -- use { -- luasnip
+  --   "L3MON4D3/LuaSnip",
+  --   requires = {
+  --     "rafamadriz/friendly-snippets",
+  --   },
+  -- }
 
   use { -- nvim-cmp
     "hrsh7th/nvim-cmp",
     requires = {
-      "hrsh7th/cmp-buffer",
+      'hrsh7th/cmp-buffer',
       'hrsh7th/cmp-path',
-      'saadparwaiz1/cmp_luasnip',
-      'hrsh7th/cmp-nvim-lsp'
+      'hrsh7th/cmp-nvim-lsp',
+      'hrsh7th/cmp-calc',
+      'hrsh7th/cmp-vsnip',
+      'hrsh7th/vim-vsnip',
+      'f3fora/cmp-spell',
+      'rafamadriz/friendly-snippets',
+      { 'andersevenrud/compe-tmux', branch = 'cmp' },
     },
     config = function()
       require 'plugins.cmp'
     end,
   }
+
+  use { -- autopairs
+    'windwp/nvim-autopairs',
+    config = function()
+      require 'plugins.autopairs'
+    end,
+  }
+
 
   use { -- null ls
     'jose-elias-alvarez/null-ls.nvim',
@@ -196,5 +199,4 @@ return packer.startup(function(use)
       require 'plugins.gitsigns'
     end,
   }
-
 end)

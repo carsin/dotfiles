@@ -28,7 +28,6 @@ require('gitsigns').setup {
     row = 0,
     col = 1
   },
-  use_internal_diff = false,
   yadm = {
     enable = false
   },

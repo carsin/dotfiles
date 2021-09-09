@@ -92,8 +92,8 @@ let g:gruvbox_material_palette = 'original'
 
 colorscheme gruvbox-material
 
-set showtabline=0      " DONT Show top tab line (2 = show)
-set so=5               " How many lines from cursor to top / bottom of the screen before scrolling
+set showtabline=2      " Show top tab line
+set so=7               " How many lines from cursor to top / bottom of the screen before scrolling
 set number             " file line numbering
 set showcmd            " show last entered command
 set wildmenu           " visual auto complete for command menu
@@ -117,11 +117,11 @@ set pumheight=20       " Shorten number of autocomplete suggestions
 set pumwidth=20       " Shorten number of autocomplete suggestions
 set pumblend=10        " Autocomplete background transparency
 let &fcs='eob: '       " No idiotic eob tildas
+" set colorcolumn=80   " 80 char column guide
 
 " Never make windows completely empty
 set winheight=999
 set winminheight=20
-" set colorcolumn=80   " 80 char column guide
 
 " Set completeopt to have a better completion experience
 set completeopt=menu,menuone,noselect
@@ -132,11 +132,17 @@ set shortmess+=c
 set foldmethod=expr
 set foldexpr=nvim_treesitter#foldexpr()
 
+" Both indent folds and marker -- This is getting overrode
+" augroup setfolds
+"   au BufReadPre * setlocal foldmethod=indent
+"   au BufWinEnter * if &fdm == 'indent' | setlocal foldmethod=marker | endif
+" augroup END
+
 " Only show relative numbers in focused normal mode
 augroup numbertoggle
-    autocmd!
-    autocmd BufEnter,FocusGained,InsertLeave * set rnu
-    autocmd BufLeave,FocusLost,InsertEnter * set nornu
+  autocmd!
+  autocmd BufEnter,FocusGained,InsertLeave,WinEnter * if &nu && mode() != "i" | set rnu   | endif
+  autocmd BufLeave,FocusLost,InsertEnter,WinLeave   * if &nu                  | set nornu | endif
 augroup END
 
 " Highlight yank
@@ -156,6 +162,7 @@ augroup END
 
 " Show diagnostic on hover
 autocmd CursorHold * lua vim.lsp.diagnostic.show_line_diagnostics({focusable = false})
+
 " }}}
 " Binds & Mappings
 source ~/.config/nvim/mappings.vim
