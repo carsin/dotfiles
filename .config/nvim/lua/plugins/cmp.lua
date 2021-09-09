@@ -1,11 +1,11 @@
 local cmp = require 'cmp'
 local lspkind = require('lspkind')
+local luasnip = require("luasnip")
 
 local check_back_space = function()
   local col = vim.fn.col '.' - 1
   return col == 0 or vim.fn.getline('.'):sub(col, col):match '%s' ~= nil
 end
-local luasnip = require("luasnip")
 
 local t = function(str)
     return vim.api.nvim_replace_termcodes(str, true, true, true)
@@ -14,7 +14,7 @@ end
 cmp.setup {
   snippet = {
     expand = function(args)
-      require('luasnip').lsp_expand(args.body)
+      luasnip.lsp_expand(args.body)
     end,
   },
   mapping = {
@@ -40,9 +40,9 @@ cmp.setup {
       else
         fallback()
       end
-      end, {
-        "i",
-        "s",
+    end, {
+      "i",
+      "s",
     }),
     ["<S-Tab>"] = cmp.mapping(function(fallback)
       if vim.fn.pumvisible() == 1 then
@@ -52,10 +52,10 @@ cmp.setup {
       else
         fallback()
       end
-      end, {
-        "i",
-        "s",
-      }),
+    end, {
+      "i",
+      "s",
+    }),
   },
   sources = {
     { name = 'nvim_lsp' },

@@ -97,6 +97,13 @@ return packer.startup(function(use)
     end,
   }
 
+  use { -- luasnip
+    "L3MON4D3/LuaSnip",
+    requires = {
+      "rafamadriz/friendly-snippets",
+    },
+  }
+
   use { -- nvim-cmp
     "hrsh7th/nvim-cmp",
     requires = {
@@ -108,13 +115,6 @@ return packer.startup(function(use)
     config = function()
       require 'plugins.cmp'
     end,
-  }
-
-  use { -- luasnip
-    "L3MON4D3/LuaSnip",
-    requires = {
-      "rafamadriz/friendly-snippets",
-    },
   }
 
   use { -- null ls
@@ -188,12 +188,13 @@ return packer.startup(function(use)
     end,
   }
 
-  -- use { -- gitsigns
-  --   'lewis6991/gitsigns.nvim',
-  --   requires = 'nvim-lua/plenary.nvim',
-  --   event = 'BufEnter',
-  --   config = function()
-  --     require 'plugins.gitsigns'
-  --   end,
-  -- }
+  use { -- gitsigns
+    'lewis6991/gitsigns.nvim',
+    requires = 'nvim-lua/plenary.nvim',
+    event = 'BufEnter',
+    config = function()
+      require 'plugins.gitsigns'
+    end,
+  }
+
 end)

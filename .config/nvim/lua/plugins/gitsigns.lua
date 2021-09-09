@@ -8,7 +8,7 @@ require('gitsigns').setup {
     follow_files = true
   },
   attach_to_untracked = false,
-  current_line_blame = true,
+  current_line_blame = false,
   current_line_blame_opts = {
     virt_text = true,
     virt_text_pos = 'eol',
@@ -28,7 +28,7 @@ require('gitsigns').setup {
     row = 0,
     col = 1
   },
-  use_internal_diff = true,
+  use_internal_diff = false,
   yadm = {
     enable = false
   },

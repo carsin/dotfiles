@@ -113,8 +113,8 @@ set fillchars+=vert:│  " Change vertical split character to solid line instead
 set shortmess+=W       " Don't pass messages to ins-completion-menu.
 set formatoptions-=cro " Disable auto insert comment
 set signcolumn=yes:1   " Column for diagnostics & git gutter
-set pumheight=10       " Shorten number of autocomplete suggestions
-set pumwidth=15       " Shorten number of autocomplete suggestions
+set pumheight=20       " Shorten number of autocomplete suggestions
+set pumwidth=20       " Shorten number of autocomplete suggestions
 set pumblend=10        " Autocomplete background transparency
 let &fcs='eob: '       " No idiotic eob tildas
 
