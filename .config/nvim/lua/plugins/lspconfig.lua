@@ -1,12 +1,8 @@
 local border = {
-      {"🭽", "FloatBorder"},
-      {"▔", "FloatBorder"},
-      {"🭾", "FloatBorder"},
-      {"▕", "FloatBorder"},
-      {"🭿", "FloatBorder"},
-      {"▁", "FloatBorder"},
-      {"🭼", "FloatBorder"},
-      {"▏", "FloatBorder"},
+    {"╭", "FloatBorder"}, {"─", "FloatBorder"},
+    {"╮", "FloatBorder"}, {"│", "FloatBorder"},
+    {"╯", "FloatBorder"}, {"─", "FloatBorder"},
+    {"╰", "FloatBorder"}, {"│", "FloatBorder"}
 }
 
 local on_attach = function(bufnr)
@@ -50,6 +46,8 @@ capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 
 local nvim_lsp = require 'lspconfig'
+
+vim.cmd [[autocmd CursorHold * lua vim.lsp.diagnostic.show_line_diagnostics({border="rounded", focusable=false})]]
 
 -- Load sumneko (custom lua lsp)
 local sumneko_root_path = vim.fn.getenv("HOME").."/.local/bin/lua-language-server"

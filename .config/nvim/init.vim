@@ -118,13 +118,15 @@ set pumwidth=20       " Shorten number of autocomplete suggestions
 set pumblend=10        " Autocomplete background transparency
 let &fcs='eob: '       " No idiotic eob tildas
 " set colorcolumn=80   " 80 char column guide
+" set winwidth=200
+" set winminwidth=120
 
 " Never make windows completely empty
-set winheight=999
-set winminheight=20
+" set winheight=40
+" set winminheight=20
 
 " Set completeopt to have a better completion experience
-set completeopt=menu,menuone,noselect
+set completeopt=menuone,noselect
 " Avoid showing extra messages when using completion
 set shortmess+=c
 
@@ -139,11 +141,11 @@ set foldexpr=nvim_treesitter#foldexpr()
 " augroup END
 
 " Only show relative numbers in focused normal mode
-augroup numbertoggle
-  autocmd!
-  autocmd BufEnter,FocusGained,InsertLeave,WinEnter * if &nu && mode() != "i" | set rnu   | endif
-  autocmd BufLeave,FocusLost,InsertEnter,WinLeave   * if &nu                  | set nornu | endif
-augroup END
+" augroup numbertoggle
+"   autocmd!
+"   autocmd BufEnter,FocusGained,InsertLeave,WinEnter * if &nu && mode() != "i" | set rnu   | endif
+"   autocmd BufLeave,FocusLost,InsertEnter,WinLeave   * if &nu                  | set nornu | endif
+" augroup END
 
 " Highlight yank
 augroup highlight_yank
@@ -159,9 +161,6 @@ augroup remember_folds
   autocmd BufWinLeave *.* mkview
   autocmd BufWinEnter *.* silent! loadview
 augroup END
-
-" Show diagnostic on hover
-autocmd CursorHold * lua vim.lsp.diagnostic.show_line_diagnostics({focusable = false})
 
 " }}}
 " Binds & Mappings

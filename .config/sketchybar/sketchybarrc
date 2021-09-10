@@ -93,11 +93,17 @@ sketchybar -m add item weather right
 sketchybar -m set weather update_freq 600
 sketchybar -m set weather script "~/.config/sketchybar/plugins/weather.sh"
 sketchybar -m set weather click_script "open https://darksky.net/forecast/22.2109,-159.4081/us12/en"
+sketchybar -m set battery icon_padding_left 3
+
 # Battery
 sketchybar -m add item battery right
 sketchybar -m set battery update_freq 10
 sketchybar -m set battery script "~/.config/sketchybar/plugins/power.sh"
 sketchybar -m set battery icon 
+sketchybar -m set battery label_padding_left 0
+sketchybar -m set battery label_padding_right 0
+sketchybar -m set battery icon_padding_left 0
+sketchybar -m set battery icon_padding_right 0
 
 # Cpu graph
 sketchybar -m add component graph cpu_user right 150 nospace

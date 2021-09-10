@@ -29,35 +29,15 @@ map 0 ^
 nmap <F1> <nop>
 
 " Toggle pastemode
-map <silent> <leader>p :set invpaste <CR>
-
-" Toggle Spellcheck
-noremap <F3> :setlocal spell! spelllang=en_us<CR>
+nnoremap <silent> <C-p> :set invpaste <CR>
 
 " Insert date / time
 nnoremap <leader>id "=strftime("%a, %b %d %Y")<CR>p
 nnoremap <leader>it "=strftime("%I:%M %p")<CR>p
 
-" Open new empty buffer
-" nnoremap <leader>T :enew<cr>
-
-" Move to the next buffer
-" nnoremap <leader>l :bnext<CR>
-nnoremap <right> :bnext<CR>
-
-" Move to the previous buffer
-" nnoremap <leader>h :bprevious<CR>
-nnoremap <left> :bprevious<CR>
-
-" nnoreSplit binds
-nnoremap <leader>wh :split<CR>
-nnoremap <leader>wv :vsplit<CR>
-
-" Split navigation
-" nmap <leader>h <C-W>h<C-W>_
-" nmap <leader>j <C-W>j<C-W>_
-" nmap <leader>k <C-W>k<C-W>_
-" nmap <leader>l <C-W>l<C-W>_
+" Split binds
+nnoremap <leader>v :vsplit<CR>
+nnoremap <leader>b :split<CR>
 
 " Close window
 nnoremap <leader>c :close<CR>
@@ -110,7 +90,7 @@ vnoremap K :m '<-2<CR>gv=gv
 nnoremap <leader>f <cmd>Telescope find_files<cr>
 nnoremap <C-f> <cmd>Telescope find_files<cr>
 nnoremap <leader>g <cmd>Telescope live_grep<cr>
-nnoremap <leader>o <cmd>Telescope buffers<cr>
+" nnoremap <leader>o <cmd>Telescope buffers<cr>
 nnoremap <leader>pp <cmd>Telescope projects<cr>
 " nnoremap <leader>h <cmd>Telescope help_tags<cr>
 
@@ -149,8 +129,8 @@ nnoremap <silent>]b :BufferLineCycleNext<CR>
 nnoremap <leader>H :BufferLineMovePrev<CR>
 nnoremap <leader>L :BufferLineMoveNext<CR>
 nnoremap <silent><leader>q <CMD>lua require('bufdelete').bufdelete(0, false)<CR>
-nnoremap <silent><leader>bd <CMD>lua require('bufdelete').bufdelete(0, true)<CR>
-nnoremap <silent><leader>bw <CMD>lua require('bufdelete').bufwipeout(0)<CR>
+" nnoremap <silent><leader>bd <CMD>lua require('bufdelete').bufdelete(0, true)<CR>
+" nnoremap <silent><leader>bw <CMD>lua require('bufdelete').bufwipeout(0)<CR>
 nnoremap <silent><leader>1 <Cmd>BufferLineGoToBuffer 1<CR>
 nnoremap <silent><leader>2 <Cmd>BufferLineGoToBuffer 2<CR>
 nnoremap <silent><leader>3 <Cmd>BufferLineGoToBuffer 3<CR>

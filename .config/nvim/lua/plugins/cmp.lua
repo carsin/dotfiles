@@ -86,8 +86,6 @@ cmp.setup {
     end,
   },
   documentation = {
-    -- border = { '─', '│', '─', '│', '╭', '╮', '╯', '╰' },
-    border = { '╭', '─', '╮', '│', '╯', '─', '╰', '│' },
     border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
     winhighlight = 'FloatBorder:TelescopeBorder',
   },
