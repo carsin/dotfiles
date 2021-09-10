@@ -6,7 +6,7 @@ nnoremap <expr> j v:count ? (v:count > 5 ? "m'" . v:count : '') . 'j' : 'gj'
 nnoremap <expr> k v:count ? (v:count > 5 ? "m'" . v:count : '') . 'k' : 'gk'
 
 " Reload vim configuration
-nnoremap <leader>r :source ~/.config/nvim/init.vim<CR>
+" nnoremap <leader>r :source ~/.config/nvim/init.vim<CR>
 
 " Save
 function! WriteSavePosition()
@@ -113,6 +113,10 @@ nnoremap <leader>g <cmd>Telescope live_grep<cr>
 nnoremap <leader>o <cmd>Telescope buffers<cr>
 nnoremap <leader>pp <cmd>Telescope projects<cr>
 " nnoremap <leader>h <cmd>Telescope help_tags<cr>
+
+" EasyAlign
+xmap ga <Plug>(EasyAlign)
+nmap ga <Plug>(EasyAlign)
 
 " Lightspeed
 nmap <expr> f reg_recording() . reg_executing() == "" ? "<Plug>Lightspeed_f" : "f"

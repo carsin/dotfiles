@@ -11,6 +11,16 @@ end
 vim.cmd 'autocmd BufWritePost plugins.lua PackerCompile'
 
 local packer = require('packer')
+
+packer.init({
+	display = {
+		title = "Packer",
+		done_sym = "",
+		error_syn = "×",
+		keybindings = { toggle_info = "o" }
+	}
+})
+
 return packer.startup(function(use)
   use 'wbthomason/packer.nvim'
   use 'nvim-lua/popup.nvim'
@@ -28,6 +38,7 @@ return packer.startup(function(use)
   use 'christoomey/vim-tmux-navigator'
   use 'famiu/bufdelete.nvim'
   use 'antoinemadec/FixCursorHold.nvim' -- Needed while issue https://github.com/neovim/neovim/issues/12587 is still open
+  use 'junegunn/vim-easy-align'
 
   use { -- better escape
     'jdhao/better-escape.vim',
@@ -86,13 +97,6 @@ return packer.startup(function(use)
       require 'plugins.lspkind'
     end,
   }
-
-  -- use { -- luasnip
-  --   "L3MON4D3/LuaSnip",
-  --   requires = {
-  --     "rafamadriz/friendly-snippets",
-  --   },
-  -- }
 
   use { -- nvim-cmp
     "hrsh7th/nvim-cmp",

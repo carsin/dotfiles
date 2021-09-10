@@ -105,8 +105,8 @@ sketchybar -m set cpu_user script "~/.config/sketchybar/plugins/cpu_graph.sh"
 sketchybar -m set cpu_user graph_color 0xffffffff
 sketchybar -m set cpu_user update_freq 5
 sketchybar -m set cpu_user associated_space 1
-sketchybar -m set cpu_user label_padding_left 4
-sketchybar -m set cpu_user icon_padding_left 4
+sketchybar -m set cpu_user label_padding_left 3
+sketchybar -m set cpu_user icon_padding_left 3
 sketchybar -m set cpu_user icon 
 
 sketchybar -m add component graph cpu_sys right 150

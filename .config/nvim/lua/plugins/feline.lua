@@ -284,7 +284,7 @@ table.insert(components.active[3], {
     bg = 'bg',
     -- style = 'bold'
   },
-  left_sep = '',
+  left_sep = ' ',
   right_sep = ' '
 })
 
@@ -307,7 +307,7 @@ table.insert(components.active[3], {
     bg = 'bg',
     style = 'bold'
   },
-  left_sep = '',
+  left_sep = ' ',
 })
 
 -- scrollBar

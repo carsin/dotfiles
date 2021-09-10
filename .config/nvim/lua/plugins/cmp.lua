@@ -88,6 +88,8 @@ cmp.setup {
   documentation = {
     -- border = { '─', '│', '─', '│', '╭', '╮', '╯', '╰' },
     border = { '╭', '─', '╮', '│', '╯', '─', '╰', '│' },
+    border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
+    winhighlight = 'FloatBorder:TelescopeBorder',
   },
   experimental = {
     ghost_text = true,
