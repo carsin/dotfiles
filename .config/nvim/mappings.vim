@@ -129,8 +129,6 @@ nnoremap <silent>]b :BufferLineCycleNext<CR>
 nnoremap <leader>H :BufferLineMovePrev<CR>
 nnoremap <leader>L :BufferLineMoveNext<CR>
 nnoremap <silent><leader>q <CMD>lua require('bufdelete').bufdelete(0, false)<CR>
-" nnoremap <silent><leader>bd <CMD>lua require('bufdelete').bufdelete(0, true)<CR>
-" nnoremap <silent><leader>bw <CMD>lua require('bufdelete').bufwipeout(0)<CR>
 nnoremap <silent><leader>1 <Cmd>BufferLineGoToBuffer 1<CR>
 nnoremap <silent><leader>2 <Cmd>BufferLineGoToBuffer 2<CR>
 nnoremap <silent><leader>3 <Cmd>BufferLineGoToBuffer 3<CR>

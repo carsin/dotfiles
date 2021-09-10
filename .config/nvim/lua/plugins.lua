@@ -100,7 +100,6 @@ return packer.startup(function(use)
 
   use { -- nvim-cmp
     "hrsh7th/nvim-cmp",
-    event = "InsertEnter",
     requires = {
       'hrsh7th/cmp-buffer',
       'hrsh7th/cmp-path',
@@ -122,12 +121,6 @@ return packer.startup(function(use)
     config = function()
       require 'plugins.autopairs'
     end,
-  }
-
-
-  use { -- null ls
-    'jose-elias-alvarez/null-ls.nvim',
-    after = "nvim-lspconfig"
   }
 
   use { -- ccls
@@ -202,17 +195,6 @@ return packer.startup(function(use)
     event = 'BufEnter',
     config = function()
       require 'plugins.gitsigns'
-    end,
-  }
-
-  use {
-    'beauwilliams/focus.nvim',
-    config = function()
-      local focus = require('focus')
-      focus.number = false
-      focus.signcolumn = false
-      focus.cursorline = true
-      focus.treewidth = 30
     end,
   }
 end)
