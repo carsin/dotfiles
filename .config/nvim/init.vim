@@ -52,6 +52,7 @@ set wrapscan                      " Searches wrap around end-of-file.
 set report=0                      " Always report changed lines.
 set lbr                           " Break at end of line
 set tw=80                         " Lines should be 80 chars
+set nrformats=                    " Force decimal based arithmetic
 
 " Configure backspace so it acts as it should act
 set backspace=eol,start,indent
@@ -118,12 +119,12 @@ set pumwidth=20       " Shorten number of autocomplete suggestions
 set pumblend=10        " Autocomplete background transparency
 let &fcs='eob: '       " No idiotic eob tildas
 " set colorcolumn=80   " 80 char column guide
-" set winwidth=200
-" set winminwidth=120
+set winwidth=120
+set winminwidth=80
 
 " Never make windows completely empty
-" set winheight=40
-" set winminheight=20
+set winheight=60
+set winminheight=20
 
 " Set completeopt to have a better completion experience
 set completeopt=menuone,noselect
@@ -133,12 +134,6 @@ set shortmess+=c
 " Fold with treesitter
 set foldmethod=expr
 set foldexpr=nvim_treesitter#foldexpr()
-
-" Both indent folds and marker -- This is getting overrode
-" augroup setfolds
-"   au BufReadPre * setlocal foldmethod=indent
-"   au BufWinEnter * if &fdm == 'indent' | setlocal foldmethod=marker | endif
-" augroup END
 
 " Only show relative numbers in focused normal mode
 augroup numbertoggle
@@ -153,14 +148,18 @@ augroup highlight_yank
     au TextYankPost * silent! lua vim.highlight.on_yank{higroup="IncSearch", timeout=150}
 augroup END
 
-" Don't take up scrollbar with match
-let g:matchup_matchparen_offscreen = { 'method': 'popup' }
+" Automatically equalize splits when vim is resized
+autocmd VimResized * wincmd =
+
 
 augroup remember_folds
   autocmd!
   autocmd BufWinLeave *.* mkview
   autocmd BufWinEnter *.* silent! loadview
 augroup END
+
+" Don't take up scrollbar with match
+let g:matchup_matchparen_offscreen = { 'method': 'popup' }
 
 " }}}
 " Binds & Mappings

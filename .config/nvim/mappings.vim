@@ -35,6 +35,16 @@ nnoremap <silent> <C-p> :set invpaste <CR>
 nnoremap <leader>id "=strftime("%a, %b %d %Y")<CR>p
 nnoremap <leader>it "=strftime("%I:%M %p")<CR>p
 
+" Dont put change operations into register
+nnoremap c "_c
+nnoremap C "_C
+
+" Clone paragraph
+nnoremap cp vap:t'><CR>
+
+" Paste in insert mode
+inoremap <C-v> <C-r>*
+
 " Split binds
 nnoremap <leader>v :vsplit<CR>
 nnoremap <leader>b :split<CR>
@@ -63,6 +73,7 @@ nnoremap <leader>S :%s//g<Left><Left>
 
 " Perform dot commands over visual blocks:
 vnoremap . :normal .<CR>
+xnoremap . :norm.<CR>
 
 " Don't yank <CR>
 nnoremap Y yg_
@@ -70,6 +81,14 @@ nnoremap Y yg_
 " Center cursor when doing jumpy motions
 nnoremap n nzzzv
 nnoremap N Nzzzv
+nnoremap { {zz
+nnoremap } }zz
+nnoremap ]c ]czz
+nnoremap [c [czz
+nnoremap [j <C-o>zz
+nnoremap <C-o> <C-o>zz
+
+" Join current line and next line properly
 nnoremap J mzJ`z
 
 " Add undo break points when inserting punctuation
@@ -83,6 +102,13 @@ inoremap ? ?<c-g>u
 " Intuitive text movement
 vnoremap J :m '>+1<CR>gv=gv
 vnoremap K :m '<-2<CR>gv=gv
+
+" Switch to previous buffer
+nnoremap <Backspace> <C-^>
+
+" Better increment/decrement operators
+nnoremap + <C-a>
+nnoremap - <C-x>
 
 " --- PLUGINS {{{
 " Telescope

@@ -33,7 +33,6 @@ return packer.startup(function(use)
   use 'mhinz/vim-startify'
   use 'chaoren/vim-wordmotion'
   use 'tpope/vim-surround'
-  use 'tpope/vim-speeddating'
   use 'tpope/vim-commentary'
   use 'christoomey/vim-tmux-navigator'
   use 'famiu/bufdelete.nvim'
