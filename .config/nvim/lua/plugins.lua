@@ -197,7 +197,14 @@ return packer.startup(function(use)
     end,
   }
 
-  -- use { -- DAP
+  use { -- DAP
+    'mfussenegger/nvim-dap',
+    config = function ()
+      require 'plugins.dap'
+    end
+  }
 
-  -- }
+  use 'nvim-telescope/telescope-dap.nvim'
+  use 'theHamsta/nvim-dap-virtual-text'
+  use 'rcarriga/nvim-dap-ui'
 end)
