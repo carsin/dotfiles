@@ -99,6 +99,7 @@ return packer.startup(function(use)
 
   use { -- nvim-cmp
     "hrsh7th/nvim-cmp",
+    -- event = "InsertEnter",
     requires = {
       'hrsh7th/cmp-buffer',
       'hrsh7th/cmp-path',
@@ -168,7 +169,7 @@ return packer.startup(function(use)
         patterns = { ".git", "_darcs", ".hg", ".bzr", ".svn", "Makefile", "package.json", "init.vim" },
         ignore_lsp = { "sumneko_lua" },
         exclude_dirs = { "~/.config/nvim/lua", "~/.config/nvim/lua/plugins", ".git/" },
-      }
+    }
     end
   }
 
@@ -182,7 +183,6 @@ return packer.startup(function(use)
 
   use { -- nvim tree
     'kyazdani42/nvim-tree.lua',
-    requires = 'kyazdani42/nvim-web-devicons',
     config = function()
       require 'plugins.nvimtree'
     end,
@@ -196,4 +196,8 @@ return packer.startup(function(use)
       require 'plugins.gitsigns'
     end,
   }
+
+  -- use { -- DAP
+
+  -- }
 end)

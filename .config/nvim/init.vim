@@ -100,7 +100,7 @@ set showcmd            " show last entered command
 set wildmenu           " visual auto complete for command menu
 set lazyredraw         " redraw only when needed
 set showmatch          " highlight matching [{()}]
-set noeb vb t_vb=      " no visual bell or beeping (thank god)
+set noeb vb t_vb=      " no visual bell or beeping
 set ruler              " Always show current position
 set magic              " For regular expressions turn magic on
 set noshowmode         " Remove redundant status bar elements
@@ -119,12 +119,12 @@ set pumwidth=20       " Shorten number of autocomplete suggestions
 set pumblend=10        " Autocomplete background transparency
 let &fcs='eob: '       " No idiotic eob tildas
 " set colorcolumn=80   " 80 char column guide
-set winwidth=120
-set winminwidth=80
+" set winwidth=80
+" set winminwidth=30
 
 " Never make windows completely empty
-set winheight=60
-set winminheight=20
+" set winheight=15
+" set winminheight=15
 
 " Set completeopt to have a better completion experience
 set completeopt=menuone,noselect
@@ -150,7 +150,6 @@ augroup END
 
 " Automatically equalize splits when vim is resized
 autocmd VimResized * wincmd =
-
 
 augroup remember_folds
   autocmd!
