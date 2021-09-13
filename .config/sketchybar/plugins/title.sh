@@ -2,7 +2,6 @@
 
 APP_NAME=$(yabai -m query --windows --window | jq '.app' | sed -E 's/^"(.*)"$/\1/' | sed 's@\\@@g')
 WINDOW_TITLE=$(yabai -m query --windows --window | jq '.title' | sed -E 's/^"(.*)"$/\1/' | sed 's@\\@@g')
-
 if [[ $WINDOW_TITLE = "" ]]; then
   sketchybar -m set title label " > $APP_NAME"
 else

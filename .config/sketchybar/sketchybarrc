@@ -1,19 +1,19 @@
 echo "sketchybar: loading configuration..."
 ############## BAR ##################
-sketchybar -m config height               18
-sketchybar -m config position             top
-sketchybar -m config padding_left         5
-sketchybar -m config padding_right        5
+sketchybar -m config height 18
+sketchybar -m config position top
+sketchybar -m config padding_left 5
+sketchybar -m config padding_right 5
 sketchybar -m config blur_radius 5
+sketchybar -m config topmost off
 sketchybar -m add event window_focus
 sketchybar -m add event title_change
 
-############## SCRIPT CACHING ############
 sketchybar -m default cache_scripts on
+# sketchybar -m default scripting on
+# sketchybar -m default drawing on
 
 ############## SPACES ###############
-# sketchybar -m default label_font "Cozette:Medium:14.0"
-# sketchybar -m default icon_font "Cozette:Medium:14.0"
 sketchybar -m default icon_font "Tamzen Nerd Font:Medium:14.0"
 sketchybar -m default label_font "Tamzen Nerd Font:Medium:14.0"
 sketchybar -m default label_padding_left 6
@@ -69,13 +69,13 @@ sketchybar -m set four click_script "yabai -m space --focus 5"
 
 # Window Title
 sketchybar -m add item title left
-sketchybar -m set title script "~/.config/sketchybar/plugins/windowTitle.sh"
 sketchybar -m set title label_padding_left 3
 sketchybar -m set title icon_padding_left 0
 sketchybar -m subscribe title window_focus
 sketchybar -m subscribe title front_app_switched
 sketchybar -m subscribe title space_change
 sketchybar -m subscribe title title_change
+sketchybar -m set title script "~/.config/sketchybar/plugins/title.sh"
 sketchybar -m set title enabled on
 
 ################# RIGHT ITEMS ####################

@@ -67,4 +67,3 @@ map('n', '<leader>df', '<cmd>lua require"telescope".extensions.dap.frames{}<CR>'
 
 -- nvim-dap-ui
 map('n', '<leader>dui', '<cmd>lua require"dapui".toggle()<CR>')
-

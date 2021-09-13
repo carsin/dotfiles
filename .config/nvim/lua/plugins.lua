@@ -48,6 +48,7 @@ return packer.startup(function(use)
     end,
   }
 
+
   use { -- lsp config
     'neovim/nvim-lspconfig',
     config = function()
@@ -199,12 +200,14 @@ return packer.startup(function(use)
 
   use { -- DAP
     'mfussenegger/nvim-dap',
-    config = function ()
+    requires = {
+      'nvim-telescope/telescope-dap.nvim',
+      'theHamsta/nvim-dap-virtual-text',
+      'rcarriga/nvim-dap-ui',
+    },
+    config = function()
       require 'plugins.dap'
     end
   }
 
-  use 'nvim-telescope/telescope-dap.nvim'
-  use 'theHamsta/nvim-dap-virtual-text'
-  use 'rcarriga/nvim-dap-ui'
 end)
