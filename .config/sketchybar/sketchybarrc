@@ -89,11 +89,11 @@ sketchybar -m set clock icon_padding_right 0
 sketchybar -m set clock icon
 
 # Weather
-sketchybar -m add item weather right
-sketchybar -m set weather update_freq 600
-sketchybar -m set weather script "~/.config/sketchybar/plugins/weather.sh"
-sketchybar -m set weather click_script "open https://darksky.net/forecast/22.2109,-159.4081/us12/en"
-sketchybar -m set battery icon_padding_left 3
+# sketchybar -m add item weather right
+# sketchybar -m set weather update_freq 600
+# sketchybar -m set weather script "~/.config/sketchybar/plugins/weather.sh"
+# sketchybar -m set weather click_script "open https://darksky.net/forecast/22.2109,-159.4081/us12/en"
+# sketchybar -m set battery icon_padding_left 3
 
 # Battery
 sketchybar -m add item battery right
