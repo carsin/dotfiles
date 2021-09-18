@@ -30,7 +30,7 @@ return packer.startup(function(use)
   use 'norcalli/nvim-colorizer.lua'
   use 'editorconfig/editorconfig-vim'
   use 'ggandor/lightspeed.nvim'
-  use 'mhinz/vim-startify'
+  -- use 'mhinz/vim-startify'
   use 'chaoren/vim-wordmotion'
   use 'tpope/vim-surround'
   use 'tpope/vim-commentary'
@@ -208,6 +208,10 @@ return packer.startup(function(use)
     config = function()
       require 'plugins.dap'
     end
+  }
+
+  use {
+    'vimwiki/vimwiki',
   }
 
 end)

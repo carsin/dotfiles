@@ -28,6 +28,9 @@ cnoremap w!! execute 'silent! write !sudo tee % >/dev/null' <bar> edit!
 " }}}
 
 " Load plugins
+
+let g:vimwiki_list = [{'path': '~/files/text/wiki', 'syntax': 'markdown', 'ext': '.md', 'diary_index': 'index', 'diary_rel_path': 'log/', 'diary_header': 'Daily Log', 'auto_diary_index': 1}]
+au BufNewFile ~/files/text/wiki/log/*.md :silent 0r !~/.config/nvim/bin/generate-diary-template '%'
 lua require'plugins'
 
 " Editing
