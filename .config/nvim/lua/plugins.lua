@@ -214,4 +214,4 @@ return packer.startup(function(use)
     'vimwiki/vimwiki',
   }
 
-end)
+end )
