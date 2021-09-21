@@ -18,6 +18,7 @@ alias config="/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME"
 alias cr="cargo run"
 alias crr="cargo run --release"
 alias mr="make && ./run"
+alias jr='(){ javac $1 && java $1. ;}'
 
 alias killglobal="launchctl unload /Library/LaunchAgents/com.paloaltonetworks.gp.pangp*"
 alias startglobal="launchctl load /Library/LaunchAgents/com.paloaltonetworks.gp.pangp*"
