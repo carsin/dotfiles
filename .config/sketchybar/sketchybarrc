@@ -118,14 +118,14 @@ sketchybar -m set cpu_user script "~/.config/sketchybar/plugins/cpu_graph.sh"
 sketchybar -m set cpu_user graph_color 0xffffffff
 sketchybar -m set cpu_user update_freq 5
 sketchybar -m set cpu_user associated_space 1
-sketchybar -m set cpu_user label_padding_left 3
-sketchybar -m set cpu_user icon_padding_left 3
+sketchybar -m set cpu_user label_padding_left 8
+sketchybar -m set cpu_user icon_padding_left 8
 sketchybar -m set cpu_user icon 
 
 sketchybar -m add component graph cpu_sys right 150
 sketchybar -m set cpu_sys graph_color 0xff48aa2a
-sketchybar -m set cpu_sys label_padding_left 6
-sketchybar -m set cpu_sys icon_padding_left 6
+sketchybar -m set cpu_sys label_padding_left 8
+sketchybar -m set cpu_sys icon_padding_left 8
 sketchybar -m set cpu_sys associated_space 1
 sketchybar -m set cpu_sys update_freq 5
 sketchybar -m set cpu_sys icon 
@@ -134,17 +134,17 @@ sketchybar -m set cpu_sys icon 
 sketchybar -m add component graph network_down right 150 nospace
 sketchybar -m set network_down associated_space 2
 sketchybar -m set network_down associated_space 4
-sketchybar -m set network_down label_padding_left 3
 sketchybar -m set network_down icon ⮁
-sketchybar -m set network_down icon_padding_left 3
+sketchybar -m set network_down label_padding_left 8
+sketchybar -m set network_down icon_padding_left 8
 sketchybar -m set network_down update_freq 5
 sketchybar -m set network_down graph_color 0xffffffff
 sketchybar -m set network_down script "~/.config/sketchybar/plugins/network_graph.sh"
 
 sketchybar -m add component graph network_up right 150
 sketchybar -m set network_up icon ⮁
-sketchybar -m set network_up label_padding_left 3
-sketchybar -m set network_up icon_padding_left 3
+sketchybar -m set network_up label_padding_left 8
+sketchybar -m set network_up icon_padding_left 8
 sketchybar -m set network_up associated_space 2
 sketchybar -m set network_up update_freq 5
 sketchybar -m set network_up associated_space 4
