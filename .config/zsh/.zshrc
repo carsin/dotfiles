@@ -55,7 +55,7 @@ bindkey '^j' history-search-forward
 # Syntax highlighting
 source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
-# Plugins
+# Plugins (provided by zsh-functions)
 zsh_add_plugin "zsh-users/zsh-autosuggestions"
 zsh_add_plugin "hlissner/zsh-autopair"
 zsh_add_plugin "agkozak/zsh-z"
