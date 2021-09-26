@@ -3,10 +3,10 @@ require('gitsigns').setup {
   keymaps = {
     noremap = false,
   },
-  watch_index = {
-    interval = 1000,
-    follow_files = true
-  },
+  -- watch_index = {
+  --   interval = 1000,
+  --   follow_files = true
+  -- },
   attach_to_untracked = false,
   current_line_blame = false,
   current_line_blame_opts = {
