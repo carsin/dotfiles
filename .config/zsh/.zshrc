@@ -116,6 +116,9 @@ source ~/.cache/wal/colors-tty.sh
 export FZF_DEFAULT_COMMAND='rg --files --hidden -g "!.git" '
 export GPG_TTY=$TTY
 export TASKRC=~/.config/taskwarrior-tui/.taskrc
+# export JAVA_HOME="/Users/carson/Library/Java/JavaVirtualMachines/openjdk-17/Contents/Home"
+export JAVA_HOME="/usr/local/Cellar/openjdk@11/11.0.12/libexec/openjdk.jdk/Contents/Home"
+export CPPFLAGS="-I/usr/local/opt/openjdk@11/include"
 export TASKDATA=~/.config/taskwarrior-tui/.task
 export VIT_DIR=~/.config/vit
 export SPICETIFY_CONFIG=~/.config/spicetify
