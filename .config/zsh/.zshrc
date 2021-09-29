@@ -92,7 +92,7 @@ path+=("/Users/carson/Library/Python/3.9/bin")
 path+=("/usr/local/opt/llvm/bin/")
 path+=("/usr/local/opt/binutils/bin:$PATH")
 path+=("/Users/carson/.cargo/bin")
-# path+=(/Library/Frameworks/Python.framework/Versions/3.8/bin:$PATH)
+path+=("")
 
 # import aliases
 source "$ZDOTDIR/zsh-aliases"
@@ -118,10 +118,11 @@ export GPG_TTY=$TTY
 export TASKRC=~/.config/taskwarrior-tui/.taskrc
 # export JAVA_HOME="/Users/carson/Library/Java/JavaVirtualMachines/openjdk-17/Contents/Home"
 export JAVA_HOME="/usr/local/Cellar/openjdk@11/11.0.12/libexec/openjdk.jdk/Contents/Home"
+export JDTLS_HOME="~/.local/bin/eclipse.jdt.ls/"
 export CPPFLAGS="-I/usr/local/opt/openjdk@11/include"
 export TASKDATA=~/.config/taskwarrior-tui/.task
 export VIT_DIR=~/.config/vit
 export SPICETIFY_CONFIG=~/.config/spicetify
 export LC_ALL=en_US.UTF-8
 # export TERM=xterm-256color
-export PATH
+export PATH=$PATH:$HOME/.local/bin

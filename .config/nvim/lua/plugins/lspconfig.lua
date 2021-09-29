@@ -90,29 +90,11 @@ nvim_lsp.sumneko_lua.setup {
   },
 }
 
--- TODO: fix via https://github.com/mfussenegger/nvim-jdtls/wiki/Sample-Configurations
-require('jdtls').start_or_attach({
-  cmd = {
-    '/usr/bin/java',
-    '-Dosgi.bundles.defaultStartLevel=4',
-    '-Declipse.application=org.eclipse.jdt.ls.core.id1',
-    '-Declipse.product=org.eclipse.jdt.ls.core.product',
-    '-Dlog.level=ALL',
-    '-noverify',
-    '-Xmx1G',
-    -- '-jar /Applications/Eclipse/plugins/org.eclipse.equinox.launcher_1.5.200.v20180922-1751.jar',
-    '-jar /Applcations/Eclipse Java.app/Contents/Eclipse/plugins/org.eclipse.equinox.launcher_1.6.300.v20210813-1054.jar',
-    '-configuration ./config_mac',
-    '-data ~/.cache/eclipse',
-    '--add-modules=ALL-SYSTEM',
-    '--add-opens java.base/java.util=ALL-UNNAMED',
-    '--add-opens java.base/java.lang=ALL-UNNAMED',
-  },
-
-  -- cmd = {
-  --   'java -Dosgi.bundles.defaultStartLevel=4 -Declipse.application=org.eclipse.jdt.ls.core.id1 -Declipse.product=org.eclipse.jdt.ls.core. -Dlog.level=ALL -noverify -Xmx1G', '-jar /Applcations/Eclipse/Contents/Eclipse/plugins/org.eclipse.equinox.launcher_1.6.300.v20210813-1054.jar -configuration ./config_mac -data ~/.cache/eclipse --add-modules=ALL-SYSTEM --add-opens java.base/java.util=ALL-UNNAMED --add-opens java.base/java.lang=ALL-UNNAMED',
-  -- },
+nvim_lsp.jdtls.setup {
+  cmd = { 'jdtls' },
   on_attach = on_attach,
-  capabilities = capabitities,
-  root_dir = require('jdtls.setup').find_root({'.git', 'mvnw', 'gradlew'})
-})
+  capabilities = capabilities,
+  root_dir = function(fname)
+    return require'lspconfig'.util.root_pattern('pom.xml', 'gradle.build', '.git')(fname) or vim.fn.getcwd()
+  end,
+}

@@ -212,5 +212,4 @@ return packer.startup(function(use)
 
   use 'vimwiki/vimwiki'
   use 'mfussenegger/nvim-jdtls'
-
 end )
