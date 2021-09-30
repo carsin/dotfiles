@@ -121,6 +121,7 @@ export JAVA_HOME="/usr/local/Cellar/openjdk@11/11.0.12/libexec/openjdk.jdk/Conte
 export JDTLS_HOME="~/.local/bin/eclipse.jdt.ls/"
 export CPPFLAGS="-I/usr/local/opt/openjdk@11/include"
 export TASKDATA=~/.config/taskwarrior-tui/.task
+export CLASSPATH="$CLASSPATH:/home/carson/.cache/junit/hamcrest-core-1.3.jar:/home/carson/.cache/junit/junit-4.13.2.jar:."
 export VIT_DIR=~/.config/vit
 export SPICETIFY_CONFIG=~/.config/spicetify
 export LC_ALL=en_US.UTF-8

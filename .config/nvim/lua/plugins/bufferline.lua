@@ -27,7 +27,7 @@ require("bufferline").setup{
     right_trunc_marker = '…',
     max_name_length = 20,
     max_prefix_length = 15, -- prefix used when a buffer is de-duplicated
-    tab_size = 25,
+    tab_size = 20,
     enforce_regular_tabs = true,
     show_close_icon = false,
     close_command = "lua require('bufdelete').bufdelete(0, true)",

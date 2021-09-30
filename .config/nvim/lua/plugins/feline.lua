@@ -140,12 +140,13 @@ table.insert(components.active[1], {
 -- filename
 table.insert(components.active[1], {
   provider = 'file_info',
-  file_modified_icon = "+",
+  file_modified_icon = '+',
   hl = {
     fg = 'white',
     bg = 'bg',
     -- style = 'bold'
   },
+  type = "unique",
   right_sep = ''
 })
 
@@ -196,9 +197,57 @@ table.insert(components.active[1], {
   right_sep = ' '
 })
 
--- MID
+-- RIGHT
+-- diagnosticErrors
+table.insert(components.active[3], {
+  provider = 'diagnostic_errors',
+  enabled = function() return lsp.diagnostics_exist('Error') end,
+  icon = " E ",
+  hl = {
+    fg = 'red',
+    -- style = 'bold'
+  },
+  right_sep = ' '
+})
+
+-- diagnosticWarn
+table.insert(components.active[3], {
+  provider = 'diagnostic_warnings',
+  enabled = function() return lsp.diagnostics_exist('Warning') end,
+  icon = " ! ",
+  hl = {
+    fg = 'yellow',
+    -- style = 'bold'
+  },
+  right_sep = ' '
+})
+
+-- diagnosticHint
+table.insert(components.active[3], {
+  provider = 'diagnostic_hints',
+  enabled = function() return lsp.diagnostics_exist('Hint') end,
+  icon = " ? ",
+  hl = {
+    fg = 'bgreen',
+    -- style = 'bold'
+  },
+  right_sep = ' '
+})
+
+-- diagnosticInfo
+table.insert(components.active[3], {
+  provider = 'diagnostic_info',
+  enabled = function() return lsp.diagnostics_exist('Information') end,
+  icon = " i ",
+  hl = {
+    fg = 'cyan',
+    -- style = 'bold'
+  },
+  right_sep = ' '
+})
+
 -- LspName
-table.insert(components.active[2], {
+table.insert(components.active[3], {
   provider = 'lsp_client_names',
   icon = '',
   hl = {
@@ -206,54 +255,35 @@ table.insert(components.active[2], {
     bg = 'bg',
     style = 'bold'
   },
-  right_sep = ''
+  left_sep = '',
+  right_sep = ' '
 })
 
--- diagnosticErrors
-table.insert(components.active[2], {
-  provider = 'diagnostic_errors',
-  enabled = function() return lsp.diagnostics_exist('Error') end,
-  icon = " E ",
+-- fileSize
+table.insert(components.active[3], {
+  provider = 'file_size',
+  enabled = function() return vim.fn.getfsize(vim.fn.expand('%:t')) > 0 end,
   hl = {
     fg = 'red',
+    bg = 'bg',
     -- style = 'bold'
-  }
+  },
+  left_sep = ' ',
+  right_sep = ' '
 })
 
--- diagnosticWarn
-table.insert(components.active[2], {
-  provider = 'diagnostic_warnings',
-  enabled = function() return lsp.diagnostics_exist('Warning') end,
-  icon = " ! ",
+-- position
+table.insert(components.active[3], {
+  provider = 'position',
   hl = {
-    fg = 'yellow',
-    -- style = 'bold'
-  }
+    fg = 'white',
+    bg = 'bg',
+    style = 'bold'
+  },
+  left_sep = '',
+  right_sep = ' '
 })
 
--- diagnosticHint
-table.insert(components.active[2], {
-  provider = 'diagnostic_hints',
-  enabled = function() return lsp.diagnostics_exist('Hint') end,
-  icon = " ? ",
-  hl = {
-    fg = 'bgreen',
-    -- style = 'bold'
-  }
-})
-
--- diagnosticInfo
-table.insert(components.active[2], {
-  provider = 'diagnostic_info',
-  enabled = function() return lsp.diagnostics_exist('Information') end,
-  icon = " i ",
-  hl = {
-    fg = 'cyan',
-    -- style = 'bold'
-  }
-})
-
--- RIGHT
 -- fileType
 table.insert(components.active[3], {
   provider = 'file_type',
@@ -271,32 +301,10 @@ table.insert(components.active[3], {
     -- val.style = 'bold'
     return val
   end,
-  right_sep = ' '
-})
-
--- fileSize
-table.insert(components.active[3], {
-  provider = 'file_size',
-  enabled = function() return vim.fn.getfsize(vim.fn.expand('%:t')) > 0 end,
-  hl = {
-    fg = 'red',
-    bg = 'bg',
-    -- style = 'bold'
-  },
-  left_sep = ' ',
-  right_sep = ' '
-})
-
-table.insert(components.active[3], {
-  provider = 'position',
-  hl = {
-    fg = 'white',
-    bg = 'bg',
-    style = 'bold'
-  },
+  right_sep = '',
   left_sep = '',
-  right_sep = ' '
 })
+
 
 -- linePercent
 table.insert(components.active[3], {
