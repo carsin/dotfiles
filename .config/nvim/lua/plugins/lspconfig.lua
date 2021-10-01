@@ -89,23 +89,3 @@ nvim_lsp.sumneko_lua.setup {
     },
   },
 }
-
--- -- This bundles definition is the same as in the previous section (java-debug installation)
--- local bundles = {
---   vim.fn.glob("path/to/java-debug/com.microsoft.java.debug.plugin/target/com.microsoft.java.debug.plugin-*.jar"),
--- };
-
--- -- This is the new part
--- vim.list_extend(bundles, vim.split(vim.fn.glob("/path/to/microsoft/vscode-java-test/server/*.jar"), "\n"))
--- config['init_options'] = {
---   bundles = bundles;
--- }
-
-nvim_lsp.jdtls.setup {
-  cmd = { 'jdtls' },
-  on_attach = on_attach,
-  capabilities = capabilities,
-  root_dir = function(fname)
-    return nvim_lsp.util.root_pattern('pom.xml', 'gradle.build', '.git')(fname) or vim.fn.getcwd()
-  end,
-}
