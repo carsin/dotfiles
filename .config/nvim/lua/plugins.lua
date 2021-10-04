@@ -51,7 +51,7 @@ return packer.startup(function(use)
   use { -- lsp config
     'neovim/nvim-lspconfig',
     config = function()
-      require 'plugins.lspconfig'
+      require 'plugins.lsp.lspconfig'
     end,
   }
 
@@ -93,7 +93,7 @@ return packer.startup(function(use)
   use { -- lspkind
     'onsails/lspkind-nvim',
     config = function()
-      require 'plugins.lspkind'
+      require 'plugins.lsp.lspkind'
     end,
   }
 
