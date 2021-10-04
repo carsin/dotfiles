@@ -112,7 +112,7 @@ return packer.startup(function(use)
       { 'andersevenrud/compe-tmux', branch = 'cmp' },
     },
     config = function()
-      require 'plugins.cmp'
+      require 'plugins.lsp.cmp'
     end,
   }
 
@@ -205,7 +205,7 @@ return packer.startup(function(use)
       'rcarriga/nvim-dap-ui',
     },
     config = function()
-      require 'plugins.dap'
+      require 'plugins.lsp.dap'
     end
   }
 
