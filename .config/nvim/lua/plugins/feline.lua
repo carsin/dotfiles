@@ -207,7 +207,7 @@ table.insert(components.active[3], {
     fg = 'red',
     -- style = 'bold'
   },
-  right_sep = ' '
+  right_sep = ''
 })
 
 -- diagnosticWarn
@@ -219,7 +219,7 @@ table.insert(components.active[3], {
     fg = 'yellow',
     -- style = 'bold'
   },
-  right_sep = ' '
+  right_sep = ''
 })
 
 -- diagnosticHint
@@ -256,7 +256,7 @@ table.insert(components.active[3], {
     style = 'bold'
   },
   left_sep = '',
-  right_sep = ' '
+  right_sep = ''
 })
 
 -- fileSize
@@ -269,7 +269,7 @@ table.insert(components.active[3], {
     -- style = 'bold'
   },
   left_sep = ' ',
-  right_sep = ' '
+  right_sep = '',
 })
 
 -- position
@@ -280,7 +280,7 @@ table.insert(components.active[3], {
     bg = 'bg',
     style = 'bold'
   },
-  left_sep = '',
+  left_sep = ' ',
   right_sep = ' '
 })
 

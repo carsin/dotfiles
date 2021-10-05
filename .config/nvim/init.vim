@@ -130,6 +130,9 @@ let &fcs='eob: '       " No idiotic eob tildas
 " set winheight=15
 " set winminheight=15
 
+" Show line diagnostics on hover
+autocmd CursorHold * lua vim.lsp.diagnostic.show_line_diagnostics({border="none", focusable=false})
+
 " Set completeopt to have a better completion experience
 set completeopt=menuone,noselect
 " Avoid showing extra messages when using completion
@@ -163,6 +166,8 @@ augroup END
 
 " Don't take up scrollbar with match
 let g:matchup_matchparen_offscreen = { 'method': 'popup' }
+
+autocmd FileType java lua require('plugins.lsp.lspconfig').start_jdtls()
 
 " }}}
 " Binds & Mappings

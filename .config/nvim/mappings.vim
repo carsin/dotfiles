@@ -81,8 +81,8 @@ nnoremap Y yg_
 " Center cursor when doing jumpy motions
 nnoremap n nzzzv
 nnoremap N Nzzzv
-nnoremap { {zz
-nnoremap } }zz
+" nnoremap { {zz
+" nnoremap } }zz
 nnoremap ]c ]czz
 nnoremap [c [czz
 nnoremap [j <C-o>zz
