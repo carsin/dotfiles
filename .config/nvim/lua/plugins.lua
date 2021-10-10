@@ -74,6 +74,7 @@ return packer.startup(function(use)
     end,
   }
 
+  use 'ElPiloto/telescope-vimwiki.nvim'
   use { -- telescope
     'nvim-telescope/telescope.nvim',
     requires = {

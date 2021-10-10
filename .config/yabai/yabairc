@@ -49,6 +49,8 @@ yabai -m rule --add app="Logi Options" manage=off
 yabai -m rule --add app="BetterTouchTool" manage=off
 yabai -m rule --add app="Digital Color Meter" manage=off
 yabai -m rule --add app="Bitwarden" manage=off
+yabai -m rule --add app="FaceTime" manage=off
+yabai -m rule --add app="Photo Booth" manage=off
 yabai -m rule --add app="Messages" manage=off
 yabai -m rule --add title="--yabai$" manage=off
 

@@ -119,6 +119,7 @@ nnoremap <leader>g <cmd>Telescope live_grep<cr>
 " nnoremap <leader>o <cmd>Telescope buffers<cr>
 nnoremap <leader>pp <cmd>Telescope projects<cr>
 " nnoremap <leader>h <cmd>Telescope help_tags<cr>
+nnoremap <leader>ws <cmd>lua require('telescope').extensions.vimwiki.vimwiki()<cr>
 
 " EasyAlign
 xmap ga <Plug>(EasyAlign)

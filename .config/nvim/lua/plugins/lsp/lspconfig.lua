@@ -223,14 +223,14 @@ function M.start_jdtls()
   config.on_attach = jdtls_on_attach
   --  External jars
   local jar_patterns = {
-    '/dev/microsoft/java-debug/com.microsoft.java.debug.plugin/target/com.microsoft.java.debug.plugin-*.jar',
-    '/dev/dgileadi/vscode-java-decompiler/server/*.jar',
-    '/dev/microsoft/vscode-java-test/java-extension/com.microsoft.java.test.plugin/target/*.jar',
-    '/dev/microsoft/vscode-java-test/java-extension/com.microsoft.java.test.runner/target/*.jar',
-    '/dev/microsoft/vscode-java-test/java-extension/com.microsoft.java.test.runner/lib/*.jar',
+    home .. '/.local/bin/microsoft/java-debug/com.microsoft.java.debug.plugin/target/com.microsoft.java.debug.plugin-*.jar',
+    home .. '/.local/bin/dgileadi/vscode-java-decompiler/server/*.jar',
+    home .. '/.local/bin/microsoft/vscode-java-test/java-extension/com.microsoft.java.test.plugin/target/*.jar',
+    home .. '/.local/bin/microsoft/vscode-java-test/java-extension/com.microsoft.java.test.runner/target/*.jar',
+    home .. '/.local/bin/microsoft/vscode-java-test/java-extension/com.microsoft.java.test.runner/lib/*.jar',
   }
   -- Gather the required jars manually; this is based on the gulpfile.js in the vscode-java-test repo
-  local plugin_path = '/dev/microsoft/vscode-java-test/java-extension/com.microsoft.java.test.plugin.site/target/repository/plugins/'
+  local plugin_path = home .. '/.local/bin/microsoft/vscode-java-test/java-extension/com.microsoft.java.test.plugin.site/target/repository/plugins/'
   local bundle_list = vim.tbl_map(
     function(x) return require('jdtls.path').join(plugin_path, x) end, {
       'org.eclipse.jdt.junit4.runtime_*.jar',

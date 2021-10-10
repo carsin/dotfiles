@@ -207,7 +207,7 @@ table.insert(components.active[3], {
     fg = 'red',
     -- style = 'bold'
   },
-  right_sep = ''
+  right_sep = ' '
 })
 
 -- diagnosticWarn
@@ -219,7 +219,7 @@ table.insert(components.active[3], {
     fg = 'yellow',
     -- style = 'bold'
   },
-  right_sep = ''
+  right_sep = ' '
 })
 
 -- diagnosticHint
