@@ -53,7 +53,7 @@ require'nvim-tree'.setup {
     auto_open = true, -- allow to open the tree if it was previously closed
   },
   hijack_cursor = false, -- hijack the cursor in the tree to put it at the start of the filename
-  update_cwd = true, -- updates the root directory of the tree on `DirChanged` (when your run `:cd` usually)
+  update_cwd = false, -- updates the root directory of the tree on `DirChanged` (when your run `:cd` usually)
   diagnostics = { -- show lsp diagnostics in the signcolumn
     enable = true,
     icons = {

@@ -1,5 +1,7 @@
 local border = { {"╭", "FloatBorder"}, {"─", "FloatBorder"}, {"╮", "FloatBorder"}, {"│", "FloatBorder"}, {"╯", "FloatBorder"}, {"─", "FloatBorder"}, {"╰", "FloatBorder"}, {"│", "FloatBorder"} }
-local nvim_lsp = require 'lspconfig'
+local nvim_lsp = require'lspconfig'
+local lspinstall = require'lspinstall'
+local M = {}
 
 local function on_attach(bufnr)
   vim.lsp.handlers["textDocument/hover"] =  vim.lsp.with(vim.lsp.handlers.hover, { border = nil })
@@ -29,6 +31,8 @@ local function on_attach(bufnr)
   buf_set_keymap('n', '[d', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>zz', opts)
   buf_set_keymap('n', ']d', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>zz', opts)
   buf_set_keymap('n', '<space>F', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
+  -- Telescope
+  buf_set_keymap('n', '<space>F', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
 end
 
 
@@ -44,58 +48,27 @@ local function get_config()
     };
     handlers = {},
     capabilities = capabilities;
-    on_init = on_init;
+    -- on_init = on_init;
     on_attach = on_attach;
   }
 end
 
-local function setup_servers()
-  require'lspinstall'.setup()
-  local servers = require'lspinstall'.installed_servers()
+function M.setup_servers()
+  lspinstall.setup()
+  local servers = lspinstall.installed_servers()
   for _, server in pairs(servers) do
-    require'lspconfig'[server].setup{}
+    nvim_lsp[server].setup {
+      on_attach = get_config().on_attach,
+      capabilities = get_config().capabilities,
+      flags = get_config().flags,
+    }
   end
 end
 
-setup_servers()
-
--- Enable the following language servers
-local servers = { 'rust_analyzer', 'pyright', 'ccls', }
-for _, lsp in ipairs(servers) do
-  nvim_lsp[lsp].setup {
-    on_attach = on_attach,
-    capabilities = get_config().capabilities,
-    flags = { debounce_text_changes = 250 },
-  }
+-- automatically setup servers again after `:LspInstall <server>`
+lspinstall.post_install_hook = function()
+  M.setup_servers() -- makes sure the new server is setup in lspconfig
+  vim.cmd("bufdo e") -- this triggers the FileType autocmd that starts the server
 end
 
--- LOAD SUMNEKO --
-local runtime_path = vim.split(package.path, ';')
-table.insert(runtime_path, 'lua/?.lua')
-table.insert(runtime_path, 'lua/?/init.lua')
-
--- Set up sumneko
-nvim_lsp.sumneko_lua.setup {
-  cmd = { vim.fn.getenv("HOME")..'/.local/bin/lua-language-server/bin/macOS/lua-language-server', '-E', vim.fn.getenv("HOME")..'/.local/bin/lua-language-server' .. '/main.lua' },
-  on_attach = on_attach,
-  -- capabilities = capabilities,
-  capabilities = get_config().capabilities,
-  flags = { debounce_text_changes = 250 },
-  settings = {
-    Lua = {
-      runtime = {
-        version = 'LuaJIT',
-        path = runtime_path,
-      },
-      diagnostics = {
-        globals = { 'vim' },
-      },
-      workspace = {
-        library = vim.api.nvim_get_runtime_file('', true),
-      },
-      telemetry = {
-        enable = false,
-      },
-    },
-  },
-}
+return M

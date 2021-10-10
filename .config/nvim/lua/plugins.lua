@@ -1,17 +1,13 @@
 -- Install packer if it isnt already
-local execute = vim.api.nvim_command
-local fn = vim.fn
-local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
-if fn.empty(fn.glob(install_path)) > 0 then
-  fn.system({'git', 'clone', 'https://github.com/wbthomason/packer.nvim', install_path})
-  execute 'packadd packer.nvim'
+if vim.fn.empty(vim.fn.stdpath('data') ..'/site/pack/packer/start/packer.nvim') > 0 then
+  vim.fn.system({ 'git', 'clone', 'https://github.com/wbthomason/packer.nvim', vim.fn.stdpath('data') ..'/site/pack/packer/start/packer.nvim' })
+  vim.api.nvim_command 'packadd packer.nvim'
 end
 
 -- Auto compile when there are changes in plugins.lua
 vim.cmd 'autocmd BufWritePost plugins.lua PackerCompile'
 
 local packer = require('packer')
-
 packer.init({
 	display = {
 		title = "Packer",
@@ -38,28 +34,16 @@ return packer.startup(function(use)
   use 'antoinemadec/FixCursorHold.nvim' -- Needed while issue https://github.com/neovim/neovim/issues/12587 is still open
   use 'junegunn/vim-easy-align'
 
-  use { -- better escape
-    'jdhao/better-escape.vim',
-    event = 'InsertEnter',
-    config = function()
-      vim.g.better_escape_interval = 150
-      vim.g.better_escape_shortcut = { 'jk' }
-    end,
-  }
-
 
   use { -- lsp config
     'neovim/nvim-lspconfig',
+    requires = {
+      'kabouzeid/nvim-lspinstall',
+    },
     config = function()
-      require 'plugins.lsp.lspconfig'
+      local lsp = require'plugins.lsp.lspconfig'
+      lsp.setup_servers()
     end,
-  }
-
-  use {
-    'kabouzeid/nvim-lspinstall',
-    config = function()
-      require'lspinstall'.setup()
-    end
   }
 
   use { -- treesitter
@@ -67,7 +51,7 @@ return packer.startup(function(use)
     requires = { { 'nvim-treesitter/nvim-treesitter-textobjects' } },
     run = ':TSUpdate',
     config = function()
-      require 'plugins.treesitter'
+      require'plugins.treesitter'
     end,
   }
 
@@ -81,15 +65,16 @@ return packer.startup(function(use)
     end,
   }
 
-  use 'ElPiloto/telescope-vimwiki.nvim'
   use { -- telescope
     'nvim-telescope/telescope.nvim',
     requires = {
       'nvim-lua/plenary.nvim',
+      'ElPiloto/telescope-vimwiki.nvim',
+      'nvim-telescope/telescope-project.nvim',
       { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' },
     },
     config = function()
-      require 'plugins.telescope'
+      require'plugins.ts'
     end,
   }
 
@@ -101,7 +86,7 @@ return packer.startup(function(use)
   use { -- lspkind
     'onsails/lspkind-nvim',
     config = function()
-      require 'plugins.lsp.lspkind'
+      require'plugins.lsp.lspkind'
     end,
   }
 
@@ -120,14 +105,14 @@ return packer.startup(function(use)
       { 'andersevenrud/compe-tmux', branch = 'cmp' },
     },
     config = function()
-      require 'plugins.lsp.cmp'
+      require'plugins.lsp.cmp'
     end,
   }
 
   use { -- autopairs
     'windwp/nvim-autopairs',
     config = function()
-      require 'plugins.autopairs'
+      require'plugins.autopairs'
     end,
   }
 
@@ -155,7 +140,7 @@ return packer.startup(function(use)
   use { -- Feline
     'famiu/feline.nvim',
     config = function()
-      require 'plugins.feline'
+      require'plugins.feline'
     end,
   }
 
@@ -163,36 +148,31 @@ return packer.startup(function(use)
     'folke/trouble.nvim',
     requires = 'kyazdani42/nvim-web-devicons',
     config = function()
-      require 'plugins.trouble'
+      require'plugins.trouble'
     end
   }
 
-  use { -- project
-    "ahmedkhalf/project.nvim",
+  use { -- better escape
+    'jdhao/better-escape.vim',
+    event = 'InsertEnter',
     config = function()
-      require("project_nvim").setup {
-        silent_chdir = true,
-        show_hidden = true,
-        detection_methods = { "lsp", "pattern" },
-        patterns = { ".git", "_darcs", ".hg", ".bzr", ".svn", "Makefile", "package.json", "init.vim" },
-        ignore_lsp = { "sumneko_lua" },
-        exclude_dirs = { "~/.config/nvim/lua", "~/.config/nvim/lua/plugins", ".git/" },
-    }
-    end
+      vim.g.better_escape_interval = 150
+      vim.g.better_escape_shortcut = { 'jk' }
+    end,
   }
 
   use { -- bufferline
     'akinsho/bufferline.nvim',
     requires = 'kyazdani43/nvim-web-devicons',
     config = function()
-      require 'plugins.bufferline'
+      require'plugins.bufferline'
     end,
   }
 
   use { -- nvim tree
     'kyazdani42/nvim-tree.lua',
     config = function()
-      require 'plugins.nvimtree'
+      require'plugins.nvimtree'
     end,
   }
 
@@ -201,7 +181,7 @@ return packer.startup(function(use)
     requires = 'nvim-lua/plenary.nvim',
     event = 'BufEnter',
     config = function()
-      require 'plugins.gitsigns'
+      require'plugins.gitsigns'
     end,
   }
 
@@ -213,7 +193,7 @@ return packer.startup(function(use)
       'rcarriga/nvim-dap-ui',
     },
     config = function()
-      require 'plugins.lsp.dap'
+      require'plugins.lsp.dap'
     end
   }
 
