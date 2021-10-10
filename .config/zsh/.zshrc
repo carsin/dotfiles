@@ -49,8 +49,8 @@ bindkey -M menuselect 'l' vi-forward-char
 bindkey -M menuselect 'j' vi-down-line-or-history
 
 # Go up and down in history with ctrl+j & ctrl+k
-bindkey '^k' history-search-backward
-bindkey '^j' history-search-forward
+bindkey '^K' history-search-backward
+bindkey '^K' history-search-forward
 
 # Syntax highlighting
 source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
@@ -117,14 +117,15 @@ export FZF_DEFAULT_COMMAND='rg --files --hidden -g "!.git" '
 export GPG_TTY=$TTY
 export TASKRC=~/.config/taskwarrior-tui/.taskrc
 # export JAVA_HOME="/Users/carson/Library/Java/JavaVirtualMachines/openjdk-17/Contents/Home"
-export JAVA_HOME="/usr/local/Cellar/openjdk@11/11.0.12/libexec/openjdk.jdk/Contents/Home"
-export JDTLS_HOME="~/.local/bin/eclipse.jdt.ls/"
-export CPPFLAGS="-I/usr/local/opt/openjdk@11/include"
+# export JAVA_HOME="/usr/local/Cellar/openjdk@11/11.0.12/libexec/openjdk.jdk/Contents/Home"
+# export JAVA_HOME="/Library/Java/JavaVirtualMachines/jdk-17.jdk/Contents/Home"
+# export PATH=$JAVA_HOME/bin:$PATH
+# export JDTLS_HOME="~/.local/bin/eclipse.jdt.ls/"
+# export CPPFLAGS="-I/usr/local/opt/openjdk@11/include"
 export TASKDATA=~/.config/taskwarrior-tui/.task
-export CLASSPATH="$CLASSPATH:/home/carson/.cache/junit/hamcrest-core-1.3.jar:/home/carson/.cache/junit/junit-4.13.2.jar:."
+export CLASSPATH="$CLASSPATH:/home/carson/.local/share/junit/hamcrest-core-1.3.jar:/home/carson/.local/share/junit/junit-4.13.2.jar:/home/carson/.local/share/junit/junit-platform-console-standalone-1.8.1.jar:/home/carson/.local/share/processing/processing-experimental.jar:."
 export VIT_DIR=~/.config/vit
 export SPICETIFY_CONFIG='~/.config/spicetify'
 export LC_ALL=en_US.UTF-8
 export WORKSPACE='~/files/dev/projects/java/'
-# export TERM=xterm-256color
 export PATH=$PATH:$HOME/.local/bin

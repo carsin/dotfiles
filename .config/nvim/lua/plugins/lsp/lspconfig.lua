@@ -4,9 +4,9 @@ local M = {}
 local lspc = {}
 local jdtls = require 'jdtls'
 local nvim_lsp = require 'lspconfig'
+local root_markers = {'gradlew', '.git'}
 
-
-do -- Ensure limited instances of language server
+do -- Ensure limited instances / proper start of language server
   local lsp_client_ids = {} -- id is filetype│root_dir
   function lspc.start(config, root_markers)
     local root_dir = require('jdtls.setup').find_root(root_markers)
@@ -111,25 +111,23 @@ local servers = { 'rust_analyzer', 'pyright', 'ccls', }
 for _, lsp in ipairs(servers) do
   nvim_lsp[lsp].setup {
     on_attach = on_attach,
-    capabilities = capabilities,
+    capabilities = get_config().capabilities,
     flags = { debounce_text_changes = 250 },
   }
 end
 
-local root_markers = {'gradlew', '.git'}
-
 -- LOAD SUMNEKO --
-local sumneko_root_path = vim.fn.getenv("HOME").."/.local/bin/lua-language-server"
-local sumneko_binary = sumneko_root_path .. '/bin/macOS/lua-language-server'
 local runtime_path = vim.split(package.path, ';')
 table.insert(runtime_path, 'lua/?.lua')
 table.insert(runtime_path, 'lua/?/init.lua')
 
 -- Set up sumneko
 nvim_lsp.sumneko_lua.setup {
-  cmd = { sumneko_binary, '-E', sumneko_root_path .. '/main.lua' },
+  cmd = { vim.fn.getenv("HOME")..'/.local/bin/lua-language-server/bin/macOS/lua-language-server', '-E', vim.fn.getenv("HOME")..'/.local/bin/lua-language-server' .. '/main.lua' },
   on_attach = on_attach,
-  capabilities = capabilities,
+  -- capabilities = capabilities,
+  capabilities = get_config().capabilities,
+  flags = { debounce_text_changes = 250 },
   settings = {
     Lua = {
       runtime = {
@@ -197,7 +195,6 @@ local function jdtls_on_attach(client, bufnr)
 end
 
 function M.start_jdtls()
-  local root_markers = {'gradlew', '.git'}
   local root_dir = require('jdtls.setup').find_root(root_markers)
   local home = os.getenv('HOME')
   local workspace_folder = home .. "/files/dev/projects/java" .. vim.fn.fnamemodify(root_dir, ":p:h:t")
