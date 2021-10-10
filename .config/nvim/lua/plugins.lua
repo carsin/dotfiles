@@ -55,6 +55,13 @@ return packer.startup(function(use)
     end,
   }
 
+  use {
+    'kabouzeid/nvim-lspinstall',
+    config = function()
+      require'lspinstall'.setup()
+    end
+  }
+
   use { -- treesitter
     'nvim-treesitter/nvim-treesitter',
     requires = { { 'nvim-treesitter/nvim-treesitter-textobjects' } },
@@ -211,5 +218,4 @@ return packer.startup(function(use)
   }
 
   use 'vimwiki/vimwiki'
-  use 'mfussenegger/nvim-jdtls'
 end )
