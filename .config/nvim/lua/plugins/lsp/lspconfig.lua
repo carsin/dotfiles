@@ -1,8 +1,10 @@
 local border = { {"╭", "FloatBorder"}, {"─", "FloatBorder"}, {"╮", "FloatBorder"}, {"│", "FloatBorder"}, {"╯", "FloatBorder"}, {"─", "FloatBorder"}, {"╰", "FloatBorder"}, {"│", "FloatBorder"} }
 local nvim_lsp = require'lspconfig'
 local lspinstall = require'lspinstall'
+local sumneko = require('plugins.lsp.sumneko')
+local M = {}
 
-local function on_attach(bufnr)
+local function on_attach(client, bufnr)
   vim.lsp.handlers["textDocument/hover"] =  vim.lsp.with(vim.lsp.handlers.hover, { border = nil })
   vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = nil })
   vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
@@ -29,13 +31,20 @@ local function on_attach(bufnr)
   -- buf_set_keymap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
   buf_set_keymap('n', '[d', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>zz', opts)
   buf_set_keymap('n', ']d', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>zz', opts)
-  buf_set_keymap('n', '<space>F', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
-  -- Telescope
-  buf_set_keymap('n', '<space>F', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
+  buf_set_keymap("n", "gq", "<Cmd>lua vim.lsp.buf.formatting()<CR>", opts)
+  buf_set_keymap("v", "gq", "<Esc><Cmd>lua vim.lsp.buf.range_formatting()<CR>", opts)
+  if client.resolved_capabilities.document_highlight then
+    vim.api.nvim_exec([[
+    augroup lsp_document_highlight
+    autocmd! * <buffer>
+    autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()
+    autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
+    augroup END
+    ]], false)
+  end
 end
 
-
-local function get_config()
+M.get_config = function()
   local capabilities = vim.lsp.protocol.make_client_capabilities()
   capabilities.workspace.configuration = true
   capabilities.textDocument.completion.completionItem.snippetSupport = true
@@ -56,11 +65,16 @@ local function setup_servers()
   lspinstall.setup()
   local servers = lspinstall.installed_servers()
   for _, server in pairs(servers) do
-    nvim_lsp[server].setup {
-      on_attach = get_config().on_attach,
-      capabilities = get_config().capabilities,
-      flags = get_config().flags,
-    }
+    local config = M.get_config()
+
+    if server == "lua" then
+      config.settings = sumneko.lua_settings
+    end
+    if server == 'java' then
+      goto continue -- is set up with jdtls
+    end
+    nvim_lsp[server].setup(config)
+    ::continue::
   end
 end
 
@@ -70,3 +84,5 @@ lspinstall.post_install_hook = function()
   setup_servers() -- makes sure the new server is setup in lspconfig
   vim.cmd("bufdo e") -- this triggers the FileType autocmd that starts the server
 end
+
+return M

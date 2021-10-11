@@ -78,10 +78,10 @@ return packer.startup(function(use)
     end,
   }
 
-  use { -- matchup
-    'andymass/vim-matchup',
-    event = 'CursorMoved',
-  }
+  -- use { -- matchup
+  --   'andymass/vim-matchup',
+  --   event = 'CursorMoved',
+  -- }
 
   use { -- lspkind
     'onsails/lspkind-nvim',

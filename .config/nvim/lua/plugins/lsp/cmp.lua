@@ -73,7 +73,6 @@ cmp.setup {
   },
   documentation = {
     border = nil,
-    winhighlight = 'FloatBorder:TelescopeBorder',
   },
   experimental = {
     ghost_text = true,
