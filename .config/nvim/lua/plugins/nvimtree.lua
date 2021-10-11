@@ -49,7 +49,7 @@ require'nvim-tree'.setup {
   auto_close = true, -- closes neovim automatically when the tree is the last **WINDOW** in the view
   open_on_tab = false, -- opens the tree when changing/opening a new tab if the tree wasn't previously opened
   update_to_buf_dir = { -- hijacks new directory buffers when they are opened.
-    enable = true,
+    enable = false,
     auto_open = true, -- allow to open the tree if it was previously closed
   },
   hijack_cursor = false, -- hijack the cursor in the tree to put it at the start of the filename

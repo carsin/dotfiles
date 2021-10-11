@@ -117,53 +117,53 @@ nnoremap <leader>f <cmd>Telescope find_files<cr>
 nnoremap <C-f> <cmd>Telescope find_files<cr>
 nnoremap <leader>g <cmd>Telescope live_grep<cr>
 " nnoremap <leader>o <cmd>Telescope buffers<cr>
-nnoremap <leader>pp <cmd>lua require'telescope'.extensions.project.project{ display_type = 'full' }<cr>
-" nnoremap <leader>h <cmd>telescope help_tags<cr>
+nnoremap <leader>pp <cmd>lua require'telescope'.extensions.project.project{ display_type = 'full' }<Cr>
+" nnoremap <leader>h <cmd>Telescope help_tags<cr>
 nnoremap <leader>ws <cmd>lua require('telescope').extensions.vimwiki.vimwiki()<cr>
 
-" easyalign
-xmap ga <plug>(easyalign)
-nmap ga <plug>(easyalign)
+" EasyAlign
+xmap ga <Plug>(EasyAlign)
+nmap ga <Plug>(EasyAlign)
 
-" lightspeed
-nmap <expr> f reg_recording() . reg_executing() == "" ? "<plug>lightspeed_f" : "f"
-nmap <expr> f reg_recording() . reg_executing() == "" ? "<plug>lightspeed_f" : "f"
-nmap <expr> t reg_recording() . reg_executing() == "" ? "<plug>lightspeed_t" : "t"
-nmap <expr> t reg_recording() . reg_executing() == "" ? "<plug>lightspeed_t" : "t"
+" Lightspeed
+nmap <expr> f reg_recording() . reg_executing() == "" ? "<Plug>Lightspeed_f" : "f"
+nmap <expr> F reg_recording() . reg_executing() == "" ? "<Plug>Lightspeed_F" : "F"
+nmap <expr> t reg_recording() . reg_executing() == "" ? "<Plug>Lightspeed_t" : "t"
+nmap <expr> T reg_recording() . reg_executing() == "" ? "<Plug>Lightspeed_T" : "T"
 
-" fterm
-nnoremap <silent> <leader>t <cmd>lua require("fterm").toggle()<cr>
-nnoremap <silent> <c-t> <cmd>lua require("fterm").toggle()<cr>
-tnoremap <silent> <c-t> <cmd>lua require("fterm").toggle()<cr>
-tnoremap <silent> <c-q> <cmd>lua require("fterm").toggle()<cr>
-nnoremap <silent> <f3> <cmd>lua require("fterm").toggle()<cr>
-tnoremap <silent> <f3> <cmd>lua require("fterm").toggle()<cr>
-tnoremap <silent> <esc> <cmd>lua require("fterm").toggle()<cr>
+" FTerm
+nnoremap <silent> <leader>t <CMD>lua require("FTerm").toggle()<CR>
+nnoremap <silent> <C-t> <CMD>lua require("FTerm").toggle()<CR>
+tnoremap <silent> <C-t> <CMD>lua require("FTerm").toggle()<CR>
+tnoremap <silent> <C-q> <CMD>lua require("FTerm").toggle()<CR>
+nnoremap <silent> <F3> <CMD>lua require("FTerm").toggle()<CR>
+tnoremap <silent> <F3> <CMD>lua require("FTerm").toggle()<CR>
+tnoremap <silent> <ESC> <CMD>lua require("FTerm").toggle()<CR>
 
-" trouble
-nnoremap <leader>xx <cmd>troubletoggle<cr>
-nnoremap <leader>xw <cmd>troubletoggle lsp_workspace_diagnostics<cr>
-nnoremap <leader>xd <cmd>troubletoggle lsp_document_diagnostics<cr>
-nnoremap <leader>xq <cmd>troubletoggle quickfix<cr>
-nnoremap <leader>xl <cmd>troubletoggle loclist<cr>
-" nnoremap gr <cmd>troubletoggle lsp_references<cr>
+" Trouble
+nnoremap <leader>xx <cmd>TroubleToggle<cr>
+nnoremap <leader>xw <cmd>TroubleToggle lsp_workspace_diagnostics<cr>
+nnoremap <leader>xd <cmd>TroubleToggle lsp_document_diagnostics<cr>
+nnoremap <leader>xq <cmd>TroubleToggle quickfix<cr>
+nnoremap <leader>xl <cmd>TroubleToggle loclist<cr>
+" nnoremap gr <cmd>TroubleToggle lsp_references<cr>
 
-" bufferline
-nnoremap <leader>l :bufferlinecyclenext<cr>
-nnoremap <leader>h :bufferlinecycleprev<cr>
-nnoremap <silent>[b :bufferlinecycleprev<cr>
-nnoremap <silent>]b :bufferlinecyclenext<cr>
-nnoremap <leader>h :bufferlinemoveprev<cr>
-nnoremap <leader>l :bufferlinemovenext<cr>
-nnoremap <silent><leader>1 <cmd>bufferlinegotobuffer 1<cr>
-nnoremap <silent><leader>2 <cmd>bufferlinegotobuffer 2<cr>
-nnoremap <silent><leader>3 <cmd>bufferlinegotobuffer 3<cr>
-nnoremap <silent><leader>4 <cmd>bufferlinegotobuffer 4<cr>
-nnoremap <silent><leader>5 <cmd>bufferlinegotobuffer 5<cr>
-nnoremap <silent><leader>6 <cmd>bufferlinegotobuffer 6<cr>
-nnoremap <silent><leader>7 <cmd>bufferlinegotobuffer 7<cr>
-nnoremap <silent><leader>8 <cmd>bufferlinegotobuffer 8<cr>
-nnoremap <silent><leader>9 <cmd>bufferlinegotobuffer 9<cr>
+" Bufferline
+nnoremap <leader>l :BufferLineCycleNext<CR>
+nnoremap <leader>h :BufferLineCyclePrev<CR>
+nnoremap <silent>[b :BufferLineCyclePrev<CR>
+nnoremap <silent>]b :BufferLineCycleNext<CR>
+nnoremap <leader>H :BufferLineMovePrev<CR>
+nnoremap <leader>L :BufferLineMoveNext<CR>
+nnoremap <silent><leader>1 <Cmd>BufferLineGoToBuffer 1<CR>
+nnoremap <silent><leader>2 <Cmd>BufferLineGoToBuffer 2<CR>
+nnoremap <silent><leader>3 <Cmd>BufferLineGoToBuffer 3<CR>
+nnoremap <silent><leader>4 <Cmd>BufferLineGoToBuffer 4<CR>
+nnoremap <silent><leader>5 <Cmd>BufferLineGoToBuffer 5<CR>
+nnoremap <silent><leader>6 <Cmd>BufferLineGoToBuffer 6<CR>
+nnoremap <silent><leader>7 <Cmd>BufferLineGoToBuffer 7<CR>
+nnoremap <silent><leader>8 <Cmd>BufferLineGoToBuffer 8<CR>
+nnoremap <silent><leader>9 <Cmd>BufferLineGoToBuffer 9<CR>
 
 nnoremap <silent><leader>q <CMD>lua require('bufdelete').bufdelete(0, true)<CR>
 

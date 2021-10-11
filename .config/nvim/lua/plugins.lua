@@ -39,10 +39,10 @@ return packer.startup(function(use)
     'neovim/nvim-lspconfig',
     requires = {
       'kabouzeid/nvim-lspinstall',
+      'mfussenegger/nvim-jdtls',
     },
     config = function()
-      local lsp = require'plugins.lsp.lspconfig'
-      lsp.setup_servers()
+      require'plugins.lsp.lspconfig'
     end,
   }
 

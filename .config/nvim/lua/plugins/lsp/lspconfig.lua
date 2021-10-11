@@ -1,7 +1,6 @@
 local border = { {"╭", "FloatBorder"}, {"─", "FloatBorder"}, {"╮", "FloatBorder"}, {"│", "FloatBorder"}, {"╯", "FloatBorder"}, {"─", "FloatBorder"}, {"╰", "FloatBorder"}, {"│", "FloatBorder"} }
 local nvim_lsp = require'lspconfig'
 local lspinstall = require'lspinstall'
-local M = {}
 
 local function on_attach(bufnr)
   vim.lsp.handlers["textDocument/hover"] =  vim.lsp.with(vim.lsp.handlers.hover, { border = nil })
@@ -45,15 +44,15 @@ local function get_config()
     flags = {
       debounce_text_changes = 250,
       allow_incremental_sync = true,
-    };
+    },
     handlers = {},
-    capabilities = capabilities;
-    -- on_init = on_init;
-    on_attach = on_attach;
+    capabilities = capabilities,
+    -- on_init = on_init,
+    on_attach = on_attach,
   }
 end
 
-function M.setup_servers()
+local function setup_servers()
   lspinstall.setup()
   local servers = lspinstall.installed_servers()
   for _, server in pairs(servers) do
@@ -66,9 +65,8 @@ function M.setup_servers()
 end
 
 -- automatically setup servers again after `:LspInstall <server>`
+setup_servers()
 lspinstall.post_install_hook = function()
-  M.setup_servers() -- makes sure the new server is setup in lspconfig
+  setup_servers() -- makes sure the new server is setup in lspconfig
   vim.cmd("bufdo e") -- this triggers the FileType autocmd that starts the server
 end
-
-return M
