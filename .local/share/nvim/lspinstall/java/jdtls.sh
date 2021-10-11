@@ -54,6 +54,10 @@ fi
   -Xmx2G \
   -javaagent:/Users/carson/.local/share/nvim/lspinstall/java/lombok.jar \
   -Xbootclasspath/a:/Users/carson/.local/share/nvim/lspinstall/java/lombok.jar \
+  -Xbootclasspath/a:/Users/carson/.local/share/processing/processing-experimental.jar \
+  -Xbootclasspath/a:/Users/carson/.local/share/junit/hamcrest-core-1.3.jar \
+  -Xbootclasspath/a:/Users/carson/.local/share/junit/junit-4.13.2.jar \
+  -Xbootclasspath/a:/Users/carson/.local/share/junit/junit-platform-console-standalone-1.8.1.jar \
   --add-modules=ALL-SYSTEM \
   --add-opens java.base/java.util=ALL-UNNAMED \
   --add-opens java.base/java.lang=ALL-UNNAMED \
