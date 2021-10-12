@@ -67,6 +67,8 @@ config.init_options = {
   extendedClientCapabilities = extendedClientCapabilities;
 }
 
+config.handlers['language/status'] = function() end -- mute; having progress reports is enough
+
 -- With `hotcodereplace = 'auto' the debug adapter will try to apply code changes
 -- you make during a debug session immediately.
 -- Remove the option if you do not want that.
