@@ -1,7 +1,7 @@
 local jdtls = require 'jdtls'
 local home = os.getenv('HOME')
 local jdtls_executable = home .. "/.local/share/nvim/lspinstall/java/jdtls.sh"
-local root_markers = {'gradlew', '.git', '.classpath' }
+local root_markers = {'gradlew', '.git', '.classpath', 'run'  }
 local root_dir = require('jdtls.setup').find_root(root_markers)
 local workspace_folder = home .. "/.local/share/eclipse/" .. vim.fn.fnamemodify(root_dir, ":p:h:t")
 
@@ -9,6 +9,12 @@ local workspace_folder = home .. "/.local/share/eclipse/" .. vim.fn.fnamemodify(
 local config = require("plugins.lsp.lspconfig").get_config()
 config.cmd = { jdtls_executable, workspace_folder, ":p:h:t" }
 config.flags.server_side_fuzzy_completion = true
+-- vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
+--   vim.lsp.diagnostic.on_publish_diagnostics, {
+--     update_in_insert = true,
+--     virtual_text = true,
+--   }
+-- )
 config.settings = {
   java = {
     -- signatureHelp = { enabled = true };

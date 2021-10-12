@@ -58,7 +58,8 @@ source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 # Plugins (provided by zsh-functions)
 zsh_add_plugin "zsh-users/zsh-autosuggestions"
 zsh_add_plugin "hlissner/zsh-autopair"
-zsh_add_plugin "agkozak/zsh-z"
+# zsh_add_plugin "agkozak/zsh-z"
+eval "$(zoxide init zsh)" # zoxide
 
 # Accept autosuggestion
 bindkey '^ ' autosuggest-accept

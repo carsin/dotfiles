@@ -21,8 +21,9 @@ alias config="/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME"
 
 alias cr="cargo run"
 alias crr="cargo run --release"
+alias rr='./run'
 alias mr="make && ./run"
-alias jr='(){ javac $1 && java $1. ;}'
+# alias jr='(){ javac $1 && java $1. ;}'
 alias jj='nohup java -jar'
 
 alias killglobal="launchctl unload /Library/LaunchAgents/com.paloaltonetworks.gp.pangp*"
