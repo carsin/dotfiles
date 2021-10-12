@@ -1,7 +1,7 @@
 local jdtls = require 'jdtls'
 local home = os.getenv('HOME')
 local jdtls_executable = home .. "/.local/share/nvim/lspinstall/java/jdtls.sh"
-local root_markers = {'gradlew', '.git',}
+local root_markers = {'gradlew', '.git', '.classpath' }
 local root_dir = require('jdtls.setup').find_root(root_markers)
 local workspace_folder = home .. "/.local/share/eclipse/" .. vim.fn.fnamemodify(root_dir, ":p:h:t")
 
@@ -40,7 +40,7 @@ config.settings = {
 
 local jar_patterns = {
   home .. '/.local/share/microsoft/java-debug/com.microsoft.java.debug.plugin/target/com.microsoft.java.debug.plugin-*.jar',
-  -- home .. '/.local/share/dgileadi/vscode-java-decompiler/server/*.jar',
+  home .. '/.local/share/dgileadi/vscode-java-decompiler/server/*.jar',
   home .. '/.local/share/microsoft/vscode-java-test/server/*.jar',
 }
 

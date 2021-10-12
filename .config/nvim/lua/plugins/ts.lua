@@ -19,7 +19,7 @@ telescope.setup {
   },
   pickers = {
     find_files = {
-      find_command = { "fd", "--type", "f", "--hidden", "--no-ignore" }
+      find_command = { "fd", "--type", "f", "--hidden" }
     },
   },
   defaults = {
@@ -48,7 +48,7 @@ telescope.setup {
       },
     },
     file_sorter =  require'telescope.sorters'.get_fuzzy_file,
-    file_ignore_patterns = { ".git", "node_modules", "target" },
+    file_ignore_patterns = { ".git", "node_modules", "target", "*.class" },
     generic_sorter =  require'telescope.sorters'.get_generic_fuzzy_sorter,
     winblend = 0,
     border = {},
