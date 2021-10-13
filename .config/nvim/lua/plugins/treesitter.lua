@@ -66,14 +66,6 @@ require'nvim-treesitter.configs'.setup {
         ["gpiC"] = "@call.inner",
       },
     },
-    lsp_interop = {
-      enable = true,
-      border = 'none',
-      peek_definition_code = {
-        ["df"] = "@class.outer",
-        ["dF"] = "@function.outer",
-      },
-    },
   },
   matchup = {
     enable = true,

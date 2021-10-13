@@ -198,4 +198,11 @@ return packer.startup(function(use)
     end
   }
 
+  use { -- AutoSave
+    'Pocco81/AutoSave.nvim',
+    config = function()
+      require'plugins.autosave'
+    end,
+  }
+
 end )

@@ -14,7 +14,8 @@ function! WriteSavePosition()
     :wa
     call setpos('.', pos)
 endfunction
-nnoremap <silent><leader>s :silent :call WriteSavePosition()<cr>
+" nnoremap <silent><leader>s :silent :call WriteSavePosition()<cr>
+nnoremap <silent><leader>s :w<cr>
 
  " Clear search highlight
 nnoremap <silent><leader><space> :let @/ = ""<CR>
