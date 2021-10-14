@@ -23,7 +23,7 @@ alias cr="cargo run"
 alias crr="cargo run --release"
 alias rr='./run'
 alias mr="make && ./run"
-# alias jr='(){ javac $1 && java $1. ;}'
+# alias jj='nohup command >/dev/null 2>&1 & java -jar'
 alias jj='nohup java -jar'
 
 alias killglobal="launchctl unload /Library/LaunchAgents/com.paloaltonetworks.gp.pangp*"
