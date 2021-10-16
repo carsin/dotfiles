@@ -29,7 +29,6 @@ return packer.startup(function(use)
   use 'chaoren/vim-wordmotion'
   use 'airblade/vim-rooter'
   use 'tpope/vim-surround'
-  use 'tpope/vim-commentary'
   use 'christoomey/vim-tmux-navigator'
   use 'famiu/bufdelete.nvim'
   use 'antoinemadec/FixCursorHold.nvim' -- Needed while issue https://github.com/neovim/neovim/issues/12587 is still open
@@ -77,11 +76,6 @@ return packer.startup(function(use)
     config = function()
       require'plugins.tscope'
     end,
-  }
-
-  use { -- matchup
-    'andymass/vim-matchup',
-    event = 'CursorMoved',
   }
 
   use { -- lspkind
@@ -203,6 +197,13 @@ return packer.startup(function(use)
     config = function()
       require'plugins.autosave'
     end,
+  }
+
+  use { -- comment
+    'numToStr/Comment.nvim',
+    config = function()
+        require('Comment').setup()
+    end
   }
 
 end )

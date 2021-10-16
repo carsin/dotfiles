@@ -111,6 +111,9 @@ nnoremap <Backspace> <C-^>
 nnoremap + <C-a>
 nnoremap - <C-x>
 
+" remove all trailing whitespace with gw
+nnoremap gw :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar><CR>
+
 " --- PLUGINS {{{
 " Telescope
 " Find files using Telescope command-line sugar.
@@ -140,11 +143,11 @@ tnoremap <silent> <F3> <CMD>lua require("FTerm").toggle()<CR>
 tnoremap <silent> <ESC> <CMD>lua require("FTerm").toggle()<CR>
 
 " Trouble
-nnoremap <leader>xx <cmd>TroubleToggle<cr>
-nnoremap <leader>xw <cmd>TroubleToggle lsp_workspace_diagnostics<cr>
-nnoremap <leader>xd <cmd>TroubleToggle lsp_document_diagnostics<cr>
-nnoremap <leader>xq <cmd>TroubleToggle quickfix<cr>
-nnoremap <leader>xl <cmd>TroubleToggle loclist<cr>
+nnoremap <leader>d <cmd>TroubleToggle<cr>
+" nnoremap <leader>xw <cmd>TroubleToggle lsp_workspace_diagnostics<cr>
+" nnoremap <leader>xd <cmd>TroubleToggle lsp_document_diagnostics<cr>
+" nnoremap <leader>xq <cmd>TroubleToggle quickfix<cr>
+" nnoremap <leader>xl <cmd>TroubleToggle loclist<cr>
 " nnoremap gr <cmd>TroubleToggle lsp_references<cr>
 
 " Bufferline

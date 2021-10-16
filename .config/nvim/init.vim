@@ -166,9 +166,7 @@ augroup remember_folds
 augroup END
 
 " Don't take up scrollbar with match
-let g:matchup_matchparen_offscreen = { 'method': 'popup' }
-
-" autocmd FileType java lua require('plugins.lsp.lspconfig').start_jdtls()
+" let g:matchup_matchparen_offscreen = { 'method': 'popup' }
 
 " }}}
 " Binds & Mappings
