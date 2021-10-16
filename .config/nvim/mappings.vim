@@ -172,3 +172,6 @@ nnoremap <silent><leader>q <CMD>lua require('bufdelete').bufdelete(0, true)<CR>
 " Tree
 nnoremap <C-e> :NvimTreeToggle<CR>
 nnoremap <leader>e :NvimTreeToggle<CR>
+
+" Spectre
+nnoremap <leader>S :lua require('spectre').open()<CR>

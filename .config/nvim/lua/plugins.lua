@@ -38,7 +38,7 @@ return packer.startup(function(use)
   use { -- lsp config
     'neovim/nvim-lspconfig',
     requires = {
-      'kabouzeid/nvim-lspinstall',
+      'williamboman/nvim-lsp-installer',
       'mfussenegger/nvim-jdtls',
     },
     config = function()
@@ -204,6 +204,10 @@ return packer.startup(function(use)
     config = function()
         require('Comment').setup()
     end
+  }
+
+  use { -- spectre
+    'windwp/nvim-spectre'
   }
 
 end )

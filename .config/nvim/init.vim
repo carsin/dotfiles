@@ -69,10 +69,17 @@ set undodir=~/.cache/nvim/undo
 " Disables automatic commenting on newline:
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 
-" Delete trailing whitespace and newlines on save
-" autocmd BufWritePre * %s/\s\+$//e
-" autocmd BufWritePre * %s/\n\+\%$//e
-" autocmd BufWritePre *.[ch] %s/\%$/\r/e
+" Delete trailing whitespace
+function! StripTrailingWhitespace()
+  if &modifiable
+    normal mZ
+    let l:chars = col("$")
+    %s/\s\+$//e
+    normal `Z
+  endif
+endfunction
+
+autocmd CursorHold * call StripTrailingWhitespace()
 
 " Turn off paste mode when leaving insert
 autocmd InsertLeave * set nopaste

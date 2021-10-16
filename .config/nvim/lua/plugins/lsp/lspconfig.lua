@@ -1,6 +1,6 @@
 local border = { {"╭", "FloatBorder"}, {"─", "FloatBorder"}, {"╮", "FloatBorder"}, {"│", "FloatBorder"}, {"╯", "FloatBorder"}, {"─", "FloatBorder"}, {"╰", "FloatBorder"}, {"│", "FloatBorder"} }
 local nvim_lsp = require'lspconfig'
-local lspinstall = require'lspinstall'
+local lsp_installer = require("nvim-lsp-installer")
 local sumneko = require('plugins.lsp.sumneko')
 local M = {}
 
@@ -62,28 +62,39 @@ M.get_config = function()
   }
 end
 
-local function setup_servers()
-  lspinstall.setup()
-  local servers = lspinstall.installed_servers()
-  for _, server in pairs(servers) do
-    local config = M.get_config()
+local servers = {
+  -- JDTLS is handled by its own plugin
+	"clangd",
+	"jsonls",
+	"sumneko_lua",
+	"rust_analyzer",
+}
 
-    if server == "lua" then
-      config.settings = sumneko.lua_settings
-    end
-    if server == 'java' then
-      goto continue -- is set up with jdtls
-    end
-    nvim_lsp[server].setup(config)
-    ::continue::
-  end
+for _, name in pairs(servers) do
+	local ok, server = lsp_installer.get_server(name)
+	-- Check that the server is supported in nvim-lsp-installer
+	if ok then
+		if not server:is_installed() then
+			print("Installing " .. name)
+			server:install()
+		end
+	end
 end
 
--- automatically setup servers again after `:LspInstall <server>`
-setup_servers()
-lspinstall.post_install_hook = function()
-  setup_servers() -- makes sure the new server is setup in lspconfig
-  vim.cmd("bufdo e") -- this triggers the FileType autocmd that starts the server
-end
+lsp_installer.on_server_ready(function(server)
+    local opts = M.get_config()
+
+    -- override default opts with server specific
+    local server_opts = {
+      ["sumneko_lua"] = function()
+        opts = M.get_config()
+        opts.settings = sumneko.lua_settings
+      end,
+    }
+
+    -- We check to see if any custom server_opts exist for the LSP server, if so, load them, if not, use our default_opts
+    server:setup(server_opts[server.name] and server_opts[server.name]() or opts)
+    vim.cmd [[ do User LspAttachBuffers ]]
+end)
 
 return M
