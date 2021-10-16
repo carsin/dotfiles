@@ -27,12 +27,17 @@ cnoremap w!! execute 'silent! write !sudo tee % >/dev/null' <bar> edit!
 
 " }}}
 
-" Load plugins
+" Plugins {{{
 
+" Misc settings
 let g:vimwiki_list = [{'path': '~/files/text/wiki', 'syntax': 'markdown', 'ext': '.md', 'diary_index': 'diary', 'diary_rel_path': '/', 'diary_header': 'Daily Log', 'auto_diary_index': 1}]
-au BufNewFile ~/files/text/wiki/*.md :silent 0r !~/.config/nvim/bin/journal-template.py '%'
 let g:rooter_patterns = ['.git', 'Makefile', '*.sln', 'run', '.classpath']
+au BufNewFile ~/files/text/wiki/*.md :silent 0r !~/.config/nvim/bin/journal-template.py '%'
+call wilder#setup({'modes': [':', '/', '?']})
+
+" Load plugins
 lua require'plugins'
+" }}}
 
 " Editing
 set autoindent                    " Indent according to previous line.

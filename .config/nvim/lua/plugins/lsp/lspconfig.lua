@@ -1,7 +1,7 @@
 local border = { {"╭", "FloatBorder"}, {"─", "FloatBorder"}, {"╮", "FloatBorder"}, {"│", "FloatBorder"}, {"╯", "FloatBorder"}, {"─", "FloatBorder"}, {"╰", "FloatBorder"}, {"│", "FloatBorder"} }
+local sumneko = require('plugins.lsp.sumneko')
 local nvim_lsp = require'lspconfig'
 local lsp_installer = require("nvim-lsp-installer")
-local sumneko = require('plugins.lsp.sumneko')
 local M = {}
 
 local function on_attach(client, bufnr)
@@ -65,15 +65,13 @@ end
 local servers = {
   -- JDTLS is handled by its own plugin
 	"clangd",
-	"jsonls",
 	"sumneko_lua",
 	"rust_analyzer",
 }
 
 for _, name in pairs(servers) do
 	local ok, server = lsp_installer.get_server(name)
-	-- Check that the server is supported in nvim-lsp-installer
-	if ok then
+	if ok then -- Check that the server is supported in nvim-lsp-installer
 		if not server:is_installed() then
 			print("Installing " .. name)
 			server:install()
@@ -83,8 +81,6 @@ end
 
 lsp_installer.on_server_ready(function(server)
     local opts = M.get_config()
-
-    -- override default opts with server specific
     local server_opts = {
       ["sumneko_lua"] = function()
         opts = M.get_config()
@@ -92,7 +88,7 @@ lsp_installer.on_server_ready(function(server)
       end,
     }
 
-    -- We check to see if any custom server_opts exist for the LSP server, if so, load them, if not, use our default_opts
+    -- check to see if any custom server_opts exist for the LSP server
     server:setup(server_opts[server.name] and server_opts[server.name]() or opts)
     vim.cmd [[ do User LspAttachBuffers ]]
 end)

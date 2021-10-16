@@ -27,13 +27,14 @@ return packer.startup(function(use)
   use 'editorconfig/editorconfig-vim'
   use 'ggandor/lightspeed.nvim'
   use 'chaoren/vim-wordmotion'
-  use 'airblade/vim-rooter'
+  use 'airblade/vim-rooter' -- TODO: Replace
   use 'tpope/vim-surround'
   use 'christoomey/vim-tmux-navigator'
   use 'famiu/bufdelete.nvim'
   use 'antoinemadec/FixCursorHold.nvim' -- Needed while issue https://github.com/neovim/neovim/issues/12587 is still open
   use 'junegunn/vim-easy-align'
   use 'vimwiki/vimwiki'
+  use 'gelguy/wilder.nvim'
 
   use { -- lsp config
     'neovim/nvim-lspconfig',

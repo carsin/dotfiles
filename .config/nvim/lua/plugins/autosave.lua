@@ -3,11 +3,11 @@ local autosave = require("autosave")
 autosave.setup({
   enabled = true,
   execution_message = "",
-  events = { "InsertLeave", "CursorHoldI", "CursorHold" },
+  events = { "InsertLeave", "CursorHold" },
   write_all_buffers = false,
   on_off_commands = true,
   clean_command_line_interval = 0,
-  debounce_delay = 500,
+  debounce_delay = 1000,
   conditions = {
       exists = true,
       filename_is_not = {},
