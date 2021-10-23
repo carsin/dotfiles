@@ -34,6 +34,7 @@ return packer.startup(function(use)
   use 'antoinemadec/FixCursorHold.nvim' -- Needed while issue https://github.com/neovim/neovim/issues/12587 is still open
   use 'junegunn/vim-easy-align'
   use 'vimwiki/vimwiki'
+  use 'dylanaraps/wal.vim'
 
   use { -- lsp config
     'neovim/nvim-lspconfig',
