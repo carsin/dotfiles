@@ -92,7 +92,7 @@ autocmd InsertLeave * set nopaste
 " UI {{{
 
 " Enable true color
-" set termguicolors
+set termguicolors
 
 set background=dark
 " set t_Co=256
@@ -107,7 +107,7 @@ let g:gruvbox_material_diagnostic_virtual_text = 'colored'
 let g:gruvbox_material_palette = 'original' " I prefer the vibrancy of the original
 let g:gruvbox_material_better_performance = 1
 
-colorscheme wal
+colorscheme gruvbox-material
 
 set showtabline=2      " Show top tab line
 set so=7               " How many lines from cursor to top / bottom of the screen before scrolling
