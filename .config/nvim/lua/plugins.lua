@@ -27,6 +27,7 @@ return packer.startup(function(use)
   use 'editorconfig/editorconfig-vim'
   use 'ggandor/lightspeed.nvim'
   use 'chaoren/vim-wordmotion'
+  use 'airblade/vim-rooter'
   use 'tpope/vim-surround'
   use 'christoomey/vim-tmux-navigator'
   use 'famiu/bufdelete.nvim'
