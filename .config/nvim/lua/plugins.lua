@@ -64,19 +64,22 @@ return packer.startup(function(use)
     end,
   }
 
-  use { -- navigator
-    'ray-x/navigator.lua',
-    requires = {
-      'ray-x/guihua.lua', run = 'cd lua/fzy && make'
-    },
+  -- use { -- navigator
+  --   'ray-x/navigator.lua',
+  --   requires = {
+  --     'ray-x/guihua.lua', run = 'cd lua/fzy && make'
+  --   },
+  --   config = function()
+  --     require'plugins.lsp.navigator'
+  --   end
+  -- }
+
+  use {
+    'https://gitlab.com/yorickpeterse/nvim-dd.git',
     config = function()
-      require'plugins.lsp.navigator'
+      require('dd').setup()
     end
   }
-
-  -- use {
-  --   'https://gitlab.com/yorickpeterse/nvim-dd.git'
-  -- }
 
   use { -- telescope
     'nvim-telescope/telescope.nvim',
