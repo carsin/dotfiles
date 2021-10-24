@@ -4,7 +4,7 @@ local nvim_lsp = require'lspconfig'
 local lsp_installer = require("nvim-lsp-installer")
 local M = {}
 
-local function on_attach(client, bufnr)
+M.on_attach = function(client, bufnr)
   vim.lsp.handlers["textDocument/hover"] =  vim.lsp.with(vim.lsp.handlers.hover, { border = nil })
   vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = nil })
   vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
@@ -58,7 +58,7 @@ M.get_config = function()
     handlers = {},
     capabilities = capabilities,
     -- on_init = on_init,
-    on_attach = on_attach,
+    on_attach = M.on_attach,
   }
 end
 

@@ -27,7 +27,6 @@ return packer.startup(function(use)
   use 'editorconfig/editorconfig-vim'
   use 'ggandor/lightspeed.nvim'
   use 'chaoren/vim-wordmotion'
-  use 'airblade/vim-rooter' -- TODO: Replace
   use 'tpope/vim-surround'
   use 'christoomey/vim-tmux-navigator'
   use 'famiu/bufdelete.nvim'
@@ -64,6 +63,20 @@ return packer.startup(function(use)
       })
     end,
   }
+
+  use { -- navigator
+    'ray-x/navigator.lua',
+    requires = {
+      'ray-x/guihua.lua', run = 'cd lua/fzy && make'
+    },
+    config = function()
+      require'plugins.lsp.navigator'
+    end
+  }
+
+  -- use {
+  --   'https://gitlab.com/yorickpeterse/nvim-dd.git'
+  -- }
 
   use { -- telescope
     'nvim-telescope/telescope.nvim',
@@ -109,11 +122,6 @@ return packer.startup(function(use)
     config = function()
       require'plugins.autopairs'
     end,
-  }
-
-  use { -- ccls
-    'm-pilia/vim-ccls',
-    after = "nvim-lspconfig"
   }
 
   use { -- FTerm
@@ -180,17 +188,17 @@ return packer.startup(function(use)
     end,
   }
 
-  use { -- DAP
-    'mfussenegger/nvim-dap',
-    requires = {
-      'nvim-telescope/telescope-dap.nvim',
-      'theHamsta/nvim-dap-virtual-text',
-      'rcarriga/nvim-dap-ui',
-    },
-    config = function()
-      require'plugins.lsp.dap'
-    end
-  }
+  -- use { -- DAP
+  --   'mfussenegger/nvim-dap',
+  --   requires = {
+  --     'nvim-telescope/telescope-dap.nvim',
+  --     'theHamsta/nvim-dap-virtual-text',
+  --     'rcarriga/nvim-dap-ui',
+  --   },
+  --   config = function()
+  --     require'plugins.lsp.dap'
+  --   end
+  -- }
 
   use { -- AutoSave
     'Pocco81/AutoSave.nvim',
@@ -208,6 +216,13 @@ return packer.startup(function(use)
 
   use { -- spectre
     'windwp/nvim-spectre'
+  }
+
+  use { -- stabilize
+    "luukvbaal/stabilize.nvim",
+    config = function()
+      require("stabilize").setup()
+    end
   }
 
 end )
