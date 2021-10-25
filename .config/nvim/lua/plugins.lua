@@ -24,10 +24,8 @@ return packer.startup(function(use)
   use 'kyazdani42/nvim-web-devicons'
   use 'sainnhe/gruvbox-material'
   use 'norcalli/nvim-colorizer.lua'
-  use 'editorconfig/editorconfig-vim'
   use 'ggandor/lightspeed.nvim'
   use 'chaoren/vim-wordmotion'
-  use 'airblade/vim-rooter'
   use 'tpope/vim-surround'
   use 'christoomey/vim-tmux-navigator'
   use 'famiu/bufdelete.nvim'
@@ -40,6 +38,7 @@ return packer.startup(function(use)
     requires = {
       'williamboman/nvim-lsp-installer',
       'mfussenegger/nvim-jdtls',
+      'https://gitlab.com/yorickpeterse/nvim-dd.git',
     },
     config = function()
       require'plugins.lsp.lspconfig'
@@ -75,10 +74,10 @@ return packer.startup(function(use)
   --   end
   -- }
 
-  use {
-    'https://gitlab.com/yorickpeterse/nvim-dd.git',
+  use { -- Rust Tools
+    'simrat39/rust-tools.nvim',
     config = function()
-      require('dd').setup()
+      require'plugins.lsp.rust-tools'
     end
   }
 
@@ -228,5 +227,6 @@ return packer.startup(function(use)
       require("stabilize").setup()
     end
   }
+
 
 end )

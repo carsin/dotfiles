@@ -15,7 +15,7 @@ function! WriteSavePosition()
     call setpos('.', pos)
 endfunction
 " nnoremap <silent><leader>s :silent :call WriteSavePosition()<cr>
-nnoremap <silent><leader>s :w<cr>
+nnoremap <silent><leader>hs :w<cr>
 
  " Clear search highlight
 nnoremap <silent><leader><space> :let @/ = ""<CR>
@@ -119,7 +119,7 @@ nnoremap gw :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar><CR>
 " Find files using Telescope command-line sugar.
 nnoremap <leader>f <cmd>Telescope find_files<cr>
 nnoremap <C-f> <cmd>Telescope find_files<cr>
-nnoremap // <cmd>Telescope live_grep<cr>
+nnoremap <leader>g <cmd>Telescope live_grep<cr>
 nnoremap <leader>pp <cmd>lua require'telescope'.extensions.project.project{ display_type = 'full' }<Cr>
 nnoremap <leader>ws <cmd>lua require('telescope').extensions.vimwiki.vimwiki()<cr>
 
@@ -134,11 +134,11 @@ nmap <expr> t reg_recording() . reg_executing() == "" ? "<Plug>Lightspeed_t" : "
 nmap <expr> T reg_recording() . reg_executing() == "" ? "<Plug>Lightspeed_T" : "T"
 
 " FTerm
-nnoremap <silent> <leader>t <CMD>lua require("FTerm").toggle()<CR>
-nnoremap <silent> <C-t> <CMD>lua require("FTerm").toggle()<CR>
+nnoremap <silent> <leader>t <CMD>:w<CR><CMD>lua require("FTerm").toggle()<CR>
+nnoremap <silent> <C-t> <CMD>:w<CR><CMD>lua require("FTerm").toggle()<CR>
 tnoremap <silent> <C-t> <CMD>lua require("FTerm").toggle()<CR>
 tnoremap <silent> <C-q> <CMD>lua require("FTerm").toggle()<CR>
-nnoremap <silent> <F3> <CMD>lua require("FTerm").toggle()<CR>
+nnoremap <silent> <F3> <CMD>:w<CR><CMD>lua require("FTerm").toggle()<CR>
 tnoremap <silent> <F3> <CMD>lua require("FTerm").toggle()<CR>
 tnoremap <silent> <ESC> <CMD>lua require("FTerm").toggle()<CR>
 
@@ -151,8 +151,8 @@ nnoremap <leader>d <cmd>TroubleToggle<cr>
 " nnoremap gr <cmd>TroubleToggle lsp_references<cr>
 
 " Bufferline
-nnoremap <leader>l :BufferLineCycleNext<CR>
-nnoremap <leader>h :BufferLineCyclePrev<CR>
+" nnoremap <leader>l :BufferLineCycleNext<CR>
+" nnoremap <leader>h :BufferLineCyclePrev<CR>
 nnoremap <silent>[b :BufferLineCyclePrev<CR>
 nnoremap <silent>]b :BufferLineCycleNext<CR>
 nnoremap <leader>H :BufferLineMovePrev<CR>

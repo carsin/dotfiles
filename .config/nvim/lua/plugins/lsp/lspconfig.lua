@@ -4,6 +4,10 @@ local nvim_lsp = require'lspconfig'
 local lsp_installer = require("nvim-lsp-installer")
 local M = {}
 
+require('dd').setup({
+  timeout = 250,
+})
+
 M.on_attach = function(client, bufnr)
   vim.lsp.handlers["textDocument/hover"] =  vim.lsp.with(vim.lsp.handlers.hover, { border = nil })
   vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = nil })
@@ -33,7 +37,7 @@ M.on_attach = function(client, bufnr)
   buf_set_keymap('n', '[d', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>zz', opts)
   buf_set_keymap('n', ']d', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>zz', opts)
   buf_set_keymap("n", "gq", "<Cmd>lua vim.lsp.buf.formatting()<CR>", opts)
-  buf_set_keymap("v", "gq", "<Esc><Cmd>lua vim.lsp.buf.range_formatting()<CR>", opts)
+  -- buf_set_keymap("v", "gq", "<Esc><Cmd>lua vim.lsp.buf.range_formatting()<CR>", opts) // TODO: Replace with neoformat
   if client.resolved_capabilities.document_highlight then
     vim.api.nvim_exec([[
     augroup lsp_document_highlight
@@ -88,9 +92,20 @@ lsp_installer.on_server_ready(function(server)
       end,
     }
 
-    -- check to see if any custom server_opts exist for the LSP server
-    server:setup(server_opts[server.name] and server_opts[server.name]() or opts)
-    vim.cmd [[ do User LspAttachBuffers ]]
+    if server.name == "rust_analyzer" then -- override rust_analyzer set up with rust-tools' implement
+        local rust_opts = require'plugins.lsp.rust-tools'.opts
+        rust_opts.server = vim.tbl_deep_extend("force", server:get_default_options(), {
+            on_attach = opts.on_attach,
+            capabilities = opts.capaibilities,
+            flags = opts.flags,
+            handlers = opts.handlers,
+        })
+        require("rust-tools").setup(rust_opts)
+    else
+        -- check to see if any custom server_opts exist for the LSP server
+        server:setup(server_opts[server.name] and server_opts[server.name]() or opts)
+        vim.cmd [[ do User LspAttachBuffers ]]
+    end
 end)
 
 return M

@@ -359,9 +359,12 @@ table.insert(components.inactive[1], {
 
 -- filename
 table.insert(components.inactive[1], {
-  icon = '',
   provider = 'file_info',
-  file_modified_icon = "+",
+  opts = {
+    file_modified_icon = '+',
+    file_readonly_icon = '-- READ ONLY',
+    type = 'full-path',
+  },
 })
 
 -- RIGHT
