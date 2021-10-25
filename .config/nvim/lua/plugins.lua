@@ -25,6 +25,7 @@ return packer.startup(function(use)
   use 'sainnhe/gruvbox-material'
   use 'norcalli/nvim-colorizer.lua'
   use 'ggandor/lightspeed.nvim'
+  use 'editorconfig/editorconfig-vim'
   use 'chaoren/vim-wordmotion'
   use 'tpope/vim-surround'
   use 'christoomey/vim-tmux-navigator'

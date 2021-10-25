@@ -16,7 +16,7 @@ local colors = {
   red = '#fb4934',
 }
 
-require("bufferline").setup{
+require("bufferline").setup {
   options = {
     always_show_bufferline = true,
     indicator_icon = ' > ',
@@ -27,7 +27,7 @@ require("bufferline").setup{
     right_trunc_marker = '…',
     max_name_length = 20,
     max_prefix_length = 15, -- prefix used when a buffer is de-duplicated
-    tab_size = 20,
+    tab_size = 22,
     enforce_regular_tabs = true,
     show_close_icon = false,
     close_command = "lua require('bufdelete').bufdelete(0, true)",
@@ -35,12 +35,21 @@ require("bufferline").setup{
     diagnostics = "nvim_lsp",
     diagnostics_update_in_insert = false,
     diagnostics_indicator = function(count, level, diagnostics_dict, context)
-      local icon = level:match("error") and "! " or "? "
-      return " " .. icon .. count
+        local s = " "
+        for e, n in pairs(diagnostics_dict) do
+            local sym = e == "error" and " E "
+            or (e == "warning" and " ! " or " i " )
+            s = s .. n .. sym
+        end
+        return s
     end,
-    numbers = function(opts)
-      return string.format('%s.', opts.ordinal)
-    end,
+    -- diagnostics_indicator = function(count, level, diagnostics_dict, context)
+    --   local icon = level:match("error") and "! " or "? "
+    --   return " " .. icon .. count
+    -- end,
+    -- numbers = function(opts)
+    --   return string.format('%s.', opts.ordinal)
+    -- end,
     offsets = {
       {
         filetype = "NvimTree",
@@ -74,6 +83,6 @@ require("bufferline").setup{
         end
         return result
       end,
-    }
+    },
   },
 }

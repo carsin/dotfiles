@@ -32,7 +32,7 @@ cnoremap w!! execute 'silent! write !sudo tee % >/dev/null' <bar> edit!
 " Misc settings
 let g:vimwiki_list = [{'path': '~/files/text/wiki', 'syntax': 'markdown', 'ext': '.md', 'diary_index': 'diary', 'diary_rel_path': '/', 'diary_header': 'Daily Log', 'auto_diary_index': 1}]
 let g:rooter_patterns = ['.git', 'Makefile', '*.sln', 'run', '.classpath']
-au BufNewFile ~/files/text/wiki/*.md :silent 0r !~/.config/nvim/bin/journal-template.py '%'
+au BufNewFile ~/files/text/wiki/*.md :silent 0r !~/.config/nvim/bin/template.py '%'
 
 " Load plugins
 lua require'plugins'

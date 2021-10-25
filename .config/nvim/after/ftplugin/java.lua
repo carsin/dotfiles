@@ -1,3 +1,7 @@
+-- TODO: Use nvim-lsp-installer exec instead of old
+-- can move this file from ftplugin to lsp as jdtls.lua
+-- and require it just like rust-tools when its called in on_server_ready in lspconfig
+
 local jdtls = require 'jdtls'
 local home = os.getenv('HOME')
 local jdtls_executable = home .. "/.local/share/nvim/lspinstall/java/jdtls.sh"
@@ -69,6 +73,7 @@ config.init_options = {
 
 config.handlers['language/status'] = function() end -- mute; having progress reports is enough
 
+-- TODO: Add DAP
 -- With `hotcodereplace = 'auto' the debug adapter will try to apply code changes
 -- you make during a debug session immediately.
 -- Remove the option if you do not want that.
@@ -78,7 +83,7 @@ config.handlers['language/status'] = function() end -- mute; having progress rep
 require("jdtls").start_or_attach(config)
 
 -- Java specific keybinds
-vim.api.nvim_set_keymap("n", "<leader>la", ":lua require('jdtls').code_action()<CR>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "<leader>a", ":lua require('jdtls').code_action()<CR>", { noremap = true, silent = true })
 
 vim.cmd "command! -buffer JdtCompile lua require('jdtls').compile()"
 vim.cmd "command! -buffer JdtUpdateConfig lua require('jdtls').update_project_config()"
