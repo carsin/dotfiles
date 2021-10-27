@@ -1,5 +1,4 @@
 #!/usr/bin/env sh
-
 source ~/.cache/wal/colors.sh
 
 cback=$(echo $background | sed 's/#//')
@@ -9,8 +8,8 @@ cnorm=$(echo $color1 | sed 's/#//')
 cinse=$(echo $foreground | sed 's/#//')
 
 # 90% = D8, 80% = CC, 70% = B2
-sketchybar -m config bar_color 0xB2$cback
-sketchybar -m default icon_color 0xff$cfore
-sketchybar -m default label_color 0xff$cfore
+sketchybar -m --bar color=0xB2$cback
+sketchybar -m --default icon.highlight_color=0xff$cfore
+sketchybar -m --default label.color=0xff$cfore
 
 echo "sketchybar: colors loaded"
