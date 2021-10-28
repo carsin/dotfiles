@@ -104,46 +104,48 @@ sketchybar -m --add item battery right \
                             icon.padding_right=3
 
 # Cpu graph
-# sketchybar -m add component graph cpu_user right 150 nospace
-# sketchybar -m set cpu_user script "~/.config/sketchybar/plugins/cpu_graph.sh"
-# sketchybar -m set cpu_user graph_color 0xffffffff
-# sketchybar -m set cpu_user update_freq 5
-# sketchybar -m set cpu_user associated_space 1
-# sketchybar -m set cpu_user label_padding_left 8
-# sketchybar -m set cpu_user icon_padding_left 8
-# sketchybar -m set cpu_user icon 
-#
-# sketchybar -m add component graph cpu_sys right 150
-# sketchybar -m set cpu_sys graph_color 0xff48aa2a
-# sketchybar -m set cpu_sys label_padding_left 8
-# sketchybar -m set cpu_sys icon_padding_left 8
-# sketchybar -m set cpu_sys associated_space 1
-# sketchybar -m set cpu_sys update_freq 5
-# sketchybar -m set cpu_sys icon 
+sketchybar -m --add graph cpu_user right 150 \
+              --set cpu_user script="~/.config/sketchybar/plugins/cpu_graph.sh" \
+                             graph.color=0xffffffff \
+                             update_freq=2 \
+                             width=0 \
+                             associated_space=1 \
+                             label.padding_left=8 \
+                             icon.padding_left=8 \
+                             icon= \
+                             lazy=on \
+              --add graph cpu_sys right 150 \
+              --set cpu_sys graph.color=0xff48aa2a \
+                            label.padding_left=8 \
+                            icon.padding_left=8 \
+                            associated_space=1 \
+                            icon= \
 
 # Network graph
-# sketchybar -m add component graph network_down right 150 nospace
-# sketchybar -m set network_down associated_space 2
-# sketchybar -m set network_down associated_space 4
-# sketchybar -m set network_down icon ⮁
-# sketchybar -m set network_down label_padding_left 8
-# sketchybar -m set network_down icon_padding_left 8
-# sketchybar -m set network_down update_freq 5
-# sketchybar -m set network_down graph_color 0xffffffff
-# sketchybar -m set network_down script "~/.config/sketchybar/plugins/network_graph.sh"
-#
-# sketchybar -m add component graph network_up right 150
-# sketchybar -m set network_up icon ⮁
-# sketchybar -m set network_up label_padding_left 8
-# sketchybar -m set network_up icon_padding_left 8
-# sketchybar -m set network_up associated_space 2
-# sketchybar -m set network_up update_freq 5
-# sketchybar -m set network_up associated_space 4
-# sketchybar -m set network_up graph_color 0xff48aa2a
+sketchybar -m --add graph network_down right 150 \
+              --set network_down script="~/.config/sketchybar/plugins/network_graph.sh" \
+                             graph.color=0xffffffff \
+                             update_freq=2 \
+                             width=0 \
+                             associated_space=2 \
+                             associated_space=4 \
+                             label.padding_left=8 \
+                             icon.padding_left=8 \
+                             icon=⮁ \
+                             lazy=on \
+              --add graph network_up right 150 \
+              --set network_up graph.color=0xff48aa2a \
+                               label.padding_left=8 \
+                               icon.padding_left=8 \
+                               associated_space=2 \
+                               associated_space=4 \
+                               icon=⮁ \
 
-# sketchybar -m add item topproc right
-# sketchybar -m set topproc script "~/.config/sketchybar/plugins/topproc.sh"
-# sketchybar -m set topproc update_freq 15
+# Top proc
+sketchybar -m --add item topproc right \
+              --set topproc label.padding_right=8 \
+                            update_freq=15 \
+                            script="~/.config/sketchybar/plugins/topproc.sh"
 
 ###################### CENTER ITEMS ###################
 # Spotify

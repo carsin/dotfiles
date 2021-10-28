@@ -1,4 +1,3 @@
-#!/usr/bin/env bash
 
 # Thanks to reddit:rudypaul
 BIN_DIR="/usr/bin"
@@ -16,7 +15,7 @@ dnd_enabled=$(
 )
 
 if [ $dnd_enabled -eq 1 ]; then
-    sketchybar -m set dndIndicator icon 
+    sketchybar -m --set $NAME drawing=on
 else
-    sketchybar -m set dndIndicator icon ""
+    sketchybar -m --set $NAME drawing=off
 fi
