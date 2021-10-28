@@ -228,9 +228,4 @@ return packer.startup(function(use)
       require("stabilize").setup()
     end
   }
-
-  use {
-
-  }
-
 end )

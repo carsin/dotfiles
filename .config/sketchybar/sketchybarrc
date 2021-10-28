@@ -1,4 +1,6 @@
 #!/usr/bin/env sh
+# TODO: https://github.com/FelixKratz/SketchyBar/discussions/12
+# cpu mini, network mini, spotify controls look cool
 
 echo "sketchybar: loading configuration..."
 # BAR SETUP
@@ -98,7 +100,7 @@ sketchybar -m --add item battery right \
               --set battery update_freq=10 \
                             script="~/.config/sketchybar/plugins/power.sh" \
                             icon= \
-                            label.padding_left=0 \
+                            label.padding_left=2 \
                             label.padding_right=4 \
                             icon.padding_left=0 \
                             icon.padding_right=3
@@ -111,12 +113,14 @@ sketchybar -m --add graph cpu_user right 150 \
                              width=0 \
                              associated_space=1 \
                              label.padding_left=8 \
+                             icon.padding_right=4 \
                              icon.padding_left=8 \
                              icon= \
                              lazy=on \
               --add graph cpu_sys right 150 \
               --set cpu_sys graph.color=0xff48aa2a \
                             label.padding_left=8 \
+                            icon.padding_right=4 \
                             icon.padding_left=8 \
                             associated_space=1 \
                             icon= \
@@ -130,12 +134,14 @@ sketchybar -m --add graph network_down right 150 \
                              associated_space=2 \
                              associated_space=4 \
                              label.padding_left=8 \
+                             icon.padding_right=4 \
                              icon.padding_left=8 \
                              icon=⮁ \
                              lazy=on \
               --add graph network_up right 150 \
               --set network_up graph.color=0xff48aa2a \
                                label.padding_left=8 \
+                               icon.padding_right=4 \
                                icon.padding_left=8 \
                                associated_space=2 \
                                associated_space=4 \
