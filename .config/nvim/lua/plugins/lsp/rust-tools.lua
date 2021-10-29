@@ -12,10 +12,10 @@ M.opts = {
             -- not that this may cause  higher CPU usage.
             -- This option is only respected when only_current_line and
             -- autoSetHints both are true.
-            only_current_line_autocmd = "CursorMoved,CursorMovedI",
+            only_current_line_autocmd = "CursorHold,CursorHoldI",
             show_parameter_hints = true, -- whether to show parameter hints with the inlay hints or not
-            parameter_hints_prefix = "<- ", -- prefix for parameter hints
-            other_hints_prefix = "-> ", -- prefix for all the other hints (type, chaining)
+            parameter_hints_prefix = "params: ", -- prefix for parameter hints
+            other_hints_prefix = "<- ", -- prefix for all the other hints (type, chaining)
             max_len_align = true, -- whether to align to the length of the longest line in the file
             max_len_align_padding = 1, -- padding from the left if max_len_align is true
             right_align = false, -- whether to align to the extreme right or not

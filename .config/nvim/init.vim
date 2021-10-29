@@ -55,7 +55,7 @@ set clipboard=unnamedplus         " yank to macos clipboard
 set mousefocus                    " Focus follows mouse
 set timeout                       " Do time out on mappings and others
 set ttimeoutlen=0                 " Make escape timeout faster
-set timeoutlen=500                " Wait before timing out a mapping
+set timeoutlen=600                " Wait before timing out a mapping
 set wrapscan                      " Searches wrap around end-of-file.
 set report=0                      " Always report changed lines.
 set lbr                           " Break at end of line

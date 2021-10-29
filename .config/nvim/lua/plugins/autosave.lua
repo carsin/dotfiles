@@ -7,7 +7,7 @@ autosave.setup({
   write_all_buffers = false,
   on_off_commands = true,
   clean_command_line_interval = 0,
-  debounce_delay = 200,
+  debounce_delay = 800,
   conditions = {
       exists = true,
       filename_is_not = {},
