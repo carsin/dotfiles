@@ -32,6 +32,7 @@ sketchybar -m --default label.padding_left=6 \
 sketchybar -m --add space one left \
               --set one associated_display=1 \
                         associated_space=1 \
+                        icon.padding_left=3 \
                         icon=I \
                         click_script="yabai -m space --focus 1" \
                         icon_padding_left=0
