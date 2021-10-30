@@ -7,4 +7,5 @@ require('nvim-autopairs').setup{
         lua = { 'string' },
         javascript = { 'template_string' },
     },
+    disable_filetype = { 'TelescopePrompt', 'vim' },
 }

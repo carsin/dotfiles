@@ -2,7 +2,6 @@ vim.g.nvim_tree_indent_markers = 1
 vim.g.nvim_tree_width = 30
 vim.g.nvim_tree_respect_buf_cwd = 1
 vim.g.nvim_tree_add_trailing = 1
-vim.g.nvim_tree_ignore = { ".git", "node_modules", "target" }
 vim.g.tree_git_hl = 1
 vim.g.nvim_tree_show_icons = {
   git = 1,
@@ -45,6 +44,7 @@ require'nvim-tree'.setup {
   disable_netrw = true, -- disables netrw completely
   hijack_netrw = true,
   open_on_setup = false,
+  tree_ignore = { ".git", "node_modules", "target" },
   ignore_ft_on_setup = { 'startify' }, -- will not open on setup if the filetype is in this list
   auto_close = true, -- closes neovim automatically when the tree is the last **WINDOW** in the view
   open_on_tab = false, -- opens the tree when changing/opening a new tab if the tree wasn't previously opened

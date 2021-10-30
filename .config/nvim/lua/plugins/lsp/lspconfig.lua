@@ -67,10 +67,10 @@ M.get_config = function()
 end
 
 local servers = {
-  -- JDTLS is handled by its own plugin
 	"clangd",
 	"sumneko_lua",
 	"rust_analyzer",
+	-- "jdtls",
 }
 
 for _, name in pairs(servers) do
@@ -84,28 +84,31 @@ for _, name in pairs(servers) do
 end
 
 lsp_installer.on_server_ready(function(server)
-    local opts = M.get_config()
-    local server_opts = {
-      ["sumneko_lua"] = function()
-        opts = M.get_config()
-        opts.settings = sumneko.lua_settings
-      end,
-    }
+  local opts = M.get_config()
+  local server_opts = {
+    ["sumneko_lua"] = function()
+      opts = M.get_config()
+      opts.settings = sumneko.lua_settings
+    end,
+  }
 
-    if server.name == "rust_analyzer" then -- override rust_analyzer set up with rust-tools' implement
-        local rust_opts = require'plugins.lsp.rust-tools'.opts
-        rust_opts.server = vim.tbl_deep_extend("force", server:get_default_options(), {
-            on_attach = opts.on_attach,
-            capabilities = opts.capaibilities,
-            flags = opts.flags,
-            handlers = opts.handlers,
-        })
-        require("rust-tools").setup(rust_opts)
-    else
-        -- check to see if any custom server_opts exist for the LSP server
-        server:setup(server_opts[server.name] and server_opts[server.name]() or opts)
-        vim.cmd [[ do User LspAttachBuffers ]]
-    end
+  if server.name == "rust_analyzer" then -- override rust_analyzer set up with rust-tools' implement
+    local rust_opts = require'plugins.lsp.rust-tools'.opts
+    rust_opts.server = vim.tbl_deep_extend("force", server:get_default_options(), {
+        on_attach = opts.on_attach,
+        capabilities = opts.capaibilities,
+        flags = opts.flags,
+        handlers = opts.handlers,
+    })
+    require("rust-tools").setup(rust_opts)
+  elseif server.name == "jdtls" then -- override jdtls
+    local jdtls_opts = require'plugins.lsp.jdtls'.config
+    require("jdtls").start_or_attach(jdtls_opts)
+  else
+      -- check to see if any custom server_opts exist for the LSP server
+      server:setup(server_opts[server.name] and server_opts[server.name]() or opts)
+      vim.cmd [[ do User LspAttachBuffers ]]
+  end
 end)
 
 return M
