@@ -118,7 +118,7 @@ nnoremap gw :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar><CR>
 " Telescope
 " Find files using Telescope command-line sugar.
 nnoremap <leader>f <cmd>Telescope find_files<cr>
-nnoremap <C-f> <cmd>Telescope find_files<cr>
+" nnoremap <C-f> <cmd>Telescope find_files<cr>
 nnoremap <leader>g <cmd>Telescope live_grep<cr>
 nnoremap <leader>pp <cmd>lua require'telescope'.extensions.project.project{ display_type = 'full' }<Cr>
 nnoremap <leader>ws <cmd>lua require('telescope').extensions.vimwiki.vimwiki()<cr>
@@ -166,7 +166,6 @@ nnoremap <silent><leader>6 <Cmd>BufferLineGoToBuffer 6<CR>
 nnoremap <silent><leader>7 <Cmd>BufferLineGoToBuffer 7<CR>
 nnoremap <silent><leader>8 <Cmd>BufferLineGoToBuffer 8<CR>
 nnoremap <silent><leader>9 <Cmd>BufferLineGoToBuffer 9<CR>
-
 nnoremap <silent><leader>q <CMD>lua require('bufdelete').bufdelete(0, true)<CR>
 
 " Tree

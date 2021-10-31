@@ -17,11 +17,10 @@ packer.init({
 	}
 })
 
-return packer.startup(function(use)
+return packer.startup({function(use)
   use 'wbthomason/packer.nvim'
   use 'nvim-lua/popup.nvim'
   use 'nvim-lua/plenary.nvim'
-  use 'kyazdani42/nvim-web-devicons'
   use 'sainnhe/gruvbox-material'
   use 'norcalli/nvim-colorizer.lua'
   use 'ggandor/lightspeed.nvim'
@@ -33,6 +32,7 @@ return packer.startup(function(use)
   use 'antoinemadec/FixCursorHold.nvim' -- Needed while issue https://github.com/neovim/neovim/issues/12587 is still open
   use 'junegunn/vim-easy-align'
   use 'vimwiki/vimwiki'
+  use { 'kyazdani42/nvim-web-devicons', event = 'BufEnter' }
 
   use { -- lsp config
     'neovim/nvim-lspconfig',
@@ -171,6 +171,7 @@ return packer.startup(function(use)
 
   use { -- bufferline
     'akinsho/bufferline.nvim',
+    after = 'nvim-web-devicons',
     requires = 'kyazdani43/nvim-web-devicons',
     config = function()
       require'plugins.bufferline'
@@ -219,14 +220,17 @@ return packer.startup(function(use)
     end
   }
 
-  use { -- spectre
-    'windwp/nvim-spectre'
-  }
-
   use { -- stabilize
     "luukvbaal/stabilize.nvim",
     config = function()
       require("stabilize").setup()
     end
   }
-end )
+end,
+config = {
+  display = {
+    open_fn = function()
+      return require('packer.util').float({ border = 'single' })
+    end
+  }
+}})
