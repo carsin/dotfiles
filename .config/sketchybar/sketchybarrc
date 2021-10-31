@@ -89,13 +89,6 @@ sketchybar -m --add item clock right \
                           icon.padding_right=0 \
                           icon=
 
-# Weather
-# sketchybar -m add item weather right
-# sketchybar -m set weather update_freq 600
-# sketchybar -m set weather script "~/.config/sketchybar/plugins/weather.sh"
-# sketchybar -m set weather click_script "open https://darksky.net/forecast/22.2109,-159.4081/us12/en"
-# sketchybar -m set battery icon_padding_left 3
-
 # Battery
 sketchybar -m --add item battery right \
               --set battery update_freq=10 \
@@ -133,7 +126,7 @@ sketchybar -m --add graph network_down right 150 \
                              update_freq=2 \
                              width=0 \
                              associated_space=2 \
-                             associated_space=4 \
+                             # associated_space=5 \
                              label.padding_left=8 \
                              icon.padding_right=4 \
                              icon.padding_left=8 \
@@ -145,7 +138,7 @@ sketchybar -m --add graph network_down right 150 \
                                icon.padding_right=4 \
                                icon.padding_left=8 \
                                associated_space=2 \
-                               associated_space=4 \
+                               # associated_space=4 \
                                icon=⮁ \
 
 # Top proc

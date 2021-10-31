@@ -37,6 +37,7 @@ M.on_attach = function(client, bufnr)
   buf_set_keymap('n', '[d', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>zz', opts)
   buf_set_keymap('n', ']d', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>zz', opts)
   buf_set_keymap("n", "gq", "<Cmd>lua vim.lsp.buf.formatting()<CR>", opts)
+  buf_set_keymap("n", "<leader>a", "<Cmd>CodeActionMenu<CR>", opts)
   -- buf_set_keymap("v", "gq", "<Esc><Cmd>lua vim.lsp.buf.range_formatting()<CR>", opts) // TODO: Replace with neoformat
   if client.resolved_capabilities.document_highlight then
     vim.api.nvim_exec([[
@@ -100,6 +101,22 @@ lsp_installer.on_server_ready(function(server)
         flags = opts.flags,
         handlers = opts.handlers,
     })
+    rust_opts.server.settings = {
+			["rust-analyzer"] = {
+				checkOnSave = {
+					allFeatures = true,
+					overrideCommand = {
+						"cargo",
+						"clippy",
+						"--workspace",
+						"--all-targets",
+						"--all-features",
+            "--message-format=json",
+					},
+          -- extraArgs = { "--target-dir", "/tmp/rust-analyzer-check" },
+				},
+			},
+    }
     require("rust-tools").setup(rust_opts)
   elseif server.name == "jdtls" then -- override jdtls
     local jdtls_opts = require'plugins.lsp.jdtls'.config

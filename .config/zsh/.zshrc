@@ -116,8 +116,8 @@ source ~/.cache/wal/colors-tty.sh
 
 export FZF_DEFAULT_COMMAND='rg --files --hidden -g "!.git" '
 export GPG_TTY=$TTY
-export TASKRC=~/.config/taskwarrior-tui/.taskrc
-export JAVA_HOME="/Users/carson/Library/Java/JavaVirtualMachines/openjdk-17/Contents/Home"
+export TASKRC='~/.config/taskwarrior-tui/.taskrc'
+export JAVA_HOME='/Users/carson/Library/Java/JavaVirtualMachines/openjdk-17/Contents/Home'
 # export CLASSPATH="$CLASSPATH:/home/carson/.local/share/junit/hamcrest-core-1.3.jar:/home/carson/.local/share/junit/junit-4.13.2.jar:/home/carson/.local/share/junit/junit-platform-console-standalone-1.8.1.jar:/home/carson/.local/share/processing/processing-experimental.jar:."
 # export JAVA_HOME="/usr/local/Cellar/openjdk@11/11.0.12/libexec/openjdk.jdk/Contents/Home"
 # export JAVA_HOME="/Library/Java/JavaVirtualMachines/jdk-17.jdk/Contents/Home"

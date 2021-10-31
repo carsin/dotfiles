@@ -40,6 +40,7 @@ return packer.startup({function(use)
       'williamboman/nvim-lsp-installer',
       'mfussenegger/nvim-jdtls',
       'https://gitlab.com/yorickpeterse/nvim-dd.git',
+      'weilbith/nvim-code-action-menu',
     },
     config = function()
       require'plugins.lsp.lspconfig'
@@ -65,20 +66,18 @@ return packer.startup({function(use)
     end,
   }
 
-  -- use { -- navigator
-  --   'ray-x/navigator.lua',
-  --   requires = {
-  --     'ray-x/guihua.lua', run = 'cd lua/fzy && make'
-  --   },
-  --   config = function()
-  --     require'plugins.lsp.navigator'
-  --   end
-  -- }
-
   use { -- Rust Tools
     'simrat39/rust-tools.nvim',
     config = function()
       require'plugins.lsp.rust-tools'
+    end
+  }
+
+  use {
+    'kosayoda/nvim-lightbulb',
+    config = function()
+      vim.cmd [[autocmd CursorHold,CursorHoldI * lua require'nvim-lightbulb'.update_lightbulb()]]
+      vim.fn.sign_define('LightBulbSign', { text = "?", texthl = "?", linehl="?", numhl="?" })
     end
   }
 
@@ -226,6 +225,7 @@ return packer.startup({function(use)
       require("stabilize").setup()
     end
   }
+
 end,
 config = {
   display = {
