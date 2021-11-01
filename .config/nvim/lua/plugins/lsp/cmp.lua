@@ -20,7 +20,7 @@ end
 vim.cmd([[ lua require("luasnip/loaders/from_vscode").lazy_load() ]])
 
 -- handle <CR> properly
-cmp.event:on('confirm_done', cmp_autopairs.on_confirm_done())
+cmp.event:on( 'confirm_done', cmp_autopairs.on_confirm_done({  map_char = { tex = '' } }))
 
 cmp.setup {
   snippet = {

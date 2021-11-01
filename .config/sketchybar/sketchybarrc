@@ -120,32 +120,32 @@ sketchybar -m --add graph cpu_user right 150 \
                             icon= \
 
 # Network graph
-sketchybar -m --add graph network_down right 150 \
-              --set network_down script="~/.config/sketchybar/plugins/network_graph.sh" \
-                             graph.color=0xffffffff \
-                             update_freq=2 \
-                             width=0 \
-                             associated_space=2 \
-                             # associated_space=5 \
-                             label.padding_left=8 \
-                             icon.padding_right=4 \
-                             icon.padding_left=8 \
-                             icon=⮁ \
-                             lazy=on \
-              --add graph network_up right 150 \
-              --set network_up graph.color=0xff48aa2a \
-                               label.padding_left=8 \
-                               icon.padding_right=4 \
-                               icon.padding_left=8 \
-                               associated_space=2 \
-                               # associated_space=4 \
-                               icon=⮁ \
+# sketchybar -m --add graph network_down right 150 \
+#               --set network_down script="~/.config/sketchybar/plugins/network_graph.sh" \
+#                              graph.color=0xffffffff \
+#                              update_freq=2 \
+#                              width=0 \
+#                              associated_space=2 \
+#                              associated_space=5 \
+#                              label.padding_left=8 \
+#                              icon.padding_right=4 \
+#                              icon.padding_left=8 \
+#                              icon=⮁ \
+#                              lazy=on \
+#               --add graph network_up right 150 \
+#               --set network_up graph.color=0xff48aa2a \
+#                                label.padding_left=8 \
+#                                icon.padding_right=4 \
+#                                icon.padding_left=8 \
+#                                associated_space=2 \
+#                                # associated_space=4 \
+#                                icon=⮁ \
 
 # Top proc
-sketchybar -m --add item topproc right \
-              --set topproc label.padding_right=8 \
-                            update_freq=15 \
-                            script="~/.config/sketchybar/plugins/topproc.sh"
+# sketchybar -m --add item topproc right \
+#               --set topproc label.padding_right=8 \
+#                             update_freq=15 \
+#                             script="~/.config/sketchybar/plugins/topproc.sh"
 
 ###################### CENTER ITEMS ###################
 # Spotify
