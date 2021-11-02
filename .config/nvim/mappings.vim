@@ -143,7 +143,7 @@ tnoremap <silent> <F3> <CMD>lua require("FTerm").toggle()<CR>
 tnoremap <silent> <ESC> <CMD>lua require("FTerm").toggle()<CR>
 
 " Trouble
-nnoremap <leader>d <cmd>TroubleToggle<cr>
+nnoremap <leader>d <cmd>TroubleToggle lsp_workspace_diagnostics<cr>
 " nnoremap <leader>xw <cmd>TroubleToggle lsp_workspace_diagnostics<cr>
 " nnoremap <leader>xd <cmd>TroubleToggle lsp_document_diagnostics<cr>
 " nnoremap <leader>xq <cmd>TroubleToggle quickfix<cr>
