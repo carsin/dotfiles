@@ -1,4 +1,3 @@
--- Install packer if it isnt already
 if vim.fn.empty(vim.fn.stdpath('data') ..'/site/pack/packer/start/packer.nvim') > 0 then
   vim.fn.system({ 'git', 'clone', 'https://github.com/wbthomason/packer.nvim', vim.fn.stdpath('data') ..'/site/pack/packer/start/packer.nvim' })
   vim.api.nvim_command 'packadd packer.nvim'
@@ -77,7 +76,7 @@ return packer.startup({function(use)
     'kosayoda/nvim-lightbulb',
     config = function()
       vim.cmd [[autocmd CursorHold,CursorHoldI * lua require'nvim-lightbulb'.update_lightbulb()]]
-      vim.fn.sign_define('LightBulbSign', { text = "?", texthl = "?", linehl="?", numhl="?" })
+      vim.fn.sign_define('LightBulbSign', { text = "?", texthl = "", linehl="", numhl="" })
     end
   }
 
@@ -219,12 +218,12 @@ return packer.startup({function(use)
     end
   }
 
-  use { -- stabilize
-    "luukvbaal/stabilize.nvim",
-    config = function()
-      require("stabilize").setup()
-    end
-  }
+  -- use { -- stabilize
+  --   "luukvbaal/stabilize.nvim",
+  --   config = function()
+  --     require("stabilize").setup()
+  --   end
+  -- }
 
 end,
 config = {
