@@ -118,10 +118,13 @@ nnoremap gw :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar><CR>
 " Telescope
 " Find files using Telescope command-line sugar.
 nnoremap <leader>f <cmd>Telescope find_files<cr>
-" nnoremap <C-f> <cmd>Telescope find_files<cr>
-nnoremap <leader>g <cmd>Telescope live_grep<cr>
+nnoremap <leader>s <cmd>Telescope live_grep<cr>
+nnoremap <leader>h <cmd>Telescope help_tags<cr>
 nnoremap <leader>pp <cmd>lua require'telescope'.extensions.project.project{ display_type = 'full' }<Cr>
 nnoremap <leader>ws <cmd>lua require('telescope').extensions.vimwiki.vimwiki()<cr>
+
+" Neogit
+nnoremap <leader>g <cmd>Neogit<cr>
 
 " EasyAlign
 xmap ga <Plug>(EasyAlign)

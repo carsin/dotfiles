@@ -108,9 +108,9 @@ return packer.startup({function(use)
       'hrsh7th/cmp-path',
       'hrsh7th/cmp-nvim-lsp',
       'hrsh7th/cmp-calc',
+      'saadparwaiz1/cmp_luasnip',
       'rafamadriz/friendly-snippets',
       'L3MON4D3/LuaSnip',
-      'saadparwaiz1/cmp_luasnip',
       'f3fora/cmp-spell',
       'hrsh7th/cmp-cmdline',
       { 'andersevenrud/compe-tmux', branch = 'cmp' },
@@ -128,11 +128,11 @@ return packer.startup({function(use)
     config = function()
       -- TODO: move to lsp/cmp.lua
       require('cmp_tabnine.config'):setup({
-        max_lines = 1000;
+        max_lines = 1500;
         sort = true;
-        max_num_results = 20;
+        max_num_results = 3;
         run_on_every_keystroke = false;
-        snippet_placeholder = 'gdfgsfggsdfg';
+        snippet_placeholder = '..';
       })
     end
   }
@@ -221,18 +221,25 @@ return packer.startup({function(use)
   --   end
   -- }
 
-  use { -- AutoSave
+  use { -- AutoSaves the buffer
     'Pocco81/AutoSave.nvim',
     config = function()
       require'plugins.autosave'
     end,
   }
 
-  use { -- comment
+  use { -- tpopes commentary with extras such as gcA and gcO
     'numToStr/Comment.nvim',
     config = function()
         require('Comment').setup()
     end
+  }
+  use { -- neogit, magit for neovim
+    'TimUntersberger/neogit',
+    requires = 'nvim-lua/plenary.nvim',
+    config = function()
+      require('neogit').setup {}
+    end,
   }
 
   -- use { -- stabilize
