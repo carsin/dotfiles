@@ -12,10 +12,6 @@ local has_words_before = function()
   return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
 end
 
--- local feedkey = function(key, mode)
---   vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes(key, true, true, true), mode, true)
--- end
-
 -- load friendlysnippets into LuaSnip
 vim.cmd([[ lua require("luasnip/loaders/from_vscode").lazy_load() ]])
 
@@ -73,8 +69,9 @@ cmp.setup {
     { name = 'buffer', keyword_length = 5, max_item_count = 5 },
     { name = 'spell' },
     { name = 'tmux', opts = { all_panes = false }},
+    -- { name = 'cmp_tabnine' },
   },
-  formatting = {
+	formatting = {
     format = require("lspkind").cmp_format({with_text = true, menu = ({
       buffer = "[Buffer]",
       nvim_lua = '[VimApi]',
@@ -85,13 +82,14 @@ cmp.setup {
       spell = "[Spell]",
       calc = "[Calc]",
       latex_symbols = "[Latex]",
+      -- cmp_tabnine = "[Tab9]",
     })}),
-  },
+	},
   documentation = {
     border = nil,
   },
   experimental = {
-    ghost_text = true,
+    ghost_text = false,
   }
 }
 

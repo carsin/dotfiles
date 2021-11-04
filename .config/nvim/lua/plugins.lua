@@ -100,9 +100,24 @@ return packer.startup({function(use)
     end,
   }
 
+  -- use {
+  --   'tzachar/cmp-tabnine',
+  --   run = './install.sh',
+  --   requires = 'hrsh7th/nvim-cmp',
+  --   -- after = "nvim-cmp",
+  --   config = function()
+  --     require('cmp_tabnine.config'):setup({
+  --       max_lines = 1000;
+  --       sort = true;
+  --       max_num_results = 20;
+  --       run_on_every_keystroke = false;
+  --       snippet_placeholder = 'gdfgsfggsdfg';
+  --     })
+  --   end
+  -- }
+
   use { -- nvim-cmp
     "hrsh7th/nvim-cmp",
-    -- event = "InsertEnter",
     requires = {
       'hrsh7th/cmp-buffer',
       'hrsh7th/cmp-path',
@@ -224,7 +239,6 @@ return packer.startup({function(use)
   --     require("stabilize").setup()
   --   end
   -- }
-
 end,
 config = {
   display = {

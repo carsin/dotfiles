@@ -123,5 +123,4 @@ export JAVA_HOME='/Users/carson/Library/Java/JavaVirtualMachines/openjdk-17/Cont
 # export JAVA_HOME="/Library/Java/JavaVirtualMachines/jdk-17.jdk/Contents/Home"
 # export PATH=$JAVA_HOME/bin:$PATH
 # export WORKSPACE='~/files/dev/projects/java/'
-export PATH=$PATH:$HOME/.local/bin:$HOME/.temp/nvim/bin
 export PATH=$PATH:$HOME/.local/bin
