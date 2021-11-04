@@ -69,7 +69,7 @@ cmp.setup {
     { name = 'buffer', keyword_length = 5, max_item_count = 5 },
     { name = 'spell' },
     { name = 'tmux', opts = { all_panes = false }},
-    -- { name = 'cmp_tabnine' },
+    { name = 'cmp_tabnine', priority = 100 },
   },
 	formatting = {
     format = require("lspkind").cmp_format({with_text = true, menu = ({
@@ -82,7 +82,7 @@ cmp.setup {
       spell = "[Spell]",
       calc = "[Calc]",
       latex_symbols = "[Latex]",
-      -- cmp_tabnine = "[Tab9]",
+      cmp_tabnine = "[Tab9]",
     })}),
 	},
   documentation = {
