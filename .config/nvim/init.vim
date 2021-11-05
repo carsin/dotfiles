@@ -1,5 +1,4 @@
 " General {{{
-
 set nocompatible
 
 filetype plugin indent on " Load plugins according to detected filetype.
@@ -18,7 +17,7 @@ set nobackup
 set nowb
 set noswapfile
 
-" Check file change every 4 seconds ('CursorHold') and reload the buffer upon detecting change
+" Check file change and reload the buffer upon detection
 set autoread
 au CursorHold * checktime
 
@@ -28,9 +27,27 @@ cnoremap w!! execute 'silent! write !sudo tee % >/dev/null' <bar> edit!
 " }}}
 
 " Plugins {{{
-
 " Misc settings
-let g:vimwiki_list = [{'path': '~/files/text/wiki', 'syntax': 'markdown', 'ext': '.md', 'diary_index': 'diary', 'diary_rel_path': '/', 'diary_header': 'Daily Log', 'auto_diary_index': 1}]
+
+" Overrides vimwiki to close previous file's buffer when opening a new one with <CR>
+function! VimwikiLinkHandler(link)
+  " exclude ref links to headers
+  if a:link =~# '.*#.*'
+      return 0
+  endif
+  let buf = bufnr('%')
+  let link_infos = vimwiki#base#resolve_link(a:link)
+  if link_infos.filename == ''
+    echomsg 'Vimwiki Error: Unable to resolve link!'
+    return 0
+  else
+    exe 'edit ' . fnameescape(link_infos.filename)
+    exe ':silent w|:silent bd!' . buf
+    return 1
+  endif
+endfunction
+
+let g:vimwiki_list = [{'path': '~/files/text/wiki', 'syntax': 'markdown', 'ext': '.md', 'diary_index': 'daily', 'diary_rel_path': '/', 'diary_header': 'Daily Log', 'auto_diary_index': 1}]
 let g:rooter_patterns = ['.git', 'Makefile', '*.sln', 'run', '.classpath']
 au BufNewFile ~/files/text/wiki/*.md :silent 0r !~/.config/nvim/bin/template.py '%'
 
@@ -82,7 +99,6 @@ function! StripTrailingWhitespace()
     normal `Z
   endif
 endfunction
-
 autocmd CursorHold * call StripTrailingWhitespace()
 
 " Turn off paste mode when leaving insert
@@ -164,7 +180,7 @@ augroup END
 " Highlight yank
 augroup highlight_yank
     autocmd!
-    au TextYankPost * silent! lua vim.highlight.on_yank{higroup="IncSearch", timeout=150}
+    au TextYankPost * silent! lua vim.highlight.on_yank{higroup="IncSearch", timeout=200}
 augroup END
 
 " Automatically equalize splits when vim is resized
