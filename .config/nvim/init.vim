@@ -96,11 +96,11 @@ function! StripTrailingWhitespace()
   if &modifiable
     normal mZ
     let l:chars = col("$")
-    %s/\s\+$//e
+    silent %s/\s\+$//e
     normal `Z
   endif
 endfunction
-autocmd BufWritePre * call StripTrailingWhitespace()
+autocmd CursorHold * call StripTrailingWhitespace()
 
 " Turn off paste mode when leaving insert
 autocmd InsertLeave * set nopaste

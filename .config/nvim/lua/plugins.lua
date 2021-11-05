@@ -48,13 +48,13 @@ return packer.startup({ function(use)
   use 'kyazdani42/nvim-web-devicons'
 
   -- TODO: Fix <CR> on startup
-  use { -- alpha startup screen; startify & dashboard but developed
-    'goolord/alpha-nvim',
-    requires = 'Shatur/neovim-session-manager',
-    config = function ()
-        require'alpha'.setup(require'alpha.themes.dashboard'.opts)
-    end
-  }
+  -- use { -- alpha startup screen; startify & dashboard but developed
+  --   'goolord/alpha-nvim',
+  --   requires = 'Shatur/neovim-session-manager',
+  --   config = function ()
+  --       require'alpha'.setup(require'alpha.themes.dashboard'.opts)
+  --   end
+  -- }
 
   use { -- lsp config
     'neovim/nvim-lspconfig',
@@ -208,7 +208,7 @@ return packer.startup({ function(use)
 
   use { -- better escape
     'jdhao/better-escape.vim',
-    event = 'InsertEnter',
+    -- event = 'InsertEnter',
     config = function()
       vim.g.better_escape_interval = 250
       vim.g.better_escape_shortcut = { 'jk' }
@@ -233,7 +233,8 @@ return packer.startup({ function(use)
   use { -- gitsigns
     'lewis6991/gitsigns.nvim',
     requires = 'nvim-lua/plenary.nvim',
-    event = 'BufEnter',
+    event = 'BufEnter', -- this makes the plugin work for some reason?
+    after = 'plenary.nvim',
     config = function()
       require'plugins.gitsigns'
     end,

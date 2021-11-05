@@ -38,8 +38,8 @@ nmap <F1> <nop>
 nnoremap <silent> <C-p> :set invpaste <CR>
 
 " Insert date / time
-nnoremap <leader>id " =strftime("%a, %b %d %Y")<CR>p
-nnoremap <leader>it " =strftime("%I:%M %p")<CR>p
+nnoremap <leader>id "=strftime(" %a, %b %d %Y")<CR>p
+nnoremap <leader>it "=strftime(" %I:%M %p")<CR>p
 
 " Dont put change operations into register
 nnoremap c "_c
@@ -63,8 +63,10 @@ nnoremap <C-c> :close<CR>
 nnoremap <leader>ps :PackerSync<CR>
 nnoremap <leader>pc :PackerCompile<CR>
 
-" Quit everything with :qq
+" Quit everything with :qq / Q
 cmap qq qa!
+cmap Q qa!
+cmap WQ wqa!
 
 " Toggle folds in normal mode with tab
 nnoremap <Tab> za
@@ -126,6 +128,7 @@ nnoremap gw :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar><CR>
 nnoremap <leader>f <cmd>Telescope find_files<cr>
 nnoremap <leader>s <cmd>Telescope live_grep<cr>
 nnoremap <leader>pp <cmd>lua require'telescope'.extensions.project.project{ display_type = 'full' }<Cr>
+nnoremap <leader>ps <cmd>Telescope sessions [save_current=true]<cr>
 nnoremap <leader>ws <cmd>lua require('telescope').extensions.vimwiki.vimwiki({})<cr>
 nnoremap <leader>wg <cmd>Telescope vimwiki live_grep<cr>
 nnoremap <leader>r <cmd>lua require('telescope').extensions.frecency.frecency()<cr>
@@ -170,7 +173,15 @@ nnoremap <silent><leader>6 <Cmd>:silent w<CR><Cmd>BufferLineGoToBuffer 6<CR>
 nnoremap <silent><leader>7 <Cmd>:silent w<CR><Cmd>BufferLineGoToBuffer 7<CR>
 nnoremap <silent><leader>8 <Cmd>:silent w<CR><Cmd>BufferLineGoToBuffer 8<CR>
 nnoremap <silent><leader>9 <Cmd>:silent w<CR><Cmd>BufferLineGoToBuffer 9<CR>
-nnoremap <silent><leader>q <Cmd>:silent lua require('bufdelete').bufdelete(0, true)<CR>
+
+" Bdelete
+" default closes buffer while preserving window layout
+" nnoremap <silent><leader>q <Cmd>:silent lua require('bufdelete').bufdelete(0, true)<CR>
+" intuitive tab change
+" nnoremap <silent><leader>q <Cmd>:BufferlineCyclePrev<CR><Cmd>:silent lua require('bufdelete').bufdelete(0, true)<CR>
+
+" a little more intuitive, but breaks when changes are mad to tabline with leader-H & L
+nnoremap <silent><leader>q <Cmd>:Bdelete<CR><Cmd>:bp<CR>
 
 " Tree
 nnoremap <C-e> :NvimTreeToggle<CR>
