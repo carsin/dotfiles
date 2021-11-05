@@ -17,6 +17,17 @@ packer.init({
 })
 
 return packer.startup({function(use)
+  -- TODO: Install
+  -- https://github.com/Pocco81/TrueZen.nvim focus UI mode
+  -- https://github.com/sindrets/diffview.nvim better diff functionality
+  -- https://github.com/marcushwz/nvim-workbench per project scratch buffer
+  -- lewis6991/impatient.nvim speedup startup
+  -- https://github.com/nvim-treesitter/nvim-treesitter-refactor better refactoring
+  -- https://github.com/nathom/filetype.nvim replaces filetype.vim for faster loading
+  -- mg979/vim-visual-multi multiple cursors
+  -- CHOOSE:
+    -- neorg
+    -- https://github.com/preservim/vim-pencil
   use 'wbthomason/packer.nvim'
   use 'nvim-lua/popup.nvim'
   use 'nvim-lua/plenary.nvim'
@@ -256,3 +267,5 @@ config = {
     end
   }
 }})
+
+

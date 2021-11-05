@@ -57,8 +57,8 @@ nnoremap <leader>c :close<CR>
 nnoremap <leader>ps :PackerSync<CR>
 nnoremap <leader>pc :PackerCompile<CR>
 
-" Quit everything with :q
-cmap q qa
+" Quit everything with :qq
+cmap qq qa!
 
 " Toggle folds in normal mode with tab
 nnoremap <Tab> za
@@ -119,9 +119,11 @@ nnoremap gw :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar><CR>
 " Find files using Telescope command-line sugar.
 nnoremap <leader>f <cmd>Telescope find_files<cr>
 nnoremap <leader>s <cmd>Telescope live_grep<cr>
-nnoremap <leader>h <cmd>Telescope help_tags<cr>
+" nnoremap <leader>h <cmd>Telescope help_tags<cr>
 nnoremap <leader>pp <cmd>lua require'telescope'.extensions.project.project{ display_type = 'full' }<Cr>
-nnoremap <leader>ws <cmd>lua require('telescope').extensions.vimwiki.vimwiki()<cr>
+" nnoremap <leader>ws <cmd>lua require('telescope').extensions.vimwiki.vimwiki('~/files/text/wiki/')<cr>
+nnoremap <leader>ws <cmd>lua require('telescope').extensions.vimwiki.vimwiki({})<cr>
+nnoremap <leader>wg <cmd>Telescope vimwiki live_grep<cr>
 
 " Neogit
 nnoremap <leader>g <cmd>Neogit<cr>
@@ -149,8 +151,6 @@ tnoremap <silent> <ESC> <CMD>lua require("FTerm").toggle()<CR>
 nnoremap <leader>d <cmd>TroubleToggle lsp_workspace_diagnostics<cr>
 
 " Bufferline
-" nnoremap <leader>l :BufferLineCycleNext<CR>
-" nnoremap <leader>h :BufferLineCyclePrev<CR>
 nnoremap <silent>[b :BufferLineCyclePrev<CR>
 nnoremap <silent>]b :BufferLineCycleNext<CR>
 nnoremap <leader>H :BufferLineMovePrev<CR>

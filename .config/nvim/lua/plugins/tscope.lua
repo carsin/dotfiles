@@ -1,10 +1,6 @@
 local telescope = require('telescope')
 local actions = require 'telescope.actions'
 
-telescope.load_extension('fzf')
-telescope.load_extension('project')
-telescope.load_extension('vimwiki')
-
 telescope.setup {
   extensions = {
     fzf = {
@@ -74,3 +70,6 @@ telescope.setup {
   },
 }
 
+telescope.load_extension('fzf')
+telescope.load_extension('project')
+telescope.load_extension('vimwiki')
