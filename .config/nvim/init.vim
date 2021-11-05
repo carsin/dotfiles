@@ -29,6 +29,13 @@ cnoremap w!! execute 'silent! write !sudo tee % >/dev/null' <bar> edit!
 " Plugins {{{
 " Misc settings
 
+let g:vimwiki_list = [{'path': '~/files/text/wiki', 'syntax': 'markdown', 'ext': '.md', 'diary_index': 'daily', 'diary_rel_path': '/', 'diary_header': 'Daily Log', 'auto_diary_index': 1}]
+let g:rooter_patterns = ['.git', 'Makefile', '*.sln', 'run', '.classpath']
+au BufNewFile ~/files/text/wiki/*.md :silent 0r !~/.config/nvim/bin/template.py '%'
+
+" Load plugins
+lua require'plugins'
+
 " Overrides vimwiki to close previous file's buffer when opening a new one with <CR>
 function! VimwikiLinkHandler(link)
   " exclude ref links to headers
@@ -47,12 +54,6 @@ function! VimwikiLinkHandler(link)
   endif
 endfunction
 
-let g:vimwiki_list = [{'path': '~/files/text/wiki', 'syntax': 'markdown', 'ext': '.md', 'diary_index': 'daily', 'diary_rel_path': '/', 'diary_header': 'Daily Log', 'auto_diary_index': 1}]
-let g:rooter_patterns = ['.git', 'Makefile', '*.sln', 'run', '.classpath']
-au BufNewFile ~/files/text/wiki/*.md :silent 0r !~/.config/nvim/bin/template.py '%'
-
-" Load plugins
-lua require'plugins'
 " }}}
 
 " Editing
@@ -111,7 +112,7 @@ autocmd InsertLeave * set nopaste
 set termguicolors
 
 set background=dark
-" set t_Co=256
+set t_Co=256
 
 let g:gruvbox_material_transparent_background = 1
 let g:gruvbox_material_enable_italic = 1
@@ -159,6 +160,7 @@ let &fcs='eob: '       " No idiotic eob tildas
 " set winminheight=15
 
 " Show line diagnostics on hover
+" TODO: Move to lspconfig.lua
 autocmd CursorHold * lua vim.lsp.diagnostic.show_line_diagnostics({border="none", focusable=false})
 
 " Set completeopt to have a better completion experience
@@ -191,6 +193,9 @@ augroup remember_folds
   autocmd BufWinLeave *.* mkview
   autocmd BufWinEnter *.* silent! loadview
 augroup END
+
+" Set cool title
+setglobal titlestring=%F\ %{v:servername}\ %{mode()}
 
 " Don't take up scrollbar with match
 " let g:matchup_matchparen_offscreen = { 'method': 'popup' }

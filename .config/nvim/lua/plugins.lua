@@ -178,6 +178,7 @@ return packer.startup({function(use)
     end,
   }
 
+  -- TODO: Replace? https://github.com/kevinhwang91/nvim-bqf
   use { -- Trouble
     'folke/trouble.nvim',
     requires = 'kyazdani42/nvim-web-devicons',
@@ -253,12 +254,12 @@ return packer.startup({function(use)
     end,
   }
 
-  -- use { -- stabilize
-  --   "luukvbaal/stabilize.nvim",
-  --   config = function()
-  --     require("stabilize").setup()
-  --   end
-  -- }
+  use {
+    'Pocco81/TrueZen.nvim',
+    config = function()
+      require'plugins.truezen'
+    end
+  }
 end,
 config = {
   display = {

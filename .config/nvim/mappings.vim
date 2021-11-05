@@ -1,3 +1,7 @@
+" --- Commands
+" Bd: buffer delete while keeping current window layout
+command Bd bp\|bd \#
+
 " --- MAPS {{{
 let mapleader=" "
 
@@ -16,6 +20,7 @@ function! WriteSavePosition()
 endfunction
 " nnoremap <silent><leader>s :silent :call WriteSavePosition()<cr>
 nnoremap <silent><leader>hs :w<cr>
+nnoremap <silent><F5> :w<cr>
 
  " Clear search highlight
 nnoremap <silent><leader><space> :let @/ = ""<CR>
@@ -33,8 +38,8 @@ nmap <F1> <nop>
 nnoremap <silent> <C-p> :set invpaste <CR>
 
 " Insert date / time
-nnoremap <leader>id "=strftime("%a, %b %d %Y")<CR>p
-nnoremap <leader>it "=strftime("%I:%M %p")<CR>p
+nnoremap <leader>id " =strftime("%a, %b %d %Y")<CR>p
+nnoremap <leader>it " =strftime("%I:%M %p")<CR>p
 
 " Dont put change operations into register
 nnoremap c "_c
@@ -51,7 +56,8 @@ nnoremap <leader>v :vsplit<CR>
 nnoremap <leader>b :split<CR>
 
 " Close window
-nnoremap <leader>c :close<CR>
+" nnoremap <leader>c :close<CR>
+nnoremap <C-c> :close<CR>
 
 " Vim plug ease of use bindings
 nnoremap <leader>ps :PackerSync<CR>
@@ -119,9 +125,7 @@ nnoremap gw :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar><CR>
 " Find files using Telescope command-line sugar.
 nnoremap <leader>f <cmd>Telescope find_files<cr>
 nnoremap <leader>s <cmd>Telescope live_grep<cr>
-" nnoremap <leader>h <cmd>Telescope help_tags<cr>
 nnoremap <leader>pp <cmd>lua require'telescope'.extensions.project.project{ display_type = 'full' }<Cr>
-" nnoremap <leader>ws <cmd>lua require('telescope').extensions.vimwiki.vimwiki('~/files/text/wiki/')<cr>
 nnoremap <leader>ws <cmd>lua require('telescope').extensions.vimwiki.vimwiki({})<cr>
 nnoremap <leader>wg <cmd>Telescope vimwiki live_grep<cr>
 
@@ -155,20 +159,27 @@ nnoremap <silent>[b :BufferLineCyclePrev<CR>
 nnoremap <silent>]b :BufferLineCycleNext<CR>
 nnoremap <leader>H :BufferLineMovePrev<CR>
 nnoremap <leader>L :BufferLineMoveNext<CR>
-nnoremap <silent><leader>1 <Cmd>BufferLineGoToBuffer 1<CR>
-nnoremap <silent><leader>2 <Cmd>BufferLineGoToBuffer 2<CR>
-nnoremap <silent><leader>3 <Cmd>BufferLineGoToBuffer 3<CR>
-nnoremap <silent><leader>4 <Cmd>BufferLineGoToBuffer 4<CR>
-nnoremap <silent><leader>5 <Cmd>BufferLineGoToBuffer 5<CR>
-nnoremap <silent><leader>6 <Cmd>BufferLineGoToBuffer 6<CR>
-nnoremap <silent><leader>7 <Cmd>BufferLineGoToBuffer 7<CR>
-nnoremap <silent><leader>8 <Cmd>BufferLineGoToBuffer 8<CR>
-nnoremap <silent><leader>9 <Cmd>BufferLineGoToBuffer 9<CR>
-nnoremap <silent><leader>q <CMD>lua require('bufdelete').bufdelete(0, true)<CR>
+" Switch to buffers and save when doing so
+nnoremap <silent><leader>1 <Cmd>:silent w<CR><Cmd>BufferLineGoToBuffer 1<CR>
+nnoremap <silent><leader>2 <Cmd>:silent w<CR><Cmd>BufferLineGoToBuffer 2<CR>
+nnoremap <silent><leader>3 <Cmd>:silent w<CR><Cmd>BufferLineGoToBuffer 3<CR>
+nnoremap <silent><leader>4 <Cmd>:silent w<CR><Cmd>BufferLineGoToBuffer 4<CR>
+nnoremap <silent><leader>5 <Cmd>:silent w<CR><Cmd>BufferLineGoToBuffer 5<CR>
+nnoremap <silent><leader>6 <Cmd>:silent w<CR><Cmd>BufferLineGoToBuffer 6<CR>
+nnoremap <silent><leader>7 <Cmd>:silent w<CR><Cmd>BufferLineGoToBuffer 7<CR>
+nnoremap <silent><leader>8 <Cmd>:silent w<CR><Cmd>BufferLineGoToBuffer 8<CR>
+nnoremap <silent><leader>9 <Cmd>:silent w<CR><Cmd>BufferLineGoToBuffer 9<CR>
+nnoremap <silent><leader>q <Cmd>:silent lua require('bufdelete').bufdelete(0, true)<CR>
 
 " Tree
 nnoremap <C-e> :NvimTreeToggle<CR>
 nnoremap <leader>e :NvimTreeToggle<CR>
 
-" Spectre
-nnoremap <leader>S :lua require('spectre').open()<CR>
+" TrueZen
+nnoremap <leader>zz <cmd>TZAtaraxis<cr>
+nnoremap <silent><F4> <cmd>TZAtaraxis<cr>
+
+" Vimwiki
+" unmap this, as it overrides my <BS> map
+nmap <F21> <Plug>VimwikiGoBackLink
+
