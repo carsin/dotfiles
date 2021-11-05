@@ -100,7 +100,7 @@ function! StripTrailingWhitespace()
     normal `Z
   endif
 endfunction
-autocmd CursorHold * call StripTrailingWhitespace()
+autocmd BufWritePre * call StripTrailingWhitespace()
 
 " Turn off paste mode when leaving insert
 autocmd InsertLeave * set nopaste
@@ -193,9 +193,6 @@ augroup remember_folds
   autocmd BufWinLeave *.* mkview
   autocmd BufWinEnter *.* silent! loadview
 augroup END
-
-" Set cool title
-setglobal titlestring=%F\ %{v:servername}\ %{mode()}
 
 " Don't take up scrollbar with match
 " let g:matchup_matchparen_offscreen = { 'method': 'popup' }

@@ -128,6 +128,7 @@ nnoremap <leader>s <cmd>Telescope live_grep<cr>
 nnoremap <leader>pp <cmd>lua require'telescope'.extensions.project.project{ display_type = 'full' }<Cr>
 nnoremap <leader>ws <cmd>lua require('telescope').extensions.vimwiki.vimwiki({})<cr>
 nnoremap <leader>wg <cmd>Telescope vimwiki live_grep<cr>
+nnoremap <leader>r <cmd>lua require('telescope').extensions.frecency.frecency()<cr>
 
 " Neogit
 nnoremap <leader>g <cmd>Neogit<cr>
@@ -176,10 +177,9 @@ nnoremap <C-e> :NvimTreeToggle<CR>
 nnoremap <leader>e :NvimTreeToggle<CR>
 
 " TrueZen
-nnoremap <leader>zz <cmd>TZAtaraxis<cr>
-nnoremap <silent><F4> <cmd>TZAtaraxis<cr>
+nnoremap <leader>zz <cmd>:silent TZAtaraxis<cr>
+nnoremap <silent><F4> <cmd>:silent TZAtaraxis<cr>
 
 " Vimwiki
 " unmap this, as it overrides my <BS> map
 nmap <F21> <Plug>VimwikiGoBackLink
-

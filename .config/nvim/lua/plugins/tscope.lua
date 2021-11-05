@@ -1,5 +1,27 @@
 local telescope = require('telescope')
 local actions = require 'telescope.actions'
+local previewers = require('telescope.previewers')
+local Job = require('plenary.job')
+
+-- Don't show previews for binaries
+local new_maker = function(filepath, bufnr, opts)
+  filepath = vim.fn.expand(filepath)
+  Job:new({
+    command = 'file',
+    args = { '--mime-type', '-b', filepath },
+    on_exit = function(j)
+      local mime_type = vim.split(j:result()[1], '/')[1]
+      if mime_type == "text" then
+        previewers.buffer_previewer_maker(filepath, bufnr, opts)
+      else
+        -- maybe we want to write something to the buffer here
+        vim.schedule(function()
+          vim.api.nvim_buf_set_lines(bufnr, 0, -1, false, { 'BINARY' })
+        end)
+      end
+    end
+  }):sync()
+end
 
 telescope.setup {
   extensions = {
@@ -11,6 +33,16 @@ telescope.setup {
     },
     project = {
       hidden_files = true,
+    },
+    frecency = {
+      show_scores = true,
+      show_unindexed = true,
+      ignore_patterns = {"*.git/*", "*/tmp/*"},
+      disable_devicons = false,
+      workspaces = {
+        ["conf"]    = "~/.config",
+        ["wiki"]    = "~/files/wiki/"
+      }
     }
   },
   pickers = {
@@ -33,13 +65,19 @@ telescope.setup {
     entry_prefix = "  ",
     initial_mode = "insert",
     selection_strategy = "reset",
-    sorting_strategy = "descending",
+    sorting_strategy = "ascending",
     layout_strategy = "horizontal",
     layout_config = {
       horizontal = {
+        prompt_position = "top",
+        preview_width = 0.6,
+        width = 0.9,
+        height = 0.8,
         mirror = false,
       },
       vertical = {
+        width = 0.9,
+        height = 0.9,
         mirror = false,
       },
     },
@@ -53,6 +91,7 @@ telescope.setup {
     use_less = true,
     path_display = {},
     set_env = { ['COLORTERM'] = 'truecolor' }, -- default = nil,
+    buffer_previewer_maker = new_maker,
     file_previewer = require'telescope.previewers'.vim_buffer_cat.new,
     grep_previewer = require'telescope.previewers'.vim_buffer_vimgrep.new,
     qflist_previewer = require'telescope.previewers'.vim_buffer_qflist.new,
@@ -73,3 +112,4 @@ telescope.setup {
 telescope.load_extension('fzf')
 telescope.load_extension('project')
 telescope.load_extension('vimwiki')
+telescope.load_extension('frecency')

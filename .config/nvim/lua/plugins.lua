@@ -16,15 +16,18 @@ packer.init({
 	}
 })
 
-return packer.startup({function(use)
+return packer.startup({ function(use)
   -- TODO: Install
-  -- https://github.com/Pocco81/TrueZen.nvim focus UI mode
   -- https://github.com/sindrets/diffview.nvim better diff functionality
-  -- https://github.com/marcushwz/nvim-workbench per project scratch buffer
   -- lewis6991/impatient.nvim speedup startup
   -- https://github.com/nvim-treesitter/nvim-treesitter-refactor better refactoring
   -- https://github.com/nathom/filetype.nvim replaces filetype.vim for faster loading
   -- mg979/vim-visual-multi multiple cursors
+  -- https://github.com/lewis6991/spellsitter.nvim
+  -- https://github.com/michaelb/sniprun <-- THIS IS AWESOME
+    -- dep: https://github.com/rcarriga/nvim-notify
+  -- https://github.com/glacambre/firenvim
+
   -- CHOOSE:
     -- neorg
     -- https://github.com/preservim/vim-pencil
@@ -41,8 +44,17 @@ return packer.startup({function(use)
   use 'famiu/bufdelete.nvim'
   use 'antoinemadec/FixCursorHold.nvim' -- Needed while issue https://github.com/neovim/neovim/issues/12587 is still open
   use 'junegunn/vim-easy-align'
-  use 'vimwiki/vimwiki'
-  use { 'kyazdani42/nvim-web-devicons', event = 'BufEnter' }
+  use 'vimwiki/vimwiki' -- Replace? https://github.com/oberblastmeister/neuron.nvim
+  use 'kyazdani42/nvim-web-devicons'
+
+  -- TODO: Fix <CR> on startup
+  use { -- alpha startup screen; startify & dashboard but developed
+    'goolord/alpha-nvim',
+    requires = 'Shatur/neovim-session-manager',
+    config = function ()
+        require'alpha'.setup(require'alpha.themes.dashboard'.opts)
+    end
+  }
 
   use { -- lsp config
     'neovim/nvim-lspconfig',
@@ -59,7 +71,10 @@ return packer.startup({function(use)
 
   use { -- treesitter
     'nvim-treesitter/nvim-treesitter',
-    requires = { { 'nvim-treesitter/nvim-treesitter-textobjects' } },
+    requires = {
+      'nvim-treesitter/nvim-treesitter-textobjects',
+      'p00f/nvim-ts-rainbow',
+    },
     run = ':TSUpdate',
     config = function()
       require'plugins.treesitter'
@@ -97,7 +112,10 @@ return packer.startup({function(use)
       'nvim-lua/plenary.nvim',
       'ElPiloto/telescope-vimwiki.nvim',
       'nvim-telescope/telescope-project.nvim',
+      'ElPiloto/telescope-vimwiki.nvim',
+      'kyazdani42/nvim-web-devicons',
       { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' },
+      { 'nvim-telescope/telescope-frecency.nvim', requires = { "tami5/sqlite.lua" } } ,
     },
     config = function()
       require'plugins.tscope'
@@ -179,6 +197,7 @@ return packer.startup({function(use)
   }
 
   -- TODO: Replace? https://github.com/kevinhwang91/nvim-bqf
+  -- or https://github.com/stevearc/qf_helper.nvim
   use { -- Trouble
     'folke/trouble.nvim',
     requires = 'kyazdani42/nvim-web-devicons',
@@ -198,7 +217,6 @@ return packer.startup({function(use)
 
   use { -- bufferline
     'akinsho/bufferline.nvim',
-    after = 'nvim-web-devicons',
     requires = 'kyazdani43/nvim-web-devicons',
     config = function()
       require'plugins.bufferline'
