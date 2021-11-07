@@ -39,7 +39,7 @@ alias python="python3"
 alias calpoly="ssh ckfreedm@unix3.csc.calpoly.edu"
 alias cpftp="sftp ckfreedm@unix3.csc.calpoly.edu"
 alias open="open ."
-alias top="bpytop"
+alias top="htop"
 
 alias sp="spt"
 alias vim="nvim"
