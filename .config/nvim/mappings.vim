@@ -60,8 +60,8 @@ nnoremap <leader>b :split<CR>
 nnoremap <C-c> :close<CR>
 
 " Vim plug ease of use bindings
-nnoremap <leader>ps :PackerSync<CR>
-nnoremap <leader>pc :PackerCompile<CR>
+nnoremap <leader>ps <cmd>:PackerSync<CR>
+nnoremap <leader>pc <cmd>:PackerCompile<CR>
 
 " Quit everything with :qq / Q
 cmap qq qa!

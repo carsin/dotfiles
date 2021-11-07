@@ -142,6 +142,7 @@ return packer.startup({ function(use)
       'L3MON4D3/LuaSnip',
       'f3fora/cmp-spell',
       'hrsh7th/cmp-cmdline',
+      'Furkanzmc/sekme.nvim',
       { 'andersevenrud/compe-tmux', branch = 'cmp' },
     },
     config = function()

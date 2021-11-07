@@ -110,9 +110,17 @@ autocmd InsertLeave * set nopaste
 
 " Enable true color
 set termguicolors
-
 set background=dark
-set t_Co=256
+" set t_Co=256
+
+" TODO: Fix, doesn't work? maybe gruvbox is still overriding
+" Override the colorschemes default colors whenever a scheme is sourced
+" highlight VertSplit ctermbg=0 ctermfg=237
+augroup OverrideColors
+    autocmd!
+    autocmd ColorScheme * highlight VertSplit ctermbg=0 ctermfg=235
+                      " \ | highlight StatusLine cterm=NONE ctermbg=231 ctermfg=160 gui=NONE guibg=#ffffff guifg=#d70000
+augroup END
 
 let g:gruvbox_material_transparent_background = 1
 let g:gruvbox_material_enable_italic = 1
@@ -123,7 +131,6 @@ let g:gruvbox_material_visual = 'reverse'
 let g:gruvbox_material_diagnostic_virtual_text = 'colored'
 let g:gruvbox_material_palette = 'original' " I prefer the vibrancy of the original
 let g:gruvbox_material_better_performance = 1
-
 colorscheme gruvbox-material
 
 set showtabline=2      " Show top tab line
