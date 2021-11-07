@@ -2,6 +2,7 @@ local telescope = require('telescope')
 local actions = require 'telescope.actions'
 local previewers = require('telescope.previewers')
 local Job = require('plenary.job')
+local M = {};
 
 -- Don't show previews for binaries
 local new_maker = function(filepath, bufnr, opts)
@@ -22,6 +23,12 @@ local new_maker = function(filepath, bufnr, opts)
     end
   }):sync()
 end
+
+M.custom_dropdown = require('telescope.themes').get_dropdown({
+  layout_config = {
+    width = 80;
+  }
+});
 
 telescope.setup {
   extensions = {
@@ -49,17 +56,18 @@ telescope.setup {
     find_files = {
       find_command = { "fd", "--type", "f", "--hidden" }
     },
+    -- lsp_references = custom_down;
+    lsp_references = {
+      theme = "ivy" -- i like this enough for now
+    },
+    lsp_definitions = {
+      theme = "ivy"
+    },
+    lsp_implementations = {
+      theme = "ivy"
+    },
   },
   defaults = {
-    -- vimgrep_arguments = {
-    --   'rg',
-    --   '--color=always',
-    --   '--no-heading',
-    --   '--with-filename',
-    --   '--line-number',
-    --   '--column',
-    --   '--smart-case'
-    -- },
     prompt_prefix = "> ",
     selection_caret = "> ",
     entry_prefix = "  ",
@@ -114,3 +122,4 @@ telescope.load_extension('project')
 telescope.load_extension('vimwiki')
 telescope.load_extension('frecency')
 -- telescope.load_extension('sessions')
+return M;

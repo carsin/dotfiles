@@ -20,6 +20,9 @@ alias config="/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME"
 
 alias cr="cargo run"
 alias crr="cargo run --release"
+alias cb="cargo build"
+alias cbr="cargo build --release"
+alias cf="cargo fetch"
 alias rr='./run'
 alias rt='./test'
 alias mr="make && ./run"

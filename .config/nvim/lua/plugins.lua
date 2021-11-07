@@ -46,6 +46,7 @@ return packer.startup({ function(use)
   use 'junegunn/vim-easy-align'
   use 'vimwiki/vimwiki' -- Replace? https://github.com/oberblastmeister/neuron.nvim
   use 'kyazdani42/nvim-web-devicons'
+  use 'MikeDacre/tmux-zsh-vim-titles'
 
   -- TODO: Fix <CR> on startup
   -- use { -- alpha startup screen; startify & dashboard but developed
@@ -62,7 +63,6 @@ return packer.startup({ function(use)
       'williamboman/nvim-lsp-installer',
       'mfussenegger/nvim-jdtls',
       'https://gitlab.com/yorickpeterse/nvim-dd.git',
-      'weilbith/nvim-code-action-menu',
     },
     config = function()
       require'plugins.lsp.lspconfig'
