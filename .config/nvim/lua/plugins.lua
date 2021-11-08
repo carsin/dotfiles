@@ -16,6 +16,7 @@ packer.init({
 	}
 })
 
+require('compiled/packer_compiled')
 return packer.startup({ function(use)
   -- TODO: Install
   -- https://github.com/sindrets/diffview.nvim better diff functionality
@@ -31,6 +32,7 @@ return packer.startup({ function(use)
   -- CHOOSE:
     -- neorg
     -- https://github.com/preservim/vim-pencil
+  use 'lewis6991/impatient.nvim'
   use 'wbthomason/packer.nvim'
   use 'nvim-lua/popup.nvim'
   use 'nvim-lua/plenary.nvim'
@@ -46,6 +48,7 @@ return packer.startup({ function(use)
   use 'junegunn/vim-easy-align'
   use 'vimwiki/vimwiki' -- Replace? https://github.com/oberblastmeister/neuron.nvim
   use 'kyazdani42/nvim-web-devicons'
+  use 'nathom/filetype.nvim'
 
   -- TODO: Fix <CR> on startup
   -- use { -- alpha startup screen; startify & dashboard but developed
@@ -62,6 +65,7 @@ return packer.startup({ function(use)
       'williamboman/nvim-lsp-installer',
       'mfussenegger/nvim-jdtls',
       'https://gitlab.com/yorickpeterse/nvim-dd.git',
+      -- 'weilbith/nvim-code-action-menu',
     },
     config = function()
       require'plugins.lsp.lspconfig'
@@ -149,22 +153,22 @@ return packer.startup({ function(use)
     end,
   }
 
-  use { -- tabnine
-    'tzachar/cmp-tabnine',
-    run = './install.sh',
-    requires = 'hrsh7th/nvim-cmp',
-    after = "nvim-cmp",
-    config = function()
-      -- TODO: move to lsp/cmp.lua
-      require('cmp_tabnine.config'):setup({
-        max_lines = 1500;
-        sort = true;
-        max_num_results = 3;
-        run_on_every_keystroke = false;
-        snippet_placeholder = '..';
-      })
-    end
-  }
+  -- use { -- tabnine
+  --   'tzachar/cmp-tabnine',
+  --   run = './install.sh',
+  --   requires = 'hrsh7th/nvim-cmp',
+  --   after = "nvim-cmp",
+  --   config = function()
+  --     -- TODO: move to lsp/cmp.lua
+  --     require('cmp_tabnine.config'):setup({
+  --       max_lines = 1500;
+  --       sort = true;
+  --       max_num_results = 3;
+  --       run_on_every_keystroke = false;
+  --       snippet_placeholder = '..';
+  --     })
+  --   end
+  -- }
 
   use { -- autopairs
     'windwp/nvim-autopairs',
@@ -285,7 +289,6 @@ config = {
     open_fn = function()
       return require('packer.util').float({ border = 'single' })
     end
-  }
+  },
+  compile_path = vim.fn.stdpath('config')..'/lua/compiled/packer_compiled.lua'
 }})
-
-

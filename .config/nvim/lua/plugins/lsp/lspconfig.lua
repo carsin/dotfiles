@@ -2,11 +2,56 @@ local border = { {"╭", "FloatBorder"}, {"─", "FloatBorder"}, {"╮", "FloatB
 local sumneko = require('plugins.lsp.sumneko')
 local nvim_lsp = require'lspconfig'
 local lsp_installer = require("nvim-lsp-installer")
+local lsp = require'vim.lsp'
+local api = vim.api
 local M = {}
+local lspc = {}
 
 require('dd').setup({
   timeout = 250,
 })
+
+do
+  -- id is filetype│root_dir
+  local lsp_client_ids = {}
+
+  function lspc.start(config, root_markers)
+    local root_dir = require('jdtls.setup').find_root(root_markers)
+    if not root_dir then return end
+
+    local cmd = config.cmd[1]
+    if tonumber(vim.fn.executable(cmd)) == 0 then
+      api.nvim_command(string.format(
+        ':echohl WarningMsg | redraw | echo "No LSP executable: %s" | echohl None', cmd))
+      return
+    end
+    config['root_dir'] = root_dir
+    local lsp_id = tostring(vim.bo.filetype) .. "│" .. root_dir
+    local client_id = lsp_client_ids[lsp_id]
+    if not client_id then
+      client_id = lsp.start_client(config)
+      lsp_client_ids[lsp_id] = client_id
+    end
+    local bufnr = api.nvim_get_current_buf()
+    lsp.buf_attach_client(bufnr, client_id)
+  end
+
+  function lspc.restart()
+    for id, client_id in pairs(lsp_client_ids) do
+      local client = vim.lsp.get_client_by_id(client_id)
+      if client then
+        local bufs = vim.lsp.get_buffers_by_client_id(client_id)
+        client.stop()
+        local new_client_id = lsp.start_client(client.config)
+        lsp_client_ids[id] = new_client_id
+        for _, buf in pairs(bufs) do
+          lsp.buf_attach_client(buf, new_client_id)
+        end
+      end
+    end
+  end
+  M.restart = lspc.restart
+end
 
 M.on_attach = function(client, bufnr)
   vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = nil })
@@ -34,7 +79,7 @@ M.on_attach = function(client, bufnr)
   buf_set_keymap('n', ']d', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>zz', opts)
   buf_set_keymap("n", "gq", "<Cmd>lua vim.lsp.buf.formatting()<CR>", opts)
   buf_set_keymap("n", "<leader>a", "<Cmd>Telescope lsp_code_actions theme=cursor<CR>", opts)
-  buf_set_keymap("n", "<leader>a", "<Cmd>Telescope lsp_range_code_actions theme=cursor<CR>", opts)
+  buf_set_keymap("v", "<leader>a", "<Cmd>Telescope lsp_range_code_actions theme=cursor<CR>", opts)
   buf_set_keymap('n', 'gr', "<cmd>Telescope lsp_references<cr>", opts)
   buf_set_keymap('n', 'gd', '<cmd>Telescope lsp_definitions<CR>', opts)
   buf_set_keymap('n', 'gi', '<cmd>Telescope lsp_implementations<CR>', opts)
@@ -113,14 +158,13 @@ lsp_installer.on_server_ready(function(server)
 						"--all-features",
             "--message-format=json",
 					},
-          -- extraArgs = { "--target-dir", "/tmp/rust-analyzer-check" },
 				},
 			},
     }
     require("rust-tools").setup(rust_opts)
   elseif server.name == "jdtls" then -- override jdtls
-    local jdtls_opts = require'plugins.lsp.jdtls'.config
-    require("jdtls").start_or_attach(jdtls_opts)
+    -- local jdtls_opts = require'plugins.lsp.jdtls'.config
+    -- require("jdtls").start_or_attach(jdtls_opts)
   else
       -- check to see if any custom server_opts exist for the LSP server
       server:setup(server_opts[server.name] and server_opts[server.name]() or opts)

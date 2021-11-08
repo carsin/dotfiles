@@ -4,6 +4,9 @@ set nocompatible
 filetype plugin indent on " Load plugins according to detected filetype.
 syntax on                 " Enable syntax highlighting.
 
+set termguicolors " Set colors before impatient makes it work for some reason
+lua require('impatient')
+
 set title            " report title to terminal
 set hidden           " hide buffers even if they're edited
 set history=500      " How many lines of history vim has to remember
@@ -35,6 +38,12 @@ au BufNewFile ~/files/text/wiki/*.md :silent 0r !~/.config/nvim/bin/template.py 
 
 " Load plugins
 lua require'plugins'
+
+augroup jdtls_lsp
+    autocmd!
+    autocmd FileType java lua require("jdtls").start_or_attach(require'plugins.lsp.jdtls'.config)
+augroup end
+
 
 " Overrides vimwiki to close previous file's buffer when opening a new one with <CR>
 function! VimwikiLinkHandler(link)
@@ -109,7 +118,6 @@ autocmd InsertLeave * set nopaste
 " UI {{{
 
 " Enable true color
-set termguicolors
 set background=dark
 " set t_Co=256
 

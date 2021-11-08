@@ -71,4 +71,8 @@ M.config.handlers['language/status'] = function() end -- mute startup output; ha
 -- Remove the option if you do not want that.
 -- require('jdtls').setup_dap({ hotcodereplace = 'auto' })
 
+M.setup = function()
+
+end
+
 return M;

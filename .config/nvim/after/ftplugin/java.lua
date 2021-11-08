@@ -9,4 +9,4 @@ vim.cmd "command! -buffer JdtBytecode lua require('jdtls').javap()"
 -- vim.cmd "command! -buffer JdtJshell lua require('jdtls').jshell()"
 
 -- attach server if not already
-require("jdtls").start_or_attach(require'plugins.lsp.jdtls'.config)
+-- require("jdtls").start_or_attach(require'plugins.lsp.jdtls'.config)

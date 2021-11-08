@@ -133,6 +133,8 @@ nnoremap <leader>ws <cmd>lua require('telescope').extensions.vimwiki.vimwiki({})
 nnoremap <leader>wg <cmd>Telescope vimwiki live_grep<cr>
 nnoremap <leader>r <cmd>lua require('telescope').extensions.frecency.frecency()<cr>
 
+vmap <Space> <Nop>
+
 " Neogit
 nnoremap <leader>g <cmd>Neogit<cr>
 
