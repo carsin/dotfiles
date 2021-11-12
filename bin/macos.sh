@@ -50,6 +50,7 @@ defaults -currentHost write -globalDomain AppleFontSmoothing -int 2
 ###############################################################################
 echo "Updating input settings..."
 
+# Bluetooth
 # Increase sound quality for Bluetooth headphones/headsets
 defaults write com.apple.BluetoothAudioAgent "Apple Bitpool Max (editable)" 80
 defaults write com.apple.BluetoothAudioAgent "Apple Bitpool Min (editable)" 80
@@ -58,7 +59,17 @@ defaults write com.apple.BluetoothAudioAgent "Apple Initial Bitpool Min (editabl
 defaults write com.apple.BluetoothAudioAgent "Negotiated Bitpool" 80
 defaults write com.apple.BluetoothAudioAgent "Negotiated Bitpool Max" 80
 defaults write com.apple.BluetoothAudioAgent "Negotiated Bitpool Min" 80
-defaults write com.apple.BluetoothAudioAgent "Apple Bitpool Min (editable)" -int 40
+defaults write com.apple.BluetoothAudioAgent "Apple Bitpool Min (editable)" -int 60
+
+# DON'T Prefer USB bluetooth over builtin (usb dongles are broken because of intermittent power deliver loss, due to driver issues thanks Apple)
+sudo nvram bluetoothHostControllerSwitchBehavior=never #or always
+
+# Enable better codecs
+sudo defaults write bluetoothaudiod "Enable AptX codec" -bool true
+sudo defaults write bluetoothaudiod "Enable AAC codec" -bool true
+
+# Disable broken codec
+# sudo defaults write bluetoothaudiod "Enable AAC codec" -bool false
 
 # Quicker key repeat
 # 105 ms delay
