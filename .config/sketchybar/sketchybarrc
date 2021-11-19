@@ -50,38 +50,31 @@ sketchybar -m --add space three left \
               --set three associated_display=1 \
                           associated_space=3 \
                           icon=III \
-                          label=write \
+                          label=idle \
                           click_script="yabai -m space --focus 3" \
 
 sketchybar -m --add space four left \
               --set four associated_display=1 \
                          associated_space=4 \
                          icon=IV \
-                         label=idle \
+                         label=misc \
                          click_script="yabai -m space --focus 4" \
 
 sketchybar -m --add space five left \
-              --set five associated_display=1 \
-                         associated_space=5 \
-                         icon=V \
-                         label=misc \
-                         click_script="yabai -m space --focus 5" \
-
-sketchybar -m --add space six left \
-              --set six associated_display=2 \
+              --set five associated_display=2 \
                         associated_space=6 \
                         icon=Z \
                         icon.padding_left=1 \
                         click_script="yabai -m space --focus 6" \
 
-sketchybar -m --add space seven left \
-              --set seven associated_display=2 \
+sketchybar -m --add space six left \
+              --set six associated_display=2 \
                         associated_space=7 \
                         icon=X \
                         click_script="yabai -m space --focus 7" \
 
-sketchybar -m --add space eight left \
-              --set eight associated_display=2 \
+sketchybar -m --add space seven left \
+              --set seven associated_display=2 \
                         associated_space=8 \
                         icon=C \
                         click_script="yabai -m space --focus 8" \
@@ -99,6 +92,7 @@ sketchybar -m --add item title left \
                                 title_change \
 
 ################# RIGHT ITEMS ####################
+# Clock & Date
 sketchybar -m --add item clock right \
               --set clock update_freq=1 \
                           script="~/.config/sketchybar/plugins/clock.sh" \
@@ -107,6 +101,15 @@ sketchybar -m --add item clock right \
                           icon.padding_left=3 \
                           icon.padding_right=0 \
                           icon=
+
+# Volume
+sketchybar -m --add item volume right \
+              --set volume script="~/.config/sketchybar/plugins/volume.sh" \
+                           label.padding_right=6 \
+                           label.padding_left=4 \
+                           icon.color=0xB2ffffff
+                           lazy=off \
+                           update_freq=2
 
 # Battery
 sketchybar -m --add item battery right \
@@ -134,7 +137,6 @@ sketchybar -m --add graph cpu_user right 130 \
 sketchybar -m --add item weather right \
               --set weather update_freq=1800 \
                             icon.padding_left=6 \
-                            icon.color=0xff8ec07c \
                             label.padding_right=24 \
                             script="~/.config/sketchybar/plugins/weather.sh" \
                             click_script="open https://darksky.net/forecast/35.2828,-120.6596/us12/en"
