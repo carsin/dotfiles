@@ -7,3 +7,5 @@ CPU_USER=$(echo "$CPU_INFO" | grep $(whoami) | sed "s/[^ 0-9\.]//g" | awk "{sum+
 
 sketchybar -m --push cpu_sys $CPU_SYS \
               --push cpu_user $CPU_USER
+
+sketchybar -m --set cpu_user icon=$(echo "$CPU_SYS $CPU_USER" | awk '{printf "%.0f\n", ($1 + $2)*100}')%

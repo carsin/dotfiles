@@ -20,9 +20,7 @@ require('compiled/packer_compiled')
 return packer.startup({ function(use)
   -- TODO: Install
   -- https://github.com/sindrets/diffview.nvim better diff functionality
-  -- lewis6991/impatient.nvim speedup startup
   -- https://github.com/nvim-treesitter/nvim-treesitter-refactor better refactoring
-  -- https://github.com/nathom/filetype.nvim replaces filetype.vim for faster loading
   -- mg979/vim-visual-multi multiple cursors
   -- https://github.com/lewis6991/spellsitter.nvim
   -- https://github.com/michaelb/sniprun <-- THIS IS AWESOME
@@ -42,6 +40,7 @@ return packer.startup({ function(use)
   use 'editorconfig/editorconfig-vim'
   use 'chaoren/vim-wordmotion'
   use 'tpope/vim-surround'
+  use 'tpope/vim-repeat'
   use 'christoomey/vim-tmux-navigator'
   use 'famiu/bufdelete.nvim'
   use 'antoinemadec/FixCursorHold.nvim' -- Needed while issue https://github.com/neovim/neovim/issues/12587 is still open
@@ -50,7 +49,7 @@ return packer.startup({ function(use)
   use 'kyazdani42/nvim-web-devicons'
   use 'nathom/filetype.nvim'
 
-  -- TODO: Fix <CR> on startup
+  -- TODO: Fix phantom <CR> on startup
   -- use { -- alpha startup screen; startify & dashboard but developed
   --   'goolord/alpha-nvim',
   --   requires = 'Shatur/neovim-session-manager',
