@@ -26,7 +26,6 @@ alias cf="cargo fetch"
 alias rr='./run'
 alias rt='./test'
 alias mr="make && ./run"
-# alias jj='nohup command >/dev/null 2>&1 & java -jar'
 alias jj='nohup java -jar'
 
 alias killglobal="launchctl unload /Library/LaunchAgents/com.paloaltonetworks.gp.pangp*"
@@ -45,6 +44,9 @@ alias sp="spt"
 alias vim="nvim"
 alias v="nvim"
 alias t="tmux"
+
+alias wttr="curl wttr.in/San+Luis+Obispo"
+alias wttr2="curl v2d.wttr.in/San+Luis+Obispo"
 
 alias w="wal -i ~/files/photos/wallpapers/wal/ && source ~/.config/sketchybar/sketchybarcolors && kitty @ --to unix:/tmp/mykitty set-colors ~/.cache/wal/colors-kitty.conf && pywalfox update"
 alias w1="wal --backend haishoku -i ~/files/photos/wallpapers/wal/ && source ~/.config/sketchybar/sketchybarcolors && kitty @ --to unix:/tmp/mykitty set-colors ~/.cache/wal/colors-kitty.conf && pywalfox update"

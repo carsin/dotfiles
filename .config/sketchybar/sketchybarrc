@@ -1,4 +1,5 @@
 #!/usr/bin/env sh
+#                          ﱦ 齃     ﮂ  ﵁ 爵        ﭵ     ﱦ  ﰊ 異 ﴱ אַ  'Y⃣'
 # TODO: https://github.com/FelixKratz/SketchyBar/discussions/12
 # cpu mini, network mini, spotify controls look cool
 
@@ -32,8 +33,9 @@ sketchybar -m --default label.padding_left=6 \
 sketchybar -m --add space one left \
               --set one associated_display=1 \
                         associated_space=1 \
-                        icon.padding_left=3 \
+                        icon.padding_left=2 \
                         icon=I \
+                        label=dev \
                         click_script="yabai -m space --focus 1" \
                         icon_padding_left=0
 
@@ -41,31 +43,48 @@ sketchybar -m --add space two left \
               --set two associated_display=1 \
                         associated_space=2 \
                         icon=II \
+                        label=web \
                         click_script="yabai -m space --focus 2" \
 
 sketchybar -m --add space three left \
               --set three associated_display=1 \
                           associated_space=3 \
                           icon=III \
+                          label=write \
                           click_script="yabai -m space --focus 3" \
 
 sketchybar -m --add space four left \
               --set four associated_display=1 \
                          associated_space=4 \
                          icon=IV \
+                         label=idle \
                          click_script="yabai -m space --focus 4" \
 
 sketchybar -m --add space five left \
-              --set five associated_display=2 \
+              --set five associated_display=1 \
                          associated_space=5 \
                          icon=V \
+                         label=misc \
                          click_script="yabai -m space --focus 5" \
 
 sketchybar -m --add space six left \
               --set six associated_display=2 \
                         associated_space=6 \
-                        icon=VI \
+                        icon=Z \
+                        icon.padding_left=1 \
                         click_script="yabai -m space --focus 6" \
+
+sketchybar -m --add space seven left \
+              --set seven associated_display=2 \
+                        associated_space=7 \
+                        icon=X \
+                        click_script="yabai -m space --focus 7" \
+
+sketchybar -m --add space eight left \
+              --set eight associated_display=2 \
+                        associated_space=8 \
+                        icon=C \
+                        click_script="yabai -m space --focus 8" \
 
 ################## LEFT ITEMS ##################
 
@@ -84,7 +103,7 @@ sketchybar -m --add item clock right \
               --set clock update_freq=1 \
                           script="~/.config/sketchybar/plugins/clock.sh" \
                           label.padding_left=2 \
-                          label.padding_right=0 \
+                          label.padding_right=1 \
                           icon.padding_left=3 \
                           icon.padding_right=0 \
                           icon=
@@ -99,53 +118,52 @@ sketchybar -m --add item battery right \
                             icon.padding_left=0 \
                             icon.padding_right=3
 
-# Cpu graph
+# Cpu usage graph
 sketchybar -m --add graph cpu_user right 150 \
               --set cpu_user script="~/.config/sketchybar/plugins/cpu_graph.sh" \
                              graph.color=0xffffffff \
                              update_freq=2 \
                              width=0 \
-                             associated_space=1 \
                              label.padding_left=8 \
                              icon.padding_right=4 \
                              icon.padding_left=8 \
                              icon= \
+                             icon.color=0xfffb4934 \
                              lazy=on \
               --add graph cpu_sys right 150 \
               --set cpu_sys graph.color=0xff48aa2a \
                             label.padding_left=8 \
-                            icon.padding_right=4 \
+                            icon.padding_right=6 \
                             icon.padding_left=8 \
-                            associated_space=1 \
                             icon= \
+                            icon.color=0xfffb4934 \
 
-# Network graph
-# sketchybar -m --add graph network_down right 150 \
-#               --set network_down script="~/.config/sketchybar/plugins/network_graph.sh" \
-#                              graph.color=0xffffffff \
-#                              update_freq=2 \
-#                              width=0 \
-#                              associated_space=2 \
-#                              associated_space=5 \
-#                              label.padding_left=8 \
-#                              icon.padding_right=4 \
-#                              icon.padding_left=8 \
-#                              icon=⮁ \
-#                              lazy=on \
-#               --add graph network_up right 150 \
-#               --set network_up graph.color=0xff48aa2a \
-#                                label.padding_left=8 \
-#                                icon.padding_right=4 \
-#                                icon.padding_left=8 \
-#                                associated_space=2 \
-#                                # associated_space=4 \
-#                                icon=⮁ \
+# Weather
+sketchybar -m --add item weather right \
+              --set weather update_freq=1800 \
+                            icon.padding_left=6 \
+                            script="~/.config/sketchybar/plugins/weather.sh" \
+                            icon.color=0xff8ec07c \
+                            click_script="open https://darksky.net/forecast/35.2828,-120.6596/us12/en"
 
-# Top proc
-# sketchybar -m --add item topproc right \
-#               --set topproc label.padding_right=8 \
-#                             update_freq=15 \
-#                             script="~/.config/sketchybar/plugins/topproc.sh"
+# Yabai current workspace & window mode
+sketchybar -m --add item yabai_logo right \
+              --set yabai_logo icon="< Y" \
+                               icon.padding_left=2 \
+sketchybar -m --add item yabai_mode right \
+              --add event mode_change \
+              --set yabai_mode update_freq=3 \
+                               script="~/.config/sketchybar/plugins/yabai_mode.sh" \
+                               click_script="~/.config/sketchybar/plugins/yabai_mode_click.sh" \
+                               icon.padding_left=2 \
+              --subscribe yabai_mode space_change mode_change
+sketchybar -m --add item yabai_float right \
+              --add event window_focus \
+              --add event float_change \
+              --set yabai_float script="~/.config/sketchybar/plugins/yabai_float.sh" \
+                    click_script="~/.config/sketchybar/plugins/yabai_float_click.sh" \
+                    lazy=off \
+              --subscribe yabai_float front_app_switched window_focus float_change \
 
 ###################### CENTER ITEMS ###################
 # Spotify

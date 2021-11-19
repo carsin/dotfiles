@@ -111,9 +111,9 @@ fi
 if [[ $TERM =~ 'xterm-kitty' ]]; then
     kitty @ --to unix:/tmp/mykitty --to unix:/tmp/mykitty set-colors ~/.cache/wal/colors-kitty.conf
 fi
-
 source ~/.cache/wal/colors-tty.sh
 
+source ~/.config/zsh/.zshhidden
 export FZF_DEFAULT_COMMAND='rg --files --hidden -g "!.git" '
 export GPG_TTY=$TTY
 export TASKRC='~/.config/taskwarrior-tui/.taskrc'
