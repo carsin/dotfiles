@@ -1,28 +1,3 @@
-# #!/usr/bin/env bash
-# RUNNING=$(osascript -e 'if application "Spotify" is running then return 0')
-# if [ "$RUNNING" == "" ]; then
-#   RUNNING=1
-# fi
-# PLAYING=1
-# TRACK=""
-# ALBUM=""
-# ARTIST=""
-# if [ "$(osascript -e 'if application "Spotify" is running then tell application "Spotify" to get player state')" == "playing" ]; then
-#   PLAYING=0
-#   TRACK=$(osascript -e 'tell application "Spotify" to get name of current track')
-#   ARTIST=$(osascript -e 'tell application "Spotify" to get artist of current track')
-#   ALBUM=$(osascript -e 'tell application "Spotify" to get album of current track')
-# fi
-# if [ $RUNNING -eq 0 ] && [ $PLAYING -eq 0 ]; then
-#   if [ "$ARTIST" == "" ]; then
-#     sketchybar -m --set spotifyIndicator label="$TRACK - $ALBUM"
-#   else
-#     sketchybar -m --set spotifyIndicator label="$ARTIST - $TRACK"
-#   fi
-# else
-#   sketchybar -m --set spotifyIndicator label=""
-# fi
-
 #!/usr/bin/env bash
 
 RUNNING=$(osascript -e 'if application "Spotify" is running then return 0')
@@ -33,6 +8,8 @@ PLAYING=1
 TRACK=""
 ALBUM=""
 ARTIST=""
+SHUFFLE=""
+REPEAT=""
 
 
 next ()
@@ -56,6 +33,30 @@ play_pause ()
   fi
 }
 
+repeat ()
+{
+  REPEAT=$(osascript -e 'tell application "Spotify" to get repeating')
+  if [ "$REPEAT" = "false" ]; then
+    sketchybar -m --set spotify_repeat icon.highlight=on
+    osascript -e 'tell application "Spotify" to set repeating to true'
+  else
+    sketchybar -m --set spotify_repeat icon.highlight=off
+    osascript -e 'tell application "Spotify" to set repeating to false'
+  fi
+}
+
+shuffle ()
+{
+  SHUFFLE=$(osascript -e 'tell application "Spotify" to get shuffling')
+  if [ "$SHUFFLE" = "false" ]; then
+    sketchybar -m --set spotify_shuffle icon.highlight=on
+    osascript -e 'tell application "Spotify" to set shuffling to true'
+  else
+    sketchybar -m --set spotify_shuffle icon.highlight off
+    osascript -e 'tell application "Spotify" to set shuffling to false'
+  fi
+}
+
 name ()
 {
   if [ "$(osascript -e 'if application "Spotify" is running then tell application "Spotify" to get player state')" == "playing" ]; then
@@ -63,25 +64,33 @@ name ()
     TRACK=$(osascript -e 'tell application "Spotify" to get name of current track')
     ARTIST=$(osascript -e 'tell application "Spotify" to get artist of current track')
     ALBUM=$(osascript -e 'tell application "Spotify" to get album of current track')
+    SHUFFLE=$(osascript -e 'tell application "Spotify" to get shuffling')
+    REPEAT=$(osascript -e 'tell application "Spotify" to get repeating')
   fi
 
   if [ $RUNNING -eq 0 ] && [ $PLAYING -eq 0 ]; then
     if [ "$ARTIST" == "" ]; then
-      sketchybar -m --set spotify_name label="$TRACK + $ALBUM" drawing=on \
+      sketchybar -m --set spotify_name label="$TRACK / $ALBUM" drawing=on \
                           --set spotify_play_pause label= drawing=on \
                           --set spotify_next drawing=on \
                           --set spotify_back drawing=on \
+                          --set spotify_shuffle icon.highlight=$SHUFFLE \
+                          --set spotify_repeat icon.highlight=$REPEAT
     else
       sketchybar -m --set spotify_name label="$TRACK - $ARTIST" drawing=on \
                           --set spotify_play_pause icon= drawing=on \
                           --set spotify_next drawing=on \
                           --set spotify_back drawing=on \
+                          --set spotify_shuffle icon.highlight=$SHUFFLE drawing=on \
+                          --set spotify_repeat icon.highlight=$REPEAT drawing=on
     fi
   else
     sketchybar -m --set spotify_name drawing=off \
                         --set spotify_play_pause icon= drawing=on \
                         --set spotify_next drawing=on \
                         --set spotify_back drawing=on \
+                        --set spotify_shuffle drawing=off \
+                        --set spotify_repeat drawing=off
   fi
 }
 
@@ -93,6 +102,10 @@ case "$NAME" in
   "spotify_play_pause") play_pause
   ;;
   "spotify_name") name
+  ;;
+  "spotify_shuffle") shuffle
+  ;;
+  "spotify_repeat") repeat
   ;;
   *) echo "Invalid mode for Spotify script"
   ;;

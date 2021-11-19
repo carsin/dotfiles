@@ -119,32 +119,32 @@ sketchybar -m --add item battery right \
                             icon.padding_right=3
 
 # Cpu usage graph
-sketchybar -m --add graph cpu_user right 120 \
+sketchybar -m --add graph cpu_user right 130 \
               --set cpu_user script="~/.config/sketchybar/plugins/cpu_graph.sh" \
                              graph.color=0xffffffff \
                              update_freq=5 \
                              width=0 \
-                             label.padding_left=10 \
-                             icon.padding_right=2 \
                              icon.color=0xfffabd2f \
+                             icon.padding_right=3 \
                              lazy=on \
-              --add graph cpu_sys right 120 \
+              --add graph cpu_sys right 130 \
               --set cpu_sys graph.color=0xff48aa2a \
-                            icon.padding_right=10 \
 
 # Weather
 sketchybar -m --add item weather right \
               --set weather update_freq=1800 \
                             icon.padding_left=6 \
-                            label.padding_right=10 \
-                            script="~/.config/sketchybar/plugins/weather.sh" \
                             icon.color=0xff8ec07c \
+                            label.padding_right=24 \
+                            script="~/.config/sketchybar/plugins/weather.sh" \
                             click_script="open https://darksky.net/forecast/35.2828,-120.6596/us12/en"
 
 ###################### CENTER ITEMS ###################
 # Spotify
 sketchybar -m --default icon.padding_right=0 \
+                        icon.padding_left=8 \
                         label.padding_left=0 \
+                        label.padding_right=0 \
                         lazy=off \
                         drawing=off \
               --add event spotify_change "com.spotify.client.PlaybackStateChanged" \
@@ -162,16 +162,10 @@ sketchybar -m --default icon.padding_right=0 \
               --add item spotify_next center \
               --set spotify_next click_script="~/.config/sketchybar/plugins/spotify.sh" \
                                  icon='' \
-              --add       bracket  spotify_control                                                               \
-                                             spotify_back                                                        \
-                                             spotify_play_pause                                                  \
-                                             spotify_next                                                        \
-
-# sketchybar -m --add event spotify_change "com.spotify.client.PlaybackStateChanged" \
-#               --add item spotifyIndicator center \
-#               --set spotifyIndicator script="~/.config/sketchybar/plugins/spotifyIndicator.sh" \
-#               --set spotifyIndicator click_script="osascript -e 'tell application \"Spotify\" to pause'" \
-#               --subscribe spotifyIndicator spotify_change
+              --add bracket spotify_control \
+                            spotify_back \
+                            spotify_play_pause \
+                            spotify_next \
 
 sketchybar -m --update
 
