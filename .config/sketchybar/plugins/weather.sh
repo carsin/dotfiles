@@ -1,6 +1,6 @@
-#!/bin/zsh
-
-API_KEY=$WEATHER_API # insert api key here
+#!/usr/bin/env bash
+source ~/.config/sketchybar/plugins/.apikey
+API_KEY=$WEATHER_API
 CITY="San+Luis+Obispo" # insert city here
 
 # first comment is description, second is icon number
@@ -107,7 +107,7 @@ weather_icons_night=(
 )
 
 CITY=$(echo "$CITY" | curl -Gso /dev/null -w %{url_effective} --data-urlencode @- "" | cut -c 3- || true)
-data=$(curl -s "http://api.weatherapi.com/v1/current.json?key=$WEATHER_API&q=$CITY")
+data=$(curl -s "http://api.weatherapi.com/v1/current.json?key=$API_KEY&q=$CITY")
 condition=$(echo $data | jq -r '.current.condition.code')
 temp=$(echo $data | jq -r '.current.temp_f')
 feelslike=$(echo $data | jq -r '.current.feelslike_f')
@@ -117,15 +117,10 @@ is_day=$(echo $data | jq -r '.current.is_day')
 [ "$is_day" = "1" ] && icon=${weather_icons_day[$condition]} || icon=${weather_icons_night[$condition]}
 
 if [[ $is_day -eq "1" ]]; then
-    sketchybar -m --set weather icon.color=0xfffabd2f # yellow for day
+    sketchybar -m --set $NAME icon.color=0xfffabd2f # yellow for day
 else
-    sketchybar -m --set weather icon.color=0xff689d6a # light aqua for night
-    sketchybar -m --set weather label.color=0xff8ec07c # light aqua for night
+    sketchybar -m --set $NAME icon.color=0xff689d6a # light aqua for night
 fi
 
-
-
-sketchybar -m \
-    --set weather \
-        icon="$icon" \
-        label="${temp}°"
+sketchybar -m --set $NAME icon="$icon"
+sketchybar -m --set $NAME label="${temp}°"

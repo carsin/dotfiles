@@ -62,20 +62,20 @@ sketchybar -m --add space four left \
 
 sketchybar -m --add space five left \
               --set five associated_display=2 \
-                        associated_space=6 \
+                        associated_space=5 \
                         icon=Z \
                         icon.padding_left=1 \
                         click_script="yabai -m space --focus 6" \
 
 sketchybar -m --add space six left \
               --set six associated_display=2 \
-                        associated_space=7 \
+                        associated_space=6 \
                         icon=X \
                         click_script="yabai -m space --focus 7" \
 
 sketchybar -m --add space seven left \
               --set seven associated_display=2 \
-                        associated_space=8 \
+                        associated_space=7 \
                         icon=C \
                         click_script="yabai -m space --focus 8" \
 
@@ -100,16 +100,16 @@ sketchybar -m --add item clock right \
                           label.padding_right=1 \
                           icon.padding_left=3 \
                           icon.padding_right=0 \
-                          icon=
 
 # Volume
 sketchybar -m --add item volume right \
               --set volume script="~/.config/sketchybar/plugins/volume.sh" \
+                           icon.padding_left=2 \
                            label.padding_right=6 \
                            label.padding_left=4 \
-                           icon.color=0xB2ffffff
+                           icon.color=0xB2ffffff \
                            lazy=off \
-                           update_freq=2
+                           update_freq=5
 
 # Battery
 sketchybar -m --add item battery right \
@@ -131,13 +131,14 @@ sketchybar -m --add graph cpu_user right 130 \
                              icon.padding_right=3 \
                              lazy=on \
               --add graph cpu_sys right 130 \
-              --set cpu_sys graph.color=0xff48aa2a \
+              --set cpu_sys graph.color=0xff48aa2a
 
 # Weather
 sketchybar -m --add item weather right \
-              --set weather update_freq=1800 \
+              --set weather update_freq=600 \
                             icon.padding_left=6 \
                             label.padding_right=24 \
+                            lazy=off \
                             script="~/.config/sketchybar/plugins/weather.sh" \
                             click_script="open https://darksky.net/forecast/35.2828,-120.6596/us12/en"
 
@@ -164,10 +165,12 @@ sketchybar -m --default icon.padding_right=0 \
               --add item spotify_next center \
               --set spotify_next click_script="~/.config/sketchybar/plugins/spotify.sh" \
                                  icon='' \
+                                    label.padding_left=0 \
+                                    icon.padding_left=6 \
               --add bracket spotify_control \
                             spotify_back \
                             spotify_play_pause \
-                            spotify_next \
+                            spotify_next
 
 sketchybar -m --update
 

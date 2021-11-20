@@ -113,7 +113,6 @@ if [[ $TERM =~ 'xterm-kitty' ]]; then
 fi
 source ~/.cache/wal/colors-tty.sh
 
-source ~/.config/zsh/.zshhidden
 export FZF_DEFAULT_COMMAND='rg --files --hidden -g "!.git" '
 export GPG_TTY=$TTY
 export TASKRC='~/.config/taskwarrior-tui/.taskrc'
