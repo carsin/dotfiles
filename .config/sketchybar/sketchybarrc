@@ -101,10 +101,36 @@ sketchybar -m --add item title left \
 sketchybar -m --add item clock right \
               --set clock update_freq=1 \
                           script="~/.config/sketchybar/plugins/clock.sh" \
-                          label.padding_left=2 \
+                          label.padding_left=0 \
                           label.padding_right=1 \
-                          icon.padding_left=3 \
                           icon.padding_right=0 \
+
+# Package monitor
+sketchybar -m --add item packages_total right \
+              --add event brew_upgrade \
+              --set packages_total update_freq=18000 \
+                                   script="~/.config/sketchybar/plugins/package_monitor.sh" \
+                                   label="" \
+                                   icon="" \
+                                   icon.highlight_color=0xff2a2f38 \
+                                   label.highlight_color=0xff2a2f38 \
+                                   icon.color=0xB2ffffff \
+                                   label.padding_right=2 \
+                                   lazy=off \
+              --subscribe packages_total brew_upgrade mouse.entered mouse.exited \
+              --add item packages_details right \
+              --set packages_details drawing=off \
+                                     label=loading \
+                                     label.color=0xff2a2f38 \
+                                     icon.padding_left=0 \
+                                     icon.padding_right=0 \
+                                     lazy=off \
+              --add bracket packages packages_total packages_details \
+              --set packages background.color=0xffe1e3e4 \
+                             background.height=13 \
+                             background.corner_radius=2 \
+                             background.drawing=off \
+                             lazy=off
 
 # Network up/down
 sketchybar -m --add item network_up right \
@@ -112,18 +138,20 @@ sketchybar -m --add item network_up right \
                                icon= \
                                icon.font="Tamzen:Medium:12.0" \
                                label.font="Tamzen:Medium:12.0" \
+                               label.color=0x7Fffffff \
                                label.highlight_color=0xff${lred} \
-                               y_offset=4 \
+                               y_offset=5 \
                                width=0 \
                                update_freq=2 \
                                script="~/.config/sketchybar/plugins/network.sh" \
               --add item network_down right \
               --set network_down icon= \
-                                 width=47 \
+                                 width=46 \
                                  icon.font="Tamzen:Medium:12.0" \
                                  label.font="Tamzen:Medium:12.0" \
+                                 label.color=0x7Fffffff \
                                  label.highlight_color=0xff${lblue} \
-                                 y_offset=-5
+                                 y_offset=-4
 
 # Volume
 sketchybar -m --add item volume right \

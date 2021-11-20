@@ -49,6 +49,9 @@ alias t0="tmux a -t 0"
 alias wttr="curl wttr.in/San+Luis+Obispo"
 alias wttr2="curl v2d.wttr.in/San+Luis+Obispo"
 
+alias sysupdate="source ~/bin/updatesyspackages.sh"
+alias updateall="source ~/bin/updatesyspackages.sh"
+
 alias w="wal -i ~/files/photos/wallpapers/wal/ && source ~/.config/sketchybar/sketchybarcolors && kitty @ --to unix:/tmp/mykitty set-colors ~/.cache/wal/colors-kitty.conf && pywalfox update"
 alias w1="wal --backend haishoku -i ~/files/photos/wallpapers/wal/ && source ~/.config/sketchybar/sketchybarcolors && kitty @ --to unix:/tmp/mykitty set-colors ~/.cache/wal/colors-kitty.conf && pywalfox update"
 alias w2="wal --backend colorz -i ~/files/photos/wallpapers/wal/ && source ~/.config/sketchybar/sketchybarcolors && kitty @ --to unix:/tmp/mykitty set-colors ~/.cache/wal/colors-kitty.conf && pywalfox update"

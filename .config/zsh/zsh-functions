@@ -29,3 +29,12 @@ function zsh_add_completion() {
 	completion_file="$(basename "${completion_file_path}")"
 	if [ "$2" = true ] && compinit "${completion_file:1}"
 }
+
+# Sketchybar package monitor update
+function brew() {
+  command brew "$@"
+
+  if [[ $* =~ "upgrade" ]]; then
+    sketchybar -m --trigger brew_upgrade
+  fi
+}

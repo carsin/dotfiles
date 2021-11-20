@@ -7,7 +7,7 @@ cactv=$(echo $color3 | sed 's/#//')
 cnorm=$(echo $color1 | sed 's/#//')
 cinse=$(echo $foreground | sed 's/#//')
 
-# 90% = D8, 80% = CC, 70% = B2
+# 90% = D8, 80% = CC, 70% = B2, 50% = 7F, 40% = 66
 sketchybar -m --bar color=0xB2$cback
 sketchybar -m --default icon.highlight_color=0xff$cfore
 sketchybar -m --default label.color=0xff$cfore
