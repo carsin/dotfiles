@@ -3,9 +3,15 @@
 # TODO: https://github.com/FelixKratz/SketchyBar/discussions/12
 # cpu mini, network mini, spotify controls look cool
 
+# gruvbox colors
+lred=fb4934
+red=cc241d
+blue=458588
+lblue=83a598
+
 echo "sketchybar: loading configuration..."
 # BAR SETUP
-sketchybar -m --bar height=18       \
+sketchybar -m --bar height=19       \
                     position=top    \
                     padding_left=5  \
                     padding_right=5 \
@@ -80,7 +86,6 @@ sketchybar -m --add space seven left \
                         click_script="yabai -m space --focus 8" \
 
 ################## LEFT ITEMS ##################
-
 # Window Title
 sketchybar -m --add item title left \
               --set title label.padding_left=3 \
@@ -101,10 +106,29 @@ sketchybar -m --add item clock right \
                           icon.padding_left=3 \
                           icon.padding_right=0 \
 
+# Network up/down
+sketchybar -m --add item network_up right \
+              --set network_up lazy=off \
+                               icon= \
+                               icon.font="Tamzen:Medium:12.0" \
+                               label.font="Tamzen:Medium:12.0" \
+                               label.highlight_color=0xff${lred} \
+                               y_offset=4 \
+                               width=0 \
+                               update_freq=2 \
+                               script="~/.config/sketchybar/plugins/network.sh" \
+              --add item network_down right \
+              --set network_down icon= \
+                                 width=47 \
+                                 icon.font="Tamzen:Medium:12.0" \
+                                 label.font="Tamzen:Medium:12.0" \
+                                 label.highlight_color=0xff${lblue} \
+                                 y_offset=-5
+
 # Volume
 sketchybar -m --add item volume right \
               --set volume script="~/.config/sketchybar/plugins/volume.sh" \
-                           icon.padding_left=2 \
+                           icon.padding_left=0 \
                            label.padding_right=6 \
                            label.padding_left=4 \
                            icon.color=0xB2ffffff \
@@ -122,16 +146,20 @@ sketchybar -m --add item battery right \
                             icon.padding_right=3
 
 # Cpu usage graph
-sketchybar -m --add graph cpu_user right 130 \
+sketchybar -m --add graph cpu_user right 100 \
               --set cpu_user script="~/.config/sketchybar/plugins/cpu_graph.sh" \
                              graph.color=0xffffffff \
-                             update_freq=5 \
-                             width=0 \
                              icon.color=0xfffabd2f \
-                             icon.padding_right=3 \
+                             icon.padding_right=2 \
+                             icon.y_offset=-2 \
+                             update_freq=10 \
+                             width=0 \
                              lazy=on \
-              --add graph cpu_sys right 130 \
+                             y_offset=2 \
+              --add graph cpu_sys right 100 \
               --set cpu_sys graph.color=0xff48aa2a
+                            width=0 \
+                            y_offset=2
 
 # Weather
 sketchybar -m --add item weather right \
