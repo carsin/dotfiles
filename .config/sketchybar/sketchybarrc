@@ -105,6 +105,16 @@ sketchybar -m --add item clock right \
                           label.padding_right=1 \
                           icon.padding_right=0 \
 
+# Battery
+sketchybar -m --add item battery right \
+              --set battery update_freq=10 \
+                            script="~/.config/sketchybar/plugins/power.sh" \
+                            icon= \
+                            label.padding_left=2 \
+                            label.padding_right=0 \
+                            icon.padding_left=6 \
+                            icon.padding_right=2
+
 # Package monitor
 sketchybar -m --add item packages_total right \
               --add event brew_upgrade \
@@ -156,22 +166,12 @@ sketchybar -m --add item network_up right \
 # Volume
 sketchybar -m --add item volume right \
               --set volume script="~/.config/sketchybar/plugins/volume.sh" \
-                           icon.padding_left=0 \
+                           icon.padding_left=4 \
                            label.padding_right=6 \
                            label.padding_left=4 \
                            icon.color=0xB2ffffff \
                            lazy=off \
                            update_freq=5
-
-# Battery
-sketchybar -m --add item battery right \
-              --set battery update_freq=10 \
-                            script="~/.config/sketchybar/plugins/power.sh" \
-                            icon= \
-                            label.padding_left=2 \
-                            label.padding_right=4 \
-                            icon.padding_left=0 \
-                            icon.padding_right=3
 
 # Cpu usage graph
 sketchybar -m --add graph cpu_user right 100 \

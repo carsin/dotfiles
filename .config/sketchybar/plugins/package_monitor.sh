@@ -3,7 +3,7 @@
 update() {
   # specify the package managers you want the program to use
   # valid manager names "brew" "npm" "yarn" "apm" "mas" "pip" and "gem"
-  USE='brew pip npm gem mas'
+  USE='brew pip3 npm gem mas'
 
   # Checks to see if the brew command is avaliable and the package manager is in the enabled list above.
   if [[ -x "$(command -v brew)" ]] && [[ $USE == *"brew"* ]]; then
@@ -136,8 +136,6 @@ update() {
   else
     FINAL="$ZERO"
   fi
-
-echo $FINAL
 
   sketchybar -m --set packages_total label="$FINAL" \
                 --set packages_details label="Brew: $(echo ${BREW:-DEFAULT} | awk '{$1=$1};1'), Gem: $(echo ${GEM:-DEFAULT} | awk '{$1=$1};1'), Pip: $(echo ${PIP:-DEFAULT} | awk '{$1=$1};1'), NPM: $(echo ${NPM:-DEFAULT} | awk '{$1=$1};1')"
