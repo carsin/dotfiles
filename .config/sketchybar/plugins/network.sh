@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-UPDOWN=$(ifstat -i "en6" -b 0.1 1 | tail -n1)
+UPDOWN=$(ifstat -i "en6,en0" -b 0.1 1 | tail -n1)
 DOWN=$(echo $UPDOWN | awk "{ print \$1 }" | cut -f1 -d ".")
 UP=$(echo $UPDOWN | awk "{ print \$2 }" | cut -f1 -d ".")
 
