@@ -6,15 +6,12 @@ UP_ETH=$(echo $UPDOWN | awk "{ print \$4 }" | cut -f1 -d ".")
 DOWN_ETH=$(echo $UPDOWN | awk "{ print \$3 }" | cut -f1 -d ".")
 UP=""
 DOWN=""
-echo $UPDOWN
 if [[ $UP_ETH != "n/a" ]]; then
   UP=$((UP_WIFI + UP_ETH))
   DOWN=$((DOWN_WIFI + DOWN_ETH))
-  echo "Y"
 else
   UP=$UP_WIFI
   DOWN=$DOWN_WIFI
-  echo "N"
 fi
 
 UP_FORMAT=""
@@ -30,7 +27,6 @@ if [[ "$DOWN" -gt 999 ]]; then
 else
   DOWN_FORMAT=$(echo $DOWN | awk '{ printf "%.0f kbps", $1}')
 fi
-
 
 sketchybar -m --set network_up label="$UP_FORMAT" label.highlight=$(if [[ "$UP" -gt 0 ]]; then echo "on"; else echo "off"; fi)
 sketchybar -m --set network_down label="$DOWN_FORMAT" label.highlight=$(if [[ "$DOWN" -gt 0 ]]; then echo "on"; else echo "off"; fi)
