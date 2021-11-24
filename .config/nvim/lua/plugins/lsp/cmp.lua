@@ -69,7 +69,7 @@ cmp.setup {
     { name = 'calc' },
     { name = 'buffer', keyword_length = 5, max_item_count = 5 },
     { name = 'spell' },
-    { name = 'tmux', opts = { all_panes = false }},
+    { name = 'tmux', options = { all_panes = false }},
     -- { name = 'cmp_tabnine', priority = 50 },
   },
 	formatting = {
