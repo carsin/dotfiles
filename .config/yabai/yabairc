@@ -8,7 +8,7 @@ yabai -m config window_placement             second_child
 yabai -m config window_opacity               on
 yabai -m config window_opacity_duration      0.0
 yabai -m config active_window_opacity        1.0
-yabai -m config normal_window_opacity        0.95
+yabai -m config normal_window_opacity        0.90
 
 # floating windows are always on top (default: off)
 yabai -m config window_topmost               off
@@ -74,6 +74,7 @@ yabai -m rule --add app="FaceTime" manage=off
 yabai -m rule --add app="Photo Booth" manage=off
 yabai -m rule --add app="Messages" manage=off
 yabai -m rule --add title="--yabai$" manage=off
+yabai -m rule --add app="Firefox" opacity=1.0
 
 # wal settings
 source ~/.cache/wal/colors.sh # pywal scheme - update if needed
