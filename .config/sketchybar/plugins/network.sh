@@ -1,14 +1,12 @@
 #!/usr/bin/env bash
-UPDOWN=$(ifstat -i "en0,en6" -b 0.1 1 | tail -n1)
+UPDOWN=$(ifstat -i "en0,en6" -b 0.1 2 | tail -n1)
 UP_WIFI=$(echo $UPDOWN | awk "{ print \$2 }" | cut -f1 -d ".")
 DOWN_WIFI=$(echo $UPDOWN | awk "{ print \$1 }" | cut -f1 -d ".")
 UP_ETH=$(echo $UPDOWN | awk "{ print \$4 }" | cut -f1 -d ".")
 DOWN_ETH=$(echo $UPDOWN | awk "{ print \$3 }" | cut -f1 -d ".")
-UP=""
-DOWN=""
 if [[ $UP_ETH != "n/a" ]]; then
-  UP=$((UP_WIFI + UP_ETH))
-  DOWN=$((DOWN_WIFI + DOWN_ETH))
+  UP=$(($UP_WIFI + $UP_ETH))
+  DOWN=$(($DOWN_WIFI + $DOWN_ETH))
 else
   UP=$UP_WIFI
   DOWN=$DOWN_WIFI

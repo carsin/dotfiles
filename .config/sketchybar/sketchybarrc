@@ -1,4 +1,5 @@
 #!/usr/bin/env sh
+
 #                          ﱦ 齃     ﮂ  ﵁ 爵        ﭵ     ﱦ  ﰊ 異 ﴱ אַ  'Y⃣'
 # TODO: https://github.com/FelixKratz/SketchyBar/discussions/12
 # cpu mini, network mini, spotify controls look cool
@@ -41,7 +42,7 @@ sketchybar -m --add space one left \
                         associated_space=1 \
                         icon.padding_left=2 \
                         icon=I \
-                        label=dev \
+                        label=mind \
                         click_script="yabai -m space --focus 1" \
                         icon_padding_left=0
 
@@ -56,14 +57,14 @@ sketchybar -m --add space three left \
               --set three associated_display=1 \
                           associated_space=3 \
                           icon=III \
-                          label=mind \
+                          label=dev \
                           click_script="yabai -m space --focus 3" \
 
 sketchybar -m --add space four left \
               --set four associated_display=1 \
                          associated_space=4 \
                          icon=IV \
-                         label=idle \
+                         label=etc \
                          click_script="yabai -m space --focus 4" \
 
 sketchybar -m --add space five left \
@@ -125,8 +126,8 @@ sketchybar -m --add item network_up right \
                                label.highlight_color=0xff${lred} \
                                y_offset=5 \
                                width=0 \
-                               update_freq=2 \
                                script="~/.config/sketchybar/plugins/network.sh" \
+                               update_freq=2 \
               --add item network_down right \
               --set network_down icon= \
                                  width=46 \

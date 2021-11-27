@@ -1,4 +1,4 @@
-#!/usr/bin/env sh
+#!/usr/bin/env bash
 source ~/.cache/wal/colors.sh
 
 cback=$(echo $background | sed 's/#//')
