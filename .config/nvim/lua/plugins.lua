@@ -244,7 +244,7 @@ return packer.startup({ function(use)
   use { -- tpopes commentary with extras such as gcA and gcO
     'numToStr/Comment.nvim',
     config = function()
-        require('Comment').setup()
+      require('Comment').setup()
     end
   }
   use { -- neogit, magit for neovim
@@ -261,13 +261,16 @@ return packer.startup({ function(use)
       require'plugins.truezen'
     end
   }
-  
+
   -- TODO: Fix phantom <CR> on startup
   use { -- alpha startup screen; startify & dashboard but developed
     'goolord/alpha-nvim',
     requires = 'Shatur/neovim-session-manager',
-    config = function ()
-        require'alpha'.setup(require'alpha.themes.dashboard'.opts)
+    config = function()
+      require('session_manager').setup({
+        autoload_mode = require('session_manager.config').AutoloadMode.Disabled
+      })
+      require'alpha'.setup(require'alpha.themes.dashboard'.opts)
     end
   }
 end,
