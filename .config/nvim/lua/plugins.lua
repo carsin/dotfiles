@@ -226,12 +226,12 @@ return packer.startup({ function(use)
     end,
   }
 
-  use { -- nvim tree
-    'kyazdani42/nvim-tree.lua',
-    config = function()
-      require'plugins.nvimtree'
-    end,
-  }
+  -- use { -- nvim tree
+  --   'kyazdani42/nvim-tree.lua',
+  --   config = function()
+  --     require'plugins.nvimtree'
+  --   end,
+  -- }
 
   use { -- gitsigns
     'lewis6991/gitsigns.nvim',
