@@ -262,7 +262,6 @@ return packer.startup({ function(use)
     end
   }
 
-  -- TODO: Fix phantom <CR> on startup
   use { -- alpha startup screen; startify & dashboard but developed
     'goolord/alpha-nvim',
     requires = 'Shatur/neovim-session-manager',
@@ -270,7 +269,7 @@ return packer.startup({ function(use)
       require('session_manager').setup({
         autoload_mode = require('session_manager.config').AutoloadMode.Disabled
       })
-      require'alpha'.setup(require'alpha.themes.dashboard'.opts)
+      require'plugins.alpha'
     end
   }
 end,
