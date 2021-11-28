@@ -100,14 +100,6 @@ return packer.startup({ function(use)
     end
   }
 
-  -- use {
-  --   'kosayoda/nvim-lightbulb',
-  --   config = function()
-  --     vim.cmd [[autocmd CursorHold,CursorHoldI * lua require'nvim-lightbulb'.update_lightbulb()]]
-  --     -- vim.fn.sign_define('LightBulbSign', { text = "?", texthl = "", linehl="", numhl="" })
-  --   end
-  -- }
-
   use { -- telescope
     'nvim-telescope/telescope.nvim',
     requires = {
