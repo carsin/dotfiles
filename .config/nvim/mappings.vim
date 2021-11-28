@@ -20,6 +20,7 @@ function! WriteSavePosition()
 endfunction
 " nnoremap <silent><leader>s :silent :call WriteSavePosition()<cr>
 nnoremap <silent><leader>hs :w<cr>
+nnoremap <silent><leader>hw :TrimWhitespace<cr>
 nnoremap <silent><F5> :w<cr>
 
  " Clear search highlight

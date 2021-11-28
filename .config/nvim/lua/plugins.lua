@@ -26,10 +26,6 @@ return packer.startup({ function(use)
   -- https://github.com/michaelb/sniprun <-- THIS IS AWESOME
     -- dep: https://github.com/rcarriga/nvim-notify
   -- https://github.com/glacambre/firenvim
-
-  -- CHOOSE:
-    -- neorg
-    -- https://github.com/preservim/vim-pencil
   use 'lewis6991/impatient.nvim'
   use 'wbthomason/packer.nvim'
   use 'nvim-lua/popup.nvim'
@@ -48,15 +44,6 @@ return packer.startup({ function(use)
   use 'vimwiki/vimwiki' -- Replace? https://github.com/oberblastmeister/neuron.nvim
   use 'kyazdani42/nvim-web-devicons'
   use 'nathom/filetype.nvim'
-
-  -- TODO: Fix phantom <CR> on startup
-  -- use { -- alpha startup screen; startify & dashboard but developed
-  --   'goolord/alpha-nvim',
-  --   requires = 'Shatur/neovim-session-manager',
-  --   config = function ()
-  --       require'alpha'.setup(require'alpha.themes.dashboard'.opts)
-  --   end
-  -- }
 
   use { -- lsp config
     'neovim/nvim-lspconfig',
@@ -272,6 +259,15 @@ return packer.startup({ function(use)
     'Pocco81/TrueZen.nvim',
     config = function()
       require'plugins.truezen'
+    end
+  }
+  
+  -- TODO: Fix phantom <CR> on startup
+  use { -- alpha startup screen; startify & dashboard but developed
+    'goolord/alpha-nvim',
+    requires = 'Shatur/neovim-session-manager',
+    config = function ()
+        require'alpha'.setup(require'alpha.themes.dashboard'.opts)
     end
   }
 end,

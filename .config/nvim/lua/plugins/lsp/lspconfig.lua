@@ -93,6 +93,8 @@ M.on_attach = function(client, bufnr)
     augroup END
     ]], false)
   end
+  -- Show line diagnostics on hover
+  vim.api.nvim_exec([[ autocmd CursorHold * lua vim.lsp.diagnostic.show_line_diagnostics({border="none", focusable=false}) ]], false)
 end
 
 M.get_config = function()

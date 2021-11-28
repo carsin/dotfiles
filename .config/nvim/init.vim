@@ -101,15 +101,13 @@ set undodir=~/.cache/nvim/undo
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 
 " Delete trailing whitespace
-function! StripTrailingWhitespace()
-  if &modifiable
-    normal mZ
-    let l:chars = col("$")
-    silent %s/\s\+$//e
-    normal `Z
-  endif
-endfunction
-autocmd CursorHold * call StripTrailingWhitespace()
+function! TrimWhitespace()
+    let l:save = winsaveview()
+    keeppatterns %s/\s\+$//e
+    call winrestview(l:save)
+    echo 'Trimmed trailing whitespace!'
+endfun
+command! TrimWhitespace call TrimWhitespace()
 
 " Turn off paste mode when leaving insert
 autocmd InsertLeave * set nopaste
@@ -120,14 +118,6 @@ autocmd InsertLeave * set nopaste
 " Enable true color
 set background=dark
 " set t_Co=256
-
-" TODO: Fix, doesn't work? maybe gruvbox is still overriding
-" Override the colorschemes default colors whenever a scheme is sourced
-" highlight VertSplit ctermbg=0 ctermfg=237
-" augroup OverrideColors
-"     autocmd!
-"     autocmd ColorScheme * highlight VertSplit ctermbg=0 ctermfg0235
-" augroup END
 
 let g:gruvbox_material_transparent_background = 1
 let g:gruvbox_material_enable_italic = 1
@@ -173,10 +163,6 @@ let &fcs='eob: '       " No idiotic eob tildas
 " set winheight=15
 " set winminheight=15
 
-" Show line diagnostics on hover
-" TODO: Move to lspconfig.lua
-autocmd CursorHold * lua vim.lsp.diagnostic.show_line_diagnostics({border="none", focusable=false})
-
 " Set completeopt to have a better completion experience
 set completeopt=menuone,noselect
 " Avoid showing extra messages when using completion
@@ -187,11 +173,11 @@ set foldmethod=expr
 set foldexpr=nvim_treesitter#foldexpr()
 
 " Only show relative numbers in focused normal mode
-augroup numbertoggle
-  autocmd!
-  autocmd BufEnter,FocusGained,InsertLeave,WinEnter * if &nu && mode() != "i" | set rnu   | set cursorline   | endif
-  autocmd BufLeave,FocusLost,InsertEnter,WinLeave   * if &nu                  | set nornu | set nocursorline | endif
-augroup END
+" augroup numbertoggle
+"   autocmd!
+"   autocmd BufEnter,FocusGained,InsertLeave,WinEnter * if &ft != "alpha" && &nu && mode() != "i" | set rnu   | set cursorline   | endif
+"   autocmd BufLeave,FocusLost,InsertEnter,WinLeave   * if &ft != "alpha" && &nu                  | set nornu | set nocursorline | endif
+" augroup END
 
 " Highlight yank
 augroup highlight_yank
