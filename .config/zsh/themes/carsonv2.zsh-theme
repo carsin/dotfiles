@@ -28,7 +28,7 @@ add-zsh-hook chpwd .prompt.chpwd
 .prompt.chpwd
  
 
-PS1='%B%F{1}%n%b%F{2}@%F{4}%m %F{5}> %F{8}[%F{7} %~ %F{8}] 
+PS1='%F{1}%n%F{2}@%B%F{4}%m%b %F{5}> %F{8}[%F{7} %~ %F{8}] 
 %F{%(?,5,3)}$%f '
 #
 ZLE_RPROMPT_INDENT=0     # Right prompt margin
