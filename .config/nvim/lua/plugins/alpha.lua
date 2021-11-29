@@ -180,7 +180,8 @@ local buttons = {
 
 local foot_hl = pick_color()
 local date = os.date("%a, %b %d ")
-local footer = {
+local time = os.date("%I:%M:%S %p")
+local datedisplay = {
     type = "text",
     val = "┌─         Today is " .. date .. "      ─┐",
     opts = {
@@ -188,6 +189,16 @@ local footer = {
         hl = foot_hl,
     }
 }
+
+local timedisplay = {
+    type = "text",
+    val = "│         Loaded at " .. time .. "         │",
+    opts = {
+        position = "center",
+        hl = foot_hl,
+    }
+}
+
 
 local plugins = #vim.tbl_keys(packer_plugins)
 local plugin_count = {
@@ -212,7 +223,8 @@ local section = {
     header = header,
     heading = heading,
     buttons = buttons,
-    footer = footer,
+    datedisplay = datedisplay,
+    timedisplay = timedisplay,
     plugin_count = plugin_count,
 }
 
@@ -224,7 +236,8 @@ local opts = {
         {type = "padding", val = 1},
         section.buttons,
         {type = "padding", val = 1},
-        section.footer,
+        section.datedisplay,
+        section.timedisplay,
         section.plugin_count,
     },
     opts = {

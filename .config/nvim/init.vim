@@ -173,11 +173,11 @@ set foldmethod=expr
 set foldexpr=nvim_treesitter#foldexpr()
 
 " Only show relative numbers in focused normal mode
-" augroup numbertoggle
-"   autocmd!
-"   autocmd BufEnter,FocusGained,InsertLeave,WinEnter * if &ft != "alpha" && &nu && mode() != "i" | set rnu   | set cursorline   | endif
-"   autocmd BufLeave,FocusLost,InsertEnter,WinLeave   * if &ft != "alpha" && &nu                  | set nornu | set nocursorline | endif
-" augroup END
+augroup numbertoggle
+  autocmd!
+  autocmd BufEnter,FocusGained,InsertLeave,WinEnter * if &ft != "alpha" && &nu && mode() != "i" | set rnu   | set cursorline   | endif
+  autocmd BufLeave,FocusLost,InsertEnter,WinLeave   * if &ft != "alpha" && &nu                  | set nornu | set nocursorline | endif
+augroup END
 
 " Highlight yank
 augroup highlight_yank

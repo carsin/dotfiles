@@ -20,8 +20,8 @@ function! WriteSavePosition()
 endfunction
 " nnoremap <silent><leader>s :silent :call WriteSavePosition()<cr>
 nnoremap <silent><leader>hs :w<cr>
-nnoremap <silent><leader>hw :TrimWhitespace<cr>
 nnoremap <silent><F5> :w<cr>
+" nnoremap <silent><leader>hw :TrimWhitespace<cr>
 
  " Clear search highlight
 nnoremap <silent><leader><space> :let @/ = ""<CR>
@@ -150,8 +150,15 @@ nmap <expr> F reg_recording() . reg_executing() == "" ? "<Plug>Lightspeed_F" : "
 nmap <expr> t reg_recording() . reg_executing() == "" ? "<Plug>Lightspeed_t" : "t"
 nmap <expr> T reg_recording() . reg_executing() == "" ? "<Plug>Lightspeed_T" : "T"
 
+" Save buffer before opening fterm, but not in startup screen
+function! OpenTerm()
+  if &ft != "alpha"
+    exe 'silent :w!'
+  endif
+  exe 'lua require("FTerm").toggle()'
+endfunction
 " FTerm
-nnoremap <silent> <leader>t <CMD>:w<CR><CMD>lua require("FTerm").toggle()<CR>
+nnoremap <silent> <leader>t <CMD>call OpenTerm()<CR>
 nnoremap <silent> <C-t> <CMD>:w<CR><CMD>lua require("FTerm").toggle()<CR>
 tnoremap <silent> <C-t> <CMD>lua require("FTerm").toggle()<CR>
 tnoremap <silent> <C-q> <CMD>lua require("FTerm").toggle()<CR>
