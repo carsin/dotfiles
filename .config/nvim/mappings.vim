@@ -128,7 +128,7 @@ nnoremap gw :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar><CR>
 " Find files using Telescope command-line sugar.
 nnoremap <leader>f <cmd>Telescope find_files<cr>
 nnoremap <leader>s <cmd>Telescope live_grep<cr>
-nnoremap <leader>pp <cmd>lua require'telescope'.extensions.project.project{ display_type = 'full' }<Cr>
+nnoremap <leader>pp <cmd>lua require'telescope'.extensions.project.project{ display_type = 'full' }<cr>
 nnoremap <leader>ps <cmd>Telescope sessions [save_current=true]<cr>
 nnoremap <leader>ws <cmd>lua require('telescope').extensions.vimwiki.vimwiki({})<cr>
 nnoremap <leader>wg <cmd>Telescope vimwiki live_grep<cr>

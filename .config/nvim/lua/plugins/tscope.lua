@@ -121,5 +121,5 @@ telescope.load_extension('fzf')
 telescope.load_extension('project')
 telescope.load_extension('vimwiki')
 telescope.load_extension('frecency')
--- telescope.load_extension('sessions')
+telescope.load_extension('sessions')
 return M;
