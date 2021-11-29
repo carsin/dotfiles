@@ -88,7 +88,12 @@ path+=("")
 source "$ZDOTDIR/zsh-aliases"
 
 # load prompt theme
-source ~/.config/zsh/themes/carsonv2.zsh-theme
+if [[ $TERM =~ 'xterm-kitty' || $TERM =~ 'alacritty' ||$TERM =~ 'screen-256color' ]];
+then
+    source ~/.config/zsh/themes/carsonv2.zsh-theme # load prompt with \n $
+else
+    source ~/.config/zsh/themes/vimterm.zsh-theme # basic prompt
+fi
 
 # set kitty colors
 if [[ $TERM =~ 'xterm-kitty' ]]; then

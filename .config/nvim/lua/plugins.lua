@@ -44,6 +44,7 @@ return packer.startup({ function(use)
   use 'vimwiki/vimwiki' -- Replace? https://github.com/oberblastmeister/neuron.nvim
   use 'kyazdani42/nvim-web-devicons'
   use 'nathom/filetype.nvim'
+  -- use 'rcarriga/nvim-notify' -- TODO: config file
 
   use { -- lsp config
     'neovim/nvim-lspconfig',
@@ -275,8 +276,10 @@ return packer.startup({ function(use)
 
   use {  -- sniprun
     'michaelb/sniprun',
-    requires = 'https://github.com/rcarriga/nvim-notify',
-    run = 'bash ./install.sh'
+    run = 'bash ./install.sh',
+    config = function()
+      require'settings.sniprun'
+    end
   }
 end,
 config = {

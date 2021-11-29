@@ -160,7 +160,7 @@ local buttons = {
     button("o", "  > Search files", ":Telescope find_files<CR>"),
     button("r", "  > Frequently opened files" , "<cmd>lua require('telescope').extensions.frecency.frecency()<cr>"),
     button("p", "  > Browse projects" , "<cmd>lua require'telescope'.extensions.project.project{ display_type = 'full' }<cr>"),
-    button("u", "  > Update plugins", ":PackerSync<CR>"),
+    button("s", "  > Sync plugins", ":PackerSync<CR>"),
     button("q", "  > Quit NVIM", ":qa<CR>"),
   },
   opts = {

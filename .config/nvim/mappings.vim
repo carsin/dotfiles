@@ -19,7 +19,7 @@ function! WriteSavePosition()
     call setpos('.', pos)
 endfunction
 " nnoremap <silent><leader>s :silent :call WriteSavePosition()<cr>
-nnoremap <silent><leader>hs :w<cr>
+nnoremap <silent><leader>w :w<cr>
 nnoremap <silent><F5> :w<cr>
 " nnoremap <silent><leader>hw :TrimWhitespace<cr>
 
@@ -62,8 +62,9 @@ nnoremap <leader>b :split<CR>
 nnoremap <C-c> :close<CR>
 
 " Vim plug ease of use bindings
-nnoremap <leader>ps <cmd>:PackerSync<CR>
-nnoremap <leader>pc <cmd>:PackerCompile<CR>
+nnoremap <leader>ps :PackerSync<CR>
+nnoremap <leader>pc :PackerCompile profile=true<CR>
+nnoremap <leader>pd :PackerProfile<CR>
 
 " Quit everything with :qq / Q
 cmap qq qa!
@@ -130,7 +131,7 @@ nnoremap gw :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar><CR>
 nnoremap <leader>f <cmd>Telescope find_files<cr>
 nnoremap <leader>s <cmd>Telescope live_grep<cr>
 nnoremap <leader>pp <cmd>lua require'telescope'.extensions.project.project{ display_type = 'full' }<cr>
-nnoremap <leader>ps <cmd>Telescope sessions [save_current=true]<cr>
+nnoremap <leader>h <cmd>Telescope sessions [save_current=true]<cr>
 nnoremap <leader>ws <cmd>lua require('telescope').extensions.vimwiki.vimwiki({})<cr>
 nnoremap <leader>wg <cmd>Telescope vimwiki live_grep<cr>
 nnoremap <leader>r <cmd>lua require('telescope').extensions.frecency.frecency()<cr>
@@ -206,6 +207,10 @@ nnoremap <silent><F4> <cmd>:silent TZAtaraxis<cr>
 " unmap this, as it overrides my <BS> map
 nmap <F21> <Plug>VimwikiGoBackLink
 
+
 " Sniprun
-nmap <leader>c <Plug>SnipRun
-vmap <leader>c <Plug>SnipRun
+nmap <silent> <leader>cr :lua require'sniprun'.run()<CR>
+vmap <silent> <leader>cr :lua require'sniprun'.run()<CR>
+nmap <leader>cx <Cmd>:SnipReset<CR> 
+nmap <leader>cc <Plug>SnipClose
+

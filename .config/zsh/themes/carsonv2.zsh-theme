@@ -30,7 +30,7 @@ add-zsh-hook chpwd .prompt.chpwd
 
 PS1='%F{1}%n%F{2}@%B%F{4}%m%b %F{5}> %F{8}[%F{7} %~ %F{8}] 
 %F{%(?,5,3)}$%f '
-#
+
 ZLE_RPROMPT_INDENT=0     # Right prompt margin
 setopt transientrprompt  # Auto-remove the right side of each prompt.
 
