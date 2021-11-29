@@ -5,11 +5,11 @@ fortune ~/.config/fortune/fortunes
 (cat ~/.cache/wal/sequences &)
 
 # Enable Powerlevel10k instant prompt.
-if [[ $TERM =~ 'xterm-kitty' || $TERM =~ 'alacritty' ]]; then
-    if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-        source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-    fi
-fi
+# if [[ $TERM =~ 'xterm-kitty' || $TERM =~ 'alacritty' ]]; then
+#     if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+#         source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+#     fi
+# fi
 
 # Useful options & defaults
 setopt autocd extendedglob nomatch menucomplete
@@ -58,7 +58,6 @@ source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 # Plugins (provided by zsh-functions)
 zsh_add_plugin "zsh-users/zsh-autosuggestions"
 zsh_add_plugin "hlissner/zsh-autopair"
-# zsh_add_plugin "agkozak/zsh-z"
 eval "$(zoxide init zsh)" # zoxide
 
 # Accept autosuggestion
@@ -98,16 +97,10 @@ path+=("")
 # import aliases
 source "$ZDOTDIR/zsh-aliases"
 
-if [[ $TERM =~ 'xterm-kitty' || $TERM =~ 'alacritty' ||$TERM =~ 'screen-256color' ]];
-then
-    # load p10k
-    source /usr/local/opt/powerlevel10k/powerlevel10k.zsh-theme
-    [[ ! -f ~/.config/zsh/.p10k.zsh ]] || source ~/.config/zsh/.p10k.zsh
-else
-    # basic prompt
-    source ~/.config/zsh/themes/vimterm.zsh-theme
-fi
+# load prompt theme
+source ~/.config/zsh/themes/marlon.zsh-theme
 
+# set kitty colors
 if [[ $TERM =~ 'xterm-kitty' ]]; then
     kitty @ --to unix:/tmp/mykitty --to unix:/tmp/mykitty set-colors ~/.cache/wal/colors-kitty.conf
 fi
