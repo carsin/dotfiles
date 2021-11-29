@@ -8,8 +8,8 @@ autoload -Uz add-zsh-hook
 #  4 -> solid underscore
 #  5 -> blinking vertical bar
 #  6 -> solid vertical bar
-.prompt.cursor.executing() { print -n '\e[6 q'; true }
-.prompt.cursor.cmd()       { print -n '\e[2 q'; true }
+.prompt.cursor.executing() { print -n '\e[3 q'; true }
+.prompt.cursor.cmd()       { print -n '\e[1 q'; true }
 add-zsh-hook preexec .prompt.cursor.executing  # when executing a command
 add-zsh-hook precmd  .prompt.cursor.cmd        # when the command line is active
 .prompt.cursor.cmd
@@ -18,7 +18,7 @@ add-zsh-hook precmd  .prompt.cursor.cmd        # when the command line is active
 setopt cdsilent pushdsilent  # Suppress built-in output of cd and pushd.
 .prompt.chpwd() {
   zle && zle -I                 # Prepare the line editor for our output.
-  print -P -- '\n%F{7}%~%f/'   # -P expands prompt escape codes.
+  # print -P -- '\n%F{7}%~%f/'   # -P expands prompt escape codes.
   RPS1=
   zle && [[ $CONTEXT == start ]] &&
       .prompt.git-status.async  # Update git status, if on primary prompt.
@@ -27,7 +27,8 @@ setopt cdsilent pushdsilent  # Suppress built-in output of cd and pushd.
 add-zsh-hook chpwd .prompt.chpwd
 .prompt.chpwd
 
-PS1='%B%F{1}%n%b%F{7}@%F{5}%m %F{%(?,7,6)}$%f '
+PS1='%F{8}[%B%F{1}%n%b%F{2}@%F{4}%m%F{8}] %F{5}> %F{7}%~ 
+%F{%(?,5,3)}$%f '
 
 ZLE_RPROMPT_INDENT=0     # Right prompt margin
 setopt transientrprompt  # Auto-remove the right side of each prompt.

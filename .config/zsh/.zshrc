@@ -4,13 +4,6 @@ fortune ~/.config/fortune/fortunes
 # Import colorscheme from wal asynchronously
 (cat ~/.cache/wal/sequences &)
 
-# Enable Powerlevel10k instant prompt.
-# if [[ $TERM =~ 'xterm-kitty' || $TERM =~ 'alacritty' ]]; then
-#     if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-#         source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-#     fi
-# fi
-
 # Useful options & defaults
 setopt autocd extendedglob nomatch menucomplete
 setopt interactive_comments
@@ -63,6 +56,7 @@ eval "$(zoxide init zsh)" # zoxide
 # Accept autosuggestion
 bindkey '^ ' autosuggest-accept
 # bindkey '^l' autosuggest-accept
+# bindkey '<Tab>' autosuggest-accept
 
 # Use lf to switch directories and bind it to ctrl-f
 lfcd () {
@@ -76,9 +70,6 @@ lfcd () {
 }
 bindkey -s '^f' 'cd "$(dirname "$(fzf)")"\n'
 bindkey -s '^o' 'lfcd\n'
-
-# tab to accept suggestion
-# bindkey '<Tab>' autosuggest-accept
 
 # Edit line in vim with ctrl-e:
 autoload edit-command-line; zle -N edit-command-line
@@ -104,7 +95,6 @@ source ~/.config/zsh/themes/marlon.zsh-theme
 if [[ $TERM =~ 'xterm-kitty' ]]; then
     kitty @ --to unix:/tmp/mykitty --to unix:/tmp/mykitty set-colors ~/.cache/wal/colors-kitty.conf
 fi
-source ~/.cache/wal/colors-tty.sh
 
 export FZF_DEFAULT_COMMAND='rg --files --hidden -g "!.git" '
 export GPG_TTY=$TTY
