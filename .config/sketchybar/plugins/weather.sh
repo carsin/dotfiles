@@ -117,10 +117,10 @@ is_day=$(echo $data | jq -r '.current.is_day')
 [ "$is_day" = "1" ] && icon=${weather_icons_day[$condition]} || icon=${weather_icons_night[$condition]}
 
 if [[ $is_day -eq "1" ]]; then
-    sketchybar -m --set $NAME icon.color=0xfffabd2f # yellow for day
+    sketchybar -m --set weather icon.color=0xfffabd2f # yellow for day
 else
-    sketchybar -m --set $NAME icon.color=0xff689d6a # light aqua for night
+    sketchybar -m --set weather icon.color=0xff689d6a # light aqua for night
 fi
 
-sketchybar -m --set $NAME icon="$icon"
-sketchybar -m --set $NAME label="${temp}°"
+sketchybar -m --set weather icon="$icon"
+sketchybar -m --set weather label="${temp}°"

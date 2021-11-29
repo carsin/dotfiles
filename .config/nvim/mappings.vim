@@ -40,8 +40,8 @@ nmap <F1> <nop>
 nnoremap <silent> <C-p> :set invpaste <CR>
 
 " Insert date / time
-nnoremap <leader>id "=strftime(" %a, %b %d %Y")<CR>p
-nnoremap <leader>it "=strftime(" %I:%M %p")<CR>p
+nnoremap <leader>id "=strftime("%a, %b %d %Y")<CR>p
+nnoremap <leader>it "=strftime("%I:%M %p")<CR>p
 
 " Dont put change operations into register
 nnoremap c "_c
@@ -205,3 +205,7 @@ nnoremap <silent><F4> <cmd>:silent TZAtaraxis<cr>
 " Vimwiki
 " unmap this, as it overrides my <BS> map
 nmap <F21> <Plug>VimwikiGoBackLink
+
+" Sniprun
+nmap <leader>c <Plug>SnipRun
+vmap <leader>c <Plug>SnipRun

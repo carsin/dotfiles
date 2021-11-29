@@ -1,9 +1,5 @@
 #!/usr/bin/env sh
 
-#                          ﱦ 齃     ﮂ  ﵁ 爵        ﭵ     ﱦ  ﰊ 異 ﴱ אַ  'Y⃣'
-# TODO: https://github.com/FelixKratz/SketchyBar/discussions/12
-# cpu mini, network mini, spotify controls look cool
-
 # gruvbox colors
 lred=fb4934
 red=cc241d
@@ -174,33 +170,12 @@ sketchybar -m --add item weather right \
 
 ###################### CENTER ITEMS ###################
 # Spotify
-sketchybar -m --default icon.padding_right=0 \
-                        icon.padding_left=8 \
-                        label.padding_left=0 \
-                        label.padding_right=0 \
-                        lazy=off \
-                        drawing=off \
-              --add event spotify_change "com.spotify.client.PlaybackStateChanged" \
-              --add item spotify_name center \
-              --set spotify_name script="~/.config/sketchybar/plugins/spotify.sh" \
-                                 label.padding_right=10 \
-              --subscribe spotify_name spotify_change \
-              --add item spotify_back center \
-              --set spotify_back click_script="~/.config/sketchybar/plugins/spotify.sh" \
-                                 icon='' \
-                                 icon.padding_left=0 \
-              --add item spotify_play_pause center \
-              --set spotify_play_pause click_script="~/.config/sketchybar/plugins/spotify.sh" \
-                                       icon='' \
-              --add item spotify_next center \
-              --set spotify_next click_script="~/.config/sketchybar/plugins/spotify.sh" \
-                                 icon='' \
-                                    label.padding_left=0 \
-                                    icon.padding_left=6 \
-              --add bracket spotify_control \
-                            spotify_back \
-                            spotify_play_pause \
-                            spotify_next
+# Spotify
+sketchybar -m --add event spotify_change "com.spotify.client.PlaybackStateChanged" \
+              --add item spotifyIndicator center \
+              --set spotifyIndicator script="~/.config/sketchybar/plugins/spotify.sh" \
+              --set spotifyIndicator click_script="osascript -e 'tell application \"Spotify\" to playpause'" \
+              --subscribe spotifyIndicator spotify_change
 
 sketchybar -m --update
 

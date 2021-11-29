@@ -1,5 +1,5 @@
 local border = { {"╭", "FloatBorder"}, {"─", "FloatBorder"}, {"╮", "FloatBorder"}, {"│", "FloatBorder"}, {"╯", "FloatBorder"}, {"─", "FloatBorder"}, {"╰", "FloatBorder"}, {"│", "FloatBorder"} }
-local sumneko = require('plugins.lsp.sumneko')
+local sumneko = require('settings.lsp.sumneko')
 local nvim_lsp = require'lspconfig'
 local lsp_installer = require("nvim-lsp-installer")
 local lsp = require'vim.lsp'
@@ -141,7 +141,7 @@ lsp_installer.on_server_ready(function(server)
   }
 
   if server.name == "rust_analyzer" then -- override rust_analyzer set up with rust-tools' implement
-    local rust_opts = require'plugins.lsp.rust-tools'.opts
+    local rust_opts = require'settings.lsp.rust-tools'.opts
     rust_opts.server = vim.tbl_deep_extend("force", server:get_default_options(), {
         on_attach = opts.on_attach,
         capabilities = opts.capaibilities,

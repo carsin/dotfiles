@@ -7,7 +7,7 @@ local workspace_folder = home .. "/.local/share/eclipse/" .. vim.fn.fnamemodify(
 local M = {}
 
 -- Configure JDTLS
-M.config = require("plugins.lsp.lspconfig").get_config()
+M.config = require("settings.lsp.lspconfig").get_config()
 M.config.cmd = { jdtls_executable, workspace_folder }
 M.config.flags.server_side_fuzzy_completion = true
 M.config.settings = {

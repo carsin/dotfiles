@@ -20,8 +20,6 @@ local header = {
   "▓██▒  ▐▌██▒▒▓█  ▄ ▒██   ██░  ▒██ █░░░██░▒██    ▒██ ",
   "▒██░   ▓██░░▒████▒░ ████▓▒░   ▒▀█░  ░██░▒██▒   ░██▒",
   "░ ▒░   ▒ ▒ ░░ ▒░ ░░ ▒░▒░▒░    ░ ▐░  ░▓  ░ ▒░   ░  ░",
-  "   ░   ░ ░    ░   ░ ░ ░ ▒       ░░   ▒ ░░      ░   ",
-  "                                ░                  "
   },
   opts = {
     position = "center",
@@ -29,7 +27,6 @@ local header = {
   }
 }
 table.insert(icons, {
-  "                               ",
   "       ▄▀▀▀▀▀▀▀▀▀▀▄▄           ",
   "     ▄▀▀░░░░░░░░░░░░░▀▄        ",
   "   ▄▀░░░░░░░░░░░░░░░░░░▀▄      ",
@@ -115,7 +112,7 @@ table.insert(icons, {
 "                             ^-----^",
 })
 
-local heading = {
+local adviceHeading = {
     type = "text",
     val = fortune(),
     opts = {
@@ -133,7 +130,7 @@ local function button(sc, txt, keybind)
         text = txt,
         shortcut = sc,
         cursor = 5,
-        width = 35,
+        width = 40,
         align_shortcut = "right",
         hl = but_color,
         hl_shortcut = short_color,
@@ -153,19 +150,12 @@ local function button(sc, txt, keybind)
     }
 end
 
--- TODO: fill this out
--- Buttons I want:
--- New file
--- Open wiki
--- Search Journal
--- Search files
--- Quit
 local buttons = {
   type = "group",
   val = {
+    button("l", "  > Load last session" , ":LoadLastSession<CR>"),
     button("w", "  > Open wiki" , ":VimwikiIndex<CR>"),
     button("d", "  > Daily note" , ":VimwikiMakeDiaryNote<CR>"),
-    button("l", "  > Load last session" , ":LoadLastSession<CR>"),
     button("h", "  > Browse sessions" , "<cmd>Telescope sessions [save_current=false]<cr>"),
     button("o", "  > Search files", ":Telescope find_files<CR>"),
     button("r", "  > Frequently opened files" , "<cmd>lua require('telescope').extensions.frecency.frecency()<cr>"),
@@ -179,38 +169,26 @@ local buttons = {
 }
 
 local foot_hl = pick_color()
-local date = os.date("%a, %b %d ")
-local time = os.date("%I:%M:%S %p")
+local date = os.date("%a, %b %d, %I:%M:%S %p ")
 local datedisplay = {
     type = "text",
-    val = "┌─         Today is " .. date .. "      ─┐",
+    val = "┌─       " .. date .. "    ─┐",
     opts = {
         position = "center",
         hl = foot_hl,
     }
 }
 
-local timedisplay = {
+local pluginNumber = #vim.tbl_keys(packer_plugins)
+local pluginCount = {
     type = "text",
-    val = "│         Loaded at " .. time .. "         │",
+    val = "└─         " .. pluginNumber .. " plugins installed       ─┘",
     opts = {
         position = "center",
         hl = foot_hl,
     }
 }
 
-
-local plugins = #vim.tbl_keys(packer_plugins)
-local plugin_count = {
-    type = "text",
-    val = "└─         " .. plugins .. " plugins installed       ─┘",
-    opts = {
-        position = "center",
-        hl = foot_hl,
-    }
-}
-
-local colors = {"String", "Identifier", "Keyword", "Number", "Type", "Comment", "Normal"}
 local section = {
     icon = {
       type = "text",
@@ -221,27 +199,26 @@ local section = {
       }
     },
     header = header,
-    heading = heading,
+    adviceHeading = adviceHeading,
     buttons = buttons,
     datedisplay = datedisplay,
     timedisplay = timedisplay,
-    plugin_count = plugin_count,
+    pluginCount = pluginCount,
 }
 
 local opts = {
     layout = {
         section.icon,
         section.header,
-        section.heading,
+        section.adviceHeading,
         {type = "padding", val = 1},
         section.buttons,
         {type = "padding", val = 1},
         section.datedisplay,
-        section.timedisplay,
-        section.plugin_count,
+        section.pluginCount,
     },
     opts = {
-        margin = 5
+        margin = 0
     },
 }
 

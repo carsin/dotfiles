@@ -54,7 +54,7 @@ return packer.startup({ function(use)
       -- 'weilbith/nvim-code-action-menu',
     },
     config = function()
-      require'plugins.lsp.lspconfig'
+      require'settings.lsp.lspconfig'
     end,
   }
 
@@ -66,7 +66,7 @@ return packer.startup({ function(use)
     },
     run = ':TSUpdate',
     config = function()
-      require'plugins.treesitter'
+      require'settings.treesitter'
     end,
   }
 
@@ -83,7 +83,7 @@ return packer.startup({ function(use)
   use { -- Rust Tools
     'simrat39/rust-tools.nvim',
     config = function()
-      require'plugins.lsp.rust-tools'
+      require'settings.lsp.rust-tools'
     end
   }
 
@@ -99,14 +99,14 @@ return packer.startup({ function(use)
       { 'nvim-telescope/telescope-frecency.nvim', requires = { "tami5/sqlite.lua" } } ,
     },
     config = function()
-      require'plugins.tscope'
+      require'settings.tscope'
     end,
   }
 
   use { -- lspkind
     'onsails/lspkind-nvim',
     config = function()
-      require'plugins.lsp.lspkind'
+      require'settings.lsp.lspkind'
     end,
   }
 
@@ -127,7 +127,7 @@ return packer.startup({ function(use)
       { 'andersevenrud/compe-tmux', branch = 'cmp' },
     },
     config = function()
-      require'plugins.lsp.cmp'
+      require'settings.lsp.cmp'
     end,
   }
 
@@ -151,7 +151,7 @@ return packer.startup({ function(use)
   use { -- autopairs
     'windwp/nvim-autopairs',
     config = function()
-      require'plugins.autopairs'
+      require'settings.autopairs'
     end,
   }
 
@@ -174,7 +174,7 @@ return packer.startup({ function(use)
   use { -- Feline
     'famiu/feline.nvim',
     config = function()
-      require'plugins.feline'
+      require'settings.feline'
     end,
   }
 
@@ -184,7 +184,7 @@ return packer.startup({ function(use)
     'folke/trouble.nvim',
     requires = 'kyazdani42/nvim-web-devicons',
     config = function()
-      require'plugins.trouble'
+      require'settings.trouble'
     end
   }
 
@@ -201,14 +201,14 @@ return packer.startup({ function(use)
     'akinsho/bufferline.nvim',
     requires = 'kyazdani43/nvim-web-devicons',
     config = function()
-      require'plugins.bufferline'
+      require'settings.bufferline'
     end,
   }
 
   use { -- nvim tree
     'kyazdani42/nvim-tree.lua',
     config = function()
-      require'plugins.nvimtree'
+      require'settings.nvimtree'
     end,
   }
 
@@ -218,7 +218,7 @@ return packer.startup({ function(use)
     event = 'BufEnter', -- this makes the plugin work for some reason?
     after = 'plenary.nvim',
     config = function()
-      require'plugins.gitsigns'
+      require'settings.gitsigns'
     end,
   }
 
@@ -230,14 +230,14 @@ return packer.startup({ function(use)
   --     'rcarriga/nvim-dap-ui',
   --   },
   --   config = function()
-  --     require'plugins.lsp.dap'
+  --     require'settings.lsp.dap'
   --   end
   -- }
 
   use { -- AutoSaves the buffer
     'Pocco81/AutoSave.nvim',
     config = function()
-      require'plugins.autosave'
+      require'settings.autosave'
     end,
   }
 
@@ -258,7 +258,7 @@ return packer.startup({ function(use)
   use { -- zenmode
     'Pocco81/TrueZen.nvim',
     config = function()
-      require'plugins.truezen'
+      require'settings.truezen'
     end
   }
 
@@ -269,8 +269,14 @@ return packer.startup({ function(use)
       require('session_manager').setup({
         autoload_mode = require('session_manager.config').AutoloadMode.Disabled
       })
-      require'plugins.alpha'
+      require'settings.alpha'
     end
+  }
+
+  use {  -- sniprun
+    'michaelb/sniprun',
+    requires = 'https://github.com/rcarriga/nvim-notify',
+    run = 'bash ./install.sh'
   }
 end,
 config = {
@@ -281,3 +287,4 @@ config = {
   },
   compile_path = vim.fn.stdpath('config')..'/lua/compiled/packer_compiled.lua'
 }})
+
