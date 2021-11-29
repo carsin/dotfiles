@@ -2,7 +2,7 @@
 fortune ~/.config/fortune/fortunes
 
 # Import colorscheme from wal asynchronously
-(cat ~/.cache/wal/sequences &)
+# (cat ~/.cache/wal/sequences &)
 
 # Useful options & defaults
 setopt autocd extendedglob nomatch menucomplete
@@ -77,7 +77,6 @@ bindkey '^e' edit-command-line
 
 # Append bin dirs to path
 path+=($HOME/bin:/usr/local/bin:$PATH)
-# path+=($HOME/Library/Python/3.8/bin)
 path+=("/usr/local/sbin:$PATH")
 path+=("/Users/carson/Library/Python/3.9/bin")
 path+=("/usr/local/opt/llvm/bin/")

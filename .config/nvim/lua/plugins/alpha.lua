@@ -79,6 +79,42 @@ table.insert(icons, {
 "+------+'      +------+       +------+       +------+      `+------+"
 })
 
+table.insert(icons, {
+"     \\\\XXXXXX//",
+"      XXXXXXXX",
+"     //XXXXXX\\\\                      OOOOOOOOOOOOOOOOOOOO",
+"    ////XXXX\\\\\\\\                     OOOOOOOOOOOOOOOOOOOO",
+"   //////XX\\\\\\\\\\\\     |||||||||||||||OOOOOOOOOOOOOOOVVVVVVVVVVVVV",
+"  ////////\\\\\\\\\\\\\\\\    |!!!|||||||||||OOOOOOOOOOOOOOOOVVVVVVVVVVV'",
+" ////////  \\\\\\\\\\\\\\\\ .d88888b|||||||||OOOOOOOOOOOOOOOOOVVVVVVVVV'",
+"////////    \\\\\\\\\\\\\\d888888888b||||||||||||            'VVVVVVV'",
+"///////      \\\\\\\\\\\\88888888888||||||||||||             'VVVVV'",
+"//////        \\\\\\\\\\Y888888888Y||||||||||||              'VVV'",
+"/////          \\\\\\\\\\\\Y88888Y|||||||||||||| .             'V'",
+"////            \\\\\\\\\\\\|iii|||||||||||||||!:::.            '",
+"///              \\\\\\\\\\\\||||||||||||||||!:::::::.",
+"//                \\\\\\\\\\\\\\\\           .:::::::::::.",
+"/                  \\\\\\\\\\\\\\\\        .:::::::::::::::.",
+"                    \\\\\\\\\\\\\\\\     .:::::::::::::::::::.",
+"                     \\\\\\\\\\\\\\\\",
+})
+
+
+table.insert(icons, {
+"                              .___.",
+"          /)               ,-^     ^-.",
+"         //               /           \\",
+".-------| |--------------/  __     __  \\-------------------.__",
+"|WMWMWMW| |>>>>>>>>>>>>> | />>\\   />>\\ |>>>>>>>>>>>>>>>>>>>>>>:>",
+"`-------| |--------------| \\__/   \\__/ |-------------------'^^",
+"         \\\\               \\    /|\\    /",
+"          \\)               \\   \\_/   /",
+"                            |       |",
+"                            |+H+H+H+|",
+"                            \\       /",
+"                             ^-----^",
+})
+
 local heading = {
     type = "text",
     val = fortune(),
@@ -97,7 +133,7 @@ local function button(sc, txt, keybind)
         text = txt,
         shortcut = sc,
         cursor = 5,
-        width = 40,
+        width = 35,
         align_shortcut = "right",
         hl = but_color,
         hl_shortcut = short_color,
@@ -127,6 +163,8 @@ end
 local buttons = {
   type = "group",
   val = {
+    button("w", "  > Open wiki" , ":VimwikiIndex<CR>"),
+    button("d", "  > Daily note" , ":VimwikiMakeDiaryNote<CR>"),
     button("l", "  > Load last session" , ":LoadLastSession<CR>"),
     button("h", "  > Browse sessions" , "<cmd>Telescope sessions [save_current=false]<cr>"),
     button("o", "  > Search files", ":Telescope find_files<CR>"),
@@ -136,7 +174,7 @@ local buttons = {
     button("q", "  > Quit NVIM", ":qa<CR>"),
   },
   opts = {
-    spacing = 1,
+    spacing = 0,
   }
 }
 
@@ -185,6 +223,7 @@ local opts = {
         section.heading,
         {type = "padding", val = 1},
         section.buttons,
+        {type = "padding", val = 1},
         section.footer,
         section.plugin_count,
     },

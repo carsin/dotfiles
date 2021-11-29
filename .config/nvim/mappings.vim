@@ -30,7 +30,8 @@ nnoremap <silent><leader><space> :let @/ = ""<CR>
 nnoremap <silent><ESC> :nohlsearch \| :cclose<CR>
 
 " Remap VIM 0 to first non-blank character
-map 0 ^
+nnoremap 0 ^
+nnoremap ^ 0
 
 " unbind annoying help page
 nmap <F1> <nop>
