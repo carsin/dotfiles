@@ -8,7 +8,6 @@ set termguicolors " Set colors before impatient makes it work for some reason
 lua require('impatient')
 
 set title            " report title to terminal
-set hidden           " hide buffers even if they're edited
 set history=500      " How many lines of history vim has to remember
 set encoding=utf8    " Set utf8 as standard encoding and en_US as the standard language
 set ffs=unix,dos,mac " Use Unix as the standard file type
