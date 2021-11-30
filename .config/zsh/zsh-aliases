@@ -47,8 +47,8 @@ alias t="tmux new-session -A -s main"
 alias t0="tmux a -t 0 || tmux new"
 alias t1="tmux a -t 1 || tmux new"
 
-alias wttr="curl wttr.in/San+Luis+Obispo"
-alias wttr2="curl v2d.wttr.in/San+Luis+Obispo"
+alias wttr="curl v2d.wttr.in/San+Luis+Obispo"
+alias wttr2="curl wttr.in/San+Luis+Obispo"
 
 alias sysupdate="source ~/bin/updatesyspackages.sh"
 alias updateall="source ~/bin/updatesyspackages.sh"
@@ -57,5 +57,6 @@ alias w="wal -i ~/files/photos/wallpapers/wal/ && source ~/.config/sketchybar/sk
 alias w1="wal --backend haishoku -i ~/files/photos/wallpapers/wal/ && source ~/.config/sketchybar/sketchybarcolors && kitty @ --to unix:/tmp/mykitty set-colors ~/.cache/wal/colors-kitty.conf && pywalfox update"
 alias w2="wal --backend colorz -i ~/files/photos/wallpapers/wal/ && source ~/.config/sketchybar/sketchybarcolors && kitty @ --to unix:/tmp/mykitty set-colors ~/.cache/wal/colors-kitty.conf && pywalfox update"
 alias w3="wal --backend colorthief -i ~/files/photos/wallpapers/wal/ && source ~/.config/sketchybar/sketchybarcolors && kitty @ --to unix:/tmp/mykitty set-colors ~/.cache/wal/colors-kitty.conf && pywalfox update"
+alias wnew="wal --backend colorz -i ~/files/photos/wallpapers/new/ && source ~/.config/sketchybar/sketchybarcolors && kitty @ --to unix:/tmp/mykitty set-colors ~/.cache/wal/colors-kitty.conf && pywalfox update"
 
 alias luamake=/Users/carson/.local/bin/lua-language-server/3rd/luamake/luamake

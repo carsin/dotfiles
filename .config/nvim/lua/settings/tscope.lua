@@ -94,7 +94,55 @@ telescope.setup {
   },
   pickers = {
     find_files = {
-      find_command = { "fd", "--type", "f", "--hidden" }
+      find_command = { "fd", "--type", "f", "--hidden" },
+      mappings = {
+        i = {
+          ["<CR>"] = custom_actions.multi_selection_open,
+          ["<c-v>"] = custom_actions.multi_selection_open_vsplit,
+          ["<c-b>"] = custom_actions.multi_selection_open_split,
+          ["<c-t>"] = custom_actions.multi_selection_open_tab,
+        },
+        n = {
+          ["<CR>"] = custom_actions.multi_selection_open,
+          ["<c-v>"] = custom_actions.multi_selection_open_vsplit,
+          ["<c-b>"] = custom_actions.multi_selection_open_split,
+          ["<c-t>"] = custom_actions.multi_selection_open_tab,
+        }
+      }
+    },
+
+    live_grep = {
+      mappings = {
+        i = {
+          ["<CR>"] = custom_actions.multi_selection_open,
+          ["<c-v>"] = custom_actions.multi_selection_open_vsplit,
+          ["<c-b>"] = custom_actions.multi_selection_open_split,
+          ["<c-t>"] = custom_actions.multi_selection_open_tab,
+        },
+        n = {
+          ["<CR>"] = custom_actions.multi_selection_open,
+          ["<c-v>"] = custom_actions.multi_selection_open_vsplit,
+          ["<c-b>"] = custom_actions.multi_selection_open_split,
+          ["<c-t>"] = custom_actions.multi_selection_open_tab,
+        }
+      }
+    },
+
+    frecency = {
+      mappings = {
+        i = {
+          ["<CR>"] = custom_actions.multi_selection_open,
+          ["<c-v>"] = custom_actions.multi_selection_open_vsplit,
+          ["<c-b>"] = custom_actions.multi_selection_open_split,
+          ["<c-t>"] = custom_actions.multi_selection_open_tab,
+        },
+        n = {
+          ["<CR>"] = custom_actions.multi_selection_open,
+          ["<c-v>"] = custom_actions.multi_selection_open_vsplit,
+          ["<c-b>"] = custom_actions.multi_selection_open_split,
+          ["<c-t>"] = custom_actions.multi_selection_open_tab,
+        }
+      }
     },
     -- lsp_references = custom_down;
     lsp_references = {
@@ -153,19 +201,11 @@ telescope.setup {
         ["<C-k>"] = actions.move_selection_previous,
         ["<tab>"] = actions.toggle_selection + actions.move_selection_next,
         ["<s-tab>"] = actions.toggle_selection + actions.move_selection_previous,
-        ["<cr>"] = custom_actions.multi_selection_open,
-        ["<c-v>"] = custom_actions.multi_selection_open_vsplit,
-        ["<c-s>"] = custom_actions.multi_selection_open_split,
-        ["<c-t>"] = custom_actions.multi_selection_open_tab,
       },
       n = {
         ["<Esc>"] = actions.close,
         ["<tab>"] = actions.toggle_selection + actions.move_selection_next,
         ["<s-tab>"] = actions.toggle_selection + actions.move_selection_previous,
-        ["<cr>"] = custom_actions.multi_selection_open,
-        ["<c-v>"] = custom_actions.multi_selection_open_vsplit,
-        ["<c-s>"] = custom_actions.multi_selection_open_split,
-        ["<c-t>"] = custom_actions.multi_selection_open_tab,
       }
     }
   },

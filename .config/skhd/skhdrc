@@ -40,9 +40,12 @@ shift + alt - e : yabai -m space --balance
 alt - g : yabai -m space --toggle padding; yabai -m space --toggle gap
 
 # Float / Unfloat window
-shift + alt - space : \
+alt + shift - space : \
     yabai -m window --toggle float; \
-    yabai -m window --toggle border
+    yabai -m window --toggle border; 
+
+# Center window
+alt + shift - m : yabai -m window --grid 6:4:1:1:2:4
 
 # Resize windows
 
@@ -50,9 +53,9 @@ shift + alt - space : \
 alt - f         : yabai -m window --toggle zoom-fullscreen
 shift + alt - f : yabai -m window --toggle native-fullscreen
 
-# Create and destroy spaces with n/m
-alt - n : yabai -m space --create
-alt - m : yabai -m space --destroy
+# Create and destroy spaces with ./,
+alt - 0x2F : yabai -m space --create
+alt - 0x2B : yabai -m space --destroy
 
 # Rotate windows clockwise and anticlockwise
 alt - r         : yabai -m space --rotate 270
