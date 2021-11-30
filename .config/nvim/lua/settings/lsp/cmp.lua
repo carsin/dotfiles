@@ -67,30 +67,34 @@ cmp.setup {
     -- { name = 'luasnip', priority = 40  },
     { name = 'luasnip' },
     { name = 'calc' },
-    { name = 'buffer', keyword_length = 5, max_item_count = 5 },
+    { name = 'buffer' },
+    -- { name = 'buffer', keyword_length = 5, max_item_count = 5 },
     { name = 'spell' },
     { name = 'tmux', options = { all_panes = false }},
     -- { name = 'cmp_tabnine', priority = 50 },
   },
 	formatting = {
-    format = require("lspkind").cmp_format({with_text = true, menu = ({
-      buffer = "[Buffer]",
-      nvim_lua = '[VimApi]',
-      nvim_lsp = "[LSP]",
-      luasnip = "[LuaSnip]",
-      tmux = "[Tmux]",
-      path = "[Path]",
-      spell = "[Spell]",
-      calc = "[Calc]",
-      latex_symbols = "[Latex]",
-      -- cmp_tabnine = "[TabNine]",
-    })}),
+    format = require("lspkind").cmp_format({
+      with_text = true,
+      menu = ({
+        buffer = "[Buffer]",
+        nvim_lua = '[VimApi]',
+        nvim_lsp = "[LSP]",
+        luasnip = "[LuaSnip]",
+        tmux = "[Tmux]",
+        path = "[Path]",
+        spell = "[Spell]",
+        calc = "[Calc]",
+        latex_symbols = "[Latex]",
+        -- cmp_tabnine = "[TabNine]",
+      })
+    }),
 	},
   documentation = {
     border = nil,
   },
   experimental = {
-    ghost_text = false,
+    ghost_text = true,
   }
 }
 
@@ -110,7 +114,6 @@ cmp.setup.cmdline(":", {
     { name = "cmdline" },
   }),
 })
-
 
 -- don't start cmp in file types
 vim.cmd([[ autocmd FileType vimwiki lua require('cmp').setup.buffer { enabled = false } ]])

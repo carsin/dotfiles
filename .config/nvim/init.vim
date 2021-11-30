@@ -131,6 +131,7 @@ let g:gruvbox_material_better_performance = 1
 colorscheme gruvbox-material
 
 set showtabline=2      " Show top tab line
+set cursorline
 set so=7               " How many lines from cursor to top / bottom of the screen before scrolling
 set number             " file line numbering
 set showcmd            " show last entered command
@@ -164,7 +165,7 @@ let &fcs='eob: '       " No idiotic eob tildas
 " set winminheight=15
 
 " Set completeopt to have a better completion experience
-set completeopt=menuone,noselect
+set completeopt=menu,menuone,noselect
 " Avoid showing extra messages when using completion
 set shortmess+=c
 
