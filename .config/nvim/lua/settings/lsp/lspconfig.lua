@@ -9,8 +9,17 @@ local lspc = {}
 local status = require('settings.lsp.status')
 status.activate()
 
-require('dd').setup({
-  timeout = 250,
+vim.fn.sign_define("DiagnosticSignError", { text = "E", texthl = "DiagnosticSignError" })
+vim.fn.sign_define("DiagnosticSignWarn", { text = "!", texthl = "DiagnosticSignWarn" })
+vim.fn.sign_define("DiagnosticSignInformation", { text = "i", texthl = "DiagnosticSignInfo" })
+vim.fn.sign_define("DiagnosticSignHint", { text = "?", texthl = "DiagnosticSignHint" })
+
+-- global config
+vim.diagnostic.config({
+  underline = true,
+  virtual_text = false,
+  signs = true,
+  severity_sort = true,
 })
 
 do
@@ -57,6 +66,9 @@ end
 
 M.on_attach = function(client, bufnr)
   status.on_attach(client)
+  require('dd').setup({
+    timeout = 350,
+  })
   vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = nil })
   vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = nil })
   vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
@@ -87,13 +99,13 @@ M.on_attach = function(client, bufnr)
   buf_set_keymap('n', 'gi', '<cmd>Telescope lsp_implementations<CR>', opts)
   -- TODO: Replace with neoformat
   buf_set_keymap("n", "gq", "<Cmd>lua vim.lsp.buf.formatting()<CR>", opts)
-  buf_set_keymap("v", "gq", "<Esc><Cmd>lua vim.lsp.buf.range_formatting()<CR>", opts) 
+  buf_set_keymap("v", "gq", "<Esc><Cmd>lua vim.lsp.buf.range_formatting()<CR>", opts)
   if client.resolved_capabilities.document_highlight then
     vim.api.nvim_exec([[
     augroup lsp_document_highlight
-    autocmd! * <buffer>
-    autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()
-    autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
+      autocmd! * <buffer>
+      autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()
+      autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
     augroup END
     ]], false)
   end
@@ -103,12 +115,12 @@ end
 
 M.get_config = function()
   local capabilities = vim.lsp.protocol.make_client_capabilities()
+  require('cmp_nvim_lsp').update_capabilities(capabilities)
   capabilities.workspace.configuration = true
   capabilities.textDocument.completion.completionItem.snippetSupport = true
-  capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
   return {
     flags = {
-      debounce_text_changes = 250,
+      debounce_text_changes = 350,
       allow_incremental_sync = true,
     },
     handlers = {},
