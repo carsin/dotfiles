@@ -1,6 +1,24 @@
 # Open application
-alt + shift - return : open -n /Applications/Firefox.app
+# alt + shift - return : open -n /Applications/Firefox.app
+alt - w : open -n /Applications/Firefox.app
+
+# open term
 alt - return : /Applications/kitty.app/Contents/MacOS/kitty --single-instance --listen-on unix:/tmp/mykitty -d ~
+
+# open floating term (kitty)
+alt + shift - return : \
+    yabai -m signal --add label=float_next_window_created event=window_created action='yabai -m signal --remove float_next_window_created; yabai -m signal --remove float_next_application_launched; yabai -m window $YABAI_WINDOW_ID --toggle float' ; \
+    yabai -m signal --add label=float_next_application_launched event=application_launched action='yabai -m signal --remove float_next_window_created; yabai -m signal --remove float_next_application_launched; yabai -m query --windows | jq -r ".[] | select(.pid == $YABAI_PROCESS_ID).id" | xargs -I{} yabai -m window {} --toggle float' ; \
+    /Applications/kitty.app/Contents/MacOS/kitty --single-instance --listen-on unix:/tmp/mykitty -d ~; \
+    yabai -m window --toggle border; \
+    yabai -m window --grid 6:4:1:1:2:4
+
+# alternative way to open floating
+#alt + shift - return : /Applications/kitty.app/Contents/MacOS/kitty --single-instance --listen-on unix:/tmp/mykitty -d ~; \
+#   yabai -m window --toggle float; \
+#   yabai -m window --toggle border; \
+#   yabai -m window --grid 6:4:1:1:2:4
+
 
 # Focus window
 alt - h : yabai -m window --focus west || yabai -m display --focus west

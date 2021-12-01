@@ -125,7 +125,7 @@ return packer.startup({ function(use)
       'f3fora/cmp-spell',
       'hrsh7th/cmp-cmdline',
       'Furkanzmc/sekme.nvim',
-      { 'andersevenrud/compe-tmux', branch = 'cmp' },
+      'andersevenrud/cmp-tmux',
     },
     config = function()
       require'settings.lsp.cmp'
@@ -279,6 +279,15 @@ return packer.startup({ function(use)
     run = 'bash ./install.sh',
     config = function()
       require'settings.sniprun'
+    end
+  }
+
+  use {
+    'karb94/neoscroll.nvim',
+    config = function()
+      require('neoscroll').setup({
+        easing_function = "quadratic" -- Default easing function
+      })
     end
   }
 end,
