@@ -64,6 +64,7 @@ nnoremap <C-c> :close<CR>
 " Vim plug ease of use bindings
 nnoremap <leader>ps :PackerSync<CR>
 nnoremap <leader>pc :PackerCompile profile=true<CR>
+nnoremap <leader>pC :PackerClean<CR>
 nnoremap <leader>pd :PackerProfile<CR>
 
 " Quit everything with :qq / Q
@@ -125,6 +126,17 @@ nnoremap - <C-x>
 " remove all trailing whitespace with gw
 nnoremap gw :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar><CR>
 
+function! CompileProject()
+  echohl SpecialComment
+  echo 'Compiling…'
+  silent !./run
+endfunction
+
+" TODO: handle project compilation by language
+" execute ./run command
+nnoremap <F2> <CMD>call CompileProject()<cr>
+inoremap <F2> <CMD>call CompileProject()<cr>
+
 " --- PLUGINS {{{
 " Telescope
 " Find files using Telescope command-line sugar.
@@ -164,6 +176,7 @@ nnoremap <silent> <C-t> <CMD>:w<CR><CMD>lua require("FTerm").toggle()<CR>
 tnoremap <silent> <C-t> <CMD>lua require("FTerm").toggle()<CR>
 tnoremap <silent> <C-q> <CMD>lua require("FTerm").toggle()<CR>
 nnoremap <silent> <F3> <CMD>:w<CR><CMD>lua require("FTerm").toggle()<CR>
+inoremap <silent> <F3> <CMD>:w<CR><CMD>lua require("FTerm").toggle()<CR>
 tnoremap <silent> <F3> <CMD>lua require("FTerm").toggle()<CR>
 tnoremap <silent> <ESC> <CMD>lua require("FTerm").toggle()<CR>
 

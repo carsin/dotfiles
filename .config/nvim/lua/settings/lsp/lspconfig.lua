@@ -6,6 +6,8 @@ local lsp = require'vim.lsp'
 local api = vim.api
 local M = {}
 local lspc = {}
+local status = require('settings.lsp.status')
+status.activate()
 
 require('dd').setup({
   timeout = 250,
@@ -54,6 +56,7 @@ do
 end
 
 M.on_attach = function(client, bufnr)
+  status.on_attach(client)
   vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = nil })
   vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = nil })
   vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
@@ -77,13 +80,14 @@ M.on_attach = function(client, bufnr)
   -- buf_set_keymap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
   buf_set_keymap('n', '[d', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>zz', opts)
   buf_set_keymap('n', ']d', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>zz', opts)
-  buf_set_keymap("n", "gq", "<Cmd>lua vim.lsp.buf.formatting()<CR>", opts)
   buf_set_keymap("n", "<leader>a", "<Cmd>Telescope lsp_code_actions theme=cursor<CR>", opts)
   buf_set_keymap("v", "<leader>a", "<Cmd>Telescope lsp_range_code_actions theme=cursor<CR>", opts)
   buf_set_keymap('n', 'gr', "<cmd>Telescope lsp_references<cr>", opts)
   buf_set_keymap('n', 'gd', '<cmd>Telescope lsp_definitions<CR>', opts)
   buf_set_keymap('n', 'gi', '<cmd>Telescope lsp_implementations<CR>', opts)
-  -- buf_set_keymap("v", "gq", "<Esc><Cmd>lua vim.lsp.buf.range_formatting()<CR>", opts) -- TODO: Replace with neoformat
+  -- TODO: Replace with neoformat
+  buf_set_keymap("n", "gq", "<Cmd>lua vim.lsp.buf.formatting()<CR>", opts)
+  buf_set_keymap("v", "gq", "<Esc><Cmd>lua vim.lsp.buf.range_formatting()<CR>", opts) 
   if client.resolved_capabilities.document_highlight then
     vim.api.nvim_exec([[
     augroup lsp_document_highlight

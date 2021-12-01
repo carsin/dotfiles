@@ -2,7 +2,7 @@ math.randomseed(os.time())
 local alpha = require("alpha")
 local fortune = require("alpha.fortune")
 local icons = {}
-local colors = {"String", "Identifier", "Keyword", "Number", "Constant", "PreProc", "Type", "Comment", "Normal"}
+local colors = {"Comment", "Constant", "String", "Number", "Identifier", "Label", "Type", "todo", "Normal", "PreProc", "Error", "Statement", "Ignore" }
 local function pick_color()
   local num = math.random(#colors)
   local val = colors[num]

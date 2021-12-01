@@ -43,6 +43,7 @@ return packer.startup({ function(use)
   use 'junegunn/vim-easy-align'
   use 'vimwiki/vimwiki' -- Replace? https://github.com/oberblastmeister/neuron.nvim
   use 'kyazdani42/nvim-web-devicons'
+  use 'nvim-lua/lsp-status.nvim'
   use 'nathom/filetype.nvim'
   -- use 'rcarriga/nvim-notify' -- TODO: config file
 
@@ -132,22 +133,22 @@ return packer.startup({ function(use)
     end,
   }
 
-  -- use { -- tabnine
-  --   'tzachar/cmp-tabnine',
-  --   run = './install.sh',
-  --   requires = 'hrsh7th/nvim-cmp',
-  --   after = "nvim-cmp",
-  --   config = function()
-  --     -- TODO: move to lsp/cmp.lua
-  --     require('cmp_tabnine.config'):setup({
-  --       max_lines = 1500;
-  --       sort = true;
-  --       max_num_results = 3;
-  --       run_on_every_keystroke = false;
-  --       snippet_placeholder = '..';
-  --     })
-  --   end
-  -- }
+  use { -- tabnine
+    'tzachar/cmp-tabnine',
+    run = './install.sh',
+    requires = 'hrsh7th/nvim-cmp',
+    after = "nvim-cmp",
+    config = function()
+      -- TODO: move to lsp/cmp.lua
+      require('cmp_tabnine.config'):setup({
+        max_lines = 1500;
+        sort = true;
+        max_num_results = 3;
+        run_on_every_keystroke = false;
+        snippet_placeholder = '…';
+      })
+    end
+  }
 
   use { -- autopairs
     'windwp/nvim-autopairs',
@@ -279,15 +280,6 @@ return packer.startup({ function(use)
     run = 'bash ./install.sh',
     config = function()
       require'settings.sniprun'
-    end
-  }
-
-  use {
-    'karb94/neoscroll.nvim',
-    config = function()
-      require('neoscroll').setup({
-        easing_function = "quadratic" -- Default easing function
-      })
     end
   }
 end,
