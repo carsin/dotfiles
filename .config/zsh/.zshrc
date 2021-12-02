@@ -25,11 +25,29 @@ zmodload zsh/complist
 _comp_options+=(globdots)		# Include hidden files.
 
 # Don't show inverted % when zsh inserts a newline
+unsetopt PROMPT_CR
+unsetopt PROMPT_SP 
 PROMPT_EOL_MARK=''
 
-# vi mode
+# enable vi mode
 bindkey -v
 export KEYTIMEOUT=10
+
+# Syntax highlighting
+source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+# Plugins (provided by zsh-functions)
+zsh_add_plugin "zsh-users/zsh-autosuggestions"
+zsh_add_plugin "hlissner/zsh-autopair"
+eval "$(zoxide init zsh)" # zoxide
+
+source "$ZDOTDIR/textselection"
+
+# Accept autosuggestion
+bindkey '^ ' autosuggest-accept
+bindkey '^l' autosuggest-accept
+bindkey '^[[Z' autosuggest-accept
+# bindkey '<Tab>' autosuggest-accept
 
 # jk/kj as escape
 bindkey -M viins 'jk' vi-cmd-mode
@@ -43,20 +61,26 @@ bindkey -M menuselect 'j' vi-down-line-or-history
 
 # Go up and down in history with ctrl+j & ctrl+k
 bindkey '^K' history-search-backward
-bindkey '^K' history-search-forward
+bindkey '^J' history-search-forward
 
-# Syntax highlighting
-source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-
-# Plugins (provided by zsh-functions)
-zsh_add_plugin "zsh-users/zsh-autosuggestions"
-zsh_add_plugin "hlissner/zsh-autopair"
-eval "$(zoxide init zsh)" # zoxide
-
-# Accept autosuggestion
-bindkey '^ ' autosuggest-accept
-# bindkey '^l' autosuggest-accept
-# bindkey '<Tab>' autosuggest-accept
+# Shift arrows to select text
+# shift-arrow() {
+#   ((REGION_ACTIVE)) || zle set-mark-command
+#   zle $1
+# }
+# shift-left()  shift-arrow backward-char
+# shift-right() shift-arrow forward-char
+# shift-up()    shift-arrow up-line-or-history
+# shift-down()  shift-arrow down-line-or-history
+# zle -N shift-left
+# zle -N shift-right
+# zle -N shift-up
+# zle -N shift-down
+#
+# bindkey $terminfo[kLFT] shift-left
+# bindkey $terminfo[kRIT] shift-right
+# bindkey $terminfo[kri]  shift-up
+# bindkey $terminfo[kind] shift-down
 
 # Use lf to switch directories and bind it to ctrl-f
 lfcd () {
