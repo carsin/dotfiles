@@ -1,15 +1,16 @@
 math.randomseed(os.time())
 local alpha = require("alpha")
 local fortune = require("alpha.fortune")
-local colors = {"Comment", "Constant", "String", "Number", "Identifier", "Label", "Type", "todo", "Normal", "PreProc", "Error", "Statement", "Ignore" }
-local colors_noitalic = { "String", "Number", "Identifier", "Label", "Type", "Error", "Ignore" }
+local colors = {"Comment", "Constant", "String", "Number", "Identifier", "Label", "Type", "todo", "Normal", "PreProc", "Error", "Statement", "Ignore", "Function" }
+local colors_noitalic = { "String", "Number", "Identifier", "Label", "Type", "Error", "Function" }
+local colors_italic = { "Comment", "Conditional", "Define" }
 local icons = {}
 local titles = {}
 
-local function pick_color()
-  local num = math.random(#colors)
-  local val = colors[num]
-  table.remove(colors, num)
+local function pick_and_remove(list)
+  local num = math.random(#list)
+  local val = list[num]
+  table.remove(list, num)
   return val
 end
 
@@ -114,13 +115,13 @@ table.insert(titles, {
   "_M_      \\M _MMMMMMMMM  YMMMM9       YP      _MM_M_      _MM",
 })
 table.insert(titles, {
-  "`7MN.   `7MF'`7MM\"\"\"YMM    .g8\"\"8q.`7MMF'   `7MF'`7MMF'`7MMM.     ,MMF'\",",
+  "`7MN.   `7MF'`7MM\"\"\"YMM    .g8\"\"8q.`7MMF'   `7MF'`7MMF'`7MMM.     ,MMF'",
   "  MMN.    M    MM    `7  .dP'    `YM.`MA     ,V    MM    MMMb    dPMM  ",
   "  M YMb   M    MM   d    dM'      `MM VM:   ,V     MM    M YM   ,M MM  ",
   "  M  `MN. M    MMmmMM    MM        MM  MM.  M'     MM    M  Mb  M' MM  ",
   "  M   `MM.M    MM   Y  , MM.      ,MP  `MM A'      MM    M  YM.P'  MM  ",
   "  M     YMM    MM     ,M `Mb.    ,dP'   :MM;       MM    M  `YM'   MM  ",
-  ".JML.    YM  .JMMmmmmMMM   `\"bmmd\"'      VF      .JMML..JML. `'  .JMML.\",",
+  ".JML.    YM  .JMMmmmmMMM   `\"bmmd\"'      VF      .JMML..JML. `'  .JMML.",
 })
 table.insert(titles, {
 "ooooo      ooo oooooooooooo   .oooooo.   oooooo     oooo ooooo ooo        ooooo",
@@ -130,19 +131,6 @@ table.insert(titles, {
 " 8     `88b.8   888    \"    888      888     `888.8'      888   8  `888'   888 ",
 " 8       `888   888       o `88b    d88'      `888'       888   8    Y     888 ",
 "o8o        `8  o888ooooood8  `Y8bood8P'        `8'       o888o o8o        o888o",
-})
-table.insert(titles, {
-  "_____   ____________________    ______________  ___",
-  "___  | / /__  ____/_  __ \\_ |  / /___  _/__   |/  /",
-  "__   |/ /__  __/  _  / / /_ | / / __  / __  /|_/ / ",
-  "_  /|  / _  /___  / /_/ /__ |/ / __/ /  _  /  / /  ",
-  "/_/ |_/  /_____/  \\____/ _____/  /___/  /_/  /_",
-})
-table.insert(titles, {
-" _ __  ______   ___  _,   _____ _ _ ",
-"( /  )(  /     /  ()( |  /( /( / ) )",
-" /  /   /--   /   /   | /  /  / / / ",
-"/  (_ (/____/(___/    |/ _/_ / / (_ ",
 })
 table.insert(titles, {
 ".   ..---. .--..       .--.--.    .",
@@ -524,17 +512,8 @@ table.insert(icons, {
 "                   __/",
 })
 
-local adviceHeading = {
-    type = "text",
-    val = fortune(),
-    opts = {
-        position = "center",
-        hl = pick_color(),
-    }
-}
-
-local but_color = pick_color()
-local short_color = pick_color()
+local but_color = pick_and_remove(colors)
+local short_color = pick_and_remove(colors)
 local function button(sc, txt, keybind)
     local sc_ = sc:gsub("%s", ""):gsub("SPC", "<leader>")
     local opts = {
@@ -584,7 +563,7 @@ local buttons = {
   }
 }
 
-local foot_hl = pick_color()
+local foot_hl = pick_and_remove(colors)
 local date = os.date("%a, %b %d, %I:%M:%S %p ")
 local datedisplay = {
     type = "text",
@@ -611,7 +590,7 @@ local section = {
       val = icons[math.random(#icons)],
       opts = {
         position = "center",
-        hl = pick_color()
+        hl = pick_and_remove(colors_noitalic)
       }
     },
     title = {
@@ -619,10 +598,17 @@ local section = {
       val = titles[math.random(#titles)],
       opts = {
         position = "center",
-        hl = colors_noitalic[math.random(#colors_noitalic)]
+        hl = pick_and_remove(colors_noitalic)
       }
     },
-    adviceHeading = adviceHeading,
+    advice = {
+      type = "text",
+      val = fortune(),
+      opts = {
+        position = "center",
+        hl = colors_italic[math.random(#colors_italic)]
+      }
+    },
     buttons = buttons,
     datedisplay = datedisplay,
     pluginCount = pluginCount,
@@ -633,7 +619,7 @@ local opts = {
         section.icon,
         {type = "padding", val = 1},
         section.title,
-        section.adviceHeading,
+        section.advice,
         {type = "padding", val = 1},
         section.buttons,
         {type = "padding", val = 1},
