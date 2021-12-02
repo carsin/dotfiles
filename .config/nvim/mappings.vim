@@ -127,15 +127,19 @@ nnoremap - <C-x>
 nnoremap gw :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar><CR>
 
 function! CompileProject()
+  :w
   echohl SpecialComment
   echo 'Compiling…'
-  silent !./run
+  !./run
 endfunction
 
 " TODO: handle project compilation by language
 " execute ./run command
 nnoremap <F2> <CMD>call CompileProject()<cr>
 inoremap <F2> <CMD>call CompileProject()<cr>
+
+" change directory to current file
+nnoremap <leader>cd :cd %:p:h<CR>:pwd<CR>
 
 " --- PLUGINS {{{
 " Telescope
