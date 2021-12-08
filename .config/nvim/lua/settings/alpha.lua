@@ -1,7 +1,7 @@
 math.randomseed(os.time())
 local alpha = require("alpha")
 local fortune = require("alpha.fortune")
-local colors = {"Comment", "Constant", "String", "Number", "Identifier", "Label", "Type", "todo", "Normal", "PreProc", "Error", "Statement", "Ignore", "Function" }
+local colors = { "Comment", "Constant", "String", "Number", "Identifier", "Label", "Type", "todo", "Normal", "PreProc", "Error", "Statement", "Ignore", "Function" }
 local colors_noitalic = { "String", "Number", "Identifier", "Label", "Type", "Error", "Function", "Normal" }
 local colors_italic = { "Comment", "Conditional", "Define" }
 local icons = {}
@@ -555,7 +555,7 @@ table.insert(icons, {
 "                                        `\"'",
 })
 
-local but_color = pick_and_remove(colors)
+local but_color = pick_and_remove(colors_noitalic)
 local short_color = pick_and_remove(colors)
 local function button(sc, txt, keybind)
     local sc_ = sc:gsub("%s", ""):gsub("SPC", "<leader>")
@@ -594,7 +594,7 @@ local buttons = {
     button("m", "  > Load Directory Session " , "<cmd>LoadCurrentDirSession<cr>"),
     button("f", "  > Open File", ":Telescope find_files<CR>"),
     button("r", "  > Frequent Files" , "<cmd>lua require('telescope').extensions.frecency.frecency()<cr>"),
-    button("s", "  > Search Current Directory", ":Telescope find_files<CR>"),
+    button("s", "  > Search Current Directory", ":Telescope live_grep<CR>"),
     button("p", "  > Browse Projects" , "<cmd>lua require'telescope'.extensions.project.project{ display_type = 'full' }<cr>"),
     -- button("t", "  > Terminal", "<CMD>call OpenTerm()<CR>"),
     button("o", "  > Open Directory " , "<cmd>silent !open .<cr>"),
