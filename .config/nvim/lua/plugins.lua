@@ -193,8 +193,8 @@ return packer.startup({ function(use)
     'jdhao/better-escape.vim',
     event = 'InsertEnter',
     config = function()
-      vim.g.better_escape_interval = 250
-      vim.g.better_escape_shortcut = { 'jk', 'kj' }
+      vim.g.better_escape_interval = 200
+      vim.g.better_escape_shortcut = { 'jk','kj' }
     end,
   }
 

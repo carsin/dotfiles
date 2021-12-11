@@ -40,7 +40,7 @@ sketchybar -m --add space one left \
                         icon=I \
                         label=mind \
                         click_script="yabai -m space --focus 1" \
-                        icon_padding_left=0
+                        icon.padding_left=0
 
 sketchybar -m --add space two left \
               --set two associated_display=1 \
@@ -98,8 +98,9 @@ sketchybar -m --add item title left \
 sketchybar -m --add item clock right \
               --set clock update_freq=1 \
                           script="~/.config/sketchybar/plugins/clock.sh" \
-                          label.padding_left=0 \
+                          label.padding_left=4 \
                           label.padding_right=1 \
+                          icon.padding_left=0 \
                           icon.padding_right=0 \
 
 # Battery
@@ -108,7 +109,7 @@ sketchybar -m --add item battery right \
                             script="~/.config/sketchybar/plugins/power.sh" \
                             icon= \
                             label.padding_left=2 \
-                            label.padding_right=0 \
+                            label.padding_right=1 \
                             icon.padding_left=6 \
                             icon.padding_right=2
 
