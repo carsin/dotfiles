@@ -23,9 +23,8 @@ return packer.startup({ function(use)
   -- https://github.com/nvim-treesitter/nvim-treesitter-refactor better refactoring
   -- mg979/vim-visual-multi multiple cursors
   -- https://github.com/lewis6991/spellsitter.nvim
-  -- https://github.com/michaelb/sniprun <-- THIS IS AWESOME
-    -- dep: https://github.com/rcarriga/nvim-notify
   -- https://github.com/glacambre/firenvim
+  -- https://github.com/VonHeikemen/searchbox.nvim
   use 'lewis6991/impatient.nvim'
   use 'wbthomason/packer.nvim'
   use 'nvim-lua/popup.nvim'
