@@ -123,4 +123,6 @@ else
 fi
 
 sketchybar -m --set weather icon="$icon"
-sketchybar -m --set weather label="${temp}°"
+if [[ $temp != "" ]]; then
+    sketchybar -m --set weather label="${temp}°"
+fi
