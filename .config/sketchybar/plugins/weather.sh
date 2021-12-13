@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 source ~/.config/sketchybar/plugins/.apikey
 API_KEY=$WEATHER_API
-CITY="San+Luis+Obispo" # insert city here
+CITY="Kilauea" # insert city here
 
 # first comment is description, second is icon number
 weather_icons_day=(

@@ -22,7 +22,7 @@ true_zen.setup({
 		ataraxis = {
 			left_padding = 25,
 			right_padding = 25,
-			top_padding = 1,
+			top_padding = 0,
 			bottom_padding = 1,
 			ideal_writing_area_width = {82},
 			auto_padding = true,
@@ -60,7 +60,7 @@ true_zen.setup({
 		express_line = false,
 		lualine = false,
 		lightline = false,
-		feline = true
+		feline = false,
 	},
 	misc = {
 		on_off_commands = false,
