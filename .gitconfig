@@ -1,7 +1,27 @@
 [user]
 	email = 20868514+carsin@users.noreply.github.com
 	name = carsin
+	# signingkey = 528F41716A62A8A1
+[core]
+	editor = nvim
+[credential "https://dev.azure.com"]
+	useHttpPath = true
+[commit]
+	# gpgsign = true
+[color]
+	ui = auto
+[alias]
+	a = add
+	rm = rm -r
+	d = diff
+	co = checkout
+	c = commit
+	cm = commit -m
+	ca = commit -a
+	cam = commit -a -m
+	p = push origin
+	pl = pull origin
+	s = status
+	st = status
 [credential]
 	helper = store --file ~/.cache/git/.git-credentials
-[init]
-	defaultBranch = master\nls\nconfig remote add origin https://github.com/carsin/dotfiles.git\nconfig config --local status.showUntrackedFiles no\nconfig status
