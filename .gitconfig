@@ -1,0 +1,7 @@
+[user]
+	email = 20868514+carsin@users.noreply.github.com
+	name = carsin
+[credential]
+	helper = store --file ~/.cache/git/.git-credentials
+[init]
+	defaultBranch = master\nls\nconfig remote add origin https://github.com/carsin/dotfiles.git\nconfig config --local status.showUntrackedFiles no\nconfig status
