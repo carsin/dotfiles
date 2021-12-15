@@ -1,0 +1,1 @@
+UNIX dotfiles running in macOS using kitty & tmux. Heavily based around a modern Neovim Lua configuration with  LSP, autocomplete, vimwiki, treesitter
