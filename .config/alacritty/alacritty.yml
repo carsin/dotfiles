@@ -1,0 +1,120 @@
+# Configuration for Alacritty, the GPU enhanced terminal emulator.
+
+# env:
+  # TERM: alacritty
+
+window:
+  # Blank space added around the window in pixels. This padding is scaled
+  # by DPI and the specified value is always added at both opposing sides.
+  padding:
+   x: 2
+   y: 2
+  dynamic_padding: true # Spread additional padding evenly around the terminal content.
+  # decorations: none
+  opacity: 0.8
+  startup_mode: Windowed
+  # Window title
+  title: Alacritty
+  dynamic_title: true # Allow terminal applications to change Alacritty's window title.
+  # Window class (Linux/BSD only):
+  class:
+    instance: Alacritty # Application instance name
+    general: Alacritty # General application class
+
+  # GTK theme variant (Linux/BSD only)
+  # Override the variant of the GTK theme. Commonly supported values are `dark`
+  # and `light`. Set this to `None` to use the default theme variant.
+  #gtk_theme_variant: None
+
+scrolling:
+  history: 10000
+  multiplier: 3
+
+# Font configuration
+font:
+  size: 11.0
+  normal:
+    family: TerminessTTF Nerd Font
+    style: Medium
+  bold:
+    family: TerminessTTF Nerd Font
+    style: Bold
+  italic:
+    family: TerminessTTF Nerd Font
+    style: Italic
+  bold_italic:
+    family: TerminessTTF Nerd Font
+    style: Bold Italic
+  offset:
+   x: 0
+   y: -2
+draw_bold_text_with_bright_colors: false
+
+selection:
+  # This string contains all characters that are used as separators for
+  # "semantic words" in Alacritty.
+  semantic_escape_chars: ",│`|:\"' ()[]{}<>\t"
+
+  # When set to `true`, selected text will be copied to the primary clipboard.
+  save_to_clipboard: false
+
+cursor:
+  # Cursor style
+  style:
+    # Cursor shape
+    #
+    # Values for `shape`:
+    #   - ▇ Block
+    #   - _ Underline
+    #   - | Beam
+    shape: Block
+
+    # Cursor blinking state
+    #
+    # Values for `blinking`:
+    #   - Never: Prevent the cursor from ever blinking
+    #   - Off: Disable blinking by default
+    #   - On: Enable blinking by default
+    #   - Always: Force the cursor to always blink
+    blinking: on
+
+  # Vi mode cursor style
+  #
+  # If the vi mode cursor style is `None` or not specified, it will fall back to
+  # the style of the active value of the normal cursor.
+  #
+  # See `cursor.style` for available options.
+  #vi_mode_style: None
+
+  # Cursor blinking interval in milliseconds.
+  #blink_interval: 750
+
+  # If this is `true`, the cursor will be rendered as a hollow box when the
+  # window is not focused.
+  unfocused_hollow: true
+
+  # Thickness of the cursor relative to the cell width as floating point number
+  # from `0.0` to `1.0`.
+  #thickness: 0.15
+
+live_config_reload: true
+
+working_directory: None # startup in directory of parent process
+
+# Send ESC (\x1b) before characters when alt is pressed.
+#alt_send_esc: true
+
+# Offer IPC using `alacritty msg` (unix only)
+#ipc_socket: true
+
+mouse:
+  # Click settings
+  #
+  # The `double_click` and `triple_click` settings control the time
+  # alacritty should wait for accepting multiple clicks as one double
+  # or triple click.
+  #double_click: { threshold: 300 }
+  #triple_click: { threshold: 300 }
+
+  # If this is `true`, the cursor is temporarily hidden when typing.
+  hide_when_typing: true

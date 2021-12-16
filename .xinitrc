@@ -36,7 +36,7 @@ setxkbmap us & # set keyboard layout
 
 # trackpad 
 xinput --set-prop "12" "331" "0" # enable move cursor while typing
-xinput --set-prop "12" "341" "0.55" # base cursor speed scale
+xinput --set-prop "12" "341" "0.52" # base cursor speed scale
 
 
 # OUTPUT
