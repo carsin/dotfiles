@@ -1,8 +1,5 @@
-# alias config='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
-
-# run fortune at startup as welcome message
-# fortune ~/.config/fortune/fortunes
-
+# https://unix.stackexchange.com/questions/71253/what-should-shouldnt-go-in-zshenv-zshrc-zlogin-zprofile-zlogout
+# ----------------------------------------------------
 # Import colorscheme from wal asynchronously
 # (cat ~/.cache/wal/sequences &)
 
@@ -76,3 +73,6 @@ source ~/.config/zsh/themes/carson.zsh-theme # load prompt
 
 # export GPG_TTY=$TTY
 # export PATH=$PATH:$HOME/.local/bin
+
+# run fortune at startup as welcome message
+fortune ~/.config/fortune/fortunes

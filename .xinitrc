@@ -30,13 +30,20 @@ if [ -d /etc/X11/xinit/xinitrc.d ] ; then
  unset f
 fi
 
-# set keyboard layout
-setxkbmap us &
 
+# INPUT
+setxkbmap us & # set keyboard layout
+
+# trackpad 
+xinput --set-prop "12" "331" "0" # enable move cursor while typing
+xinput --set-prop "12" "341" "0.55" # base cursor speed scale
+
+
+# OUTPUT
 # configure monitor output
-xrandr --output eDP-1 --dpi 227 --panning 2560x1600 &
+xrandr --output eDP-1 --dpi 200 --panning 2560x1600 &
 
-# start compositor
+# start window compositor
 picom -f &
 
 # start wm

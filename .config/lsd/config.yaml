@@ -65,6 +65,11 @@ icons:
 # == Ignore Globs ==
 # A list of globs to ignore when listing.
 ignore-globs:
+  # bullshit in ~
+  - .mozilla
+  - .pki
+  - .gnupg
+  - .cfg
 
 # == Indicators ==
 # Whether to add indicator characters to certain listed files.
