@@ -47,4 +47,4 @@ xrandr --output eDP-1 --dpi 200 --panning 2560x1600 &
 picom -f &
 
 # start wm
-exec dwm
+exec /usr/local/bin/dwm

@@ -35,6 +35,7 @@ alias cpftp="sftp ckfreedm@unix3.csc.calpoly.edu"
 
 alias top="htop"
 alias pm="pulsemixer"
+alias battery='acpi'
 
 alias g="git"
 alias lg="lazygit"
