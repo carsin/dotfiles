@@ -42,9 +42,19 @@ xinput --set-prop "12" "341" "0.55" # base cursor speed scale
 # monitor output
 
 # laptop screen
-xrandr --output eDP-1 --auto --dpi 200 &
+# xrandr --output eDP-1 --auto --dpi 200 &
 # center vg248qe plugged into bot left
-xrandr --output DP-2 --auto --above eDP-1 --dpi 100 -r 144 &
+# xrandr --output DP-2 --auto --above eDP-1 --dpi 100 -r 144 &
+
+# side by side
+# xrandr --dpi 220 --fb 6400x3760 \
+#     --output eDP-1 --mode 2560x1600 --pos 0x1600 \
+#     --output DP-2 --scale 2x2 --panning 3840x2160+2560+0
+
+# vertical
+xrandr --fbmm 6400x3760 \
+       --output DP-1  --mode 1920x1080 --pos 0x0 --rate 144.00 --transform 1.5,0,0,0,1.5,0,0,0,1 --primary \
+       --output eDP-1 --mode 2560x1600 --pos 0x2160  --rate 60.00
 
 # start window compositor
 picom -f &
