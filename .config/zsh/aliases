@@ -13,6 +13,7 @@ alias rm="rm -v"
 alias bc="bc -ql"
 alias mkdir="mkdir -pv"
 alias find="fd"
+alias sx='startx'
 
 alias cfg="/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME"
 alias config="/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME"

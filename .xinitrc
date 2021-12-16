@@ -38,10 +38,13 @@ setxkbmap us & # set keyboard layout
 xinput --set-prop "12" "331" "0" # enable move cursor while typing
 xinput --set-prop "12" "341" "0.55" # base cursor speed scale
 
-
 # OUTPUT
-# configure monitor output
-xrandr --output eDP-1 --dpi 200 --panning 2560x1600 &
+# monitor output
+
+# laptop screen
+xrandr --output eDP-1 --auto --dpi 200 &
+# center vg248qe plugged into bot left
+xrandr --output DP-2 --auto --above eDP-1 --dpi 100 -r 144 &
 
 # start window compositor
 picom -f &
