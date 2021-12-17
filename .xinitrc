@@ -34,14 +34,8 @@ fi
 # INPUT
 setxkbmap us & # set keyboard layout
 
-# setup trackpad 
-
-# get ID consistently (it changes when plugging other input in)
-id="$(xinput list --id-only pointer:'bcm5974')"
-# enable move cursor while typing
-xinput --set-prop $id '331' '0'
-# scale base cursor speed 
-xinput --set-prop $id '341' '0.55' 
+exec ~/bin/mouse.sh &
+exec ~/bin/trackpad.sh &
 
 # OUTPUT
        

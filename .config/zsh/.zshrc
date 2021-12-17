@@ -12,7 +12,7 @@ source "$ZDOTDIR/functions"
 # History in cache directory:
 HISTSIZE=10000000
 SAVEHIST=10000000
-HISTFILE=$XDG_CACHE_HOME/.histfile
+HISTFILE=$XDG_CACHE_HOME/zsh/.histfile
 
 # completions
 autoload -Uz compinit
