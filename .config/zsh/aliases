@@ -3,7 +3,6 @@ alias ...="cd ../.."
 alias ....="cd ../../.."
 alias .....="cd ../../../.."
 alias ~="cd ~"
-# alias ls='exa -aF --color=always --sort=type --group-directories-first --ignore-glob=".DS_Store"'
 alias ls='lsd -A'
 alias ll='lsd -lA'
 alias lt='lsd --tree -A'
@@ -13,9 +12,9 @@ alias rm="rm -v"
 alias bc="bc -ql"
 alias mkdir="mkdir -pv"
 alias find="fd"
+
 alias sx='startx'
 
-alias cfg="/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME"
 alias config="/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME"
 
 alias cr="cargo run"
@@ -53,6 +52,16 @@ alias laptop="exec /home/carson/bin/displays/laptop.sh"
 
 alias wttr="curl v2d.wttr.in/San+Luis+Obispo"
 alias wttr2="curl wttr.in/San+Luis+Obispo"
+
+# pacman aliases
+alias pac='pacman -S' # install
+alias pacr='pacman -Rs' # remove
+alias pacs='pacman -Ss' # search
+alias paci='pacman -Si' # info
+alias paclo='pacman -Qdt' # list orphans
+alias pacro='paclo && sudo pacman -Rns $(pacman -Qtdq)' # remove orphans
+alias pacc='pacman -Scc' # clean cache
+alias paclf='pacman -Ql' # list files
 
 # alias sysupdate="source ~/bin/updatesyspackages.sh"
 # alias updateall="source ~/bin/updatesyspackages.sh"

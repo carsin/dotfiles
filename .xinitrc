@@ -43,5 +43,5 @@ exec ~/bin/trackpad.sh &
 picom -f &
 
 # start window manager
-# exec ~/bin/dwmloop.sh
-exec dwm
+exec ~/bin/dwmloop.sh
+# exec dwm

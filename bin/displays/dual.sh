@@ -1,22 +1,25 @@
 #!/usr/bin/sh
 
-# set up displays
-# xrandr --output eDP-1 --off \
-#        --output DP-4 --auto --rate 144.0 --primary \
-#        --output DP-5 --auto --rate 144.0 --right-of DP-4
+# set new xresources dpi
+echo "Xft.dpi: 92" | xrdb -merge
 
 xrandr \
     --output eDP-1 --off \
 \
     --output DP-4 \
-    --dpi 192 \
     --primary \
-    --mode 1920x1080 \
-    --transform 2,0,0,0,2,0,0,0,1 \
+    --dpi 92 \
+    --rate 144.00 \
     --pos 0x0 \
+    --scale 1x1 \
+    --mode 1920x1080 \
 \
     --output DP-5 \
-    --dpi 192 \
-    --mode 1920x1080 \
-    --transform 2,0,0,0,2,0,0,0,1 \
-    --pos 3840x0 
+    --dpi 92 \
+    --rate 144.00 \
+    --scale 1x1 \
+    --pos 1920x0  \
+    --mode 1920x1080
+
+# restart dwm
+killall dwm
