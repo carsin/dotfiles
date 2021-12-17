@@ -32,7 +32,7 @@ scrolling:
 
 # Font configuration
 font:
-  size: 13.0
+  size: 12.5
   normal:
     family: TerminessTTF Nerd Font
     style: Medium

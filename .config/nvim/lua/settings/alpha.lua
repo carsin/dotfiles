@@ -606,7 +606,7 @@ local buttons = {
   }
 }
 
-local foot_hl = pick_and_remove(colors)
+local foot_hl = pick_and_remove(colors_noitalic)
 local date = os.date("%a, %b %d, %I:%M:%S %p ")
 local datedisplay = {
     type = "text",
