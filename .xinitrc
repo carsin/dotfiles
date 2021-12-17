@@ -34,30 +34,20 @@ fi
 # INPUT
 setxkbmap us & # set keyboard layout
 
-# trackpad 
-xinput --set-prop "12" "331" "0" # enable move cursor while typing
-xinput --set-prop "12" "341" "0.55" # base cursor speed scale
+# setup trackpad 
+
+# get ID consistently (it changes when plugging other input in)
+id="$(xinput list --id-only pointer:'bcm5974')"
+# enable move cursor while typing
+xinput --set-prop $id '331' '0'
+# scale base cursor speed 
+xinput --set-prop $id '341' '0.55' 
 
 # OUTPUT
-# monitor output
-
-# laptop screen
-# xrandr --output eDP-1 --auto --dpi 200 &
-# center vg248qe plugged into bot left
-# xrandr --output DP-2 --auto --above eDP-1 --dpi 100 -r 144 &
-
-# side by side
-# xrandr --dpi 220 --fb 6400x3760 \
-#     --output eDP-1 --mode 2560x1600 --pos 0x1600 \
-#     --output DP-2 --scale 2x2 --panning 3840x2160+2560+0
-
-# vertical
-xrandr --fbmm 6400x3760 \
-       --output DP-1  --mode 1920x1080 --pos 0x0 --rate 144.00 --transform 1.5,0,0,0,1.5,0,0,0,1 --primary \
-       --output eDP-1 --mode 2560x1600 --pos 0x2160  --rate 60.00
-
+       
 # start window compositor
 picom -f &
 
-# start wm
-exec /usr/local/bin/dwm
+# start window manager
+# exec ~/bin/dwmloop.sh
+exec dwm

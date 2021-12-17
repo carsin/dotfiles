@@ -47,6 +47,8 @@ alias t="tmux new-session -A -s main"
 alias t0="tmux a -t 0 || tmux new"
 alias t1="tmux a -t 1 || tmux new"
 
+alias dual="exec /home/carson/bin/displays/dual.sh"
+
 alias wttr="curl v2d.wttr.in/San+Luis+Obispo"
 alias wttr2="curl wttr.in/San+Luis+Obispo"
 
