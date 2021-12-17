@@ -32,7 +32,7 @@ scrolling:
 
 # Font configuration
 font:
-  size: 12.0
+  size: 14.0
   normal:
     family: TerminessTTF Nerd Font
     style: Medium
@@ -47,7 +47,7 @@ font:
     style: Bold Italic
   offset:
    x: 0
-   y: -2
+   y: 0
 draw_bold_text_with_bright_colors: false
 
 selection:
