@@ -25,6 +25,7 @@ alias rr='./run'
 alias rt='./test'
 alias mr="make && ./run"
 alias jj='nohup java -jar'
+alias smci='sudo make clean install'
 
 alias ka="killall"
 
