@@ -13,7 +13,6 @@ alias bc="bc -ql"
 alias mkdir="mkdir -pv"
 alias find="fd"
 
-alias sx='startx'
 
 alias config="/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME"
 
@@ -54,8 +53,8 @@ alias wttr="curl v2d.wttr.in/San+Luis+Obispo"
 alias wttr2="curl wttr.in/San+Luis+Obispo"
 
 # pacman aliases
-alias pac='pacman -S' # install
-alias pacr='pacman -Rs' # remove
+alias pac='sudo pacman -S' # install
+alias pacr='sudo pacman -Rs' # remove
 alias pacs='pacman -Ss' # search
 alias paci='pacman -Si' # info
 alias paclo='pacman -Qdt' # list orphans
