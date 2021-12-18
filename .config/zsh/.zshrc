@@ -73,7 +73,11 @@ source ~/.config/zsh/themes/carson.zsh-theme # load prompt
 
 # export GPG_TTY=$TTY
 # export PATH=$PATH:$HOME/.local/bin
-# if tmux is executable, X is running, and not inside a tmux session, then try to attach.
 
+# append stuff to path
+path+=('/home/carson/.local/bin')
+path+=('/home/carson/bin')
+
+export PATH
 # run fortune at startup as welcome message
 fortune ~/.config/fortune/fortunes

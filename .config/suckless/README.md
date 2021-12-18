@@ -1,4 +1,4 @@
-# dwm:
+# dwm
 ## patches
 * always center
 * attachaside
@@ -11,7 +11,7 @@
 * moveresize
 * pertag
 * scratchpad
-bar: 
+### bar
 * bar layout symbol 
 * bar status
 * bar systray
@@ -19,6 +19,17 @@ bar:
 * bar wintitle
 * bar title padding left 
 # st
+* alpha + alpha focus + alpha gradient
+* osc escape sequences
+* dynamic
+* undercurl
+* bold is not bright
+* boxdraw
+* dynamic cursorcolor
+* hide x cursor
+* open url on click
+* scrollback + mouse
+* swapmouse
 # dmenu
 * border
 * center
