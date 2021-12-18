@@ -55,6 +55,8 @@ alias laptop="exec /home/carson/bin/displays/laptop.sh"
 alias wttr="curl v2d.wttr.in/San+Luis+Obispo"
 alias wttr2="curl wttr.in/San+Luis+Obispo"
 
+alias brightness="sudo /home/carson/bin/setbrightness.sh"
+
 # pacman aliases
 alias pac='sudo pacman -S' # install
 alias pacr='sudo pacman -Rs' # remove

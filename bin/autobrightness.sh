@@ -81,7 +81,8 @@ change_brightness() {
 
     [[ $ambi_bri -le 0 ]] && ambi_bri=1
 
-    $change_bri && echo $ambi_bri > "$BRI_FILE"
+    $change_bri && sudo echo $ambi_bri > "$BRI_FILE"
+    echo "changing brightness to $ambi_bri"
 
     AMBI_BRI_OLD=$ambi_bri
     PLUG_STATUS_OLD=$plug_status
