@@ -54,7 +54,7 @@ static const int vertpad                 = 10;  /* vertical padding of bar */
 static const int sidepad                 = 10;  /* horizontal padding of bar */
 #endif // BAR_PADDING_PATCH
 #if BAR_WINICON_PATCH
-#define ICONSIZE 20    /* icon size */
+#define ICONSIZE 15    /* icon size */
 #define ICONSPACING 5  /* space between icon and title */
 #endif // BAR_WINICON_PATCH
 #if FOCUSONCLICK_PATCH
@@ -212,7 +212,9 @@ static char selfloatbgcolor[]            = "#117799";
 #endif // BAR_FLEXWINTITLE_PATCH
 
 #if BAR_ALPHA_PATCH
-static const unsigned int baralpha = 0xd0;
+
+// 90% = D8, 85%=D9 80% = CC, 70% = B2, 50% = 7F, 40% = 66
+static const unsigned int baralpha = 0xB2;
 static const unsigned int borderalpha = OPAQUE;
 static const unsigned int alphas[][3] = {
 	/*                       fg      bg        border     */

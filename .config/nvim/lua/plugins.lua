@@ -51,6 +51,7 @@ return packer.startup({ function(use)
   use 'vimwiki/vimwiki' -- Replace? https://github.com/oberblastmeister/neuron.nvim
   use 'kyazdani42/nvim-web-devicons'
   use 'nvim-lua/lsp-status.nvim'
+  use 'ActivityWatch/aw-watcher-vim'
   use 'nathom/filetype.nvim'
   -- use 'rcarriga/nvim-notify' -- TODO: config file
 

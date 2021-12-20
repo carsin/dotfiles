@@ -58,6 +58,8 @@ alias wttr2="curl wttr.in/San+Luis+Obispo"
 alias brightness="sudo /home/carson/bin/setbrightness.sh"
 alias autobrightness="sudo /home/carson/bin/autobrightness.sh"
 
+alias ctrl='setxkbmap -option ctrl:nocaps'
+
 # pacman aliases
 alias pac='sudo pacman -S' # install
 alias pacr='sudo pacman -Rs' # remove

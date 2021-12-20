@@ -22,8 +22,6 @@ if [ -f "$usermodmap" ]; then
     xmodmap "$usermodmap"
 fi
 
-[[ -f ~/.Xresources ]] && xrdb -merge -I$HOME ~/.Xresources
-
 # start some nice programs
 if [ -d /etc/X11/xinit/xinitrc.d ] ; then
  for f in /etc/X11/xinit/xinitrc.d/?*.sh ; do
@@ -40,7 +38,6 @@ setxkbmap -option ctrl:nocaps
 exec ~/bin/mouse.sh &
 exec ~/bin/trackpad.sh &
 
-# laptop setup
 
 # restore wallpaper and colorschemes
 wal -R
@@ -48,8 +45,11 @@ wal -R
 # start window compositor
 picom -f &
 
-# exec ~/bin/display/laptop.sh
+# activity watch server
+aw-qt &
 
 # start window manager
-exec ~/bin/dwmloop.sh
+while :; do
+	ssh-agent dwm
+done
 # exec dwm
