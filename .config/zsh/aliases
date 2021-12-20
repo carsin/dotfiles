@@ -56,6 +56,7 @@ alias wttr="curl v2d.wttr.in/San+Luis+Obispo"
 alias wttr2="curl wttr.in/San+Luis+Obispo"
 
 alias brightness="sudo /home/carson/bin/setbrightness.sh"
+alias autobrightness="sudo /home/carson/bin/autobrightness.sh"
 
 # pacman aliases
 alias pac='sudo pacman -S' # install
@@ -67,7 +68,10 @@ alias pacro='paclo && sudo pacman -Rns $(pacman -Qtdq)' # remove orphans
 alias pacc='pacman -Scc' # clean cache
 alias paclf='pacman -Ql' # list files
 
-# alias sysupdate="source ~/bin/updatesyspackages.sh"
-# alias updateall="source ~/bin/updatesyspackages.sh"
+alias w=''
 
-# alias luamake=/Users/carson/.local/bin/lua-language-server/3rd/luamake/luamake
+alias w="wal -i ~/files/photos/wallpapers/wal && pywalfox update"
+alias w1="wal --backend haishoku -i ~/files/photos/wallpapers/wal/ && pywalfox update"
+alias w2="wal --backend colorz -i ~/files/photos/wallpapers/wal/ && pywalfox update"
+alias w3="wal --backend colorthief -i ~/files/photos/wallpapers/wal/ && pywalfox update"
+alias wnew="wal --backend colorz -i ~/files/photos/wallpapers/new/ && pywalfox update"

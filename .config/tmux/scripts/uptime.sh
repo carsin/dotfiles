@@ -10,5 +10,4 @@ uptime -p >/dev/null 2>&1
 
 UP=$(uptime | sed -E 's/^[^,]*up *//; s/, *[[:digit:]]* user.*//; s/min/min/; s/([[:digit:]]+):0?([[:digit:]]+)/\1h, \2m/' )
 
-
 echo "up $UP"

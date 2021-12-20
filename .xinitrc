@@ -22,6 +22,8 @@ if [ -f "$usermodmap" ]; then
     xmodmap "$usermodmap"
 fi
 
+[[ -f ~/.Xresources ]] && xrdb -merge -I$HOME ~/.Xresources
+
 # start some nice programs
 if [ -d /etc/X11/xinit/xinitrc.d ] ; then
  for f in /etc/X11/xinit/xinitrc.d/?*.sh ; do
@@ -30,17 +32,20 @@ if [ -d /etc/X11/xinit/xinitrc.d ] ; then
  unset f
 fi
 
-# INPUT
+# input configuration
 setxkbmap us & # set keyboard layout
-
+# capslock is ctrl
+setxkbmap -option ctrl:nocaps
+# xinput stuff
 exec ~/bin/mouse.sh &
-exec ~/bin/trackpad.sh &
+#xec ~/bin/trackpad.sh &
 
-# OUTPUT
-       
+# restore wallpaper and colorschemes
+wal -R
+
 # start window compositor
 picom -f &
 
 # start window manager
-exec ~/bin/dwmloop.sh
-# exec dwm
+# exec ~/bin/dwmloop.sh
+exec dwm

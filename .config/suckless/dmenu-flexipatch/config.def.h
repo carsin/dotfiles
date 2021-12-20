@@ -86,7 +86,7 @@ char *colors[][2] = {
 	#endif // EMOJI_HIGHLIGHT_PATCH
 };
 /* -l option; if nonzero, dmenu uses vertical list with given number of lines */
-static unsigned int lines      = 5;
+static unsigned int lines      = 8;
 #if GRID_PATCH
 /* -g option; if nonzero, dmenu uses a grid comprised of columns and lines */
 static unsigned int columns    = 3;
