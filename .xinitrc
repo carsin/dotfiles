@@ -38,7 +38,9 @@ setxkbmap us & # set keyboard layout
 setxkbmap -option ctrl:nocaps
 # xinput stuff
 exec ~/bin/mouse.sh &
-#xec ~/bin/trackpad.sh &
+exec ~/bin/trackpad.sh &
+
+# laptop setup
 
 # restore wallpaper and colorschemes
 wal -R
@@ -46,6 +48,8 @@ wal -R
 # start window compositor
 picom -f &
 
+# exec ~/bin/display/laptop.sh
+
 # start window manager
-# exec ~/bin/dwmloop.sh
-exec dwm
+exec ~/bin/dwmloop.sh
+# exec dwm

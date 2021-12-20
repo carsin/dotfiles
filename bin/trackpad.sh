@@ -1,14 +1,15 @@
 #!/usr/bin/bash
 
-# get ID consistently (it changes when plugging other input in)
-trackpadid="$(xinput list --id-only pointer:'bcm5974')"
-
 # enable move cursor while typing
-xinput --set-prop $trackpadid 'libinput Disable While Typing Enabled' '0'
+xinput --set-prop 'bcm5974' 'libinput Disable While Typing Enabled' 0
+
 # scale base cursor speed 
-xinput --set-prop $trackpadid 'libinput Accel Speed' '0.55'
-# disable acceleration
-xinput --set-prop $trackpadid 335 0
-xinput --set-prop $trackpadid 'libinput Accel Profile Enabled' '0'
+xinput --set-prop 'bcm5974' 'libinput Accel Speed' '0.4'
+
+# enable acceleration
+xinput --set-prop 'bcm5974' 'libinput Accel Profile Enabled' 1
+
+# dont scroll so far
+xinput --set-prop 'bcm5974' 'libinput Scrolling Pixel Distance' 10
 
 echo 'initalized bcm5974 settings'

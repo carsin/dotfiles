@@ -68,8 +68,6 @@ alias pacro='paclo && sudo pacman -Rns $(pacman -Qtdq)' # remove orphans
 alias pacc='pacman -Scc' # clean cache
 alias paclf='pacman -Ql' # list files
 
-alias w=''
-
 alias w="wal -i ~/files/photos/wallpapers/wal && pywalfox update"
 alias w1="wal --backend haishoku -i ~/files/photos/wallpapers/wal/ && pywalfox update"
 alias w2="wal --backend colorz -i ~/files/photos/wallpapers/wal/ && pywalfox update"

@@ -1,4 +1,5 @@
 # See dunst(5) for all configuration options
+# https://github.com/dylanaraps/pywal/issues/322
 
 [global]
     ### Display ###
@@ -17,7 +18,7 @@
     #
     # If this option is set to mouse or keyboard, the monitor option
     # will be ignored.
-    follow = none
+    follow = mouse
 
     ### Geometry ###
 
@@ -68,7 +69,7 @@
     # The transparency of the window.  Range: [0; 100].
     # This option will only work if a compositing window manager is
     # present (e.g. xcompmgr, compiz, etc.). (X11 only)
-    transparency = 0
+    transparency = 30
 
     # Draw a line of "separator_height" pixel height between two
     # notifications.
@@ -86,7 +87,7 @@
 
     # Defines width in pixels of frame around the notification window.
     # Set to 0 to disable.
-    frame_width = 3
+    frame_width = 1
 
     # Defines color of the frame around the notification window.
     frame_color = "#aaaaaa"
@@ -111,7 +112,7 @@
 
     ### Text ###
 
-    font = Monospace 8
+    font = TerminessTTF Nerd Font 12
 
     # The spacing between lines.  If the height is smaller than the
     # font height, it will get raised to the font height.
@@ -286,7 +287,7 @@
     # dunst will attempt to calculate an appropriate dpi value for each monitor
     # using the resolution and physical size. This might be useful in setups
     # where there are multiple screens with very different dpi values.
-    per_monitor_dpi = false
+    per_monitor_dpi = true
 
 
 [urgency_low]
@@ -294,14 +295,14 @@
     # Otherwise the "#" and following would be interpreted as a comment.
     background = "#222222"
     foreground = "#888888"
-    timeout = 10
+    timeout = 3
     # Icon for notifications with low urgency, uncomment to enable
     #default_icon = /path/to/icon
 
 [urgency_normal]
     background = "#285577"
     foreground = "#ffffff"
-    timeout = 10
+    timeout = 5
     # Icon for notifications with normal urgency, uncomment to enable
     #default_icon = /path/to/icon
 
@@ -309,7 +310,7 @@
     background = "#900000"
     foreground = "#ffffff"
     frame_color = "#ff0000"
-    timeout = 0
+    timeout = 10
     # Icon for notifications with critical urgency, uncomment to enable
     #default_icon = /path/to/icon
 
