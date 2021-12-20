@@ -3,7 +3,8 @@
 # set new xresources dpi
 echo "Xft.dpi: 192" | xrdb -merge
 
-xrandr --output eDP-1 --auto --dpi 192 --primary \
+xrandr --dpi 192 \
+       --output eDP-1 --auto --primary \
        --output DP-4 --off \
        --output DP-5 --off
 

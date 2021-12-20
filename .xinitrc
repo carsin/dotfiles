@@ -14,9 +14,9 @@ if [ -f $sysmodmap ]; then
     xmodmap $sysmodmap
 fi
 
-if [ -f "$userresources" ]; then
-    xrdb -merge "$userresources"
-fi
+# if [ -f "$userresources" ]; then
+#    xrdb -merge "$userresources"
+#fi
 
 if [ -f "$usermodmap" ]; then
     xmodmap "$usermodmap"
@@ -38,6 +38,8 @@ setxkbmap -option ctrl:nocaps
 exec ~/bin/mouse.sh &
 exec ~/bin/trackpad.sh &
 
+# activity watch server
+aw-qt &
 
 # restore wallpaper and colorschemes
 wal -R
@@ -45,11 +47,11 @@ wal -R
 # start window compositor
 picom -f &
 
-# activity watch server
-aw-qt &
-
 # start window manager
+xrdb -merge ~/.Xresources
+
 while :; do
 	ssh-agent dwm
 done
+
 # exec dwm

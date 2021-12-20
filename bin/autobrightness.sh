@@ -82,15 +82,15 @@ change_brightness() {
     [[ $ambi_bri -le 0 ]] && ambi_bri=1
 
     $change_bri && sudo echo $ambi_bri > "$BRI_FILE"
-    echo "changing brightness to $ambi_bri"
+    echo "changed brightness to $ambi_bri"
 
     AMBI_BRI_OLD=$ambi_bri
     PLUG_STATUS_OLD=$plug_status
 }
 
-while true; do
-    sleep $POLLING_PER
-    grep -q closed /proc/acpi/button/lid/LID0/state && continue
-    lux=$(cat /sys/bus/iio/devices/$SENSOR/in_illuminance_input)
-    change_brightness "$lux"
-done
+# while true; do
+    # sleep $POLLING_PER
+grep -q closed /proc/acpi/button/lid/LID0/state && continue
+lux=$(cat /sys/bus/iio/devices/$SENSOR/in_illuminance_input)
+change_brightness "$lux"
+# done
