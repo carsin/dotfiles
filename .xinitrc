@@ -23,8 +23,7 @@ wal -R
 picom -f &
 
 # set dpi
-xrdb -load ~/.Xresources 
-/* xrandr --output eDP-1 --dpi 192  */
+xrdb -merge ~/.Xresources 
 
 # activity watch server
 aw-qt &
@@ -33,7 +32,5 @@ aw-qt &
 while :; do 
     ssh-agent dwm 
 done 
-
-2560*2
 
 # exec dwm
