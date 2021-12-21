@@ -31,6 +31,14 @@ PROMPT_EOL_MARK=''
 bindkey -v
 export KEYTIMEOUT=10
 
+# let st's terminfo handle key sequences
+if [[ $TERM =~ 'st-256color' || $TERM =~ 'xterm-256color' ]]; then
+    function zle-line-init () { echoti smkx }
+    function zle-line-finish () { echoti rmkx }
+    zle -N zle-line-init
+    zle -N zle-line-finish
+fi
+
 # Syntax highlighting
 # source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 

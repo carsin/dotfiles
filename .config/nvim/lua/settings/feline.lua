@@ -183,21 +183,21 @@ table.insert(components.active[1], {
 })
 
 -- RIGHT
-table.insert(components.active[3], {
-  provider = function()
-    local max_len = 50
-    local val = require("lsp-status").status()
-    if string.len(val) >= max_len then
-      val = "…" .. string.sub(val, 1, max_len) .. "…"
-    end
-    return val
-  end,
-  -- hl = "FlnStatus",
-  -- hl = {
-  --   fg = 'cyan',
-  --   style = 'bold'
-  -- },
-})
+-- table.insert(components.active[3], {
+--   provider = function()
+--     local max_len = 50
+--     local val = require("lsp-status").status()
+--     if string.len(val) >= max_len then
+--       val = "…" .. string.sub(val, 1, max_len) .. "…"
+--     end
+--     return val
+--   end,
+--   hl = "FlnStatus",
+--   hl = {
+--     fg = 'cyan',
+--     style = 'bold'
+--   },
+-- })
 
 -- diagnosticErrors
 table.insert(components.active[3], {

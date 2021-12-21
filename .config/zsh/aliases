@@ -70,7 +70,7 @@ alias pacro='paclo && sudo pacman -Rns $(pacman -Qtdq)' # remove orphans
 alias pacc='pacman -Scc' # clean cache
 alias paclf='pacman -Ql' # list files
 
-alias w="wal -i ~/files/photos/wallpapers/wal && pywalfox update"
+alias w="wal -a 90 -i ~/files/photos/wallpapers/wal && pywalfox update"
 alias w1="wal --backend haishoku -i ~/files/photos/wallpapers/wal/ && pywalfox update"
 alias w2="wal --backend colorz -i ~/files/photos/wallpapers/wal/ && pywalfox update"
 alias w3="wal --backend colorthief -i ~/files/photos/wallpapers/wal/ && pywalfox update"

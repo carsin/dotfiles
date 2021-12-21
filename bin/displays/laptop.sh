@@ -1,9 +1,10 @@
 #!/usr/bin/bash
 
 # set new xresources dpi
-echo "Xft.dpi: 192" | xrdb -merge
+newdpi=180
+echo "Xft.dpi: $newdpi" | xrdb -merge
 
-xrandr --dpi 192 \
+xrandr --dpi $newdpi \
        --output eDP-1 --auto --primary \
        --output DP-4 --off \
        --output DP-5 --off
@@ -11,7 +12,7 @@ xrandr --dpi 192 \
 # kill apps with incorrect scaling
 killall /usr/lib/firefox/firefox &
 
-exec ~/bin/autobrightness.sh &
+exec ~/bin/autobrightness.sh 
 
 # restart dwm
 killall dwm
