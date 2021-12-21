@@ -50,7 +50,6 @@ return packer.startup({ function(use)
   use 'junegunn/vim-easy-align'
   use 'vimwiki/vimwiki' -- Replace? https://github.com/oberblastmeister/neuron.nvim
   use 'kyazdani42/nvim-web-devicons'
-  -- use 'nvim-lua/lsp-status.nvim'
   use 'ActivityWatch/aw-watcher-vim'
   use 'nathom/filetype.nvim'
   -- use 'rcarriga/nvim-notify' -- TODO: config file
@@ -127,7 +126,6 @@ return packer.startup({ function(use)
       'hrsh7th/cmp-buffer',
       'hrsh7th/cmp-path',
       'hrsh7th/cmp-nvim-lsp',
-      'hrsh7th/cmp-calc',
       'saadparwaiz1/cmp_luasnip',
       'rafamadriz/friendly-snippets',
       'L3MON4D3/LuaSnip',

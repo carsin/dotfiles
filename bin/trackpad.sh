@@ -1,4 +1,6 @@
 #!/usr/bin/bash
+# TODO: mtrack
+# https://howchoo.com/linux/the-perfect-almost-touchpad-settings-on-linux-2
 
 # enable move cursor while typing
 xinput --set-prop 'bcm5974' 'libinput Disable While Typing Enabled' 0
