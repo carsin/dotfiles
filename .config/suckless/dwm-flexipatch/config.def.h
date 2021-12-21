@@ -125,11 +125,12 @@ static void (*bartabmonfns[])(Monitor *) = { NULL /* , customlayoutfn */ };
 #endif // MONOCLE_LAYOUT
 #endif // BAR_TABGROUPS_PATCH
 #if BAR_PANGO_PATCH
-static const char font[]                 = "TerminessTTF Nerd Font:pixelsize=16:antialias=false:autohint=true";
+// https://freedesktop.org/software/fontconfig/fontconfig-user.html
+static const char font[]                 = "TerminessTTF Nerd Font:size=12:antialias=false:autohint=true";
 #else
-static const char *fonts[]               = { "TerminessTTF Nerd Font:pixelsize=16:antialias=false:autohint=true" };
+static const char *fonts[]               = { "TerminessTTF Nerd Font:size=12:antialias=false:autohint=true" };
 #endif // BAR_PANGO_PATCH
-static const char dmenufont[]            = "TerminessTTF Nerd Font:pixelsize=16:antialias=false:autohint=true";
+static const char dmenufont[]            = "TerminessTTF Nerd Font:size=12:antialias=false:autohint=true";
 
 static char c000000[]                    = "#000000"; // placeholder value
 
@@ -814,7 +815,7 @@ static const char *dmenucmd[] = {
 	#endif // BAR_DMENUMATCHTOP_PATCH
 	NULL
 };
-static const char *termcmd[]  = { "alacritty", NULL };
+static const char *termcmd[]  = { "st", NULL };
 
 #if BAR_STATUSCMD_PATCH
 #if BAR_DWMBLOCKS_PATCH
