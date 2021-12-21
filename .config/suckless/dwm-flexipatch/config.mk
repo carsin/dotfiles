@@ -35,8 +35,8 @@ XRENDER = -lXrender
 #MPDCLIENT = -lmpdclient
 
 # Uncomment for the pango patch / BAR_PANGO_PATCH
-#PANGOINC = `pkg-config --cflags xft pango pangoxft`
-#PANGOLIB = `pkg-config --libs xft pango pangoxft`
+PANGOINC = `pkg-config --cflags xft pango pangoxft`
+PANGOLIB = `pkg-config --libs xft pango pangoxft`
 
 # Uncomment for the ipc patch / IPC_PATCH
 #YAJLLIBS = -lyajl

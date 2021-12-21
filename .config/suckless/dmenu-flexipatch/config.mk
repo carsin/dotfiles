@@ -28,8 +28,8 @@ FREETYPEINC = /usr/include/freetype2
 XRENDER = -lXrender
 
 # Uncomment for the pango patch / PANGO_PATCH
-#PANGOINC = `pkg-config --cflags xft pango pangoxft`
-#PANGOLIB = `pkg-config --libs xft pango pangoxft`
+PANGOINC = `pkg-config --cflags xft pango pangoxft`
+PANGOLIB = `pkg-config --libs xft pango pangoxft`
 
 # includes and libs
 INCS = -I$(X11INC) -I$(FREETYPEINC) $(JANSSONINC) ${PANGOINC}

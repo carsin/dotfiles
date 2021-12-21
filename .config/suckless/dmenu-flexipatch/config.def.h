@@ -9,7 +9,7 @@ static int opacity = 1;                     /* -o  option; if 0, then alpha is d
 static int fuzzy = 1;                       /* -F  option; if 0, dmenu doesn't use fuzzy matching */
 #endif // FUZZYMATCH_PATCH
 #if INCREMENTAL_PATCH
-static int incremental = 0;                 /* -r  option; if 1, outputs text each time a key is pressed */
+static int incremental = 1;                 /* -r  option; if 1, outputs text each time a key is pressed */
 #endif // INCREMENTAL_PATCH
 #if INSTANT_PATCH
 static int instant = 0;                     /* -n  option; if 1, selects matching item without the need to press enter */

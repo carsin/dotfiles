@@ -285,7 +285,7 @@
  * it can handle long text.
  * https://tools.suckless.org/dmenu/patches/scroll/
  */
-#define SCROLL_PATCH 0
+#define SCROLL_PATCH 1
 
 /* This patch allows the symbols, which are printed in dmenu to indicate that either the input
  * is too long or there are too many options to be shown in dmenu in one line, to be defined.
@@ -325,10 +325,10 @@
  *
  * https://tools.suckless.org/dmenu/patches/xresources/
  */
-#define XRESOURCES_PATCH 0
+#define XRESOURCES_PATCH 1
 
 /* This patch adds options for specifying dmenu window position and width.
  * The center patch takes precedence over the XYW patch if enabled.
  * https://tools.suckless.org/dmenu/patches/xyw/
  */
-#define XYW_PATCH 0
+#define XYW_PATCH e
