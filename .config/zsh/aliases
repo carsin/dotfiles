@@ -71,7 +71,7 @@ alias pacc='pacman -Scc' # clean cache
 alias paclf='pacman -Ql' # list files
 
 alias w="wal -a 90 -i ~/files/photos/wallpapers/wal && pywalfox update"
-alias w1="wal --backend haishoku -i ~/files/photos/wallpapers/wal/ && pywalfox update"
-alias w2="wal --backend colorz -i ~/files/photos/wallpapers/wal/ && pywalfox update"
-alias w3="wal --backend colorthief -i ~/files/photos/wallpapers/wal/ && pywalfox update"
-alias wnew="wal --backend colorz -i ~/files/photos/wallpapers/new/ && pywalfox update"
+alias w1="wal -a 90 --backend haishoku -i ~/files/photos/wallpapers/wal/ && pywalfox update"
+alias w2="wal -a 90 --backend colorz -i ~/files/photos/wallpapers/wal/ && pywalfox update"
+alias w3="wal -a 90 --backend colorthief -i ~/files/photos/wallpapers/wal/ && pywalfox update"
+alias wnew="wal -a 90 --backend colorz -i ~/files/photos/wallpapers/new/ && pywalfox update"
