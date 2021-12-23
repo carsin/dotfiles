@@ -179,12 +179,12 @@ return packer.startup({ function(use)
       end,
     }
 
-  use { -- Feline
-    'famiu/feline.nvim',
-    config = function()
-      require'settings.feline'
-    end,
-  }
+  -- use { -- Feline
+   -- 'famiu/feline.nvim',
+  --  config = function()
+  --    require'settings.feline'
+  --  end,
+ -- }
 
   -- TODO: Replace? https://github.com/kevinhwang91/nvim-bqf
   -- or https://github.com/stevearc/qf_helper.nvim
