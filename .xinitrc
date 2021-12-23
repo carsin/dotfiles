@@ -22,11 +22,14 @@ wal -R
 # start window compositor
 picom -f &
 
-# set dpi
-xrdb -merge ~/.Xresources 
-
 # activity watch server
 aw-qt &
+
+# autohide xcursor
+unclutter &
+
+# set dpi
+xrdb -merge ~/.Xresources 
 
 # start window manager
 while :; do 
