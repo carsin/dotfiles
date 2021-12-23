@@ -422,7 +422,7 @@ static const char *const autostart[] = {
 #endif // COOL_AUTOSTART_PATCH
 
 #if SCRATCHPADS_PATCH
-const char *spcmd1[] = {"st", "-n", "spterm", "-g", "120x34", NULL};
+const char *spcmd1[] = {"st", "-n", "spterm", "-g", "80x60", NULL};
 static Sp scratchpads[] = {
     /* name          cmd  */
     {"spterm", spcmd1},
@@ -959,7 +959,7 @@ static const char *dmenucmd[] = {"dmenu_run",
 #endif // BAR_DMENUMATCHTOP_PATCH
                                  NULL};
 // terminal command
-static const char *termcmd[] = {"st", NULL};
+static const char *termcmd[] = {"st -e tmux attach -t $(tmux ls | grep -v attached | head -1 | cut -f1 -d:) || tmux", NULL};
 
 #if BAR_STATUSCMD_PATCH
 #if BAR_DWMBLOCKS_PATCH
@@ -1149,9 +1149,9 @@ static Key keys[] = {
 #if XRDB_PATCH && !BAR_VTCOLORS_PATCH
     {MODKEY | ShiftMask, XK_F5, xrdb, {.v = NULL}},
 #endif // XRDB_PATCH
-    {MODKEY, XK_t, setlayout, {.v = &layouts[0]}},
-    {MODKEY, XK_f, setlayout, {.v = &layouts[1]}},
-    {MODKEY, XK_m, setlayout, {.v = &layouts[2]}},
+    // {MODKEY, XK_t, setlayout, {.v = &layouts[0]}},
+    // {MODKEY, XK_f, setlayout, {.v = &layouts[1]}},
+    // {MODKEY, XK_m, setlayout, {.v = &layouts[2]}},
 #if COLUMNS_LAYOUT
     {MODKEY, XK_c, setlayout, {.v = &layouts[3]}},
 #endif // COLUMNS_LAYOUT
@@ -1215,13 +1215,13 @@ static Key keys[] = {
     {MODKEY | ShiftMask, XK_t, unfloatvisible, {.v = &layouts[0]}},
 #endif // UNFLOATVISIBLE_PATCH
 #if TOGGLEFULLSCREEN_PATCH
-    {MODKEY, XK_y, togglefullscreen, {0}},
+    {MODKEY, XK_f, togglefullscreen, {0}},
 #endif // TOGGLEFULLSCREEN_PATCH
 #if !FAKEFULLSCREEN_PATCH && FAKEFULLSCREEN_CLIENT_PATCH
-    {MODKEY | ShiftMask, XK_y, togglefakefullscreen, {0}},
+    {MODKEY | ShiftMask, XK_f, togglefakefullscreen, {0}},
 #endif // FAKEFULLSCREEN_CLIENT_PATCH
 #if FULLSCREEN_PATCH
-    {MODKEY | ShiftMask, XK_f, fullscreen, {0}},
+    {MODKEY | Mod4Mask, XK_f, fullscreen, {0}},
 #endif // FULLSCREEN_PATCH
 #if STICKY_PATCH
     {MODKEY | ShiftMask, XK_s, togglesticky, {0}},

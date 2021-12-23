@@ -28,14 +28,14 @@ XRENDER = -lXrender
 #SIXEL_C = sixel.c sixel_hls.c
 
 # includes and libs, uncomment harfbuzz for the ligatures patch
-# INCS = -I$(X11INC) \
-#        `$(PKG_CONFIG) --cflags fontconfig` \
-#        `$(PKG_CONFIG) --cflags freetype2` \
-#        $(LIGATURES_INC)
-# LIBS = -L$(X11LIB) -lm -lrt -lX11 -lutil -lXft ${XRENDER} ${XCURSOR}\
-#        `$(PKG_CONFIG) --libs fontconfig` \
-#        `$(PKG_CONFIG) --libs freetype2` \
-#        $(LIGATURES_LIBS)
+INCS = -I$(X11INC) \
+       `$(PKG_CONFIG) --cflags fontconfig` \
+       `$(PKG_CONFIG) --cflags freetype2` \
+       $(LIGATURES_INC)
+LIBS = -L$(X11LIB) -lm -lrt -lX11 -lutil -lXft ${XRENDER} ${XCURSOR}\
+       `$(PKG_CONFIG) --libs fontconfig` \
+       `$(PKG_CONFIG) --libs freetype2` \
+       $(LIGATURES_LIBS)
 
 # flags
 STCPPFLAGS = -DVERSION=\"$(VERSION)\" -D_XOPEN_SOURCE=600
