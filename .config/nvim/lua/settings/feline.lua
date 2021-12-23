@@ -202,7 +202,7 @@ table.insert(components.active[1], {
 -- diagnosticErrors
 table.insert(components.active[3], {
   provider = 'diagnostic_errors',
-  enabled = function() return lsp.diagnostics_exist('Error') end,
+  enabled = function() return lsp.diagnostics_exist(vim.diagnostic.severity.ERROR) end,
   icon = " E ",
   hl = {
     fg = 'red',
@@ -214,7 +214,7 @@ table.insert(components.active[3], {
 -- diagnosticWarn
 table.insert(components.active[3], {
   provider = 'diagnostic_warnings',
-  enabled = function() return lsp.diagnostics_exist('Warning') end,
+  enabled = function() return lsp.diagnostics_exist(vim.diagnostic.severity.WARN) end,
   icon = " ! ",
   hl = {
     fg = 'yellow',
@@ -226,7 +226,7 @@ table.insert(components.active[3], {
 -- diagnosticHint
 table.insert(components.active[3], {
   provider = 'diagnostic_hints',
-  enabled = function() return lsp.diagnostics_exist('Hint') end,
+  enabled = function() return lsp.diagnostics_exist(vim.diagnostic.severity.HINT) end,
   icon = " ? ",
   hl = {
     fg = 'bgreen',
@@ -238,7 +238,7 @@ table.insert(components.active[3], {
 -- diagnosticInfo
 table.insert(components.active[3], {
   provider = 'diagnostic_info',
-  enabled = function() return lsp.diagnostics_exist('Information') end,
+  enabled = function() return lsp.diagnostics_exist(vim.diagnostic.severity.INFO) end,
   icon = " i ",
   hl = {
     fg = 'cyan',
@@ -383,7 +383,7 @@ table.insert(components.inactive[2], {
 })
 
 require('feline').setup({
-  colors = colors,
+  theme = colors,
   vi_mode_colors = vi_mode_colors,
   components = components,
   force_inactive = force_inactive,

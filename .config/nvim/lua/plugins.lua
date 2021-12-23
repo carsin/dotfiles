@@ -1,9 +1,9 @@
 -- download packer & bootstrap packages if it isn't installed
-local fn = vim.fn
-local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
-if fn.empty(fn.glob(install_path)) > 0 then
-  packer_bootstrap = fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
-end
+-- local fn = vim.fn
+-- local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
+-- if fn.empty(fn.glob(install_path)) > 0 then
+--   packer_bootstrap = fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
+-- end
 
 -- Auto compile when there are changes in plugins.lua
 vim.cmd([[
@@ -179,13 +179,13 @@ return packer.startup({ function(use)
       end,
     }
 
-  -- use { -- Feline
-   -- 'famiu/feline.nvim',
-  --  config = function()
-  --    require'settings.feline'
-  --  end,
- -- }
-
+ use { -- Feline
+  'famiu/feline.nvim',
+  config = function()
+    require'settings.feline'
+  end,
+ }
+ 
   -- TODO: Replace? https://github.com/kevinhwang91/nvim-bqf
   -- or https://github.com/stevearc/qf_helper.nvim
   use { -- Trouble
@@ -309,6 +309,9 @@ config = {
     open_fn = function()
       return require('packer.util').float({ border = 'single' })
     end
+  },
+  git = {
+    clone_timeout = 120,
   },
   compile_path = vim.fn.stdpath('config')..'/lua/compiled/packer_compiled.lua'
 }})

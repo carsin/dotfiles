@@ -125,12 +125,11 @@ static void (*bartabmonfns[])(Monitor *) = { NULL /* , customlayoutfn */ };
 #endif // MONOCLE_LAYOUT
 #endif // BAR_TABGROUPS_PATCH
 #if BAR_PANGO_PATCH
-// https://freedesktop.org/software/fontconfig/fontconfig-user.html
-static const char font[]                 = "TerminessTTF Nerd Font:size=12:antialias=false:autohint=true";
+static const char font[]                 = "mono";
 #else
-static const char *fonts[]               = { "TerminessTTF Nerd Font:size=12:antialias=false:autohint=true" };
+static const char *fonts[]               = { "TerminessTTF Nerd Font:size=11:antialias=true:autohint=true" };
 #endif // BAR_PANGO_PATCH
-static const char dmenufont[]            = "TerminessTTF Nerd Font:size=12:antialias=false:autohint=true";
+static const char dmenufont[]            = "TerminessTTF Nerd Font:size=11:antialias=true:autohint=true";
 
 static char c000000[]                    = "#000000"; // placeholder value
 
