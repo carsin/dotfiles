@@ -19,12 +19,9 @@ static int nomodbuttons =
 #if VANITYGAPS_PATCH
 static const unsigned int gappih = 6; /* horiz inner gap between windows */
 static const unsigned int gappiv = 6; /* vert inner gap between windows */
-static const unsigned int gappoh =
-    6; /* horiz outer gap between windows and screen edge */
-static const unsigned int gappov =
-    6; /* vert outer gap between windows and screen edge */
-static const int smartgaps_fact =
-    1; /* gap factor when there is only one client; 0 = no gaps, 3 = 3x outer
+static const unsigned int gappoh = 6; /* horiz outer gap between windows and screen edge */
+static const unsigned int gappov = 6; /* vert outer gap between windows and screen edge */
+static const int smartgaps_fact = 1; /* gap factor when there is only one client; 0 = no gaps, 3 = 3x outer
           gaps */
 #endif // VANITYGAPS_PATCH
 #if AUTOSTART_PATCH
@@ -422,7 +419,7 @@ static const char *const autostart[] = {
 #endif // COOL_AUTOSTART_PATCH
 
 #if SCRATCHPADS_PATCH
-const char *spcmd1[] = {"st", "-n", "spterm", "-g", "80x60", NULL};
+const char *spcmd1[] = {"st", "-n", "spterm", "-g", "80x30", NULL};
 static Sp scratchpads[] = {
     /* name          cmd  */
     {"spterm", spcmd1},
@@ -508,14 +505,13 @@ static const Rule rules[] = {
      *	_NET_WM_WINDOW_TYPE(ATOM) = wintype
      */
     RULE(.wintype = WTYPE "DIALOG", .isfloating = 1)
-        RULE(.wintype = WTYPE "UTILITY", .isfloating = 1)
-            RULE(.wintype = WTYPE "TOOLBAR", .isfloating = 1)
-                RULE(.wintype = WTYPE "SPLASH", .isfloating = 1)
-                    RULE(.class = "Gimp", .tags = 1 << 4)
-                        RULE(.class = "Firefox", .tags = 1 << 7)
+    RULE(.wintype = WTYPE "UTILITY", .isfloating = 1)
+    RULE(.wintype = WTYPE "TOOLBAR", .isfloating = 1)
+    RULE(.wintype = WTYPE "SPLASH", .isfloating = 1)
+    RULE(.class = "Gimp", .tags = 1 << 4)
+    RULE(.class = "Firefox", .tags = 1 << 7)
 #if SCRATCHPADS_PATCH
-                            RULE(.instance = "spterm", .tags = SPTAG(0),
-                                 .isfloating = 1)
+    RULE(.instance = "spterm", .tags = SPTAG(0), .isfloating = 1)
 #endif // SCRATCHPADS_PATCH
 };
 
@@ -959,7 +955,7 @@ static const char *dmenucmd[] = {"dmenu_run",
 #endif // BAR_DMENUMATCHTOP_PATCH
                                  NULL};
 // terminal command
-static const char *termcmd[] = {"st -e tmux attach -t $(tmux ls | grep -v attached | head -1 | cut -f1 -d:) || tmux", NULL};
+static const char *termcmd[] = {"st", NULL};
 
 #if BAR_STATUSCMD_PATCH
 #if BAR_DWMBLOCKS_PATCH
@@ -1149,9 +1145,9 @@ static Key keys[] = {
 #if XRDB_PATCH && !BAR_VTCOLORS_PATCH
     {MODKEY | ShiftMask, XK_F5, xrdb, {.v = NULL}},
 #endif // XRDB_PATCH
-    // {MODKEY, XK_t, setlayout, {.v = &layouts[0]}},
-    // {MODKEY, XK_f, setlayout, {.v = &layouts[1]}},
-    // {MODKEY, XK_m, setlayout, {.v = &layouts[2]}},
+       // {MODKEY, XK_t, setlayout, {.v = &layouts[0]}},
+       // {MODKEY, XK_f, setlayout, {.v = &layouts[1]}},
+       // {MODKEY, XK_m, setlayout, {.v = &layouts[2]}},
 #if COLUMNS_LAYOUT
     {MODKEY, XK_c, setlayout, {.v = &layouts[3]}},
 #endif // COLUMNS_LAYOUT
@@ -1557,7 +1553,7 @@ static Button buttons[] = {
      * if you want to control these separately (i.e. to retain the feature to
      * move a tiled window into a floating position).
      */
-    {ClkClientWin, MODKEY, Button1, moveorplace, {.i = 2}},
+    {ClkClientWin, MODKEY, Button1, moveorplace, {.i = 1}},
 #else
     {ClkClientWin, MODKEY, Button1, movemouse, {0}},
 #endif // PLACEMOUSE_PATCH

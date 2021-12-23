@@ -792,7 +792,7 @@
  * https://github.com/instantOS/instantWM/
  * https://github.com/bakkeby/dwm-flexipatch/issues/51
  */
-#define ON_EMPTY_KEYS_PATCH 1
+#define ON_EMPTY_KEYS_PATCH 0
 
 /* Minor patch that prevents more than one rule being matched for a given client. */
 #define ONLY_ONE_RULE_MATCH_PATCH 0
