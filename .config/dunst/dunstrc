@@ -30,8 +30,8 @@
     # The maximum height of a single notification, excluding the frame.
     height = 300
 
-    # Position the notification in the top right corner
-    origin = top-right
+    # Position the notification 
+    origin = bottom-right
 
     # Offset from the origin
     offset = 10x50
