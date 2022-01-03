@@ -679,7 +679,7 @@ static const int decorhints = 1; /* 1 means respect decoration hints */
 #if TAPRESIZE_PATCH
 /* mouse scroll resize */
 static const int scrollsensetivity =
-    30; /* 1 means resize window by 1 pixel for each scroll event */
+    20; /* 1 means resize window by 1 pixel for each scroll event */
 /* resizemousescroll direction argument list */
 static const int scrollargs[][2] = {
     /* width change         height change */
