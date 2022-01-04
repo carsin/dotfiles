@@ -52,12 +52,13 @@ alias matrix="neo-matrix -d 0.5 -f 144 -G 0 -s -S 5.5 --maxdpc=2"
 alias dual="exec /home/carson/bin/displays/dual.sh"
 alias triple="exec /home/carson/bin/displays/triple.sh"
 alias laptop="exec /home/carson/bin/displays/laptop.sh"
+alias ultrawide="exec /home/carson/bin/displays/ultrawide.sh"
 
 alias wttr="curl v2d.wttr.in/San+Luis+Obispo"
 alias wttr2="curl wttr.in/San+Luis+Obispo"
 
-alias brightness="sudo /home/carson/bin/setbrightness.sh"
-alias autobrightness="sudo /home/carson/bin/autobrightness.sh"
+alias abright="sudo /home/carson/bin/autobrightness.sh"
+alias bright="sudo /home/carson/bin/setbrightness.sh"
 
 alias ctrl='setxkbmap -option ctrl:nocaps'
 
