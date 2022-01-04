@@ -4,9 +4,10 @@ alias ....="cd ../../.."
 alias .....="cd ../../../.."
 alias ~="cd ~"
 alias l='ls'
-alias ls='lsd -A'
-alias ll='lsd -lA'
-alias lt='lsd --tree -A'
+alias ls='exa -aF --color=always --sort=type --group-directories-first --ignore-glob=".DS_Store" --icons'
+# alias ls='lsd -A'
+# alias ll='lsd -lA'
+# alias lt='lsd --tree -A'
 alias cp="cp -v"
 alias mv="mv -v"
 alias rm="rm -v"
