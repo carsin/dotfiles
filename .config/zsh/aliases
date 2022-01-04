@@ -69,7 +69,7 @@ alias pacs='pacman -Ss' # search
 alias paci='pacman -Si' # info
 alias paclo='pacman -Qdt' # list orphans
 alias pacro='paclo && sudo pacman -Rns $(pacman -Qtdq)' # remove orphans
-alias pacc='pacman -Scc' # clean cache
+alias pacc='sudo pacman -Scc' # clean cache
 alias paclf='pacman -Ql' # list files
 
 alias w="wal -a 90 -i ~/files/photos/wallpapers/wal && pywalfox update"

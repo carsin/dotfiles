@@ -14,7 +14,6 @@ xrandr \
     --auto \
 \
     --output eDP-1-1 \
-    --auto \
     --dpi 196 \
     --pos 0x0 \
     --scale 1x1 \

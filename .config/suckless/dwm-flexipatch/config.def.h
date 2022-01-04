@@ -1203,7 +1203,7 @@ static Key keys[] = {
     {MODKEY | ShiftMask, XK_Escape, togglenomodbuttons, {0}},
 #endif // NO_MOD_BUTTONS_PATCH
 #if SCRATCHPADS_PATCH
-    {MODKEY, XK_grave, togglescratch, {.ui = 0}},
+    {MODKEY, XK_Escape, togglescratch, {.ui = 0}},
     {MODKEY | ControlMask, XK_grave, setscratch, {.ui = 0}},
     {MODKEY | ShiftMask, XK_grave, removescratch, {.ui = 0}},
 #endif // SCRATCHPADS_PATCH
