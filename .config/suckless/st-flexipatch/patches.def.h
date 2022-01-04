@@ -54,7 +54,7 @@
  *    https://invisible-island.net/xterm/ctlseqs/ctlseqs.html#h4-Functions-using-CSI-_-ordered-by-the-final-character-lparen-s-rparen:CSI-Ps-SP-q.1D81
  * https://st.suckless.org/patches/blinking_cursor/
  */
-#define BLINKING_CURSOR_PATCH 1
+#define BLINKING_CURSOR_PATCH 0
 
 /* By default bold text is rendered with a bold font in the bright variant of the current color.
  * This patch makes bold text rendered simply as bold, leaving the color unaffected.
@@ -244,7 +244,7 @@
  *
  * https://www.reddit.com/r/suckless/comments/cc83om/st_open_url/
  */
-#define OPENURLONCLICK_PATCH 1
+#define OPENURLONCLICK_PATCH 0
 
 /* This patch adds support for OSC escape sequences 10, 11 and 12 that modify the background,
  * foreground and cursor colors in the way they are implemented in most other terminals
@@ -318,7 +318,7 @@
  * The behavior is similar to Plan 9 where applications can take over windows.
  * URL TBC
  */
-#define ST_EMBEDDER_PATCH 1
+#define ST_EMBEDDER_PATCH 0
 
 /* Use inverted defaultbg/fg for selection when bg/fg are the same.
  * https://st.suckless.org/patches/spoiler/
@@ -374,12 +374,12 @@
  * scroll program.
  * https://st.suckless.org/patches/universcroll/
  */
-#define UNIVERSCROLL_PATCH 1
+#define UNIVERSCROLL_PATCH 0
 
 /* Vertically center lines in the space available if you have set a larger chscale in config.h
  * https://st.suckless.org/patches/vertcenter/
  */
-#define VERTCENTER_PATCH 0
+#define VERTCENTER_PATCH 1
 
 /* The vim-browse patch offers the possibility to move through the terminal history-buffer,
  * search for strings using VIM-like motions, operations and quantifiers. It overlays the
