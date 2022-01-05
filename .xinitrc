@@ -31,6 +31,9 @@ aw-qt &
 # autohide xcursor
 unclutter &
 
+# redshift
+redshift &
+
 # set dpi
 xrdb -merge ~/.Xresources 
 

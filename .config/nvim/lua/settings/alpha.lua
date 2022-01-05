@@ -659,8 +659,8 @@ local section = {
 
 local opts = {
     layout = {
-        -- section.icon,
-        -- {type = "padding", val = 1},
+        section.icon,
+        {type = "padding", val = 1},
         section.title,
         section.advice,
         {type = "padding", val = 1},

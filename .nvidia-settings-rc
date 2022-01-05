@@ -2,7 +2,7 @@
 # /home/carson/.nvidia-settings-rc
 #
 # Configuration file for nvidia-settings - the NVIDIA X Server Settings utility
-# Generated on Mon Jan  3 20:16:40 2022
+# Generated on Tue Jan  4 18:50:05 2022
 #
 
 # ConfigProperties:
@@ -66,9 +66,19 @@ Timer = Memory_Used_(GPU_0),Yes,3000
 [DPY:DP-3]/ColorSpace=0
 [DPY:DP-3]/ColorRange=0
 [DPY:DP-3]/SynchronousPaletteUpdates=0
+[DPY:DP-4]/RedBrightness=0.000000
+[DPY:DP-4]/GreenBrightness=0.000000
+[DPY:DP-4]/BlueBrightness=0.000000
+[DPY:DP-4]/RedContrast=0.000000
+[DPY:DP-4]/GreenContrast=0.000000
+[DPY:DP-4]/BlueContrast=0.000000
+[DPY:DP-4]/RedGamma=1.000000
+[DPY:DP-4]/GreenGamma=1.000000
+[DPY:DP-4]/BlueGamma=1.000000
 [DPY:DP-4]/Dithering=0
 [DPY:DP-4]/DitheringMode=0
 [DPY:DP-4]/DitheringDepth=0
+[DPY:DP-4]/DigitalVibrance=0
 [DPY:DP-4]/ColorSpace=0
 [DPY:DP-4]/ColorRange=0
 [DPY:DP-4]/SynchronousPaletteUpdates=0
