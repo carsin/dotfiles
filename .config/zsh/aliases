@@ -36,6 +36,8 @@ alias cpftp="sftp ckfreedm@unix3.csc.calpoly.edu"
 
 alias top="htop"
 alias pm="pulsemixer"
+alias pmrestart="systemctl --user restart pipewire.service pipewire-pulse.socket"
+alias pwrestart="systemctl --user restart pipewire.service pipewire-pulse.socket"
 alias battery='acpi'
 
 alias g="git"
