@@ -15,6 +15,12 @@ alias bc="bc -ql"
 alias mkdir="mkdir -pv"
 alias find="fd"
 
+alias w="wal -a 90 -i ~/files/photos/wallpapers/wal && pywalfox update"
+alias w1="wal -a 90 --backend haishoku -i ~/files/photos/wallpapers/wal/ && pywalfox update"
+alias w2="wal -a 90 --backend colorz -i ~/files/photos/wallpapers/wal/ && pywalfox update"
+alias w3="wal -a 90 --backend colorthief -i ~/files/photos/wallpapers/wal/ && pywalfox update"
+alias wnew="wal -a 90 --backend colorz -i ~/files/photos/wallpapers/new/ && pywalfox update"
+
 alias config="/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME"
 
 alias cr="cargo run"
@@ -54,6 +60,7 @@ alias matrix="neo-matrix -d 0.5 -f 144 -G 0 -s -S 5.5 --maxdpc=2"
 alias dual="exec /home/carson/bin/displays/dual.sh"
 alias triple="exec /home/carson/bin/displays/triple.sh"
 alias laptop="exec /home/carson/bin/displays/laptop.sh"
+alias uw="exec /home/carson/bin/displays/ultrawide.sh && w"
 alias ultrawide="exec /home/carson/bin/displays/ultrawide.sh"
 
 alias wttr="curl v2d.wttr.in/San+Luis+Obispo"
@@ -74,8 +81,3 @@ alias pacro='paclo && sudo pacman -Rns $(pacman -Qtdq)' # remove orphans
 alias pacc='sudo pacman -Scc' # clean cache
 alias paclf='pacman -Ql' # list files
 
-alias w="wal -a 90 -i ~/files/photos/wallpapers/wal && pywalfox update"
-alias w1="wal -a 90 --backend haishoku -i ~/files/photos/wallpapers/wal/ && pywalfox update"
-alias w2="wal -a 90 --backend colorz -i ~/files/photos/wallpapers/wal/ && pywalfox update"
-alias w3="wal -a 90 --backend colorthief -i ~/files/photos/wallpapers/wal/ && pywalfox update"
-alias wnew="wal -a 90 --backend colorz -i ~/files/photos/wallpapers/new/ && pywalfox update"

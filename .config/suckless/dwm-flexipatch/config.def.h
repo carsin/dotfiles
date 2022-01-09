@@ -148,13 +148,13 @@ static void (*bartabmonfns[])(Monitor *) = {NULL /* , customlayoutfn */};
 #endif // BAR_TABGROUPS_PATCH
 #if BAR_PANGO_PATCH
 static const char font[] =
-    "TerminessTTF Nerd Font:size=11:antialias=false:autohint=true";
+    "TerminessTTF Nerd Font:size=12:antialias=false:hinting=false:embeddedbitmap=true";
 #else
 static const char *fonts[] = {
-    "TerminessTTF Nerd Font:size=11:antialias=false:autohint=true"};
+    "TerminessTTF Nerd Font:size=12:antialias=false:hinting=false:embeddedbitmap=true"};
 #endif // BAR_PANGO_PATCH
 static const char dmenufont[] =
-    "TerminessTTF Nerd Font:size=11:antialias=false:autohint=true";
+    "TerminessTTF Nerd Font:size=12:antialias=false:hinting=false:embeddedbitmap=true";
 
 static char c000000[] = "#000000"; // placeholder value
 
@@ -419,7 +419,7 @@ static const char *const autostart[] = {
 #endif // COOL_AUTOSTART_PATCH
 
 #if SCRATCHPADS_PATCH
-const char *spcmd1[] = {"st", "-n", "spterm", "-g", "80x30", NULL};
+const char *spcmd1[] = {"st", "-n", "spterm", "-g", "130x35", NULL};
 static Sp scratchpads[] = {
     /* name          cmd  */
     {"spterm", spcmd1},
