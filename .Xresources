@@ -2,10 +2,10 @@
 ! multiples of 96 ideal, 92 for 24 1920x1080
 Xft.dpi: 110
 ! https://freedesktop.org/software/fontconfig/fontconfig-user.html
-Xft.font: TerminessTTF Nerd Font:size=12:antialias=false:hinting=false:embeddedbitmap=true
-st.font: TerminessTTF Nerd Font:size=12:antialias=false:hinting=false:embeddedbitmap=true
-Xft.autohint: 1
+Xft.font: Tamzen:size=14:antialias=false:hinting=true
+st.font: Tamzen:size=14
+Xft.autohint: 0
 Xft.lcdfilter:  lcddefault
-Xft.hintstyle:  hintfull
+Xft.hintstyle:  hintslight
 Xft.hinting: 1
 Xft.rgba: rgb
