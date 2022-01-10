@@ -5,7 +5,7 @@
  *
  * font: see http://freedesktop.org/software/fontconfig/fontconfig-user.html
  */
-static char *font = "Tamzen:size=14:antialias=false:hinting=true";
+static char *font = "Terminus:size=11:antialias=false:hinting=true";
 #if FONT2_PATCH
 /* Spare fonts */
 static char *font2[] = {

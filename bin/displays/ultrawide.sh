@@ -19,3 +19,4 @@ xrandr \
 
 # kill apps with wrong scaling
 killall /usr/lib/firefox/firefox
+killall st

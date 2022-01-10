@@ -2,8 +2,8 @@
 ! multiples of 96 ideal, 92 for 24 1920x1080
 Xft.dpi: 110
 ! https://freedesktop.org/software/fontconfig/fontconfig-user.html
-Xft.font: Tamzen:size=14:antialias=false:hinting=true
-st.font: Tamzen:size=14
+Xft.font: Terminus:size=11:antialias=false:hinting=false
+st.font: Terminus:size=11:antialias=false:hinting=false
 Xft.autohint: 0
 Xft.lcdfilter:  lcddefault
 Xft.hintstyle:  hintslight

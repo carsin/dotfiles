@@ -148,13 +148,13 @@ static void (*bartabmonfns[])(Monitor *) = {NULL /* , customlayoutfn */};
 #endif // BAR_TABGROUPS_PATCH
 #if BAR_PANGO_PATCH
 static const char font[] =
-    "TamzenForPowerline:size=14:antialias=false:hinting=true:embeddedbitmap=true";
+    "Terminus:size=11:antialias=false:hinting=true";
 #else
 static const char *fonts[] = {
-    "TamzenForPowerline:size=14:antialias=false:hinting=true:embeddedbitmap=true"};
+    "Terminus:size=11:antialias=false:hinting=true"};
 #endif // BAR_PANGO_PATCH
 static const char dmenufont[] =
-    "TamzenForPowerline:size=14:antialias=false:hinting=true:embeddedbitmap=true";
+    "Terminus:size=11:antialias=false:hinting=true";
 
 static char c000000[] = "#000000"; // placeholder value
 

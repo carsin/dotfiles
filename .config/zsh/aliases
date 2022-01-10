@@ -15,11 +15,11 @@ alias bc="bc -ql"
 alias mkdir="mkdir -pv"
 alias find="fd"
 
-alias w="wal -a 90 -i ~/files/photos/wallpapers/wal && pywalfox update"
-alias w1="wal -a 90 --backend haishoku -i ~/files/photos/wallpapers/wal/ && pywalfox update"
-alias w2="wal -a 90 --backend colorz -i ~/files/photos/wallpapers/wal/ && pywalfox update"
-alias w3="wal -a 90 --backend colorthief -i ~/files/photos/wallpapers/wal/ && pywalfox update"
-alias wnew="wal -a 90 --backend colorz -i ~/files/photos/wallpapers/new/ && pywalfox update"
+alias w="wal -a 90 -i ~/files/photos/wallpapers/wal && pywalfox update && killall -USR1 st"
+alias w1="wal -a 90 --backend haishoku -i ~/files/photos/wallpapers/wal/ && pywalfox update && killall -USR1 st"
+alias w2="wal -a 90 --backend colorz -i ~/files/photos/wallpapers/wal/ && pywalfox update && killall -USR1 st"
+alias w3="wal -a 90 --backend colorthief -i ~/files/photos/wallpapers/wal/ && pywalfox update && killall -USR1 st"
+alias wnew="wal -a 90 --backend colorz -i ~/files/photos/wallpapers/new/ && pywalfox update && killall -USR1 st"
 
 alias config="/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME"
 
