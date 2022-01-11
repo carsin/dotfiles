@@ -37,6 +37,9 @@ redshift &
 # set dpi
 xrdb -merge ~/.Xresources 
 
+# statusbar
+# dwmblocks &
+
 # start window manager
 while :; do 
     ssh-agent dwm 

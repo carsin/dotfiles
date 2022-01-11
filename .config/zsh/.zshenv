@@ -18,4 +18,4 @@ export FZF_DEFAULT_COMMAND='rg --files --hidden -g "!.git" '
 export CARGO_HOME=$XDG_CACHE_HOME/cargo
 export RUSTUP_HOME=$XDG_CACHE_HOME/rustup
 
-export DWM_FONT_SIZE=11
+export GLOBAL_FONT="Dina:size=10:antialias=false:hinting=true"

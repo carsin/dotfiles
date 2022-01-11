@@ -5,7 +5,7 @@
  *
  * font: see http://freedesktop.org/software/fontconfig/fontconfig-user.html
  */
-static char *font = "Terminus:size=11:antialias=false:hinting=true";
+static char *font = "GohuFont Nerd Font:size=11:antialias=true:hinting=true:embeddedbitmap=false";
 #if FONT2_PATCH
 /* Spare fonts */
 static char *font2[] = {

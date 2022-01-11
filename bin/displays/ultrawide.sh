@@ -1,6 +1,6 @@
 #!/usr/bin/sh
 
-newdpi=110
+newdpi=109
 
 # set new xresources dpi
 echo "Xft.dpi: $newdpi" | xrdb -merge

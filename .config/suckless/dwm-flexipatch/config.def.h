@@ -1,4 +1,6 @@
 /* See LICENSE file for copyright and license details. */
+#include <stdlib.h>
+#include <X11/XF86keysym.h>
 
 /* appearance */
 #if ROUNDED_CORNERS_PATCH
@@ -147,14 +149,11 @@ static void (*bartabmonfns[])(Monitor *) = {NULL /* , customlayoutfn */};
 #endif // MONOCLE_LAYOUT
 #endif // BAR_TABGROUPS_PATCH
 #if BAR_PANGO_PATCH
-static const char font[] =
-    "Terminus:size=11:antialias=false:hinting=true";
+static const char font[] = "GohuFont Nerd Font:size=11:antialias=true:hinting=true";
 #else
-static const char *fonts[] = {
-    "Terminus:size=11:antialias=false:hinting=true"};
+static const char *fonts[] = { "GohuFont Nerd Font:size=11:antialias=true:hinting=true"};
 #endif // BAR_PANGO_PATCH
-static const char dmenufont[] =
-    "Terminus:size=11:antialias=false:hinting=true";
+static const char dmenufont[] = "GohuFont Nerd Font:size=11:antialias=true:hinting=true";
 
 static char c000000[] = "#000000"; // placeholder value
 
@@ -985,9 +984,17 @@ static Key on_empty_keys[] = {
 };
 #endif // ON_EMPTY_KEYS_PATCH
 
+static const char *upvol[]   = {"/usr/bin/pactl", "set-sink-volume", "0", "+5%", NULL};
+static const char *downvol[] = {"/usr/bin/pactl", "set-sink-volume", "0", "-5%", NULL};
+static const char *mutevol[] = {"/usr/bin/pactl", "set-sink-mute", "0", "toggle",  NULL};
+
 static Key keys[] = {
 /* modifier                     key            function                argument
  */
+    {0, XF86XK_AudioLowerVolume, spawn, {.v = downvol }},
+	{0, XF86XK_AudioMute, spawn, {.v = mutevol }},
+	{0, XF86XK_AudioRaiseVolume, spawn, {.v = upvol }},
+    
 #if KEYMODES_PATCH
     {MODKEY, XK_Escape, setkeymode, {.ui = COMMANDMODE}},
 #endif // KEYMODES_PATCH
