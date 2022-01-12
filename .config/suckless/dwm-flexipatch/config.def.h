@@ -149,11 +149,11 @@ static void (*bartabmonfns[])(Monitor *) = {NULL /* , customlayoutfn */};
 #endif // MONOCLE_LAYOUT
 #endif // BAR_TABGROUPS_PATCH
 #if BAR_PANGO_PATCH
-static const char font[] = "GohuFont Nerd Font:size=11:antialias=true:hinting=true";
+static const char font[] = "GohuFont Nerd Font:size=11:antialias=true:hinting=true:embeddedbitmap=false";
 #else
-static const char *fonts[] = { "GohuFont Nerd Font:size=11:antialias=true:hinting=true"};
+static const char *fonts[] = { "GohuFont Nerd Font:size=11:antialias=true:hinting=true:embeddedbitmap=false"};
 #endif // BAR_PANGO_PATCH
-static const char dmenufont[] = "GohuFont Nerd Font:size=11:antialias=true:hinting=true";
+static const char dmenufont[] = "GohuFont Nerd Font:size=11:antialias=true:hinting=true:embeddedbitmap=false";
 
 static char c000000[] = "#000000"; // placeholder value
 

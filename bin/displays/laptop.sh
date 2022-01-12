@@ -2,7 +2,7 @@
 sudo -v
 
 # set new xresources dpi
-newdpi=192
+newdpi=170
 echo "Xft.dpi: $newdpi" | xrdb -merge
 
 xrandr --output eDP-1-1 --auto --primary \
