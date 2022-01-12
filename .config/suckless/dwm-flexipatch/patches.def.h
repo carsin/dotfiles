@@ -29,7 +29,7 @@
  * dwmblocks: https://github.com/torrinfail/dwmblocks
  * https://dwm.suckless.org/patches/statuscmd/
  */
-#define BAR_DWMBLOCKS_PATCH 1
+#define BAR_DWMBLOCKS_PATCH 0
 
 /* Originally the dwmblocks + statuscmd patch used a user defined signal (SIGUSR1)
  * for communicating with dwmblocks to indicate update signal and what button was
@@ -59,7 +59,7 @@
  * the centeredwindowname patch.
  * https://dwm.suckless.org/patches/fancybar/
  */
-#define BAR_FANCYBAR_PATCH 0
+#define BAR_FANCYBAR_PATCH 1
 
 /* Being an evolution of the bartabgroups patch the flexwintitle patch specifically
  * taps into the many layout options that flextile-deluxe offers to produce a window

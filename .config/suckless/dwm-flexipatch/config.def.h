@@ -984,17 +984,23 @@ static Key on_empty_keys[] = {
 };
 #endif // ON_EMPTY_KEYS_PATCH
 
-static const char *upvol[]   = {"/usr/bin/pactl", "set-sink-volume", "0", "+5%", NULL};
-static const char *downvol[] = {"/usr/bin/pactl", "set-sink-volume", "0", "-5%", NULL};
-static const char *mutevol[] = {"/usr/bin/pactl", "set-sink-mute", "0", "toggle",  NULL};
+/* Control Media Players */
+static const char *upvolcmd[]   = {"/usr/bin/pactl", "set-sink-volume", "0", "+5%", NULL};
+static const char *downvolcmd[] = {"/usr/bin/pactl", "set-sink-volume", "0", "-5%", NULL};
+static const char *mutevolcmd[] = {"/usr/bin/pactl", "set-sink-mute", "0", "toggle",  NULL};
+static const char *playpausecmd[] = { "playerctl", "play-pause", NULL };
+static const char *nextcmd[] = { "playerctl", "next", NULL };
+static const char *prevcmd[] = { "playerctl", "previous", NULL };
 
 static Key keys[] = {
 /* modifier                     key            function                argument
  */
-    {0, XF86XK_AudioLowerVolume, spawn, {.v = downvol }},
-	{0, XF86XK_AudioMute, spawn, {.v = mutevol }},
-	{0, XF86XK_AudioRaiseVolume, spawn, {.v = upvol }},
-    
+	{0, XF86XK_AudioRaiseVolume, spawn, {.v = upvolcmd }},
+    {0, XF86XK_AudioLowerVolume, spawn, {.v = downvolcmd }},
+	{0, XF86XK_AudioMute, spawn, {.v = mutevolcmd }},
+    {0, XF86XK_AudioPlay, spawn, {.v = playpausecmd }},
+	{0, XF86XK_AudioNext, spawn, {.v = nextcmd }},
+	{0, XF86XK_AudioPrev, spawn, {.v = prevcmd }},
 #if KEYMODES_PATCH
     {MODKEY, XK_Escape, setkeymode, {.ui = COMMANDMODE}},
 #endif // KEYMODES_PATCH
