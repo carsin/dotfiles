@@ -371,7 +371,7 @@ static MouseShortcut maltshortcuts[] = {
 #endif // SCROLLBACK_MOUSE_ALTSCREEN_PATCH
 
 /* Internal keyboard shortcuts. */
-#define MODKEY Mod1Mask
+#define MODKEY Mod4Mask
 #define TERMMOD (ControlMask|ShiftMask)
 
 #if EXTERNALPIPE_PATCH // example command

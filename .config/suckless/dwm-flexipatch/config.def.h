@@ -1192,7 +1192,7 @@ static Key keys[] = {
      {.i = -2}}, /* flextile, 2 = master axis */
     {MODKEY | Mod5Mask | ShiftMask,
      XK_Tab,
-     rotatelayoutaxis,
+     rotatelayoutaxIs,
      {.i = -3}}, /* flextile, 3 = stack axis */
     {MODKEY | Mod5Mask | Mod1Mask,
      XK_Tab,
