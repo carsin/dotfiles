@@ -7,12 +7,11 @@
 static const unsigned int borderpx = 0; /* border pixel of windows */
 static const int corner_radius = 10;
 #else
-static const unsigned int borderpx = 1; /* border pixel of windows */
+static const unsigned int borderpx = 2; /* border pixel of windows */
 #endif                               // ROUNDED_CORNERS_PATCH
 static const unsigned int snap = 32; /* snap pixel */
 #if SWALLOW_PATCH
-static const int swallowfloating =
-    1; /* 1 means swallow floating windows by default */
+static const int swallowfloating = 1; /* 1 means swallow floating windows by default */
 #endif // SWALLOW_PATCH
 #if NO_MOD_BUTTONS_PATCH
 static int nomodbuttons =
@@ -58,15 +57,14 @@ static const int showtab = showtab_auto; /* Default tab bar show mode */
 static const int toptab = False;         /* False means bottom tab bar */
 #endif                                   // TAB_PATCH
 #if BAR_HEIGHT_PATCH
-static const int bar_height =
-    0; /* 0 means derive from font, >= 1 explicit height */
+static const int bar_height = 0; /* 0 means derive from font, >= 1 explicit height */
 #endif // BAR_HEIGHT_PATCH
 #if BAR_PADDING_PATCH
 static const int vertpad = 10; /* vertical padding of bar */
 static const int sidepad = 10; /* horizontal padding of bar */
 #endif                         // BAR_PADDING_PATCH
 #if BAR_WINICON_PATCH
-#define ICONSIZE 18   /* icon size */
+#define ICONSIZE 15   /* icon size */
 #define ICONSPACING 5 /* space between icon and title */
 #endif                // BAR_WINICON_PATCH
 #if FOCUSONCLICK_PATCH
@@ -85,8 +83,7 @@ static const int riodraw_borders =
     0; /* 0 or 1, indicates whether the area drawn using slop includes the
           window borders */
 #if SWALLOW_PATCH
-static const int riodraw_matchpid =
-    1; /* 0 or 1, indicates whether to match the PID of the client that was
+static const int riodraw_matchpid = 0; /* 0 or 1, indicates whether to match the PID of the client that was
           spawned with riospawn */
 #endif // SWALLOW_PATCH
 #endif // RIODRAW_PATCH
@@ -159,34 +156,36 @@ static char c000000[] = "#000000"; // placeholder value
 
 #if BAR_FLEXWINTITLE_PATCH
 #endif // BAR_FLEXWINTITLE_PATCH
-static char normfgcolor[] = "#bbbbbb";
-static char normbgcolor[] = "#222222";
-static char normbordercolor[] = "#444444";
-static char normfloatcolor[] = "#db8fd9";
+static char normfgcolor[] = "#fbf1c7";
+static char normbgcolor[] = "#101010";
+static char normbordercolor[] = "#101010";
+static char normfloatcolor[] = "#282828";
 
-static char selfgcolor[] = "#eeeeee";
-static char selbgcolor[] = "#005577";
-static char selbordercolor[] = "#005577";
-static char selfloatcolor[] = "#005577";
+// currently selected 
+static char selfgcolor[] = "#fbf1c7";
+static char selbgcolor[] = "#1d2021";
+static char selbordercolor[] = "#282828";
+static char selfloatcolor[] = "#383838";
 
-static char titlenormfgcolor[] = "#bbbbbb";
-static char titlenormbgcolor[] = "#222222";
-static char titlenormbordercolor[] = "#444444";
-static char titlenormfloatcolor[] = "#db8fd9";
+// inactive
+static char titlenormfgcolor[] = "#a89984";
+static char titlenormbgcolor[] = "#101010";
+static char titlenormbordercolor[] = "#101010";
+static char titlenormfloatcolor[] = "#212121";
 
-static char titleselfgcolor[] = "#eeeeee";
-static char titleselbgcolor[] = "#005577";
-static char titleselbordercolor[] = "#005577";
-static char titleselfloatcolor[] = "#005577";
+static char titleselfgcolor[] = "#ebdbb2";
+static char titleselbgcolor[] = "#101010";
+static char titleselbordercolor[] = "#101010";
+static char titleselfloatcolor[] = "#212121";
 
-static char tagsnormfgcolor[] = "#bbbbbb";
-static char tagsnormbgcolor[] = "#222222";
-static char tagsnormbordercolor[] = "#444444";
+static char tagsnormfgcolor[] = "#fbf1c7";
+static char tagsnormbgcolor[] = "#101010";
+static char tagsnormbordercolor[] = "#101010";
 static char tagsnormfloatcolor[] = "#db8fd9";
 
-static char tagsselfgcolor[] = "#eeeeee";
-static char tagsselbgcolor[] = "#005577";
-static char tagsselbordercolor[] = "#005577";
+static char tagsselfgcolor[] = "#fb4934";
+static char tagsselbgcolor[] = "#101010";
+static char tagsselbordercolor[] = "#101010";
 static char tagsselfloatcolor[] = "#005577";
 
 static char hidnormfgcolor[] = "#005577";
@@ -194,10 +193,10 @@ static char hidselfgcolor[] = "#227799";
 static char hidnormbgcolor[] = "#222222";
 static char hidselbgcolor[] = "#222222";
 
-static char urgfgcolor[] = "#bbbbbb";
-static char urgbgcolor[] = "#222222";
-static char urgbordercolor[] = "#ff0000";
-static char urgfloatcolor[] = "#db8fd9";
+static char urgfgcolor[] = "#1d2021";
+static char urgbgcolor[] = "#cc241d";
+static char urgbordercolor[] = "#cc241dff0000";
+static char urgfloatcolor[] = "#cc241d";
 
 #if BAR_FLEXWINTITLE_PATCH
 static char normTTBbgcolor[] = "#330000";
@@ -236,7 +235,6 @@ static char selfloatbgcolor[] = "#117799";
 #endif // BAR_FLEXWINTITLE_PATCH
 
 #if BAR_ALPHA_PATCH
-
 // 90% = D8, 85%=D9 80% = CC, 70% = B2, 50% = 7F, 40% = 66
 static const unsigned int baralpha = 0xB2;
 static const unsigned int borderalpha = OPAQUE;
@@ -289,7 +287,7 @@ static const unsigned int alphas[][3] = {
 };
 #endif // BAR_ALPHA_PATCH
 #if BAR_VTCOLORS_PATCH
-static const char title_bg_dark[] = "#303030";
+static const char title_bg_dark[] = "#282828";
 static const char title_bg_light[] = "#fdfdfd";
 static const int color_ptrs[][ColCount] = {
     /*                       fg      bg      border  float */
@@ -418,10 +416,18 @@ static const char *const autostart[] = {
 #endif // COOL_AUTOSTART_PATCH
 
 #if SCRATCHPADS_PATCH
-const char *spcmd1[] = {"st", "-n", "spterm", "-g", "130x35", NULL};
+const char *spcmd1[] = {"st", "-n", "spterm1", "-g", "137x42", NULL};
+const char *spcmd2[] = {"st", "-n", "spterm2", "-g", "100x30", NULL};
+const char *spcmd3[] = {"st", "-n", "spspotify", "-g", "110x50", "-e", "spt", NULL};
+const char *spcmd4[] = {"st", "-n", "spranger", "-g", "130x40", "-e", "ranger", NULL};
+const char *spcmd5[] = {"st", "-n", "sppulsemixer", "-g", "140x35", "-e", "pulsemixer", NULL};
 static Sp scratchpads[] = {
     /* name          cmd  */
-    {"spterm", spcmd1},
+    {"spterm1", spcmd1},
+    {"spterm2", spcmd2},
+    {"spspotify", spcmd3},
+    {"spranger", spcmd4},
+    {"sppulsemixer", spcmd5},
 };
 #endif // SCRATCHPADS_PATCH
 
@@ -511,7 +517,11 @@ static const Rule rules[] = {
     RULE(.class = "Gimp", .tags = 1 << 4)
     RULE(.class = "Firefox", .tags = 1 << 7)
 #if SCRATCHPADS_PATCH
-    RULE(.instance = "spterm", .tags = SPTAG(0), .isfloating = 1)
+    RULE(.instance = "spterm1", .tags = SPTAG(0), .isfloating = 1)
+    RULE(.instance = "spterm2", .tags = SPTAG(1), .isfloating = 1)
+    RULE(.instance = "spspotify", .tags = SPTAG(2), .isfloating = 1)
+    RULE(.instance = "spranger", .tags = SPTAG(3), .isfloating = 1)
+    RULE(.instance = "sppulsemixer", .tags = SPTAG(4), .isfloating = 1)
 #endif // SCRATCHPADS_PATCH
 };
 
@@ -694,51 +704,23 @@ static const int scrollargs[][2] = {
 static const Layout layouts[] = {
     /* symbol     arrange function, { nmaster, nstack, layout, master axis,
        stack axis, secondary stack axis, symbol func } */
-    {"[]=",
-     flextile,
-     {-1, -1, SPLIT_VERTICAL, TOP_TO_BOTTOM, TOP_TO_BOTTOM, 0,
-      NULL}},           // default tile layout
-    {"><>", NULL, {0}}, /* no layout function means floating behavior */
+    {"[]=", flextile, {-1, -1, SPLIT_VERTICAL, TOP_TO_BOTTOM, TOP_TO_BOTTOM, 0, NULL}},           // default tile layout
+    {"|M|", flextile, {-1, -1, SPLIT_CENTERED_VERTICAL, LEFT_TO_RIGHT, TOP_TO_BOTTOM, TOP_TO_BOTTOM, NULL}}, // centeredmaster
+    {"-M-", flextile, {-1, -1, SPLIT_CENTERED_HORIZONTAL, TOP_TO_BOTTOM, LEFT_TO_RIGHT, LEFT_TO_RIGHT, NULL}}, // centeredmaster horiz
+    {"[T]", flextile, {-1, -1, SPLIT_VERTICAL, LEFT_TO_RIGHT, TATAMI, 0, NULL}}, // tatami mats
+    {":::", flextile, {-1, -1, NO_SPLIT, GAPPLESSGRID, GAPPLESSGRID, 0, NULL}}, // gappless grid
     {"[M]", flextile, {-1, -1, NO_SPLIT, MONOCLE, MONOCLE, 0, NULL}}, // monocle
-    {"|||",
-     flextile,
-     {-1, -1, SPLIT_VERTICAL, LEFT_TO_RIGHT, TOP_TO_BOTTOM, 0,
-      NULL}}, // columns (col) layout
-    {">M>",
-     flextile,
-     {-1, -1, FLOATING_MASTER, LEFT_TO_RIGHT, LEFT_TO_RIGHT, 0,
-      NULL}}, // floating master
-    {"[D]",
-     flextile,
-     {-1, -1, SPLIT_VERTICAL, TOP_TO_BOTTOM, MONOCLE, 0, NULL}}, // deck
-    {"TTT",
-     flextile,
-     {-1, -1, SPLIT_HORIZONTAL, LEFT_TO_RIGHT, LEFT_TO_RIGHT, 0,
-      NULL}}, // bstack
-    {"===",
-     flextile,
-     {-1, -1, SPLIT_HORIZONTAL, LEFT_TO_RIGHT, TOP_TO_BOTTOM, 0,
-      NULL}}, // bstackhoriz
-    {"|M|",
-     flextile,
-     {-1, -1, SPLIT_CENTERED_VERTICAL, LEFT_TO_RIGHT, TOP_TO_BOTTOM,
-      TOP_TO_BOTTOM, NULL}}, // centeredmaster
-    {"-M-",
-     flextile,
-     {-1, -1, SPLIT_CENTERED_HORIZONTAL, TOP_TO_BOTTOM, LEFT_TO_RIGHT,
-      LEFT_TO_RIGHT, NULL}}, // centeredmaster horiz
-    {":::",
-     flextile,
-     {-1, -1, NO_SPLIT, GAPPLESSGRID, GAPPLESSGRID, 0, NULL}}, // gappless grid
-    {"[\\]",
-     flextile,
-     {-1, -1, NO_SPLIT, DWINDLE, DWINDLE, 0, NULL}}, // fibonacci dwindle
-    {"(@)",
-     flextile,
-     {-1, -1, NO_SPLIT, SPIRAL, SPIRAL, 0, NULL}}, // fibonacci spiral
-    {"[T]",
-     flextile,
-     {-1, -1, SPLIT_VERTICAL, LEFT_TO_RIGHT, TATAMI, 0, NULL}}, // tatami mats
+    // {"|||", flextile, {-1, -1, SPLIT_VERTICAL, LEFT_TO_RIGHT, TOP_TO_BOTTOM, 0, NULL}}, // columns (col) layout
+    // {">M>", flextile, {-1, -1, FLOATING_MASTER, LEFT_TO_RIGHT, LEFT_TO_RIGHT, 0, NULL}}, // floating master
+    {"[D]", flextile, {-1, -1, SPLIT_VERTICAL, TOP_TO_BOTTOM, MONOCLE, 0, NULL}}, // deck
+    {"TTT", flextile, {-1, -1, SPLIT_HORIZONTAL, LEFT_TO_RIGHT, LEFT_TO_RIGHT, 0, NULL}}, // bstack
+    // {"===",
+    //  flextile,
+    //  {-1, -1, SPLIT_HORIZONTAL, LEFT_TO_RIGHT, TOP_TO_BOTTOM, 0,
+    //   NULL}}, // bstackhoriz
+    {"[\\]", flextile, {-1, -1, NO_SPLIT, DWINDLE, DWINDLE, 0, NULL}}, // fibonacci dwindle
+    {"(@)", flextile, {-1, -1, NO_SPLIT, SPIRAL, SPIRAL, 0, NULL}}, // fibonacci spiral
+    {"><>", NULL, {0}}, /* no layout function means floating behavior */
 #if TILE_LAYOUT
     {"[]=", tile, {0}},
 #endif
@@ -1050,8 +1032,8 @@ static Key keys[] = {
     {MODKEY | ControlMask, XK_j, pushdown, {0}},
     {MODKEY | ControlMask, XK_k, pushup, {0}},
 #endif // PUSH_PATCH / PUSH_NO_MASTER_PATCH
-    {MODKEY, XK_i, incnmaster, {.i = +1}},
-    {MODKEY, XK_d, incnmaster, {.i = -1}},
+    // {MODKEY, XK_i, incnmaster, {.i = +1}},
+    // {MODKEY, XK_d, incnmaster, {.i = -1}},
 #if FLEXTILE_DELUXE_LAYOUT
     {MODKEY | ControlMask, XK_i, incnstack, {.i = +1}},
     {MODKEY | ControlMask, XK_u, incnstack, {.i = -1}},
@@ -1192,7 +1174,7 @@ static Key keys[] = {
      {.i = -2}}, /* flextile, 2 = master axis */
     {MODKEY | Mod5Mask | ShiftMask,
      XK_Tab,
-     rotatelayoutaxIs,
+     rotatelayoutaxis,
      {.i = -3}}, /* flextile, 3 = stack axis */
     {MODKEY | Mod5Mask | Mod1Mask,
      XK_Tab,
@@ -1217,8 +1199,12 @@ static Key keys[] = {
 #endif // NO_MOD_BUTTONS_PATCH
 #if SCRATCHPADS_PATCH
     {MODKEY, XK_Escape, togglescratch, {.ui = 0}},
-    {MODKEY | ControlMask, XK_grave, setscratch, {.ui = 0}},
-    {MODKEY | ShiftMask, XK_grave, removescratch, {.ui = 0}},
+    {MODKEY, XK_grave, togglescratch, {.ui = 1}},
+    {MODKEY, XK_s, togglescratch, {.ui = 2}},
+    {MODKEY, XK_a, togglescratch, {.ui = 3}},
+    {MODKEY, XK_d, togglescratch, {.ui = 4}},
+    // {MODKEY | ControlMask, XK_grave, setscratch, {.ui = 0}},
+    // {MODKEY | ShiftMask, XK_grave, removescratch, {.ui = 0}},
 #endif // SCRATCHPADS_PATCH
 #if UNFLOATVISIBLE_PATCH
     {MODKEY | Mod4Mask, XK_space, unfloatvisible, {0}},
@@ -1234,7 +1220,7 @@ static Key keys[] = {
     {MODKEY | Mod4Mask, XK_f, fullscreen, {0}},
 #endif // FULLSCREEN_PATCH
 #if STICKY_PATCH
-    {MODKEY | ShiftMask, XK_s, togglesticky, {0}},
+    {MODKEY, XK_p, togglesticky, {0}},
 #endif // STICKY_PATCH
 #if SCRATCHPAD_ALT_1_PATCH
     {MODKEY, XK_minus, scratchpad_show, {0}},
@@ -1930,3 +1916,4 @@ static IPCCommand ipccommands[] = {
 #endif // XRDB_PATCH
 };
 #endif // IPC_PATCH
+
