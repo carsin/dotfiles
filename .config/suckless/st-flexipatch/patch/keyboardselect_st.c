@@ -120,7 +120,7 @@ int trt_kbdselect(KeySym ksym, char *buf, int len)
 		cu.x = term.c.x, cu.y = term.c.y;
 		set_notifmode(0, ksym);
 		return MODE_KBDSELECT;
-	case XK_s:
+	case XK_v:
 		if (selectsearch_mode & 1)
 			selclear();
 		else

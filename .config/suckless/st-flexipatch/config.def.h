@@ -19,7 +19,7 @@ static char *font2[] = {
  *             0 = no border, 100 = border width is same as cell width */
 int borderperc = 20;
 #else
-static int borderpx = 2;
+static int borderpx = 4;
 #endif // RELATIVEBORDER_PATCH
 
 #if OPENURLONCLICK_PATCH
@@ -386,9 +386,9 @@ static Shortcut shortcuts[] = {
 	{ ControlMask,          XK_Print,       toggleprinter,   {.i =  0} },
 	{ ShiftMask,            XK_Print,       printscreen,     {.i =  0} },
 	{ XK_ANY_MOD,           XK_Print,       printsel,        {.i =  0} },
-    { TERMMOD,              XK_Prior,       zoom,            {.f = +1} },
-    { TERMMOD,              XK_Next,        zoom,            {.f = -1} },
-	{ TERMMOD,              XK_Home,        zoomreset,       {.f =  0} },
+    { MODKEY,              XK_Prior,       zoom,            {.f = +1} },
+    { MODKEY,              XK_Next,        zoom,            {.f = -1} },
+	{ MODKEY,              XK_Home,        zoomreset,       {.f =  0} },
 	{ TERMMOD,              XK_C,           clipcopy,        {.i =  0} },
 	{ TERMMOD,              XK_V,           clippaste,       {.i =  0} },
 	#if SCROLLBACK_PATCH
@@ -416,7 +416,7 @@ static Shortcut shortcuts[] = {
 	{ TERMMOD,              XK_U,           externalpipe,    { .v = openurlcmd } },
 	#endif // EXTERNALPIPE_PATCH
 	#if KEYBOARDSELECT_PATCH
-	{ TERMMOD,              XK_Escape,      keyboard_select, { 0 } },
+	{ MODKEY,              XK_grave,      keyboard_select, { 0 } },
 	#endif // KEYBOARDSELECT_PATCH
 	#if ISO14755_PATCH
 	{ TERMMOD,              XK_I,           iso14755,        {.i =  0} },

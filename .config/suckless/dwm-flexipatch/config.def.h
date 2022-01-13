@@ -158,17 +158,17 @@ static char c000000[] = "#000000"; // placeholder value
 #endif // BAR_FLEXWINTITLE_PATCH
 static char normfgcolor[] = "#fbf1c7";
 static char normbgcolor[] = "#101010";
-static char normbordercolor[] = "#101010";
+static char normbordercolor[] = "#1d2021";
 static char normfloatcolor[] = "#282828";
 
 // currently selected 
-static char selfgcolor[] = "#fbf1c7";
-static char selbgcolor[] = "#1d2021";
-static char selbordercolor[] = "#282828";
+static char selfgcolor[] = "#b8bb26";
+static char selbgcolor[] = "#000000";
+static char selbordercolor[] = "#928374";
 static char selfloatcolor[] = "#383838";
 
 // inactive
-static char titlenormfgcolor[] = "#a89984";
+static char titlenormfgcolor[] = "#fbf1c7";
 static char titlenormbgcolor[] = "#101010";
 static char titlenormbordercolor[] = "#101010";
 static char titlenormfloatcolor[] = "#212121";
@@ -416,11 +416,11 @@ static const char *const autostart[] = {
 #endif // COOL_AUTOSTART_PATCH
 
 #if SCRATCHPADS_PATCH
-const char *spcmd1[] = {"st", "-n", "spterm1", "-g", "137x42", NULL};
+const char *spcmd1[] = {"st", "-n", "spterm1", "-g", "130x42", NULL};
 const char *spcmd2[] = {"st", "-n", "spterm2", "-g", "100x30", NULL};
-const char *spcmd3[] = {"st", "-n", "spspotify", "-g", "110x50", "-e", "spt", NULL};
+const char *spcmd3[] = {"st", "-n", "spspotify", "-g", "140x43", "-e", "spt", NULL};
 const char *spcmd4[] = {"st", "-n", "spranger", "-g", "130x40", "-e", "ranger", NULL};
-const char *spcmd5[] = {"st", "-n", "sppulsemixer", "-g", "140x35", "-e", "pulsemixer", NULL};
+const char *spcmd5[] = {"st", "-n", "sppulsemixer", "-g", "80x25", "-e", "pulsemixer", NULL};
 static Sp scratchpads[] = {
     /* name          cmd  */
     {"spterm1", spcmd1},
@@ -832,12 +832,12 @@ static const char *xkb_layouts[] = {
 #if COMBO_PATCH && SWAPTAGS_PATCH && TAGOTHERMONITOR_PATCH
 #define TAGKEYS(KEY, TAG)                                                      \
   {MODKEY, KEY, comboview, {.ui = 1 << TAG}},                                  \
-      {MODKEY | ControlMask, KEY, toggleview, {.ui = 1 << TAG}},               \
       {MODKEY | ShiftMask, KEY, combotag, {.ui = 1 << TAG}},                   \
-      {MODKEY | ControlMask | ShiftMask, KEY, toggletag, {.ui = 1 << TAG}},    \
-      {MODKEY | Mod4Mask | ShiftMask, KEY, swaptags, {.ui = 1 << TAG}},        \
-      {MODKEY | Mod4Mask, KEY, tagnextmon, {.ui = 1 << TAG}},                  \
-      {MODKEY | Mod4Mask | ControlMask, KEY, tagprevmon, {.ui = 1 << TAG}},
+      {MODKEY | ControlMask, KEY, tagnextmon, {.ui = 1 << TAG}},               \
+      {MODKEY | ControlMask | ShiftMask, KEY, swaptags, {.ui = 1 << TAG}},     \
+      {MODKEY | Mod4Mask, KEY, toggletag, {.ui = 1 << TAG}},   
+      // {MODKEY | Mod4Mask | ControlMask, KEY, tagprevmon, {.ui = 1 << TAG}},
+      // {MODKEY | ControlMask, KEY, toggleview, {.ui = 1 << TAG}},               
 #elif COMBO_PATCH && SWAPTAGS_PATCH
 #define TAGKEYS(KEY, TAG)                                                      \
   {MODKEY, KEY, comboview, {.ui = 1 << TAG}},                                  \
@@ -862,12 +862,12 @@ static const char *xkb_layouts[] = {
 #elif SWAPTAGS_PATCH && TAGOTHERMONITOR_PATCH
 #define TAGKEYS(KEY, TAG)                                                      \
   {MODKEY, KEY, view, {.ui = 1 << TAG}},                                       \
-      {MODKEY | ControlMask, KEY, toggleview, {.ui = 1 << TAG}},               \
       {MODKEY | ShiftMask, KEY, tag, {.ui = 1 << TAG}},                        \
-      {MODKEY | ControlMask | ShiftMask, KEY, toggletag, {.ui = 1 << TAG}},    \
-      {MODKEY | Mod4Mask | ShiftMask, KEY, swaptags, {.ui = 1 << TAG}},        \
-      {MODKEY | Mod4Mask, KEY, tagnextmon, {.ui = 1 << TAG}},                  \
-      {MODKEY | Mod4Mask | ControlMask, KEY, tagprevmon, {.ui = 1 << TAG}},
+      {MODKEY | Mod4Mask, KEY, toggletag, {.ui = 1 << TAG}},    \
+      {MODKEY | ControlMask | ShiftMask, KEY, swaptags, {.ui = 1 << TAG}},        \
+      {MODKEY | ControlMask, KEY, tagnextmon, {.ui = 1 << TAG}},                  
+      // {MODKEY | Mod4Mask | ControlMask, KEY, tagprevmon, {.ui = 1 << TAG}},
+      // {MODKEY | ControlMask, KEY, toggleview, {.ui = 1 << TAG}},               
 #elif SWAPTAGS_PATCH
 #define TAGKEYS(KEY, TAG)                                                      \
   {MODKEY, KEY, view, {.ui = 1 << TAG}},                                       \
@@ -1007,8 +1007,8 @@ static Key keys[] = {
     {MODKEY, XK_k, focusstack, {.i = -1}},
 #endif // STACKER_PATCH
 #if FOCUSDIR_PATCH
-        {MODKEY, XK_Left, focusdir, {.i = 0}}, // left
-    {MODKEY, XK_Right, focusdir, {.i = 1}},    // right
+    {MODKEY, XK_h, focusdir, {.i = 0}}, // left
+    {MODKEY, XK_l, focusdir, {.i = 1}},    // right
     {MODKEY, XK_Up, focusdir, {.i = 2}},       // up
     {MODKEY, XK_Down, focusdir, {.i = 3}},     // down
 #endif                                         // FOCUSDIR_PATCH
@@ -1029,8 +1029,8 @@ static Key keys[] = {
     {MODKEY | Mod4Mask | ShiftMask, XK_k, inplacerotate, {.i = -1}},
 #endif // INPLACEROTATE_PATCH
 #if PUSH_PATCH || PUSH_NO_MASTER_PATCH
-    {MODKEY | ControlMask, XK_j, pushdown, {0}},
-    {MODKEY | ControlMask, XK_k, pushup, {0}},
+    {MODKEY | ShiftMask, XK_j, pushdown, {0}},
+    {MODKEY | ShiftMask, XK_k, pushup, {0}},
 #endif // PUSH_PATCH / PUSH_NO_MASTER_PATCH
     // {MODKEY, XK_i, incnmaster, {.i = +1}},
     // {MODKEY, XK_d, incnmaster, {.i = -1}},
@@ -1038,8 +1038,8 @@ static Key keys[] = {
     {MODKEY | ControlMask, XK_i, incnstack, {.i = +1}},
     {MODKEY | ControlMask, XK_u, incnstack, {.i = -1}},
 #endif // FLEXTILE_DELUXE_LAYOUT
-    {MODKEY, XK_h, setmfact, {.f = -0.05}},
-    {MODKEY, XK_l, setmfact, {.f = +0.05}},
+    {MODKEY | ControlMask, XK_h, setmfact, {.f = -0.05}},
+    {MODKEY | ControlMask, XK_l, setmfact, {.f = +0.05}},
 #if CFACTS_PATCH
     {MODKEY | ShiftMask, XK_h, setcfact, {.f = +0.25}},
     {MODKEY | ShiftMask, XK_p, setcfact, {.f = -0.25}},
@@ -1049,7 +1049,7 @@ static Key keys[] = {
     {MODKEY | ControlMask | ShiftMask, XK_e, aspectresize, {.i = +24}},
     {MODKEY | ControlMask | ShiftMask, XK_r, aspectresize, {.i = -24}},
 #endif // ASPECTRESIZE_PATCH
-#if MOVERESIZE_PATCH
+#if MOVERESIZE_PATShift
     {MODKEY | Mod4Mask, XK_Down, moveresize, {.v = "0x 25y 0w 0h"}},
     {MODKEY | Mod4Mask, XK_Up, moveresize, {.v = "0x -25y 0w 0h"}},
     {MODKEY | Mod4Mask, XK_Right, moveresize, {.v = "25x 0y 0w 0h"}},
@@ -1186,7 +1186,7 @@ static Key keys[] = {
      {0}}, /* flextile, flip master and stack areas */
 #endif     // FLEXTILE_DELUXE_LAYOUT
     // {MODKEY, XK_space, setlayout, {0}},
-    {MODKEY | ShiftMask, XK_space, togglefloating, {0}},
+    {MODKEY | ControlMask, XK_space, togglefloating, {0}},
 #if MAXIMIZE_PATCH
     {MODKEY | ControlMask | ShiftMask, XK_h, togglehorizontalmax, {0}},
     {MODKEY | ControlMask | ShiftMask, XK_l, togglehorizontalmax, {0}},
@@ -1198,11 +1198,11 @@ static Key keys[] = {
     {MODKEY | ShiftMask, XK_Escape, togglenomodbuttons, {0}},
 #endif // NO_MOD_BUTTONS_PATCH
 #if SCRATCHPADS_PATCH
-    {MODKEY, XK_Escape, togglescratch, {.ui = 0}},
-    {MODKEY, XK_grave, togglescratch, {.ui = 1}},
-    {MODKEY, XK_s, togglescratch, {.ui = 2}},
-    {MODKEY, XK_a, togglescratch, {.ui = 3}},
-    {MODKEY, XK_d, togglescratch, {.ui = 4}},
+    {MODKEY, XK_Escape, togglescratch, {.ui = 0}}, //scratch 1 (large)
+    {MODKEY, XK_grave, togglescratch, {.ui = 1}}, //scratch 2 (small)
+    {MODKEY, XK_a, togglescratch, {.ui = 2}}, // spotify
+    {MODKEY, XK_r, togglescratch, {.ui = 3}}, // ranger
+    {MODKEY, XK_d, togglescratch, {.ui = 4}}, // pulsemixer
     // {MODKEY | ControlMask, XK_grave, setscratch, {.ui = 0}},
     // {MODKEY | ShiftMask, XK_grave, removescratch, {.ui = 0}},
 #endif // SCRATCHPADS_PATCH
@@ -1217,7 +1217,7 @@ static Key keys[] = {
     {MODKEY | ShiftMask, XK_f, togglefakefullscreen, {0}},
 #endif // FAKEFULLSCREEN_CLIENT_PATCH
 #if FULLSCREEN_PATCH
-    {MODKEY | Mod4Mask, XK_f, fullscreen, {0}},
+    // {MODKEY | ShiftMask, XK_f, fullscreen, {0}},
 #endif // FULLSCREEN_PATCH
 #if STICKY_PATCH
     {MODKEY, XK_p, togglesticky, {0}},
@@ -1233,17 +1233,17 @@ static Key keys[] = {
     {MODKEY, XK_0, view, {.ui = ~0}},
     {MODKEY | ShiftMask, XK_0, tag, {.ui = ~0}},
 #endif // SCRATCHPAD_ALT_1_PATCH
+    {MODKEY | Mod4Mask, XK_l, focusmon, {.i = -1}},
+    {MODKEY | Mod4Mask, XK_h, focusmon, {.i = +1}},
     {MODKEY, XK_comma, focusmon, {.i = -1}},
     {MODKEY, XK_period, focusmon, {.i = +1}},
     {MODKEY | ShiftMask, XK_comma, tagmon, {.i = -1}},
     {MODKEY | ShiftMask, XK_period, tagmon, {.i = +1}},
 #if FOCUSADJACENTTAG_PATCH
-    {MODKEY,
-     XK_Left,
-     viewtoleft,
+    {MODKEY, XK_h, viewtoleft,
      {0}}, // note keybinding conflict with focusdir
     {MODKEY,
-     XK_Right,
+     XK_l,
      viewtoright,
      {0}}, // note keybinding conflict with focusdir
     {MODKEY | ShiftMask, XK_Left, tagtoleft, {0}},
