@@ -674,7 +674,7 @@ static const BarRule barrules[] = {
 };
 
 /* layout(s) */
-static const float mfact = 0.60; /* factor of master area size [0.05..0.95] */
+static const float mfact = 0.50; /* factor of master area size [0.05..0.95] */
 static const int nmaster = 1;    /* number of clients in master area */
 #if FLEXTILE_DELUXE_LAYOUT
 static const int nstack = 0; /* number of clients in primary stack area */
@@ -707,8 +707,8 @@ static const int scrollargs[][2] = {
 static const Layout layouts[] = {
     /* symbol     arrange function, { nmaster, nstack, layout, master axis,
        stack axis, secondary stack axis, symbol func } */
-    {"|M|", flextile, {-1, -1, SPLIT_CENTERED_VERTICAL, LEFT_TO_RIGHT, TOP_TO_BOTTOM, TOP_TO_BOTTOM, NULL}}, // centeredmaster
     {"[]=", flextile, {-1, -1, SPLIT_VERTICAL, TOP_TO_BOTTOM, TOP_TO_BOTTOM, 0, NULL}},           // default tile layout
+    {"|M|", flextile, {-1, -1, SPLIT_CENTERED_VERTICAL, LEFT_TO_RIGHT, TOP_TO_BOTTOM, TOP_TO_BOTTOM, NULL}}, // centeredmaster
     {"[T]", flextile, {-1, -1, SPLIT_VERTICAL, LEFT_TO_RIGHT, TATAMI, 0, NULL}}, // tatami mats
     {"[D]", flextile, {-1, -1, SPLIT_VERTICAL, TOP_TO_BOTTOM, MONOCLE, 0, NULL}}, // deck
     {":::", flextile, {-1, -1, NO_SPLIT, GAPPLESSGRID, GAPPLESSGRID, 0, NULL}}, // gappless grid
@@ -868,7 +868,7 @@ static const char *xkb_layouts[] = {
       {MODKEY | ShiftMask, KEY, tag, {.ui = 1 << TAG}},                        \
       {MODKEY | Mod4Mask, KEY, toggletag, {.ui = 1 << TAG}},    \
       {MODKEY | ControlMask | ShiftMask, KEY, swaptags, {.ui = 1 << TAG}},        \
-      {MODKEY | ControlMask, KEY, tagnextmon, {.ui = 1 << TAG}},                  
+      {MODKEY | ControlMask, KEY, tagnextmon, {.ui = 1 << TAG}},                  \
       // {MODKEY | Mod4Mask | ControlMask, KEY, tagprevmon, {.ui = 1 << TAG}},
       // {MODKEY | ControlMask, KEY, toggleview, {.ui = 1 << TAG}},               
 #elif SWAPTAGS_PATCH
@@ -989,6 +989,7 @@ static Key keys[] = {
 	{0, XF86XK_AudioPrev, spawn, {.v = prevcmd }},
     {MODKEY, XK_Print, spawn, SHCMD("/usr/bin/flameshot gui &")},
     {MODKEY, XK_Home, spawn, SHCMD("/home/carson/bin/newpape.sh")},
+    
 #if KEYMODES_PATCH
     {MODKEY, XK_Escape, setkeymode, {.ui = COMMANDMODE}},
 #endif // KEYMODES_PATCH
@@ -1020,12 +1021,13 @@ static Key keys[] = {
     {MODKEY, XK_Down, focusdir, {.i = 3}},     // down
 #endif                                         // FOCUSDIR_PATCH
 #if SWAPFOCUS_PATCH && PERTAG_PATCH
-    {MODKEY, XK_s, swapfocus, {.i = -1}},
+    {MODKEY, XK_a, swapfocus, {.i = -1}},
 #endif // SWAPFOCUS_PATCH
 #if SWITCHCOL_PATCH
     {MODKEY, XK_v, switchcol, {0}},
 #endif // SWITCHCOL_PATCH
 #if ROTATESTACK_PATCH
+    // Custom:
     {MODKEY | Mod4Mask, XK_j, rotatestack, {.i = +1}},
     {MODKEY | Mod4Mask, XK_k, rotatestack, {.i = -1}},
 #endif // ROTATESTACK_PATCH
@@ -1207,7 +1209,7 @@ static Key keys[] = {
 #if SCRATCHPADS_PATCH
     {MODKEY, XK_Escape, togglescratch, {.ui = 0}}, //scratch 1 (large)
     {MODKEY, XK_grave, togglescratch, {.ui = 1}}, //scratch 2 (small)
-    {MODKEY, XK_a, togglescratch, {.ui = 2}}, // spotify
+    {MODKEY, XK_s, togglescratch, {.ui = 2}}, // spotify
     {MODKEY, XK_r, togglescratch, {.ui = 3}}, // ranger
     {MODKEY, XK_d, togglescratch, {.ui = 4}}, // pulsemixer
     {MODKEY, XK_t, togglescratch, {.ui = 5}}, // top
@@ -1457,6 +1459,8 @@ static Key keys[] = {
 #if CYCLELAYOUTS_PATCH
     {MODKEY | ControlMask, XK_comma, cyclelayout, {.i = -1}},
     {MODKEY | ControlMask, XK_period, cyclelayout, {.i = +1}},
+    {MODKEY, XK_p, cyclelayout, {.i = -1}},
+    {MODKEY, XK_n, cyclelayout, {.i = +1}},
 #endif // CYCLELAYOUTS_PATCH
 #if MPDCONTROL_PATCH
     {MODKEY, XK_F1, mpdchange, {.i = -1}},
