@@ -1,0 +1,9 @@
+#!/bin/bash
+
+if [ "$PLAYER_EVENT" = "start" ] || [ "$PLAYER_EVENT" = "change" ];
+then
+	trackName=$(playerctl -p spotifyd,%any metadata title)
+	artistAndAlbumName=$(playerctl -p spotifyd,%any metadata --format "{{ artist }} ({{ album }})")
+
+	notify-send -u low "$trackName" "$artistAndAlbumName "
+fi

@@ -419,7 +419,7 @@ static const char *const autostart[] = {
 #if SCRATCHPADS_PATCH
 const char *spcmd1[] = {"st", "-n", "spterm1", "-g", "130x42", NULL};
 const char *spcmd2[] = {"st", "-n", "spterm2", "-g", "100x30", NULL};
-const char *spcmd3[] = {"st", "-n", "spspotify", "-g", "140x43", "-e", "spt", NULL};
+const char *spcmd3[] = {"st", "-n", "spspotify", "-g", "140x50", "-e", "spt", NULL};
 const char *spcmd4[] = {"st", "-n", "spranger", "-g", "130x40", "-e", "ranger", NULL};
 const char *spcmd5[] = {"st", "-n", "sppulsemixer", "-g", "80x25", "-e", "pulsemixer", NULL};
 static Sp scratchpads[] = {
@@ -1205,7 +1205,7 @@ static Key keys[] = {
 #if SCRATCHPADS_PATCH
     {MODKEY, XK_Escape, togglescratch, {.ui = 0}}, //scratch 1 (large)
     {MODKEY, XK_grave, togglescratch, {.ui = 1}}, //scratch 2 (small)
-    {MODKEY, XK_a, togglescratch, {.ui = 2}}, // spotify
+    {MODKEY, XK_m, togglescratch, {.ui = 2}}, // spotify
     {MODKEY, XK_r, togglescratch, {.ui = 3}}, // ranger
     {MODKEY, XK_d, togglescratch, {.ui = 4}}, // pulsemixer
     // {MODKEY | ControlMask, XK_grave, setscratch, {.ui = 0}},
@@ -1245,12 +1245,8 @@ static Key keys[] = {
     {MODKEY | ShiftMask, XK_comma, tagmon, {.i = -1}},
     {MODKEY | ShiftMask, XK_period, tagmon, {.i = +1}},
 #if FOCUSADJACENTTAG_PATCH
-    {MODKEY, XK_h, viewtoleft,
-     {0}}, // note keybinding conflict with focusdir
-    {MODKEY,
-     XK_l,
-     viewtoright,
-     {0}}, // note keybinding conflict with focusdir
+    {MODKEY, XK_h, viewtoleft, {0}}, 
+    {MODKEY, XK_l, viewtoright, {0}}, 
     {MODKEY | ShiftMask, XK_Left, tagtoleft, {0}},
     {MODKEY | ShiftMask, XK_Right, tagtoright, {0}},
     {MODKEY | ControlMask, XK_Left, tagandviewtoleft, {0}},

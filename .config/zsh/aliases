@@ -69,11 +69,8 @@ alias laptop="exec /home/carson/bin/displays/laptop.sh"
 alias uw="exec /home/carson/bin/displays/ultrawide.sh && w"
 alias ultrawide="exec /home/carson/bin/displays/ultrawide.sh"
 
-alias wttr="curl v2d.wttr.in/San+Luis+Obispo"
-alias wttr2="curl wttr.in/San+Luis+Obispo"
-
-alias abright="sudo /home/carson/bin/autobrightness.sh"
-alias bright="sudo /home/carson/bin/setbrightness.sh"
+alias wttr="curl wttr.in/San+Luis+Obispo"
+alias wttr2="curl v2d.wttr.in/San+Luis+Obispo"
 
 alias ctrl='setxkbmap -option ctrl:nocaps'
 alias fontpreview='fontpreview-ueberzug'

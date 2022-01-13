@@ -17,8 +17,8 @@ xrandr --auto
 setxkbmap -option ctrl:nocaps
 
 # xinput stuff
-. /home/carson/bin/mouse.sh 
-. /home/carson/bin/trackpad.sh
+. /home/carson/bin/initmouse
+. /home/carson/bin/inittrackpad
 
 # restore wallpaper and colorschemes
 wal -R
