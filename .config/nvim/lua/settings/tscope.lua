@@ -195,8 +195,8 @@ telescope.setup {
       i = {
         ["<Esc>"] = actions.close,
         ["<C-q>"] = actions.close,
-        ["J"] = actions.move_selection_next,
-        ["K"] = actions.move_selection_previous,
+        -- ["J"] = actions.move_selection_next,
+        -- ["K"] = actions.move_selection_previous,
         ["<C-j>"] = actions.move_selection_next,
         ["<C-k>"] = actions.move_selection_previous,
         ["<tab>"] = actions.toggle_selection + actions.move_selection_next,

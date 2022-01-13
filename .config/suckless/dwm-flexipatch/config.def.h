@@ -108,7 +108,7 @@ static const unsigned int systrayspacing = 2; /* systray spacing */
 static const int showsystray = 1;             /* 0 means no systray */
 #endif                                        // BAR_SYSTRAY_PATCH
 #if BAR_TAGLABELS_PATCH
-static const char ptagf[] = "%s %s"; /* format of a tag label */
+static const char ptagf[] = "%s%s"; /* format of a tag label */
 static const char etagf[] = "%s";    /* format of an empty tag */
 static const int lcaselbl = 1;         /* 1 means make tag label lowercase */
 #endif                                 // BAR_TAGLABELS_PATCH
@@ -417,12 +417,12 @@ static const char *const autostart[] = {
 #endif // COOL_AUTOSTART_PATCH
 
 #if SCRATCHPADS_PATCH
-const char *spcmd1[] = {"st", "-n", "spterm1", "-g", "130x42", NULL};
+const char *spcmd1[] = {"st", "-n", "spterm1", "-g", "130x42", "-e", "tmux attach-session -t scratch || tmux new-session -s scratch", NULL};
 const char *spcmd2[] = {"st", "-n", "spterm2", "-g", "100x30", NULL};
 const char *spcmd3[] = {"st", "-n", "spspotify", "-g", "140x50", "-e", "spt", NULL};
 const char *spcmd4[] = {"st", "-n", "spranger", "-g", "130x40", "-e", "ranger", NULL};
 const char *spcmd5[] = {"st", "-n", "sppulsemixer", "-g", "80x25", "-e", "pulsemixer", NULL};
-const char *spcmd6[] = {"st", "-n", "sptop", "-g", "130x40", "-e", "btop", NULL};
+const char *spcmd6[] = {"st", "-n", "sptop", "-g", "160x60", "-e", "btop", NULL};
 static Sp scratchpads[] = {
     /* name          cmd  */
     {"spterm1", spcmd1},
@@ -518,6 +518,7 @@ static const Rule rules[] = {
     RULE(.class = "Origin", .isfloating = 1)
     RULE(.class = "Gimp", .tags = 1 << 4)
     RULE(.class = "Firefox", .tags = 1 << 7)
+    RULE(.class = "St", .isterminal = 1)
 #if SCRATCHPADS_PATCH
     RULE(.instance = "spterm1", .tags = SPTAG(0), .isfloating = 1)
     RULE(.instance = "spterm2", .tags = SPTAG(1), .isfloating = 1)
@@ -1212,7 +1213,7 @@ static Key keys[] = {
     {MODKEY, XK_s, togglescratch, {.ui = 2}}, // spotify
     {MODKEY, XK_r, togglescratch, {.ui = 3}}, // ranger
     {MODKEY, XK_d, togglescratch, {.ui = 4}}, // pulsemixer
-    {MODKEY, XK_t, togglescratch, {.ui = 5}}, // top
+    {MODKEY, XK_q, togglescratch, {.ui = 5}}, // top
     // {MODKEY | ControlMask, XK_grave, setscratch, {.ui = 0}},
     // {MODKEY | ShiftMask, XK_grave, removescratch, {.ui = 0}},
 #endif // SCRATCHPADS_PATCH
