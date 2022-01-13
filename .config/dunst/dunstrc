@@ -25,7 +25,7 @@
     # dynamic width from 0 to 300
     # width = (0, 300)
     # constant width of 300
-    width = 300
+    width = 250
 
     # The maximum height of a single notification, excluding the frame.
     height = 300
@@ -34,7 +34,7 @@
     origin = bottom-right
 
     # Offset from the origin
-    offset = 10x50
+    offset = 36x36
 
     # Scale factor. It is auto-detected if value is 0.
     scale = 0
@@ -69,7 +69,7 @@
     # The transparency of the window.  Range: [0; 100].
     # This option will only work if a compositing window manager is
     # present (e.g. xcompmgr, compiz, etc.). (X11 only)
-    transparency = 30
+    transparency = 60
 
     # Draw a line of "separator_height" pixel height between two
     # notifications.
@@ -77,17 +77,17 @@
     separator_height = 2
 
     # Padding between text and separator.
-    padding = 8
+    padding = 6
 
     # Horizontal padding.
-    horizontal_padding = 8
+    horizontal_padding = 6
 
     # Padding between text and icon.
     text_icon_padding = 0
 
     # Defines width in pixels of frame around the notification window.
     # Set to 0 to disable.
-    frame_width = 1
+    frame_width = 0
 
     # Defines color of the frame around the notification window.
     frame_color = "#aaaaaa"
@@ -293,16 +293,16 @@
 [urgency_low]
     # IMPORTANT: colors have to be defined in quotation marks.
     # Otherwise the "#" and following would be interpreted as a comment.
-    background = "#222222"
-    foreground = "#888888"
+    background = "#282828"
+    foreground = "#fbf1c7"
     timeout = 3
     # Icon for notifications with low urgency, uncomment to enable
     #default_icon = /path/to/icon
 
 [urgency_normal]
-    background = "#285577"
-    foreground = "#ffffff"
-    timeout = 5
+    background = "#282828"
+    foreground = "#fbf1c7"
+    timeout = 4
     # Icon for notifications with normal urgency, uncomment to enable
     #default_icon = /path/to/icon
 
@@ -310,7 +310,7 @@
     background = "#900000"
     foreground = "#ffffff"
     frame_color = "#ff0000"
-    timeout = 10
+    timeout = 8
     # Icon for notifications with critical urgency, uncomment to enable
     #default_icon = /path/to/icon
 

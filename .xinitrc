@@ -10,14 +10,15 @@ fi
 
 # xrandr --setprovideroutputsource modesetting NVIDIA-0
 xrandr --auto
+. /home/carson/bin/displays/ultrawide.sh
 
 # input configuration
 # capslock is ctrl
 setxkbmap -option ctrl:nocaps
 
 # xinput stuff
-exec ~/bin/mouse.sh &
-exec ~/bin/trackpad.sh &
+. /home/carson/bin/mouse.sh 
+. /home/carson/bin/trackpad.sh
 
 # restore wallpaper and colorschemes
 wal -R
@@ -38,7 +39,6 @@ redshift &
 xrdb -merge ~/.Xresources 
 
 # statusbar
-# dwmblocks &
 
 # start window manager
 while :; do 

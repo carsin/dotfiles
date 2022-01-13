@@ -4,6 +4,7 @@
 	# signingkey = 528F41716A62A8A1
 [core]
 	editor = nvim
+	pager = less -r
 [credential "https://dev.azure.com"]
 	useHttpPath = true
 [commit]

@@ -9,7 +9,8 @@ static char *font = "GohuFont Nerd Font:size=11:antialias=true:hinting=true:embe
 #if FONT2_PATCH
 /* Spare fonts */
 static char *font2[] = {
-/*	"Inconsolata for Powerline:pixelsize=12:antialias=true:autohint=true", */
+    "Siji:size=10:antialias=true:hinting=true:embeddedbitmap=false",
+/*	"Inconsolata for Powerline:pixelsize=12:antialias=true:autohinSiji:size=10:antialias=true:hinting=true:embeddedbitmap=falset=true", */
 /*	"Hack Nerd Font Mono:pixelsize=11:antialias=true:autohint=true", */
 };
 #endif // FONT2_PATCH
@@ -105,7 +106,7 @@ static unsigned int cursorthickness = 2;
  * 0: disable (render all U25XX glyphs normally from the font).
  */
 const int boxdraw = 1;
-const int boxdraw_bold = 1;
+const int boxdraw_bold = 0;
 
 /* braille (U28XX):  1: render as adjacent "pixels",  0: use font */
 const int boxdraw_braille = 1;
@@ -139,13 +140,13 @@ unsigned int tabspaces = 4;
 
 #if ALPHA_PATCH
 /* bg opacity */
-float alpha = 0.8;
+float alpha = 0.85;
 #if ALPHA_GRADIENT_PATCH
 float grad_alpha = 0.8; //alpha value that'll change
 float stat_alpha = 0.2; //constant alpha value that'll get added to grad_alpha
 #endif // ALPHA_GRADIENT_PATCH
 #if ALPHA_FOCUS_HIGHLIGHT_PATCH
-float alphaUnfocused = 0.7;
+float alphaUnfocused = 0.75;
 #endif // ALPHA_FOCUS_HIGHLIGHT_PATCH
 #endif // ALPHA_PATCH
 

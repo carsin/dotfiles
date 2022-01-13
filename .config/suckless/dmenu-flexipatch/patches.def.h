@@ -5,7 +5,7 @@
  * when including this patch.
  * https://github.com/bakkeby/patches/blob/master/dmenu/dmenu-alpha-5.0_20210725_523aa08.diff
  */
-#define ALPHA_PATCH 0
+#define ALPHA_PATCH 1
 
 /* This patch adds a border around the dmenu window. It is intended to be used with the center
  * or xyw patches, to make the menu stand out from similarly coloured windows.
@@ -142,7 +142,7 @@
 /* This patch adds basic mouse support for dmenu.
  * https://tools.suckless.org/dmenu/patches/mouse-support/
  */
-#define MOUSE_SUPPORT_PATCH 0
+#define MOUSE_SUPPORT_PATCH 1
 
 /* Without this patch when you press Ctrl+Enter dmenu just outputs current item and it is not
  * possible to undo that.
@@ -189,7 +189,7 @@
 /* Adds text which displays the number of matched and total items in the top right corner of dmenu.
  * https://tools.suckless.org/dmenu/patches/numbers/
  */
-#define NUMBERS_PATCH 1
+#define NUMBERS_PATCH 0
 
 /* This patch adds simple markup for dmenu using pango markup.
  * This depends on the pango library v1.44 or greater.
@@ -285,13 +285,13 @@
  * it can handle long text.
  * https://tools.suckless.org/dmenu/patches/scroll/
  */
-#define SCROLL_PATCH 1
+#define SCROLL_PATCH 0
 
 /* This patch allows the symbols, which are printed in dmenu to indicate that either the input
  * is too long or there are too many options to be shown in dmenu in one line, to be defined.
  * https://tools.suckless.org/dmenu/patches/symbols/
  */
-#define SYMBOLS_PATCH 0
+#define SYMBOLS_PATCH 1
 
 /* With this patch dmenu will split input lines at first tab character and only display first
  * part, but it will perform matching on and output full lines as usual.
@@ -306,12 +306,12 @@
 /* This patch prevents dmenu from indenting items at the same level as the prompt length.
  * https://tools.suckless.org/dmenu/patches/vertfull/
  */
-#define VERTFULL_PATCH 0
+#define VERTFULL_PATCH 1
 
 /* Adds extended window manager hints such as _NET_WM_WINDOW_TYPE and _NET_WM_WINDOW_TYPE_DOCK.
  * https://github.com/Baitinq/dmenu/blob/master/patches/dmenu-wm_type.diff
  */
-#define WMTYPE_PATCH 0
+#define WMTYPE_PATCH 1
 
 /* This patch adds the ability to configure dmenu via Xresources. At startup, dmenu will read and
  * apply the resources named below:
@@ -331,4 +331,4 @@
  * The center patch takes precedence over the XYW patch if enabled.
  * https://tools.suckless.org/dmenu/patches/xyw/
  */
-#define XYW_PATCH e
+#define XYW_PATCH 0

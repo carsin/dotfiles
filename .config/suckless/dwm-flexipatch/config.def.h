@@ -146,7 +146,8 @@ static void (*bartabmonfns[])(Monitor *) = {NULL /* , customlayoutfn */};
 #endif // MONOCLE_LAYOUT
 #endif // BAR_TABGROUPS_PATCH
 #if BAR_PANGO_PATCH
-static const char font[] = "GohuFont Nerd Font:size=11:antialias=true:hinting=true:embeddedbitmap=false";
+static const char font[] = "Siji:size=10:antialias=true:hinting=true:embeddedbitmap=false",
+                            "GohuFont Nerd Font:size=11:antialias=true:hinting=true:embeddedbitmap=false";
 #else
 static const char *fonts[] = { "GohuFont Nerd Font:size=11:antialias=true:hinting=true:embeddedbitmap=false"};
 #endif // BAR_PANGO_PATCH
@@ -958,8 +959,8 @@ static const char *statuscmd[] = {"/bin/sh", "-c", NULL, NULL};
 #endif // BAR_DWMBLOCKS_PATCH
 #endif // BAR_STATUSCMD_PATCH
 
-#if ON_EMPTY_KEYS_PATCH
 static const char *firefoxcmd[] = {"firefox", NULL};
+#if ON_EMPTY_KEYS_PATCH
 static Key on_empty_keys[] = {
     /* modifier key            function                argument */
     {0, XK_f, spawn, {.v = firefoxcmd}},
@@ -982,12 +983,16 @@ static Key keys[] = {
 	{0, XF86XK_AudioMute, spawn, {.v = mutevolcmd }},
     {0, XF86XK_AudioPlay, spawn, {.v = playpausecmd }},
 	{0, XF86XK_AudioNext, spawn, {.v = nextcmd }},
+    
 	{0, XF86XK_AudioPrev, spawn, {.v = prevcmd }},
+    {MODKEY, XK_Print, spawn, SHCMD("/usr/bin/flameshot gui &")},
+    {MODKEY, XK_Home, spawn, SHCMD("/home/carson/bin/newpape.sh")},
 #if KEYMODES_PATCH
     {MODKEY, XK_Escape, setkeymode, {.ui = COMMANDMODE}},
 #endif // KEYMODES_PATCH
     {MODKEY, XK_space, spawn, {.v = dmenucmd}},
     {MODKEY | ShiftMask, XK_Return, spawn, {.v = termcmd}},
+    {MODKEY, XK_w, spawn, {.v = firefoxcmd}},
 #if RIODRAW_PATCH
     {MODKEY | ControlMask, XK_p, riospawnsync, {.v = dmenucmd}},
     {MODKEY | ControlMask, XK_Return, riospawn, {.v = termcmd}},
@@ -1049,7 +1054,7 @@ static Key keys[] = {
     {MODKEY | ControlMask | ShiftMask, XK_e, aspectresize, {.i = +24}},
     {MODKEY | ControlMask | ShiftMask, XK_r, aspectresize, {.i = -24}},
 #endif // ASPECTRESIZE_PATCH
-#if MOVERESIZE_PATShift
+#if MOVERESIZE_PATCH
     {MODKEY | Mod4Mask, XK_Down, moveresize, {.v = "0x 25y 0w 0h"}},
     {MODKEY | Mod4Mask, XK_Up, moveresize, {.v = "0x -25y 0w 0h"}},
     {MODKEY | Mod4Mask, XK_Right, moveresize, {.v = "25x 0y 0w 0h"}},

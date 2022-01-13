@@ -9,21 +9,21 @@ static int opacity = 1;                     /* -o  option; if 0, then alpha is d
 static int fuzzy = 1;                       /* -F  option; if 0, dmenu doesn't use fuzzy matching */
 #endif // FUZZYMATCH_PATCH
 #if INCREMENTAL_PATCH
-static int incremental = 1;                 /* -r  option; if 1, outputs text each time a key is pressed */
+static int incremental = 0;                 /* -r  option; if 1, outputs text each time a key is pressed */
 #endif // INCREMENTAL_PATCH
 #if INSTANT_PATCH
-static int instant = 0;                     /* -n  option; if 1, selects matching item without the need to press enter */
+static int instant = 1;                     /* -n  option; if 1, selects matching item without the need to press enter */
 #endif // INSTANT_PATCH
 #if CENTER_PATCH
 static int center = 1;                      /* -c  option; if 0, dmenu won't be centered on the screen */
-static int min_width = 750;                 /* minimum width when centered */
+static int min_width = 500;                 /* minimum width when centered */
 #endif // CENTER_PATCH
 #if RESTRICT_RETURN_PATCH
 static int restrict_return = 0;             /* -1 option; if 1, disables shift-return and ctrl-return */
 #endif // RESTRICT_RETURN_PATCH
 /* -fn option overrides fonts[0]; default X11 font or font set */
 #if PANGO_PATCH
-static char font[] = "TerminessTTF Nerd Font:pixelsize=16:antialias=false:autohint=true";
+static char font[] = "GohuFont Nerd Font:size=11:antialias=true:hinting=true:embeddedbitmap=false";
 #else
 #if XRESOURCES_PATCH
 static char *fonts[] =
@@ -31,7 +31,7 @@ static char *fonts[] =
 static const char *fonts[] =
 #endif // XRESOURCES_PATCH
 {
-	"TerminessTTF Nerd Font:pixelsize=16:antialias=false:autohint=true"
+	"GohuFont Nerd Font:size=11:antialias=true:hinting=true:embeddedbitmap=false"
 };
 #endif // PANGO_PATCH
 #if MANAGED_PATCH
@@ -86,7 +86,7 @@ char *colors[][2] = {
 	#endif // EMOJI_HIGHLIGHT_PATCH
 };
 /* -l option; if nonzero, dmenu uses vertical list with given number of lines */
-static unsigned int lines      = 8;
+static unsigned int lines      = 9;
 #if GRID_PATCH
 /* -g option; if nonzero, dmenu uses a grid comprised of columns and lines */
 static unsigned int columns    = 3;
