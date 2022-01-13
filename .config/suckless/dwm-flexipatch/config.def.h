@@ -108,9 +108,9 @@ static const unsigned int systrayspacing = 2; /* systray spacing */
 static const int showsystray = 1;             /* 0 means no systray */
 #endif                                        // BAR_SYSTRAY_PATCH
 #if BAR_TAGLABELS_PATCH
-static const char ptagf[] = "[%s %s]"; /* format of a tag label */
-static const char etagf[] = "[%s]";    /* format of an empty tag */
-static const int lcaselbl = 0;         /* 1 means make tag label lowercase */
+static const char ptagf[] = "%s %s"; /* format of a tag label */
+static const char etagf[] = "%s";    /* format of an empty tag */
+static const int lcaselbl = 1;         /* 1 means make tag label lowercase */
 #endif                                 // BAR_TAGLABELS_PATCH
 #if BAR_UNDERLINETAGS_PATCH
 static const unsigned int ulinepad =
@@ -149,7 +149,7 @@ static void (*bartabmonfns[])(Monitor *) = {NULL /* , customlayoutfn */};
 static const char font[] = "Siji:size=10:antialias=true:hinting=true:embeddedbitmap=false",
                             "GohuFont Nerd Font:size=11:antialias=true:hinting=true:embeddedbitmap=false";
 #else
-static const char *fonts[] = { "GohuFont Nerd Font:size=11:antialias=true:hinting=true:embeddedbitmap=false"};
+static const char *fonts[] = { "GohuFont Nerd Font:size=11:antialias=true:hinting=true:embeddedbitmap=false" };
 #endif // BAR_PANGO_PATCH
 static const char dmenufont[] = "GohuFont Nerd Font:size=11:antialias=true:hinting=true:embeddedbitmap=false";
 
@@ -185,7 +185,7 @@ static char tagsnormbordercolor[] = "#101010";
 static char tagsnormfloatcolor[] = "#db8fd9";
 
 static char tagsselfgcolor[] = "#fb4934";
-static char tagsselbgcolor[] = "#101010";
+static char tagsselbgcolor[] = "#1b1b1b";
 static char tagsselbordercolor[] = "#101010";
 static char tagsselfloatcolor[] = "#005577";
 
@@ -194,10 +194,10 @@ static char hidselfgcolor[] = "#227799";
 static char hidnormbgcolor[] = "#222222";
 static char hidselbgcolor[] = "#222222";
 
-static char urgfgcolor[] = "#1d2021";
-static char urgbgcolor[] = "#cc241d";
-static char urgbordercolor[] = "#cc241dff0000";
-static char urgfloatcolor[] = "#cc241d";
+static char urgfgcolor[] = "#131313";
+static char urgbgcolor[] = "#458588";
+static char urgbordercolor[] = "#9d0006";
+static char urgfloatcolor[] = "#9d0006";
 
 #if BAR_FLEXWINTITLE_PATCH
 static char normTTBbgcolor[] = "#330000";
@@ -422,6 +422,7 @@ const char *spcmd2[] = {"st", "-n", "spterm2", "-g", "100x30", NULL};
 const char *spcmd3[] = {"st", "-n", "spspotify", "-g", "140x50", "-e", "spt", NULL};
 const char *spcmd4[] = {"st", "-n", "spranger", "-g", "130x40", "-e", "ranger", NULL};
 const char *spcmd5[] = {"st", "-n", "sppulsemixer", "-g", "80x25", "-e", "pulsemixer", NULL};
+const char *spcmd6[] = {"st", "-n", "sptop", "-g", "130x40", "-e", "btop", NULL};
 static Sp scratchpads[] = {
     /* name          cmd  */
     {"spterm1", spcmd1},
@@ -429,6 +430,7 @@ static Sp scratchpads[] = {
     {"spspotify", spcmd3},
     {"spranger", spcmd4},
     {"sppulsemixer", spcmd5},
+    {"sptop", spcmd6},
 };
 #endif // SCRATCHPADS_PATCH
 
@@ -464,11 +466,10 @@ static Sp scratchpads[] = {
  * them. This works seamlessly with alternative tags and alttagsdecoration
  * patches.
  */
+// ﬓ 龎
+    
 static char *tagicons[][NUMTAGS] = {
-    [DEFAULT_TAGS] = {"1", "2", "3", "4", "5", "6", "7", "8", "9"},
-    [ALTERNATIVE_TAGS] = {"A", "B", "C", "D", "E", "F", "G", "H", "I"},
-    [ALT_TAGS_DECORATION] = {"<1>", "<2>", "<3>", "<4>", "<5>", "<6>", "<7>",
-                             "<8>", "<9>"},
+    [DEFAULT_TAGS] = {"龎 ", " ", " ", " ", " ", " "},
 };
 
 #if BAR_TAGGRID_PATCH
@@ -523,6 +524,7 @@ static const Rule rules[] = {
     RULE(.instance = "spspotify", .tags = SPTAG(2), .isfloating = 1)
     RULE(.instance = "spranger", .tags = SPTAG(3), .isfloating = 1)
     RULE(.instance = "sppulsemixer", .tags = SPTAG(4), .isfloating = 1)
+    RULE(.instance = "sptop", .tags = SPTAG(5), .isfloating = 1)
 #endif // SCRATCHPADS_PATCH
 };
 
@@ -672,7 +674,7 @@ static const BarRule barrules[] = {
 };
 
 /* layout(s) */
-static const float mfact = 0.55; /* factor of master area size [0.05..0.95] */
+static const float mfact = 0.60; /* factor of master area size [0.05..0.95] */
 static const int nmaster = 1;    /* number of clients in master area */
 #if FLEXTILE_DELUXE_LAYOUT
 static const int nstack = 0; /* number of clients in primary stack area */
@@ -705,21 +707,21 @@ static const int scrollargs[][2] = {
 static const Layout layouts[] = {
     /* symbol     arrange function, { nmaster, nstack, layout, master axis,
        stack axis, secondary stack axis, symbol func } */
-    {"[]=", flextile, {-1, -1, SPLIT_VERTICAL, TOP_TO_BOTTOM, TOP_TO_BOTTOM, 0, NULL}},           // default tile layout
     {"|M|", flextile, {-1, -1, SPLIT_CENTERED_VERTICAL, LEFT_TO_RIGHT, TOP_TO_BOTTOM, TOP_TO_BOTTOM, NULL}}, // centeredmaster
-    {"-M-", flextile, {-1, -1, SPLIT_CENTERED_HORIZONTAL, TOP_TO_BOTTOM, LEFT_TO_RIGHT, LEFT_TO_RIGHT, NULL}}, // centeredmaster horiz
+    {"[]=", flextile, {-1, -1, SPLIT_VERTICAL, TOP_TO_BOTTOM, TOP_TO_BOTTOM, 0, NULL}},           // default tile layout
     {"[T]", flextile, {-1, -1, SPLIT_VERTICAL, LEFT_TO_RIGHT, TATAMI, 0, NULL}}, // tatami mats
+    {"[D]", flextile, {-1, -1, SPLIT_VERTICAL, TOP_TO_BOTTOM, MONOCLE, 0, NULL}}, // deck
     {":::", flextile, {-1, -1, NO_SPLIT, GAPPLESSGRID, GAPPLESSGRID, 0, NULL}}, // gappless grid
+    {"-M-", flextile, {-1, -1, SPLIT_CENTERED_HORIZONTAL, TOP_TO_BOTTOM, LEFT_TO_RIGHT, LEFT_TO_RIGHT, NULL}}, // centeredmaster horiz
     {"[M]", flextile, {-1, -1, NO_SPLIT, MONOCLE, MONOCLE, 0, NULL}}, // monocle
     // {"|||", flextile, {-1, -1, SPLIT_VERTICAL, LEFT_TO_RIGHT, TOP_TO_BOTTOM, 0, NULL}}, // columns (col) layout
     // {">M>", flextile, {-1, -1, FLOATING_MASTER, LEFT_TO_RIGHT, LEFT_TO_RIGHT, 0, NULL}}, // floating master
-    {"[D]", flextile, {-1, -1, SPLIT_VERTICAL, TOP_TO_BOTTOM, MONOCLE, 0, NULL}}, // deck
     {"TTT", flextile, {-1, -1, SPLIT_HORIZONTAL, LEFT_TO_RIGHT, LEFT_TO_RIGHT, 0, NULL}}, // bstack
     // {"===",
     //  flextile,
     //  {-1, -1, SPLIT_HORIZONTAL, LEFT_TO_RIGHT, TOP_TO_BOTTOM, 0,
     //   NULL}}, // bstackhoriz
-    {"[\\]", flextile, {-1, -1, NO_SPLIT, DWINDLE, DWINDLE, 0, NULL}}, // fibonacci dwindle
+    // {"[\\]", flextile, {-1, -1, NO_SPLIT, DWINDLE, DWINDLE, 0, NULL}}, // fibonacci dwindle
     {"(@)", flextile, {-1, -1, NO_SPLIT, SPIRAL, SPIRAL, 0, NULL}}, // fibonacci spiral
     {"><>", NULL, {0}}, /* no layout function means floating behavior */
 #if TILE_LAYOUT
@@ -1043,11 +1045,11 @@ static Key keys[] = {
     {MODKEY | ControlMask, XK_i, incnstack, {.i = +1}},
     {MODKEY | ControlMask, XK_u, incnstack, {.i = -1}},
 #endif // FLEXTILE_DELUXE_LAYOUT
-    {MODKEY | ControlMask, XK_h, setmfact, {.f = -0.05}},
-    {MODKEY | ControlMask, XK_l, setmfact, {.f = +0.05}},
+    {MODKEY | ShiftMask, XK_h, setmfact, {.f = -0.05}},
+    {MODKEY | ShiftMask, XK_l, setmfact, {.f = +0.05}},
 #if CFACTS_PATCH
-    {MODKEY | ShiftMask, XK_h, setcfact, {.f = +0.25}},
-    {MODKEY | ShiftMask, XK_p, setcfact, {.f = -0.25}},
+    {MODKEY | Mod4Mask, XK_j, setcfact, {.f = +0.25}},
+    {MODKEY | Mod4Mask, XK_k, setcfact, {.f = -0.25}},
     {MODKEY | ShiftMask, XK_o, setcfact, {0}},
 #endif // CFACTS_PATCH
 #if ASPECTRESIZE_PATCH
@@ -1205,9 +1207,10 @@ static Key keys[] = {
 #if SCRATCHPADS_PATCH
     {MODKEY, XK_Escape, togglescratch, {.ui = 0}}, //scratch 1 (large)
     {MODKEY, XK_grave, togglescratch, {.ui = 1}}, //scratch 2 (small)
-    {MODKEY, XK_m, togglescratch, {.ui = 2}}, // spotify
+    {MODKEY, XK_a, togglescratch, {.ui = 2}}, // spotify
     {MODKEY, XK_r, togglescratch, {.ui = 3}}, // ranger
     {MODKEY, XK_d, togglescratch, {.ui = 4}}, // pulsemixer
+    {MODKEY, XK_t, togglescratch, {.ui = 5}}, // top
     // {MODKEY | ControlMask, XK_grave, setscratch, {.ui = 0}},
     // {MODKEY | ShiftMask, XK_grave, removescratch, {.ui = 0}},
 #endif // SCRATCHPADS_PATCH
@@ -1238,8 +1241,8 @@ static Key keys[] = {
     {MODKEY, XK_0, view, {.ui = ~0}},
     {MODKEY | ShiftMask, XK_0, tag, {.ui = ~0}},
 #endif // SCRATCHPAD_ALT_1_PATCH
-    {MODKEY | Mod4Mask, XK_l, focusmon, {.i = -1}},
-    {MODKEY | Mod4Mask, XK_h, focusmon, {.i = +1}},
+    {MODKEY | ControlMask, XK_l, focusmon, {.i = -1}},
+    {MODKEY | ControlMask, XK_h, focusmon, {.i = +1}},
     {MODKEY, XK_comma, focusmon, {.i = -1}},
     {MODKEY, XK_period, focusmon, {.i = +1}},
     {MODKEY | ShiftMask, XK_comma, tagmon, {.i = -1}},

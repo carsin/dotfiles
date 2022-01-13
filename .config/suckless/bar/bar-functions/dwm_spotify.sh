@@ -25,13 +25,13 @@ dwm_spotify () {
 
         if [ "$IDENTIFIER" = "unicode" ]; then
             if [ "$STATUS" = "Playing" ]; then
-                STATUS="▶"
+                STATUS="-"
             else
                 STATUS="⏸"
             fi
             
             if [ "$SHUFFLE" = "On" ]; then
-                SHUFFLE=" 🔀"
+                SHUFFLE=""
             else
                 SHUFFLE=""
             fi
@@ -50,14 +50,14 @@ dwm_spotify () {
         fi
         
         if [ "$PLAYER" = "spotify" ]; then
-            printf "%s%s %s - %s " "$SEP1" "$STATUS" "$ARTIST" "$TRACK"
+            printf "%s%s %s %s " "$SEP1" "$ARTIST" "$STATUS" "$TRACK"
             printf "%0d:%02d" $((DURATION%3600/60)) $((DURATION%60))
-            printf "%s\n" "$SEP2"
+            printf "%s" "$SEP2"
         else
-            printf "%s%s %s - %s " "$SEP1" "$STATUS" "$ARTIST" "$TRACK"
+            printf "%s%s %s %s " "$SEP1" "$ARTIST" "$STATUS" "$TRACK"
             printf "%0d:%02d/" $((POSITION%3600/60)) $((POSITION%60))
             printf "%0d:%02d" $((DURATION%3600/60)) $((DURATION%60))
-            printf "%s%s\n" "$SHUFFLE" "$SEP2"
+            printf "%s" "$SHUFFLE" "$SEP2"
         fi
     fi
 }

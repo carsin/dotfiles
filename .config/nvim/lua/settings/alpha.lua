@@ -589,9 +589,9 @@ local buttons = {
   val = {
     button("w", "  > Enter Wiki" , ":VimwikiIndex<CR>"),
     button("d", "  > Daily Note" , ":VimwikiMakeDiaryNote<CR>"),
-    button("l", "  > Restore Last Session" , ":LoadLastSession<CR>"),
+    button("l", "  > Restore Last Session" , ":SessionManager load_last_session<CR>"),
     -- button("h", "  > Browse Sessions" , "<cmd>Telescope sessions [save_current=false]<cr>"),
-    button(".", "  > Load Directory Session " , "<cmd>LoadCurrentDirSession<cr>"),
+    button(".", "  > Load Directory Session " , ":SessionManager load_current_dir_session<cr>"),
     button("f", "  > Open File", ":Telescope find_files<CR>"),
     button("r", "  > Frequent Files" , "<cmd>lua require('telescope').extensions.frecency.frecency()<cr>"),
     button("s", "  > Search Current Directory", ":Telescope live_grep<CR>"),

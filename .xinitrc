@@ -20,6 +20,9 @@ setxkbmap -option ctrl:nocaps
 . /home/carson/bin/initmouse
 . /home/carson/bin/inittrackpad
 
+# statusbar
+/home/carson/.config/suckless/bar/dwm_bar.sh &
+
 # restore wallpaper and colorschemes
 wal -R
 
@@ -37,9 +40,6 @@ redshift &
 
 # set dpi
 xrdb -merge ~/.Xresources 
-
-# statusbar
-
 # start window manager
 while :; do 
     ssh-agent dwm 

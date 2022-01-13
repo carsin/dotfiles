@@ -22,7 +22,7 @@ export SEP1="["
 export SEP2="]"
 
 # Import the modules
-. "$DIR/bar-functions/dwm_spotify.sh"
+# . "$DIR/bar-functions/dwm_spotify.sh"
 . "$DIR/bar-functions/dwm_resources.sh"
 . "$DIR/bar-functions/dwm_battery.sh"
 . "$DIR/bar-functions/dwm_pulse.sh"
@@ -34,7 +34,7 @@ parallelize() {
     do
         printf "Running parallel processes\n"
         dwm_weather &
-        sleep 5
+        sleep 60
     done
 }
 parallelize &
@@ -44,7 +44,7 @@ while true
 do
     # Append results of each func one by one to the upperbar string
     upperbar=""
-    upperbar="$upperbar$(dwm_spotify)"
+    # upperbar="$upperbar$(dwm_spotify)"
     upperbar="$upperbar$(dwm_resources)"
     upperbar="$upperbar$(dwm_battery)"
     upperbar="$upperbar$(dwm_pulse)"

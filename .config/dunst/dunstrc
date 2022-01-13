@@ -25,10 +25,10 @@
     # dynamic width from 0 to 300
     # width = (0, 300)
     # constant width of 300
-    width = 250
+    width = 300
 
     # The maximum height of a single notification, excluding the frame.
-    height = 300
+    height = 200
 
     # Position the notification 
     origin = bottom-right
@@ -61,7 +61,6 @@
     # Set the maximum width for the progress bar
     progress_bar_max_width = 300
 
-
     # Show how many messages are currently hidden (because of
     # notification_limit).
     indicate_hidden = yes
@@ -69,7 +68,7 @@
     # The transparency of the window.  Range: [0; 100].
     # This option will only work if a compositing window manager is
     # present (e.g. xcompmgr, compiz, etc.). (X11 only)
-    transparency = 60
+    transparency = 80
 
     # Draw a line of "separator_height" pixel height between two
     # notifications.
@@ -112,7 +111,7 @@
 
     ### Text ###
 
-    font = GohuFont Nerd Font:size=11:antialias=true:hinting=true:embeddedbitmap=false
+    font = GohuFont Nerd Font 11
 
     # The spacing between lines.  If the height is smaller than the
     # font height, it will get raised to the font height.
