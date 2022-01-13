@@ -147,7 +147,7 @@ nnoremap <leader>cd :cd %:p:h<CR>:pwd<CR>
 nnoremap <leader>f <cmd>Telescope find_files<cr>
 nnoremap <leader>s <cmd>Telescope live_grep<cr>
 nnoremap <leader>pp <cmd>lua require'telescope'.extensions.project.project{ display_type = 'full' }<cr>
-nnoremap <leader>h <cmd>Telescope sessions [save_current=true]<cr>
+nnoremap <leader>h <cmd>SessionManager load_session<cr>
 nnoremap <leader>ws <cmd>lua require('telescope').extensions.vimwiki.vimwiki({})<cr>
 nnoremap <leader>wg <cmd>Telescope vimwiki live_grep<cr>
 nnoremap <leader>r <cmd>lua require('telescope').extensions.frecency.frecency()<cr>
