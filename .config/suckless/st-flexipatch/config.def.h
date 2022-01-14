@@ -5,11 +5,11 @@
  *
  * font: see http://freedesktop.org/software/fontconfig/fontconfig-user.html
  */
-static char *font = "GohuFont Nerd Font:size=11:antialias=true:hinting=true:embeddedbitmap=false";
+static char *font = "Terminus:size=11:antialias=true:hinting=true:embeddedbitmap=false";
 #if FONT2_PATCH
 /* Spare fonts */
 static char *font2[] = {
-    "Siji:size=10:antialias=true:hinting=true:embeddedbitmap=false",
+    "TerminessTTF Nerd Font:size=11:antialias=true:hinting=true:embeddedbitmap=false",
 /*	"Inconsolata for Powerline:pixelsize=12:antialias=true:autohinSiji:size=10:antialias=true:hinting=true:embeddedbitmap=falset=true", */
 /*	"Hack Nerd Font Mono:pixelsize=11:antialias=true:autohint=true", */
 };
@@ -20,7 +20,7 @@ static char *font2[] = {
  *             0 = no border, 100 = border width is same as cell width */
 int borderperc = 20;
 #else
-static int borderpx = 4;
+static int borderpx = 6;
 #endif // RELATIVEBORDER_PATCH
 
 #if OPENURLONCLICK_PATCH
@@ -395,6 +395,8 @@ static Shortcut shortcuts[] = {
 	#if SCROLLBACK_PATCH
 	{ ShiftMask,            XK_Page_Up,     kscrollup,       {.i = -1} },
 	{ ShiftMask,            XK_Page_Down,   kscrolldown,     {.i = -1} },
+	{ ControlMask,            XK_Page_Up,     kscrollup,       {.i = -1} },
+	{ ControlMask,            XK_Page_Down,   kscrolldown,     {.i = -1} },
 	#endif // SCROLLBACK_PATCH
 	#if CLIPBOARD_PATCH
 	{ TERMMOD,              XK_Y,           clippaste,       {.i =  0} },

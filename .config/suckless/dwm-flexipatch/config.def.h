@@ -147,11 +147,15 @@ static void (*bartabmonfns[])(Monitor *) = {NULL /* , customlayoutfn */};
 #endif // BAR_TABGROUPS_PATCH
 #if BAR_PANGO_PATCH
 static const char font[] = "Siji:size=10:antialias=true:hinting=true:embeddedbitmap=false",
-                            "GohuFont Nerd Font:size=11:antialias=true:hinting=true:embeddedbitmap=false";
+                            "Terminus:size=11:antialias=true:hinting=true:embeddedbitmap=false";
 #else
-static const char *fonts[] = { "GohuFont Nerd Font:size=11:antialias=true:hinting=true:embeddedbitmap=false" };
+// static const char *fonts[] = { "ProggyCleanTTSZ Nerd Font:size=12:antialias=true:hinting=true:embeddedbitmap=false" };
+static const char *fonts[] = { "Terminus:size=11:antialias=true:hinting=true:embeddedbitmap=false",
+    "TerminessTTF Nerd Font:size=11:antialias=true:hinting=true:embeddedbitmap=false",
+    "Siji:size=10:antialias=true:hinting=true:embeddedbitmap=false"
+};
 #endif // BAR_PANGO_PATCH
-static const char dmenufont[] = "GohuFont Nerd Font:size=11:antialias=true:hinting=true:embeddedbitmap=false";
+static const char dmenufont[] = "Terminus:size=12:antialias=true:hinting=true:embeddedbitmap=false";
 
 static char c000000[] = "#000000"; // placeholder value
 
@@ -159,19 +163,19 @@ static char c000000[] = "#000000"; // placeholder value
 #endif // BAR_FLEXWINTITLE_PATCH
 static char normfgcolor[] = "#fbf1c7";
 static char normbgcolor[] = "#101010";
-static char normbordercolor[] = "#1d2021";
-static char normfloatcolor[] = "#282828";
+static char normbordercolor[] = "#3c3836";
+static char normfloatcolor[] = "#1d2021";
 
 // currently selected 
 static char selfgcolor[] = "#458588";
 static char selbgcolor[] = "#000000";
 static char selbordercolor[] = "#458588";
-static char selfloatcolor[] = "#383838";
+static char selfloatcolor[] = "#458588";
 
 // inactive
 static char titlenormfgcolor[] = "#bdae93";
 static char titlenormbgcolor[] = "#101010";
-static char titlenormbordercolor[] = "#101010";
+static char titlenormbordercolor[] = "#3c3836";
 static char titlenormfloatcolor[] = "#212121";
 
 static char titleselfgcolor[] = "#bdae93";
@@ -417,12 +421,14 @@ static const char *const autostart[] = {
 #endif // COOL_AUTOSTART_PATCH
 
 #if SCRATCHPADS_PATCH
-const char *spcmd1[] = {"st", "-n", "spterm1", "-g", "130x42", NULL};
+const char *spcmd1[] = {"st", "-n", "spterm1", "-g", "127x37", NULL};
 const char *spcmd2[] = {"st", "-n", "spterm2", "-g", "100x30", NULL};
 const char *spcmd3[] = {"st", "-n", "spspotify", "-g", "150x50", "-e", "spt", NULL};
 const char *spcmd4[] = {"st", "-n", "spranger", "-g", "150x50", "-e", "ranger", NULL};
 const char *spcmd5[] = {"st", "-n", "sppulsemixer", "-g", "70x25", "-e", "pulsemixer", NULL};
-const char *spcmd6[] = {"st", "-n", "sptop", "-g", "150x60", "-e", "btop", NULL};
+const char *spcmd6[] = {"st", "-n", "sptop", "-g", "150x60", "-e", "bpytop", NULL};
+const char *spcmd7[] = {"st", "-n", "spnvtop", "-g", "150x60", "-e", "nvtop", NULL};
+const char *spcmd8[] = {"st", "-n", "spccal", "-g", "150x50", "-e", "calcurse", NULL};
 static Sp scratchpads[] = {
     /* name          cmd  */
     {"spterm1", spcmd1},
@@ -431,6 +437,8 @@ static Sp scratchpads[] = {
     {"spranger", spcmd4},
     {"sppulsemixer", spcmd5},
     {"sptop", spcmd6},
+    {"spnvtop", spcmd7},
+    {"spccal", spcmd8},
 };
 #endif // SCRATCHPADS_PATCH
 
@@ -526,6 +534,8 @@ static const Rule rules[] = {
     RULE(.instance = "spranger", .tags = SPTAG(3), .isfloating = 1)
     RULE(.instance = "sppulsemixer", .tags = SPTAG(4), .isfloating = 1)
     RULE(.instance = "sptop", .tags = SPTAG(5), .isfloating = 1)
+    RULE(.instance = "spnvtop", .tags = SPTAG(6), .isfloating = 1)
+    RULE(.instance = "spccal", .tags = SPTAG(7), .isfloating = 1)
 #endif // SCRATCHPADS_PATCH
 };
 
@@ -1135,7 +1145,7 @@ static Key keys[] = {
 #if SELFRESTART_PATCH
     {MODKEY | ShiftMask, XK_r, self_restart, {0}},
 #endif // SELFRESTART_PATCH
-    {MODKEY | ShiftMask, XK_q, quit, {0}},
+    {MODKEY | ControlMask | ShiftMask, XK_q, quit, {0}},
 #if RESTARTSIG_PATCH
     {MODKEY | ControlMask | ShiftMask, XK_q, quit, {1}},
 #endif // RESTARTSIG_PATCH
@@ -1214,6 +1224,8 @@ static Key keys[] = {
     {MODKEY, XK_r, togglescratch, {.ui = 3}}, // ranger
     {MODKEY, XK_d, togglescratch, {.ui = 4}}, // pulsemixer
     {MODKEY, XK_q, togglescratch, {.ui = 5}}, // top
+    {MODKEY | ShiftMask, XK_q, togglescratch, {.ui = 6}}, // top
+    {MODKEY, XK_c, togglescratch, {.ui = 7}}, // calcurse
     // {MODKEY | ControlMask, XK_grave, setscratch, {.ui = 0}},
     // {MODKEY | ShiftMask, XK_grave, removescratch, {.ui = 0}},
 #endif // SCRATCHPADS_PATCH
@@ -1540,7 +1552,7 @@ static Button buttons[] = {
 #endif // BAR_WINTITLEACTIONS_PATCH
     {ClkWinTitle, 0, Button2, zoom, {0}},
 #if BAR_STATUSCMD_PATCH && BAR_DWMBLOCKS_PATCH
-    {ClkStatusText, 0, Button1, sigstatusbar, {.i = 1}},
+    {ClkStatusText, 0, Button1, sigstatusbar, {.i = 1}}1
     {ClkStatusText, 0, Button2, sigstatusbar, {.i = 2}},
     {ClkStatusText, 0, Button3, sigstatusbar, {.i = 3}},
 #elif BAR_STATUSCMD_PATCH
