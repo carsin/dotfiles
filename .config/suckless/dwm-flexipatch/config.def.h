@@ -151,7 +151,7 @@ static const char font[] = "Siji:size=10:antialias=true:hinting=true:embeddedbit
 #else
 // static const char *fonts[] = { "ProggyCleanTTSZ Nerd Font:size=12:antialias=true:hinting=true:embeddedbitmap=false" };
 static const char *fonts[] = { "Terminus:size=11:antialias=true:hinting=true:embeddedbitmap=false",
-    "TerminessTTF Nerd Font:size=11:antialias=true:hinting=true:embeddedbitmap=false",
+    "TerminessTTF Nerd Font:size=9:antialias=true:hinting=true:embeddedbitmap=false",
     "Siji:size=10:antialias=true:hinting=true:embeddedbitmap=false"
 };
 #endif // BAR_PANGO_PATCH
