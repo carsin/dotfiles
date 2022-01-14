@@ -31,7 +31,7 @@
     height = 200
 
     # Position the notification 
-    origin = bottom-right
+    origin = top-right
 
     # Offset from the origin
     offset = 36x36
@@ -68,7 +68,7 @@
     # The transparency of the window.  Range: [0; 100].
     # This option will only work if a compositing window manager is
     # present (e.g. xcompmgr, compiz, etc.). (X11 only)
-    transparency = 80
+    transparency = 90
 
     # Draw a line of "separator_height" pixel height between two
     # notifications.
@@ -294,14 +294,14 @@
     # Otherwise the "#" and following would be interpreted as a comment.
     background = "#282828"
     foreground = "#fbf1c7"
-    timeout = 3
+    timeout = 4
     # Icon for notifications with low urgency, uncomment to enable
     #default_icon = /path/to/icon
 
 [urgency_normal]
     background = "#282828"
     foreground = "#fbf1c7"
-    timeout = 4
+    timeout = 5
     # Icon for notifications with normal urgency, uncomment to enable
     #default_icon = /path/to/icon
 

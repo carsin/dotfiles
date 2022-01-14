@@ -58,7 +58,7 @@ alias nf="neofetch"
 alias vim="nvim"
 alias v="nvim"
 alias t='tmux attach -t $(tmux ls | grep -v attached | head -1 | cut -f1 -d:) || tmux'
-alias tmain="tmux new-session -A -s main"
+alias tm="tmux new-session -A -s main"
 alias t0="tmux a -t 0 || tmux new"
 alias t1="tmux a -t 1 || tmux new"
 alias matrix="neo-matrix -d 0.5 -f 144 -G 0 -s -S 5.5 --maxdpc=2"
@@ -74,6 +74,14 @@ alias wttr2="curl v2d.wttr.in/San+Luis+Obispo"
 
 alias ctrl='setxkbmap -option ctrl:nocaps'
 alias fontpreview='fontpreview-ueberzug'
+
+alias bright="sudo bright"
+alias autobright="sudo autobrightness"
+
+# calcurse
+alias ccal="cal"
+alias cal="calcurse"
+alias c="calcurse"
 
 # pacman aliases
 alias pac='sudo pacman -S' # install

@@ -419,10 +419,10 @@ static const char *const autostart[] = {
 #if SCRATCHPADS_PATCH
 const char *spcmd1[] = {"st", "-n", "spterm1", "-g", "130x42", NULL};
 const char *spcmd2[] = {"st", "-n", "spterm2", "-g", "100x30", NULL};
-const char *spcmd3[] = {"st", "-n", "spspotify", "-g", "140x50", "-e", "spt", NULL};
-const char *spcmd4[] = {"st", "-n", "spranger", "-g", "130x40", "-e", "ranger", NULL};
-const char *spcmd5[] = {"st", "-n", "sppulsemixer", "-g", "80x25", "-e", "pulsemixer", NULL};
-const char *spcmd6[] = {"st", "-n", "sptop", "-g", "150x55", "-e", "btop", NULL};
+const char *spcmd3[] = {"st", "-n", "spspotify", "-g", "150x50", "-e", "spt", NULL};
+const char *spcmd4[] = {"st", "-n", "spranger", "-g", "150x50", "-e", "ranger", NULL};
+const char *spcmd5[] = {"st", "-n", "sppulsemixer", "-g", "70x25", "-e", "pulsemixer", NULL};
+const char *spcmd6[] = {"st", "-n", "sptop", "-g", "150x60", "-e", "btop", NULL};
 static Sp scratchpads[] = {
     /* name          cmd  */
     {"spterm1", spcmd1},
@@ -1248,8 +1248,8 @@ static Key keys[] = {
     {MODKEY | ControlMask, XK_h, focusmon, {.i = +1}},
     {MODKEY, XK_comma, focusmon, {.i = -1}},
     {MODKEY, XK_period, focusmon, {.i = +1}},
-    {MODKEY | ShiftMask, XK_comma, tagmon, {.i = -1}},
-    {MODKEY | ShiftMask, XK_period, tagmon, {.i = +1}},
+    {MODKEY | ControlMask, XK_comma, tagmon, {.i = -1}},
+    {MODKEY | ControlMask, XK_period, tagmon, {.i = +1}},
 #if FOCUSADJACENTTAG_PATCH
     {MODKEY, XK_h, viewtoleft, {0}}, 
     {MODKEY, XK_l, viewtoright, {0}}, 
@@ -1458,8 +1458,8 @@ static Key keys[] = {
     {MODKEY | ControlMask, XK_numbersign, setborderpx, {.i = 0}},
 #endif // SETBORDERPX_PATCH
 #if CYCLELAYOUTS_PATCH
-    {MODKEY | ControlMask, XK_comma, cyclelayout, {.i = -1}},
-    {MODKEY | ControlMask, XK_period, cyclelayout, {.i = +1}},
+    {MODKEY | ShiftMask, XK_comma, cyclelayout, {.i = -1}},
+    {MODKEY | ShiftMask, XK_period, cyclelayout, {.i = +1}},
     {MODKEY, XK_p, cyclelayout, {.i = -1}},
     {MODKEY, XK_n, cyclelayout, {.i = +1}},
 #endif // CYCLELAYOUTS_PATCH
@@ -1469,8 +1469,7 @@ static Key keys[] = {
     {MODKEY, XK_Escape, mpdcontrol, {0}},
 #endif // MPDCONTROL_PATCH
     TAGKEYS(XK_1, 0) TAGKEYS(XK_2, 1) TAGKEYS(XK_3, 2) TAGKEYS(XK_4, 3)
-        TAGKEYS(XK_5, 4) TAGKEYS(XK_6, 5) TAGKEYS(XK_7, 6) TAGKEYS(XK_8, 7)
-            TAGKEYS(XK_9, 8)};
+        TAGKEYS(XK_5, 4) TAGKEYS(XK_6, 5)};
 
 #if KEYMODES_PATCH
 static Key cmdkeys[] = {
