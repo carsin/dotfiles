@@ -423,24 +423,26 @@ static const char *const autostart[] = {
 #if SCRATCHPADS_PATCH
 const char *spcmd1[] = {"st", "-n", "spterm1", "-g", "135x45", NULL};
 const char *spcmd2[] = {"st", "-n", "spterm2", "-g", "100x30", NULL};
-const char *spcmd3[] = {"st", "-n", "spspotify", "-g", "160x60", "-e", "spt", NULL};
-const char *spcmd4[] = {"st", "-n", "spranger", "-g", "150x50", "-e", "ranger", NULL};
-const char *spcmd5[] = {"st", "-n", "sppulsemixer", "-g", "90x30", "-e", "pulsemixer", NULL};
-const char *spcmd6[] = {"st", "-n", "sptop", "-g", "170x55", "-e", "bpytop", NULL};
-const char *spcmd7[] = {"st", "-n", "spnvtop", "-g", "145x50", "-e", "nvtop", NULL};
-const char *spcmd8[] = {"st", "-n", "spccal", "-g", "150x50", "-e", "calcurse", NULL};
-const char *spcmd9[] = {"st", "-n", "spnvim", "-g", "215x70", "-e", "nvim", NULL};
+const char *spcmd3[] = {"st", "-n", "spterm3", "-g", "165x60", NULL};
+const char *spcmd4[] = {"st", "-n", "spspotify", "-g", "160x60", "-e", "spt", NULL};
+const char *spcmd5[] = {"st", "-n", "spranger", "-g", "150x50", "-e", "ranger", NULL};
+const char *spcmd6[] = {"st", "-n", "sppulsemixer", "-g", "90x30", "-e", "pulsemixer", NULL};
+const char *spcmd7[] = {"st", "-n", "sptop", "-g", "170x55", "-e", "bpytop", NULL};
+const char *spcmd8[] = {"st", "-n", "spnvtop", "-g", "145x50", "-e", "nvtop", NULL};
+const char *spcmd9[] = {"st", "-n", "spccal", "-g", "150x50", "-e", "calcurse", NULL};
+const char *spcmd10[] = {"st", "-n", "spnvim", "-g", "177x68", "-e", "nvim", NULL};
 static Sp scratchpads[] = {
     /* name          cmd  */
     {"spterm1", spcmd1},
     {"spterm2", spcmd2},
-    {"spspotify", spcmd3},
-    {"spranger", spcmd4},
-    {"sppulsemixer", spcmd5},
-    {"sptop", spcmd6},
-    {"spnvtop", spcmd7},
-    {"spccal", spcmd8},
-    {"spnvim", spcmd9},
+    {"spterm3", spcmd3},
+    {"spspotify", spcmd4},
+    {"spranger", spcmd5},
+    {"sppulsemixer", spcmd6},
+    {"sptop", spcmd7},
+    {"spnvtop", spcmd8},
+    {"spccal", spcmd9},
+    {"spnvim", spcmd10},
 };
 #endif // SCRATCHPADS_PATCH
 
@@ -532,13 +534,14 @@ static const Rule rules[] = {
 #if SCRATCHPADS_PATCH
     RULE(.instance = "spterm1", .tags = SPTAG(0), .isfloating = 1)
     RULE(.instance = "spterm2", .tags = SPTAG(1), .isfloating = 1)
-    RULE(.instance = "spspotify", .tags = SPTAG(2), .isfloating = 1)
-    RULE(.instance = "spranger", .tags = SPTAG(3), .isfloating = 1)
-    RULE(.instance = "sppulsemixer", .tags = SPTAG(4), .isfloating = 1)
-    RULE(.instance = "sptop", .tags = SPTAG(5), .isfloating = 1)
-    RULE(.instance = "spnvtop", .tags = SPTAG(6), .isfloating = 1)
-    RULE(.instance = "spccal", .tags = SPTAG(7), .isfloating = 1)
-    RULE(.instance = "spnvim", .tags = SPTAG(8), .isfloating = 1)
+    RULE(.instance = "spterm3", .tags = SPTAG(2), .isfloating = 1)
+    RULE(.instance = "spspotify", .tags = SPTAG(3), .isfloating = 1)
+    RULE(.instance = "spranger", .tags = SPTAG(4), .isfloating = 1)
+    RULE(.instance = "sppulsemixer", .tags = SPTAG(5), .isfloating = 1)
+    RULE(.instance = "sptop", .tags = SPTAG(6), .isfloating = 1)
+    RULE(.instance = "spnvtop", .tags = SPTAG(7), .isfloating = 1)
+    RULE(.instance = "spccal", .tags = SPTAG(8), .isfloating = 1)
+    RULE(.instance = "spnvim", .tags = SPTAG(9), .isfloating = 1)
 #endif // SCRATCHPADS_PATCH
 };
 
@@ -688,13 +691,12 @@ static const BarRule barrules[] = {
 };
 
 /* layout(s) */
-static const float mfact = 0.50; /* factor of master area size [0.05..0.95] */
+static const float mfact = 0.56; /* factor of master area size [0.05..0.95] */
 static const int nmaster = 1;    /* number of clients in master area */
 #if FLEXTILE_DELUXE_LAYOUT
 static const int nstack = 0; /* number of clients in primary stack area */
 #endif                       // FLEXTILE_DELUXE_LAYOUT
-static const int resizehints =
-    0; /* 1 means respect size hints in tiled resizals */
+static const int resizehints = 1; /* 1 means respect size hints in tiled resizals */
 #if DECORATION_HINTS_PATCH
 static const int decorhints = 1; /* 1 means respect decoration hints */
 #endif                           // DECORATION_HINTS_PATCH
@@ -722,13 +724,13 @@ static const Layout layouts[] = {
     /* symbol     arrange function, { nmaster, nstack, layout, master axis,
        stack axis, secondary stack axis, symbol func } */
     {"[]=", flextile, {-1, -1, SPLIT_VERTICAL, TOP_TO_BOTTOM, TOP_TO_BOTTOM, 0, NULL}},           // default tile layout
+    // {"|||", flextile, {-1, -1, SPLIT_VERTICAL, LEFT_TO_RIGHT, TOP_TO_BOTTOM, 0, NULL}}, // columns (col) layout
     {"|M|", flextile, {-1, -1, SPLIT_CENTERED_VERTICAL, LEFT_TO_RIGHT, TOP_TO_BOTTOM, TOP_TO_BOTTOM, NULL}}, // centeredmaster
     {"[T]", flextile, {-1, -1, SPLIT_VERTICAL, LEFT_TO_RIGHT, TATAMI, 0, NULL}}, // tatami mats
     {"[D]", flextile, {-1, -1, SPLIT_VERTICAL, TOP_TO_BOTTOM, MONOCLE, 0, NULL}}, // deck
     {":::", flextile, {-1, -1, NO_SPLIT, GAPPLESSGRID, GAPPLESSGRID, 0, NULL}}, // gappless grid
     {"-M-", flextile, {-1, -1, SPLIT_CENTERED_HORIZONTAL, TOP_TO_BOTTOM, LEFT_TO_RIGHT, LEFT_TO_RIGHT, NULL}}, // centeredmaster horiz
     {"[M]", flextile, {-1, -1, NO_SPLIT, MONOCLE, MONOCLE, 0, NULL}}, // monocle
-    // {"|||", flextile, {-1, -1, SPLIT_VERTICAL, LEFT_TO_RIGHT, TOP_TO_BOTTOM, 0, NULL}}, // columns (col) layout
     // {">M>", flextile, {-1, -1, FLOATING_MASTER, LEFT_TO_RIGHT, LEFT_TO_RIGHT, 0, NULL}}, // floating master
     {"TTT", flextile, {-1, -1, SPLIT_HORIZONTAL, LEFT_TO_RIGHT, LEFT_TO_RIGHT, 0, NULL}}, // bstack
     // {"===",
@@ -1002,8 +1004,7 @@ static Key keys[] = {
     
 	{0, XF86XK_AudioPrev, spawn, {.v = prevcmd }},
     {MODKEY, XK_Print, spawn, SHCMD("/usr/bin/flameshot gui &")},
-    {MODKEY, XK_Home, spawn, SHCMD("/home/carson/bin/newpape.sh")},
-    
+    {MODKEY, XK_Home, spawn, SHCMD("/home/carson/bin/newpape.sh &")},
 #if KEYMODES_PATCH
     {MODKEY, XK_Escape, setkeymode, {.ui = COMMANDMODE}},
 #endif // KEYMODES_PATCH
@@ -1061,8 +1062,8 @@ static Key keys[] = {
     {MODKEY | ControlMask, XK_i, incnstack, {.i = +1}},
     {MODKEY | ControlMask, XK_u, incnstack, {.i = -1}},
 #endif // FLEXTILE_DELUXE_LAYOUT
-    {MODKEY | ShiftMask, XK_h, setmfact, {.f = -0.05}},
-    {MODKEY | ShiftMask, XK_l, setmfact, {.f = +0.05}},
+    {MODKEY | ShiftMask, XK_h, setmfact, {.f = -0.025}},
+    {MODKEY | ShiftMask, XK_l, setmfact, {.f = +0.025}},
 #if CFACTS_PATCH
     {MODKEY | Mod4Mask, XK_j, setcfact, {.f = +0.25}},
     {MODKEY | Mod4Mask, XK_k, setcfact, {.f = -0.25}},
@@ -1211,25 +1212,26 @@ static Key keys[] = {
     // {MODKEY, XK_space, setlayout, {0}},
     {MODKEY | ControlMask, XK_space, togglefloating, {0}},
 #if MAXIMIZE_PATCH
-    {MODKEY | ControlMask | ShiftMask, XK_h, togglehorizontalmax, {0}},
-    {MODKEY | ControlMask | ShiftMask, XK_l, togglehorizontalmax, {0}},
-    {MODKEY | ControlMask | ShiftMask, XK_j, toggleverticalmax, {0}},
-    {MODKEY | ControlMask | ShiftMask, XK_k, toggleverticalmax, {0}},
+    // {MODKEY | ControlMask | ShiftMask, XK_h, togglehorizontalmax, {0}},
+    // {MODKEY | ControlMask | ShiftMask, XK_l, togglehorizontalmax, {0}},
+    // {MODKEY | ControlMask | ShiftMask, XK_j, toggleverticalmax, {0}},
+    // {MODKEY | ControlMask | ShiftMask, XK_k, toggleverticalmax, {0}},
     {MODKEY, XK_f, togglemax, {0}},
 #endif // MAXIMIZE_PATCH
 #if NO_MOD_BUTTONS_PATCH
     {MODKEY | ShiftMask, XK_Escape, togglenomodbuttons, {0}},
 #endif // NO_MOD_BUTTONS_PATCH
 #if SCRATCHPADS_PATCH
-    {MODKEY, XK_Escape, togglescratch, {.ui = 0}}, //scratch 1 (large)
+    {MODKEY, XK_Escape, togglescratch, {.ui = 0}}, //scratch 1 (def)
     {MODKEY, XK_grave, togglescratch, {.ui = 1}}, //scratch 2 (small)
-    {MODKEY, XK_s, togglescratch, {.ui = 2}}, // spotify
-    {MODKEY, XK_r, togglescratch, {.ui = 3}}, // ranger
-    {MODKEY, XK_p, togglescratch, {.ui = 4}}, // pulsemixer
-    {MODKEY, XK_q, togglescratch, {.ui = 5}}, // top
-    {MODKEY | ShiftMask, XK_q, togglescratch, {.ui = 6}}, // nvtop
-    {MODKEY, XK_c, togglescratch, {.ui = 7}}, // calcurse
-    {MODKEY, XK_e, togglescratch, {.ui = 8}}, // nvim
+    {MODKEY | ControlMask, XK_Escape, togglescratch, {.ui = 2}}, //scratch 2 (large)
+    {MODKEY, XK_s, togglescratch, {.ui = 3}}, // spotify
+    {MODKEY, XK_r, togglescratch, {.ui = 4}}, // ranger
+    {MODKEY, XK_p, togglescratch, {.ui = 5}}, // pulsemixer
+    {MODKEY, XK_q, togglescratch, {.ui = 6}}, // top
+    {MODKEY | ShiftMask, XK_q, togglescratch, {.ui = 7}}, // nvtop
+    {MODKEY, XK_c, togglescratch, {.ui = 8}}, // calcurse
+    {MODKEY, XK_e, togglescratch, {.ui = 9}}, // nvim
     // {MODKEY | ControlMask, XK_grave, setscratch, {.ui = 0}},
     // {MODKEY | ShiftMask, XK_grave, removescratch, {.ui = 0}},
 #endif // SCRATCHPADS_PATCH
@@ -1266,6 +1268,8 @@ static Key keys[] = {
     {MODKEY, XK_period, focusmon, {.i = +1}},
     {MODKEY | ControlMask, XK_comma, tagmon, {.i = -1}},
     {MODKEY | ControlMask, XK_period, tagmon, {.i = +1}},
+    {MODKEY | ShiftMask | ControlMask, XK_l, tagmon, {.i = -1}},
+    {MODKEY | ShiftMask | ControlMask, XK_h, tagmon, {.i = +1}},
 #if FOCUSADJACENTTAG_PATCH
     {MODKEY, XK_h, viewtoleft, {0}}, 
     {MODKEY, XK_l, viewtoright, {0}}, 

@@ -2,8 +2,6 @@ math.randomseed(os.time())
 local alpha = require("alpha")
 local fortune = require("alpha.fortune")
 local colors = { "Comment", "Constant", "String", "Number", "Identifier", "Label", "Type", "todo", "Normal", "PreProc", "Error", "Statement", "Ignore", "Function" }
-local colors_noitalic = { "String", "Number", "Identifier", "Label", "Type", "Error", "Function", "Normal" }
-local colors_italic = { "Comment", "Conditional", "Define" }
 local icons = {}
 local titles = {}
 
@@ -545,7 +543,7 @@ table.insert(icons, {
 "                                        `\"'",
 })
 
-local but_color = pick_and_remove(colors_noitalic)
+local but_color = pick_and_remove(colors)
 local short_color = pick_and_remove(colors)
 local function button(sc, txt, keybind)
     local sc_ = sc:gsub("%s", ""):gsub("SPC", "<leader>")
@@ -596,7 +594,7 @@ local buttons = {
   }
 }
 
-local foot_hl = pick_and_remove(colors_noitalic)
+local foot_hl = pick_and_remove(colors)
 local date = os.date("%a, %b %d, %I:%M:%S %p ")
 local datedisplay = {
     type = "text",
@@ -623,7 +621,7 @@ local section = {
       val = icons[math.random(#icons)],
       opts = {
         position = "center",
-        hl = pick_and_remove(colors_noitalic)
+        hl = pick_and_remove(colors)
       }
     },
     title = {
@@ -631,7 +629,7 @@ local section = {
       val = titles[math.random(#titles)],
       opts = {
         position = "center",
-        hl = pick_and_remove(colors_noitalic)
+        hl = pick_and_remove(colors)
       }
     },
     advice = {
@@ -639,7 +637,7 @@ local section = {
       val = fortune(),
       opts = {
         position = "center",
-        hl = colors_italic[math.random(#colors_italic)]
+        hl = pick_and_remove(colors)
       }
     },
     buttons = buttons,

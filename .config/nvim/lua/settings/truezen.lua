@@ -10,7 +10,7 @@ true_zen.setup({
 			cmdheight = 1,
 		},
 		top = {
-			showtabline = 0,
+			showtabline = 1,
 		},
 		left = {
 			number = false,

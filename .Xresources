@@ -1,11 +1,11 @@
 #include "/home/carson/.cache/wal/colors.Xresources"
 ! multiples of 96 ideal, 92 for 24 1920x1080
-Xft.dpi: 111
+Xft.dpi: 109
 ! https://freedesktop.org/software/fontconfig/fontconfig-user.html
 Xft.font: Terminus:size=11:antialias=true:hinting=true:embeddedbitmap=false
 st.font: Terminus:size=11:antialias=true:hinting=true:embeddedbitmap=false
 Xft.autohint: 0
 Xft.lcdfilter:  lcddefault
-Xft.hintstyle:  hintslight
+Xft.hintstyle:  hintfull
 Xft.hinting: 1
 Xft.rgba: rgb
