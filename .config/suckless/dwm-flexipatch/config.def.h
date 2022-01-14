@@ -696,7 +696,7 @@ static const int nmaster = 1;    /* number of clients in master area */
 #if FLEXTILE_DELUXE_LAYOUT
 static const int nstack = 0; /* number of clients in primary stack area */
 #endif                       // FLEXTILE_DELUXE_LAYOUT
-static const int resizehints = 1; /* 1 means respect size hints in tiled resizals */
+static const int resizehints = 0; /* 1 means respect size hints in tiled resizals */
 #if DECORATION_HINTS_PATCH
 static const int decorhints = 1; /* 1 means respect decoration hints */
 #endif                           // DECORATION_HINTS_PATCH
@@ -1009,8 +1009,10 @@ static Key keys[] = {
     {MODKEY, XK_Escape, setkeymode, {.ui = COMMANDMODE}},
 #endif // KEYMODES_PATCH
     {MODKEY, XK_space, spawn, {.v = dmenucmd}},
-    {MODKEY | ShiftMask, XK_Return, spawn, {.v = termcmd}},
     {MODKEY, XK_w, spawn, {.v = firefoxcmd}},
+    {MODKEY | ControlMask, XK_Return, spawn, {.v = termcmd}},
+    {MODKEY, XK_t, spawn, {.v = termcmd}},
+    // {MODKEY | ShiftMask, XK_space, spawn, {.v = termcmd}},
 #if RIODRAW_PATCH
     {MODKEY | ControlMask, XK_p, riospawnsync, {.v = dmenucmd}},
     {MODKEY | ControlMask, XK_Return, riospawn, {.v = termcmd}},
@@ -1021,7 +1023,7 @@ static Key keys[] = {
     {MODKEY | ControlMask, XK_b, tabmode, {-1}},
 #endif // TAB_PATCH
 #if FOCUSMASTER_PATCH
-    {MODKEY | ControlMask, XK_space, focusmaster, {0}},
+    {MODKEY, XK_Return, focusmaster, {0}},
 #endif // FOCUSMASTER_PATCH
 #if STACKER_PATCH
     STACKKEYS(MODKEY, focus) STACKKEYS(MODKEY | ShiftMask, push)
@@ -1111,7 +1113,7 @@ static Key keys[] = {
      updateinset,
      {.v = &default_inset}},
 #endif // INSETS_PATCH
-    {MODKEY, XK_Return, zoom, {0}},
+    {MODKEY | ShiftMask, XK_Return, zoom, {0}},
 #if VANITYGAPS_PATCH
     {MODKEY | Mod4Mask, XK_u, incrgaps, {.i = +1}},
     {MODKEY | Mod4Mask | ShiftMask, XK_u, incrgaps, {.i = -1}},
@@ -1132,8 +1134,8 @@ static Key keys[] = {
 #endif // VANITYGAPS_PATCH
     {MODKEY, XK_Tab, view, {0}},
 #if SHIFTVIEW_PATCH
-    {MODKEY | ShiftMask, XK_Tab, shiftview, {.i = -1}},
-    {MODKEY | ShiftMask, XK_backslash, shiftview, {.i = +1}},
+    {MODKEY, XK_g, shiftview, {.i = -1}},
+    {MODKEY, XK_semicolon, shiftview, {.i = +1}},
 #endif // SHIFTVIEW_PATCH
 #if SHIFTVIEW_CLIENTS_PATCH
     {MODKEY | Mod4Mask, XK_Tab, shiftviewclients, {.i = -1}},
@@ -1210,7 +1212,8 @@ static Key keys[] = {
      {0}}, /* flextile, flip master and stack areas */
 #endif     // FLEXTILE_DELUXE_LAYOUT
     // {MODKEY, XK_space, setlayout, {0}},
-    {MODKEY | ControlMask, XK_space, togglefloating, {0}},
+    {MODKEY | ControlMask, XK_f, togglefloating, {0}},
+    {MODKEY | ShiftMask, XK_space, togglefloating, {0}},
 #if MAXIMIZE_PATCH
     // {MODKEY | ControlMask | ShiftMask, XK_h, togglehorizontalmax, {0}},
     // {MODKEY | ControlMask | ShiftMask, XK_l, togglehorizontalmax, {0}},
@@ -1243,7 +1246,7 @@ static Key keys[] = {
     {MODKEY | ShiftMask, XK_f, togglefullscreen, {0}},
 #endif // TOGGLEFULLSCREEN_PATCH
 #if !FAKEFULLSCREEN_PATCH && FAKEFULLSCREEN_CLIENT_PATCH
-    {MODKEY | ControlMask, XK_f, togglefakefullscreen, {0}},
+    {MODKEY | ShiftMask | ControlMask, XK_f, togglefakefullscreen, {0}},
 #endif // FAKEFULLSCREEN_CLIENT_PATCH
 #if FULLSCREEN_PATCH
     // {MODKEY | ShiftMask, XK_f, fullscreen, {0}},
