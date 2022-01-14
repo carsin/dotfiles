@@ -132,7 +132,7 @@ table.insert(components.active[1], {
     -- style = 'bold'
   },
   type = "unique",
-  right_sep = ''
+  right_sep = ' '
 })
 
 -- gitBranch
@@ -302,7 +302,7 @@ table.insert(components.active[3], {
     -- val.style = 'bold'
     return val
   end,
-  right_sep = ' ',
+  right_sep = '',
   left_sep = '',
 })
 

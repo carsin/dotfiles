@@ -54,7 +54,7 @@
  *    https://invisible-island.net/xterm/ctlseqs/ctlseqs.html#h4-Functions-using-CSI-_-ordered-by-the-final-character-lparen-s-rparen:CSI-Ps-SP-q.1D81
  * https://st.suckless.org/patches/blinking_cursor/
  */
-#define BLINKING_CURSOR_PATCH 0
+#define BLINKING_CURSOR_PATCH 1
 
 /* By default bold text is rendered with a bold font in the bright variant of the current color.
  * This patch makes bold text rendered simply as bold, leaving the color unaffected.
@@ -143,7 +143,7 @@
 /* Reading and writing st's screen through a pipe, e.g. pass info to dmenu.
  * https://st.suckless.org/patches/externalpipe/
  */
-#define EXTERNALPIPE_PATCH 0
+#define EXTERNALPIPE_PATCH 1
 
 /* This patch improves and extends the externalpipe patch in two ways:
  *    - it prevents the reset of the signal handler set on SIGCHILD, when
@@ -161,13 +161,13 @@
  * https://github.com/sos4nt/dynamic-colors
  * https://lists.suckless.org/hackers/2004/17218.html
  */
-#define EXTERNALPIPEIN_PATCH 0
+#define EXTERNALPIPEIN_PATCH 1
 
 /* This patch allows command line applications to use all the fancy key combinations
  * that are available to GUI applications.
  * https://st.suckless.org/patches/fix_keyboard_input/
  */
-#define FIXKEYBOARDINPUT_PATCH 0
+#define FIXKEYBOARDINPUT_PATCH 1
 
 /* This patch allows you to add spare font besides the default. Some glyphs can be not present in
  * the default font. For this glyphs st uses font-config and try to find them in font cache first.
@@ -175,7 +175,7 @@
  * So they will be used first for glyphs that are absent in the default font.
  * https://st.suckless.org/patches/font2/
  */
-#define FONT2_PATCH 0
+#define FONT2_PATCH 1
 
 /* Hide the X cursor whenever a key is pressed and show it back when the mouse is moved in
  * the terminal window.
@@ -289,7 +289,7 @@
  * in w3m to display. While this patch does not break the alpha patch it images
  * are not shown in w3m if the alpha patch is applied.
  */
-#define SINGLE_DRAWABLE_BUFFER_PATCH 1
+#define SINGLE_DRAWABLE_BUFFER_PATCH 0
 
 /* This patch adds SIXEL graphics support for st.
  * Note that patch/sixel.c/sixel_hls.c come from mintty, licensed under GPL.
@@ -379,7 +379,7 @@
 /* Vertically center lines in the space available if you have set a larger chscale in config.h
  * https://st.suckless.org/patches/vertcenter/
  */
-#define VERTCENTER_PATCH 1
+#define VERTCENTER_PATCH 0
 
 /* The vim-browse patch offers the possibility to move through the terminal history-buffer,
  * search for strings using VIM-like motions, operations and quantifiers. It overlays the

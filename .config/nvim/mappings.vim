@@ -148,7 +148,7 @@ nnoremap <leader>f <cmd>Telescope find_files<cr>
 nnoremap <leader>s <cmd>Telescope live_grep<cr>
 nnoremap <leader>pp <cmd>lua require'telescope'.extensions.project.project{ display_type = 'full' }<cr>
 nnoremap <leader>h <cmd>SessionManager load_session<cr>
-nnoremap <leader>ws <cmd>lua require('telescope').extensions.vimwiki.vimwiki({})<cr>
+nnoremap <leader>wf <cmd>lua require('telescope').extensions.vimwiki.vimwiki({})<cr>
 nnoremap <leader>wg <cmd>Telescope vimwiki live_grep<cr>
 nnoremap <leader>r <cmd>lua require('telescope').extensions.frecency.frecency()<cr>
 
@@ -218,6 +218,7 @@ nnoremap <leader>e :NvimTreeToggle<CR>
 
 " TrueZen
 nnoremap <leader>zz <cmd>:silent TZAtaraxis<cr>
+nnoremap <leader>we <cmd>:silent TZAtaraxis<cr>
 nnoremap <silent><F4> <cmd>:silent TZAtaraxis<cr>
 
 " Vimwiki

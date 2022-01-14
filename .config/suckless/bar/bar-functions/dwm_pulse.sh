@@ -17,7 +17,7 @@ dwm_pulse () {
         elif [ "$VOL" -gt 0 ] && [ "$VOL" -le 33 ]; then
             printf "奔 %s%%" "$VOL"
         elif [ "$VOL" -gt 33 ] && [ "$VOL" -le 66 ]; then
-            printf "墳%s%%" "$VOL"
+            printf "墳 %s%%" "$VOL"
         else
             printf " %s%%" "$VOL"
         fi

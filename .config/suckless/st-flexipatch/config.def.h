@@ -395,6 +395,8 @@ static Shortcut shortcuts[] = {
 	#if SCROLLBACK_PATCH
 	{ ShiftMask,            XK_Page_Up,     kscrollup,       {.i = -1} },
 	{ ShiftMask,            XK_Page_Down,   kscrolldown,     {.i = -1} },
+	{ MODKEY,            XK_k,     kscrollup,       {.i = -1} },
+	{ MODKEY,            XK_j,   kscrolldown,     {.i = -1} },
 	{ ControlMask,            XK_Page_Up,     kscrollup,       {.i = -1} },
 	{ ControlMask,            XK_Page_Down,   kscrolldown,     {.i = -1} },
 	#endif // SCROLLBACK_PATCH

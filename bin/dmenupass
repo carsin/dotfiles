@@ -1,0 +1,1 @@
+dmenu -fn Terminus-11 -P -p "$1" <&- && echo

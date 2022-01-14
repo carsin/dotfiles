@@ -575,11 +575,11 @@ end
 local buttons = {
   type = "group",
   val = {
-    button("w", "  > Enter Wiki" , ":VimwikiIndex<CR>"),
+    button("w", "  > Enter Wiki" , ":VimwikiIndex<CR>"),
     button("d", "  > Daily Note" , ":VimwikiMakeDiaryNote<CR>"),
+    button(".", "  > Load Directory Session " , ":SessionManager load_current_dir_session<cr>"),
     button("l", "  > Restore Last Session" , ":SessionManager load_last_session<CR>"),
     -- button("h", "  > Browse Sessions" , "<cmd>Telescope sessions [save_current=false]<cr>"),
-    button(".", "  > Load Directory Session " , ":SessionManager load_current_dir_session<cr>"),
     button("f", "  > Open File", ":Telescope find_files<CR>"),
     button("r", "  > Frequent Files" , "<cmd>lua require('telescope').extensions.frecency.frecency()<cr>"),
     button("s", "  > Search Current Directory", ":Telescope live_grep<CR>"),
@@ -587,7 +587,7 @@ local buttons = {
     -- button("t", "  > Terminal", "<CMD>call OpenTerm()<CR>"),
     -- button("o", "  > Open Directory " , "<cmd>silent !open .<cr>"),
     button("u", "  > Update Plugins", ":PackerSync<CR>"),
-    button("q", "  > Quit NVIM", ":qa<CR>"),
+    button("q", "  > Quit Neovim", ":qa<CR>"),
   },
   opts = {
     spacing = 0,
