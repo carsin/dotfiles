@@ -424,7 +424,7 @@ static const char *const autostart[] = {
 const char *spcmd1[] = {"st", "-n", "spterm1", "-g", "145x60", NULL};
 const char *spcmd2[] = {"st", "-n", "spterm2", "-g", "100x30", NULL};
 const char *spcmd3[] = {"st", "-n", "spterm3", "-g", "165x60", NULL};
-const char *spcmd4[] = {"st", "-n", "spsptui", "-g", "160x60", "-e", "spt", NULL};
+const char *spcmd4[] = {"st", "-n", "spsptui", "-g", "160x60", "-e", "ncspot", NULL};
 const char *spcmd5[] = {"st", "-n", "spranger", "-g", "150x50", "-e", "ranger", NULL};
 const char *spcmd6[] = {"st", "-n", "sppulsemixer", "-g", "90x30", "-e", "pulsemixer", NULL};
 const char *spcmd7[] = {"st", "-n", "sptop", "-g", "170x55", "-e", "bpytop", NULL};
@@ -1009,7 +1009,7 @@ static Key keys[] = {
     
 	{0, XF86XK_AudioPrev, spawn, {.v = prevcmd }},
     {MODKEY, XK_Print, spawn, SHCMD("/usr/bin/flameshot gui &")},
-    {MODKEY, XK_Home, spawn, SHCMD("/home/carson/bin/newpape.sh")},
+    {MODKEY, XK_Home, spawn, SHCMD("timeout 5 /home/carson/bin/newpape.sh")},
 #if KEYMODES_PATCH
     {MODKEY, XK_Escape, setkeymode, {.ui = COMMANDMODE}},
 #endif // KEYMODES_PATCH&
@@ -1139,8 +1139,10 @@ static Key keys[] = {
 #if SHIFTVIEW_PATCH
     {MODKEY, XK_g, shiftview, {.i = -1}},
     {MODKEY, XK_semicolon, shiftview, {.i = +1}},
-    {MODKEY, XK_n, shiftview, {.i = +1}},
-    {MODKEY, XK_p, shiftview, {.i = -1}},
+    // {MODKEY | ShiftMask, XK_g, shiftview, {.i = -1}},
+    // {MODKEY | ShiftMask, XK_semicolon, shiftview, {.i = +1}},
+    // {MODKEY, XK_n, shiftview, {.i = +1}},
+    // {MODKEY, XK_p, shiftview, {.i = -1}},
 #endif // SHIFTVIEW_PATCH
 #if SHIFTVIEW_CLIENTS_PATCH
     {MODKEY | Mod4Mask, XK_Tab, shiftviewclients, {.i = -1}},
@@ -1233,7 +1235,7 @@ static Key keys[] = {
     {MODKEY, XK_Escape, togglescratch, {.ui = 0}}, //scratch 1 (def)
     {MODKEY, XK_grave, togglescratch, {.ui = 1}}, //scratch 2 (small)
     {MODKEY | ControlMask, XK_Escape, togglescratch, {.ui = 2}}, //scratch 2 (large)
-    {MODKEY, XK_s, togglescratch, {.ui = 3}}, // spt
+    {MODKEY, XK_s, togglescratch, {.ui = 3}}, // spotify tui
     {MODKEY | ShiftMask, XK_s, togglescratch, {.ui = 10}}, // spotify
     {MODKEY, XK_r, togglescratch, {.ui = 4}}, // ranger
     {MODKEY | ControlMask, XK_p, togglescratch, {.ui = 5}}, // pulsemixer
@@ -1489,8 +1491,8 @@ static Key keys[] = {
 #if CYCLELAYOUTS_PATCH
     {MODKEY | ShiftMask, XK_comma, cyclelayout, {.i = -1}},
     {MODKEY | ShiftMask, XK_period, cyclelayout, {.i = +1}},
-    {MODKEY | ShiftMask, XK_p, cyclelayout, {.i = -1}},
-    {MODKEY | ShiftMask, XK_n, cyclelayout, {.i = +1}},
+    {MODKEY | ShiftMask, XK_g, cyclelayout, {.i = -1}},
+    {MODKEY | ShiftMask, XK_semicolon, cyclelayout, {.i = +1}},
 #endif // CYCLELAYOUTS_PATCH
 #if MPDCONTROL_PATCH
     {MODKEY, XK_F1, mpdchange, {.i = -1}},

@@ -1,0 +1,28 @@
+volnorm = true
+notify = true
+shuffle = true
+initial_screen = "library"
+use_nerdfont = true
+    
+[theme]
+background = ""
+primary = "light white"
+secondary = "light black"
+title = "green"
+playing = "green"
+playing_selected = "blue"
+playing_bg = "grey"
+highlight = "black"
+highlight_bg = "white"
+error = "light magenta"
+error_bg = "white"
+statusbar = "blue"
+statusbar_progress = "green"
+statusbar_bg = ""
+cmdline = "white"
+cmdline_bg = "black"
+search_match = "light red"
+
+[keybindings]
+"n" = "next"
+"p" = "previous"

@@ -34,7 +34,7 @@ parallelize() {
     do
         printf "Running parallel processes\n"
         dwm_weather &
-        sleep 60
+        sleep 20
     done
 }
 parallelize &
