@@ -1,11 +1,9 @@
-int
-width_fancybar(Bar *bar, BarArg *a)
+int width_fancybar(Bar *bar, BarArg *a)
 {
 	return a->w;
 }
 
-int
-draw_fancybar(Bar *bar, BarArg *a)
+int draw_fancybar(Bar *bar, BarArg *a)
 {
 	int ftw, mw, ew = 0, n = 0;
 	unsigned int i;

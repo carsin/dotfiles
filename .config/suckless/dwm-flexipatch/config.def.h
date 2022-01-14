@@ -7,7 +7,7 @@
 static const unsigned int borderpx = 0; /* border pixel of windows */
 static const int corner_radius = 10;
 #else
-static const unsigned int borderpx = 2; /* border pixel of windows */
+static const unsigned int borderpx = 3; /* border pixel of windows */
 #endif                               // ROUNDED_CORNERS_PATCH
 static const unsigned int snap = 32; /* snap pixel */
 #if SWALLOW_PATCH
@@ -163,19 +163,19 @@ static char normbordercolor[] = "#1d2021";
 static char normfloatcolor[] = "#282828";
 
 // currently selected 
-static char selfgcolor[] = "#b8bb26";
+static char selfgcolor[] = "#458588";
 static char selbgcolor[] = "#000000";
-static char selbordercolor[] = "#928374";
+static char selbordercolor[] = "#458588";
 static char selfloatcolor[] = "#383838";
 
 // inactive
-static char titlenormfgcolor[] = "#fbf1c7";
+static char titlenormfgcolor[] = "#bdae93";
 static char titlenormbgcolor[] = "#101010";
 static char titlenormbordercolor[] = "#101010";
 static char titlenormfloatcolor[] = "#212121";
 
-static char titleselfgcolor[] = "#ebdbb2";
-static char titleselbgcolor[] = "#101010";
+static char titleselfgcolor[] = "#bdae93";
+static char titleselbgcolor[] = "#090909";
 static char titleselbordercolor[] = "#101010";
 static char titleselfloatcolor[] = "#212121";
 
@@ -185,7 +185,7 @@ static char tagsnormbordercolor[] = "#101010";
 static char tagsnormfloatcolor[] = "#db8fd9";
 
 static char tagsselfgcolor[] = "#fb4934";
-static char tagsselbgcolor[] = "#1b1b1b";
+static char tagsselbgcolor[] = "#000000";
 static char tagsselbordercolor[] = "#101010";
 static char tagsselfloatcolor[] = "#005577";
 
@@ -194,10 +194,10 @@ static char hidselfgcolor[] = "#227799";
 static char hidnormbgcolor[] = "#222222";
 static char hidselbgcolor[] = "#222222";
 
-static char urgfgcolor[] = "#458588";
-static char urgbgcolor[] = "#131313";
-static char urgbordercolor[] = "#9d0006";
-static char urgfloatcolor[] = "#9d0006";
+static char urgfgcolor[] = "#fabd2f";
+static char urgbgcolor[] = "#050505";
+static char urgbordercolor[] = "#fabd2f";
+static char urgfloatcolor[] = "#fabd2f";
 
 #if BAR_FLEXWINTITLE_PATCH
 static char normTTBbgcolor[] = "#330000";
@@ -1202,7 +1202,7 @@ static Key keys[] = {
     {MODKEY | ControlMask | ShiftMask, XK_l, togglehorizontalmax, {0}},
     {MODKEY | ControlMask | ShiftMask, XK_j, toggleverticalmax, {0}},
     {MODKEY | ControlMask | ShiftMask, XK_k, toggleverticalmax, {0}},
-    {MODKEY | ControlMask, XK_m, togglemax, {0}},
+    {MODKEY, XK_f, togglemax, {0}},
 #endif // MAXIMIZE_PATCH
 #if NO_MOD_BUTTONS_PATCH
     {MODKEY | ShiftMask, XK_Escape, togglenomodbuttons, {0}},
@@ -1222,10 +1222,10 @@ static Key keys[] = {
     {MODKEY | ShiftMask, XK_t, unfloatvisible, {.v = &layouts[0]}},
 #endif // UNFLOATVISIBLE_PATCH
 #if TOGGLEFULLSCREEN_PATCH
-    {MODKEY, XK_f, togglefullscreen, {0}},
+    {MODKEY | ShiftMask, XK_f, togglefullscreen, {0}},
 #endif // TOGGLEFULLSCREEN_PATCH
 #if !FAKEFULLSCREEN_PATCH && FAKEFULLSCREEN_CLIENT_PATCH
-    {MODKEY | ShiftMask, XK_f, togglefakefullscreen, {0}},
+    {MODKEY | ControlMask, XK_f, togglefakefullscreen, {0}},
 #endif // FAKEFULLSCREEN_CLIENT_PATCH
 #if FULLSCREEN_PATCH
     // {MODKEY | ShiftMask, XK_f, fullscreen, {0}},
