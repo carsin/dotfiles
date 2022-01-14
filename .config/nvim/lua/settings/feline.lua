@@ -302,7 +302,7 @@ table.insert(components.active[3], {
     -- val.style = 'bold'
     return val
   end,
-  right_sep = '',
+  right_sep = ' ',
   left_sep = '',
 })
 

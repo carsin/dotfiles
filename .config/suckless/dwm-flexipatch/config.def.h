@@ -7,7 +7,7 @@
 static const unsigned int borderpx = 0; /* border pixel of windows */
 static const int corner_radius = 10;
 #else
-static const unsigned int borderpx = 3; /* border pixel of windows */
+static const unsigned int borderpx = 2; /* border pixel of windows */
 #endif                               // ROUNDED_CORNERS_PATCH
 static const unsigned int snap = 32; /* snap pixel */
 #if SWALLOW_PATCH
@@ -60,8 +60,8 @@ static const int toptab = False;         /* False means bottom tab bar */
 static const int bar_height = 0; /* 0 means derive from font, >= 1 explicit height */
 #endif // BAR_HEIGHT_PATCH
 #if BAR_PADDING_PATCH
-static const int vertpad = 10; /* vertical padding of bar */
-static const int sidepad = 10; /* horizontal padding of bar */
+static const int vertpad = 9; /* vertical padding of bar */
+static const int sidepad = 9; /* horizontal padding of bar */
 #endif                         // BAR_PADDING_PATCH
 #if BAR_WINICON_PATCH
 #define ICONSIZE 15   /* icon size */
@@ -151,11 +151,11 @@ static const char font[] = "Siji:size=10:antialias=true:hinting=true:embeddedbit
 #else
 // static const char *fonts[] = { "ProggyCleanTTSZ Nerd Font:size=12:antialias=true:hinting=true:embeddedbitmap=false" };
 static const char *fonts[] = { "Terminus:size=11:antialias=true:hinting=true:embeddedbitmap=false",
-    "TerminessTTF Nerd Font:size=9:antialias=true:hinting=true:embeddedbitmap=false",
+    "TerminessTTF Nerd Font:size=10:antialias=true:hinting=true:embeddedbitmap=true",
     "Siji:size=10:antialias=true:hinting=true:embeddedbitmap=false"
 };
 #endif // BAR_PANGO_PATCH
-static const char dmenufont[] = "Terminus:size=12:antialias=true:hinting=true:embeddedbitmap=false";
+static const char dmenufont[] = "Terminus:size=11:antialias=true:hinting=true:embeddedbitmap=false";
 
 static char c000000[] = "#000000"; // placeholder value
 
@@ -167,10 +167,10 @@ static char normbordercolor[] = "#3c3836";
 static char normfloatcolor[] = "#1d2021";
 
 // currently selected 
-static char selfgcolor[] = "#458588";
+static char selfgcolor[] = "#8ec07c";
 static char selbgcolor[] = "#000000";
-static char selbordercolor[] = "#458588";
-static char selfloatcolor[] = "#458588";
+static char selbordercolor[] = "#689d6a";
+static char selfloatcolor[] = "#689d6a";
 
 // inactive
 static char titlenormfgcolor[] = "#bdae93";
@@ -241,7 +241,7 @@ static char selfloatbgcolor[] = "#117799";
 
 #if BAR_ALPHA_PATCH
 // 90% = D8, 85%=D9 80% = CC, 70% = B2, 50% = 7F, 40% = 66
-static const unsigned int baralpha = 0xB2;
+static const unsigned int baralpha = 0xCC;
 static const unsigned int borderalpha = OPAQUE;
 static const unsigned int alphas[][3] = {
     /*                       fg      bg        border     */
@@ -421,14 +421,15 @@ static const char *const autostart[] = {
 #endif // COOL_AUTOSTART_PATCH
 
 #if SCRATCHPADS_PATCH
-const char *spcmd1[] = {"st", "-n", "spterm1", "-g", "127x37", NULL};
+const char *spcmd1[] = {"st", "-n", "spterm1", "-g", "135x45", NULL};
 const char *spcmd2[] = {"st", "-n", "spterm2", "-g", "100x30", NULL};
-const char *spcmd3[] = {"st", "-n", "spspotify", "-g", "150x50", "-e", "spt", NULL};
+const char *spcmd3[] = {"st", "-n", "spspotify", "-g", "160x60", "-e", "spt", NULL};
 const char *spcmd4[] = {"st", "-n", "spranger", "-g", "150x50", "-e", "ranger", NULL};
-const char *spcmd5[] = {"st", "-n", "sppulsemixer", "-g", "70x25", "-e", "pulsemixer", NULL};
-const char *spcmd6[] = {"st", "-n", "sptop", "-g", "150x60", "-e", "bpytop", NULL};
-const char *spcmd7[] = {"st", "-n", "spnvtop", "-g", "150x60", "-e", "nvtop", NULL};
+const char *spcmd5[] = {"st", "-n", "sppulsemixer", "-g", "90x30", "-e", "pulsemixer", NULL};
+const char *spcmd6[] = {"st", "-n", "sptop", "-g", "170x55", "-e", "bpytop", NULL};
+const char *spcmd7[] = {"st", "-n", "spnvtop", "-g", "145x50", "-e", "nvtop", NULL};
 const char *spcmd8[] = {"st", "-n", "spccal", "-g", "150x50", "-e", "calcurse", NULL};
+const char *spcmd9[] = {"st", "-n", "spnvim", "-g", "215x70", "-e", "nvim", NULL};
 static Sp scratchpads[] = {
     /* name          cmd  */
     {"spterm1", spcmd1},
@@ -439,6 +440,7 @@ static Sp scratchpads[] = {
     {"sptop", spcmd6},
     {"spnvtop", spcmd7},
     {"spccal", spcmd8},
+    {"spnvim", spcmd9},
 };
 #endif // SCRATCHPADS_PATCH
 
@@ -536,6 +538,7 @@ static const Rule rules[] = {
     RULE(.instance = "sptop", .tags = SPTAG(5), .isfloating = 1)
     RULE(.instance = "spnvtop", .tags = SPTAG(6), .isfloating = 1)
     RULE(.instance = "spccal", .tags = SPTAG(7), .isfloating = 1)
+    RULE(.instance = "spnvim", .tags = SPTAG(8), .isfloating = 1)
 #endif // SCRATCHPADS_PATCH
 };
 
@@ -1222,10 +1225,11 @@ static Key keys[] = {
     {MODKEY, XK_grave, togglescratch, {.ui = 1}}, //scratch 2 (small)
     {MODKEY, XK_s, togglescratch, {.ui = 2}}, // spotify
     {MODKEY, XK_r, togglescratch, {.ui = 3}}, // ranger
-    {MODKEY, XK_d, togglescratch, {.ui = 4}}, // pulsemixer
+    {MODKEY, XK_p, togglescratch, {.ui = 4}}, // pulsemixer
     {MODKEY, XK_q, togglescratch, {.ui = 5}}, // top
-    {MODKEY | ShiftMask, XK_q, togglescratch, {.ui = 6}}, // top
+    {MODKEY | ShiftMask, XK_q, togglescratch, {.ui = 6}}, // nvtop
     {MODKEY, XK_c, togglescratch, {.ui = 7}}, // calcurse
+    {MODKEY, XK_e, togglescratch, {.ui = 8}}, // nvim
     // {MODKEY | ControlMask, XK_grave, setscratch, {.ui = 0}},
     // {MODKEY | ShiftMask, XK_grave, removescratch, {.ui = 0}},
 #endif // SCRATCHPADS_PATCH
@@ -1472,8 +1476,8 @@ static Key keys[] = {
 #if CYCLELAYOUTS_PATCH
     {MODKEY | ShiftMask, XK_comma, cyclelayout, {.i = -1}},
     {MODKEY | ShiftMask, XK_period, cyclelayout, {.i = +1}},
-    {MODKEY, XK_p, cyclelayout, {.i = -1}},
-    {MODKEY, XK_n, cyclelayout, {.i = +1}},
+    {MODKEY | ShiftMask, XK_p, cyclelayout, {.i = -1}},
+    {MODKEY | ShiftMask, XK_n, cyclelayout, {.i = +1}},
 #endif // CYCLELAYOUTS_PATCH
 #if MPDCONTROL_PATCH
     {MODKEY, XK_F1, mpdchange, {.i = -1}},

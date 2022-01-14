@@ -43,15 +43,15 @@ fi
 # source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 # Plugins (provided by zsh-functions)
-# zsh_add_plugin "zsh-users/zsh-autosuggestions"
-# zsh_add_plugin "hlissner/zsh-autopair"
+zsh_add_plugin "zsh-users/zsh-autosuggestions"
+zsh_add_plugin "hlissner/zsh-autopair"
 eval "$(zoxide init zsh)" # zoxide
 
 # Accept autosuggestion
-# bindkey '^ ' autosuggest-accept
-# bindkey '^l' autosuggest-accept
-# bindkey '^[[Z' autosuggest-accept
-# bindkey '<Tab>' autosuggest-accept
+bindkey '^ ' autosuggest-accept
+bindkey '^l' autosuggest-accept
+bindkey '^[[Z' autosuggest-accept
+bindkey '<Tab>' autosuggest-accept
 
 # jk/kj as escape
 bindkey -M viins 'jk' vi-cmd-mode
@@ -76,8 +76,6 @@ source "$ZDOTDIR/aliases"
 
 # load prompt theme
 source ~/.config/zsh/themes/carson.zsh-theme # load prompt
-
-# set kitty colors
 
 # export GPG_TTY=$TTY
 # export PATH=$PATH:$HOME/.local/bin

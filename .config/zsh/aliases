@@ -48,10 +48,6 @@ alias cpftp="sftp ckfreedm@unix3.csc.calpoly.edu"
 
 alias top="htop"
 alias pm="pulsemixer"
-alias pmrestart="systemctl --user restart pipewire.service pipewire.socket pipewire-pulse.socket"
-alias pwrestart="systemctl --user restart pipewire.service pipewire.socket pipewire-pulse.socket"
-alias battery='acpi'
-
 alias g="git"
 alias lg="lazygit"
 alias nf="neofetch"
@@ -62,26 +58,31 @@ alias tm="tmux new-session -A -s main"
 alias t0="tmux a -t 0 || tmux new"
 alias t1="tmux a -t 1 || tmux new"
 alias matrix="neo-matrix -d 0.5 -f 144 -G 0 -s -S 5.5 --maxdpc=2"
+alias fontpreview='fontpreview-ueberzug'
 
+alias wttr="curl wttr.in/San+Luis+Obispo"
+alias wttr2="curl v2d.wttr.in/San+Luis+Obispo"
+
+
+# calcurse
+alias ccal="cal"
+alias cal="calcurse"
+alias c="calcurse"
+
+# linux system
 alias dual="exec /home/carson/bin/displays/dual.sh"
 alias triple="exec /home/carson/bin/displays/triple.sh"
 alias laptop="exec /home/carson/bin/displays/laptop.sh"
 alias uw="exec /home/carson/bin/displays/ultrawide.sh && w"
 alias ultrawide="exec /home/carson/bin/displays/ultrawide.sh"
 
-alias wttr="curl wttr.in/San+Luis+Obispo"
-alias wttr2="curl v2d.wttr.in/San+Luis+Obispo"
-
+alias pmrestart="systemctl --user restart pipewire.service pipewire.socket pipewire-pulse.socket"
+alias pwrestart="systemctl --user restart pipewire.service pipewire.socket pipewire-pulse.socket"
+alias battery='acpi'
 alias ctrl='setxkbmap -option ctrl:nocaps'
-alias fontpreview='fontpreview-ueberzug'
-
 alias bright="sudo bright"
 alias autobright="sudo autobrightness"
 
-# calcurse
-alias ccal="cal"
-alias cal="calcurse"
-alias c="calcurse"
 
 # pacman aliases
 alias pac='sudo pacman -S' # install
