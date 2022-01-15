@@ -38,8 +38,11 @@ unclutter &
 # redshift
 redshift &
 
-# set dpi
+spotify &
+
+# load xresources
 xrdb -merge ~/.Xresources 
+
 # start window manager
 while :; do 
     ssh-agent dwm 

@@ -5,11 +5,12 @@
  *
  * font: see http://freedesktop.org/software/fontconfig/fontconfig-user.html
  */
-static char *font = "Terminus:size=11:antialias=true:hinting=true:embeddedbitmap=false";
+static char *font = "Liberation Mono:pixelsize=12:antialias=true:autohint=true";
 #if FONT2_PATCH
+/* Spare fonts */
 static char *font2[] = {
-    // "Siji:size=10:antialias=true:hinting=true:embeddedbitmap=false",
-    "TerminessTTF Nerd Font:size=9:antialias=true:hinting=true:embeddedbitmap=true",
+/*	"Inconsolata for Powerline:pixelsize=12:antialias=true:autohint=true", */
+/*	"Hack Nerd Font Mono:pixelsize=11:antialias=true:autohint=true", */
 };
 #endif // FONT2_PATCH
 
@@ -18,7 +19,7 @@ static char *font2[] = {
  *             0 = no border, 100 = border width is same as cell width */
 int borderperc = 20;
 #else
-static int borderpx = 6;
+static int borderpx = 2;
 #endif // RELATIVEBORDER_PATCH
 
 #if OPENURLONCLICK_PATCH
@@ -33,7 +34,7 @@ static char *url_opener = "xdg-open";
  * 4: value of shell in /etc/passwd
  * 5: value of shell in config.h
  */
-static char *shell = "/usr/bin/zsh";
+static char *shell = "/bin/sh";
 char *utmp = NULL;
 /* scroll program: to enable use a string like "scroll" */
 char *scroll = NULL;
@@ -74,7 +75,7 @@ int allowwindowops = 0;
  * near minlatency, but it waits longer for slow updates to avoid partial draw.
  * low minlatency will tear/flicker more, as it can "detect" idle too early.
  */
-static double minlatency = 10;
+static double minlatency = 8;
 static double maxlatency = 33;
 
 #if SYNC_PATCH
@@ -94,7 +95,7 @@ static unsigned int blinktimeout = 800;
 /*
  * thickness of underline and bar cursors
  */
-static unsigned int cursorthickness = 1;
+static unsigned int cursorthickness = 2;
 
 #if BOXDRAW_PATCH
 /*
@@ -103,11 +104,11 @@ static unsigned int cursorthickness = 1;
  *    Bold affects lines thickness if boxdraw_bold is not 0. Italic is ignored.
  * 0: disable (render all U25XX glyphs normally from the font).
  */
-const int boxdraw = 1;
-const int boxdraw_bold = 1;
+const int boxdraw = 0;
+const int boxdraw_bold = 0;
 
 /* braille (U28XX):  1: render as adjacent "pixels",  0: use font */
-const int boxdraw_braille = 1;
+const int boxdraw_braille = 0;
 #endif // BOXDRAW_PATCH
 
 /*
@@ -134,17 +135,17 @@ char *termname = "st-256color";
  *
  *	stty tabs
  */
-unsigned int tabspaces = 4;
+unsigned int tabspaces = 8;
 
 #if ALPHA_PATCH
 /* bg opacity */
-float alpha = 0.85;
+float alpha = 0.8;
 #if ALPHA_GRADIENT_PATCH
-float grad_alpha = 0.8; //alpha value that'll change
-float stat_alpha = 0.2; //constant alpha value that'll get added to grad_alpha
+float grad_alpha = 0.54; //alpha value that'll change
+float stat_alpha = 0.46; //constant alpha value that'll get added to grad_alpha
 #endif // ALPHA_GRADIENT_PATCH
 #if ALPHA_FOCUS_HIGHLIGHT_PATCH
-float alphaUnfocused = 0.75;
+float alphaUnfocused = 0.6;
 #endif // ALPHA_FOCUS_HIGHLIGHT_PATCH
 #endif // ALPHA_PATCH
 
@@ -175,9 +176,8 @@ static const char *colorname[] = {
 	/* more colors can be added after 255 to use with DefaultXX */
 	"#add8e6", /* 256 -> cursor */
 	"#555555", /* 257 -> rev cursor*/
-	"#181818", /* 258 -> bg */
+	"#000000", /* 258 -> bg */
 	"#e5e5e5", /* 259 -> fg */
-	"#282828", /* 260 -> unfocusedBg */
 };
 
 
@@ -187,7 +187,7 @@ static const char *colorname[] = {
  */
 #if ALPHA_PATCH && ALPHA_FOCUS_HIGHLIGHT_PATCH
 unsigned int defaultbg = 0;
-unsigned int bg = 0, bgUnfocused = 0;
+unsigned int bg = 17, bgUnfocused = 16;
 #else
 unsigned int defaultbg = 258;
 #endif // ALPHA_FOCUS_HIGHLIGHT_PATCH
@@ -370,7 +370,7 @@ static MouseShortcut maltshortcuts[] = {
 #endif // SCROLLBACK_MOUSE_ALTSCREEN_PATCH
 
 /* Internal keyboard shortcuts. */
-#define MODKEY Mod4Mask
+#define MODKEY Mod1Mask
 #define TERMMOD (ControlMask|ShiftMask)
 
 #if EXTERNALPIPE_PATCH // example command
@@ -385,18 +385,14 @@ static Shortcut shortcuts[] = {
 	{ ControlMask,          XK_Print,       toggleprinter,   {.i =  0} },
 	{ ShiftMask,            XK_Print,       printscreen,     {.i =  0} },
 	{ XK_ANY_MOD,           XK_Print,       printsel,        {.i =  0} },
-    { MODKEY,              XK_Prior,       zoom,            {.f = +1} },
-    { MODKEY,              XK_Next,        zoom,            {.f = -1} },
-	{ MODKEY,              XK_Home,        zoomreset,       {.f =  0} },
+	{ TERMMOD,              XK_Prior,       zoom,            {.f = +1} },
+	{ TERMMOD,              XK_Next,        zoom,            {.f = -1} },
+	{ TERMMOD,              XK_Home,        zoomreset,       {.f =  0} },
 	{ TERMMOD,              XK_C,           clipcopy,        {.i =  0} },
 	{ TERMMOD,              XK_V,           clippaste,       {.i =  0} },
 	#if SCROLLBACK_PATCH
 	{ ShiftMask,            XK_Page_Up,     kscrollup,       {.i = -1} },
 	{ ShiftMask,            XK_Page_Down,   kscrolldown,     {.i = -1} },
-	{ MODKEY,            XK_k,     kscrollup,       {.i = -1} },
-	{ MODKEY,            XK_j,   kscrolldown,     {.i = -1} },
-	{ ControlMask,            XK_Page_Up,     kscrollup,       {.i = -1} },
-	{ ControlMask,            XK_Page_Down,   kscrolldown,     {.i = -1} },
 	#endif // SCROLLBACK_PATCH
 	#if CLIPBOARD_PATCH
 	{ TERMMOD,              XK_Y,           clippaste,       {.i =  0} },
@@ -419,7 +415,7 @@ static Shortcut shortcuts[] = {
 	{ TERMMOD,              XK_U,           externalpipe,    { .v = openurlcmd } },
 	#endif // EXTERNALPIPE_PATCH
 	#if KEYBOARDSELECT_PATCH
-	{ MODKEY,              XK_grave,      keyboard_select, { 0 } },
+	{ TERMMOD,              XK_Escape,      keyboard_select, { 0 } },
 	#endif // KEYBOARDSELECT_PATCH
 	#if ISO14755_PATCH
 	{ TERMMOD,              XK_I,           iso14755,        {.i =  0} },
@@ -745,5 +741,5 @@ static char *plumb_cmd = "plumb";
 #define UNDERCURL_SPIKY 1
 #define UNDERCURL_CAPPED 2
 // Active style
-#define UNDERCURL_STYLE UNDERCURL_CAPPED
+#define UNDERCURL_STYLE UNDERCURL_SPIKY
 #endif // UNDERCURL_PATCH

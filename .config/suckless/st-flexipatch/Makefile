@@ -33,8 +33,6 @@ st: $(OBJ)
 	$(CC) -o $@ $(OBJ) $(STLDFLAGS)
 
 clean:
-	rm -f config.h
-	rm -f patches.h
 	rm -f st $(OBJ) st-$(VERSION).tar.gz
 
 dist: clean

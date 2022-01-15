@@ -10,8 +10,8 @@ setopt autocd extendedglob nomatch menucomplete interactive_comments
 source "$ZDOTDIR/functions"
 
 # History in cache directory:
-HISTSIZE=10000000
-SAVEHIST=10000000
+HISTSIZE=10000
+SAVEHIST=10000
 HISTFILE=$XDG_CACHE_HOME/zsh/.histfile
 
 # completions
