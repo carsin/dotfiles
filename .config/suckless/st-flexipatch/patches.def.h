@@ -41,7 +41,7 @@
  * terminal resizes.)
  * https://github.com/connor-brooks/st-anysize-nobar
  */
-#define ANYSIZE_NOBAR_PATCH 0
+#define ANYSIZE_NOBAR_PATCH 1
 
 /* A simple variant of the anysize patch that only changes the resize hints to allow the window to
  * be resized to any size.

@@ -19,7 +19,7 @@ function! WriteSavePosition()
     call setpos('.', pos)
 endfunction
 " nnoremap <silent><leader>s :silent :call WriteSavePosition()<cr>
-nnoremap <silent><leader>w :w!<cr>
+" nnoremap <silent><leader>w :w!<cr>
 nnoremap <silent><F5> :w!<cr>
 " nnoremap <silent><leader>hw :TrimWhitespace<cr>
 

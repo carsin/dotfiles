@@ -8,8 +8,8 @@
 static char *font = "Terminus:size=11:antialias=true:hinting=true:embeddedbitmap=false";
 #if FONT2_PATCH
 static char *font2[] = {
-    "Siji:size=10:antialias=true:hinting=true:embeddedbitmap=false",
-    // "TerminessTTF Nerd Font:size=9:antialias=true:hinting=true:embeddedbitmap=true",
+    // "Siji:size=10:antialias=true:hinting=true:embeddedbitmap=false",
+    "TerminessTTF Nerd Font:size=9:antialias=true:hinting=true:embeddedbitmap=true",
 };
 #endif // FONT2_PATCH
 

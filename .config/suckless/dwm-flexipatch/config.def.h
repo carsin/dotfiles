@@ -424,7 +424,7 @@ static const char *const autostart[] = {
 const char *spcmd1[] = {"st", "-n", "spterm1", "-g", "145x60", NULL};
 const char *spcmd2[] = {"st", "-n", "spterm2", "-g", "100x30", NULL};
 const char *spcmd3[] = {"st", "-n", "spterm3", "-g", "165x60", NULL};
-const char *spcmd4[] = {"st", "-n", "spncspot", "-g", "160x60", "-e", "ncspot", NULL};
+const char *spcmd4[] = {"st", "-n", "spsptui", "-g", "160x60", "-e", "spt", NULL};
 const char *spcmd5[] = {"st", "-n", "spranger", "-g", "150x50", "-e", "ranger", NULL};
 const char *spcmd6[] = {"st", "-n", "sppulsemixer", "-g", "90x30", "-e", "pulsemixer", NULL};
 const char *spcmd7[] = {"st", "-n", "sptop", "-g", "170x55", "-e", "bpytop", NULL};
@@ -432,21 +432,19 @@ const char *spcmd8[] = {"st", "-n", "spnvtop", "-g", "145x50", "-e", "nvtop", NU
 const char *spcmd9[] = {"st", "-n", "spccal", "-g", "150x50", "-e", "calcurse", NULL};
 const char *spcmd10[] = {"st", "-n", "spnvim", "-g", "175x66", "-e", "nvim", NULL};
 // not working
-const char *spcmd11[] = {"st", "-n", "spsptui", "-g", "160x60", "-e", "spt", NULL};
 // const char *spcmd12[] = {"st", "-n", "spwiki", "-g", "174x50", "nvim -c e /home/carson/files/text/wiki/Index.md", NULL};
 static Sp scratchpads[] = {
     /* name          cmd  */
     {"spterm1", spcmd1},
     {"spterm2", spcmd2},
     {"spterm3", spcmd3},
-    {"spncspot", spcmd4},
+    {"spsptui", spcmd4},
     {"spranger", spcmd5},
     {"sppulsemixer", spcmd6},
     {"sptop", spcmd7},
     {"spnvtop", spcmd8},
     {"spccal", spcmd9},
     {"spnvim", spcmd10},
-    {"spsptui", spcmd11},
 };
 #endif // SCRATCHPADS_PATCH
 
@@ -482,10 +480,10 @@ static Sp scratchpads[] = {
  * them. This works seamlessly with alternative tags and alttagsdecoration
  * patches.
  */
-// 龎  
+// 龎   ﮕ
     
 static char *tagicons[][NUMTAGS] = {
-    [DEFAULT_TAGS] = {"龎 ", " ", " ", "礪 ", " ", " "},
+    [DEFAULT_TAGS] = {"龎 ", " ", " ", "礪 ", " "},
 };
 
 #if BAR_TAGGRID_PATCH
@@ -535,18 +533,19 @@ static const Rule rules[] = {
     RULE(.class = "Gimp", .tags = 1 << 4)
     RULE(.class = "Firefox", .tags = 1 << 7)
     RULE(.class = "St", .isterminal = 1)
+    // RULE(.title = "Picture-In-Picture", .tags = SPTAG(99), .isfloating = 1)
 #if SCRATCHPADS_PATCH
     RULE(.instance = "spterm1", .tags = SPTAG(0), .isfloating = 1)
     RULE(.instance = "spterm2", .tags = SPTAG(1), .isfloating = 1)
     RULE(.instance = "spterm3", .tags = SPTAG(2), .isfloating = 1)
-    RULE(.instance = "spncspot", .tags = SPTAG(3), .isfloating = 1)
+    RULE(.instance = "spsptui", .tags = SPTAG(3), .isfloating = 1)
     RULE(.instance = "spranger", .tags = SPTAG(4), .isfloating = 1)
     RULE(.instance = "sppulsemixer", .tags = SPTAG(5), .isfloating = 1)
     RULE(.instance = "sptop", .tags = SPTAG(6), .isfloating = 1)
     RULE(.instance = "spnvtop", .tags = SPTAG(7), .isfloating = 1)
     RULE(.instance = "spccal", .tags = SPTAG(8), .isfloating = 1)
     RULE(.instance = "spnvim", .tags = SPTAG(9), .isfloating = 1)
-    RULE(.instance = "spsptui", .tags = SPTAG(10), .isfloating = 1)
+    // RULE(.instance = "spsptui", .tags = SPTAG(10), .isfloating = 1)
 #endif // SCRATCHPADS_PATCH
 };
 
@@ -554,13 +553,13 @@ static const Rule rules[] = {
 #if PERTAG_PATCH
 static const MonitorRule monrules[] = {
     /* monitor  tag   layout  mfact  nmaster  showbar  topbar */
-    {1, -1, 2, -1, -1, -1, -1}, // use a different layout for the second monitor
+    // {1, -1, 2, -1, -1, -1, -1}, // use a different layout for the second monitor
     {-1, -1, 0, -1, -1, -1, -1}, // default
 };
 #else
 static const MonitorRule monrules[] = {
     /* monitor  layout  mfact  nmaster  showbar  topbar */
-    {1, 2, -1, -1, -1, -1},  // use a different layout for the second monitor
+    // {1, 2, -1, -1, -1, -1},  // use a different layout for the second monitor
     {-1, 0, -1, -1, -1, -1}, // default
 };
 #endif // PERTAG_PATCH
@@ -696,7 +695,7 @@ static const BarRule barrules[] = {
 };
 
 /* layout(s) */
-static const float mfact = 0.55; /* factor of master area size [0.05..0.95] */
+static const float mfact = 0.50; /* factor of master area size [0.05..0.95] */
 static const int nmaster = 1;    /* number of clients in master area */
 #if FLEXTILE_DELUXE_LAYOUT
 static const int nstack = 0; /* number of clients in primary stack area */
@@ -724,20 +723,35 @@ static const int scrollargs[][2] = {
 };
 #endif // TAPRESIZE_PATCH
 
+/* Tile arrangements */
+// TOP_TO_BOTTOM,     // clients are arranged vertically
+// LEFT_TO_RIGHT,     // clients are arranged horizontally
+// MONOCLE,           // clients are arranged in deck / monocle mode
+// GAPPLESSGRID,      // clients are arranged in a gappless grid (original formula)
+// GAPPLESSGRID_ALT1, // clients are arranged in a gappless grid (alt. 1, fills rows first)
+// GAPPLESSGRID_ALT2, // clients are arranged in a gappless grid (alt. 2, fills columns first)
+// GRIDMODE,          // clients are arranged in a grid
+// HORIZGRID,         // clients are arranged in a horizontal grid
+// DWINDLE,           // clients are arranged in fibonacci dwindle mode
+// SPIRAL,            // clients are arranged in fibonacci spiral mode
+// TATAMI,            // clients are arranged as tatami mats
+// AXIS_LAST
 #if FLEXTILE_DELUXE_LAYOUT
 static const Layout layouts[] = {
     /* symbol     arrange function, { nmaster, nstack, layout, master axis,
        stack axis, secondary stack axis, symbol func } */
-    {"|M|", flextile, {-1, -1, SPLIT_CENTERED_VERTICAL, LEFT_TO_RIGHT, TOP_TO_BOTTOM, TOP_TO_BOTTOM, NULL}}, // centeredmaster
-    {"[]=", flextile, {-1, -1, SPLIT_VERTICAL, TOP_TO_BOTTOM, TOP_TO_BOTTOM, 0, NULL}},           // default tile layout
-    {"[T]", flextile, {-1, -1, SPLIT_VERTICAL, LEFT_TO_RIGHT, TATAMI, 0, NULL}}, // tatami mats
-    {"[D]", flextile, {-1, -1, SPLIT_VERTICAL, TOP_TO_BOTTOM, MONOCLE, 0, NULL}}, // deck
-    {":::", flextile, {-1, -1, NO_SPLIT, GAPPLESSGRID, GAPPLESSGRID, 0, NULL}}, // gappless grid
-    {"-M-", flextile, {-1, -1, SPLIT_CENTERED_HORIZONTAL, TOP_TO_BOTTOM, LEFT_TO_RIGHT, LEFT_TO_RIGHT, NULL}}, // centeredmaster horiz
-    {"[M]", flextile, {-1, -1, NO_SPLIT, MONOCLE, MONOCLE, 0, NULL}}, // monocle
+    {"|M|", flextile, {1, -1, SPLIT_CENTERED_VERTICAL, LEFT_TO_RIGHT, TOP_TO_BOTTOM, TOP_TO_BOTTOM, NULL}}, // centeredmaster
+    {"[]:", flextile, {1, -1, SPLIT_VERTICAL, TOP_TO_BOTTOM, GAPPLESSGRID_ALT2, 0, NULL}},           // tile layout with comfortable stack
+    {"||:", flextile, {2, -1, SPLIT_VERTICAL, LEFT_TO_RIGHT, TOP_TO_BOTTOM, 0, NULL}},           // 2 masters tiled
+    {"[]=", flextile, {1, -1, SPLIT_VERTICAL, TOP_TO_BOTTOM, TOP_TO_BOTTOM, 0, NULL}},           // default tile layout
+    {"[T]", flextile, {1, -1, SPLIT_VERTICAL, LEFT_TO_RIGHT, TATAMI, 0, NULL}}, // tatami mats
+    {":::", flextile, {1, -1, NO_SPLIT, GAPPLESSGRID, GAPPLESSGRID, 0, NULL}}, // gappless grid
+    {"[D]", flextile, {1, -1, SPLIT_VERTICAL, TOP_TO_BOTTOM, MONOCLE, 0, NULL}}, // deck
+    {"-M-", flextile, {1, -1, SPLIT_CENTERED_HORIZONTAL, TOP_TO_BOTTOM, LEFT_TO_RIGHT, LEFT_TO_RIGHT, NULL}}, // centeredmaster horiz
+    {"[M]", flextile, {1, -1, NO_SPLIT, MONOCLE, MONOCLE, 0, NULL}}, // monocle
     // {">M>", flextile, {-1, -1, FLOATING_MASTER, LEFT_TO_RIGHT, LEFT_TO_RIGHT, 0, NULL}}, // floating master
-    {"TTT", flextile, {-1, -1, SPLIT_HORIZONTAL, LEFT_TO_RIGHT, LEFT_TO_RIGHT, 0, NULL}}, // bstack
-    {"(@)", flextile, {-1, -1, NO_SPLIT, SPIRAL, SPIRAL, 0, NULL}}, // fibonacci spiral
+    {"TTT", flextile, {1, -1, SPLIT_HORIZONTAL, LEFT_TO_RIGHT, LEFT_TO_RIGHT, 0, NULL}}, // bstack
+    {"(@)", flextile, {1, -1, NO_SPLIT, SPIRAL, SPIRAL, 0, NULL}}, // fibonacci spiral
     {"><>", NULL, {0}}, /* no layout function means floating behavior */
     // {"===", flextile, {-1, -1, SPLIT_HORIZONTAL, LEFT_TO_RIGHT, TOP_TO_BOTTOM, 0, NULL}}, // bstackhoriz
     // {"[\\]", flextile, {-1, -1, NO_SPLIT, DWINDLE, DWINDLE, 0, NULL}}, // fibonacci dwindle
@@ -1006,7 +1020,7 @@ static Key keys[] = {
     
 	{0, XF86XK_AudioPrev, spawn, {.v = prevcmd }},
     {MODKEY, XK_Print, spawn, SHCMD("/usr/bin/flameshot gui &")},
-    {MODKEY, XK_Home, spawn, SHCMD("timeout 5 /home/carson/bin/newpape.sh")},
+    {MODKEY, XK_Home, spawn, SHCMD("timeout 5 /home/carson/bin/newpape.sh &")},
 #if KEYMODES_PATCH
     {MODKEY, XK_Escape, setkeymode, {.ui = COMMANDMODE}},
 #endif // KEYMODES_PATCH&
@@ -1082,14 +1096,7 @@ static Key keys[] = {
     {MODKEY | Mod4Mask, XK_Left, moveresize, {.v = "-25x 0y 0w 0h"}},
     {MODKEY | Mod4Mask | ShiftMask, XK_Down, moveresize, {.v = "0x 0y 0w 25h"}},
     {MODKEY | Mod4Mask | ShiftMask, XK_Up, moveresize, {.v = "0x 0y 0w -25h"}},
-    {MODKEY | Mod4Mask | ShiftMask,
-     XK_Right,
-     moveresize,
-     {.v = "0x 0y 25w 0h"}},
-    {MODKEY | Mod4Mask | ShiftMask,
-     XK_Left,
-     moveresize,
-     {.v = "0x 0y -25w 0h"}},
+    {MODKEY | Mod4Mask | ShiftMask, XK_Right, moveresize, {.v = "0x 0y 25w 0h"}}, {MODKEY | Mod4Mask | ShiftMask, XK_Left, moveresize, {.v = "0x 0y -25w 0h"}},
 #endif // MOVERESIZE_PATCH
 #if MOVESTACK_PATCH
     {MODKEY | ShiftMask, XK_j, movestack, {.i = +1}},
@@ -1115,22 +1122,19 @@ static Key keys[] = {
 #endif // INSETS_PATCH
     {MODKEY, XK_space, zoom, {0}},
 #if VANITYGAPS_PATCH
-    {MODKEY | Mod4Mask, XK_u, incrgaps, {.i = +1}},
-    {MODKEY | Mod4Mask | ShiftMask, XK_u, incrgaps, {.i = -1}},
-    {MODKEY | Mod4Mask, XK_i, incrigaps, {.i = +1}},
-    {MODKEY | Mod4Mask | ShiftMask, XK_i, incrigaps, {.i = -1}},
-    {MODKEY | Mod4Mask, XK_o, incrogaps, {.i = +1}},
-    {MODKEY | Mod4Mask | ShiftMask, XK_o, incrogaps, {.i = -1}},
-    {MODKEY | Mod4Mask, XK_6, incrihgaps, {.i = +1}},
-    {MODKEY | Mod4Mask | ShiftMask, XK_6, incrihgaps, {.i = -1}},
-    {MODKEY | Mod4Mask, XK_7, incrivgaps, {.i = +1}},
-    {MODKEY | Mod4Mask | ShiftMask, XK_7, incrivgaps, {.i = -1}},
-    {MODKEY | Mod4Mask, XK_8, incrohgaps, {.i = +1}},
-    {MODKEY | Mod4Mask | ShiftMask, XK_8, incrohgaps, {.i = -1}},
-    {MODKEY | Mod4Mask, XK_9, incrovgaps, {.i = +1}},
-    {MODKEY | Mod4Mask | ShiftMask, XK_9, incrovgaps, {.i = -1}},
-    {MODKEY | Mod4Mask, XK_0, togglegaps, {0}},
-    {MODKEY | Mod4Mask | ShiftMask, XK_0, defaultgaps, {0}},
+    {MODKEY, XK_equal, incrgaps, {.i = +1}},
+    {MODKEY, XK_minus, incrgaps, {.i = -1}},
+    {MODKEY | ShiftMask, XK_equal, defaultgaps, {0}},
+    {MODKEY | ControlMask, XK_equal, togglegaps, {0}},
+    // {MODKEY | Mod4Mask, XK_i, incrigaps, {.i = +1}},
+    // {MODKEY | Mod4Mask, XK_o, incrogaps, {.i = +1}},
+    // {MODKEY | Mod4Mask, XK_6, incrihgaps, {.i = +1}},
+    // {MODKEY | Mod4Mask, XK_8, incrohgaps, {.i = +1}},
+    // {MODKEY | Mod4Mask, XK_9, incrovgaps, {.i = +1}},
+    // {MODKEY | Mod4Mask, XK_7, incrivgaps, {.i = +1}},
+    // {MODKEY | Mod4Mask | ShiftMask, XK_7, incrivgaps, {.i = -1}},
+    // {MODKEY | Mod4Mask | ShiftMask, XK_8, incrohgaps, {.i = -1}},
+    // {MODKEY | Mod4Mask | ShiftMask, XK_9, incrovgaps, {.i = -1}},
 #endif // VANITYGAPS_PATCH
     {MODKEY, XK_Tab, view, {0}},
 #if SHIFTVIEW_PATCH
@@ -1233,13 +1237,13 @@ static Key keys[] = {
     {MODKEY, XK_grave, togglescratch, {.ui = 1}}, //scratch 2 (small)
     {MODKEY | ControlMask, XK_Escape, togglescratch, {.ui = 2}}, //scratch 2 (large)
     {MODKEY, XK_s, togglescratch, {.ui = 3}}, // ncspot
-    {MODKEY | ShiftMask, XK_s, togglescratch, {.ui = 10}}, // sptui
     {MODKEY, XK_r, togglescratch, {.ui = 4}}, // ranger
     {MODKEY, XK_p, togglescratch, {.ui = 5}}, // pulsemixer
     {MODKEY, XK_q, togglescratch, {.ui = 6}}, // top
     {MODKEY | ShiftMask, XK_q, togglescratch, {.ui = 7}}, // nvtop
     {MODKEY, XK_c, togglescratch, {.ui = 8}}, // calcurse
     {MODKEY, XK_e, togglescratch, {.ui = 9}}, // nvim
+    // {MODKEY | ShiftMask, XK_s, togglescratch, {.ui = 10}}, // sptui
     // {MODKEY | ControlMask, XK_grave, setscratch, {.ui = 0}},
     // {MODKEY | ShiftMask, XK_grave, removescratch, {.ui = 0}},
 #endif // SCRATCHPADS_PATCH
@@ -1440,45 +1444,45 @@ static Key keys[] = {
      * with a Mod3Mask, which is not always readily available. Refer to the
      * patch wiki for more details. */
     /* Client position is limited to monitor window area */
-    {Mod3Mask, XK_u, floatpos, {.v = "-26x -26y"}},      // ↖
-    {Mod3Mask, XK_i, floatpos, {.v = "  0x -26y"}},      // ↑
-    {Mod3Mask, XK_o, floatpos, {.v = " 26x -26y"}},      // ↗
-    {Mod3Mask, XK_j, floatpos, {.v = "-26x   0y"}},      // ←
-    {Mod3Mask, XK_l, floatpos, {.v = " 26x   0y"}},      // →
-    {Mod3Mask, XK_m, floatpos, {.v = "-26x  26y"}},      // ↙
-    {Mod3Mask, XK_comma, floatpos, {.v = "  0x  26y"}},  // ↓
-    {Mod3Mask, XK_period, floatpos, {.v = " 26x  26y"}}, // ↘
+    // {Mod3Mask, XK_u, floatpos, {.v = "-26x -26y"}},      // ↖
+    // {Mod3Mask, XK_i, floatpos, {.v = "  0x -26y"}},      // ↑
+    // {Mod3Mask, XK_o, floatpos, {.v = " 26x -26y"}},      // ↗
+    // {Mod3Mask, XK_j, floatpos, {.v = "-26x   0y"}},      // ←
+    // {Mod3Mask, XK_l, floatpos, {.v = " 26x   0y"}},      // →
+    // {Mod3Mask, XK_m, floatpos, {.v = "-26x  26y"}},      // ↙
+    // {Mod3Mask, XK_comma, floatpos, {.v = "  0x  26y"}},  // ↓
+    // {Mod3Mask, XK_period, floatpos, {.v = " 26x  26y"}}, // ↘
     /* Absolute positioning (allows moving windows between monitors) */
-    {Mod3Mask | ControlMask, XK_u, floatpos, {.v = "-26a -26a"}},      // ↖
-    {Mod3Mask | ControlMask, XK_i, floatpos, {.v = "  0a -26a"}},      // ↑
-    {Mod3Mask | ControlMask, XK_o, floatpos, {.v = " 26a -26a"}},      // ↗
-    {Mod3Mask | ControlMask, XK_j, floatpos, {.v = "-26a   0a"}},      // ←
-    {Mod3Mask | ControlMask, XK_l, floatpos, {.v = " 26a   0a"}},      // →
-    {Mod3Mask | ControlMask, XK_m, floatpos, {.v = "-26a  26a"}},      // ↙
-    {Mod3Mask | ControlMask, XK_comma, floatpos, {.v = "  0a  26a"}},  // ↓
-    {Mod3Mask | ControlMask, XK_period, floatpos, {.v = " 26a  26a"}}, // ↘
+    // {MODKEY, XK_up, floatpos, {.v = "-26a -26a"}},      // ↖
+    // {MODKEY, XK_o, floatpos, {.v = " 26a -26a"}},      // ↗
+    // {MODKEY, XK_period, floatpos, {.v = " 26a  26a"}}, // ↘
+    // {MODKEY, XK_m, floatpos, {.v = "-26a  26a"}},      // ↙
+    {MODKEY, XK_Up, floatpos, {.v = "  0a -26a"}},      // ↑
+    {MODKEY, XK_Down, floatpos, {.v = "  0a  26a"}},  // ↓
+    {MODKEY, XK_Left, floatpos, {.v = "-26a   0a"}},      // ←
+    {MODKEY, XK_Right, floatpos, {.v = " 26a   0a"}},      // →
     /* Resize client, client center position is fixed which means that client
        expands in all directions */
-    {Mod3Mask | ShiftMask, XK_u, floatpos, {.v = "-26w -26h"}},      // ↖
-    {Mod3Mask | ShiftMask, XK_i, floatpos, {.v = "  0w -26h"}},      // ↑
-    {Mod3Mask | ShiftMask, XK_o, floatpos, {.v = " 26w -26h"}},      // ↗
-    {Mod3Mask | ShiftMask, XK_j, floatpos, {.v = "-26w   0h"}},      // ←
-    {Mod3Mask | ShiftMask, XK_k, floatpos, {.v = "800W 800H"}},      // ·
-    {Mod3Mask | ShiftMask, XK_l, floatpos, {.v = " 26w   0h"}},      // →
+    {MODKEY | ShiftMask, XK_Up, floatpos, {.v = "  0w -26h"}},      // ↑
+    {MODKEY | ShiftMask, XK_Down, floatpos, {.v = "  0w  26h"}},  // ↓
+    {MODKEY | ShiftMask, XK_Left, floatpos, {.v = "-26w   0h"}},      // ←
+    {MODKEY | ShiftMask, XK_Right, floatpos, {.v = " 26w   0h"}},      // →
+    // {Mod3Mask | ShiftMask, XK_u, floatpos, {.v = "-26w -26h"}},      // ↖
+    // {Mod3Mask | ShiftMask, XK_k, floatpos, {.v = "800W 800H"}},      // ·
     {Mod3Mask | ShiftMask, XK_m, floatpos, {.v = "-26w  26h"}},      // ↙
-    {Mod3Mask | ShiftMask, XK_comma, floatpos, {.v = "  0w  26h"}},  // ↓
-    {Mod3Mask | ShiftMask, XK_period, floatpos, {.v = " 26w  26h"}}, // ↘
+    // {Mod3Mask | ShiftMask, XK_period, floatpos, {.v = " 26w  26h"}}, // ↘
+    // {Mod3Mask | ShiftMask, XK_o, floatpos, {.v = " 26w -26h"}},      // ↗
     /* Client is positioned in a floating grid, movement is relative to client's
        current position */
-    {Mod3Mask | Mod1Mask, XK_u, floatpos, {.v = "-1p -1p"}},      // ↖
-    {Mod3Mask | Mod1Mask, XK_i, floatpos, {.v = " 0p -1p"}},      // ↑
-    {Mod3Mask | Mod1Mask, XK_o, floatpos, {.v = " 1p -1p"}},      // ↗
-    {Mod3Mask | Mod1Mask, XK_j, floatpos, {.v = "-1p  0p"}},      // ←
-    {Mod3Mask | Mod1Mask, XK_k, floatpos, {.v = " 0p  0p"}},      // ·
-    {Mod3Mask | Mod1Mask, XK_l, floatpos, {.v = " 1p  0p"}},      // →
-    {Mod3Mask | Mod1Mask, XK_m, floatpos, {.v = "-1p  1p"}},      // ↙
-    {Mod3Mask | Mod1Mask, XK_comma, floatpos, {.v = " 0p  1p"}},  // ↓
-    {Mod3Mask | Mod1Mask, XK_period, floatpos, {.v = " 1p  1p"}}, // ↘
+    // {Mod3Mask | Mod1Mask, XK_u, floatpos, {.v = "-1p -1p"}},      // ↖
+    // {Mod3Mask | Mod1Mask, XK_i, floatpos, {.v = " 0p -1p"}},      // ↑
+    // {Mod3Mask | Mod1Mask, XK_o, floatpos, {.v = " 1p -1p"}},      // ↗
+    // {Mod3Mask | Mod1Mask, XK_j, floatpos, {.v = "-1p  0p"}},      // ←
+    // {Mod3Mask | Mod1Mask, XK_k, floatpos, {.v = " 0p  0p"}},      // ·
+    // {Mod3Mask | Mod1Mask, XK_l, floatpos, {.v = " 1p  0p"}},      // →
+    // {Mod3Mask | Mod1Mask, XK_m, floatpos, {.v = "-1p  1p"}},      // ↙
+    // {Mod3Mask | Mod1Mask, XK_comma, floatpos, {.v = " 0p  1p"}},  // ↓
+    // {Mod3Mask | Mod1Mask, XK_period, floatpos, {.v = " 1p  1p"}}, // ↘
 #endif // FLOATPOS_PATCH
 #if SETBORDERPX_PATCH
     {MODKEY | ControlMask, XK_minus, setborderpx, {.i = -1}},
@@ -1497,7 +1501,7 @@ static Key keys[] = {
     {MODKEY, XK_Escape, mpdcontrol, {0}},
 #endif // MPDCONTROL_PATCH
     TAGKEYS(XK_1, 0) TAGKEYS(XK_2, 1) TAGKEYS(XK_3, 2) TAGKEYS(XK_4, 3)
-        TAGKEYS(XK_5, 4) TAGKEYS(XK_6, 5)};
+        TAGKEYS(XK_5, 4)};
 
 #if KEYMODES_PATCH
 static Key cmdkeys[] = {
