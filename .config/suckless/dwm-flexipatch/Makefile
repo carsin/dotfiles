@@ -40,8 +40,6 @@ dwm-msg:
 endif
 
 clean:
-	rm -f config.h
-	rm -f patches.h
 	rm -f dwm ${OBJ} dwm-${VERSION}.tar.gz
 	rm -f dwm-msg
 

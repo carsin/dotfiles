@@ -10,7 +10,7 @@ alias ls='exa -aF --color=always --sort=type --group-directories-first --ignore-
 # alias lt='lsd --tree -A'
 alias cp="cp -iv"
 alias mv="mv -iv"
-alias rm="rm -vI"
+alias rm="rm -v"
 alias bc="bc -ql"
 alias mkdir="mkdir -pv"
 alias grep="grep --color=auto"

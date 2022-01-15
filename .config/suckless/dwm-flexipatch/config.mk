@@ -1,5 +1,5 @@
 # dwm version
-VERSION = 6.2
+VERSION = 6.3
 
 # Customize below to fit your system
 
@@ -35,8 +35,8 @@ XRENDER = -lXrender
 #MPDCLIENT = -lmpdclient
 
 # Uncomment for the pango patch / BAR_PANGO_PATCH
-# PANGOINC = `pkg-config --cflags xft pango pangoxft`
-# PANGOLIB = `pkg-config --libs xft pango pangoxft`
+#PANGOINC = `pkg-config --cflags xft pango pangoxft`
+#PANGOLIB = `pkg-config --libs xft pango pangoxft`
 
 # Uncomment for the ipc patch / IPC_PATCH
 #YAJLLIBS = -lyajl
@@ -49,7 +49,7 @@ XRENDER = -lXrender
 XCBLIBS = -lX11-xcb -lxcb -lxcb-res
 
 # This is needed for the winicon patch / BAR_WINICON_PATCH
-IMLIB2LIBS = -lImlib2
+#IMLIB2LIBS = -lImlib2
 
 # includes and libs
 INCS = -I${X11INC} -I${FREETYPEINC} ${YAJLINC} ${PANGOINC}
@@ -57,7 +57,7 @@ LIBS = -L${X11LIB} -lX11 ${XINERAMALIBS} ${FREETYPELIBS}  ${XRENDER} ${MPDCLIENT
 
 # flags
 CPPFLAGS = -D_DEFAULT_SOURCE -D_BSD_SOURCE -D_POSIX_C_SOURCE=200809L -DVERSION=\"${VERSION}\" ${XINERAMAFLAGS}
-# CFLAGS   = -g -std=c99 -pedantic -Wall -O0 ${INCS} ${CPPFLAGS}
+#CFLAGS   = -g -std=c99 -pedantic -Wall -O0 ${INCS} ${CPPFLAGS}
 CFLAGS   = -std=c99 -pedantic -Wall -Wno-deprecated-declarations -Os ${INCS} ${CPPFLAGS}
 LDFLAGS  = ${LIBS}
 
