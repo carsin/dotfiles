@@ -159,8 +159,8 @@ static const char dmenufont[] = "Terminus:size=11:antialias=true:hinting=true:em
 
 static char c000000[] = "#000000"; // placeholder value
 
-#if BAR_FLEXWINTITLE_PATCH
-#endif // BAR_FLEXWINTITLE_PATCH
+// #if BAR_FLEXWINTITLE_PATCH
+// #endif // BAR_FLEXWINTITLE_PATCH
 static char normfgcolor[] = "#fbf1c7";
 static char normbgcolor[] = "#181818";
 static char normbordercolor[] = "#3c3836";
@@ -178,7 +178,7 @@ static char titlenormbgcolor[] = "#181818";
 static char titlenormbordercolor[] = "#3c3836";
 static char titlenormfloatcolor[] = "#212121";
 
-static char titleselfgcolor[] = "#bdae93";
+static char titleselfgcolor[] = "#8ec07c";
 static char titleselbgcolor[] = "#181818";
 static char titleselbordercolor[] = "#101010";
 static char titleselfloatcolor[] = "#212121";
@@ -204,28 +204,62 @@ static char urgbordercolor[] = "#fabd2f";
 static char urgfloatcolor[] = "#fabd2f";
 
 #if BAR_FLEXWINTITLE_PATCH
-static char normTTBbgcolor[] = "#330000";
-static char normLTRbgcolor[] = "#330033";
-static char normMONObgcolor[] = "#000033";
-static char normGRIDbgcolor[] = "#003300";
-static char normGRD1bgcolor[] = "#003300";
-static char normGRD2bgcolor[] = "#003300";
-static char normGRDMbgcolor[] = "#506600";
-static char normHGRDbgcolor[] = "#b96600";
-static char normDWDLbgcolor[] = "#003333";
-static char normSPRLbgcolor[] = "#333300";
-static char normfloatbgcolor[] = "#115577";
-static char actTTBbgcolor[] = "#440000";
-static char actLTRbgcolor[] = "#440044";
-static char actMONObgcolor[] = "#000044";
-static char actGRIDbgcolor[] = "#004400";
-static char actGRD1bgcolor[] = "#004400";
-static char actGRD2bgcolor[] = "#004400";
-static char actGRDMbgcolor[] = "#507711";
-static char actHGRDbgcolor[] = "#b97711";
-static char actDWDLbgcolor[] = "#004444";
-static char actSPRLbgcolor[] = "#444400";
-static char actfloatbgcolor[] = "#116688";
+// static char normTTBbgcolor[] = "#330000";
+// static char normLTRbgcolor[] = "#330033";
+// static char normMONObgcolor[] = "#000033";
+// static char normGRIDbgcolor[] = "#003300";
+// static char normGRD1bgcolor[] = "#003300";
+// static char normGRD2bgcolor[] = "#003300";
+// static char normGRDMbgcolor[] = "#506600";
+// static char normHGRDbgcolor[] = "#b96600";
+// static char normDWDLbgcolor[] = "#003333";
+// static char normSPRLbgcolor[] = "#333300";
+// static char normfloatbgcolor[] = "#115577";
+// static char actTTBbgcolor[] = "#440000";
+// static char actLTRbgcolor[] = "#440044";
+// static char actMONObgcolor[] = "#000044";
+// static char actGRIDbgcolor[] = "#004400";
+// static char actGRD1bgcolor[] = "#004400";
+// static char actGRD2bgcolor[] = "#004400";
+// static char actGRDMbgcolor[] = "#507711";
+// static char actHGRDbgcolor[] = "#b97711";
+// static char actDWDLbgcolor[] = "#004444";
+// static char actSPRLbgcolor[] = "#444400";
+// static char actfloatbgcolor[] = "#116688";
+// static char selTTBbgcolor[] = "#550000";
+// static char selLTRbgcolor[] = "#550055";
+// static char selMONObgcolor[] = "#212171";
+// static char selGRIDbgcolor[] = "#005500";
+// static char selGRD1bgcolor[] = "#005500";
+// static char selGRD2bgcolor[] = "#005500";
+// static char selGRDMbgcolor[] = "#508822";
+// static char selHGRDbgcolor[] = "#b98822";
+// static char selDWDLbgcolor[] = "#005555";
+// static char selSPRLbgcolor[] = "#555500";
+// static char selfloatbgcolor[] = "#117799";
+
+static char normTTBbgcolor[] = "#181818";
+static char normLTRbgcolor[] = "#181818";
+static char normMONObgcolor[] = "#181818";
+static char normGRIDbgcolor[] = "#181818";
+static char normGRD1bgcolor[] = "#181818";
+static char normGRD2bgcolor[] = "#181818";
+static char normGRDMbgcolor[] = "#181818";
+static char normHGRDbgcolor[] = "#181818";
+static char normDWDLbgcolor[] = "#181818";
+static char normSPRLbgcolor[] = "#181818";
+static char normfloatbgcolor[] = "#181818";
+static char actTTBbgcolor[] = "#3c3836";
+static char actLTRbgcolor[] = "#3c3836";
+static char actMONObgcolor[] = "#3c3836";
+static char actGRIDbgcolor[] = "#3c3836";
+static char actGRD1bgcolor[] = "#3c3836";
+static char actGRD2bgcolor[] = "#3c3836";
+static char actGRDMbgcolor[] = "#3c3836";
+static char actHGRDbgcolor[] = "#3c3836";
+static char actDWDLbgcolor[] = "#3c3836";
+static char actSPRLbgcolor[] = "#3c3836";
+static char actfloatbgcolor[] = "#3c3836";
 static char selTTBbgcolor[] = "#550000";
 static char selLTRbgcolor[] = "#550055";
 static char selMONObgcolor[] = "#212171";
@@ -241,7 +275,7 @@ static char selfloatbgcolor[] = "#117799";
 
 #if BAR_ALPHA_PATCH
 // 90% = D8, 85%=D9 80% = CC, 70% = B2, 50% = 7F, 40% = 66
-static const unsigned int baralpha = 0xCC;
+static const unsigned int baralpha = 0xB2;
 static const unsigned int borderalpha = OPAQUE;
 static const unsigned int alphas[][3] = {
     /*                       fg      bg        border     */
@@ -309,84 +343,48 @@ static char *colors[][ColCount] = {
      */
     [SchemeNorm] = {normfgcolor, normbgcolor, normbordercolor, normfloatcolor},
     [SchemeSel] = {selfgcolor, selbgcolor, selbordercolor, selfloatcolor},
-    [SchemeTitleNorm] = {titlenormfgcolor, titlenormbgcolor,
-                         titlenormbordercolor, titlenormfloatcolor},
-    [SchemeTitleSel] = {titleselfgcolor, titleselbgcolor, titleselbordercolor,
-                        titleselfloatcolor},
-    [SchemeTagsNorm] = {tagsnormfgcolor, tagsnormbgcolor, tagsnormbordercolor,
-                        tagsnormfloatcolor},
-    [SchemeTagsSel] = {tagsselfgcolor, tagsselbgcolor, tagsselbordercolor,
-                       tagsselfloatcolor},
+    [SchemeTitleNorm] = {titlenormfgcolor, titlenormbgcolor, titlenormbordercolor, titlenormfloatcolor},
+    [SchemeTitleSel] = {titleselfgcolor, titleselbgcolor, titleselbordercolor, titleselfloatcolor},
+    [SchemeTagsNorm] = {tagsnormfgcolor, tagsnormbgcolor, tagsnormbordercolor, tagsnormfloatcolor},
+    [SchemeTagsSel] = {tagsselfgcolor, tagsselbgcolor, tagsselbordercolor, tagsselfloatcolor},
     [SchemeHidNorm] = {hidnormfgcolor, hidnormbgcolor, c000000, c000000},
     [SchemeHidSel] = {hidselfgcolor, hidselbgcolor, c000000, c000000},
     [SchemeUrg] = {urgfgcolor, urgbgcolor, urgbordercolor, urgfloatcolor},
 #if BAR_FLEXWINTITLE_PATCH
-    [SchemeFlexActTTB] = {titleselfgcolor, actTTBbgcolor, actTTBbgcolor,
-                          c000000},
-    [SchemeFlexActLTR] = {titleselfgcolor, actLTRbgcolor, actLTRbgcolor,
-                          c000000},
-    [SchemeFlexActMONO] = {titleselfgcolor, actMONObgcolor, actMONObgcolor,
-                           c000000},
-    [SchemeFlexActGRID] = {titleselfgcolor, actGRIDbgcolor, actGRIDbgcolor,
-                           c000000},
-    [SchemeFlexActGRD1] = {titleselfgcolor, actGRD1bgcolor, actGRD1bgcolor,
-                           c000000},
-    [SchemeFlexActGRD2] = {titleselfgcolor, actGRD2bgcolor, actGRD2bgcolor,
-                           c000000},
-    [SchemeFlexActGRDM] = {titleselfgcolor, actGRDMbgcolor, actGRDMbgcolor,
-                           c000000},
-    [SchemeFlexActHGRD] = {titleselfgcolor, actHGRDbgcolor, actHGRDbgcolor,
-                           c000000},
-    [SchemeFlexActDWDL] = {titleselfgcolor, actDWDLbgcolor, actDWDLbgcolor,
-                           c000000},
-    [SchemeFlexActSPRL] = {titleselfgcolor, actSPRLbgcolor, actSPRLbgcolor,
-                           c000000},
-    [SchemeFlexActFloat] = {titleselfgcolor, actfloatbgcolor, actfloatbgcolor,
-                            c000000},
-    [SchemeFlexInaTTB] = {titlenormfgcolor, normTTBbgcolor, normTTBbgcolor,
-                          c000000},
-    [SchemeFlexInaLTR] = {titlenormfgcolor, normLTRbgcolor, normLTRbgcolor,
-                          c000000},
-    [SchemeFlexInaMONO] = {titlenormfgcolor, normMONObgcolor, normMONObgcolor,
-                           c000000},
-    [SchemeFlexInaGRID] = {titlenormfgcolor, normGRIDbgcolor, normGRIDbgcolor,
-                           c000000},
-    [SchemeFlexInaGRD1] = {titlenormfgcolor, normGRD1bgcolor, normGRD1bgcolor,
-                           c000000},
-    [SchemeFlexInaGRD2] = {titlenormfgcolor, normGRD2bgcolor, normGRD2bgcolor,
-                           c000000},
-    [SchemeFlexInaGRDM] = {titlenormfgcolor, normGRDMbgcolor, normGRDMbgcolor,
-                           c000000},
-    [SchemeFlexInaHGRD] = {titlenormfgcolor, normHGRDbgcolor, normHGRDbgcolor,
-                           c000000},
-    [SchemeFlexInaDWDL] = {titlenormfgcolor, normDWDLbgcolor, normDWDLbgcolor,
-                           c000000},
-    [SchemeFlexInaSPRL] = {titlenormfgcolor, normSPRLbgcolor, normSPRLbgcolor,
-                           c000000},
-    [SchemeFlexInaFloat] = {titlenormfgcolor, normfloatbgcolor,
-                            normfloatbgcolor, c000000},
-    [SchemeFlexSelTTB] = {titleselfgcolor, selTTBbgcolor, selTTBbgcolor,
-                          c000000},
-    [SchemeFlexSelLTR] = {titleselfgcolor, selLTRbgcolor, selLTRbgcolor,
-                          c000000},
-    [SchemeFlexSelMONO] = {titleselfgcolor, selMONObgcolor, selMONObgcolor,
-                           c000000},
-    [SchemeFlexSelGRID] = {titleselfgcolor, selGRIDbgcolor, selGRIDbgcolor,
-                           c000000},
-    [SchemeFlexSelGRD1] = {titleselfgcolor, selGRD1bgcolor, selGRD1bgcolor,
-                           c000000},
-    [SchemeFlexSelGRD2] = {titleselfgcolor, selGRD2bgcolor, selGRD2bgcolor,
-                           c000000},
-    [SchemeFlexSelGRDM] = {titleselfgcolor, selGRDMbgcolor, selGRDMbgcolor,
-                           c000000},
-    [SchemeFlexSelHGRD] = {titleselfgcolor, selHGRDbgcolor, selHGRDbgcolor,
-                           c000000},
-    [SchemeFlexSelDWDL] = {titleselfgcolor, selDWDLbgcolor, selDWDLbgcolor,
-                           c000000},
-    [SchemeFlexSelSPRL] = {titleselfgcolor, selSPRLbgcolor, selSPRLbgcolor,
-                           c000000},
-    [SchemeFlexSelFloat] = {titleselfgcolor, selfloatbgcolor, selfloatbgcolor,
-                            c000000},
+    // TODO: cleanup unneeded variables
+    [SchemeFlexActTTB] = {titleselfgcolor, actTTBbgcolor, actTTBbgcolor, c000000},
+    [SchemeFlexActLTR] = {titleselfgcolor, actLTRbgcolor, actLTRbgcolor, c000000},
+    [SchemeFlexActMONO] = {titleselfgcolor, actMONObgcolor, actMONObgcolor, c000000},
+    [SchemeFlexActGRID] = {titleselfgcolor, actGRIDbgcolor, actGRIDbgcolor, c000000},
+    [SchemeFlexActGRD1] = {titleselfgcolor, actGRD1bgcolor, actGRD1bgcolor, c000000},
+    [SchemeFlexActGRD2] = {titleselfgcolor, actGRD2bgcolor, actGRD2bgcolor, c000000},
+    [SchemeFlexActGRDM] = {titleselfgcolor, actGRDMbgcolor, actGRDMbgcolor, c000000},
+    [SchemeFlexActHGRD] = {titleselfgcolor, actHGRDbgcolor, actHGRDbgcolor, c000000},
+    [SchemeFlexActDWDL] = {titleselfgcolor, actDWDLbgcolor, actDWDLbgcolor, c000000},
+    [SchemeFlexActSPRL] = {titleselfgcolor, actSPRLbgcolor, actSPRLbgcolor, c000000},
+    [SchemeFlexActFloat] = {titleselfgcolor, actfloatbgcolor, actfloatbgcolor, c000000},
+    [SchemeFlexInaTTB] = {titlenormfgcolor, normTTBbgcolor, titlenormbordercolor, c000000},
+    [SchemeFlexInaLTR] = {titlenormfgcolor, normLTRbgcolor, titlenormbordercolor, c000000},
+    [SchemeFlexInaMONO] = {titlenormfgcolor, normMONObgcolor, titlenormbordercolor, c000000},
+    [SchemeFlexInaGRID] = {titlenormfgcolor, normGRIDbgcolor, titlenormbordercolor, c000000},
+    [SchemeFlexInaGRD1] = {titlenormfgcolor, normGRD1bgcolor, titlenormbordercolor, c000000},
+    [SchemeFlexInaGRD2] = {titlenormfgcolor, normGRD2bgcolor, titlenormbordercolor, c000000},
+    [SchemeFlexInaGRDM] = {titlenormfgcolor, normGRDMbgcolor, titlenormbordercolor, c000000},
+    [SchemeFlexInaHGRD] = {titlenormfgcolor, normHGRDbgcolor, titlenormbordercolor, c000000},
+    [SchemeFlexInaDWDL] = {titlenormfgcolor, normDWDLbgcolor, titlenormbordercolor, c000000},
+    [SchemeFlexInaSPRL] = {titlenormfgcolor, normSPRLbgcolor, titlenormbordercolor, c000000},
+    [SchemeFlexInaFloat] = {titlenormfgcolor, normfloatbgcolor, titlenormbordercolor, c000000},
+    [SchemeFlexSelTTB] = {titleselfgcolor, "#000000", selbordercolor, c000000},
+    [SchemeFlexSelLTR] = {titleselfgcolor, "#000000", selbordercolor, c000000},
+    [SchemeFlexSelMONO] = {titleselfgcolor, "#000000", selbordercolor, c000000},
+    [SchemeFlexSelGRID] = {titleselfgcolor, "#000000", selbordercolor, c000000},
+    [SchemeFlexSelGRD1] = {titleselfgcolor, "#000000", selbordercolor, c000000},
+    [SchemeFlexSelGRD2] = {titleselfgcolor, "#000000", selbordercolor, c000000},
+    [SchemeFlexSelGRDM] = {titleselfgcolor, "#000000", selbordercolor, c000000},
+    [SchemeFlexSelHGRD] = {titleselfgcolor, "#000000", selbordercolor, c000000},
+    [SchemeFlexSelDWDL] = {titleselfgcolor, "#000000", selbordercolor, c000000},
+    [SchemeFlexSelSPRL] = {titleselfgcolor, "#000000", selbordercolor, c000000},
+    [SchemeFlexSelFloat] = {titleselfgcolor, "#000000", selbordercolor, c000000},
 #endif // BAR_FLEXWINTITLE_PATCH
 };
 
@@ -469,8 +467,7 @@ static Sp scratchpads[] = {
  * through 9, while the tags for the second monitor would be named A through I.
  * A third monitor would start again at 1 through 9 while the tags on a fourth
  * monitor would also be named A through I. Note the tags count of NUMTAGS*2 in
- * the array initialiser which defines how many tag text / icon exists in the
- * array. This can be changed to *3 to add separate icons for a third monitor.
+ * the array initialiser which defines how many tag text / icon exists in the array. This can be changed to *3 to add separate icons for a third monitor.
  *
  * For the second example each tag would be represented as a bullet point. Both
  * cases work the same from a technical standpoint - the icon index is derived
@@ -529,9 +526,12 @@ static const Rule rules[] = {
     RULE(.wintype = WTYPE "UTILITY", .isfloating = 1)
     RULE(.wintype = WTYPE "TOOLBAR", .isfloating = 1)
     RULE(.wintype = WTYPE "SPLASH", .isfloating = 1)
-    RULE(.class = "Origin", .isfloating = 1)
-    RULE(.class = "Gimp", .tags = 1 << 4)
-    RULE(.class = "Firefox", .tags = 1 << 7)
+    RULE(.instance = "Origin", .tags = 1 << 4, .isfloating = 1)
+    RULE(.instance = "lutris", .tags = 1 << 4)
+    RULE(.instance = "Steam", .tags = 1 << 4)
+    RULE(.instance = "spotify", .tags = 1 << 4)
+    // RULE(.class = "Gimp", .tags = 1 << 4)
+    // RULE(.class = "Firefox", .tags = 1 << 7)
     RULE(.class = "St", .isterminal = 1)
     // RULE(.title = "Picture-In-Picture", .tags = SPTAG(99), .isfloating = 1)
 #if SCRATCHPADS_PATCH
@@ -858,7 +858,6 @@ static const Layout layouts[] = {
 /* xkb frontend */
 static const char *xkb_layouts[] = {
     "en",
-    "ru",
 };
 #endif // XKB_PATCH
 

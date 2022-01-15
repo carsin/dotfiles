@@ -59,13 +59,13 @@
  * the centeredwindowname patch.
  * https://dwm.suckless.org/patches/fancybar/
  */
-#define BAR_FANCYBAR_PATCH 1
+#define BAR_FANCYBAR_PATCH 0
 
 /* Being an evolution of the bartabgroups patch the flexwintitle patch specifically
  * taps into the many layout options that flextile-deluxe offers to produce a window
  * title section in the bar that is representative of what is shown on screen.
  */
-#define BAR_FLEXWINTITLE_PATCH 0
+#define BAR_FLEXWINTITLE_PATCH 1
 
 /* This patch adds a context menu for layout switching.
  *   - xmenu needs to be installed.
@@ -108,7 +108,7 @@
 /* This patch turns the titlebar area into a mfact-respecting tabbar showing each client's title.
  * https://dwm.suckless.org/patches/bartabgroups/
  */
-#define BAR_TABGROUPS_PATCH 1
+#define BAR_TABGROUPS_PATCH 0
 
 /* This patch adds an option to place tags in rows like in many other window managers.
  * https://dwm.suckless.org/patches/taggrid/
