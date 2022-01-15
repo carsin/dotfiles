@@ -1,7 +1,6 @@
-volnorm = true
+volnorm = false
 notify = true
 shuffle = true
-initial_screen = "library"
 use_nerdfont = true
     
 [theme]
@@ -24,5 +23,7 @@ cmdline_bg = "black"
 search_match = "light red"
 
 [keybindings]
-"n" = "next"
-"p" = "previous"
+"Shift+l" = "next"
+"Shift+h" = "previous"
+"Shift+k" = "volup 5"
+"Shift+j" = "voldown 5"

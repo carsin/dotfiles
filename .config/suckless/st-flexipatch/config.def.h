@@ -7,11 +7,9 @@
  */
 static char *font = "Terminus:size=11:antialias=true:hinting=true:embeddedbitmap=false";
 #if FONT2_PATCH
-/* Spare fonts */
 static char *font2[] = {
-    "TerminessTTF Nerd Font:size=9:antialias=true:hinting=true:embeddedbitmap=true",
-/*	"Inconsolata for Powerline:pixelsize=12:antialias=true:autohinSiji:size=10:antialias=true:hinting=true:embeddedbitmap=falset=true", */
-/*	"Hack Nerd Font Mono:pixelsize=11:antialias=true:autohint=true", */
+    "Siji:size=10:antialias=true:hinting=true:embeddedbitmap=false",
+    // "TerminessTTF Nerd Font:size=9:antialias=true:hinting=true:embeddedbitmap=true",
 };
 #endif // FONT2_PATCH
 

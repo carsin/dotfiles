@@ -31,6 +31,7 @@ alias wnew="wal -a 85 --backend colorz -i ~/files/photos/wallpapers/new/ && pywa
 # alias wnew="wal -a 90 --backend colorz -i ~/files/photos/wallpapers/new/"
 
 alias config="/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME"
+alias cfg="config"
 
 alias cr="cargo run"
 alias crr="cargo run --release"

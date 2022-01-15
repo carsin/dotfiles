@@ -200,7 +200,7 @@
  * codepoint that will be converted to a glyph and then pushed to st.
  * https://st.suckless.org/patches/iso14755/
  */
-#define ISO14755_PATCH 0
+#define ISO14755_PATCH 1
 
 /* This patch allows you to select text on the terminal using keyboard shortcuts.
  * https://st.suckless.org/patches/keyboard_select/

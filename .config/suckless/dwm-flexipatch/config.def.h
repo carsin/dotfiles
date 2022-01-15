@@ -151,8 +151,8 @@ static const char font[] = "Siji:size=10:antialias=true:hinting=true:embeddedbit
 #else
 // static const char *fonts[] = { "ProggyCleanTTSZ Nerd Font:size=12:antialias=true:hinting=true:embeddedbitmap=false" };
 static const char *fonts[] = { "Terminus:size=11:antialias=true:hinting=true:embeddedbitmap=false",
-    "TerminessTTF Nerd Font:size=10:antialias=true:hinting=true:embeddedbitmap=true",
-    "Siji:size=10:antialias=true:hinting=true:embeddedbitmap=false"
+    "Siji:size=10:antialias=true:hinting=true:embeddedbitmap=false",
+    "TerminessTTF Nerd Font:size=10:antialias=true:hinting=true:embeddedbitmap=true"
 };
 #endif // BAR_PANGO_PATCH
 static const char dmenufont[] = "Terminus:size=11:antialias=true:hinting=true:embeddedbitmap=false";
@@ -162,7 +162,7 @@ static char c000000[] = "#000000"; // placeholder value
 #if BAR_FLEXWINTITLE_PATCH
 #endif // BAR_FLEXWINTITLE_PATCH
 static char normfgcolor[] = "#fbf1c7";
-static char normbgcolor[] = "#101010";
+static char normbgcolor[] = "#181818";
 static char normbordercolor[] = "#3c3836";
 static char normfloatcolor[] = "#1d2021";
 
@@ -174,17 +174,17 @@ static char selfloatcolor[] = "#689d6a";
 
 // inactive
 static char titlenormfgcolor[] = "#bdae93";
-static char titlenormbgcolor[] = "#101010";
+static char titlenormbgcolor[] = "#181818";
 static char titlenormbordercolor[] = "#3c3836";
 static char titlenormfloatcolor[] = "#212121";
 
 static char titleselfgcolor[] = "#bdae93";
-static char titleselbgcolor[] = "#090909";
+static char titleselbgcolor[] = "#181818";
 static char titleselbordercolor[] = "#101010";
 static char titleselfloatcolor[] = "#212121";
 
 static char tagsnormfgcolor[] = "#fbf1c7";
-static char tagsnormbgcolor[] = "#101010";
+static char tagsnormbgcolor[] = "#181818";
 static char tagsnormbordercolor[] = "#101010";
 static char tagsnormfloatcolor[] = "#db8fd9";
 
@@ -424,7 +424,7 @@ static const char *const autostart[] = {
 const char *spcmd1[] = {"st", "-n", "spterm1", "-g", "145x60", NULL};
 const char *spcmd2[] = {"st", "-n", "spterm2", "-g", "100x30", NULL};
 const char *spcmd3[] = {"st", "-n", "spterm3", "-g", "165x60", NULL};
-const char *spcmd4[] = {"st", "-n", "spsptui", "-g", "160x60", "-e", "ncspot", NULL};
+const char *spcmd4[] = {"st", "-n", "spncspot", "-g", "160x60", "-e", "ncspot", NULL};
 const char *spcmd5[] = {"st", "-n", "spranger", "-g", "150x50", "-e", "ranger", NULL};
 const char *spcmd6[] = {"st", "-n", "sppulsemixer", "-g", "90x30", "-e", "pulsemixer", NULL};
 const char *spcmd7[] = {"st", "-n", "sptop", "-g", "170x55", "-e", "bpytop", NULL};
@@ -432,21 +432,21 @@ const char *spcmd8[] = {"st", "-n", "spnvtop", "-g", "145x50", "-e", "nvtop", NU
 const char *spcmd9[] = {"st", "-n", "spccal", "-g", "150x50", "-e", "calcurse", NULL};
 const char *spcmd10[] = {"st", "-n", "spnvim", "-g", "175x66", "-e", "nvim", NULL};
 // not working
-const char *spcmd11[] = {"spotify", NULL};
+const char *spcmd11[] = {"st", "-n", "spsptui", "-g", "160x60", "-e", "spt", NULL};
 // const char *spcmd12[] = {"st", "-n", "spwiki", "-g", "174x50", "nvim -c e /home/carson/files/text/wiki/Index.md", NULL};
 static Sp scratchpads[] = {
     /* name          cmd  */
     {"spterm1", spcmd1},
     {"spterm2", spcmd2},
     {"spterm3", spcmd3},
-    {"spsptui", spcmd4},
+    {"spncspot", spcmd4},
     {"spranger", spcmd5},
     {"sppulsemixer", spcmd6},
     {"sptop", spcmd7},
     {"spnvtop", spcmd8},
     {"spccal", spcmd9},
     {"spnvim", spcmd10},
-    {"spotify", spcmd11},
+    {"spsptui", spcmd11},
 };
 #endif // SCRATCHPADS_PATCH
 
@@ -485,7 +485,7 @@ static Sp scratchpads[] = {
 // 龎  
     
 static char *tagicons[][NUMTAGS] = {
-    [DEFAULT_TAGS] = {" ", " ", " ", " ", " ", " "},
+    [DEFAULT_TAGS] = {"龎 ", " ", " ", "礪 ", " ", " "},
 };
 
 #if BAR_TAGGRID_PATCH
@@ -539,14 +539,14 @@ static const Rule rules[] = {
     RULE(.instance = "spterm1", .tags = SPTAG(0), .isfloating = 1)
     RULE(.instance = "spterm2", .tags = SPTAG(1), .isfloating = 1)
     RULE(.instance = "spterm3", .tags = SPTAG(2), .isfloating = 1)
-    RULE(.instance = "spsptui", .tags = SPTAG(3), .isfloating = 1)
+    RULE(.instance = "spncspot", .tags = SPTAG(3), .isfloating = 1)
     RULE(.instance = "spranger", .tags = SPTAG(4), .isfloating = 1)
     RULE(.instance = "sppulsemixer", .tags = SPTAG(5), .isfloating = 1)
     RULE(.instance = "sptop", .tags = SPTAG(6), .isfloating = 1)
     RULE(.instance = "spnvtop", .tags = SPTAG(7), .isfloating = 1)
     RULE(.instance = "spccal", .tags = SPTAG(8), .isfloating = 1)
     RULE(.instance = "spnvim", .tags = SPTAG(9), .isfloating = 1)
-    RULE(.class = "spotify", .tags = SPTAG(10), .isfloating = 1, .isterminal = 0)
+    RULE(.instance = "spsptui", .tags = SPTAG(10), .isfloating = 1)
 #endif // SCRATCHPADS_PATCH
 };
 
@@ -696,7 +696,7 @@ static const BarRule barrules[] = {
 };
 
 /* layout(s) */
-static const float mfact = 0.56; /* factor of master area size [0.05..0.95] */
+static const float mfact = 0.55; /* factor of master area size [0.05..0.95] */
 static const int nmaster = 1;    /* number of clients in master area */
 #if FLEXTILE_DELUXE_LAYOUT
 static const int nstack = 0; /* number of clients in primary stack area */
@@ -728,9 +728,8 @@ static const int scrollargs[][2] = {
 static const Layout layouts[] = {
     /* symbol     arrange function, { nmaster, nstack, layout, master axis,
        stack axis, secondary stack axis, symbol func } */
-    {"[]=", flextile, {-1, -1, SPLIT_VERTICAL, TOP_TO_BOTTOM, TOP_TO_BOTTOM, 0, NULL}},           // default tile layout
-    // {"|||", flextile, {-1, -1, SPLIT_VERTICAL, LEFT_TO_RIGHT, TOP_TO_BOTTOM, 0, NULL}}, // columns (col) layout
     {"|M|", flextile, {-1, -1, SPLIT_CENTERED_VERTICAL, LEFT_TO_RIGHT, TOP_TO_BOTTOM, TOP_TO_BOTTOM, NULL}}, // centeredmaster
+    {"[]=", flextile, {-1, -1, SPLIT_VERTICAL, TOP_TO_BOTTOM, TOP_TO_BOTTOM, 0, NULL}},           // default tile layout
     {"[T]", flextile, {-1, -1, SPLIT_VERTICAL, LEFT_TO_RIGHT, TATAMI, 0, NULL}}, // tatami mats
     {"[D]", flextile, {-1, -1, SPLIT_VERTICAL, TOP_TO_BOTTOM, MONOCLE, 0, NULL}}, // deck
     {":::", flextile, {-1, -1, NO_SPLIT, GAPPLESSGRID, GAPPLESSGRID, 0, NULL}}, // gappless grid
@@ -738,13 +737,11 @@ static const Layout layouts[] = {
     {"[M]", flextile, {-1, -1, NO_SPLIT, MONOCLE, MONOCLE, 0, NULL}}, // monocle
     // {">M>", flextile, {-1, -1, FLOATING_MASTER, LEFT_TO_RIGHT, LEFT_TO_RIGHT, 0, NULL}}, // floating master
     {"TTT", flextile, {-1, -1, SPLIT_HORIZONTAL, LEFT_TO_RIGHT, LEFT_TO_RIGHT, 0, NULL}}, // bstack
-    // {"===",
-    //  flextile,
-    //  {-1, -1, SPLIT_HORIZONTAL, LEFT_TO_RIGHT, TOP_TO_BOTTOM, 0,
-    //   NULL}}, // bstackhoriz
-    // {"[\\]", flextile, {-1, -1, NO_SPLIT, DWINDLE, DWINDLE, 0, NULL}}, // fibonacci dwindle
     {"(@)", flextile, {-1, -1, NO_SPLIT, SPIRAL, SPIRAL, 0, NULL}}, // fibonacci spiral
     {"><>", NULL, {0}}, /* no layout function means floating behavior */
+    // {"===", flextile, {-1, -1, SPLIT_HORIZONTAL, LEFT_TO_RIGHT, TOP_TO_BOTTOM, 0, NULL}}, // bstackhoriz
+    // {"[\\]", flextile, {-1, -1, NO_SPLIT, DWINDLE, DWINDLE, 0, NULL}}, // fibonacci dwindle
+    // {"|||", flextile, {-1, -1, SPLIT_VERTICAL, LEFT_TO_RIGHT, TOP_TO_BOTTOM, 0, NULL}}, // columns (col) layout
 #if TILE_LAYOUT
     {"[]=", tile, {0}},
 #endif
@@ -1026,7 +1023,7 @@ static Key keys[] = {
     {MODKEY | ControlMask, XK_b, tabmode, {-1}},
 #endif // TAB_PATCH
 #if FOCUSMASTER_PATCH
-    {MODKEY, XK_space, focusmaster, {0}},
+    {MODKEY | ShiftMask, XK_space, focusmaster, {0}},
 #endif // FOCUSMASTER_PATCH
 #if STACKER_PATCH
     STACKKEYS(MODKEY, focus) STACKKEYS(MODKEY | ShiftMask, push)
@@ -1116,7 +1113,7 @@ static Key keys[] = {
      updateinset,
      {.v = &default_inset}},
 #endif // INSETS_PATCH
-    {MODKEY | ShiftMask, XK_space, zoom, {0}},
+    {MODKEY, XK_space, zoom, {0}},
 #if VANITYGAPS_PATCH
     {MODKEY | Mod4Mask, XK_u, incrgaps, {.i = +1}},
     {MODKEY | Mod4Mask | ShiftMask, XK_u, incrgaps, {.i = -1}},
@@ -1235,10 +1232,10 @@ static Key keys[] = {
     {MODKEY, XK_Escape, togglescratch, {.ui = 0}}, //scratch 1 (def)
     {MODKEY, XK_grave, togglescratch, {.ui = 1}}, //scratch 2 (small)
     {MODKEY | ControlMask, XK_Escape, togglescratch, {.ui = 2}}, //scratch 2 (large)
-    {MODKEY, XK_s, togglescratch, {.ui = 3}}, // spotify tui
-    {MODKEY | ShiftMask, XK_s, togglescratch, {.ui = 10}}, // spotify
+    {MODKEY, XK_s, togglescratch, {.ui = 3}}, // ncspot
+    {MODKEY | ShiftMask, XK_s, togglescratch, {.ui = 10}}, // sptui
     {MODKEY, XK_r, togglescratch, {.ui = 4}}, // ranger
-    {MODKEY | ControlMask, XK_p, togglescratch, {.ui = 5}}, // pulsemixer
+    {MODKEY, XK_p, togglescratch, {.ui = 5}}, // pulsemixer
     {MODKEY, XK_q, togglescratch, {.ui = 6}}, // top
     {MODKEY | ShiftMask, XK_q, togglescratch, {.ui = 7}}, // nvtop
     {MODKEY, XK_c, togglescratch, {.ui = 8}}, // calcurse
