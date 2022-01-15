@@ -32,7 +32,7 @@ cnoremap w!! execute 'silent! write !sudo tee % >/dev/null' <bar> edit!
 " Plugins {{{
 " Misc settings
 
-let g:vimwiki_list = [{'path': '~/files/text/wiki', 'syntax': 'markdown', 'ext': '.md', 'index': 'Index', 'diary_index': 'Daily', 'diary_rel_path': '/', 'diary_header': 'Daily Log', 'auto_diary_index': 1}]
+let g:vimwiki_list = [{'path': '~/files/text/wiki', 'syntax': 'markdown', 'ext': '.md', 'index': 'Index', 'diary_index': 'daily', 'diary_rel_path': '/', 'diary_header': 'Daily Log', 'auto_diary_index': 1}]
 let g:rooter_patterns = ['.git', 'Makefile', '*.sln', 'run', '.classpath']
 au BufNewFile ~/files/text/wiki/*.md :silent 0r !~/.config/nvim/bin/template.py '%'
 

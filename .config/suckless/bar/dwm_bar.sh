@@ -51,5 +51,5 @@ do
     upperbar="$upperbar${__DWM_BAR_WEATHER__}"
     upperbar="$upperbar$(dwm_date)"
     xsetroot -name "$upperbar"
-    sleep 1
+    sleep 2
 done
