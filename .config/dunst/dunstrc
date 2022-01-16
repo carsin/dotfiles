@@ -34,7 +34,7 @@
     origin = top-right
 
     # Offset from the origin
-    offset = 36x36
+    offset = 20x10
 
     # Scale factor. It is auto-detected if value is 0.
     scale = 0
@@ -291,7 +291,7 @@
 [urgency_low]
     # IMPORTANT: colors have to be defined in quotation marks.
     # Otherwise the "#" and following would be interpreted as a comment.
-    background = "#101010"
+    background = "#181818"
     foreground = "#fbf1c7"
     timeout = 4
     # Icon for notifications with low urgency, uncomment to enable

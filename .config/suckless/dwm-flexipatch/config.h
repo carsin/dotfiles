@@ -225,7 +225,7 @@ static const int color_ptrs[][ColCount] = {
 // SETUP COLORS
 static char c000000[] = "#000000"; // placeholder value
 static char normfgcolor[] = "#fbf1c7";
-static char normbgcolor[] = "#181818";
+static char normbgcolor[] = "#121212";
 static char normbordercolor[] = "#3c3836";
 static char normfloatcolor[] = "#1d2021";
 // currently selected 
@@ -345,7 +345,7 @@ const char *spcmd1[] = {"st", "-n", "spterm1", "-g", "145x55", NULL};
 const char *spcmd2[] = {"st", "-n", "spterm2", "-g", "100x30", NULL};
 const char *spcmd3[] = {"st", "-n", "spterm3", "-g", "165x60", NULL};
 const char *spcmd4[] = {"st", "-n", "spsptui", "-g", "160x60", "-e", "spt", NULL};
-const char *spcmd5[] = {"st", "-n", "spranger", "-g", "150x50", "-e", "ranger", NULL};
+const char *spcmd5[] = {"st", "-n", "spranger", "-g", "165x55", "-e", "ranger", NULL};
 const char *spcmd6[] = {"st", "-n", "sppulsemixer", "-g", "90x30", "-e", "pulsemixer", NULL};
 const char *spcmd7[] = {"st", "-n", "sptop", "-g", "170x55", "-e", "bpytop", NULL};
 const char *spcmd8[] = {"st", "-n", "spnvtop", "-g", "145x50", "-e", "nvtop", NULL};
@@ -451,7 +451,8 @@ static const Rule rules[] = {
     RULE(.instance = "Origin", .tags = 1 << 4, .isfloating = 1)
     RULE(.instance = "lutris", .tags = 1 << 4)
     RULE(.instance = "Steam", .tags = 1 << 4)
-    RULE(.class = "spotify", .tags = 1 << 4)
+    RULE(.instance = "spotify", .tags = 1 << 3)
+    RULE(.instance = "discord", .tags = 1 << 3)
     // RULE(.class = "Gimp", .tags = 1 << 4)
     // RULE(.class = "Firefox", .tags = 1 << 7)
     RULE(.class = "St", .isterminal = 1)
