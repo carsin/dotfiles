@@ -6,6 +6,6 @@ Xft.font: Terminus:size=11:antialias=true:hinting=true:embeddedbitmap=false
 st.font: Terminus:size=11:antialias=true:hinting=true:embeddedbitmap=false
 Xft.autohint: 0
 Xft.lcdfilter:  lcddefault
-Xft.hintstyle:  hintfull
+Xft.hintstyle:  hintslight
 Xft.hinting: 1
 Xft.rgba: rgb

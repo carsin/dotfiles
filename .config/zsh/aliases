@@ -4,7 +4,7 @@ alias ....="cd ../../.."
 alias .....="cd ../../../.."
 alias ~="cd ~"
 alias l='ls'
-alias ls='exa -aF --color=always --sort=type --group-directories-first --ignore-glob=".DS_Store"'
+alias ls='exa -aF --color=always --sort=type --group-directories-first --ignore-glob=".DS_Store" --icons'
 # alias ls='lsd -A'
 # alias ll='lsd -lA'
 # alias lt='lsd --tree -A'
@@ -89,6 +89,7 @@ alias ctrl='setxkbmap -option ctrl:nocaps'
 alias bright="sudo bright"
 alias autobright="sudo autobrightness"
 
+alias egpu="sudo egpu-switcher"
 
 # pacman aliases
 alias pac='sudo pacman -S' # install
