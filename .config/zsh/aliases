@@ -18,6 +18,7 @@ alias diff="diff --color=auto"
 
 alias find="fd"
 
+alias wn="wal -a 85 --backend haishoku -i ~/files/photos/wallpapers/wal/ && pywalfox update"
 alias w="wal -a 85 --backend haishoku -i ~/files/photos/wallpapers/wal/ && pywalfox update && killall -USR1 st"
 alias w1="wal -a 85 -i ~/files/photos/wallpapers/wal/ && pywalfox update && killall -USR1 st"
 alias w2="wal -a 85 --backend colorz -i ~/files/photos/wallpapers/wal && pywalfox update && killall -USR1 st"

@@ -7,7 +7,7 @@
 static const unsigned int borderpx = 0; /* border pixel of windows */
 static const int corner_radius = 10;
 #else
-static const unsigned int borderpx = 2; /* border pixel of windows */
+static const unsigned int borderpx = 1; /* border pixel of windows */
 #endif                               // ROUNDED_CORNERS_PATCH
 static const unsigned int snap = 32; /* snap pixel */
 #if SWALLOW_PATCH
@@ -18,10 +18,10 @@ static int nomodbuttons =
     1; /* allow client mouse button bindings that have no modifier */
 #endif // NO_MOD_BUTTONS_PATCH
 #if VANITYGAPS_PATCH
-static const unsigned int gappih = 6; /* horiz inner gap between windows */
-static const unsigned int gappiv = 6; /* vert inner gap between windows */
-static const unsigned int gappoh = 6; /* horiz outer gap between windows and screen edge */
-static const unsigned int gappov = 6; /* vert outer gap between windows and screen edge */
+static const unsigned int gappih = 5; /* horiz inner gap between windows */
+static const unsigned int gappiv = 5; /* vert inner gap between windows */
+static const unsigned int gappoh = 8; /* horiz outer gap between windows and screen edge */
+static const unsigned int gappov = 15; /* vert outer gap between windows and screen edge */
 static const int smartgaps_fact = 1; /* gap factor when there is only one client; 0 = no gaps, 3 = 3x outer
           gaps */
 #endif // VANITYGAPS_PATCH
@@ -225,7 +225,7 @@ static const int color_ptrs[][ColCount] = {
 // SETUP COLORS
 static char c000000[] = "#000000"; // placeholder value
 static char normfgcolor[] = "#fbf1c7";
-static char normbgcolor[] = "#121212";
+static char normbgcolor[] = "#161616";
 static char normbordercolor[] = "#3c3836";
 static char normfloatcolor[] = "#1d2021";
 // currently selected 
@@ -448,7 +448,10 @@ static const Rule rules[] = {
     RULE(.wintype = WTYPE "UTILITY", .isfloating = 1)
     RULE(.wintype = WTYPE "TOOLBAR", .isfloating = 1)
     RULE(.wintype = WTYPE "SPLASH", .isfloating = 1)
-    RULE(.instance = "Origin", .tags = 1 << 4, .isfloating = 1)
+    RULE(.title = "Grand Theft Auto V", .tags = 1 << 4)
+    RULE(.title = "Rockstar Games Launcher", .tags = 1 << 4)
+    RULE(.instance = "origin.exe", .tags = 1 << 4, .isfloating = 1)
+    RULE(.instance = "bf4.exe", .tags = 1 << 4, .isfloating = 1)
     RULE(.instance = "lutris", .tags = 1 << 4)
     RULE(.instance = "Steam", .tags = 1 << 4)
     RULE(.instance = "spotify", .tags = 1 << 3)
@@ -942,7 +945,8 @@ static Key keys[] = {
 	{0, XF86XK_AudioPrev, spawn, {.v = prevcmd }},
     {MODKEY, XK_Print, spawn, SHCMD("/usr/bin/flameshot gui &")},
     {MODKEY | ShiftMask, XK_s, spawn, SHCMD("spotify")},
-    {MODKEY, XK_Home, spawn, SHCMD("timeout 5 /home/carson/bin/newpape.sh &")},
+    {MODKEY, XK_Home, spawn, SHCMD("timeout 3 /home/carson/bin/newpape.sh")},
+    {MODKEY | ControlMask, XK_Home, spawn, SHCMD("killall -USR1 /usr/local/bin/st")},
 #if KEYMODES_PATCH
     {MODKEY, XK_Escape, setkeymode, {.ui = COMMANDMODE}},
 #endif // KEYMODES_PATCH&
@@ -1160,7 +1164,7 @@ static Key keys[] = {
     {MODKEY | ControlMask, XK_Escape, togglescratch, {.ui = 2}}, //scratch 2 (large)
     {MODKEY, XK_s, togglescratch, {.ui = 3}}, // ncspot
     {MODKEY, XK_r, togglescratch, {.ui = 4}}, // ranger
-    {MODKEY, XK_p, togglescratch, {.ui = 5}}, // pulsemixer
+    {MODKEY, XK_d, togglescratch, {.ui = 5}}, // pulsemixer
     {MODKEY, XK_q, togglescratch, {.ui = 6}}, // top
     {MODKEY | ShiftMask, XK_q, togglescratch, {.ui = 7}}, // nvtop
     {MODKEY, XK_c, togglescratch, {.ui = 8}}, // calcurse
@@ -1385,13 +1389,13 @@ static Key keys[] = {
     {MODKEY, XK_Right, floatpos, {.v = " 26a   0a"}},      // →
     /* Resize client, client center position is fixed which means that client
        expands in all directions */
-    {MODKEY | ShiftMask, XK_Up, floatpos, {.v = "  0w -26h"}},      // ↑
-    {MODKEY | ShiftMask, XK_Down, floatpos, {.v = "  0w  26h"}},  // ↓
-    {MODKEY | ShiftMask, XK_Left, floatpos, {.v = "-26w   0h"}},      // ←
-    {MODKEY | ShiftMask, XK_Right, floatpos, {.v = " 26w   0h"}},      // →
+    {MODKEY | ControlMask, XK_Up, floatpos, {.v = "  0w -26h"}},      // ↑
+    {MODKEY | ControlMask, XK_Down, floatpos, {.v = "  0w  26h"}},  // ↓
+    {MODKEY | ControlMask, XK_Left, floatpos, {.v = "-26w   0h"}},      // ←
+    {MODKEY | ControlMask, XK_Right, floatpos, {.v = " 26w   0h"}},      // →
     // {Mod3Mask | ShiftMask, XK_u, floatpos, {.v = "-26w -26h"}},      // ↖
     // {Mod3Mask | ShiftMask, XK_k, floatpos, {.v = "800W 800H"}},      // ·
-    {Mod3Mask | ShiftMask, XK_m, floatpos, {.v = "-26w  26h"}},      // ↙
+    // {Mod3Mask | ShiftMask, XK_m, floatpos, {.v = "-26w  26h"}},      // ↙
     // {Mod3Mask | ShiftMask, XK_period, floatpos, {.v = " 26w  26h"}}, // ↘
     // {Mod3Mask | ShiftMask, XK_o, floatpos, {.v = " 26w -26h"}},      // ↗
     /* Client is positioned in a floating grid, movement is relative to client's

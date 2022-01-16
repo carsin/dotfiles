@@ -1,5 +1,8 @@
 #!/bin/sh
 
+# START SLOW ASS SPOTIFY NICE AND EARLY
+spotify &
+
 # start some nice programs
 if [ -d /etc/X11/xinit/xinitrc.d ] ; then 
   for f in /etc/X11/xinit/xinitrc.d/?*.sh ; do 
@@ -15,6 +18,7 @@ xrandr --auto
 # input configuration
 # capslock is ctrl
 setxkbmap -option ctrl:nocaps
+xset r rate 185 35 
 
 # xinput stuff
 . /home/carson/bin/initmouse
@@ -37,8 +41,6 @@ unclutter &
 
 # redshift
 redshift &
-
-spotify &
 
 # load xresources
 xrdb -merge ~/.Xresources 

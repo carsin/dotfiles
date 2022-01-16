@@ -74,7 +74,7 @@ int allowwindowops = 0;
  * near minlatency, but it waits longer for slow updates to avoid partial draw.
  * low minlatency will tear/flicker more, as it can "detect" idle too early.
  */
-static double minlatency = 15;
+static double minlatency = 8;
 static double maxlatency = 33;
 
 #if SYNC_PATCH
@@ -94,7 +94,7 @@ static unsigned int blinktimeout = 800;
 /*
  * thickness of underline and bar cursors
  */
-static unsigned int cursorthickness = 1;
+static unsigned int cursorthickness = 2;
 
 #if BOXDRAW_PATCH
 /*
@@ -104,10 +104,10 @@ static unsigned int cursorthickness = 1;
  * 0: disable (render all U25XX glyphs normally from the font).
  */
 const int boxdraw = 1;
-const int boxdraw_bold = 1;
+const int boxdraw_bold = 0;
 
 /* braille (U28XX):  1: render as adjacent "pixels",  0: use font */
-const int boxdraw_braille = 1;
+const int boxdraw_braille = 0;
 #endif // BOXDRAW_PATCH
 
 /*
@@ -134,7 +134,7 @@ char *termname = "st-256color";
  *
  *	stty tabs
  */
-unsigned int tabspaces = 4;
+unsigned int tabspaces = 8;
 
 #if ALPHA_PATCH
 /* bg opacity */

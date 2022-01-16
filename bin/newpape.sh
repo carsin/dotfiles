@@ -1,5 +1,4 @@
-echo "running wal..."
-timeout 3 wal -a 85 --backend haishoku -i ~/files/photos/wallpapers/wal & 
-echo "done! sending refresh signal to st..."
-killall -USR1 /usr/local/bin/st 
-echo "complete"
+timeout 2 wal -a 85 --backend haishoku -i ~/files/photos/wallpapers/wal & 
+# sleep 1 && killall -USR1 /usr/local/bin/st &
+wait
+pywalfox update & # may be causing instability

@@ -46,21 +46,22 @@ keybindings:
   # ctrl-q works,
   # ctrl-alt-q doesn't.
   back: "ctrl-q"
-
   jump_to_album: "a"
-
   # Shift modifiers use a capital letter (also applies with other modifier keys
   # like ctrl-A)
   jump_to_artist_album: "A"
-
   manage_devices: "d"
-  decrease_volume: "-"
-  increase_volume: "+"
+  # decrease_volume: "-"
+  # increase_volume: "+"
+  decrease_volume: "J"
+  increase_volume: "K"
   toggle_playback: " "
   seek_backwards: "<"
   seek_forwards: ">"
-  next_track: "n"
-  previous_track: "p"
+  # next_track: "n"
+  # previous_track: "p"
+  next_track: "e"
+  previous_track: "q"
   copy_song_url: "c"
   copy_album_url: "C"
   help: "?"

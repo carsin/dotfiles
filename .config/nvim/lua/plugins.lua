@@ -139,23 +139,6 @@ return packer.startup({ function(use)
     end,
   }
 
-  -- use { -- tabnine
-  --   'tzachar/cmp-tabnine',
-  --   run = './install.sh',
-  --   requires = 'hrsh7th/nvim-cmp',
-  --   after = "nvim-cmp",
-  --   config = function()
-  --     -- TODO: move to lsp/cmp.lua
-  --     require('cmp_tabnine.config'):setup({
-  --       max_lines = 1500;
-  --       sort = true;
-  --       max_num_results = 3;
-  --       run_on_every_keystroke = false;
-  --       snippet_placeholder = '…';
-  --     })
-  --   end
-  -- }
-
   use { -- autopairs
     'windwp/nvim-autopairs',
     config = function()
@@ -185,7 +168,7 @@ return packer.startup({ function(use)
     require'settings.feline'
   end,
  }
- 
+
   -- TODO: Replace? https://github.com/kevinhwang91/nvim-bqf
   -- or https://github.com/stevearc/qf_helper.nvim
   use { -- Trouble
@@ -281,14 +264,14 @@ return packer.startup({ function(use)
     end
   }
 
-  use {  -- sniprun
-    'michaelb/sniprun',
-    run = 'bash ./install.sh',
-    config = function()
-      require'settings.sniprun'
-    end
-  }
-
+  -- use {  -- sniprun
+  --   'michaelb/sniprun',
+  --   run = 'bash ./install.sh',
+  --   config = function()
+  --     require'settings.sniprun'
+  --   end
+  -- }
+  --
   use { -- blankline indent indicator
     'lukas-reineke/indent-blankline.nvim',
     config = function()
