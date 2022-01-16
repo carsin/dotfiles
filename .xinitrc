@@ -14,6 +14,7 @@ fi
 # xrandr --setprovideroutputsource modesetting NVIDIA-0
 xrandr --auto
 . /home/carson/bin/displays/ultrawide.sh
+xset s noblank
 
 # input configuration
 # capslock is ctrl

@@ -20,7 +20,7 @@ static int nomodbuttons =
 #if VANITYGAPS_PATCH
 static const unsigned int gappih = 5; /* horiz inner gap between windows */
 static const unsigned int gappiv = 5; /* vert inner gap between windows */
-static const unsigned int gappoh = 7; /* horiz outer gap between windows and screen edge */
+static const unsigned int gappoh = 8; /* horiz outer gap between windows and screen edge */
 static const unsigned int gappov = 16; /* vert outer gap between windows and screen edge */
 static const int smartgaps_fact = 1; /* gap factor when there is only one client; 0 = no gaps, 3 = 3x outer
           gaps */
@@ -349,7 +349,7 @@ const char *spcmd5[] = {"st", "-n", "spranger", "-g", "165x55", "-e", "ranger", 
 const char *spcmd6[] = {"st", "-n", "sppulsemixer", "-g", "90x30", "-e", "pulsemixer", NULL};
 const char *spcmd7[] = {"st", "-n", "sptop", "-g", "170x55", "-e", "bpytop", NULL};
 const char *spcmd8[] = {"st", "-n", "spnvtop", "-g", "145x50", "-e", "nvtop", NULL};
-const char *spcmd9[] = {"st", "-n", "spccal", "-g", "120x44", "-e", "calcurse", NULL};
+const char *spcmd9[] = {"st", "-n", "spccal", "-g", "130x44", "-e", "calcurse", NULL};
 const char *spcmd10[] = {"st", "-n", "spnvim", "-g", "175x63", "-e", "nvim", NULL};
 // not working
 // const char *spcmd12[] = {"st", "-n", "spwiki", "-g", "174x50", "nvim -c e /home/carson/files/text/wiki/Index.md", NULL};
@@ -454,6 +454,7 @@ static const Rule rules[] = {
     RULE(.instance = "bf4.exe", .tags = 1 << 4, .isfloating = 1)
     RULE(.instance = "lutris", .tags = 1 << 4)
     RULE(.instance = "Steam", .tags = 1 << 4)
+    RULE(.instance = "eadesktop.exe", .tags = 1 << 4)
     RULE(.instance = "spotify", .tags = 1 << 3)
     RULE(.instance = "discord", .tags = 1 << 3)
     // RULE(.class = "Gimp", .tags = 1 << 4)
@@ -950,9 +951,9 @@ static Key keys[] = {
 #if KEYMODES_PATCH
     {MODKEY, XK_Escape, setkeymode, {.ui = COMMANDMODE}},
 #endif // KEYMODES_PATCH&
-    {MODKEY | ShiftMask, XK_Return, spawn, {.v = dmenucmd}},
-    {MODKEY, XK_w, spawn, {.v = firefoxcmd}},
-    {MODKEY, XK_Return, spawn, {.v = termcmd}},
+    {MODKEY | ShiftMask, XK_Return, spawn, {.v = dmenucmd }},
+    {MODKEY, XK_w, spawn, {.v = firefoxcmd }},
+    {MODKEY, XK_Return, spawn, {.v = termcmd }},
 #if RIODRAW_PATCH
     {MODKEY | ControlMask, XK_p, riospawnsync, {.v = dmenucmd}},
     {MODKEY | ControlMask, XK_Return, riospawn, {.v = termcmd}},
@@ -1076,7 +1077,7 @@ static Key keys[] = {
     {MODKEY | Mod4Mask, XK_backslash, shiftviewclients, {.i = +1}},
 #endif // SHIFTVIEW_CLIENTS_PATCH
 #if BAR_WINTITLEACTIONS_PATCH
-    {MODKEY | ControlMask, XK_z, showhideclient, {0}},
+    {MODKEY, XK_m, showhideclient, {0}},
 #endif // BAR_WINTITLEACTIONS_PATCH
     {MODKEY | ShiftMask, XK_c, killclient, {0}},
 #if KILLUNSEL_PATCH
