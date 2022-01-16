@@ -251,9 +251,9 @@ static char tagsselbgcolor[] = "#000000";
 static char tagsselbordercolor[] = "#101010";
 static char tagsselfloatcolor[] = "#005577";
 static char hidnormfgcolor[] = "#005577";
-static char hidselfgcolor[] = "#227799";
+static char hidselfgcolor[] = "#8f3f71";
 static char hidnormbgcolor[] = "#222222";
-static char hidselbgcolor[] = "#222222";
+static char hidselbgcolor[] = "#b16286";
 static char urgfgcolor[] = "#fabd2f";
 static char urgbgcolor[] = "#050505";
 static char urgbordercolor[] = "#fabd2f";
@@ -270,7 +270,7 @@ static char *colors[][ColCount] = {
     [SchemeTagsNorm] = {tagsnormfgcolor, tagsnormbgcolor, tagsnormbordercolor, tagsnormfloatcolor},
     [SchemeTagsSel] = {tagsselfgcolor, tagsselbgcolor, tagsselbordercolor, tagsselfloatcolor},
     [SchemeHidNorm] = {hidnormfgcolor, hidnormbgcolor, c000000, c000000},
-    [SchemeHidSel] = {hidselfgcolor, hidselbgcolor, c000000, c000000},
+    [SchemeHidSel] = {hidselfgcolor, normbgcolor, c000000, c000000},
     [SchemeUrg] = {urgfgcolor, urgbgcolor, urgbordercolor, urgfloatcolor},
 #if BAR_FLEXWINTITLE_PATCH
     // TODO: cleanup unneeded variables
@@ -945,7 +945,7 @@ static Key keys[] = {
 	{0, XF86XK_AudioNext, spawn, {.v = nextcmd }},
 	{0, XF86XK_AudioPrev, spawn, {.v = prevcmd }},
     {MODKEY, XK_Print, spawn, SHCMD("/usr/bin/flameshot gui &")},
-    {MODKEY | ShiftMask, XK_s, spawn, SHCMD("spotify")},
+    {MODKEY | ShiftMask, XK_s, spawn, SHCMD("spotify --no-zygote")}, // no-zygote disables hardware (gpu) accel
     {MODKEY, XK_Home, spawn, SHCMD("timeout 3 /home/carson/bin/newpape.sh")},
     {MODKEY | ControlMask, XK_Home, spawn, SHCMD("killall -USR1 /usr/local/bin/st")},
 #if KEYMODES_PATCH
