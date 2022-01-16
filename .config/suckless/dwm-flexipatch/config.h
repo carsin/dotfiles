@@ -349,7 +349,7 @@ const char *spcmd5[] = {"st", "-n", "spranger", "-g", "165x55", "-e", "ranger", 
 const char *spcmd6[] = {"st", "-n", "sppulsemixer", "-g", "90x30", "-e", "pulsemixer", NULL};
 const char *spcmd7[] = {"st", "-n", "sptop", "-g", "170x55", "-e", "bpytop", NULL};
 const char *spcmd8[] = {"st", "-n", "spnvtop", "-g", "145x50", "-e", "nvtop", NULL};
-const char *spcmd9[] = {"st", "-n", "spccal", "-g", "150x50", "-e", "calcurse", NULL};
+const char *spcmd9[] = {"st", "-n", "spccal", "-g", "120x44", "-e", "calcurse", NULL};
 const char *spcmd10[] = {"st", "-n", "spnvim", "-g", "175x63", "-e", "nvim", NULL};
 // not working
 // const char *spcmd12[] = {"st", "-n", "spwiki", "-g", "174x50", "nvim -c e /home/carson/files/text/wiki/Index.md", NULL};

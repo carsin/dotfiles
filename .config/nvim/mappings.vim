@@ -185,7 +185,7 @@ tnoremap <silent> <F3> <CMD>lua require("FTerm").toggle()<CR>
 tnoremap <silent> <ESC> <CMD>lua require("FTerm").toggle()<CR>
 
 " Trouble
-nnoremap <leader>d <cmd>TroubleToggle lsp_workspace_diagnostics<cr>
+nnoremap <leader>d <cmd>TroubleToggle workspace_diagnostics<cr>
 
 " Bufferline
 nnoremap <silent>[b :BufferLineCyclePrev<CR>
