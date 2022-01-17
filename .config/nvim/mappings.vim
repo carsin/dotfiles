@@ -190,8 +190,8 @@ nnoremap <leader>d <cmd>TroubleToggle workspace_diagnostics<cr>
 " Bufferline
 nnoremap <silent>[b :BufferLineCyclePrev<CR>
 nnoremap <silent>]b :BufferLineCycleNext<CR>
-nnoremap <silent>h:BufferLineCyclePrev<CR>
-nnoremap <silent>l :BufferLineCycleNext<CR>
+nnoremap <leader>h :BufferLineCyclePrev<CR>
+nnoremap <leader>l :BufferLineCycleNext<CR>
 nnoremap <leader>H :BufferLineMovePrev<CR>
 nnoremap <leader>L :BufferLineMoveNext<CR>
 " Switch to buffers and save when doing so
