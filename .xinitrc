@@ -38,7 +38,7 @@ xset s noblank
 wal -R
 
 # start window compositor
-picom -f &
+picom -f --xrender-sync-fence &
 
 # activity watch server
 aw-qt &

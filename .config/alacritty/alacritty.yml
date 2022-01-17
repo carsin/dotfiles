@@ -9,12 +9,13 @@ window:
   padding:
    x: 4
    y: 4
-  dynamic_padding: false # Spread additional padding evenly around the terminal content.
-  # decorations: none
-  opacity: 0.8
+  opacity: 0.85
+  opacity_unfocused: 0.9
+  dynamic_padding: true # Spread additional padding evenly around the terminal content.
+  decorations: full
   startup_mode: Windowed
   # Window title
-  title: Alacritty
+  title: Terminal
   dynamic_title: true # Allow terminal applications to change Alacritty's window title.
   # Window class (Linux/BSD only):
   class:
@@ -118,3 +119,5 @@ mouse:
 
   # If this is `true`, the cursor is temporarily hidden when typing.
   hide_when_typing: true
+colors:
+  transparent_background_colors: true
