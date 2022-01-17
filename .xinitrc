@@ -24,6 +24,8 @@ fi
 setxkbmap -option ctrl:nocaps
 xset r rate 185 35 
 xset s noblank
+# setxkbmap -option altwin:swap_alt_win
+# echo 1|sudo tee /sys/module/hid_apple/parameters/swap_opt_cmd
 
 # xinput stuff
 . /home/carson/bin/initmouse

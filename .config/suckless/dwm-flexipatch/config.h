@@ -341,16 +341,16 @@ static const char *const autostart[] = {
 #endif // COOL_AUTOSTART_PATCH
 
 #if SCRATCHPADS_PATCH
-const char *spcmd1[] = {"st", "-n", "spterm1", "-g", "145x55", NULL};
-const char *spcmd2[] = {"st", "-n", "spterm2", "-g", "100x30", NULL};
+const char *spcmd1[] = {"st", "-n", "spterm1", "-g", "145x54", NULL};
+const char *spcmd2[] = {"st", "-n", "spterm2", "-g", "100x36", NULL};
 const char *spcmd3[] = {"st", "-n", "spterm3", "-g", "165x60", NULL};
-const char *spcmd4[] = {"st", "-n", "spsptui", "-g", "160x60", "-e", "spt", NULL};
-const char *spcmd5[] = {"st", "-n", "spranger", "-g", "165x55", "-e", "ranger", NULL};
+const char *spcmd4[] = {"st", "-n", "spsptui", "-g", "135x50", "-e", "spt", NULL};
+const char *spcmd5[] = {"st", "-n", "spranger", "-g", "155x50", "-e", "ranger", NULL};
 const char *spcmd6[] = {"st", "-n", "sppulsemixer", "-g", "90x30", "-e", "pulsemixer", NULL};
-const char *spcmd7[] = {"st", "-n", "sptop", "-g", "170x55", "-e", "bpytop", NULL};
-const char *spcmd8[] = {"st", "-n", "spnvtop", "-g", "145x50", "-e", "nvtop", NULL};
+const char *spcmd7[] = {"st", "-n", "sptop", "-g", "140x43", "-e", "bpytop", NULL};
+const char *spcmd8[] = {"st", "-n", "spnvtop", "-g", "138x41", "-e", "nvtop", NULL};
 const char *spcmd9[] = {"st", "-n", "spccal", "-g", "130x44", "-e", "calcurse", NULL};
-const char *spcmd10[] = {"st", "-n", "spnvim", "-g", "175x63", "-e", "nvim", NULL};
+const char *spcmd10[] = {"st", "-n", "spnvim", "-g", "175x54", "-e", "nvim", NULL};
 // not working
 // const char *spcmd12[] = {"st", "-n", "spwiki", "-g", "174x50", "nvim -c e /home/carson/files/text/wiki/Index.md", NULL};
 static Sp scratchpads[] = {
@@ -668,12 +668,12 @@ static const Layout layouts[] = {
     /* symbol     arrange function, { nmaster, nstack, layout, master axis,
        stack axis, secondary stack axis, symbol func } */
     {"|M|", flextile, {1, -1, SPLIT_CENTERED_VERTICAL, LEFT_TO_RIGHT, TOP_TO_BOTTOM, TOP_TO_BOTTOM, NULL}}, // centeredmaster
-    {"[]:", flextile, {1, -1, SPLIT_VERTICAL, TOP_TO_BOTTOM, GAPPLESSGRID_ALT2, 0, NULL}},           // tile layout with comfortable stack
-    {"||:", flextile, {2, -1, SPLIT_VERTICAL, LEFT_TO_RIGHT, TOP_TO_BOTTOM, 0, NULL}},           // 2 masters tiled
     {"[]=", flextile, {1, -1, SPLIT_VERTICAL, TOP_TO_BOTTOM, TOP_TO_BOTTOM, 0, NULL}},           // default tile layout
+    // {"||:", flextile, {2, -1, SPLIT_VERTICAL, LEFT_TO_RIGHT, TOP_TO_BOTTOM, 0, NULL}},           // 2 masters tiled
+    {"[]:", flextile, {1, -1, SPLIT_VERTICAL, TOP_TO_BOTTOM, GAPPLESSGRID_ALT2, 0, NULL}},           // tile layout with comfortable stack
+    {"[D]", flextile, {1, -1, SPLIT_VERTICAL, TOP_TO_BOTTOM, MONOCLE, 0, NULL}}, // deck
     {"[T]", flextile, {1, -1, SPLIT_VERTICAL, LEFT_TO_RIGHT, TATAMI, 0, NULL}}, // tatami mats
     {":::", flextile, {1, -1, NO_SPLIT, GAPPLESSGRID, GAPPLESSGRID, 0, NULL}}, // gappless grid
-    {"[D]", flextile, {1, -1, SPLIT_VERTICAL, TOP_TO_BOTTOM, MONOCLE, 0, NULL}}, // deck
     {"-M-", flextile, {1, -1, SPLIT_CENTERED_HORIZONTAL, TOP_TO_BOTTOM, LEFT_TO_RIGHT, LEFT_TO_RIGHT, NULL}}, // centeredmaster horiz
     {"[M]", flextile, {1, -1, NO_SPLIT, MONOCLE, MONOCLE, 0, NULL}}, // monocle
     // {">M>", flextile, {-1, -1, FLOATING_MASTER, LEFT_TO_RIGHT, LEFT_TO_RIGHT, 0, NULL}}, // floating master
@@ -928,9 +928,6 @@ static Key on_empty_keys[] = {
 #endif // ON_EMPTY_KEYS_PATCH
 
 /* Control Media Players */
-static const char *upvolcmd[]   = {"export NO_NOTIFY_COLOR; /home/carson/bin/changevol -n -p -y up 5", NULL};
-static const char *downvolcmd[] = {"export NO_NOTIFY_COLOR;", "/home/carson/bin/changevol", "-n", "-p", "-y", "down 5", NULL};
-static const char *mutevolcmd[] = {"export NO_NOTIFY_COLOR; /home/carson/bin/changevol -n -p -y mute", NULL};
 static const char *playpausecmd[] = { "playerctl", "play-pause", NULL };
 static const char *nextcmd[] = { "playerctl", "next", NULL };
 static const char *prevcmd[] = { "playerctl", "previous", NULL };
@@ -941,9 +938,9 @@ static Key keys[] = {
 	{0, XF86XK_AudioRaiseVolume, spawn, SHCMD("/home/carson/bin/changevol -n -p -y up 5")},
     {0, XF86XK_AudioLowerVolume, spawn, SHCMD("/home/carson/bin/changevol -n -p -y down 5")},
 	{0, XF86XK_AudioMute, spawn, SHCMD("/home/carson/bin/changevol -n -p -y mute")},
-    {0, XF86XK_AudioPlay, spawn, {.v = playpausecmd }},
-	{0, XF86XK_AudioNext, spawn, {.v = nextcmd }},
-	{0, XF86XK_AudioPrev, spawn, {.v = prevcmd }},
+    {0, XF86XK_AudioPlay, spawn, SHCMD("playerctl play-pause")},
+	{0, XF86XK_AudioNext, spawn, SHCMD("playerctl play-pause")},
+	{0, XF86XK_AudioPrev, spawn, SHCMD("playerctl play-pause")},
     {MODKEY, XK_Print, spawn, SHCMD("/usr/bin/flameshot gui &")},
     {MODKEY | ShiftMask, XK_s, spawn, SHCMD("spotify --no-zygote")}, // no-zygote disables hardware (gpu) accel
     {MODKEY, XK_Home, spawn, SHCMD("timeout 3 /home/carson/bin/newpape.sh")},

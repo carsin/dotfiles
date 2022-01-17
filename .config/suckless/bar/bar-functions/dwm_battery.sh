@@ -5,22 +5,21 @@
 # GNU GPLv3
 
 dwm_battery () {
-    CHARGE=$(cat /sys/class/power_supply/BAT0/capacity)
+    CHARGE=$(acpi | awk '{ print $4 }' | tr -d \,)
     STATUS=$(cat /sys/class/power_supply/BAT0/status)
 
     if [[ "$STATUS" != "Full" ]]; then
         printf "%s" "$SEP1"
         if [ "$IDENTIFIER" = "unicode" ]; then
             if [ "$STATUS" = "Charging" ]; then
-                printf " %s%% %s" "$CHARGE" "$STATUS"
+                printf " %s" "$CHARGE" 
             else
-                printf " %s%% %s" "$CHARGE" "$STATUS"
+                printf " %s" "$CHARGE" 
             fi
-        else
-            printf "BAT %s%% %s" "$CHARGE" "$STATUS"
         fi
         printf "%s\n" "$SEP2 "
     fi
 }
 
 dwm_battery
+

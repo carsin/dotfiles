@@ -26,14 +26,14 @@ export SEP2="]"
 . "$DIR/bar-functions/dwm_resources.sh"
 . "$DIR/bar-functions/dwm_battery.sh"
 . "$DIR/bar-functions/dwm_pulse.sh"
-. "$DIR/bar-functions/dwm_weather.sh"
+# . "$DIR/bar-functions/dwm_weather.sh"
 . "$DIR/bar-functions/dwm_date.sh"
 
 parallelize() {
     while true
     do
         printf "Running parallel processes\n"
-        dwm_weather &
+        # dwm_weather &
         sleep 20
     done
 }
@@ -48,7 +48,7 @@ do
     upperbar="$upperbar$(dwm_resources) "
     upperbar="$upperbar$(dwm_battery)"
     upperbar="$upperbar$(dwm_pulse) "
-    upperbar="$upperbar${__DWM_BAR_WEATHER__} "
+    # upperbar="$upperbar${__DWM_BAR_WEATHER__} "
     upperbar="$upperbar$(dwm_date)"
     xsetroot -name "$upperbar"
     sleep 2

@@ -35,7 +35,7 @@
 
     # Offset from the origin
     # offset = 15x26
-    offset = 2x20
+    offset = 4x30
 
     # Scale factor. It is auto-detected if value is 0.
     scale = 0
@@ -191,10 +191,10 @@
     # Scale small icons up to this size, set to 0 to disable. Helpful
     # for e.g. small files or high-dpi screens. In case of conflict,
     # max_icon_size takes precedence over this.
-    min_icon_size = 32
+    min_icon_size = 24
 
     # Scale larger icons down to this size, set to 0 to disable
-    max_icon_size = 64
+    max_icon_size = 40
 
     # Paths to default icons.
     icon_path = /usr/share/icons/gnome/16x16/status/:/usr/share/icons/gnome/16x16/devices/
@@ -295,7 +295,7 @@
     background = "#181818"
     foreground = "#fbf1c7"
     frame_color = "#181818"
-    timeout = 4
+    timeout = 3
     # Icon for notifications with low urgency, uncomment to enable
     #default_icon = /path/to/icon
 

@@ -18,8 +18,10 @@ alias diff="diff --color=auto"
 
 alias find="fd"
 
-alias wn="wal -a 85 --backend haishoku -i ~/files/photos/wallpapers/wal/ && pywalfox update"
-alias w="wal -a 85 --backend haishoku -i ~/files/photos/wallpapers/wal/ && pywalfox update && killall -USR1 st"
+# alias wn="wal -a 85 --backend haishoku -i ~/files/photos/wallpapers/wal/ && pywalfox update"
+alias w="wal -a 85 --backend haishoku -i ~/files/photos/wallpapers/wal/ && pywalfox update"
+alias wr="killall -USR1 st"
+# alias w="wal -a 85 --backend haishoku -i ~/files/photos/wallpapers/wal/ && killall -USR1 st"
 alias w1="wal -a 85 -i ~/files/photos/wallpapers/wal/ && pywalfox update && killall -USR1 st"
 alias w2="wal -a 85 --backend colorz -i ~/files/photos/wallpapers/wal && pywalfox update && killall -USR1 st"
 alias w3="wal -a 85 --backend colorthief -i ~/files/photos/wallpapers/wal/ && pywalfox update && killall -USR1 st"
@@ -91,6 +93,7 @@ alias bright="sudo bright"
 alias autobright="sudo autobrightness"
 
 alias egpu="sudo egpu-switcher"
+alias gpu="sudo egpu-switcher"
 
 # pacman aliases
 alias pac='sudo pacman -S' # install
