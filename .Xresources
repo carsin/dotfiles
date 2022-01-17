@@ -4,6 +4,10 @@ Xft.dpi: 109
 ! https://freedesktop.org/software/fontconfig/fontconfig-user.html
 Xft.font: Terminus:size=11:antialias=true:hinting=true:embeddedbitmap=false
 st.font: Terminus:size=11:antialias=true:hinting=true:embeddedbitmap=false
+Sxiv.font: Terminus:size=11:antialias=true:hinting=true:embeddedbitmap=false
+Sxiv.background: #282828
+Sxiv.barbackground: #282828
+Sxiv.barforeground: #fbf1c7
 Xft.autohint: 0
 Xft.lcdfilter:  lcddefault
 Xft.hintstyle:  hintslight
