@@ -341,7 +341,7 @@ static const char *const autostart[] = {
 #endif // COOL_AUTOSTART_PATCH
 
 #if SCRATCHPADS_PATCH
-const char *spcmd1[] = {"st", "-n", "spterm1", "-g", "145x54", NULL};
+const char *spcmd1[] = {"st", "-n", "spterm1", "-g", "138x45", NULL};
 const char *spcmd2[] = {"st", "-n", "spterm2", "-g", "100x36", NULL};
 const char *spcmd3[] = {"st", "-n", "spterm3", "-g", "165x60", NULL};
 const char *spcmd4[] = {"st", "-n", "spsptui", "-g", "135x50", "-e", "spt", NULL};
@@ -349,8 +349,8 @@ const char *spcmd5[] = {"st", "-n", "spranger", "-g", "155x50", "-e", "ranger", 
 const char *spcmd6[] = {"st", "-n", "sppulsemixer", "-g", "90x30", "-e", "pulsemixer", NULL};
 const char *spcmd7[] = {"st", "-n", "sptop", "-g", "140x43", "-e", "bpytop", NULL};
 const char *spcmd8[] = {"st", "-n", "spnvtop", "-g", "138x41", "-e", "nvtop", NULL};
-const char *spcmd9[] = {"st", "-n", "spccal", "-g", "130x44", "-e", "calcurse", NULL};
-const char *spcmd10[] = {"st", "-n", "spnvim", "-g", "175x54", "-e", "nvim", NULL};
+const char *spcmd9[] = {"st", "-n", "spccal", "-g", "130x42", "-e", "calcurse", NULL};
+const char *spcmd10[] = {"st", "-n", "spnvim", "-g", "173x54", "-e", "nvim", NULL};
 // not working
 // const char *spcmd12[] = {"st", "-n", "spwiki", "-g", "174x50", "nvim -c e /home/carson/files/text/wiki/Index.md", NULL};
 static Sp scratchpads[] = {
