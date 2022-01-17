@@ -19,7 +19,7 @@ dwm_battery () {
         else
             printf "BAT %s%% %s" "$CHARGE" "$STATUS"
         fi
-        printf "%s\n" "$SEP2"
+        printf "%s\n" "$SEP2 "
     fi
 }
 

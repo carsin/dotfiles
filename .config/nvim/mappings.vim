@@ -147,7 +147,7 @@ nnoremap <leader>cd :cd %:p:h<CR>:pwd<CR>
 nnoremap <leader>f <cmd>Telescope find_files<cr>
 nnoremap <leader>s <cmd>Telescope live_grep<cr>
 nnoremap <leader>pp <cmd>lua require'telescope'.extensions.project.project{ display_type = 'full' }<cr>
-nnoremap <leader>h <cmd>SessionManager load_session<cr>
+" nnoremap <leader>h <cmd>SessionManager load_session<cr>
 nnoremap <leader>wf <cmd>lua require('telescope').extensions.vimwiki.vimwiki({})<cr>
 nnoremap <leader>wg <cmd>Telescope vimwiki live_grep<cr>
 nnoremap <leader>r <cmd>lua require('telescope').extensions.frecency.frecency()<cr>
@@ -190,18 +190,30 @@ nnoremap <leader>d <cmd>TroubleToggle workspace_diagnostics<cr>
 " Bufferline
 nnoremap <silent>[b :BufferLineCyclePrev<CR>
 nnoremap <silent>]b :BufferLineCycleNext<CR>
+nnoremap <silent>h:BufferLineCyclePrev<CR>
+nnoremap <silent>l :BufferLineCycleNext<CR>
 nnoremap <leader>H :BufferLineMovePrev<CR>
 nnoremap <leader>L :BufferLineMoveNext<CR>
 " Switch to buffers and save when doing so
-nnoremap <silent><leader>1 <Cmd>:silent w<CR><Cmd>BufferLineGoToBuffer 1<CR>
-nnoremap <silent><leader>2 <Cmd>:silent w<CR><Cmd>BufferLineGoToBuffer 2<CR>
-nnoremap <silent><leader>3 <Cmd>:silent w<CR><Cmd>BufferLineGoToBuffer 3<CR>
-nnoremap <silent><leader>4 <Cmd>:silent w<CR><Cmd>BufferLineGoToBuffer 4<CR>
-nnoremap <silent><leader>5 <Cmd>:silent w<CR><Cmd>BufferLineGoToBuffer 5<CR>
-nnoremap <silent><leader>6 <Cmd>:silent w<CR><Cmd>BufferLineGoToBuffer 6<CR>
-nnoremap <silent><leader>7 <Cmd>:silent w<CR><Cmd>BufferLineGoToBuffer 7<CR>
-nnoremap <silent><leader>8 <Cmd>:silent w<CR><Cmd>BufferLineGoToBuffer 8<CR>
-nnoremap <silent><leader>9 <Cmd>:silent w<CR><Cmd>BufferLineGoToBuffer 9<CR>
+" nnoremap <silent><leader>1 <Cmd>:silent w<CR><Cmd>BufferLineGoToBuffer 1<CR>
+" nnoremap <silent><leader>2 <Cmd>:silent w<CR><Cmd>BufferLineGoToBuffer 2<CR>
+" nnoremap <silent><leader>3 <Cmd>:silent w<CR><Cmd>BufferLineGoToBuffer 3<CR>
+" nnoremap <silent><leader>4 <Cmd>:silent w<CR><Cmd>BufferLineGoToBuffer 4<CR>
+" nnoremap <silent><leader>5 <Cmd>:silent w<CR><Cmd>BufferLineGoToBuffer 5<CR>
+" nnoremap <silent><leader>6 <Cmd>:silent w<CR><Cmd>BufferLineGoToBuffer 6<CR>
+" nnoremap <silent><leader>7 <Cmd>:silent w<CR><Cmd>BufferLineGoToBuffer 7<CR>
+" nnoremap <silent><leader>8 <Cmd>:silent w<CR><Cmd>BufferLineGoToBuffer 8<CR>
+" nnoremap <silent><leader>9 <Cmd>:silent w<CR><Cmd>BufferLineGoToBuffer 9<CR>
+" Switch to buffer
+nnoremap <silent> <leader>1 <Cmd>BufferLineGoToBuffer 1<CR>
+nnoremap <silent> <leader>2 <Cmd>BufferLineGoToBuffer 2<CR>
+nnoremap <silent> <leader>3 <Cmd>BufferLineGoToBuffer 3<CR>
+nnoremap <silent> <leader>4 <Cmd>BufferLineGoToBuffer 4<CR>
+nnoremap <silent> <leader>5 <Cmd>BufferLineGoToBuffer 5<CR>
+nnoremap <silent> <leader>6 <Cmd>BufferLineGoToBuffer 6<CR>
+nnoremap <silent> <leader>7 <Cmd>BufferLineGoToBuffer 7<CR>
+nnoremap <silent> <leader>8 <Cmd>BufferLineGoToBuffer 8<CR>
+nnoremap <silent> <leader>9 <Cmd>BufferLineGoToBuffer 9<CR>
 
 " Bdelete
 " default closes buffer while preserving window layout

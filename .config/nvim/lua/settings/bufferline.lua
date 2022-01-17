@@ -25,20 +25,21 @@ require("bufferline").setup {
     close_icon = '',
     left_trunc_marker = '…',
     right_trunc_marker = '…',
-    max_name_length = 20,
-    max_prefix_length = 15, -- prefix used when a buffer is de-duplicated
-    tab_size = 22,
-    enforce_regular_tabs = true,
+    max_name_length = 18,
+    max_prefix_length = 16, -- prefix used when a buffer is de-duplicated
+    tab_size = 30,
+    enforce_regular_tabs = false,
     show_close_icon = false,
     close_command = "lua require('bufdelete').bufdelete(0, true)",
     right_mouse_command = "vertical sbuffer %d", -- vertical split
     diagnostics = "nvim_lsp",
     diagnostics_update_in_insert = false,
+    sort_by = "id",
     diagnostics_indicator = function(count, level, diagnostics_dict, context)
         local s = " "
         for e, n in pairs(diagnostics_dict) do
             local sym = e == "error" and " E "
-            or (e == "warning" and " ! " or " i " )
+            or (e == "warning" and " ! " or " i " or " ? ")
             s = s .. n .. sym
         end
         return s

@@ -46,7 +46,7 @@ do
     upperbar=""
     upperbar="$upperbar$(dwm_spotify) "
     upperbar="$upperbar$(dwm_resources) "
-    upperbar="$upperbar$(dwm_battery) "
+    upperbar="$upperbar$(dwm_battery)"
     upperbar="$upperbar$(dwm_pulse) "
     upperbar="$upperbar${__DWM_BAR_WEATHER__} "
     upperbar="$upperbar$(dwm_date)"
