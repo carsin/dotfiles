@@ -339,16 +339,28 @@ static const char *const autostart[] = {
 #endif // COOL_AUTOSTART_PATCH
 
 #if SCRATCHPADS_PATCH
-const char *spcmd1[] = {"st", "-n", "spterm1", "-g", "138x45", NULL};
-const char *spcmd2[] = {"st", "-n", "spterm2", "-g", "100x36", NULL};
-const char *spcmd3[] = {"st", "-n", "spterm3", "-g", "165x60", NULL};
-const char *spcmd4[] = {"st", "-n", "spsptui", "-g", "135x50", "-e", "spt", NULL};
-const char *spcmd5[] = {"st", "-n", "spranger", "-g", "155x50", "-e", "ranger", NULL};
-const char *spcmd6[] = {"st", "-n", "sppulsemixer", "-g", "90x30", "-e", "pulsemixer", NULL};
-const char *spcmd7[] = {"st", "-n", "sptop", "-g", "140x43", "-e", "bpytop", NULL};
-const char *spcmd8[] = {"st", "-n", "spnvtop", "-g", "138x41", "-e", "nvtop", NULL};
-const char *spcmd9[] = {"st", "-n", "spccal", "-g", "130x42", "-e", "calcurse", NULL};
-const char *spcmd10[] = {"st", "-n", "spnvim", "-g", "173x54", "-e", "nvim", NULL};
+// const char *spcmd1[]  = {"st", "-t", "spterm1", "-g", "138x45", NULL};
+// const char *spcmd2[]  = {"st", "-t", "spterm2", "-g", "100x36", NULL};
+// const char *spcmd3[]  = {"st", "-t", "spterm3", "-g", "165x60", NULL};
+// const char *spcmd4[]  = {"st", "-t", "spsptui", "-g", "135x50", "-e", "spt", NULL};
+// const char *spcmd5[]  = {"st", "-t", "spranger", "-g", "155x50", "-e", "ranger", NULL};
+// const char *spcmd6[]  = {"st", "-t", "sppulsemixer", "-g", "90x30", "-e", "pulsemixer", NULL};
+// const char *spcmd7[]  = {"st", "-t", "sptop", "-g", "140x43", "-e", "bpytop", NULL};
+// const char *spcmd8[]  = {"st", "-t", "spnvtop", "-g", "138x41", "-e", "nvtop", NULL};
+// const char *spcmd9[]  = {"st", "-t", "spccal", "-g", "130x42", "-e", "calcurse", NULL};
+// const char *spcmd10[] = {"st", "-t", "spnvim", "-g", "173x54", "-e", "nvim", NULL};
+
+const char *spcmd1[]  = {"alacritty", "--class", "spterm1,Alacritty", "-o", "window.dimensions.columns=138", "-o", "window.dimensions.lines=45", NULL};
+const char *spcmd2[]  = {"alacritty", "--class", "spterm2,Alacritty", "-o", "window.dimensions.columns=100", "-o", "window.dimensions.lines=36", NULL};
+const char *spcmd3[]  = {"alacritty", "--class", "spterm3,Alacritty", "-o", "window.dimensions.columns=165", "-o", "window.dimensions.lines=60", NULL};
+const char *spcmd4[]  = {"alacritty", "--class", "spsptui,Alacritty", "-o", "window.dimensions.columns=135", "-o", "window.dimensions.lines=50", "-e", "spt", NULL};
+const char *spcmd5[]  = {"alacritty", "--class", "spranger,Alacritty", "-o", "window.dimensions.columns=155", "-o", "window.dimensions.lines=50", "-e", "ranger", NULL};
+const char *spcmd6[]  = {"alacritty", "--class", "sppulsemixer,Alacritty", "-o", "window.dimensions.columns=90", "-o", "window.dimensions.lines=30", "-e", "pulsemixer", NULL};
+const char *spcmd7[]  = {"alacritty", "--class", "sptop,Alacritty", "-o", "window.dimensions.columns=140", "-o", "window.dimensions.lines=43", "-e", "bpytop", NULL};
+const char *spcmd8[]  = {"alacritty", "--class", "spnvtop,Alacritty", "-o", "window.dimensions.columns=138", "-o", "window.dimensions.lines=41", "-e", "nvtop", NULL};
+const char *spcmd9[]  = {"alacritty", "--class", "spccal,Alacritty", "-o", "window.dimensions.columns=130", "-o", "window.dimensions.lines=42", "-e", "calcurse", NULL};
+const char *spcmd10[] = {"alacritty", "--class", "spnvim,Alacritty", "-o", "window.dimensions.columns=173", "-o", "window.dimensions.lines=54", "-e", "nvim", NULL};
+
 // not working
 // const char *spcmd12[] = {"st", "-n", "spwiki", "-g", "174x50", "nvim -c e /home/carson/files/text/wiki/Index.md", NULL};
 static Sp scratchpads[] = {
@@ -457,7 +469,8 @@ static const Rule rules[] = {
     RULE(.instance = "discord", .tags = 1 << 3)
     // RULE(.class = "Gimp", .tags = 1 << 4)
     // RULE(.class = "Firefox", .tags = 1 << 7)
-    // RULE(.class = "St", .isterminal = 1)
+    RULE(.class = "St", .isterminal = 1)
+    RULE(.class = "Alacritty", .isterminal = 1)
     // RULE(.title = "Picture-In-Picture", .tags = SPTAG(99), .isfloating = 1)
 #if SCRATCHPADS_PATCH
     RULE(.instance = "spterm1", .tags = SPTAG(0), .isfloating = 1)
@@ -896,7 +909,7 @@ static const char *dmenucmd[] = {"dmenu_run",
 #endif // BAR_DMENUMATCHTOP_PATCH
                                  NULL};
 // terminal command
-static const char *termcmd[] = {"st", NULL};
+static const char *termcmd[] = {"alacritty", NULL};
 
 #if BAR_STATUSCMD_PATCH
 #if BAR_DWMBLOCKS_PATCH
