@@ -9,7 +9,7 @@ static char *font = "Terminus:size=11:antialias=true:hinting=true:embeddedbitmap
 #if FONT2_PATCH
 static char *font2[] = {
     // "Siji:size=10:antialias=true:hinting=true:embeddedbitmap=false",
-    "GohuFont Nerd Font Complete:size=9:antialias=true:hinting=true:embeddedbitmap=true",
+    "Symbols Nerd Font:size=9:antialias=true:hinting=true:embeddedbitmap=false",
 };
 #endif // FONT2_PATCH
 

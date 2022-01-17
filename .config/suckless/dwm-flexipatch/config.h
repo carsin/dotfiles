@@ -149,10 +149,8 @@ static void (*bartabmonfns[])(Monitor *) = {NULL /* , customlayoutfn */};
 static const char font[] = "Siji:size=10:antialias=true:hinting=true:embeddedbitmap=false",
                             "Terminus:size=11:antialias=true:hinting=true:embeddedbitmap=false";
 #else
-// static const char *fonts[] = { "ProggyCleanTTSZ Nerd Font:size=12:antialias=true:hinting=true:embeddedbitmap=false" };
 static const char *fonts[] = { "Terminus:size=11:antialias=true:hinting=true:embeddedbitmap=false",
-    "Siji:size=10:antialias=true:hinting=true:embeddedbitmap=false",
-    "TerminessTTF Nerd Font:size=10:antialias=true:hinting=true:embeddedbitmap=true"
+    "Symbols Nerd Font:size=9:antialias=true:hinting=true:embeddedbitmap=false"
 };
 #endif // BAR_PANGO_PATCH
 static const char dmenufont[] = "Terminus:size=11:antialias=true:hinting=true:embeddedbitmap=false";

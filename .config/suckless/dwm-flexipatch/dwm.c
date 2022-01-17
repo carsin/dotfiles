@@ -2018,8 +2018,7 @@ focusstack(const Arg *arg)
 	if (!selmon->sel || (selmon->sel->isfullscreen && !selmon->sel->fakefullscreen))
 		return;
 	#else
-	// if (!selmon->sel || (selmon->sel->isfullscreen && lockfullscreen))
-	if (!selmon->sel || (selmon->sel->isfullscreen && setfullscreen))
+	if (!selmon->sel || (selmon->sel->isfullscreen && lockfullscreen))
 		return;
 	#endif // LOSEFULLSCREEN_PATCH
 	#if BAR_WINTITLEACTIONS_PATCH
