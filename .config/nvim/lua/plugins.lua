@@ -52,7 +52,7 @@ return packer.startup({ function(use)
   use 'kyazdani42/nvim-web-devicons'
   use 'ActivityWatch/aw-watcher-vim'
   use 'nathom/filetype.nvim'
-  use 'airblade/vim-rooter'
+  use 'airblade/vim-rooter' -- borked: cwds into /
   -- use 'rcarriga/nvim-notify' -- TODO: config file
 
   use { -- lsp config

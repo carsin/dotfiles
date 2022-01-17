@@ -20,6 +20,9 @@ set nobackup
 set nowb
 set noswapfile
 
+" chdir
+" set autochdir
+
 " Check file change and reload the buffer upon detection
 set autoread
 au CursorHold * checktime
@@ -33,7 +36,9 @@ cnoremap w!! execute 'silent! write !sudo tee % >/dev/null' <bar> edit!
 " Misc settings
 
 let g:vimwiki_list = [{'path': '~/files/text/wiki', 'syntax': 'markdown', 'ext': '.md', 'index': 'Dashboard', 'diary_index': 'daily', 'diary_rel_path': '/', 'diary_header': 'Daily Log', 'auto_diary_index': 1}]
-let g:rooter_patterns = ['.git', 'Makefile', '*.sln', 'run', '.classpath']
+let g:rooter_patterns = ['.git', 'Makefile', '*.sln', '.classpath', 'build/env.sh']
+let g:rooter_change_directory_for_non_project_files = 'current'
+" let g:rooter_resolve_links = 1
 au BufNewFile ~/files/text/wiki/*.md :silent 0r !~/.config/nvim/bin/template.py '%'
 
 " Load plugins
