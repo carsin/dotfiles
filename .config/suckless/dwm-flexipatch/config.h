@@ -459,7 +459,7 @@ static const Rule rules[] = {
     RULE(.instance = "discord", .tags = 1 << 3)
     // RULE(.class = "Gimp", .tags = 1 << 4)
     // RULE(.class = "Firefox", .tags = 1 << 7)
-    RULE(.class = "St", .isterminal = 1)
+    // RULE(.class = "St", .isterminal = 1)
     // RULE(.title = "Picture-In-Picture", .tags = SPTAG(99), .isfloating = 1)
 #if SCRATCHPADS_PATCH
     RULE(.instance = "spterm1", .tags = SPTAG(0), .isfloating = 1)

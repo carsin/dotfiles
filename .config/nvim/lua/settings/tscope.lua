@@ -85,7 +85,6 @@ telescope.setup {
       show_scores = true,
       show_unindexed = true,
       ignore_patterns = {"*.git/*", "*/tmp/*"},
-      disable_devicons = false,
       workspaces = {
         ["conf"]    = "~/.config",
         ["wiki"]    = "~/files/wiki/"
@@ -112,6 +111,7 @@ telescope.setup {
     },
 
     live_grep = {
+      -- disable_devicons = true,
       mappings = {
         i = {
           ["<CR>"] = custom_actions.multi_selection_open,

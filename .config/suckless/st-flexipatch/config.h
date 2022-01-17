@@ -9,7 +9,7 @@ static char *font = "Terminus:size=11:antialias=true:hinting=true:embeddedbitmap
 #if FONT2_PATCH
 static char *font2[] = {
     // "Siji:size=10:antialias=true:hinting=true:embeddedbitmap=false",
-    "TerminessTTF Nerd Font:size=9:antialias=true:hinting=true:embeddedbitmap=true",
+    "GohuFont Nerd Font Complete:size=9:antialias=true:hinting=true:embeddedbitmap=true",
 };
 #endif // FONT2_PATCH
 
@@ -104,10 +104,10 @@ static unsigned int cursorthickness = 2;
  * 0: disable (render all U25XX glyphs normally from the font).
  */
 const int boxdraw = 1;
-const int boxdraw_bold = 0;
+const int boxdraw_bold = 1;
 
 /* braille (U28XX):  1: render as adjacent "pixels",  0: use font */
-const int boxdraw_braille = 0;
+const int boxdraw_braille = 1;
 #endif // BOXDRAW_PATCH
 
 /*
@@ -144,7 +144,7 @@ float grad_alpha = 0.8; //alpha value that'll change
 float stat_alpha = 0.2; //constant alpha value that'll get added to grad_alpha
 #endif // ALPHA_GRADIENT_PATCH
 #if ALPHA_FOCUS_HIGHLIGHT_PATCH
-float alphaUnfocused = 0.75;
+float alphaUnfocused = 0.7;
 #endif // ALPHA_FOCUS_HIGHLIGHT_PATCH
 #endif // ALPHA_PATCH
 
@@ -227,7 +227,7 @@ Glyph style[] = {{' ',ATTR_ITALIC|ATTR_FAINT,15,16}, {' ',ATTR_ITALIC,232,11},
  * 7: Blinking st cursor
  * 8: Steady st cursor
  */
-static unsigned int cursorstyle = 1;
+static unsigned int cursorstyle = 0;
 static Rune stcursor = 0x2603; /* snowman (U+2603) */
 #else
 /*
@@ -271,6 +271,7 @@ static unsigned int defaultattr = 11;
 /*
  * Xresources preferences to load at startup
  */
+// TODO: Utilize this
 ResourcePref resources[] = {
 		{ "font",         STRING,  &font },
 		{ "color0",       STRING,  &colorname[0] },
