@@ -5,22 +5,11 @@ xrandr --auto
 # START SLOW ASS SPOTIFY NICE AND EARLY
 spotify --no-zygote &
 
-# Load settings based on setup config
-if [[ $ACTIVE_SETUP_CONFIG = "desktop" ]]; then
-    echo "Initializing desktop configuration (eGPU, ultrawide monitor)"
-    # xrandr --setprovideroutputsource modesetting NVIDIA-0
-    egpu-switcher switch egpu
-    . /home/carson/bin/displays/ultrawide.sh
-    xset -dpms
-elif [[ $ACTIVE_SETUP_CONFIG = "laptop" ]]; then
-    echo "Initializing mobile laptop configuration (internal graphics)"
-    egpu-switcher switch internal
-    . /home/carson/bin/displays/laptop.sh
-else
-    echo "Unknown setup found ($ACTIVE_SETUP_CONFIG), defaulting to laptop"
-    egpu-switcher switch internal
-    . /home/carson/bin/displays/laptop.sh
-fi
+echo "Initializing desktop configuration (eGPU, ultrawide monitor)"
+# xrandr --setprovideroutputsource modesetting NVIDIA-0
+# sudo egpu-switcher switch egpu # TODO: this hangs startup because of sudo prompt. fix
+. /home/carson/bin/displays/ultrawide.sh
+xset -dpms
 
 # start some nice programs
 if [ -d /etc/X11/xinit/xinitrc.d ] ; then 
