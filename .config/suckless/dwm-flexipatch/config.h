@@ -1393,10 +1393,10 @@ static Key keys[] = {
     {MODKEY, XK_Right, floatpos, {.v = " 26a   0a"}},      // →
     /* Resize client, client center position is fixed which means that client
        expands in all directions */
-    {MODKEY | ControlMask, XK_Up, floatpos, {.v = "  0w -26h"}},      // ↑
-    {MODKEY | ControlMask, XK_Down, floatpos, {.v = "  0w  26h"}},  // ↓
-    {MODKEY | ControlMask, XK_Left, floatpos, {.v = "-26w   0h"}},      // ←
-    {MODKEY | ControlMask, XK_Right, floatpos, {.v = " 26w   0h"}},      // →
+    {MODKEY | ShiftMask, XK_Up, floatpos, {.v = "  0w  26h"}},  // ↑
+    {MODKEY | ShiftMask, XK_Down, floatpos, {.v = "  0w -26h"}},      // ↓
+    {MODKEY | ShiftMask, XK_Left, floatpos, {.v = "-26w   0h"}},      // ←
+    {MODKEY | ShiftMask, XK_Right, floatpos, {.v = " 26w   0h"}},      // →
     // {Mod3Mask | ShiftMask, XK_u, floatpos, {.v = "-26w -26h"}},      // ↖
     // {Mod3Mask | ShiftMask, XK_k, floatpos, {.v = "800W 800H"}},      // ·
     // {Mod3Mask | ShiftMask, XK_m, floatpos, {.v = "-26w  26h"}},      // ↙
