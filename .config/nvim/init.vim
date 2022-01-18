@@ -4,7 +4,10 @@ set nocompatible
 filetype plugin indent on " Load plugins according to detected filetype.
 syntax on                 " Enable syntax highlighting.
 
-set termguicolors " Set colors before impatient makes it work for some reason
+" Set colors before impatient makes it work for some reason
+if has('termguicolors')
+    set termguicolors
+endif
 lua require('compiled/packer_compiled')
 lua require('impatient')
 
@@ -122,6 +125,7 @@ autocmd InsertLeave * set nopaste
 
 " Enable true color
 set background=dark
+
 " set t_Co=256
 
 let g:gruvbox_material_transparent_background = 1

@@ -1,7 +1,9 @@
 math.randomseed(os.time())
 local alpha = require("alpha")
 local fortune = require("alpha.fortune")
-local colors = { "Comment", "Constant", "String", "Number", "Identifier", "Label", "Type", "todo", "Normal", "PreProc", "Error", "Statement", "Ignore", "Function" }
+-- local colors_all = { "Comment", "Constant", "Number", "Identifier", "Label", "Type", "todo", "Normal", "PreProc", "Error", "Statement", "Ignore", "Function", "String"}
+-- no repeating colors
+local colors = { "Comment", "Constant", "Number", "Identifier", "Label", "Type", "Error", "Ignore" }
 local icons = {}
 local titles = {}
 
@@ -637,7 +639,7 @@ local section = {
       val = fortune(),
       opts = {
         position = "center",
-        hl = pick_and_remove(colors)
+        hl = "Function"
       }
     },
     buttons = buttons,

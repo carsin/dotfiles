@@ -1,21 +1,18 @@
 # Configuration for Alacritty, the GPU enhanced terminal emulator.
 
-# env:
-  # TERM: alacritty
-import:
-  - /home/carson/.cache/wal/colors-alacritty.yml
-
+# Proper truecolor via https://gist.github.com/andersevenrud/015e61af2fd264371032763d4ed965b6
+env:
+  TERM: xterm-256color
 window:
   # Blank space added around the window in pixels. This padding is scaled
   # by DPI and the specified value is always added at both opposing sides.
   padding:
-   x: 8
-   y: 8
+   x: 7
+   y: 7
   dimensions:
     columns: 120
     lines: 50
   opacity: 0.85
-  opacity_unfocused: 0.9
   dynamic_padding: false # Spread additional padding evenly around the terminal content.
   decorations: full
   startup_mode: Windowed
@@ -124,5 +121,40 @@ mouse:
 
   # If this is `true`, the cursor is temporarily hidden when typing.
   hide_when_typing: true
+    
+# Base16 Gruvbox dark, hard - alacritty color config
+# Dawid Kurek (dawikur@gmail.com), morhetz (https://github.com/morhetz/gruvbox)
 colors:
+  # Default colors
   transparent_background_colors: true
+  draw_bold_text_with_bright_colors: false
+  # Colors the cursor will use if `custom_cursor_colors` is true
+  # cursor:
+  #   text: '0x1d2021'
+  #   cursor: '0xd5c4a1'
+
+  # Normal colors
+  # normal:
+  #   black:   '0x1d2021'
+  #   red:     '0xfb4934'
+  #   green:   '0xb8bb26'
+  #   yellow:  '0xfabd2f'
+  #   blue:    '0x83a598'
+  #   magenta: '0xd3869b'
+  #   cyan:    '0x8ec07c'
+  #   white:   '0xd5c4a1'
+
+  # Bright colors
+  # bright:
+  #   black:   '0x665c54'
+  #   red:     '0xfe8019'
+  #   green:   '0x3c3836'
+  #   yellow:  '0x504945'
+  #   blue:    '0xbdae93'
+  #   magenta: '0xebdbb2'
+  #   cyan:    '0xd65d0e'
+  #   white:   '0xfbf1c7'
+      
+import:
+  - /home/carson/.cache/wal/colors-alacritty.yml
+
