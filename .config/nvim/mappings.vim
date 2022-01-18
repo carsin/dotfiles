@@ -84,6 +84,7 @@ map Q gq
 
 " Replace all on S
 nnoremap <leader>S :%s//g<Left><Left>
+vnoremap <leader>S :%s//g<Left><Left>
 
 " Perform dot commands over visual blocks:
 vnoremap . :normal .<CR>

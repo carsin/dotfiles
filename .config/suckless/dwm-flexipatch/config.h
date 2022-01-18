@@ -256,11 +256,8 @@ static char urgfgcolor[] = "#d3869b";
 static char urgbgcolor[] = "#050505";
 static char urgbordercolor[] = "#fabd2f";
 static char urgfloatcolor[] = "#fabd2f";
-static char actbgcolor[] = "#3c3836";
 
-
-
-#include "/home/carson/.cache/wal/colors-wal-dwm.h"
+// #include "/home/carson/.cache/wal/colors-wal-dwm.h"
 static char *colors[][ColCount] = {
     /*                       fg                bg                border float */
     [SchemeNorm] = {normfgcolor, normbgcolor, normbordercolor, normfloatcolor},
@@ -274,17 +271,17 @@ static char *colors[][ColCount] = {
     [SchemeUrg] = {urgfgcolor, urgbgcolor, urgbordercolor, urgfloatcolor},
 #if BAR_FLEXWINTITLE_PATCH
     // TODO: cleanup unneeded variables
-    [SchemeFlexActTTB] = {titleselfgcolor, actbgcolor, actbgcolor, c000000},
-    [SchemeFlexActLTR] = {titleselfgcolor, actbgcolor, actbgcolor, c000000},
-    [SchemeFlexActMONO] = {titleselfgcolor, actbgcolor, actbgcolor, c000000},
-    [SchemeFlexActGRID] = {titleselfgcolor, actbgcolor, actbgcolor, c000000},
-    [SchemeFlexActGRD1] = {titleselfgcolor, actbgcolor, actbgcolor, c000000},
-    [SchemeFlexActGRD2] = {titleselfgcolor, actbgcolor, actbgcolor, c000000},
-    [SchemeFlexActGRDM] = {titleselfgcolor, actbgcolor, actbgcolor, c000000},
-    [SchemeFlexActHGRD] = {titleselfgcolor, actbgcolor, actbgcolor, c000000},
-    [SchemeFlexActDWDL] = {titleselfgcolor, actbgcolor, actbgcolor, c000000},
-    [SchemeFlexActSPRL] = {titleselfgcolor, actbgcolor, actbgcolor, c000000},
-    [SchemeFlexActFloat] = {titleselfgcolor, actbgcolor, actbgcolor, c000000},
+    [SchemeFlexActTTB] = {titlenormfgcolor, normbgcolor, normbgcolor, c000000},
+    [SchemeFlexActLTR] = {titlenormfgcolor, normbgcolor, normbgcolor, c000000},
+    [SchemeFlexActMONO] = {titlenormfgcolor, normbgcolor, normbgcolor, c000000},
+    [SchemeFlexActGRID] = {titlenormfgcolor, normbgcolor, normbgcolor, c000000},
+    [SchemeFlexActGRD1] = {titlenormfgcolor, normbgcolor, normbgcolor, c000000},
+    [SchemeFlexActGRD2] = {titlenormfgcolor, normbgcolor, normbgcolor, c000000},
+    [SchemeFlexActGRDM] = {titlenormfgcolor, normbgcolor, normbgcolor, c000000},
+    [SchemeFlexActHGRD] = {titlenormfgcolor, normbgcolor, normbgcolor, c000000},
+    [SchemeFlexActDWDL] = {titlenormfgcolor, normbgcolor, normbgcolor, c000000},
+    [SchemeFlexActSPRL] = {titlenormfgcolor, normbgcolor, normbgcolor, c000000},
+    [SchemeFlexActFloat] = {titlenormfgcolor, normbgcolor, normbgcolor, c000000},
     [SchemeFlexInaTTB] = {titlenormfgcolor, normbgcolor, titlenormbordercolor, c000000},
     [SchemeFlexInaLTR] = {titlenormfgcolor, normbgcolor, titlenormbordercolor, c000000},
     [SchemeFlexInaMONO] = {titlenormfgcolor, normbgcolor, titlenormbordercolor, c000000},
@@ -802,6 +799,7 @@ static const char *xkb_layouts[] = {
 #endif // XKB_PATCH
 
 /* key definitions */
+/* https://www.cl.cam.ac.uk/~mgk25/ucs/keysymdef.h */
 #define MODKEY Mod1Mask
 #if COMBO_PATCH && SWAPTAGS_PATCH && TAGOTHERMONITOR_PATCH
 #define TAGKEYS(KEY, TAG)                                                      \
@@ -1105,8 +1103,8 @@ static Key keys[] = {
     {MODKEY, XK_o, winview, {0}},
 #endif // WINVIEW_PATCH
 #if XRDB_PATCH && !BAR_VTCOLORS_PATCH
-    {MODKEY | ShiftMask, XK_F5, xrdb, {.v = NULL}},
-#endif // XRDB_PATCH
+    {MODKEY, XK_F5, xrdb, {.v = NULL}},
+#endif // XDB_PATCH
        // {MODKEY, XK_t, setlayout, {.v = &layouts[0]}},
        // {MODKEY, XK_f, setlayout, {.v = &layouts[1]}},
        // {MODKEY, XK_m, setlayout, {.v = &layouts[2]}},
