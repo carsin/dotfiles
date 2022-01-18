@@ -34,6 +34,10 @@ alias wnew="wal -a 85 --backend colorz -i ~/files/photos/wallpapers/new/ && pywa
 # alias w3="wal -a 90 --backend colorthief -i ~/files/photos/wallpapers/wal/"
 # alias wnew="wal -a 90 --backend colorz -i ~/files/photos/wallpapers/new/"
 
+# workarounds
+# dont store ~/.wget-hsts
+alias wget="wget --hsts-file ~/.cache/wget/.wget-hsts"
+
 alias config="/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME"
 alias cfg="config"
 
@@ -101,6 +105,7 @@ alias egpu="sudo egpu-switcher"
 alias gpu="sudo egpu-switcher"
 
 # pacman aliases
+alias p='pacman' # install
 alias pac='sudo pacman -S' # install
 alias pacr='sudo pacman -Rs' # remove
 alias pacs='pacman -Ss' # search

@@ -18,8 +18,8 @@ dwm_spotify () {
     fi
 
     if [ "$PLAYER" = "spotify" ] || [ "$PLAYER" = "spotifyd" ] || [ "$PLAYER" = "ncspot" ]; then
-        ARTIST=$(playerctl metadata artist)
-        TRACK=$(playerctl metadata title)
+        ARTIST=$(playerctl --player="spotify" metadata artist)
+        TRACK=$(playerctl --player="spotify" metadata title)
         POSITION=$(playerctl position | sed 's/..\{6\}$//')
         DURATION=$(playerctl metadata mpris:length | sed 's/.\{6\}$//')
         STATUS=$(playerctl --player="spotify" status)

@@ -32,7 +32,7 @@ xset s noblank
 . /home/carson/bin/inittrackpad
 
 # statusbar
-/home/carson/.config/suckless/bar/dwm_bar.sh &
+/home/carson/.config/suckless/bar/bar.sh &
 
 # restore wallpaper and colorschemes
 wal -R
