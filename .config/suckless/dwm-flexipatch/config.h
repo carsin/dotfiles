@@ -354,7 +354,7 @@ const char *spcmd1[]  = {"alacritty", "--class", "spterm1,Alacritty", "-o", "win
 const char *spcmd2[]  = {"alacritty", "--class", "spterm2,Alacritty", "-o", "window.dimensions.columns=100", "-o", "window.dimensions.lines=36", "-e", "/home/carson/bin/scratchpads/scratchstart",  NULL};
 const char *spcmd3[]  = {"alacritty", "--class", "spterm3,Alacritty", "-o", "window.dimensions.columns=165", "-o", "window.dimensions.lines=60",  "-e","/home/carson/bin/scratchpads/scratchstart", NULL};
 const char *spcmd4[]  = {"alacritty", "--class", "spsptui,Alacritty", "-o", "window.dimensions.columns=135", "-o", "window.dimensions.lines=50", "-e", "/home/carson/bin/scratchpads/sptuistart", NULL};
-const char *spcmd5[]  = {"alacritty", "--class", "spranger,Alacritty", "-o", "window.dimensions.columns=155", "-o", "window.dimensions.lines=50", "-e", "ranger", NULL};
+const char *spcmd5[]  = {"alacritty", "--class", "spfiles,Alacritty", "-o", "window.dimensions.columns=155", "-o", "window.dimensions.lines=50", "-e", "ranger", NULL};
 const char *spcmd6[]  = {"alacritty", "--class", "sppulsemixer,Alacritty", "-o", "window.dimensions.columns=90", "-o", "window.dimensions.lines=30", "-e", "pulsemixer", NULL};
 const char *spcmd7[]  = {"alacritty", "--class", "sptop,Alacritty", "-o", "window.dimensions.columns=140", "-o", "window.dimensions.lines=43", "-e", "bpytop", NULL};
 const char *spcmd8[]  = {"alacritty", "--class", "spnvtop,Alacritty", "-o", "window.dimensions.columns=138", "-o", "window.dimensions.lines=41", "-e", "nvtop", NULL};
@@ -369,7 +369,7 @@ static Sp scratchpads[] = {
     {"spterm2", spcmd2},
     {"spterm3", spcmd3},
     {"spsptui", spcmd4},
-    {"spranger", spcmd5},
+    {"spfiles", spcmd5},
     {"sppulsemixer", spcmd6},
     {"sptop", spcmd7},
     {"spnvtop", spcmd8},
@@ -477,7 +477,7 @@ static const Rule rules[] = {
     RULE(.instance = "spterm2", .tags = SPTAG(1), .isfloating = 1)
     RULE(.instance = "spterm3", .tags = SPTAG(2), .isfloating = 1)
     RULE(.instance = "spsptui", .tags = SPTAG(3), .isfloating = 1)
-    RULE(.instance = "spranger", .tags = SPTAG(4), .isfloating = 1)
+    RULE(.instance = "spfiles", .tags = SPTAG(4), .isfloating = 1)
     RULE(.instance = "sppulsemixer", .tags = SPTAG(5), .isfloating = 1)
     RULE(.instance = "sptop", .tags = SPTAG(6), .isfloating = 1)
     RULE(.instance = "spnvtop", .tags = SPTAG(7), .isfloating = 1)
@@ -1167,7 +1167,7 @@ static Key keys[] = {
     {MODKEY, XK_grave, togglescratch, {.ui = 1}}, //scratch 2 (small)
     {MODKEY | ControlMask, XK_Escape, togglescratch, {.ui = 2}}, //scratch 2 (large)
     {MODKEY, XK_s, togglescratch, {.ui = 3}}, // ncspot
-    {MODKEY, XK_r, togglescratch, {.ui = 4}}, // ranger
+    {MODKEY, XK_r, togglescratch, {.ui = 4}}, // files
     {MODKEY, XK_d, togglescratch, {.ui = 5}}, // pulsemixer
     {MODKEY, XK_q, togglescratch, {.ui = 6}}, // top
     {MODKEY | ShiftMask, XK_q, togglescratch, {.ui = 7}}, // nvtop

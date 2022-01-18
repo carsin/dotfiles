@@ -5,9 +5,9 @@ Xft.dpi: 109
 Xft.font: Terminus:size=11:antialias=true:hinting=true:embeddedbitmap=false
 ! st.font: Terminus:size=11:antialias=true:hinting=true:embeddedbitmap=false
 Sxiv.font: Terminus:size=11:antialias=true:hinting=true:embeddedbitmap=false
-Sxiv.background: #181818
-Sxiv.barbackground: #181818
-Sxiv.barforeground: #fbf1c7
+Sxiv.mark: #fb4934
+Sxiv.background: #101010
+Sxiv.foreground: #ebdbb2
 ! Xft.autohint: 0
 Xft.lcdfilter:  lcddefault
 Xft.hintstyle:  hintslight
