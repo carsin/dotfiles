@@ -8,6 +8,8 @@ Sxiv.font: Terminus:size=11:antialias=true:hinting=true:embeddedbitmap=false
 Sxiv.mark: #fb4934
 Sxiv.background: #101010
 Sxiv.foreground: #ebdbb2
+Sxiv.barbackground: #101010
+Sxiv.barforeground: #ebdbb2
 ! Xft.autohint: 0
 Xft.lcdfilter:  lcddefault
 Xft.hintstyle:  hintslight

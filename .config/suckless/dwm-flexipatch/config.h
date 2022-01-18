@@ -60,8 +60,8 @@ static const int toptab = False;         /* False means bottom tab bar */
 static const int bar_height = 0; /* 0 means derive from font, >= 1 explicit height */
 #endif // BAR_HEIGHT_PATCH
 #if BAR_PADDING_PATCH
-static const int vertpad = 9; /* vertical padding of bar */
-static const int sidepad = 9; /* horizontal padding of bar */
+static const int vertpad = 5; /* vertical padding of bar */
+static const int sidepad = 5; /* horizontal padding of bar */
 #endif                         // BAR_PADDING_PATCH
 #if BAR_WINICON_PATCH
 #define ICONSIZE 15   /* icon size */
@@ -259,6 +259,8 @@ static char urgfloatcolor[] = "#fabd2f";
 static char actbgcolor[] = "#3c3836";
 
 
+
+#include "/home/carson/.cache/wal/colors-wal-dwm.h"
 static char *colors[][ColCount] = {
     /*                       fg                bg                border float */
     [SchemeNorm] = {normfgcolor, normbgcolor, normbordercolor, normfloatcolor},

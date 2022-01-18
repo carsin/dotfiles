@@ -30,8 +30,8 @@ bar_spacing = 0
 # the bandwidth of the visualizer.
 # Note: there is a minimum total bandwidth of 43Mhz x number of bars.
 # Cava will automatically increase the higher cutoff if a too low band is specified.
-lower_cutoff_freq = 25
-higher_cutoff_freq = 18000
+lower_cutoff_freq = 30
+higher_cutoff_freq = 16000
 
 
 # Seconds with no input before cava goes to sleep mode. Cava will not perform FFT or drawing and
@@ -86,7 +86,7 @@ source = auto
 # 'stereo' mirrors both channels with low frequencies in center.
 # 'mono' outputs left to right lowest to highest frequencies.
 # 'mono_option' set mono to either take input from 'left', 'right' or 'average'.
-channels = mono
+channels = stereo
 mono_option = average
 
 # Raw output target. A fifo will be created if target does not exist.
@@ -123,7 +123,7 @@ foreground = red
 # You can define as many as 8 different colors. They range from bottom to top of screen
 gradient = 0
 gradient_count = 5
-gradient_color_1 = red
+gradient_color_1 = color1
 gradient_color_2 = blue
 gradient_color_3 = cyan
 gradient_color_4 = green
@@ -135,7 +135,7 @@ gradient_color_5 = magenta
 
 # Percentage value for integral smoothing. Takes values from 0 - 100.
 # Higher values means smoother, but less precise. 0 to disable.
-integral = 50
+integral = 30
 
 # Disables or enables the so-called "Monstercat smoothing" with or without "waves". Set to 0 to disable.
 monstercat = 0
