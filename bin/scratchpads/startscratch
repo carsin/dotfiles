@@ -1,0 +1,3 @@
+tmux new-session -A -d -s scratch
+tmux send-keys -t scratch "neofetch" C-m
+tmux attach-session -t scratch

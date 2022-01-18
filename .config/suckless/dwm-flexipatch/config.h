@@ -350,16 +350,18 @@ static const char *const autostart[] = {
 // const char *spcmd9[]  = {"st", "-t", "spccal", "-g", "130x42", "-e", "calcurse", NULL};
 // const char *spcmd10[] = {"st", "-t", "spnvim", "-g", "173x54", "-e", "nvim", NULL};
 
-const char *spcmd1[]  = {"alacritty", "--class", "spterm1,Alacritty", "-o", "window.dimensions.columns=138", "-o", "window.dimensions.lines=45", NULL};
-const char *spcmd2[]  = {"alacritty", "--class", "spterm2,Alacritty", "-o", "window.dimensions.columns=100", "-o", "window.dimensions.lines=36", NULL};
-const char *spcmd3[]  = {"alacritty", "--class", "spterm3,Alacritty", "-o", "window.dimensions.columns=165", "-o", "window.dimensions.lines=60", NULL};
-const char *spcmd4[]  = {"alacritty", "--class", "spsptui,Alacritty", "-o", "window.dimensions.columns=135", "-o", "window.dimensions.lines=50", "-e", "spt", NULL};
+const char *spcmd1[]  = {"alacritty", "--class", "spterm1,Alacritty", "-o", "window.dimensions.columns=138", "-o", "window.dimensions.lines=45", "-e", "/home/carson/bin/scratchpads/startscratch", NULL};
+const char *spcmd2[]  = {"alacritty", "--class", "spterm2,Alacritty", "-o", "window.dimensions.columns=100", "-o", "window.dimensions.lines=36", "-e", "/home/carson/bin/scratchpads/startscratch",  NULL};
+const char *spcmd3[]  = {"alacritty", "--class", "spterm3,Alacritty", "-o", "window.dimensions.columns=165", "-o", "window.dimensions.lines=60",  "-e","/home/carson/bin/scratchpads/startscratch", NULL};
+const char *spcmd4[]  = {"alacritty", "--class", "spsptui,Alacritty", "-o", "window.dimensions.columns=135", "-o", "window.dimensions.lines=50", "-e", "/home/carson/bin/scratchpads/startsptui", NULL};
 const char *spcmd5[]  = {"alacritty", "--class", "spranger,Alacritty", "-o", "window.dimensions.columns=155", "-o", "window.dimensions.lines=50", "-e", "ranger", NULL};
 const char *spcmd6[]  = {"alacritty", "--class", "sppulsemixer,Alacritty", "-o", "window.dimensions.columns=90", "-o", "window.dimensions.lines=30", "-e", "pulsemixer", NULL};
 const char *spcmd7[]  = {"alacritty", "--class", "sptop,Alacritty", "-o", "window.dimensions.columns=140", "-o", "window.dimensions.lines=43", "-e", "bpytop", NULL};
 const char *spcmd8[]  = {"alacritty", "--class", "spnvtop,Alacritty", "-o", "window.dimensions.columns=138", "-o", "window.dimensions.lines=41", "-e", "nvtop", NULL};
-const char *spcmd9[]  = {"alacritty", "--class", "spccal,Alacritty", "-o", "window.dimensions.columns=130", "-o", "window.dimensions.lines=42", "-e", "calcurse", NULL};
-const char *spcmd10[] = {"alacritty", "--class", "spnvim,Alacritty", "-o", "window.dimensions.columns=173", "-o", "window.dimensions.lines=54", "-e", "nvim", NULL};
+const char *spcmd9[]  = {"alacritty", "--class", "spccal,Alacritty", "-o", "window.dimensions.columns=130", "-o", "window.dimensions.lines=42", "-e", "/home/carson/bin/scratchpads/startcal", NULL};
+// const char *spcmd10[] = {"alacritty", "--class", "spnvim,Alacritty", "-o", "window.dimensions.columns=173", "-o", "window.dimensions.lines=54", "-e", "tmux new-session -A -s wiki nvim", NULL};
+// const char *spcmd10[] = {"alacritty", "--class", "spnvim,Alacritty", "-o", "window.dimensions.columns=173", "-o", "window.dimensions.lines=54", "-e", "nvim", NULL};
+const char *spcmd10[] = {"alacritty", "--class", "spnvim,Alacritty", "-o", "window.dimensions.columns=173", "-o", "window.dimensions.lines=54", "-e", "/home/carson/bin/scratchpads/startwiki", NULL};
 
 // not working
 // const char *spcmd12[] = {"st", "-n", "spwiki", "-g", "174x50", "nvim -c e /home/carson/files/text/wiki/Index.md", NULL};
