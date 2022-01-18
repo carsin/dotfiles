@@ -2,7 +2,7 @@
 import sys
 from datetime import date, datetime
 day = datetime.today().strftime("%a, %b %d %Y")
-time = datetime.now().strftime("%H:%M:%S %p")
+time = datetime.now().strftime("%-I:%M:%S %p")
 
 template = "# Title\n" + day + """
 -------------------------------------------------------------------------------

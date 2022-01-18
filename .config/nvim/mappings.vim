@@ -41,7 +41,7 @@ nnoremap <silent> <C-p> :set invpaste <CR>
 
 " Insert date / time
 nnoremap <leader>id "=strftime("%a, %b %d %Y")<CR>p
-nnoremap <leader>it "=strftime("%I:%M %p")<CR>p
+nnoremap <leader>it "=strftime("%-I:%M:%S %p")<CR>p
 
 " Dont put change operations into register
 nnoremap c "_c

@@ -1,1 +1,3 @@
-../fetchtmuxstart scratch
+tmux new-session -A -d -s scratch
+tmux send-keys -t scratch "fastfetch" C-m
+tmux attach-session -t scratch

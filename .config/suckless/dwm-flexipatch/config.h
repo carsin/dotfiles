@@ -20,8 +20,8 @@ static int nomodbuttons =
 #if VANITYGAPS_PATCH
 static const unsigned int gappih = 5; /* horiz inner gap between windows */
 static const unsigned int gappiv = 5; /* vert inner gap between windows */
-static const unsigned int gappoh = 8; /* horiz outer gap between windows and screen edge */
-static const unsigned int gappov = 16; /* vert outer gap between windows and screen edge */
+static const unsigned int gappoh = 10; /* horiz outer gap between windows and screen edge */
+static const unsigned int gappov = 20; /* vert outer gap between windows and screen edge */
 static const int smartgaps_fact = 1; /* gap factor when there is only one client; 0 = no gaps, 3 = 3x outer
           gaps */
 #endif // VANITYGAPS_PATCH
@@ -978,8 +978,8 @@ static Key keys[] = {
 #if FOCUSDIR_PATCH
     {MODKEY, XK_h, focusdir, {.i = 0}}, // left
     {MODKEY, XK_l, focusdir, {.i = 1}},    // right
-    {MODKEY, XK_Up, focusdir, {.i = 2}},       // up
-    {MODKEY, XK_Down, focusdir, {.i = 3}},     // down
+    // {MODKEY, XK_Up, focusdir, {.i = 2}},       // up
+    // {MODKEY, XK_Down, focusdir, {.i = 3}},     // down
 #endif                                         // FOCUSDIR_PATCH
 #if SWAPFOCUS_PATCH && PERTAG_PATCH
     {MODKEY, XK_a, swapfocus, {.i = -1}},
