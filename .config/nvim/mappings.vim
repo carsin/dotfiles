@@ -42,6 +42,7 @@ nnoremap <silent> <C-p> :set invpaste <CR>
 " Insert date / time
 nnoremap <leader>id "=strftime("%a, %b %d %Y")<CR>p
 nnoremap <leader>it "=strftime("%-I:%M:%S %p")<CR>p
+nnoremap <leader>is "=strftime("-- CKF %-I:%M:%S %p")<CR>p
 
 " Dont put change operations into register
 nnoremap c "_c
@@ -222,7 +223,8 @@ nnoremap <silent> <leader>9 <Cmd>BufferLineGoToBuffer 9<CR>
 " nnoremap <silent><leader>q <Cmd>:BufferlineCyclePrev<CR><Cmd>:silent lua require('bufdelete').bufdelete(0, true)<CR>
 
 " a little more intuitive, but breaks when changes are mad to tabline with leader-H & L
-nnoremap <silent><leader>q <Cmd>:Bdelete<CR><Cmd>:bp<CR>
+" nnoremap <silent><leader>q <Cmd>:Bdelete<CR><Cmd>:bp<CR>
+nnoremap <silent><leader>q <Cmd>:Bdelete<CR>
 
 " Tree
 nnoremap <C-e> :NvimTreeToggle<CR>
