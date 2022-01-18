@@ -37,6 +37,13 @@ alias wnew="wal -a 85 --backend colorz -i ~/files/photos/wallpapers/new/ && pywa
 alias config="/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME"
 alias cfg="config"
 
+alias ka="killall"
+
+alias python="python3"
+alias calpoly="ssh ckfreedm@unix3.csc.calpoly.edu"
+alias cpftp="sftp ckfreedm@unix3.csc.calpoly.edu"
+
+# comfort
 alias cr="cargo run"
 alias crr="cargo run --release"
 alias cb="cargo build"
@@ -47,24 +54,21 @@ alias rt='./test'
 alias mr="make && ./run"
 alias jj='nohup java -jar'
 alias smci='sudo make clean install'
-
-alias ka="killall"
-
-alias python="python3"
-alias calpoly="ssh ckfreedm@unix3.csc.calpoly.edu"
-alias cpftp="sftp ckfreedm@unix3.csc.calpoly.edu"
-
+# apps
 alias top="htop"
 alias pm="pulsemixer"
 alias g="git"
 alias lg="lazygit"
 alias nf="neofetch"
-alias vim="nvim"
 alias v="nvim"
-alias v="nvim"
+alias fastfetch='fastfetch --load-config /home/carson/.config/fastfetch/config.conf'
 alias e="$EDITOR"
-alias t='tmux attach -t $(tmux ls | grep -v attached | head -1 | cut -f1 -d:) || tmux neofetch'
-alias tm="tmux new-session -A -s main"
+
+# tmux 
+# attach to any available session
+# alias t='tmux attach -t $(tmux ls | grep -v attached | head -1 | cut -f1 -d:) || tmux'
+alias t="/home/carson/bin/fetchtmuxstart main"
+# alias tm="tmux new-session -A -s main"
 alias t0="tmux a -t 0 || tmux new"
 alias t1="tmux a -t 1 || tmux new"
 alias matrix="neo-matrix -d 0.5 -f 144 -G 0 -s -S 5.5 --maxdpc=2"
