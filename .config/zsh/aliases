@@ -71,7 +71,8 @@ alias e="$EDITOR"
 # tmux 
 # attach to any available session
 # alias t='tmux attach -t $(tmux ls | grep -v attached | head -1 | cut -f1 -d:) || tmux'
-alias t="/home/carson/bin/fetchtmuxstart main"
+alias t="/home/carson/bin/fetchtmuxstart $1"
+alias tm="/home/carson/bin/fetchtmuxstart main"
 # alias tm="tmux new-session -A -s main"
 alias t0="tmux a -t 0 || tmux new"
 alias t1="tmux a -t 1 || tmux new"

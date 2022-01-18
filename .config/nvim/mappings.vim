@@ -122,8 +122,7 @@ vnoremap K :m '<-2<CR>gv=gv
 nnoremap <Backspace> <C-^>
 
 " Better increment/decrement operators
-nnoremap + <C-a>
-nnoremap - <C-x>
+noremap! <C-h> <C-w>
 
 " remove all trailing whitespace with gw
 nnoremap gw :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar><CR>
