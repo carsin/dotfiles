@@ -66,7 +66,8 @@ alias lg="lazygit"
 alias nf="neofetch"
 alias v="nvim"
 alias fastfetch='fastfetch --load-config /home/carson/.config/fastfetch/config.conf'
-alias e="$EDITOR"
+alias e="nvim"
+alias magit="nvim -c Neogit"
 
 # tmux 
 # attach to any available session
