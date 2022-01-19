@@ -38,7 +38,7 @@ cnoremap w!! execute 'silent! write !sudo tee % >/dev/null' <bar> edit!
 " Plugins {{{
 " Misc settings
 
-let g:vimwiki_list = [{'path': '~/files/text/wiki', 'syntax': 'markdown', 'ext': '.md', 'index': 'Dashboard', 'diary_index': 'daily', 'diary_rel_path': '/', 'diary_header': 'Daily Log', 'auto_diary_index': 1}]
+let g:vimwiki_list = [{'path': '~/files/text/wiki', 'syntax': 'markdown', 'ext': '.md', 'index': 'Dashboard', 'diary_index': 'log', 'diary_rel_path': '/', 'diary_header': 'DAILY LOG ENTRIES', 'auto_diary_index': 1}]
 let g:rooter_patterns = ['src/', '.git', 'Makefile', '*.sln', '.classpath', 'build/env.sh']
 let g:rooter_change_directory_for_non_project_files = 'current'
 " let g:rooter_resolve_links = 1
