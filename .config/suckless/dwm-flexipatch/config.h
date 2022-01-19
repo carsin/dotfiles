@@ -461,6 +461,7 @@ static const Rule rules[] = {
     RULE(.title = "Rockstar Games Launcher", .tags = 1 << 4)
     RULE(.instance = "origin.exe", .tags = 1 << 4, .isfloating = 1)
     RULE(.instance = "bf4.exe", .tags = 1 << 4, .isfloating = 1)
+    RULE(.instance = "obs", .tags = 1 << 4)
     RULE(.instance = "lutris", .tags = 1 << 4)
     RULE(.instance = "Steam", .tags = 1 << 4)
     RULE(.instance = "eadesktop.exe", .tags = 1 << 4)
@@ -679,8 +680,8 @@ static const Layout layouts[] = {
        stack axis, secondary stack axis, symbol func } */
     {"|M|", flextile, {1, -1, SPLIT_CENTERED_VERTICAL, LEFT_TO_RIGHT, TOP_TO_BOTTOM, TOP_TO_BOTTOM, NULL}}, // centeredmaster
     {"[]=", flextile, {1, -1, SPLIT_VERTICAL, TOP_TO_BOTTOM, TOP_TO_BOTTOM, 0, NULL}},           // default tile layout
-    // {"||:", flextile, {2, -1, SPLIT_VERTICAL, LEFT_TO_RIGHT, TOP_TO_BOTTOM, 0, NULL}},           // 2 masters tiled
     {"[]:", flextile, {1, -1, SPLIT_VERTICAL, TOP_TO_BOTTOM, GAPPLESSGRID_ALT2, 0, NULL}},           // tile layout with comfortable stack
+    {"||:", flextile, {2, -1, SPLIT_VERTICAL, LEFT_TO_RIGHT, TOP_TO_BOTTOM, 0, NULL}},           // 2 masters tiled
     {"[D]", flextile, {1, -1, SPLIT_VERTICAL, TOP_TO_BOTTOM, MONOCLE, 0, NULL}}, // deck
     {"[T]", flextile, {1, -1, SPLIT_VERTICAL, LEFT_TO_RIGHT, TATAMI, 0, NULL}}, // tatami mats
     {":::", flextile, {1, -1, NO_SPLIT, GAPPLESSGRID, GAPPLESSGRID, 0, NULL}}, // gappless grid
@@ -1002,8 +1003,8 @@ static Key keys[] = {
     {MODKEY | ShiftMask, XK_j, pushdown, {0}},
     {MODKEY | ShiftMask, XK_k, pushup, {0}},
 #endif // PUSH_PATCH / PUSH_NO_MASTER_PATCH
-    // {MODKEY, XK_i, incnmaster, {.i = +1}},
-    // {MODKEY, XK_d, incnmaster, {.i = -1}},
+    {MODKEY, XK_i, incnmaster, {.i = +1}},
+    {MODKEY | ShiftMask, XK_i, incnmaster, {.i = -1}},
 #if FLEXTILE_DELUXE_LAYOUT
     {MODKEY | ControlMask, XK_i, incnstack, {.i = +1}},
     {MODKEY | ControlMask, XK_u, incnstack, {.i = -1}},

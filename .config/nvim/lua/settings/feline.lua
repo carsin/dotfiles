@@ -102,25 +102,25 @@ table.insert(components.active[1], {
     return val
   end,
   left_sep = '░▒▓█',
-  right_sep = '█▓▒░',
+  right_sep = '█▓▒░ ',
   icon = ''
 })
 
 -- vi-symbol
-table.insert(components.active[1], {
-  provider = function()
-    return vi_mode_text[vi_mode_utils.get_vim_mode()]
-  end,
-  hl = function()
-    local val = {}
-    val.fg = vi_mode_utils.get_mode_color()
-    val.bg = 'bg'
-    -- val.style = 'bold'
-    return val
-  end,
-  left_sep = ' ',
-  right_sep = ' ',
-})
+-- table.insert(components.active[1], {
+--   provider = function()
+--     return vi_mode_text[vi_mode_utils.get_vim_mode()]
+--   end,
+--   hl = function()
+--     local val = {}
+--     val.fg = vi_mode_utils.get_mode_color()
+--     val.bg = 'bg'
+--     -- val.style = 'bold'
+--     return val
+--   end,
+--   left_sep = ' ',
+--   right_sep = ' ',
+-- })
 
 -- filename
 table.insert(components.active[1], {
@@ -138,6 +138,7 @@ table.insert(components.active[1], {
 -- gitBranch
 table.insert(components.active[1], {
   provider = 'git_branch',
+  icon = " ",
   hl = {
     fg = 'yellow',
     bg = 'bg',

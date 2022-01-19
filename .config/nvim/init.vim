@@ -120,6 +120,9 @@ command! TrimWhitespace call TrimWhitespace()
 " Turn off paste mode when leaving insert
 autocmd InsertLeave * set nopaste
 
+" filetype stuff
+autocmd FileType make setlocal noexpandtab
+
 " }}}
 " UI {{{
 

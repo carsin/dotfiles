@@ -44,7 +44,11 @@ alias cfg="config"
 alias ka="killall"
 
 alias python="python3"
-alias calpoly="ssh ckfreedm@unix3.csc.calpoly.edu"
+alias calpoly="TERM=screen ssh ckfreedm@unix3.csc.calpoly.edu"
+alias calpoly1="TERM=screen ssh ckfreedm@unix1.csc.calpoly.edu"
+alias calpoly2="TERM=screen ssh ckfreedm@unix2.csc.calpoly.edu"
+alias calpoly4="TERM=screen ssh ckfreedm@unix4.csc.calpoly.edu"
+alias calpoly5="TERM=screen ssh ckfreedm@unix5.csc.calpoly.edu"
 alias cpftp="sftp ckfreedm@unix3.csc.calpoly.edu"
 
 # comfort
@@ -64,6 +68,7 @@ alias pm="pulsemixer"
 alias g="git"
 alias lg="lazygit"
 alias nf="neofetch"
+alias ff="fastfetch"
 # alias v="nvim" USE E 
 alias fastfetch='fastfetch --load-config /home/carson/.config/fastfetch/config.conf'
 alias e="nvim"
