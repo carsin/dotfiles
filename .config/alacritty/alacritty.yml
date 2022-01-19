@@ -110,6 +110,13 @@ working_directory: None # startup in directory of parent process
 # Offer IPC using `alacritty msg` (unix only)
 #ipc_socket: true
 
+key_bindings:
+  - { key: Return,   mods: Control,      action: SpawnNewInstance }
+  # - { key: PageUp,   mods: Shift|Control,        action: ScrollPageUp,  }
+  # - { key: PageDown, mods: Shift|Control,        action: ScrollPageDown }
+  # - { key: Home,     mods: Shift,        action: ScrollToTop,   }
+  # - { key: End,      mods: Shift,        action: ScrollToBottom }
+    
 mouse:
   # Click settings
   #

@@ -15,7 +15,6 @@ template = "# PLACEHOLDER" + """
 # MIDNIGHT -- END OF LOG -- DAY NO """ + str(dayno.days) + """
 ##
 
--*-
 # """ + timestart + """ -- INIT LOG -- """ + date.upper() + """
 -------------------------------------------------------------------------------"""
 print(template)

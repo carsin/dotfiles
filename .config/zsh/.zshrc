@@ -1,7 +1,7 @@
 # https://unix.stackexchange.com/questions/71253/what-should-shouldnt-go-in-zshenv-zshrc-zlogin-zprofile-zlogout
 # ----------------------------------------------------
 # Import colorscheme from wal asynchronously
-(cat ~/.cache/wal/sequences &)
+# (cat ~/.cache/wal/sequences &)
 
 # Useful options & defaults
 setopt autocd extendedglob nomatch menucomplete interactive_comments
@@ -19,8 +19,8 @@ fi
 source "$ZDOTDIR/functions"
 
 # History in cache directory:
-HISTSIZE=10000
-SAVEHIST=10000
+HISTSIZE=1000000
+SAVEHIST=1000000
 HISTFILE=$XDG_CACHE_HOME/zsh/.histfile
 
 # completions

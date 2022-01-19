@@ -43,6 +43,12 @@ static const int showbar = 0; /* 0 means no bar */
 static const int showbar = 1;           /* 0 means no bar */
 #endif                       // BAR_HOLDBAR_PATCH
 static const int topbar = 1; /* 0 means bottom bar */
+
+// title tag indicator
+#define TAGSINDICATOR 1 // 0 = off, 1 = on if >1 client/view tag, 2 = always on
+#define TAGSPX 5        // # pixels for tag grid boxes
+#define TAGSROWS 2      // # rows in tag grid (9 tags, e.g. 3x3)
+
 #if TAB_PATCH
 /*  Display modes of the tab bar: never shown, always shown, shown only in  */
 /*  monocle mode in the presence of several windows.                        */
@@ -108,7 +114,7 @@ static const unsigned int systrayspacing = 2; /* systray spacing */
 static const int showsystray = 1;             /* 0 means no systray */
 #endif                                        // BAR_SYSTRAY_PATCH
 #if BAR_TAGLABELS_PATCH
-static const char ptagf[] = "%s[%s]"; /* format of a tag label */
+static const char ptagf[] = "%s{%s}"; /* format of a tag label */
 static const char etagf[] = "%s";    /* format of an empty tag */
 static const int lcaselbl = 1;         /* 1 means make tag label lowercase */
 #endif                                 // BAR_TAGLABELS_PATCH
@@ -1151,7 +1157,7 @@ static Key keys[] = {
      {0}}, /* flextile, flip master and stack areas */
 #endif     // FLEXTILE_DELUXE_LAYOUT
     // {MODKEY, XK_space, setlayout, {0}},
-    {MODKEY | ControlMask, XK_f, togglefloating, {0}},
+    {MODKEY | ShiftMask | ControlMask, XK_f, togglefloating, {0}},
     {MODKEY | ControlMask, XK_space, togglefloating, {0}},
 #if MAXIMIZE_PATCH
     // {MODKEY | ControlMask | ShiftMask, XK_h, togglehorizontalmax, {0}},
@@ -1186,7 +1192,7 @@ static Key keys[] = {
     {MODKEY | ShiftMask, XK_f, togglefullscreen, {0}},
 #endif // TOGGLEFULLSCREEN_PATCH
 #if !FAKEFULLSCREEN_PATCH && FAKEFULLSCREEN_CLIENT_PATCH
-    {MODKEY | ShiftMask | ControlMask, XK_f, togglefakefullscreen, {0}},
+    {MODKEY | ControlMask, XK_f, togglefakefullscreen, {0}},
 #endif // FAKEFULLSCREEN_CLIENT_PATCH
 #if FULLSCREEN_PATCH
     // {MODKEY | ShiftMask, XK_f, fullscreen, {0}},
@@ -1253,38 +1259,14 @@ static Key keys[] = {
     {MODKEY, XK_n, togglealttag, {0}},
 #endif // BAR_ALTERNATIVE_TAGS_PATCH
 #if BAR_TAGGRID_PATCH
-    {MODKEY | ControlMask,
-     XK_Up,
-     switchtag,
-     {.ui = SWITCHTAG_UP | SWITCHTAG_VIEW}},
-    {MODKEY | ControlMask,
-     XK_Down,
-     switchtag,
-     {.ui = SWITCHTAG_DOWN | SWITCHTAG_VIEW}},
-    {MODKEY | ControlMask,
-     XK_Right,
-     switchtag,
-     {.ui = SWITCHTAG_RIGHT | SWITCHTAG_VIEW}},
-    {MODKEY | ControlMask,
-     XK_Left,
-     switchtag,
-     {.ui = SWITCHTAG_LEFT | SWITCHTAG_VIEW}},
-    {MODKEY | Mod4Mask,
-     XK_Up,
-     switchtag,
-     {.ui = SWITCHTAG_UP | SWITCHTAG_TAG | SWITCHTAG_VIEW}},
-    {MODKEY | Mod4Mask,
-     XK_Down,
-     switchtag,
-     {.ui = SWITCHTAG_DOWN | SWITCHTAG_TAG | SWITCHTAG_VIEW}},
-    {MODKEY | Mod4Mask,
-     XK_Right,
-     switchtag,
-     {.ui = SWITCHTAG_RIGHT | SWITCHTAG_TAG | SWITCHTAG_VIEW}},
-    {MODKEY | Mod4Mask,
-     XK_Left,
-     switchtag,
-     {.ui = SWITCHTAG_LEFT | SWITCHTAG_TAG | SWITCHTAG_VIEW}},
+    // {MODKEY | ControlMask, XK_Up, switchtag, {.ui = SWITCHTAG_UP | SWITCHTAG_VIEW}},
+    // {MODKEY | ControlMask, XK_Down, switchtag, {.ui = SWITCHTAG_DOWN | SWITCHTAG_VIEW}},
+    // {MODKEY | ControlMask, XK_Right, switchtag, {.ui = SWITCHTAG_RIGHT | SWITCHTAG_VIEW}},
+    // {MODKEY | ControlMask, XK_Left, switchtag, {.ui = SWITCHTAG_LEFT | SWITCHTAG_VIEW}},
+    // {MODKEY | Mod4Mask, XK_Up, switchtag, {.ui = SWITCHTAG_UP | SWITCHTAG_TAG | SWITCHTAG_VIEW}},
+    // {MODKEY | Mod4Mask, XK_Down, switchtag, {.ui = SWITCHTAG_DOWN | SWITCHTAG_TAG | SWITCHTAG_VIEW}},
+    // {MODKEY | Mod4Mask, XK_Right, switchtag, {.ui = SWITCHTAG_RIGHT | SWITCHTAG_TAG | SWITCHTAG_VIEW}},
+    // {MODKEY | Mod4Mask, XK_Left, switchtag, {.ui = SWITCHTAG_LEFT | SWITCHTAG_TAG | SWITCHTAG_VIEW}},
 #endif // BAR_TAGGRID_PATCH
 #if MOVEPLACE_PATCH
     {MODKEY, XK_KP_7, moveplace, {.ui = WIN_NW}}, /* XK_KP_Home,  */
