@@ -224,7 +224,7 @@ nnoremap <silent> <leader>9 <Cmd>BufferLineGoToBuffer 9<CR>
 
 " a little more intuitive, but breaks when changes are mad to tabline with leader-H & L
 " nnoremap <silent><leader>q <Cmd>:Bdelete<CR><Cmd>:bp<CR>
-nnoremap <silent><leader>q <Cmd>:Bdelete!<CR>
+nnoremap <silent><leader>q <Cmd>:silent Bdelete!<CR>
 
 " Tree
 nnoremap <C-e> :NvimTreeToggle<CR>

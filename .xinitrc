@@ -22,7 +22,7 @@ fi
 # input configuration
 # capslock is ctrl
 setxkbmap -option ctrl:nocaps
-xset r rate 185 35 
+xset r rate 180 30 
 # setxkbmap -option altwin:swap_alt_win
 # echo 1|sudo tee /sys/module/hid_apple/parameters/swap_opt_cmd
 
