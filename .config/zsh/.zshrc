@@ -1,7 +1,7 @@
 # https://unix.stackexchange.com/questions/71253/what-should-shouldnt-go-in-zshenv-zshrc-zlogin-zprofile-zlogout
 # ----------------------------------------------------
 # Import colorscheme from wal asynchronously
-# (cat ~/.cache/wal/sequences &)
+(cat ~/.cache/wal/sequences &)
 
 # Useful options & defaults
 setopt autocd extendedglob nomatch menucomplete interactive_comments
@@ -41,6 +41,8 @@ PROMPT_EOL_MARK=''
 # zsh_add_plugin "zsh-users/zsh-syntax-highlighting"
 zsh_add_plugin "hlissner/zsh-autopair"
 zsh_add_plugin "zsh-users/zsh-autosuggestions"
+zsh_add_plugin "agkozak/agkozak-zsh-prompt"
+source ~/.config/zsh/themes/agkozakconfig.zsh-theme
 eval "$(zoxide init zsh)" # zoxide
 
 # BINDINGS
@@ -98,9 +100,7 @@ bindkey -M vicmd '^[[1;5D' backward-word
 
 # import aliases
 source "$ZDOTDIR/aliases"
-
-# load prompt theme
-source ~/.config/zsh/themes/carson.zsh-theme # load prompt
+# source ~/.config/zsh/themes/carson.zsh-theme # load prompt
 
 # append stuff to path
 path+=('/home/carson/.local/bin')

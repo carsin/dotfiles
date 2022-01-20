@@ -45,9 +45,6 @@ aw-qt &
 # autohide xcursor
 unclutter &
 
-# redshift
-redshift &
-
 # load xresources
 xrdb -merge ~/.Xresources 
 
