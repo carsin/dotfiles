@@ -42,7 +42,9 @@ let g:vimwiki_list = [{'path': '~/files/text/wiki', 'syntax': 'markdown', 'ext':
 let g:rooter_patterns = ['src/', '.git', 'Makefile', '*.sln', '.classpath', 'build/env.sh']
 let g:rooter_change_directory_for_non_project_files = 'current'
 " let g:rooter_resolve_links = 1
-au BufNewFile ~/files/text/wiki/*.md :silent 0r !~/.config/nvim/bin/template.py '%'
+" run template script on new daily wiki file
+
+autocmd BufNewFile ~/Documents/wiki/diary/[0-9]\\\{4\}-[0-9]\\\{2\}-[0-9]\\\{2\}.md :silent 0r !~/.config/nvim/bin/template.py '%'
 
 " Load plugins
 lua require('plugins')
