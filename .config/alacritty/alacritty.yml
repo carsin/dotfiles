@@ -114,6 +114,8 @@ key_bindings:
   - { key: Return,   mods: Control|Shift,      action: SpawnNewInstance }
   - { key: PageUp,   mods: Shift|Control,        action: ScrollPageUp,  }
   - { key: PageDown, mods: Shift|Control,        action: ScrollPageDown }
+  - { key: P,        mods: Shift|Control,        action: ScrollPageUp,  }
+  - { key: N,        mods: Shift|Control,        action: ScrollPageDown }
   # - { key: Home,     mods: Shift,        action: ScrollToTop,   }
   # - { key: End,      mods: Shift,        action: ScrollToBottom }
     

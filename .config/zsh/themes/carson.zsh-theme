@@ -31,7 +31,7 @@ add-zsh-hook chpwd .prompt.chpwd
 PS1='%F{1}%n%F{5}@%F{14}%m %F{4}> %F{8}[%F{7} %~ %F{8}] %F{%(?,10,9)}$%f '
 
 ZLE_RPROMPT_INDENT=0     # Right prompt margin
-setopt transientrprompt  # Auto-remove the right side of each prompt.
+# setopt transientrprompt  # Auto-remove the right side of each prompt.
 
 # Reduce prompt latency by fetching git status asynchronously.
 add-zsh-hook precmd .prompt.git-status.async
