@@ -28,7 +28,7 @@ setxkbmap -option ctrl:nocaps
 . /home/carson/bin/initmouse
 . /home/carson/bin/inittrackpad
 
-xset r rate 170 50 
+xset r rate 175 50 
 
 # statusbar
 /home/carson/.config/suckless/bar/bar.sh &
