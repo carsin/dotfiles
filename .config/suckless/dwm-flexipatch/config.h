@@ -954,6 +954,8 @@ static Key keys[] = {
     {0, XF86XK_AudioPlay, spawn, SHCMD("playerctl play-pause")},
 	{0, XF86XK_AudioNext, spawn, SHCMD("playerctl next")},
 	{0, XF86XK_AudioPrev, spawn, SHCMD("playerctl previous")},
+    {0, XF86XK_MonBrightnessUp, spawn, SHCMD("/home/carson/bin/bright up") },
+    {0, XF86XK_MonBrightnessDown, spawn, SHCMD("/home/carson/bin/bright down") },
     {MODKEY, XK_Print, spawn, SHCMD("/usr/bin/flameshot gui &")},
     {MODKEY | ShiftMask, XK_s, spawn, SHCMD("spotify --no-zygote")}, // no-zygote disables hardware (gpu) accel
     {MODKEY, XK_Home, spawn, SHCMD("timeout 3 /home/carson/bin/newpape.sh")},

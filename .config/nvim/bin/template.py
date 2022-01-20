@@ -1,5 +1,5 @@
 #!/usr/bin/python
-import fnmatch, os, requests, textwrap
+import fnmatch, os, requests, textwrap, calendar
 from datetime import date, datetime
 
 # date stuff
@@ -24,19 +24,21 @@ dayno = t_date - b_date
 now = datetime.now()
 # display formatting
 timestart = now.strftime("%-I:%M %p")
-date = custom_strftime("%B {S}, %Y, %A", now)
+date = custom_strftime("%A, %B {S}, %Y", now)
+daysInYear = 365 + calendar.isleap(now.year)
 # yearmath
 dayOfYear = now.timetuple().tm_yday
-yearPerc = round(dayOfYear / 365 * 100)
-date += " -- Day " + str(dayOfYear) + "/365 [" + f"{yearPerc:02}" + "%] • " + str(365 - dayOfYear) + " left"
+yearPerc = round(dayOfYear / daysInYear * 100, 2)
+date += " • Day " + str(dayOfYear) + "/" + str(daysInYear) + " (" + f"{yearPerc:05}" + "%) • " + str(daysInYear - dayOfYear) + " left"
 # count number of files with prefix 20*.md
 entrycount = len(fnmatch.filter(os.listdir('/home/carson/files/text/wiki'), '20*.md'))
+dateshort = now.strftime("%a %m/%d/%Y").upper()
 template = "# An Untitled Day\n* " + date + """
+
 """ + genQuote() + """
-
 -------------------------------------------------------------------------------
-## ENTRY """ + str(entrycount) + """ -- START LOG -- INIT """ + timestart + """
+## ENTRY """ + str(entrycount) + """ -- INIT LOG -- """ + dateshort + """
 
-## MIDNIGHT -- END OF LOG -- DAY NO """ + str(dayno.days) + """
+## DAY """ + str(dayno.days) + """ -- END OF LOG -- CREATED """ + timestart + """
 -------------------------------------------------------------------------------"""
 print(template)

@@ -559,7 +559,7 @@
  * it will be opened on the first tag.
  * https://dwm.suckless.org/patches/emptyview/
  */
-#define EMPTYVIEW_PATCH 1
+#define EMPTYVIEW_PATCH 0
 
 /* This patch allows the user to change size and placement of floating windows using only the
  * keyboard. It also allows for temporary vertical and horizontal extension of windows similar

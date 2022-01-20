@@ -109,8 +109,6 @@ alias pmrestart="systemctl --user restart pipewire.service pipewire.socket pipew
 alias pwrestart="systemctl --user restart pipewire.service pipewire.socket pipewire-pulse.socket"
 alias battery='acpi'
 alias ctrl='setxkbmap -option ctrl:nocaps'
-alias bright="sudo bright"
-alias autobright="sudo autobrightness"
 
 alias egpu="sudo egpu-switcher"
 alias gpu="sudo egpu-switcher"
