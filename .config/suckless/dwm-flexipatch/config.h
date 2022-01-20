@@ -814,8 +814,8 @@ static const char *xkb_layouts[] = {
       {MODKEY | ShiftMask, KEY, combotag, {.ui = 1 << TAG}},                   \
       {MODKEY | ControlMask, KEY, tagnextmon, {.ui = 1 << TAG}},               \
       {MODKEY | ControlMask | ShiftMask, KEY, swaptags, {.ui = 1 << TAG}},     \
-      {MODKEY | Mod4Mask, KEY, toggletag, {.ui = 1 << TAG}},   
-      // {MODKEY | Mod4Mask | ControlMask, KEY, tagprevmon, {.ui = 1 << TAG}},
+      // {MODKEY | Mod4Mask, KEY, toggletag, {.ui = 1 << TAG}},   
+      // // {MODKEY | Mod4Mask | ControlMask, KEY, tagprevmon, {.ui = 1 << TAG}},
       // {MODKEY | ControlMask, KEY, toggleview, {.ui = 1 << TAG}},               
 #elif COMBO_PATCH && SWAPTAGS_PATCH
 #define TAGKEYS(KEY, TAG)                                                      \
