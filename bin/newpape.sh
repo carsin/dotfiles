@@ -4,3 +4,4 @@ wait
 pywalfox update & # may be causing instability
 zathura-pywal -a 0.85
 pywal-discord
+wal_steam -w -d
