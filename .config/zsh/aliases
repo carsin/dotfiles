@@ -77,6 +77,8 @@ alias e="nvim"
 alias magit="nvim -c Neogit"
 alias tt="tt -quotes en -theme carson -showwpm -bold -noskip"
 alias tt1="tt -t 60 -theme carson -showwpm -bold -noskip"
+alias reddit="tuir"
+alias rtv="tuir"
 
 # tmux 
 # attach to any available session
@@ -124,3 +126,8 @@ alias pacro='paclo && sudo pacman -Rns $(pacman -Qtdq)' # remove orphans
 alias pacc='sudo pacman -Scc' # clean cache
 alias paclf='pacman -Ql' # list files
 
+# thefuck
+eval $(thefuck --alias)
+
+# go to root of git dir
+alias rootgit='cd $(git rev-parse --show-toplevel)'

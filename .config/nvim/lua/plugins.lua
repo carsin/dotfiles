@@ -152,13 +152,14 @@ return packer.startup({ function(use)
     config = function()
       local fterm = require('FTerm')
       fterm.setup({
+        cmd = "export IS_FTERM=1 && " .. os.getenv('SHELL'),
         dimensions = {
-          height = 0.8,
-          width = 0.8,
+          height = 0.75,
+          width = 0.65,
           x = 0.5,
           y = 0.5,
         },
-        border = 'single'
+        border = 'single',
       })
       end,
     }
