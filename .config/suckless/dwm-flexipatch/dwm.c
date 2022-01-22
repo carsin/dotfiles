@@ -342,7 +342,7 @@ struct Client {
 	#if SWITCHTAG_PATCH
 	unsigned int switchtag;
 	#endif // SWITCHTAG_PATCH
-	int isfixed, isfloating, isurgent, neverfocus, oldstate, isfullscreen;
+	int isfixed, iscentered, isfloating, isalwaysontop, isurgent, neverfocus, oldstate, isfullscreen;
 	#if !FAKEFULLSCREEN_PATCH && FAKEFULLSCREEN_CLIENT_PATCH
 	int fakefullscreen;
 	#endif // FAKEFULLSCREEN_CLIENT_PATCH
@@ -674,6 +674,7 @@ static void tag(const Arg *arg);
 static void tagmon(const Arg *arg);
 static void togglebar(const Arg *arg);
 static void togglefloating(const Arg *arg);
+static void togglealwaysontop(const Arg *arg);
 static void toggletag(const Arg *arg);
 static void toggleview(const Arg *arg);
 static void unfocus(Client *c, int setfocus, Client *nextfocus);
@@ -1403,7 +1404,7 @@ configurenotify(XEvent *e)
 					XMoveResizeWindow(dpy, bar->win, bar->bx, bar->by, bar->bw, bar->bh);
 			}
 			focus(NULL);
-			arrange(NULL);
+			arrange(NULL)
 		}
 	}
 }
@@ -3015,7 +3016,17 @@ restack(Monitor *m)
 		return;
 	if (m->sel->isfloating || !m->lt[m->sellt]->arrange)
 		XRaiseWindow(dpy, m->sel->win);
-	if (m->lt[m->sellt]->arrange && m->bar) {
+ 	/* raise the aot window */
+        for (Monitor *m_search = mons; m_search; m_search = m_search->next) {
+          for (c = m_search->clients; c; c = c->next) {
+            if (c->isalwaysontop) {
+              XRaiseWindow(dpy, c->win);
+              break;
+            }
+          }
+        }
+
+        if (m->lt[m->sellt]->arrange && m->bar) {
 		wc.stack_mode = Below;
 		wc.sibling = m->bar->win;
 		for (c = m->stack; c; c = c->snext)
@@ -3996,6 +4007,7 @@ togglefloating(const Arg *arg)
 		c->sfy = c->y;
 		c->sfw = c->w;
 		c->sfh = c->h;
+        selmon->sel->isalwaysontop = 0; /* disabled, turn this off too */
 	#endif // SAVEFLOATS_PATCH / EXRESIZE_PATCH
 	}
 	arrange(c->mon);
@@ -4003,6 +4015,27 @@ togglefloating(const Arg *arg)
 	#if BAR_EWMHTAGS_PATCH
 	setfloatinghint(c);
 	#endif // BAR_EWMHTAGS_PATCH
+}
+void togglealwaysontop(const Arg *arg) {
+  if (!selmon->sel)
+    return;
+  if (selmon->sel->isfullscreen)
+    return;
+
+  if (selmon->sel->isalwaysontop) {
+    selmon->sel->isalwaysontop = 0;
+  } else {
+    /* disable others */
+    for (Monitor *m = mons; m; m = m->next)
+      for (Client *c = m->clients; c; c = c->next)
+        c->isalwaysontop = 0;
+
+    /* turn on, make it float too */
+    selmon->sel->isfloating = 1;
+    selmon->sel->isalwaysontop = 1;
+  }
+
+  arrange(selmon);
 }
 
 void
