@@ -463,14 +463,6 @@ static const Rule rules[] = {
     RULE(.wintype = WTYPE "UTILITY", .isfloating = 1)
     RULE(.wintype = WTYPE "TOOLBAR", .isfloating = 1)
     RULE(.wintype = WTYPE "SPLASH", .isfloating = 1)
-    RULE(.title = "Grand Theft Auto V", .tags = 1 << 4)
-    RULE(.title = "Rockstar Games Launcher", .tags = 1 << 4)
-    RULE(.instance = "origin.exe", .tags = 1 << 4, .isfloating = 1)
-    RULE(.instance = "bf4.exe", .tags = 1 << 4, .isfloating = 1)
-    RULE(.instance = "obs", .tags = 1 << 4)
-    RULE(.instance = "lutris", .tags = 1 << 4)
-    RULE(.instance = "Steam", .tags = 1 << 4)
-    RULE(.instance = "eadesktop.exe", .tags = 1 << 4)
     RULE(.instance = "spotify", .tags = 1 << 3)
     RULE(.instance = "discord", .tags = 1 << 3)
     // RULE(.class = "Gimp", .tags = 1 << 4)
@@ -490,6 +482,18 @@ static const Rule rules[] = {
     RULE(.instance = "spccal", .tags = SPTAG(8), .isfloating = 1)
     RULE(.instance = "spnvim", .tags = SPTAG(9), .isfloating = 1)
     // RULE(.instance = "spsptui", .tags = SPTAG(10), .isfloating = 1)
+    // gaming
+    RULE(.title = "Grand Theft Auto V", .tags = 1 << 4)
+    RULE(.title = "Rockstar Games Launcher", .tags = 1 << 4)
+    RULE(.instance = "origin.exe", .tags = 1 << 4, .isfloating = 1)
+    RULE(.instance = "bf4.exe", .tags = 1 << 4, .isfloating = 1)
+    RULE(.instance = "obs", .tags = 1 << 4)
+    RULE(.instance = "lutris", .tags = 1 << 4)
+    RULE(.instance = "Steam", .tags = 1 << 4)
+    RULE(.instance = "eadesktop.exe", .tags = 1 << 4)
+    RULE(.instance = "multimc", .tags = 1 << 4)
+    RULE(.instance = "Minecraft* 1.18.1", .tags = 1 << 4)
+    RULE(.instance = "Sodium 1.18.1", .tags = 1 << 4)
 #endif // SCRATCHPADS_PATCH
 };
 
