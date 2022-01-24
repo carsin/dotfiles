@@ -114,31 +114,31 @@ lsp_installer.on_server_ready(function(server)
     end,
   }
 
-  if server.name == "rust_analyzer" then -- override rust_analyzer set up with rust-tools' implement
-    local rust_opts = require'settings.lsp.rust-tools'.opts
-    rust_opts.server = vim.tbl_deep_extend("force", server:get_default_options(), {
-        on_attach = opts.on_attach,
-        capabilities = opts.capaibilities,
-        flags = opts.flags,
-        handlers = opts.handlers,
-    })
-    rust_opts.server.settings = {
-			["rust-analyzer"] = {
-				checkOnSave = {
-					allFeatures = true,
-					overrideCommand = {
-						"cargo",
-						"clippy",
-						"--workspace",
-						"--all-targets",
-						"--all-features",
-            "--message-format=json",
-					},
-				},
-			},
-    }
-    require("rust-tools").setup(rust_opts)
-  elseif server.name == "jdtls" then -- override jdtls
+  -- if server.name == "rust_analyzer" then -- override rust_analyzer set up with rust-tools' implement
+  --   local rust_opts = require'settings.lsp.rust-tools'.opts
+  --   rust_opts.server = vim.tbl_deep_extend("force", server:get_default_options(), {
+  --       on_attach = opts.on_attach,
+  --       capabilities = opts.capaibilities,
+  --       flags = opts.flags,
+  --       handlers = opts.handlers,
+  --   })
+  --   rust_opts.server.settings = {
+		-- 	["rust-analyzer"] = {
+		-- 		checkOnSave = {
+		-- 			allFeatures = true,
+		-- 			overrideCommand = {
+		-- 				"cargo",
+		-- 				"clippy",
+		-- 				"--workspace",
+		-- 				"--all-targets",
+		-- 				"--all-features",
+  --           "--message-format=json",
+		-- 			},
+		-- 		},
+		-- 	},
+  --   }
+  --   require("rust-tools").setup(rust_opts)
+  if server.name == "jdtls" then -- override jdtls
     -- local jdtls_opts = require'plugins.lsp.jdtls'.config
     -- require("jdtls").start_or_attach(jdtls_opts)
   else

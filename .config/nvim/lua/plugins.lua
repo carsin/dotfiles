@@ -90,12 +90,12 @@ return packer.startup({ function(use)
     end,
   }
 
-  use { -- Rust Tools
-    'simrat39/rust-tools.nvim',
-    config = function()
-      require'settings.lsp.rust-tools'
-    end
-  }
+  -- use { -- Rust Tools
+  --   'simrat39/rust-tools.nvim',
+  --   config = function()
+  --     require'settings.lsp.rust-tools'
+  --   end
+  -- }
 
   use { -- telescope
     'nvim-telescope/telescope.nvim',

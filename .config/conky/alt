@@ -1,0 +1,110 @@
+conky.config = {
+    background = true,
+    use_xft = true,
+    font = 'Terminus:size=11',
+    font2 = 'Symbols Nerd Font:bold:size=11',
+    xftalpha = 1,
+    update_interval = 1.0,
+    total_run_times = 0,
+    own_window = true,
+    own_window_transparent = true,
+    own_window_type = 'override',
+    own_window_hints = 'undecorated,below,sticky,skip_taskbar,skip_pager',
+    double_buffer = true,
+    minimum_width = 300, minimum_height = 300,
+    maximum_width = 300,
+    draw_shades = false,
+    draw_outline = false,
+    draw_borders = false,
+    draw_graph_borders = true,
+    default_color = 'white',
+    default_shade_color = 'black',
+    default_outline_color = 'white',
+    alignment = 'top_right',
+    gap_x = 14,
+    gap_y = 25,
+    no_buffers = true,
+    uppercase = false,
+    cpu_avg_samples = 2,
+    override_utf8_locale = true,
+    color1 = '#FFFFFF',
+    color2 = '#1AB093',
+    color3 = '#CC0A0A',
+    own_window_argb_value = 0,
+    own_window_argb_visual = true,
+    own_window_colour = '#000000',
+};
+
+conky.text = [[
+
+# METEO
+${font2}${color2}METEO ${hr 2}
+${color1}${execi 900 curl -o ~/.wttr.png "wttr.in/Escaudoeuvres_qT0_lang=fr.png"}
+${image ~/.wttr.png -n -p 0,25}
+${voffset 35}
+${font}$alignr Updated :
+$alignr${execi 60 date -r ~/.wttr.png +"%d %b %H:%M"}
+# SYSTEME
+${font2}${color2}SYSTEME ${hr 2}
+${font}${color1}Uptime $alignr $uptime
+System $alignr Archlinux
+Kernel $alignr $kernel
+Packages $alignr ${execi 10000 pacman -Q | wc -l}
+
+# CPU
+${font2}${color2}CPU ${hr 2}
+${font}${color1}Intel Quad Core i7-2720QM @ ${freq_g} GHz
+${voffset 2}${color2}${cpubar}
+${font}${color1}${goto 8}CPU 1${goto 48}${if_match ${cpu cpu1} >= 80}$color3${cpu cpu1}${endif}${if_match ${cpu cpu1} < 80}$color1${cpu cpu1}${endif}%$color1${goto 82}CPU 2${goto 124}${if_match ${cpu cpu2} >= 80}$color3${cpu cpu2}${endif}${if_match ${cpu cpu2} < 80}$color1${cpu cpu2}${endif}%$color1${goto 157}CPU 3${goto 198}${if_match ${cpu cpu3} >= 80}$color3${cpu cpu3}${endif}${if_match ${cpu cpu3} < 80}$color1${cpu cpu3}${endif}%$color1${goto 232}CPU 4${goto 274}${if_match ${cpu cpu4} >= 80}$color3${cpu cpu4}${endif}${if_match ${cpu cpu4} < 80}$color1${cpu cpu4}${endif}%
+${voffset -3}${color2}${cpugraph cpu1 40,72} ${cpugraph cpu2 40,72} ${cpugraph cpu3 40,72} ${cpugraph cpu4 40,72}
+${font}${color1}${goto 8}CPU 5${goto 48}${if_match ${cpu cpu5} >= 80}$color3${cpu cpu5}${endif}${if_match ${cpu cpu5} < 80}$color1${cpu cpu5}${endif}%$color1${goto 82}CPU 6${goto 124}${if_match ${cpu cpu6} >= 80}$color3${cpu cpu6}${endif}${if_match ${cpu cpu6} < 80}$color1${cpu cpu6}${endif}%$color1${goto 157}CPU 7${goto 198}${if_match ${cpu cpu7} >= 80}$color3${cpu cpu7}${endif}${if_match ${cpu cpu7} < 80}$color1${cpu cpu7}${endif}%$color1${goto 232}CPU 8${goto 274}${if_match ${cpu cpu8} >= 80}$color3${cpu cpu8}${endif}${if_match ${cpu cpu8} < 80}$color1${cpu cpu8}${endif}%
+${voffset -3}${color2}${cpugraph cpu5 40,72} ${cpugraph cpu6 40,72} ${cpugraph cpu7 40,72} ${cpugraph cpu8 40,72}
+${font Carlito:bold:size=7}${color2}${goto 210}PID ${goto 258}CPU
+${font}${color1}${top name 1} $alignr ${goto 205}${top pid 1} ${goto 250}${top cpu 1} %
+${top name 2} $alignr ${goto 205}${top pid 2} ${goto 250}${top cpu 2} %
+${top name 3} $alignr ${goto 205}${top pid 3} ${goto 250}${top cpu 3} %
+${top name 4} $alignr ${goto 205}${top pid 4} ${goto 250}${top cpu 4} %
+${top name 5} $alignr ${goto 205}${top pid 5} ${goto 250}${top cpu 5} %
+
+# MEMOIRE
+${font2}${color2}MEMOIRE ${hr 2}
+${font}${color1}RAM${goto 50}$mem / $memmax ${goto 155} $memperc% ${goto 190}${color2}${membar 7}
+${color1}SWAP${goto 50}$swap / $swapmax ${goto 155} $swapperc% ${goto 190}${color2}${swapbar 7}
+${color1}tmp${goto 50}${fs_used /tmp} / ${fs_size /tmp} ${goto 155} ${fs_used_perc /tmp}% ${goto 190}${color2}${fs_bar 7 /tmp}
+
+${font Carlito:bold:size=7}${color2}${goto 178}PID ${goto 217}USE ${goto 257}MEM
+${font}${color1}${top_mem name 1} ${goto 170} ${top_mem pid 1} ${goto 205} ${top_mem mem 1}% ${goto 250} ${top_mem mem_res 1}
+${top_mem name 2} ${goto 170} ${top_mem pid 2} ${goto 205} ${top_mem mem 2}% ${goto 250} ${top_mem mem_res 2}
+${top_mem name 3} ${goto 170} ${top_mem pid 3} ${goto 205} ${top_mem mem 3}% ${goto 250} ${top_mem mem_res 3}
+${top_mem name 4} ${goto 170} ${top_mem pid 4} ${goto 205} ${top_mem mem 4}% ${goto 250} ${top_mem mem_res 4}
+${top_mem name 5} ${goto 170} ${top_mem pid 5} ${goto 205} ${top_mem mem 5}% ${goto 250} ${top_mem mem_res 5}
+
+# RESEAU
+${font2}${color2}RESEAU ${hr 2}
+${font}${color1}ESSID (Qual) $alignr ( ${wireless_link_qual_perc wlan0} % ) ${wireless_essid wlan0}
+Gateway / Local IP $alignr ${execi 10 route -nee | grep -m 1 "wlan0" | awk '{print $2}'} / ${addr wlan0}
+Public Ip (VPN) $alignr ${if_up tun0}( ${execi 10 nordvpn status | grep "Current server: " | awk {'print $3'} | cut -d . -f 1} )${endif} ${execi 10 curl "ipconfig.io"}
+Mac $alignr ${execi 10000 cat /sys/class/net/wlan0/address}
+${color2}${downspeedgraph wlan0 30,140}${goto 165}${upspeedgraph wlan0 30,140}${color1}
+${font}${goto 10}DL : ${downspeedf wlan0} kb/s ( ${totaldown wlan0} )${goto 165}UP : ${upspeedf wlan0} kb/s ( ${totalup wlan0} )
+
+# DISQUE DUR
+${font2}${color2}DISQUE DUR${hr 2}
+${font}${color1}/dev/sda1 $alignr ${fs_used_perc /} %
+${color2}${fs_bar 7 /}
+${color1}${goto 55}${fs_used /} / ${fs_size /} $alignr Free : ${fs_free /}
+${color2}${diskiograph_read /dev/disk/by-uuid/ab5a0e3b-631b-4c82-aba7-d78e99d7530b 15,140}${goto 165}${diskiograph_write /dev/disk/by-uuid/ab5a0e3b-631b-4c82-aba7-d78e99d7530b 15,140}
+${color1}Read IO: ${diskio_read /dev/disk/by-uuid/ab5a0e3b-631b-4c82-aba7-d78e99d7530b}${goto 165}Write IO: ${diskio_write /dev/disk/by-uuid/ab5a0e3b-631b-4c82-aba7-d78e99d7530b}
+
+
+${color1}/dev/sdb1 $alignr ${fs_used_perc /media/WD500/} %
+${color2}${fs_bar 7 /media/WD500/}
+${color1}${goto 55}${fs_used /media/WD500/} / ${fs_size /media/WD500/} $alignr Free : ${fs_free /media/WD500/}
+${color2}${diskiograph_read /dev/disk/by-uuid/f4f97e20-1beb-47c5-8e33-4f999d96af46 15,140}${goto 165}${diskiograph_write /dev/disk/by-uuid/f4f97e20-1beb-47c5-8e33-4f999d96af46 15,140}
+${color1}Read IO: ${diskio_read /dev/disk/by-uuid/f4f97e20-1beb-47c5-8e33-4f999d96af46}${goto 165}Write IO: ${diskio_write /dev/disk/by-uuid/f4f97e20-1beb-47c5-8e33-4f999d96af46}
+
+
+${color1}/dev/mmcblk0p1 $alignr ${fs_used_perc /media/SD/} %
+${color2}${fs_bar 7 /media/SD/}
+${color1}${goto 55}${fs_used /media/SD/} / ${fs_size /media/SD/} $alignr Free : ${fs_free /media/SD/}
+]];

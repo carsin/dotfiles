@@ -75,8 +75,8 @@ alias zath="zathura"
 alias fastfetch='fastfetch --load-config /home/carson/.config/fastfetch/config.conf'
 alias e="nvim"
 alias magit="nvim -c Neogit"
-alias tt="tt -quotes en -theme carson -showwpm -bold -noskip"
-alias tt1="tt -t 60 -theme carson -showwpm -bold -noskip"
+alias tt="tt -quotes en -t 30 -theme carson -showwpm -bold -noskip"
+alias tt1="tt -words 1000en -n 120 -g 5 -t 60 -theme carson -showwpm -bold -noskip"
 alias reddit="tuir"
 alias rtv="tuir"
 
