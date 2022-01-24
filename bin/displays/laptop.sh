@@ -1,9 +1,10 @@
 #!/usr/bin/bash
 
-export LIBVA_DRIVER_NAME=iHD
+# export LIBVA_DRIVER_NAME=iHD
+
 # set new xresources dpi
 newdpi=196
-echo "Xft.dpi: $newdpi" | xrdb -merge
+echo "Xf9.dpi: $newdpi" | xrdb -merge
 
 xrandr --output eDP-1-1 --auto --primary \
        --dpi $newdpi \

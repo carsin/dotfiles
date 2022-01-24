@@ -364,7 +364,7 @@ const char *spcmd6[]  = {"alacritty", "--class", "sppulsemixer,Alacritty", "-o",
 const char *spcmd7[]  = {"alacritty", "--class", "sptop,Alacritty", "-o", "window.dimensions.columns=140", "-o", "window.dimensions.lines=43", "-e", "bpytop", NULL};
 const char *spcmd8[]  = {"alacritty", "--class", "spnvtop,Alacritty", "-o", "window.dimensions.columns=138", "-o", "window.dimensions.lines=41", "-e", "nvtop", NULL};
 const char *spcmd9[]  = {"alacritty", "--class", "spccal,Alacritty", "-o", "window.dimensions.columns=130", "-o", "window.dimensions.lines=42", "-e", "/home/carson/bin/scratchpads/calstart", NULL};
-const char *spcmd10[] = {"alacritty", "--class", "spnvim,Alacritty", "-o", "window.dimensions.columns=173", "-o", "window.dimensions.lines=54", "-e", "/home/carson/bin/scratchpads/editorstart", NULL};
+const char *spcmd10[] = {"alacritty", "--class", "spnvim,Alacritty", "-o", "window.dimensions.columns=173", "-o", "window.dimensions.lines=53", "-e", "/home/carson/bin/scratchpads/editorstart", NULL};
 
 // not working
 // const char *spcmd12[] = {"st", "-n", "spwiki", "-g", "174x50", "nvim -c e /home/carson/files/text/wiki/Index.md", NULL};
@@ -1406,9 +1406,8 @@ static Key keys[] = {
     // {Mod3Mask | Mod1Mask, XK_period, floatpos, {.v = " 1p  1p"}}, // ↘
 #endif // FLOATPOS_PATCH
 #if SETBORDERPX_PATCH
-    {MODKEY | ControlMask, XK_minus, setborderpx, {.i = -1}},
-    {MODKEY | ControlMask, XK_plus, setborderpx, {.i = +1}},
-    {MODKEY | ControlMask, XK_numbersign, setborderpx, {.i = 0}},
+    {MODKEY | ShiftMask | ControlMask, XK_b, setborderpx, {.i = +1}},
+    {MODKEY | ShiftMask, XK_b, setborderpx, {.i = -1}},
 #endif // SETBORDERPX_PATCH
 #if CYCLELAYOUTS_PATCH
     {MODKEY | ShiftMask, XK_comma, cyclelayout, {.i = -1}},
