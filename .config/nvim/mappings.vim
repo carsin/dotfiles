@@ -253,6 +253,7 @@ nmap <leader>cc <Plug>SnipClose
 " zk-nvim
 " infile maps located in ./lua/settings/zk.lua
 nnoremap <leader>zn <Cmd>ZkNew { title = vim.fn.input('Title: ') }<CR>
+nnoremap <leader>zd <Cmd>ZkNew { dir = "log" }<CR>
 nnoremap <leader>zo <Cmd>ZkNotes<CR>
 nnoremap <leader>zt <Cmd>ZkTags<CR>
 nnoremap <leader>zf <Cmd>ZkNotes { match = vim.fn.input('Search: ') }<CR>
