@@ -250,3 +250,10 @@ vmap <silent> <leader>cr :lua require'sniprun'.run()<CR>
 nmap <leader>cx <Cmd>:SnipReset<CR> 
 nmap <leader>cc <Plug>SnipClose
 
+" zk-nvim
+" infile maps located in ./lua/settings/zk.lua
+nnoremap <leader>zn <Cmd>ZkNew { title = vim.fn.input('Title: ') }<CR>
+nnoremap <leader>zo <Cmd>ZkNotes<CR>
+nnoremap <leader>zt <Cmd>ZkTags<CR>
+nnoremap <leader>zf <Cmd>ZkNotes { match = vim.fn.input('Search: ') }<CR>
+vnoremap <leader>zf :'<,'>ZkMatch<CR>

@@ -38,7 +38,6 @@ cnoremap w!! execute 'silent! write !sudo tee % >/dev/null' <bar> edit!
 " Plugins {{{
 " Misc settings
 
-" let g:vimwiki_list = [{'path': '~/files/text/wiki', 'syntax': 'markdown', 'ext': '.md', 'index': 'Dashboard', 'diary_index': 'log', 'diary_rel_path': '/', 'diary_header': 'DAILY LOG ENTRIES', 'auto_diary_index': 1}]
 let g:rooter_patterns = ['src/', '.git', 'Makefile', '*.sln', '.classpath', 'build/env.sh']
 let g:rooter_change_directory_for_non_project_files = 'current'
 " let g:rooter_resolve_links = 1
@@ -53,25 +52,6 @@ augroup jdtls_lsp
     autocmd!
     autocmd FileType java lua require("jdtls").start_or_attach(require'settings.lsp.jdtls'.config)
 augroup end
-
-
-" Overrides vimwiki to close previous file's buffer when opening a new one with <CR>
-function! VimwikiLinkHandler(link)
-  " exclude ref links to headers
-  if a:link =~# '.*#.*'
-      return 0
-  endif
-  let buf = bufnr('%')
-  let link_infos = vimwiki#base#resolve_link(a:link)
-  if link_infos.filename == ''
-    echomsg 'Vimwiki Error: Unable to resolve link!'
-    return 0
-  else
-    exe 'edit ' . fnameescape(link_infos.filename)
-    exe ':silent w|:silent bd!' . buf
-    return 1
-  endif
-endfunction
 
 " }}}
 

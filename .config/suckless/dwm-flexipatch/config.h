@@ -486,6 +486,7 @@ static const Rule rules[] = {
     RULE(.title = "Grand Theft Auto V", .tags = 1 << 4)
     RULE(.title = "Rockstar Games Launcher", .tags = 1 << 4)
     RULE(.title = "Just Cause 3", .tags = 1 << 4)
+    RULE(.title = "Red Dead Redemption 2", .tags = 1 << 4)
     RULE(.instance = "origin.exe", .tags = 1 << 4, .isfloating = 1)
     RULE(.instance = "bf4.exe", .tags = 1 << 4, .isfloating = 1)
     RULE(.instance = "obs", .tags = 1 << 4)
@@ -961,7 +962,7 @@ static Key keys[] = {
 	{0, XF86XK_AudioPrev, spawn, SHCMD("playerctl previous")},
     {0, XF86XK_MonBrightnessUp, spawn, SHCMD("/home/carson/bin/bright up") },
     {0, XF86XK_MonBrightnessDown, spawn, SHCMD("/home/carson/bin/bright down") },
-    {MODKEY, XK_Print, spawn, SHCMD("/usr/bin/flameshot gui &")},
+    {MODKEY | ShiftMask, XK_Print, spawn, SHCMD("/usr/bin/flameshot")},
     {MODKEY | ShiftMask, XK_s, spawn, SHCMD("spotify --no-zygote")}, // no-zygote disables hardware (gpu) accel
     {MODKEY, XK_Home, spawn, SHCMD("timeout 3 /home/carson/bin/newpape.sh")},
     {MODKEY | ControlMask, XK_Home, spawn, SHCMD("killall -USR1 /usr/local/bin/st")},

@@ -47,7 +47,6 @@ return packer.startup({ function(use)
   use 'famiu/bufdelete.nvim'
   use 'antoinemadec/FixCursorHold.nvim' -- Needed while issue https://github.com/neovim/neovim/issues/12587 is still open
   use 'junegunn/vim-easy-align'
-  -- use 'vimwiki/vimwiki' -- Replace? https://github.com/oberblastmeister/neuron.nvim
   use 'kyazdani42/nvim-web-devicons'
   use 'ActivityWatch/aw-watcher-vim'
   use 'nathom/filetype.nvim'
@@ -101,9 +100,7 @@ return packer.startup({ function(use)
     'nvim-telescope/telescope.nvim',
     requires = {
       'nvim-lua/plenary.nvim',
-      -- 'ElPiloto/telescope-vimwiki.nvim',
       'nvim-telescope/telescope-project.nvim',
-      'ElPiloto/telescope-vimwiki.nvim',
       'kyazdani42/nvim-web-devicons',
       { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' },
       { 'nvim-telescope/telescope-frecency.nvim', requires = { "tami5/sqlite.lua" } } ,
@@ -298,10 +295,10 @@ return packer.startup({ function(use)
   use {
     'mickael-menu/zk-nvim',
     config = function()
-      require('zk').setup()
+      require('settings.zk')
     end
   }
-    
+
   if packer_bootstrap then -- auto set up conf after cloning packer.nvim
     require('packer').sync()
   end

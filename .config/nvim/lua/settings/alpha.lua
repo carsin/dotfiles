@@ -575,8 +575,8 @@ end
 local buttons = {
   type = "group",
   val = {
-    button("w", "  > Enter Wiki" , ":VimwikiIndex<CR>"),
-    button("d", "  > Daily Note" , ":VimwikiMakeDiaryNote<CR>"),
+    -- button("w", "  > Enter Wiki" , ":VimwikiIndex<CR>"),
+    -- button("d", "  > Daily Note" , ":VimwikiMakeDiaryNote<CR>"),
     button(".", "  > Load Directory Session " , ":SessionManager load_current_dir_session<cr>"),
     button("l", "  > Restore Last Session" , ":SessionManager load_last_session<CR>"),
     -- button("h", "  > Browse Sessions" , "<cmd>Telescope sessions [save_current=false]<cr>"),
