@@ -1,5 +1,8 @@
 #!/bin/sh
 
+# load xresources
+xrdb -merge ~/.Xresources 
+
 xrandr --auto
 
 # START SLOW ASS SPOTIFY NICE AND EARLY
@@ -28,8 +31,6 @@ setxkbmap -option ctrl:nocaps
 . /home/carson/bin/initmouse
 . /home/carson/bin/inittrackpad
 
-xset r rate 175 505
-
 # statusbar
 /home/carson/.config/suckless/bar/bar.sh &
 
@@ -45,8 +46,7 @@ aw-qt &
 # autohide xcursor
 unclutter &
 
-# load xresources
-xrdb -merge ~/.Xresources 
+xset r rate 175 55
 
 redshift &
 

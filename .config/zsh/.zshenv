@@ -22,4 +22,5 @@ export RUSTUP_HOME=$XDG_CACHE_HOME/rustup
 export VAGRANT_HOME=$XDG_CACHE_HOME/.vagrant.d
 
 export PAGER=nvimpager
-export LIBVA_DRIVER_NAME=vdpau
+# export LIBVA_DRIVER_NAME=vdpau
+export ZK_NOTEBOOK_DIR=/home/carson/files/docs/wiki

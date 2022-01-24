@@ -1,9 +1,9 @@
 -- download packer & bootstrap packages if it isn't installed
--- local fn = vim.fn
--- local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
--- if fn.empty(fn.glob(install_path)) > 0 then
---   packer_bootstrap = fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
--- end
+local fn = vim.fn
+local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
+if fn.empty(fn.glob(install_path)) > 0 then
+  packer_bootstrap = fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
+end
 
 -- Auto compile when there are changes in plugins.lua
 vim.cmd([[
@@ -29,7 +29,6 @@ return packer.startup({ function(use)
   -- TODO: Install
   -- https://github.com/sindrets/diffview.nvim better diff functionality
   -- https://github.com/nvim-treesitter/nvim-treesitter-refactor better refactoring
-  -- mg979/vim-visual-multi multiple cursors
   -- https://github.com/lewis6991/spellsitter.nvim
   -- https://github.com/glacambre/firenvim
   -- https://github.com/VonHeikemen/searchbox.nvim
@@ -48,11 +47,12 @@ return packer.startup({ function(use)
   use 'famiu/bufdelete.nvim'
   use 'antoinemadec/FixCursorHold.nvim' -- Needed while issue https://github.com/neovim/neovim/issues/12587 is still open
   use 'junegunn/vim-easy-align'
-  use 'vimwiki/vimwiki' -- Replace? https://github.com/oberblastmeister/neuron.nvim
+  -- use 'vimwiki/vimwiki' -- Replace? https://github.com/oberblastmeister/neuron.nvim
   use 'kyazdani42/nvim-web-devicons'
   use 'ActivityWatch/aw-watcher-vim'
   use 'nathom/filetype.nvim'
-  use 'airblade/vim-rooter' -- borked: cwds into /
+  use 'airblade/vim-rooter'
+  -- use 'editorconfig/editorconfig-vim'
   -- use 'rcarriga/nvim-notify' -- TODO: config file
 
   use { -- lsp config
@@ -101,7 +101,7 @@ return packer.startup({ function(use)
     'nvim-telescope/telescope.nvim',
     requires = {
       'nvim-lua/plenary.nvim',
-      'ElPiloto/telescope-vimwiki.nvim',
+      -- 'ElPiloto/telescope-vimwiki.nvim',
       'nvim-telescope/telescope-project.nvim',
       'ElPiloto/telescope-vimwiki.nvim',
       'kyazdani42/nvim-web-devicons',
@@ -294,7 +294,14 @@ return packer.startup({ function(use)
         -- refer to the configuration section below
         }
     end
-    }
+  }
+  use {
+    'mickael-menu/zk-nvim',
+    config = function()
+      require('zk').setup()
+    end
+  }
+    
   if packer_bootstrap then -- auto set up conf after cloning packer.nvim
     require('packer').sync()
   end

@@ -117,5 +117,5 @@ cmp.setup.cmdline(":", {
 })
 
 -- don't start cmp in file types
-vim.cmd([[ autocmd FileType vimwiki lua require('cmp').setup.buffer { enabled = false } ]])
-vim.cmd([[ autocmd FileType markdown lua require('cmp').setup.buffer { enabled = false } ]])
+-- vim.cmd([[ autocmd FileType vimwiki lua require('cmp').setup.buffer { enabled = false } ]])
+-- vim.cmd([[ autocmd FileType markdown lua require('cmp').setup.buffer { enabled = false } ]])
