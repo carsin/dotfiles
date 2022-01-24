@@ -1,0 +1,117 @@
+[note]
+language = "en"
+default-title = "Untitled"
+filename = "{{id}}-{{slug title}}"
+extension = "md"
+template = "default.md"
+# Path globs ignored while indexing existing notes.
+#ignore = [
+#    "drafts/*",
+#	"log.md"
+#]
+
+# Configure random ID generation.
+id-charset = "alphanum"
+id-length = 4
+id-case = "lower"
+
+
+# EXTRA VARIABLES
+# A dictionary of variables you can use for any custom values when generating
+# new notes. They are accessible in templates with {{extra.<key>}}
+# [extra]
+
+
+# GROUP OVERRIDES
+[group.daily]
+paths = ["log"]
+
+[group.daily.note]
+filename = "{{date now '%Y-%m-%d'}}"
+extension = "md"
+template = "log.md"
+
+
+# MARKDOWN SETTINGS
+[format.markdown]
+# Either "wiki", "markdown" or a custom template. Default is "markdown".
+link-format = "[[{{title}}"
+# link-format = "{{filename}}"
+
+# Indicates whether a link's path will be percent-encoded.
+# Defaults to true for "markdown" format and false for "wiki" format.
+#link-encode-path = true
+# Indicates whether a link's path file extension will be removed. Defaults to true.
+#link-drop-extension = true
+
+# Enable support for #hashtags.
+hashtags = true
+# Enable support for :colon:separated:tags:.
+colon-tags = true
+# Enable support for Bear's #multi-word tags#
+# Hashtags must be enabled for multi-word tags to work.
+multiword-tags = false
+
+
+# EXTERNAL TOOLS
+[tool]
+editor = "nvim"
+# pager = "$PAGER"
+fzf-preview = "bat -p --color always {-1}"
+[lsp]
+
+[lsp.diagnostics]
+# Each diagnostic can have for value: none, hint, info, warning, error
+wiki-title = "none"
+dead-link = "error"
+
+[lsp.completion]
+use-additional-text-edits = true
+# Show the note title in the completion pop-up, or fallback on its path if empty.
+#note-label = ""
+# Filter out the completion pop-up using the note title or its path.
+#note-filter-text = " "
+# Show the note filename without extension as detail.
+#note-detail = ""
+
+[filter]
+# Matches the notes created the last two weeks. For example:
+#    $ zk list recents --limit 15
+#    $ zk edit recents --interactive
+recents = "--sort created- --created-after 'last two weeks'"
+
+
+# COMMAND ALIASES
+#
+#   Aliases are user commands called with `zk <alias> [<flags>] [<args>]`.
+#
+#   The alias will be executed with `$SHELL -c`, please refer to your shell's
+#   man page to see the available syntax. In most shells:
+#     * $@ can be used to expand all the provided flags and arguments
+#     * you can pipe commands together with the usual | character
+#
+[alias]
+# Here are a few aliases to get you started.
+daily = 'zk new --no-input "$ZK_NOTEBOOK_DIR/log"'
+log = 'zk new --no-input "$ZK_NOTEBOOK_DIR/log"'
+
+# Defaults:
+# Shortcut to a command.
+ls = "zk list $@"
+# Edit the last modified note.
+last = "zk edit --limit 1 --sort modified- $@"
+# Edit the notes selected interactively among the notes created the last two weeks.
+recent = "zk edit --sort created- --created-after 'last two weeks' --interactive"
+# Print paths separated with colons for the notes found with the given
+# arguments. This can be useful to expand a complex search query into a flag
+# taking only paths. For example:
+#   zk list --link-to "`zk path -m potatoe`"
+path = "zk list --quiet --format {{path}} --delimiter , $@"
+# Show a random note.
+random = "zk list --quiet --format full --sort random --limit 1"
+# Returns the Git history for the notes found with the given arguments.
+hist = "zk list --format path --delimiter0 --quiet $@ | xargs -t -0 git log --patch --"
+# Edit this configuration file.
+conf = '$EDITOR "$ZK_NOTEBOOK_DIR/.zk/config.toml"'
+cfg = '$EDITOR "$ZK_NOTEBOOK_DIR/.zk/config.toml"'
+config = '$EDITOR "$ZK_NOTEBOOK_DIR/.zk/config.toml"'
