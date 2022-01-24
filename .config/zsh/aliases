@@ -20,13 +20,15 @@ alias diff="diff --color=auto"
 alias find="fd"
 
 # alias wr="killall -USR1 st"
-alias w="wal -a 85 --backend haishoku -i ~/files/photos/wallpapers/wal/ && pywalfox update"
-alias uw="wal -a 85 --backend haishoku -i ~/files/photos/wallpapers/ultrawide/ && pywalfox update"
+alias w="/home/carson/bin/newpape2.sh"
+alias uw="/home/carson/bin/newpape.sh"
+# alias w="wal -a 85 --backend haishoku -i ~/files/photos/wallpapers/wal/ && pywalfox update"
+# alias uw="wal -a 85 --backend haishoku -i ~/files/photos/wallpapers/ultrawide/ && pywalfox update"
 # alias w="wal -a 85 --backend haishoku -i ~/files/photos/wallpapers/wal/ && killall -USR1 st"
-alias w1="wal -a 85 -i ~/files/photos/wallpapers/wal/ && pywalfox update"
-alias w2="wal -a 85 --backend colorz -i ~/files/photos/wallpapers/wal && pywalfox update"
-alias w3="wal -a 85 --backend colorthief -i ~/files/photos/wallpapers/wal/ && pywalfox update"
-alias wnew="wal -a 85 --backend colorz -i ~/files/photos/wallpapers/new/ && pywalfox update "
+# alias w1="wal -a 85 -i ~/files/photos/wallpapers/wal/ && pywalfox update"
+# alias w2="wal -a 85 --backend colorz -i ~/files/photos/wallpapers/wal && pywalfox update"
+# alias w3="wal -a 85 --backend colorthief -i ~/files/photos/wallpapers/wal/ && pywalfox update"
+# alias wnew="wal -a 85 --backend colorz -i ~/files/photos/wallpapers/new/ && pywalfox update "
 
 # alias w="wal -a 90 -i ~/files/photos/wallpapers/wal && pywalfox update"
 # alias w1="wal -a 90 --backend haishoku -i ~/files/photos/wallpapers/wal/"
@@ -125,9 +127,6 @@ alias paclo='pacman -Qdt' # list orphans
 alias pacro='paclo && sudo pacman -Rns $(pacman -Qtdq)' # remove orphans
 alias pacc='sudo pacman -Scc' # clean cache
 alias paclf='pacman -Ql' # list files
-
-# thefuck
-eval $(thefuck --alias)
 
 # go to root of git dir
 alias rootgit='cd $(git rev-parse --show-toplevel)'

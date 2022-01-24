@@ -1,5 +1,6 @@
 #!/usr/bin/sh
 
+export LIBVA_DRIVER_NAME=nvidia
 newdpi=109
 
 # set new xresources dpi

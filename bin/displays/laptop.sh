@@ -1,6 +1,6 @@
 #!/usr/bin/bash
-sudo -v
 
+export LIBVA_DRIVER_NAME=iHD
 # set new xresources dpi
 newdpi=196
 echo "Xft.dpi: $newdpi" | xrdb -merge
@@ -11,7 +11,7 @@ xrandr --output eDP-1-1 --auto --primary \
 # kill apps with incorrect scaling
 # killall /usr/lib/firefox/firefox &
 
-exec sudo ~/bin/autobrightness.sh 
+exec ~/bin/autobrightness
 
 # restart dwm
 # killall dwm

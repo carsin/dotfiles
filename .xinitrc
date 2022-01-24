@@ -28,7 +28,7 @@ setxkbmap -option ctrl:nocaps
 . /home/carson/bin/initmouse
 . /home/carson/bin/inittrackpad
 
-xset r rate 175 50 
+xset r rate 175 505
 
 # statusbar
 /home/carson/.config/suckless/bar/bar.sh &
@@ -47,6 +47,8 @@ unclutter &
 
 # load xresources
 xrdb -merge ~/.Xresources 
+
+redshift &
 
 # start window manager
 while :; do 

@@ -485,6 +485,7 @@ static const Rule rules[] = {
     // gaming
     RULE(.title = "Grand Theft Auto V", .tags = 1 << 4)
     RULE(.title = "Rockstar Games Launcher", .tags = 1 << 4)
+    RULE(.title = "Just Cause 3", .tags = 1 << 4)
     RULE(.instance = "origin.exe", .tags = 1 << 4, .isfloating = 1)
     RULE(.instance = "bf4.exe", .tags = 1 << 4, .isfloating = 1)
     RULE(.instance = "obs", .tags = 1 << 4)

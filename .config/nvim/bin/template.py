@@ -32,15 +32,15 @@ dayOfYear = now.timetuple().tm_yday
 yearPerc = round(dayOfYear / daysInYear * 100, 2)
 date += " • Day " + str(dayOfYear) + "/" + str(daysInYear) + " (" + f"{yearPerc:05}" + "%) • " + str(daysInYear - dayOfYear) + " left"
 # count number of files with prefix 20*.md
-dateshort = now.strftime("%a %m/%d/%Y").upper()
+# dateshort = now.strftime("%a %m/%d/%Y").upper()
 entrycount = len(fnmatch.filter(os.listdir('/home/carson/files/text/wiki'), '20*.md'))
 
 template = "# " + now.strftime("%-m/%d") + " - An Untitled Day\n* " + date + """
 
 """ + genQuote() + """
 -------------------------------------------------------------------------------
-## ENTRY """ + str(entrycount) + """ -- INIT LOG -- """ + dateshort + """
+## ENTRY """ + str(entrycount) + """ -- INIT LOG -- CREATED """ + timestart + """
 
-## DAY """ + str(dayno.days) + """ -- END OF LOG -- CREATED """ + timestart + """
+## MIDNIGHT -- END OF LOG -- DAY """ + str(dayno.days) + """
 -------------------------------------------------------------------------------"""
 print(template)
