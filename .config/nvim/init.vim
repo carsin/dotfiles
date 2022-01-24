@@ -125,32 +125,33 @@ let g:gruvbox_material_better_performance = 1
 
 colorscheme gruvbox-material
 
-set showtabline=2      " Show top tab line
+set showtabline=2        " Show top tab line
 set cursorline
-set so=7               " How many lines from cursor to top / bottom of the screen before scrolling
-set number             " file line numbering
-set showcmd            " show last entered command
-set wildmenu           " visual auto complete for command menu
-set lazyredraw         " redraw only when needed
-set showmatch          " highlight matching [{()}]
-set noeb vb t_vb=      " no visual bell or beeping
-set ruler              " Always show current position
-set magic              " For regular expressions turn magic on
-set noshowmode         " Remove redundant status bar elements
+set so=7                 " How many lines from cursor to top / bottom of the screen before scrolling
+set number               " file line numbering
+set showcmd              " show last entered command
+set wildmenu             " visual auto complete for command menu
+set lazyredraw           " redraw only when needed
+set showmatch            " highlight matching [{()}]
+set noeb vb t_vb=        " no visual bell or beeping
+set ruler                " Always show current position
+set magic                " For regular expressions turn magic on
+set noshowmode           " Remove redundant status bar elements
 " set nofoldenable       " Don't autofold code
-set foldlevel=99       " Don't autofold past a certain ident level
-set linespace=0        " No extra space between lines
-set laststatus=2       " Show statusline
-set splitbelow         " Always vertically split below
-set splitright         " Always horizontally split to the right
-set fillchars+=vert:│  " Change vertical split character to solid line instead of line with gaps
-set shortmess+=W       " Don't pass messages to ins-completion-menu.
-set formatoptions-=cro " Disable auto insert comment
-set signcolumn=yes:1   " Column for diagnostics & git gutter
-set pumheight=30       " Shorten number of autocomplete suggestions
-set pumwidth=25        " Shorten width of autocomplete suggestions
-set pumblend=10        " Autocomplete background transparency
-let &fcs='eob: '       " No idiotic eob tildas
+set foldlevel=99         " Don't autofold past a certain ident level
+set linespace=0          " No extra space between lines
+set laststatus=2         " Show statusline
+set splitbelow           " Always vertically split below
+set splitright           " Always horizontally split to the right
+set fillchars+=vert:│    " Change vertical split character to solid line instead of line with gaps
+set shortmess+=W         " Don't pass messages to ins-completion-menu.
+set formatoptions-=cro   " Disable auto insert comment
+set signcolumn=yes:1     " Column for diagnostics & git gutter
+set pumheight=30         " Shorten number of autocomplete suggestions
+set pumwidth=25          " Shorten width of autocomplete suggestions
+set pumblend=10          " Autocomplete background transparency
+set foldcolumn=2         " More context 
+let &fcs='eob: '         " No idiotic eob tildas
 " set colorcolumn=80   " 80 char column guide
 " set winwidth=80
 " set winminwidth=30
@@ -168,18 +169,27 @@ set shortmess+=c
 set foldmethod=expr
 set foldexpr=nvim_treesitter#foldexpr()
 
-" Only show relative numbers in focused normal mode
-" augroup numbertoggle
-"   autocmd!
-"   autocmd BufEnter,FocusGained,InsertLeave,WinEnter * if &ft != "alpha" && &nu && mode() != "i" | set rnu   | set cursorline   | endif
-"   autocmd BufLeave,FocusLost,InsertEnter,WinLeave   * if &ft != "alpha" && &nu                  | set nornu | set nocursorline | endif
-" augroup END
-
+" Show / hide cursorline in normal and insert
 augroup numbertoggle
   autocmd!
   autocmd BufEnter,FocusGained,InsertLeave,WinEnter * if &ft != "alpha" && &nu && mode() != "i" | set cursorline   | endif
   autocmd BufLeave,FocusLost,InsertEnter,WinLeave   * if &ft != "alpha" && &nu                  | set nocursorline | endif
+  " autocmd BufEnter,FocusGained,InsertLeave,WinEnter * if &ft != "alpha" && &nu && mode() != "i" | set rnu   | set cursorline   | endif
+  " autocmd BufLeave,FocusLost,InsertEnter,WinLeave   * if &ft != "alpha" && &nu                  | set nornu | set nocursorline | endif
 augroup END
+
+" Fold markdown based on header
+function MarkdownLevel()   
+  let h = matchstr(getline(v:lnum), '^#\+')   
+  if empty(h)     
+    return "="   
+  else     
+    return ">" . len(h)   
+  endif
+endfunction
+"
+au BufEnter *.md setlocal foldexpr=MarkdownLevel()
+au BufEnter *.md setlocal foldmethod=expr   
 
 " Highlight yank
 augroup highlight_yank

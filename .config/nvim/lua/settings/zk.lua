@@ -1,6 +1,5 @@
 local lspc = require'settings.lsp.lspconfig'.get_config()
 
-
 require("zk").setup({
   picker = "telescope",
   lsp = {

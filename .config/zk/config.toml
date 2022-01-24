@@ -36,7 +36,7 @@ template = "log.md"
 [format.markdown]
 # Either "wiki", "markdown" or a custom template. Default is "markdown".
 link-format = "[[{{title}}"
-# link-format = "{{filename}}"
+# link-format = "markdown"
 
 # Indicates whether a link's path will be percent-encoded.
 # Defaults to true for "markdown" format and false for "wiki" format.
