@@ -44,8 +44,8 @@ nnoremap <leader>id "=strftime("%a, %b %d %Y")<CR>p
 nnoremap <leader>it "=strftime("%-I:%M:%S %p")<CR>p
 nnoremap <leader>is "=strftime("-- CKF %-I:%M:%S %p")<CR>p
 " wiki entries
-nnoremap <leader>ie "=strftime("### %-I:%M:%S %p \n")<CR>po
-nnoremap <leader>ih "=strftime("### %-I:%M:%S %p \n")<CR>po
+nnoremap <leader>ie "=strftime("## %-I:%M:%S %p \n")<CR>po
+nnoremap <leader>ih "=strftime("## %-I:%M:%S %p \n")<CR>po
 
 
 " Dont put change operations into register

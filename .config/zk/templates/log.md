@@ -1,1 +1,1 @@
-{{sh "python3 /home/carson/files/docs/wiki/.zk/templates/template.py "}}
+{{sh "python3 /home/carson/.config/zk/templates/template.py"}}

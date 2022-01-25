@@ -22,8 +22,10 @@ def custom_strftime(format, t):
 
 # days since birth
 b_date = date(2002, 10, 6)
+c_date = date(2022, 4, 13)
 t_date = date.today()
 dayno = t_date - b_date
+temptf = c_date - t_date
 now = datetime.now()
 # display formatting
 timestart = now.strftime("%-I:%M %p")
@@ -32,17 +34,18 @@ daysInYear = 365 + calendar.isleap(now.year)
 # yearmath
 dayOfYear = now.timetuple().tm_yday
 yearPerc = round(dayOfYear / daysInYear * 100, 2)
-date += " • Day " + str(dayOfYear) + "/" + str(daysInYear) + " (" + f"{yearPerc:05}" + "%) • " + str(daysInYear - dayOfYear) + " left"
+date += " • Day " + str(dayOfYear) + "/" + str(daysInYear) + " (" + f"{yearPerc:05}" + "%) • " + str(daysInYear - dayOfYear) + " left [" + str(temptf.days) + "TCF]"
 # count number of files with prefix 20*.md
 # dateshort = now.strftime("%a %m/%d/%Y").upper()
 entrycount = len(fnmatch.filter(os.listdir('/home/carson/files/docs/wiki/log/'), '20*.md'))
 
-template = "# " + now.strftime("%-m/%d") + " - An Untitled Day\n* " + genQuote() + """
-
+template = "# " + now.strftime("%-m/%d") + " - An Untitled Day\n" + genQuote() + """
+ 
 """ + date + """
 -------------------------------------------------------------------------------
-## ENTRY """ + str(entrycount) + """ -- INIT LOG -- CREATED """ + timestart + """
+# ENTRY """ + str(entrycount) + """ -- INIT LOG -- CREATED """ + timestart + """
 
-## MIDNIGHT -- END OF LOG -- DAY """ + str(dayno.days) + """
--------------------------------------------------------------------------------"""
+# MIDNIGHT -- END OF LOG -- DAY """ + str(dayno.days) + """
+-------------------------------------------------------------------------------
+:daily:"""
 print(template)

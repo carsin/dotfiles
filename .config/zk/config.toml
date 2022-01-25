@@ -45,7 +45,7 @@ link-format = "[[{{title}}"
 #link-drop-extension = true
 
 # Enable support for #hashtags.
-hashtags = true
+hashtags = false
 # Enable support for :colon:separated:tags:.
 colon-tags = true
 # Enable support for Bear's #multi-word tags#

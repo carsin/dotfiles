@@ -1,8 +1,9 @@
--- remove heavy unneeded sources from markdown 
+-- remove heavy unneeded sources from markdown
 local cmp = require('cmp')
 local sources = cmp.get_config().sources
 for i = #sources, 1, -1 do
-  if sources[i].name == 'buffer' or 'LuaSnip' or 'tmux' then
+  local c = sources[i].name
+  if c == 'buffer' or c == 'tmux' or c == 'luasnip' then
     table.remove(sources, i)
   end
 end
