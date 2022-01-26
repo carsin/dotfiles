@@ -1,12 +1,12 @@
 #!/bin/sh
 
+xrandr --auto
+
 # load xresources
 xrdb -merge ~/.Xresources 
 
-xrandr --auto
-
 # START SLOW ASS SPOTIFY NICE AND EARLY
-spotify --no-zygote &
+spotify &
 
 echo "Initializing desktop configuration (eGPU, ultrawide monitor)"
 # xrandr --setprovideroutputsource modesetting NVIDIA-0

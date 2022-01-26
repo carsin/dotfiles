@@ -10,6 +10,7 @@ Sxiv.background: #101010
 Sxiv.foreground: #ebdbb2
 Sxiv.barbackground: #101010
 Sxiv.barforeground: #ebdbb2
+xmenu.font: Terminus:size=11:antialias=true:hinting=true:embeddedbitmap=false
 ! Xft.autohint: 0
 Xft.lcdfilter:  lcddefault
 Xft.hintstyle:  hintslight

@@ -465,6 +465,7 @@ static const Rule rules[] = {
     RULE(.wintype = WTYPE "SPLASH", .isfloating = 1)
     RULE(.instance = "spotify", .tags = 1 << 3)
     RULE(.instance = "discord", .tags = 1 << 3)
+    RULE(.instance = "freetube", .tags = 1 << 4)
     // RULE(.class = "Gimp", .tags = 1 << 4)
     // RULE(.class = "Firefox", .tags = 1 << 7)
     RULE(.class = "St", .isterminal = 1)
@@ -698,10 +699,10 @@ static const Layout layouts[] = {
     {"[T]", flextile, {1, -1, SPLIT_VERTICAL, LEFT_TO_RIGHT, TATAMI, 0, NULL}}, // tatami mats
     {":::", flextile, {1, -1, NO_SPLIT, GAPPLESSGRID, GAPPLESSGRID, 0, NULL}}, // gappless grid
     {"-M-", flextile, {1, -1, SPLIT_CENTERED_HORIZONTAL, TOP_TO_BOTTOM, LEFT_TO_RIGHT, LEFT_TO_RIGHT, NULL}}, // centeredmaster horiz
-    {"[M]", flextile, {1, -1, NO_SPLIT, MONOCLE, MONOCLE, 0, NULL}}, // monocle
-    // {">M>", flextile, {-1, -1, FLOATING_MASTER, LEFT_TO_RIGHT, LEFT_TO_RIGHT, 0, NULL}}, // floating master
     {"TTT", flextile, {1, -1, SPLIT_HORIZONTAL, LEFT_TO_RIGHT, LEFT_TO_RIGHT, 0, NULL}}, // bstack
     {"(@)", flextile, {1, -1, NO_SPLIT, SPIRAL, SPIRAL, 0, NULL}}, // fibonacci spiral
+    {"[M]", flextile, {1, -1, NO_SPLIT, MONOCLE, MONOCLE, 0, NULL}}, // monocle
+    // {">M>", flextile, {-1, -1, FLOATING_MASTER, LEFT_TO_RIGHT, LEFT_TO_RIGHT, 0, NULL}}, // floating master
     {"><>", NULL, {0}}, /* no layout function means floating behavior */
     // {"===", flextile, {-1, -1, SPLIT_HORIZONTAL, LEFT_TO_RIGHT, TOP_TO_BOTTOM, 0, NULL}}, // bstackhoriz
     // {"[\\]", flextile, {-1, -1, NO_SPLIT, DWINDLE, DWINDLE, 0, NULL}}, // fibonacci dwindle
@@ -963,7 +964,7 @@ static Key keys[] = {
     {0, XF86XK_MonBrightnessUp, spawn, SHCMD("/home/carson/bin/bright up") },
     {0, XF86XK_MonBrightnessDown, spawn, SHCMD("/home/carson/bin/bright down") },
     {MODKEY | ShiftMask, XK_Print, spawn, SHCMD("/usr/bin/flameshot")},
-    {MODKEY | ShiftMask, XK_s, spawn, SHCMD("spotify --no-zygote")}, // no-zygote disables hardware (gpu) accel
+    {MODKEY | ShiftMask, XK_s, spawn, SHCMD("spotify")}, // --no-zygote flag disables hardware (gpu) accel
     {MODKEY, XK_Home, spawn, SHCMD("timeout 3 /home/carson/bin/newpape.sh")},
     {MODKEY | ControlMask, XK_Home, spawn, SHCMD("killall -USR1 /usr/local/bin/st")},
 #if KEYMODES_PATCH

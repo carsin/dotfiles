@@ -2,13 +2,13 @@ alias ..="cd .."
 alias ...="cd ../.."
 alias ....="cd ../../.."
 alias .....="cd ../../../.."
+alias ......="cd ../../../../../"
+alias .......="cd ../../../../../../"
+alias ........="cd ../../../../../../../"
+alias .........="cd ../../../../../../../../"
 alias ~="cd ~"
 alias l='ls'
 alias ls='exa -aF --color=always --sort=type --group-directories-first --ignore-glob=".DS_Store" --icons' # lots of icons are causing lag in st
-# alias ls='exa -aF --color=always --sort=type --group-directories-first --ignore-glob=".DS_Store"' 
-# alias ls='lsd -A'
-# alias ll='lsd -lA'
-# alias lt='lsd --tree -A'
 alias cp="cp -iv"
 alias mv="mv -iv"
 alias rm="rm -v"
@@ -16,25 +16,10 @@ alias bc="bc -ql"
 alias mkdir="mkdir -pv"
 alias grep="grep --color=auto"
 alias diff="diff --color=auto"
-
 alias find="fd"
 
-# alias wr="killall -USR1 st"
 alias w="/home/carson/bin/newpape2.sh"
 alias uw="/home/carson/bin/newpape.sh"
-# alias w="wal -a 85 --backend haishoku -i ~/files/photos/wallpapers/wal/ && pywalfox update"
-# alias uw="wal -a 85 --backend haishoku -i ~/files/photos/wallpapers/ultrawide/ && pywalfox update"
-# alias w="wal -a 85 --backend haishoku -i ~/files/photos/wallpapers/wal/ && killall -USR1 st"
-# alias w1="wal -a 85 -i ~/files/photos/wallpapers/wal/ && pywalfox update"
-# alias w2="wal -a 85 --backend colorz -i ~/files/photos/wallpapers/wal && pywalfox update"
-# alias w3="wal -a 85 --backend colorthief -i ~/files/photos/wallpapers/wal/ && pywalfox update"
-# alias wnew="wal -a 85 --backend colorz -i ~/files/photos/wallpapers/new/ && pywalfox update "
-
-# alias w="wal -a 90 -i ~/files/photos/wallpapers/wal && pywalfox update"
-# alias w1="wal -a 90 --backend haishoku -i ~/files/photos/wallpapers/wal/"
-# alias w2="wal -a 90 --backend colorz -i ~/files/photos/wallpapers/wal/"
-# alias w3="wal -a 90 --backend colorthief -i ~/files/photos/wallpapers/wal/"
-# alias wnew="wal -a 90 --backend colorz -i ~/files/photos/wallpapers/new/"
 
 # workarounds
 # dont store ~/.wget-hsts
@@ -73,51 +58,41 @@ alias lg="lazygit"
 alias nf="neofetch"
 alias ff="fastfetch"
 alias zath="zathura"
-# alias v="nvim" USE E 
-alias fastfetch='fastfetch --load-config /home/carson/.config/fastfetch/config.conf'
 alias e="nvim"
 alias magit="nvim -c Neogit"
 alias tt="tt -quotes en -t 30 -theme carson -showwpm -bold -noskip"
 alias tt1="tt -words 1000en -n 120 -g 5 -t 60 -theme carson -showwpm -bold -noskip"
+alias fastfetch='fastfetch --load-config /home/carson/.config/fastfetch/config.conf'
 alias reddit="tuir"
 alias rtv="tuir"
-
-# tmux 
-# attach to any available session
-# alias t='tmux attach -t $(tmux ls | grep -v attached | head -1 | cut -f1 -d:) || tmux'
+# alias t='tmux attach -t $(tmux ls | grep -v attached | head -1 | cut -f1 -d:) || tmux' # attach to any available session
 alias t="/home/carson/bin/fetchtmuxstart $1"
 alias tm="/home/carson/bin/fetchtmuxstart main"
-# alias tm="tmux new-session -A -s main"
 alias t0="tmux a -t 0 || tmux new"
 alias t1="tmux a -t 1 || tmux new"
 alias matrix="neo-matrix -d 0.5 -f 144 -G 0 -s -S 5.5 --maxdpc=2"
 alias fontpreview='fontpreview-ueberzug'
-
 alias wttr="curl wttr.in/San+Luis+Obispo"
 alias wttr2="curl v2d.wttr.in/San+Luis+Obispo"
-
-
-# calcurse
 alias ccal="cal"
 alias cal="calcurse"
-alias c="calcurse"
+alias egpu="sudo egpu-switcher"
+alias gpu="sudo egpu-switcher"
 
-# linux system
-alias dual="exec /home/carson/bin/displays/dual.sh"
-alias triple="exec /home/carson/bin/displays/triple.sh"
-alias laptop="exec /home/carson/bin/displays/laptop.sh"
-# alias uw="exec /home/carson/bin/displays/ultrawide.sh && w"
-alias ultrawide="exec /home/carson/bin/displays/ultrawide.sh"
+# scripts 
+alias dual="/home/carson/bin/displays/dual.sh"
+alias triple="/home/carson/bin/displays/triple.sh"
+alias laptop="/home/carson/bin/displays/laptop.sh"
+alias ultrawide="/home/carson/bin/displays/ultrawide.sh"
+alias dlsong="/home/carson/files/music/spotify/edm/new/dlsong.sh"
 
+# system
 alias pmrestart="systemctl --user restart pipewire.service pipewire.socket pipewire-pulse.socket"
 alias pwrestart="systemctl --user restart pipewire.service pipewire.socket pipewire-pulse.socket"
 alias battery='acpi'
 alias ctrl='setxkbmap -option ctrl:nocaps'
 
-alias egpu="sudo egpu-switcher"
-alias gpu="sudo egpu-switcher"
-
-# pacman aliases
+# pacman 
 alias p='pacman' # install
 alias pac='sudo pacman -S' # install
 alias pacr='sudo pacman -Rs' # remove
