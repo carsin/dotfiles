@@ -1,73 +1,38 @@
 local dap = require('dap')
+require("dapui").setup()
+require('telescope').load_extension('dap')
 
 vim.g.dap_virtual_text = true
 
--- CodeLLDB: C, C++, Rust
--- custom attach function
-dap.adapters.codelldb = function(on_adapter)
-  local stdout = vim.loop.new_pipe(false)
-  local stderr = vim.loop.new_pipe(false)
-
-  -- absolute path to bin
-  local cmd = '/home/carson/.local/share/nvim/user_servers/codelldb/extension/adapter/codelldb'
-
-  local handle, pid_or_err
-  local opts = {
-    stdio = {nil, stdout, stderr},
-    detached = true,
-  }
-  handle, pid_or_err = vim.loop.spawn(cmd, opts, function(code)
-    stdout:close()
-    stderr:close()
-    handle:close()
-    if code ~= 0 then
-      print("codelldb exited with code", code)
+-- LLDB: C, C++, Rust
+dap.adapters.lldb = {
+  type = 'executable',
+  attach = { pidProperty = "pid", pidSelect = "ask" },
+  command = '/usr/bin/lldb-vscode',
+  name = "lldb",
+  env = function()
+    local variables = {}
+    for k, v in pairs(vim.fn.environ()) do
+      table.insert(variables, string.format("%s=%s", k, v))
     end
-  end)
-  assert(handle, "Error running codelldb: " .. tostring(pid_or_err))
-  stdout:read_start(function(err, chunk)
-    assert(not err, err)
-    if chunk then
-      local port = chunk:match('Listening on port (%d+)')
-      if port then
-        vim.schedule(function()
-          on_adapter({
-            type = 'server',
-            host = '127.0.0.1',
-            port = port
-          })
-        end)
-      else
-        vim.schedule(function()
-          require("dap.repl").append(chunk)
-        end)
-      end
-    end
-  end)
-  stderr:read_start(function(err, chunk)
-    assert(not err, err)
-    if chunk then
-      vim.schedule(function()
-        require("dap.repl").append(chunk)
-      end)
-    end
-  end)
-end
+    return variables
+  end,
+}
 
 dap.configurations.cpp = {
   {
-    name = "Launch file",
-    type = "codelldb",
+    name = "Launch",
+    type = "lldb",
     request = "launch",
     program = function()
       return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
     end,
     cwd = '${workspaceFolder}',
-    stopOnEntry = true,
+    stopOnEntry = false,
+    args = {},
+    runInTerminal = false,
   },
 }
-
--- use it for c
 dap.configurations.c = dap.configurations.cpp
 
 -- dap.configurations.java = {
@@ -78,13 +43,9 @@ dap.configurations.c = dap.configurations.cpp
 --     hostName = "127.0.0.1";
 --     port = 5005;
 --   },
--- }
-local dap_install = require("dap-install")
-local dbg_list = require("dap-install.api.debuggers").get_installed_debuggers()
 
-for _, debugger in ipairs(dbg_list) do
-	dap_install.config(debugger)
-end
+dap.configurations.c = dap.configurations.cpp
+dap.configurations.rust = dap.configurations.cpp
 
 -- Keymaps
 local function map(mode, lhs, rhs, opts)
@@ -116,4 +77,4 @@ map('n', '<leader>dv', '<cmd>lua require"telescope".extensions.dap.variables{}<C
 map('n', '<leader>df', '<cmd>lua require"telescope".extensions.dap.frames{}<CR>')
 
 -- nvim-dap-ui
-map('n', '<leader>m', '<cmd>lua require"dapui".toggle()<CR>')
+map('n', '<leader>mui', '<cmd>lua require"dapui".toggle()<CR>')
