@@ -21,10 +21,7 @@ alias find="fd"
 alias w="/home/carson/bin/newpape2.sh"
 alias uw="/home/carson/bin/newpape.sh"
 
-# workarounds
-# dont store ~/.wget-hsts
-alias wget="wget --hsts-file ~/.cache/wget/.wget-hsts"
-
+# config storage
 alias config="/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME"
 alias cfg="config"
 

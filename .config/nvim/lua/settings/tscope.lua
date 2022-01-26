@@ -227,6 +227,7 @@ telescope.setup {
 telescope.load_extension('fzf')
 telescope.load_extension('project')
 telescope.load_extension('frecency')
+telescope.load_extension('dap')
 -- telescope.load_extension('sessions')
 -- telescope.load_extension('notify')
 return M;
