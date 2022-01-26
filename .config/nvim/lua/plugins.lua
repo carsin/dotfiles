@@ -28,10 +28,7 @@ packer.init({
 return packer.startup({ function(use)
   -- TODO: Install
   -- https://github.com/sindrets/diffview.nvim better diff functionality
-  -- https://github.com/nvim-treesitter/nvim-treesitter-refactor better refactoring
-  -- https://github.com/lewis6991/spellsitter.nvim
   -- https://github.com/glacambre/firenvim
-  -- https://github.com/VonHeikemen/searchbox.nvim
   use 'lewis6991/impatient.nvim'
   use 'wbthomason/packer.nvim'
   use 'nvim-lua/popup.nvim'
@@ -117,7 +114,6 @@ return packer.startup({ function(use)
     end,
   }
 
-
   use { -- nvim-cmp
     "hrsh7th/nvim-cmp",
     requires = {
@@ -168,8 +164,6 @@ return packer.startup({ function(use)
   end,
  }
 
-  -- TODO: Replace? https://github.com/kevinhwang91/nvim-bqf
-  -- or https://github.com/stevearc/qf_helper.nvim
   use { -- Trouble
     'folke/trouble.nvim',
     requires = 'kyazdani42/nvim-web-devicons',
@@ -212,17 +206,18 @@ return packer.startup({ function(use)
     end,
   }
 
-  -- use { -- DAP
-  --   'mfussenegger/nvim-dap',
-  --   requires = {
-  --     'nvim-telescope/telescope-dap.nvim',
-  --     'theHamsta/nvim-dap-virtual-text',
-  --     'rcarriga/nvim-dap-ui',
-  --   },
-  --   config = function()
-  --     require'settings.lsp.dap'
-  --   end
-  -- }
+  use { -- DAP
+    'mfussenegger/nvim-dap',
+    requires = {
+      'nvim-telescope/telescope-dap.nvim',
+      'theHamsta/nvim-dap-virtual-text',
+      'rcarriga/nvim-dap-ui',
+      'Pocco81/DAPInstall.nvim',
+    },
+    config = function()
+      require'settings.lsp.dap'
+    end
+  }
 
   use { -- AutoSaves the buffer
     'Pocco81/AutoSave.nvim',
@@ -286,9 +281,6 @@ return packer.startup({ function(use)
     "folke/which-key.nvim",
     config = function()
         require("which-key").setup {
-        -- your configuration comes here
-        -- or leave it empty to use the default settings
-        -- refer to the configuration section below
         }
     end
   }
@@ -303,6 +295,18 @@ return packer.startup({ function(use)
     'j-hui/fidget.nvim',
     config = function()
       require"fidget".setup{}
+    end
+  }
+
+  use { -- keep windows in position
+    "luukvbaal/stabilize.nvim",
+    config = function()
+      require("stabilize").setup({
+        ignore = {  -- do not manage windows matching these file/buftypes
+          filetype = { "list", "help" },
+          buftype = { "terminal" },
+        },
+      });
     end
   }
 

@@ -77,3 +77,7 @@ require'nvim-treesitter.configs'.setup {
     enable = true,
   },
 }
+
+require('spellsitter').setup {
+  enable = {'markdown', 'md'},
+}

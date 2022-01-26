@@ -46,7 +46,10 @@ aw-qt &
 # autohide xcursor
 unclutter &
 
+# key repeat
 xset r rate 175 55
+# no screen blanking
+xset s off
 
 redshift &
 
