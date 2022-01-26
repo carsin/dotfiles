@@ -39,7 +39,6 @@ return packer.startup({ function(use)
   use 'sainnhe/gruvbox-material'
   use 'norcalli/nvim-colorizer.lua'
   use 'ggandor/lightspeed.nvim'
-  use 'editorconfig/editorconfig-vim'
   use 'chaoren/vim-wordmotion'
   use 'tpope/vim-surround'
   use 'tpope/vim-repeat'
@@ -51,7 +50,8 @@ return packer.startup({ function(use)
   use 'ActivityWatch/aw-watcher-vim'
   use 'nathom/filetype.nvim'
   use 'airblade/vim-rooter'
-  -- use 'editorconfig/editorconfig-vim'
+  use 'mbbill/undotree'
+  use 'editorconfig/editorconfig-vim'
   -- use 'rcarriga/nvim-notify' -- TODO: config file
 
   use { -- lsp config
@@ -282,7 +282,7 @@ return packer.startup({ function(use)
       }
     end
   }
-  use {
+  use { -- which key
     "folke/which-key.nvim",
     config = function()
         require("which-key").setup {
@@ -292,10 +292,17 @@ return packer.startup({ function(use)
         }
     end
   }
-  use {
+  use { -- zettlekasten
     'mickael-menu/zk-nvim',
     config = function()
       require('settings.zk')
+    end
+  }
+
+  use { -- lsp status
+    'j-hui/fidget.nvim',
+    config = function()
+      require"fidget".setup{}
     end
   }
 

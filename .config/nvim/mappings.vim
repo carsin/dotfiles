@@ -258,3 +258,6 @@ nnoremap <leader>zo <Cmd>ZkNotes<CR>
 nnoremap <leader>zt <Cmd>ZkTags<CR>
 nnoremap <leader>zf <Cmd>ZkNotes { match = vim.fn.input('Search: ') }<CR>
 vnoremap <leader>zf :'<,'>ZkMatch<CR>
+
+" undotree
+nnoremap <leader>u :UndotreeToggle<CR>

@@ -7,7 +7,7 @@
 static const unsigned int borderpx = 0; /* border pixel of windows */
 static const int corner_radius = 10;
 #else
-static const unsigned int borderpx = 1; /* border pixel of windows */
+static const unsigned int borderpx = 3; /* border pixel of windows */
 #endif                               // ROUNDED_CORNERS_PATCH
 static const unsigned int snap = 32; /* snap pixel */
 #if SWALLOW_PATCH
@@ -18,8 +18,8 @@ static int nomodbuttons =
     1; /* allow client mouse button bindings that have no modifier */
 #endif // NO_MOD_BUTTONS_PATCH
 #if VANITYGAPS_PATCH
-static const unsigned int gappih = 5; /* horiz inner gap between windows */
-static const unsigned int gappiv = 5; /* vert inner gap between windows */
+static const unsigned int gappih = 6; /* horiz inner gap between windows */
+static const unsigned int gappiv = 6; /* vert inner gap between windows */
 static const unsigned int gappoh = 10; /* horiz outer gap between windows and screen edge */
 static const unsigned int gappov = 20; /* vert outer gap between windows and screen edge */
 static const int smartgaps_fact = 1; /* gap factor when there is only one client; 0 = no gaps, 3 = 3x outer

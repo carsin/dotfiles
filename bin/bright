@@ -33,6 +33,11 @@ case $1 in
     xbacklight -dec 5
     send_notification
     ;;
+  s)
+    # set backlight
+    xbacklight -set $2
+    send_notification
+    ;;
   set)
     # set backlight
     xbacklight -set $2
