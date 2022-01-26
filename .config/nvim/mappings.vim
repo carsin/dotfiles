@@ -179,6 +179,7 @@ function! OpenTerm()
   endif
   exe 'lua require("FTerm").toggle()'
 endfunction
+
 " FTerm
 nnoremap <silent> <leader>t <CMD>call OpenTerm()<CR>
 nnoremap <silent> <C-t> <CMD>:w<CR><CMD>lua require("FTerm").toggle()<CR>
@@ -199,16 +200,6 @@ nnoremap <leader>h :BufferLineCyclePrev<CR>
 nnoremap <leader>l :BufferLineCycleNext<CR>
 nnoremap <leader>H :BufferLineMovePrev<CR>
 nnoremap <leader>L :BufferLineMoveNext<CR>
-" Switch to buffers and save when doing so
-" nnoremap <silent><leader>1 <Cmd>:silent w<CR><Cmd>BufferLineGoToBuffer 1<CR>
-" nnoremap <silent><leader>2 <Cmd>:silent w<CR><Cmd>BufferLineGoToBuffer 2<CR>
-" nnoremap <silent><leader>3 <Cmd>:silent w<CR><Cmd>BufferLineGoToBuffer 3<CR>
-" nnoremap <silent><leader>4 <Cmd>:silent w<CR><Cmd>BufferLineGoToBuffer 4<CR>
-" nnoremap <silent><leader>5 <Cmd>:silent w<CR><Cmd>BufferLineGoToBuffer 5<CR>
-" nnoremap <silent><leader>6 <Cmd>:silent w<CR><Cmd>BufferLineGoToBuffer 6<CR>
-" nnoremap <silent><leader>7 <Cmd>:silent w<CR><Cmd>BufferLineGoToBuffer 7<CR>
-" nnoremap <silent><leader>8 <Cmd>:silent w<CR><Cmd>BufferLineGoToBuffer 8<CR>
-" nnoremap <silent><leader>9 <Cmd>:silent w<CR><Cmd>BufferLineGoToBuffer 9<CR>
 " Switch to buffer
 nnoremap <silent> <leader>1 <Cmd>BufferLineGoToBuffer 1<CR>
 nnoremap <silent> <leader>2 <Cmd>BufferLineGoToBuffer 2<CR>
@@ -227,8 +218,8 @@ nnoremap <silent> <leader>9 <Cmd>BufferLineGoToBuffer 9<CR>
 " nnoremap <silent><leader>q <Cmd>:BufferlineCyclePrev<CR><Cmd>:silent lua require('bufdelete').bufdelete(0, true)<CR>
 
 " a little more intuitive, but breaks when changes are mad to tabline with leader-H & L
-" nnoremap <silent><leader>q <Cmd>:Bdelete<CR><Cmd>:bp<CR>
-nnoremap <silent><leader>q <Cmd>:silent Bdelete!<CR>
+nnoremap <silent><leader>q <Cmd>:Bdelete<CR><Cmd>:bp<CR>
+" nnoremap <silent><leader>q <Cmd>:silent Bdelete!<CR>
 
 " Tree
 nnoremap <C-e> :NvimTreeToggle<CR>

@@ -86,12 +86,12 @@ return packer.startup({ function(use)
     end,
   }
 
-  -- use { -- Rust Tools
-  --   'simrat39/rust-tools.nvim',
-  --   config = function()
-  --     require'settings.lsp.rust-tools'
-  --   end
-  -- }
+  use { -- Rust Tools
+    'simrat39/rust-tools.nvim',
+    config = function()
+      require'settings.lsp.rust-tools'
+    end
+  }
 
   use { -- telescope
     'nvim-telescope/telescope.nvim',
@@ -308,6 +308,15 @@ return packer.startup({ function(use)
         },
       });
     end
+  }
+
+  use { -- help managing crates
+    'saecki/crates.nvim',
+    requires = { 'nvim-lua/plenary.nvim' },
+    event = { "BufRead Cargo.toml" },
+    config = function()
+        require('crates').setup()
+    end,
   }
 
   if packer_bootstrap then -- auto set up conf after cloning packer.nvim
