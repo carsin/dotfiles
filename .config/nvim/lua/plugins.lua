@@ -212,7 +212,6 @@ return packer.startup({ function(use)
       'nvim-telescope/telescope-dap.nvim',
       'theHamsta/nvim-dap-virtual-text',
       'rcarriga/nvim-dap-ui',
-      'Pocco81/DAPInstall.nvim',
     },
     config = function()
       require'settings.lsp.dap'
@@ -258,14 +257,6 @@ return packer.startup({ function(use)
     end
   }
 
-  -- use {  -- sniprun
-  --   'michaelb/sniprun',
-  --   run = 'bash ./install.sh',
-  --   config = function()
-  --     require'settings.sniprun'
-  --   end
-  -- }
-  --
   use { -- blankline indent indicator
     'lukas-reineke/indent-blankline.nvim',
     config = function()
@@ -317,6 +308,13 @@ return packer.startup({ function(use)
     config = function()
         require('crates').setup()
     end,
+  }
+
+  use { -- diffview
+    'sindrets/diffview.nvim',
+    -- config = function()
+    --
+    -- end
   }
 
   if packer_bootstrap then -- auto set up conf after cloning packer.nvim

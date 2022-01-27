@@ -3,7 +3,8 @@
 # sudo egpu-switcher switch internal
 
 # set new xresources dpi
-newdpi=166
+# font 14: 196; font 13: 167
+newdpi=167
 echo "Xft.dpi: $newdpi" | xrdb -merge
 
 xrandr --output eDP1 --auto --primary --dpi $newdpi 
@@ -15,3 +16,45 @@ killall /usr/lib/firefox/firefox
 
 # restart dwm
 pkill dwm
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
