@@ -19,8 +19,8 @@ local packer = require('packer')
 packer.init({
 	display = {
 		title = "Packer",
-		done_sym = "",
-		error_syn = "×",
+		done_sym = "✓",
+		error_syn = "☓",
 		keybindings = { toggle_info = "o" }
 	}
 })
@@ -34,7 +34,7 @@ return packer.startup({ function(use)
   use 'nvim-lua/popup.nvim'
   use 'nvim-lua/plenary.nvim'
   use 'sainnhe/gruvbox-material'
-  use 'norcalli/nvim-colorizer.lua'
+  use { 'norcalli/nvim-colorizer.lua', event = "BufRead" }
   use 'ggandor/lightspeed.nvim'
   use 'chaoren/vim-wordmotion'
   use 'tpope/vim-surround'
@@ -49,6 +49,7 @@ return packer.startup({ function(use)
   use 'airblade/vim-rooter'
   use 'mbbill/undotree'
   use 'editorconfig/editorconfig-vim'
+  -- use 'AlphaTechnolog/pywal.nvim' -- not quite ready to use
   -- use 'rcarriga/nvim-notify' -- TODO: config file
 
   use { -- lsp config
@@ -259,6 +260,7 @@ return packer.startup({ function(use)
 
   use { -- blankline indent indicator
     'lukas-reineke/indent-blankline.nvim',
+    event = "BufRead",
     config = function()
       require("indent_blankline").setup {
         buftype_exclude = { "terminal" },
@@ -312,9 +314,29 @@ return packer.startup({ function(use)
 
   use { -- diffview
     'sindrets/diffview.nvim',
-    -- config = function()
-    --
-    -- end
+    config = function()
+      -- Lua
+      local last_tabpage = vim.api.nvim_get_current_tabpage()
+
+      function DiffviewToggle()
+        local lib = require'diffview.lib'
+        local view = lib.get_current_diffview()
+        if view then
+          -- Current tabpage is a Diffview: go to previous tabpage
+          vim.api.nvim_set_current_tabpage(last_tabpage)
+        else
+          -- We are not in a Diffview: save current tabpagenr and go to a Diffview.
+          last_tabpage = vim.api.nvim_get_current_tabpage()
+          if #lib.views > 0 then
+            -- An open Diffview exists: go to that one.
+            vim.api.nvim_set_current_tabpage(lib.views[1].tabpage)
+          else
+            -- No open Diffview exists: Open a new one
+            vim.cmd(":DiffviewOpen")
+          end
+        end
+      end
+    end
   }
 
   if packer_bootstrap then -- auto set up conf after cloning packer.nvim

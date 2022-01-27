@@ -160,7 +160,10 @@ nnoremap <leader>r <cmd>lua require('telescope').extensions.frecency.frecency()<
 vmap <Space> <Nop>
 
 " Neogit
-nnoremap <leader>g <cmd>Neogit<cr>
+nnoremap <leader>gg <cmd>Neogit<cr>
+
+" Diffview
+nnoremap <leader>gd <cmd>DiffviewToggle<cr>
 
 " EasyAlign
 xmap ga <Plug>(EasyAlign)

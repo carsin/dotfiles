@@ -575,7 +575,7 @@ end
 local buttons = {
   type = "group",
   val = {
-    button("w", "爵 > Wiki Dashboard" , ":e /home/carson/files/docs/wiki/Dashboard.md<CR>"),
+    button("w", "  > Wiki Home" , ":e /home/carson/files/docs/wiki/Dashboard.md<CR>"),
     button("d", "  > Daily Log" , ":ZkNew { dir = 'log' }<CR>"),
     button("l", "  > Last Session" , ":SessionManager load_last_session<CR>"),
     button(".", "  > Directory Session " , ":SessionManager load_current_dir_session<cr>"),
