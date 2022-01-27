@@ -46,6 +46,8 @@ alias rt='./test'
 alias mr="make && ./run"
 alias jj='nohup java -jar'
 alias smci='sudo make clean install'
+alias :q='exit'
+alias :wq='exit'
 
 # applications, apps
 alias top="htop"

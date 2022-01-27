@@ -1,17 +1,17 @@
 #!/usr/bin/bash
 
-# export LIBVA_DRIVER_NAME=iHD
+# sudo egpu-switcher switch internal
 
 # set new xresources dpi
-newdpi=220
-echo "Xf9.dpi: $newdpi" | xrdb -merge
+newdpi=166
+echo "Xft.dpi: $newdpi" | xrdb -merge
 
 xrandr --output eDP1 --auto --primary --dpi $newdpi 
+
+~/bin/autobrightness
        
 # kill apps with incorrect scaling
-killall /usr/lib/firefox/firefox &
-
-exec ~/bin/autobrightness
+killall /usr/lib/firefox/firefox 
 
 # restart dwm
-killall dwm
+pkill dwm
