@@ -162,9 +162,6 @@ vmap <Space> <Nop>
 " Neogit
 nnoremap <leader>gg <cmd>Neogit<cr>
 
-" Diffview
-nnoremap <leader>gd <cmd>DiffviewToggle<cr>
-
 " EasyAlign
 xmap ga <Plug>(EasyAlign)
 nmap ga <Plug>(EasyAlign)

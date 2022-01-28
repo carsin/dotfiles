@@ -261,6 +261,21 @@ table.insert(components.active[3], {
   right_sep = ''
 })
 
+-- LspStatus: requires nvim-lua/ls-status
+-- table.insert(components.active[3], {
+--   provider = function ()
+--     local lsp_status = require('lsp-status')
+--     lsp_status.register_progress()
+--     return lsp_status.status()
+--   end,
+--   hl = {
+--     fg = 'skyblue',
+--     bg = 'bg',
+--   },
+--   left_sep = ' ',
+--   right_sep = ''
+-- })
+
 -- fileSize
 table.insert(components.active[3], {
   provider = 'file_size',

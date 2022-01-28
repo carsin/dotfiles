@@ -576,7 +576,7 @@ local buttons = {
   type = "group",
   val = {
     button("w", "  > Wiki Home" , ":e /home/carson/files/docs/wiki/Dashboard.md<CR>"),
-    button("d", "  > Daily Log" , ":ZkNew { dir = 'log' }<CR>"),
+    button("d", "  > Daily Log" , ":ZkNew { dir = 'log' }<CR>"),
     button("l", "  > Last Session" , ":SessionManager load_last_session<CR>"),
     button(".", "  > Directory Session " , ":SessionManager load_current_dir_session<cr>"),
     -- button("h", "  > Browse Sessions" , "<cmd>Telescope sessions [save_current=false]<cr>"),
@@ -586,7 +586,7 @@ local buttons = {
     button("s", "  > Search Directory", ":Telescope live_grep<CR>"),
     button("t", "  > Terminal", "<CMD>call OpenTerm()<CR>"),
     -- button("o", "  > Open Directory " , "<cmd>silent !open .<cr>"), 
-    button("u", "療 > Update Plugins", ":PackerSync<CR>"),
+    button("u", "  > Update Plugins", ":PackerSync<CR>"),
     button("q", "  > Quit Neovim", ":qa<CR>"),
   },
   opts = {

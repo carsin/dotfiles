@@ -26,9 +26,6 @@ packer.init({
 })
 
 return packer.startup({ function(use)
-  -- TODO: Install
-  -- https://github.com/sindrets/diffview.nvim better diff functionality
-  -- https://github.com/glacambre/firenvim
   use 'lewis6991/impatient.nvim'
   use 'wbthomason/packer.nvim'
   use 'nvim-lua/popup.nvim'
@@ -44,13 +41,11 @@ return packer.startup({ function(use)
   use 'antoinemadec/FixCursorHold.nvim' -- Needed while issue https://github.com/neovim/neovim/issues/12587 is still open
   use 'junegunn/vim-easy-align'
   use 'kyazdani42/nvim-web-devicons'
-  use 'ActivityWatch/aw-watcher-vim'
+  -- use 'ActivityWatch/aw-watcher-vim'
   use 'nathom/filetype.nvim'
   use 'airblade/vim-rooter'
   use 'mbbill/undotree'
   use 'editorconfig/editorconfig-vim'
-  -- use 'AlphaTechnolog/pywal.nvim' -- not quite ready to use
-  -- use 'rcarriga/nvim-notify' -- TODO: config file
 
   use { -- lsp config
     'neovim/nvim-lspconfig',
@@ -58,7 +53,6 @@ return packer.startup({ function(use)
       'williamboman/nvim-lsp-installer',
       'mfussenegger/nvim-jdtls',
       'https://gitlab.com/yorickpeterse/nvim-dd.git',
-      -- 'weilbith/nvim-code-action-menu',
     },
     config = function()
       require'settings.lsp.lspconfig'
@@ -232,6 +226,7 @@ return packer.startup({ function(use)
       require('Comment').setup()
     end
   }
+
   use { -- neogit, magit for neovim
     'TimUntersberger/neogit',
     requires = 'nvim-lua/plenary.nvim',
@@ -270,6 +265,7 @@ return packer.startup({ function(use)
       }
     end
   }
+
   use { -- which key
     "folke/which-key.nvim",
     config = function()
@@ -311,34 +307,6 @@ return packer.startup({ function(use)
         require('crates').setup()
     end,
   }
-
-  use { -- diffview
-    'sindrets/diffview.nvim',
-    config = function()
-      -- Lua
-      local last_tabpage = vim.api.nvim_get_current_tabpage()
-
-      function DiffviewToggle()
-        local lib = require'diffview.lib'
-        local view = lib.get_current_diffview()
-        if view then
-          -- Current tabpage is a Diffview: go to previous tabpage
-          vim.api.nvim_set_current_tabpage(last_tabpage)
-        else
-          -- We are not in a Diffview: save current tabpagenr and go to a Diffview.
-          last_tabpage = vim.api.nvim_get_current_tabpage()
-          if #lib.views > 0 then
-            -- An open Diffview exists: go to that one.
-            vim.api.nvim_set_current_tabpage(lib.views[1].tabpage)
-          else
-            -- No open Diffview exists: Open a new one
-            vim.cmd(":DiffviewOpen")
-          end
-        end
-      end
-    end
-  }
-
   if packer_bootstrap then -- auto set up conf after cloning packer.nvim
     require('packer').sync()
   end
