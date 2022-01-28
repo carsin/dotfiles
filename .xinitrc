@@ -1,12 +1,12 @@
 #!/bin/sh
 
-xrandr --auto
-
 # load xresources
 xrdb -merge ~/.Xresources 
 
 # START SLOW ASS SPOTIFY NICE AND EARLY
 spotify &
+
+xrandr --auto
 
 echo "Initializing desktop configuration (eGPU, ultrawide monitor)"
 # xrandr --setprovideroutputsource modesetting NVIDIA-0
@@ -25,8 +25,6 @@ fi
 # input configuration
 # capslock is ctrl
 setxkbmap -option ctrl:nocaps
-# setxkbmap -option altwin:swap_alt_win
-# echo 1|sudo tee /sys/module/hid_apple/parameters/swap_opt_cmd
 # xinput stuff
 . /home/carson/bin/initmouse
 . /home/carson/bin/inittrackpad
@@ -40,14 +38,11 @@ wal -R
 # start window compositor
 picom -f --xrender-sync-fence &
 
-# activity watch server
-aw-qt &
-
 # autohide xcursor
 unclutter &
 
 # key repeat
-xset r rate 175 55
+xset r rate 170 57
 # no screen blanking
 xset s off
 

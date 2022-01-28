@@ -236,10 +236,10 @@ nmap <F21> <Plug>VimwikiGoBackLink
 
 
 " Sniprun
-nmap <silent> <leader>cr :lua require'sniprun'.run()<CR>
-vmap <silent> <leader>cr :lua require'sniprun'.run()<CR>
-nmap <leader>cx <Cmd>:SnipReset<CR> 
-nmap <leader>cc <Plug>SnipClose
+" nmap <silent> <leader>cr :lua require'sniprun'.run()<CR>
+" vmap <silent> <leader>cr :lua require'sniprun'.run()<CR>
+" nmap <leader>cx <Cmd>:SnipReset<CR> 
+" nmap <leader>cc <Plug>SnipClose
 
 " zk-nvim
 " infile maps located in ./lua/settings/zk.lua

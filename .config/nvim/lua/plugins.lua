@@ -41,10 +41,10 @@ return packer.startup({ function(use)
   use 'antoinemadec/FixCursorHold.nvim' -- Needed while issue https://github.com/neovim/neovim/issues/12587 is still open
   use 'junegunn/vim-easy-align'
   use 'kyazdani42/nvim-web-devicons'
-  -- use 'ActivityWatch/aw-watcher-vim'
   use 'nathom/filetype.nvim'
   use 'airblade/vim-rooter'
   use 'mbbill/undotree'
+  use 'RRethy/vim-illuminate' -- highlight matches of symbol under cursor
   use 'editorconfig/editorconfig-vim'
 
   use { -- lsp config
@@ -58,6 +58,14 @@ return packer.startup({ function(use)
       require'settings.lsp.lspconfig'
     end,
   }
+
+  use({
+    "jose-elias-alvarez/null-ls.nvim",
+    config = function()
+      require'settings.lsp.nullls'
+    end,
+    requires = { "nvim-lua/plenary.nvim" },
+  })
 
   use { -- treesitter
     'nvim-treesitter/nvim-treesitter',
@@ -93,7 +101,7 @@ return packer.startup({ function(use)
     requires = {
       'nvim-lua/plenary.nvim',
       'nvim-telescope/telescope-project.nvim',
-      'kyazdani42/nvim-web-devicons',
+      'nvim-telescope/telescope-ui-select.nvim',
       { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' },
       { 'nvim-telescope/telescope-frecency.nvim', requires = { "tami5/sqlite.lua" } } ,
     },

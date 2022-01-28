@@ -40,8 +40,8 @@ M.opts = {
       auto_focus = false
     },
   },
-  dap = { -- use codeLLDB 
-    adapter = require('rust-tools.dap').get_codelldb_adapter( codelldb_path, liblldb_path)
+  dap = { -- use codeLLDB
+    adapter = require('rust-tools.dap').get_codelldb_adapter(codelldb_path, liblldb_path)
   }
 }
 

@@ -13,7 +13,7 @@ set completion-fg '#c5c5c5'
 set completion-bg '#181818'
 
 # Command line completion group elements
-set completion-group-fg '#4a3f34'
+set completion-group-fg '#4e6161'
 set completion-group-bg '#181818'
 
 # Current command line completion element
@@ -33,11 +33,11 @@ set notification-bg '#181818'
 
 # Error notification
 set notification-error-fg '#c5c5c5'
-set notification-error-bg '#413e47'
+set notification-error-bg '#654e40'
 
 # Warning notification
 set notification-warning-fg '#c5c5c5'
-set notification-warning-bg '#413e47'
+set notification-warning-bg '#654e40'
 
 # Tab - TODO
 # set tabbar-fg
@@ -52,8 +52,8 @@ set statusbar-fg '#c5c5c5'
 set statusbar-bg '#181818'
 
 # Highlighting parts of the document (e.g. show search results)
-set highlight-color '#4a3f34'
-set highlight-active-color '#4a3f34'
+set highlight-color '#4e6161'
+set highlight-active-color '#4e6161'
 
 # Represent light/dark colors in recoloring mode
 set recolor-lightcolor rgba(0,0,0,0)
