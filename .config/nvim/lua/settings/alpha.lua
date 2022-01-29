@@ -579,7 +579,7 @@ local buttons = {
     button("d", "  > Daily Log" , ":ZkNew { dir = 'log' }<CR>"),
     button("l", "  > Last Session" , ":SessionManager load_last_session<CR>"),
     button(".", "  > Directory Session " , ":SessionManager load_current_dir_session<cr>"),
-    -- button("h", "  > Browse Sessions" , "<cmd>Telescope sessions [save_current=false]<cr>"),
+    button("h", "  > Browse Sessions" , "<cmd>SessionManager load_session<cr>"),
     button("f", "类 > Find File", ":Telescope find_files<CR>"),
     button("r", "  > Frequent Files" , "<cmd>lua require('telescope').extensions.frecency.frecency()<cr>"),
     button("p", "  > Browse Projects" , "<cmd>lua require'telescope'.extensions.project.project{ display_type = 'full' }<cr>"),

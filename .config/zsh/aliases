@@ -77,6 +77,7 @@ alias ccal="cal"
 alias cal="calcurse"
 alias egpu="sudo egpu-switcher"
 alias gpu="sudo egpu-switcher"
+alias ncdu="ncdu --color dark"
 
 # scripts 
 alias dual="/home/carson/bin/displays/dual.sh"

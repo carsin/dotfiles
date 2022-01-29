@@ -497,6 +497,7 @@ static const Rule rules[] = {
     RULE(.instance = "multimc", .tags = 1 << 4)
     RULE(.instance = "Minecraft* 1.18.1", .tags = 1 << 4)
     RULE(.instance = "Sodium 1.18.1", .tags = 1 << 4)
+    RULE(.instance = "riotclientux.exe", .tags = 1 << 4)
 #endif // SCRATCHPADS_PATCH
 };
 
