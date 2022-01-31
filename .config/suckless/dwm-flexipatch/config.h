@@ -498,6 +498,7 @@ static const Rule rules[] = {
     RULE(.instance = "Minecraft* 1.18.1", .tags = 1 << 4)
     RULE(.instance = "Sodium 1.18.1", .tags = 1 << 4)
     RULE(.instance = "riotclientux.exe", .tags = 1 << 4)
+    RULE(.instance = "anomalydx11avx.exe", .tags = 1 << 4)
 #endif // SCRATCHPADS_PATCH
 };
 
@@ -964,7 +965,7 @@ static Key keys[] = {
 	{0, XF86XK_AudioPrev, spawn, SHCMD("playerctl previous")},
     {0, XF86XK_MonBrightnessUp, spawn, SHCMD("/home/carson/bin/bright up") },
     {0, XF86XK_MonBrightnessDown, spawn, SHCMD("/home/carson/bin/bright down") },
-    {MODKEY | ShiftMask, XK_Print, spawn, SHCMD("/usr/bin/flameshot")},
+    {MODKEY | ShiftMask, XK_Print, spawn, SHCMD("/usr/bin/flameshot &")},
     {MODKEY | ShiftMask, XK_s, spawn, SHCMD("spotify")}, // --no-zygote flag disables hardware (gpu) accel
     {MODKEY, XK_Home, spawn, SHCMD("timeout 3 /home/carson/bin/newpape.sh")},
     {MODKEY | ControlMask, XK_Home, spawn, SHCMD("killall -USR1 /usr/local/bin/st")},
