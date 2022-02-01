@@ -1223,14 +1223,14 @@ static Key keys[] = {
     {MODKEY, XK_0, view, {.ui = ~0}},
     {MODKEY | ShiftMask, XK_0, tag, {.ui = ~0}},
 #endif // SCRATCHPAD_ALT_1_PATCH
-    {MODKEY | ControlMask, XK_l, focusmon, {.i = -1}},
-    {MODKEY | ControlMask, XK_h, focusmon, {.i = +1}},
+    {MODKEY | ControlMask, XK_j, focusmon, {.i = -1}},
+    {MODKEY | ControlMask, XK_k, focusmon, {.i = +1}},
     {MODKEY, XK_comma, focusmon, {.i = -1}},
     {MODKEY, XK_period, focusmon, {.i = +1}},
     {MODKEY | ControlMask, XK_comma, tagmon, {.i = -1}},
     {MODKEY | ControlMask, XK_period, tagmon, {.i = +1}},
-    {MODKEY | ShiftMask | ControlMask, XK_l, tagmon, {.i = -1}},
-    {MODKEY | ShiftMask | ControlMask, XK_h, tagmon, {.i = +1}},
+    {MODKEY | ShiftMask | ControlMask, XK_j, tagmon, {.i = -1}},
+    {MODKEY | ShiftMask | ControlMask, XK_k, tagmon, {.i = +1}},
 #if FOCUSADJACENTTAG_PATCH
     {MODKEY, XK_h, viewtoleft, {0}}, 
     {MODKEY, XK_l, viewtoright, {0}}, 

@@ -11,7 +11,7 @@ xrandr --auto
 echo "Initializing desktop configuration (eGPU, ultrawide monitor)"
 # xrandr --setprovideroutputsource modesetting NVIDIA-0
 # sudo egpu-switcher switch egpu # TODO: this hangs startup because of sudo prompt. fix
-. /home/carson/bin/displays/ultrawide.sh
+. /home/carson/bin/displays/dock.sh
 xset -dpms
 
 # start some nice programs
