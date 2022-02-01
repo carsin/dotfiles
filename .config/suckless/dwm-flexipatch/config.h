@@ -18,10 +18,10 @@ static int nomodbuttons =
     1; /* allow client mouse button bindings that have no modifier */
 #endif // NO_MOD_BUTTONS_PATCH
 #if VANITYGAPS_PATCH
-static const unsigned int gappih = 6; /* horiz inner gap between windows */
-static const unsigned int gappiv = 6; /* vert inner gap between windows */
-static const unsigned int gappoh = 10; /* horiz outer gap between windows and screen edge */
-static const unsigned int gappov = 20; /* vert outer gap between windows and screen edge */
+static const unsigned int gappih = 4; /* horiz inner gap between windows */
+static const unsigned int gappiv = 4; /* vert inner gap between windows */
+static const unsigned int gappoh = 8; /* horiz outer gap between windows and screen edge */
+static const unsigned int gappov = 8; /* vert outer gap between windows and screen edge */
 static const int smartgaps_fact = 1; /* gap factor when there is only one client; 0 = no gaps, 3 = 3x outer
           gaps */
 #endif // VANITYGAPS_PATCH
@@ -508,6 +508,7 @@ static const MonitorRule monrules[] = {
     /* monitor  tag   layout  mfact  nmaster  showbar  topbar */
     // {1, -1, 2, -1, -1, -1, -1}, // use a different layout for the second monitor
     {-1, -1, 0, -1, -1, -1, -1}, // default
+    {1, -1, 0, 2, 0.6, -1, -1}, // 1 (ultrawide)
 };
 #else
 static const MonitorRule monrules[] = {
@@ -693,12 +694,12 @@ static const int scrollargs[][2] = {
 static const Layout layouts[] = {
     /* symbol     arrange function, { nmaster, nstack, layout, master axis,
        stack axis, secondary stack axis, symbol func } */
-    {"|M|", flextile, {1, -1, SPLIT_CENTERED_VERTICAL, LEFT_TO_RIGHT, TOP_TO_BOTTOM, TOP_TO_BOTTOM, NULL}}, // centeredmaster
     {"[]=", flextile, {1, -1, SPLIT_VERTICAL, TOP_TO_BOTTOM, TOP_TO_BOTTOM, 0, NULL}},           // default tile layout
+    {"|M|", flextile, {1, -1, SPLIT_CENTERED_VERTICAL, LEFT_TO_RIGHT, TOP_TO_BOTTOM, TOP_TO_BOTTOM, NULL}}, // centeredmaster
     {"[]:", flextile, {1, -1, SPLIT_VERTICAL, TOP_TO_BOTTOM, GAPPLESSGRID_ALT2, 0, NULL}},           // tile layout with comfortable stack
-    {"||:", flextile, {2, -1, SPLIT_VERTICAL, LEFT_TO_RIGHT, TOP_TO_BOTTOM, 0, NULL}},           // 2 masters tiled
     {"[D]", flextile, {1, -1, SPLIT_VERTICAL, TOP_TO_BOTTOM, MONOCLE, 0, NULL}}, // deck
     {"[T]", flextile, {1, -1, SPLIT_VERTICAL, LEFT_TO_RIGHT, TATAMI, 0, NULL}}, // tatami mats
+    {"||:", flextile, {2, -1, SPLIT_VERTICAL, LEFT_TO_RIGHT, TOP_TO_BOTTOM, 0, NULL}},           // 2 masters tiled
     {":::", flextile, {1, -1, NO_SPLIT, GAPPLESSGRID, GAPPLESSGRID, 0, NULL}}, // gappless grid
     {"-M-", flextile, {1, -1, SPLIT_CENTERED_HORIZONTAL, TOP_TO_BOTTOM, LEFT_TO_RIGHT, LEFT_TO_RIGHT, NULL}}, // centeredmaster horiz
     {"TTT", flextile, {1, -1, SPLIT_HORIZONTAL, LEFT_TO_RIGHT, LEFT_TO_RIGHT, 0, NULL}}, // bstack
