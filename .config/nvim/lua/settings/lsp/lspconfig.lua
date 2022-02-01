@@ -58,7 +58,7 @@ M.on_attach = function(client, bufnr)
 	buf_set_keymap("n", "<space>D", "<cmd>lua vim.lsp.buf.type_definition()<CR>", opts)
 	buf_set_keymap("n", "gR", "<cmd>lua vim.lsp.buf.rename()<CR>", opts)
 	buf_set_keymap("n", "gh", '<cmd>lua require "telescope.builtin".lsp_code_actions()<CR>', opts)
-	-- buf_set_keymap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts 
+	-- buf_set_keymap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts
 	buf_set_keymap("n", "[d", "<cmd>lua vim.diagnostic.goto_prev()<CR>zz", opts)
 	buf_set_keymap("n", "]d", "<cmd>lua vim.diagnostic.goto_next()<CR>zz", opts)
 	buf_set_keymap("n", "<leader>a", "<Cmd>Telescope lsp_code_actions theme=cursor<CR>", opts)
@@ -72,8 +72,8 @@ M.on_attach = function(client, bufnr)
 
 	-- set mappings for zk if in wikidir
 	require("settings.zk").set_mappings()
-  -- cursor symbol hl
-  require 'illuminate'.on_attach(client)
+	-- cursor symbol hl
+	require("illuminate").on_attach(client)
 	-- Show line diagnostics on hover
 	vim.api.nvim_exec([[ autocmd CursorHold * lua vim.diagnostic.open_float({border="none", focusable=false}) ]], false)
 end
@@ -122,13 +122,11 @@ lsp_installer.on_server_ready(function(server)
 		["clangd"] = function()
 			opts = M.get_config()
 			opts.cmd = {
-				cmd = {
-					"clangd",
-					"--background-index",
-					"--suggest-missing-includes",
-					"--clang-tidy",
-					"--header-insertion=iwyu",
-				},
+				"clangd",
+				"--background-index",
+				"--suggest-missing-includes",
+				"--clang-tidy",
+				"--header-insertion=iwyu",
 			}
 		end,
 	}

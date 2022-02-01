@@ -78,7 +78,9 @@ alias cal="calcurse"
 alias egpu="sudo egpu-switcher"
 alias gpu="sudo egpu-switcher"
 alias ncdu="ncdu --color dark"
-alias yt="ytfzf -T"
+alias yt="ytfzf -t --preview-side=right --thumbnail-quality=high -s --notify-playing -l"
+# youtube audio
+alias yta="ytfzf -m -t"
 alias twitch="reflex-curses"
 
 # scripts 
