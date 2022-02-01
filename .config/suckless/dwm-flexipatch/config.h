@@ -18,10 +18,10 @@ static int nomodbuttons =
     1; /* allow client mouse button bindings that have no modifier */
 #endif // NO_MOD_BUTTONS_PATCH
 #if VANITYGAPS_PATCH
-static const unsigned int gappih = 4; /* horiz inner gap between windows */
-static const unsigned int gappiv = 4; /* vert inner gap between windows */
-static const unsigned int gappoh = 8; /* horiz outer gap between windows and screen edge */
-static const unsigned int gappov = 8; /* vert outer gap between windows and screen edge */
+static const unsigned int gappih = 5; /* horiz inner gap between windows */
+static const unsigned int gappiv = 5; /* vert inner gap between windows */
+static const unsigned int gappoh = 9; /* horiz outer gap between windows and screen edge */
+static const unsigned int gappov = 9; /* vert outer gap between windows and screen edge */
 static const int smartgaps_fact = 1; /* gap factor when there is only one client; 0 = no gaps, 3 = 3x outer
           gaps */
 #endif // VANITYGAPS_PATCH
@@ -344,17 +344,6 @@ static const char *const autostart[] = {
 #endif // COOL_AUTOSTART_PATCH
 
 #if SCRATCHPADS_PATCH
-// const char *spcmd1[]  = {"st", "-t", "spterm1", "-g", "138x45", NULL};
-// const char *spcmd2[]  = {"st", "-t", "spterm2", "-g", "100x36", NULL};
-// const char *spcmd3[]  = {"st", "-t", "spterm3", "-g", "165x60", NULL};
-// const char *spcmd4[]  = {"st", "-t", "spsptui", "-g", "135x50", "-e", "spt", NULL};
-// const char *spcmd5[]  = {"st", "-t", "spranger", "-g", "155x50", "-e", "ranger", NULL};
-// const char *spcmd6[]  = {"st", "-t", "sppulsemixer", "-g", "90x30", "-e", "pulsemixer", NULL};
-// const char *spcmd7[]  = {"st", "-t", "sptop", "-g", "140x43", "-e", "bpytop", NULL};
-// const char *spcmd8[]  = {"st", "-t", "spnvtop", "-g", "138x41", "-e", "nvtop", NULL};
-// const char *spcmd9[]  = {"st", "-t", "spccal", "-g", "130x42", "-e", "calcurse", NULL};
-// const char *spcmd10[] = {"st", "-t", "spnvim", "-g", "173x54", "-e", "nvim", NULL};
-
 const char *spcmd1[]  = {"alacritty", "--class", "spterm1,Alacritty", "-o", "window.dimensions.columns=138", "-o", "window.dimensions.lines=45", "-e", "/home/carson/bin/scratchpads/scratchstart", NULL};
 const char *spcmd2[]  = {"alacritty", "--class", "spterm2,Alacritty", "-o", "window.dimensions.columns=100", "-o", "window.dimensions.lines=36", "-e", "/home/carson/bin/scratchpads/scratchstart",  NULL};
 const char *spcmd3[]  = {"alacritty", "--class", "spterm3,Alacritty", "-o", "window.dimensions.columns=165", "-o", "window.dimensions.lines=60",  "-e","/home/carson/bin/scratchpads/scratchstart", NULL};
@@ -366,8 +355,6 @@ const char *spcmd8[]  = {"alacritty", "--class", "spnvtop,Alacritty", "-o", "win
 const char *spcmd9[]  = {"alacritty", "--class", "spccal,Alacritty", "-o", "window.dimensions.columns=130", "-o", "window.dimensions.lines=42", "-e", "/home/carson/bin/scratchpads/calstart", NULL};
 const char *spcmd10[] = {"alacritty", "--class", "spnvim,Alacritty", "-o", "window.dimensions.columns=173", "-o", "window.dimensions.lines=53", "-e", "/home/carson/bin/scratchpads/editorstart", NULL};
 
-// not working
-// const char *spcmd12[] = {"st", "-n", "spwiki", "-g", "174x50", "nvim -c e /home/carson/files/text/wiki/Index.md", NULL};
 static Sp scratchpads[] = {
     /* name          cmd  */
     {"spterm1", spcmd1},

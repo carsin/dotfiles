@@ -81,7 +81,10 @@ alias ncdu="ncdu --color dark"
 alias yt="ytfzf -t --preview-side=right --thumbnail-quality=high -s --notify-playing -l"
 # youtube audio
 alias yta="ytfzf -m -t"
+alias 'twitchlive'="reflex-curses -f"
 alias twitch="reflex-curses"
+alias twitchvod="mpv $1"
+
 
 # scripts 
 alias dual="/home/carson/bin/displays/dual.sh"
