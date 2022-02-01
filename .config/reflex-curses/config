@@ -1,0 +1,52 @@
+[keys]
+add = a
+chat = c
+delete = d
+followed = f
+game = g
+back = h
+import = i
+down = j
+up = k
+forward = l
+online = o
+quit = q
+refresh = r
+t_stream = s
+t_game = t
+search = /
+vods = v
+yank = y
+page+ = n
+page- = p
+qual+ = =
+qual- = -
+
+[exec]
+browser = firefox --new-window
+chat_method = browser
+player = mpv --force-window=yes
+streamlink = streamlink -t '{author} - {title}' --twitch-disable-hosting --twitch-disable-ads
+term = urxvt -e
+
+[twitch]
+client_id = caozjg12y6hjop39wx996mxn585yqyk
+lang = 
+results_limit = 75
+retry_limit = 3
+
+[ui]
+default_state = games
+hl_color = blue
+l_win_color = white
+r_win_color = green
+quality = best
+show_borders = True
+show_keys = True
+
+[irc]
+address = irc.chat.twitch.tv
+network = reflex
+no_account = True
+port = 6697
+
