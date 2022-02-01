@@ -69,7 +69,7 @@ alias t="/home/carson/bin/fetchtmuxstart $1"
 alias tm="/home/carson/bin/fetchtmuxstart main"
 alias t0="tmux a -t 0 || tmux new"
 alias t1="tmux a -t 1 || tmux new"
-alias matrix="neo-matrix -d 0.5 -f 144 -G 0 -s -S 5.5 --maxdpc=2"
+# alias matrix="neo-matrix -d 0.5 -f 144 -G 0 -s -S 5.5 --maxdpc=2"
 alias fontpreview='fontpreview-ueberzug'
 alias wttr="curl wttr.in/San+Luis+Obispo"
 alias wttr2="curl v2d.wttr.in/San+Luis+Obispo"
@@ -78,6 +78,8 @@ alias cal="calcurse"
 alias egpu="sudo egpu-switcher"
 alias gpu="sudo egpu-switcher"
 alias ncdu="ncdu --color dark"
+alias yt="ytfzf -T"
+alias twitch="reflex-curses"
 
 # scripts 
 alias dual="/home/carson/bin/displays/dual.sh"
@@ -91,6 +93,7 @@ alias pmrestart="systemctl --user restart pipewire.service pipewire.socket pipew
 alias pwrestart="systemctl --user restart pipewire.service pipewire.socket pipewire-pulse.socket"
 alias battery='acpi'
 alias ctrl='setxkbmap -option ctrl:nocaps'
+alias webcam='guvcview -e --gui=none -d /dev/video2 -a none -c read -F 30 -x 1280x960'
 
 # pacman 
 alias p='pacman' # install
@@ -104,4 +107,4 @@ alias pacc='sudo pacman -Scc' # clean cache
 alias paclf='pacman -Ql' # list files
 
 # go to root of git dir
-alias rootgit='cd $(git rev-parse --show-toplevel)'
+alias gitroot='cd $(git rev-parse --show-toplevel)'
