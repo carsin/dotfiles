@@ -463,14 +463,29 @@ static const Rule rules[] = {
     RULE(.wintype = WTYPE "UTILITY", .isfloating = 1)
     RULE(.wintype = WTYPE "TOOLBAR", .isfloating = 1)
     RULE(.wintype = WTYPE "SPLASH", .isfloating = 1)
-    RULE(.instance = "spotify", .tags = 1 << 3)
-    RULE(.instance = "discord", .tags = 1 << 3)
-    RULE(.instance = "freetube", .tags = 1 << 4)
-    // RULE(.class = "Gimp", .tags = 1 << 4)
-    // RULE(.class = "Firefox", .tags = 1 << 7)
+    // RULE(.title = "Picture-In-Picture", .tags = SPTAG(99), .isfloating = 1)
     RULE(.class = "St", .isterminal = 1)
     RULE(.class = "Alacritty", .isterminal = 1)
-    // RULE(.title = "Picture-In-Picture", .tags = SPTAG(99), .isfloating = 1)
+    // move to 2nd mon
+    RULE(.instance = "spotify", .tags = 1 << 0, .monitor = 1)
+    RULE(.instance = "discord", .tags = 1 << 0, .monitor = 1)
+    RULE(.instance = "obs", .tags = 1 << 1, .monitor = 1)
+    // gaming
+    RULE(.title = "Grand Theft Auto V", .tags = 1 << 4)
+    RULE(.title = "Rockstar Games Launcher", .tags = 1 << 4)
+    RULE(.title = "Just Cause 3", .tags = 1 << 4)
+    RULE(.title = "Red Dead Redemption 2", .tags = 1 << 4)
+    RULE(.instance = "origin.exe", .tags = 1 << 4, .isfloating = 1)
+    RULE(.instance = "bf4.exe", .tags = 1 << 4, .isfloating = 1)
+    RULE(.instance = "lutris", .tags = 1 << 4)
+    RULE(.instance = "Steam", .tags = 1 << 4)
+    RULE(.instance = "eadesktop.exe", .tags = 1 << 4)
+    RULE(.instance = "multimc", .tags = 1 << 4)
+    RULE(.instance = "Minecraft* 1.18.1", .tags = 1 << 4)
+    RULE(.instance = "Sodium 1.18.1", .tags = 1 << 4)
+    RULE(.instance = "riotclientux.exe", .tags = 1 << 4)
+    RULE(.instance = "anomalydx11avx.exe", .tags = 1 << 4)
+    // scratcpads
 #if SCRATCHPADS_PATCH
     RULE(.instance = "spterm1", .tags = SPTAG(0), .isfloating = 1)
     RULE(.instance = "spterm2", .tags = SPTAG(1), .isfloating = 1)
@@ -483,22 +498,6 @@ static const Rule rules[] = {
     RULE(.instance = "spccal", .tags = SPTAG(8), .isfloating = 1)
     RULE(.instance = "spnvim", .tags = SPTAG(9), .isfloating = 1)
     // RULE(.instance = "spsptui", .tags = SPTAG(10), .isfloating = 1)
-    // gaming
-    RULE(.title = "Grand Theft Auto V", .tags = 1 << 4)
-    RULE(.title = "Rockstar Games Launcher", .tags = 1 << 4)
-    RULE(.title = "Just Cause 3", .tags = 1 << 4)
-    RULE(.title = "Red Dead Redemption 2", .tags = 1 << 4)
-    RULE(.instance = "origin.exe", .tags = 1 << 4, .isfloating = 1)
-    RULE(.instance = "bf4.exe", .tags = 1 << 4, .isfloating = 1)
-    RULE(.instance = "obs", .tags = 1 << 4)
-    RULE(.instance = "lutris", .tags = 1 << 4)
-    RULE(.instance = "Steam", .tags = 1 << 4)
-    RULE(.instance = "eadesktop.exe", .tags = 1 << 4)
-    RULE(.instance = "multimc", .tags = 1 << 4)
-    RULE(.instance = "Minecraft* 1.18.1", .tags = 1 << 4)
-    RULE(.instance = "Sodium 1.18.1", .tags = 1 << 4)
-    RULE(.instance = "riotclientux.exe", .tags = 1 << 4)
-    RULE(.instance = "anomalydx11avx.exe", .tags = 1 << 4)
 #endif // SCRATCHPADS_PATCH
 };
 
@@ -507,8 +506,8 @@ static const Rule rules[] = {
 static const MonitorRule monrules[] = {
     /* monitor  tag   layout  mfact  nmaster  showbar  topbar */
     // {1, -1, 2, -1, -1, -1, -1}, // use a different layout for the second monitor
+    {1, 1, 1, 0.55, -1, -1, -1}, // 1 (ultrawide)
     {-1, -1, 0, -1, -1, -1, -1}, // default
-    {1, -1, 0, 2, 0.6, -1, -1}, // 1 (ultrawide)
 };
 #else
 static const MonitorRule monrules[] = {

@@ -1,14 +1,14 @@
 #!/bin/sh
 
-# load xresources
-xrdb -merge ~/.Xresources 
-
 # START SLOW ASS SPOTIFY NICE AND EARLY
 spotify &
 
+# load xresources
+xrdb -merge ~/.Xresources 
+
 xrandr --auto
 
-echo "Initializing desktop configuration (eGPU, ultrawide monitor)"
+echo "Initializing dock configuration"
 # xrandr --setprovideroutputsource modesetting NVIDIA-0
 # sudo egpu-switcher switch egpu # TODO: this hangs startup because of sudo prompt. fix
 . /home/carson/bin/displays/dock.sh
