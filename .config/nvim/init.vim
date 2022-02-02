@@ -205,11 +205,9 @@ augroup END
 " Automatically equalize splits when vim is resized
 autocmd VimResized * wincmd =
 
-augroup remember_folds
-  autocmd!
-  autocmd BufWinLeave *.* mkview
-  autocmd BufWinEnter *.* silent! loadview
-augroup END
+" Remember folds
+autocmd BufWrite * mkview
+autocmd BufRead * silent! loadview
 
 " Don't take up scrollbar with match
 " let g:matchup_matchparen_offscreen = { 'method': 'popup' }

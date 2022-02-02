@@ -453,10 +453,11 @@ static const Rule rules[] = {
     // RULE(.title = "Picture-In-Picture", .tags = SPTAG(99), .isfloating = 1)
     RULE(.class = "St", .isterminal = 1)
     RULE(.class = "Alacritty", .isterminal = 1)
-    // move to 2nd mon
+    // move to other mon
     RULE(.instance = "spotify", .tags = 1 << 0, .monitor = 1)
     RULE(.instance = "discord", .tags = 1 << 0, .monitor = 1)
     RULE(.instance = "obs", .tags = 1 << 1, .monitor = 1)
+    RULE(.instance = "guvcview", .monitor = 2)
     // gaming
     RULE(.title = "Grand Theft Auto V", .tags = 1 << 4)
     RULE(.title = "Rockstar Games Launcher", .tags = 1 << 4)
@@ -493,7 +494,7 @@ static const Rule rules[] = {
 static const MonitorRule monrules[] = {
     /* monitor  tag   layout  mfact  nmaster  showbar  topbar */
     // {1, -1, 2, -1, -1, -1, -1}, // use a different layout for the second monitor
-    {1, 1, 1, 0.55, -1, -1, -1}, // 1 (ultrawide)
+    {1, 1, 1, 0.52, -1, -1, -1}, // 1 (ultrawide)
     {-1, -1, 0, -1, -1, -1, -1}, // default
 };
 #else
