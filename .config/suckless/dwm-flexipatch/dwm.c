@@ -3161,59 +3161,57 @@ scan(void)
 	#endif // SWALLOW_PATCH
 }
 
-void
-sendmon(Client *c, Monitor *m)
-{
-	#if EXRESIZE_PATCH
-	Monitor *oldm = selmon;
-	#endif // EXRESIZE_PATCH
-	if (c->mon == m)
-		return;
-	#if SENDMON_KEEPFOCUS_PATCH && !EXRESIZE_PATCH
-	int hadfocus = (c == selmon->sel);
-	#endif // SENDMON_KEEPFOCUS_PATCH
-	unfocus(c, 1, NULL);
-	detach(c);
-	detachstack(c);
-	#if SENDMON_KEEPFOCUS_PATCH && !EXRESIZE_PATCH
-	arrange(c->mon);
-	#endif // SENDMON_KEEPFOCUS_PATCH
-	c->mon = m;
-	#if SCRATCHPADS_PATCH
-	if (!(c->tags & SPTAGMASK))
-	#endif // SCRATCHPADS_PATCH
-	#if EMPTYVIEW_PATCH
-	c->tags = (m->tagset[m->seltags] ? m->tagset[m->seltags] : 1);
-	#else
-	c->tags = m->tagset[m->seltags]; /* assign tags of target monitor */
-	#endif // EMPTYVIEW_PATCH
-	#if ATTACHABOVE_PATCH || ATTACHASIDE_PATCH || ATTACHBELOW_PATCH || ATTACHBOTTOM_PATCH
-	attachx(c);
-	#else
-	attach(c);
-	#endif
-	attachstack(c);
-	#if EXRESIZE_PATCH
-	if (oldm != m)
-		arrange(oldm);
-	arrange(m);
-	focus(c);
-	restack(m);
-	#elif SENDMON_KEEPFOCUS_PATCH
-	arrange(m);
-	if (hadfocus) {
-		focus(c);
-		restack(m);
-	} else
-		focus(NULL);
-	#else
-	focus(NULL);
-	arrange(NULL);
-	#endif // EXRESIZE_PATCH / SENDMON_KEEPFOCUS_PATCH
-	#if SWITCHTAG_PATCH
-	if (c->switchtag)
-		c->switchtag = 0;
-	#endif // SWITCHTAG_PATCH
+void sendmon(Client *c, Monitor *m) {
+#if EXRESIZE_PATCH
+  Monitor *oldm = selmon;
+#endif // EXRESIZE_PATCH
+  if (c->mon == m)
+    return;
+#if SENDMON_KEEPFOCUS_PATCH && !EXRESIZE_PATCH
+  int hadfocus = (c == selmon->sel);
+#endif // SENDMON_KEEPFOCUS_PATCH
+  unfocus(c, 1, NULL);
+  detach(c);
+  detachstack(c);
+#if SENDMON_KEEPFOCUS_PATCH && !EXRESIZE_PATCH
+  arrange(c->mon);
+#endif // SENDMON_KEEPFOCUS_PATCH
+  c->mon = m;
+#if SCRATCHPADS_PATCH
+  if (!(c->tags & SPTAGMASK))
+#endif // SCRATCHPADS_PATCH
+#if EMPTYVIEW_PATCH
+    c->tags = (m->tagset[m->seltags] ? m->tagset[m->seltags] : 1);
+#else
+  c->tags = m->tagset[m->seltags]; /* assign tags of target monitor */
+#endif // EMPTYVIEW_PATCH
+#if ATTACHABOVE_PATCH || ATTACHASIDE_PATCH || ATTACHBELOW_PATCH || ATTACHBOTTOM_PATCH
+  attachx(c);
+#else
+  attach(c);
+#endif
+  attachstack(c);
+#if EXRESIZE_PATCH
+  if (oldm != m)
+    arrange(oldm);
+  arrange(m);
+  focus(c);
+  restack(m);
+#elif SENDMON_KEEPFOCUS_PATCH
+  arrange(m);
+  if (hadfocus) {
+    focus(c);
+    restack(m);
+  } else
+    focus(NULL);
+#else
+  focus(NULL);
+  arrange(NULL);
+#endif // EXRESIZE_PATCH / SENDMON_KEEPFOCUS_PATCH
+#if SWITCHTAG_PATCH
+  if (c->switchtag)
+    c->switchtag = 0;
+#endif // SWITCHTAG_PATCH
 }
 
 void
