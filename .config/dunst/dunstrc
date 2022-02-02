@@ -35,7 +35,7 @@
 
     # Offset from the origin
     # offset = 15x26
-    offset = 10x25
+    offset = 10x28
 
     # Scale factor. It is auto-detected if value is 0.
     scale = 0

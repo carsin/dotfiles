@@ -459,20 +459,20 @@ static const Rule rules[] = {
     RULE(.instance = "obs", .tags = 1 << 1, .monitor = 1)
     RULE(.instance = "guvcview", .monitor = 2)
     // gaming
-    RULE(.title = "Grand Theft Auto V", .tags = 1 << 4)
-    RULE(.title = "Rockstar Games Launcher", .tags = 1 << 4)
-    RULE(.title = "Just Cause 3", .tags = 1 << 4)
-    RULE(.title = "Red Dead Redemption 2", .tags = 1 << 4)
-    RULE(.instance = "origin.exe", .tags = 1 << 4, .isfloating = 1)
-    RULE(.instance = "bf4.exe", .tags = 1 << 4, .isfloating = 1)
-    RULE(.instance = "lutris", .tags = 1 << 4)
+    RULE(.title = "Grand Theft Auto V", .tags = 1 << 4, .monitor = 0)
+    RULE(.title = "Rockstar Games Launcher", .tags = 1 << 4, .monitor = 0)
+    RULE(.title = "Just Cause 3", .tags = 1 << 4, .monitor = 0)
+    RULE(.title = "Red Dead Redemption 2", .tags = 1 << 4, .monitor = 0)
+    RULE(.instance = "origin.exe", .tags = 1 << 4, .isfloating = 1, .monitor = 0)
+    RULE(.instance = "bf4.exe", .tags = 1 << 4, .isfloating = 1, .monitor = 0)
+    RULE(.instance = "lutris", .tags = 1 << 4, .monitor = 0)
     RULE(.instance = "Steam", .tags = 1 << 4)
-    RULE(.instance = "eadesktop.exe", .tags = 1 << 4)
-    RULE(.instance = "multimc", .tags = 1 << 4)
-    RULE(.instance = "Minecraft* 1.18.1", .tags = 1 << 4)
-    RULE(.instance = "Sodium 1.18.1", .tags = 1 << 4)
-    RULE(.instance = "riotclientux.exe", .tags = 1 << 4)
-    RULE(.instance = "anomalydx11avx.exe", .tags = 1 << 4)
+    RULE(.instance = "eadesktop.exe", .tags = 1 << 4, .monitor = 0)
+    RULE(.instance = "multimc", .tags = 1 << 4, .monitor = 0)
+    RULE(.instance = "Minecraft* 1.18.1", .tags = 1 << 4, .monitor = 0)
+    RULE(.instance = "Sodium 1.18.1", .tags = 1 << 4, .monitor = 0)
+    RULE(.instance = "riotclientux.exe", .tags = 1 << 4, .monitor = 0)
+    RULE(.instance = "anomalydx11avx.exe", .tags = 1 << 4, .monitor = 0)
     // scratcpads
 #if SCRATCHPADS_PATCH
     RULE(.instance = "spterm1", .tags = SPTAG(0), .isfloating = 1)
@@ -495,6 +495,10 @@ static const MonitorRule monrules[] = {
     /* monitor  tag   layout  mfact  nmaster  showbar  topbar */
     // {1, -1, 2, -1, -1, -1, -1}, // use a different layout for the second monitor
     {1, 1, 1, 0.52, -1, -1, -1}, // 1 (ultrawide)
+    {1, 2, 1, 0.52, -1, -1, -1}, // 1 (ultrawide)
+    {1, 3, 1, 0.52, -1, -1, -1}, // 1 (ultrawide)
+    {1, 4, 1, 0.52, -1, -1, -1}, // 1 (ultrawide)
+    {1, 5, 1, 0.52, -1, -1, -1}, // 1 (ultrawide)
     {-1, -1, 0, -1, -1, -1, -1}, // default
 };
 #else

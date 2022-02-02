@@ -79,6 +79,8 @@ alias egpu="sudo egpu-switcher"
 alias gpu="sudo egpu-switcher"
 alias ncdu="ncdu --color dark"
 alias yt="ytfzf -t --preview-side=right --thumbnail-quality=high --notify-playing -l --pages=5"
+alias ytsub="ytfzf -t --preview-side=right --thumbnail-quality=high --notify-playing -l --pages=5 -c S --sort"
+alias yts="ytsub"
 # youtube audio
 alias yta="ytfzf -m -t"
 alias 'twitchlive'="reflex-curses -f"
