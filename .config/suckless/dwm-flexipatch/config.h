@@ -456,7 +456,7 @@ static const Rule rules[] = {
     // move to other mon
     RULE(.instance = "spotify", .tags = 1 << 0, .monitor = 1)
     RULE(.instance = "discord", .tags = 1 << 0, .monitor = 1)
-    RULE(.instance = "obs", .tags = 1 << 1, .monitor = 1)
+    RULE(.instance = "obs", .monitor = 1)
     RULE(.instance = "guvcview", .monitor = 2)
     // gaming
     RULE(.title = "Grand Theft Auto V", .tags = 1 << 4, .monitor = 0)
@@ -1158,7 +1158,7 @@ static Key keys[] = {
      {0}}, /* flextile, flip master and stack areas */
 #endif     // FLEXTILE_DELUXE_LAYOUT
     // {MODKEY, XK_space, setlayout, {0}},
-    {MODKEY | ShiftMask | ControlMask, XK_f, togglefloating, {0}},
+    // {MODKEY | ShiftMask | ControlMask, XK_f, togglefloating, {0}},
     {MODKEY | ControlMask, XK_space, togglefloating, {0}},
     {MODKEY | ShiftMask | ControlMask, XK_space, togglealwaysontop, {0}},
 #if MAXIMIZE_PATCH
@@ -1197,7 +1197,7 @@ static Key keys[] = {
     {MODKEY | ControlMask, XK_f, togglefakefullscreen, {0}},
 #endif // FAKEFULLSCREEN_CLIENT_PATCH
 #if FULLSCREEN_PATCH
-    // {MODKEY | ShiftMask, XK_f, fullscreen, {0}},
+    {MODKEY | ControlMask | ShiftMask, XK_f, fullscreen, {0}},
 #endif // FULLSCREEN_PATCH
 #if STICKY_PATCH
     {MODKEY, XK_z, togglesticky, {0}},

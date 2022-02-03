@@ -921,7 +921,7 @@
  * with the fakefullscreenclient patch and offers no practical functionality without it.
  * https://dwm.suckless.org/patches/selectivefakefullscreen/
  */
-#define SELECTIVEFAKEFULLSCREEN_PATCH 1
+#define SELECTIVEFAKEFULLSCREEN_PATCH 0
 
 /* Allows restarting dwm without the dependency of an external script.
  * https://dwm.suckless.org/patches/selfrestart/
@@ -1103,13 +1103,13 @@ config.h *
  * or previous (left) monitor from the currently selected monitor.
  * https://dwm.suckless.org/patches/tagothermonitor/
  */
-#define TAGOTHERMONITOR_PATCH 1
+#define TAGOTHERMONITOR_PATCH 0
 
 /* This patch allows you to swap all visible windows on one monitor with those of an
  * adjacent monitor.
  * https://github.com/bakkeby/patches/blob/master/dwm/dwm-tagswapmon-6.2.diff
  */
-#define TAGSWAPMON_PATCH 1
+#define TAGSWAPMON_PATCH 0
 
 /* This patch can be useful to the touchpad users because it allows to
  * resize windows using Mod + two-finger scroll. It is useful when
