@@ -2,7 +2,7 @@
 # /home/carson/.nvidia-settings-rc
 #
 # Configuration file for nvidia-settings - the NVIDIA Settings utility
-# Generated on Wed Feb  2 23:33:17 2022
+# Generated on Thu Feb  3 02:36:51 2022
 #
 
 # ConfigProperties:
@@ -13,9 +13,9 @@ SliderTextEntries = Yes
 IncludeDisplayNameInConfigFile = No
 ShowQuitDialog = Yes
 UpdateRulesOnProfileNameChange = Yes
-Timer = PowerMizer_Monitor_(GPU_0),Yes,1000
-Timer = Thermal_Monitor_(GPU_0),Yes,1000
 Timer = Memory_Used_(GPU_0),Yes,3000
+Timer = Thermal_Monitor_(GPU_0),Yes,1000
+Timer = PowerMizer_Monitor_(GPU_0),Yes,1000
 
 # Attributes:
 
@@ -24,12 +24,17 @@ Timer = Memory_Used_(GPU_0),Yes,3000
 0/FSAA=0
 0/TextureClamping=1
 0/FXAA=0
-0/AllowFlipping=0
+0/AllowFlipping=1
 0/FSAAAppControlled=1
 0/LogAnisoAppControlled=1
 0/OpenGLImageSettings=2
 0/FSAAAppEnhanced=0
+0/AllowGSYNC=1
+0/AllowVRR=1
+0/ShowGSYNCVisualIndicator=0
+0/ShowVRRVisualIndicator=0
 0/ShowGraphicsVisualIndicator=0
+0/XVideoSyncToDisplayID=DP-4
 [DPY:DVI-D-0]/Dithering=0
 [DPY:DVI-D-0]/DitheringMode=0
 [DPY:DVI-D-0]/DitheringDepth=0

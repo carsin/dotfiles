@@ -13,10 +13,11 @@ alias cp="cp -iv"
 alias mv="mv -iv"
 alias rm="rm -v"
 alias bc="bc -ql"
+alias find="fd"
 alias mkdir="mkdir -pv"
 alias grep="grep --color=auto"
 alias diff="diff --color=auto"
-alias find="fd"
+alias watch="watch --color"
 
 alias w="/home/carson/bin/newpape2.sh"
 alias uw="/home/carson/bin/newpape.sh"
@@ -89,10 +90,11 @@ alias twitchvod="mpv $1"
 
 
 # scripts 
-alias dual="/home/carson/bin/displays/dual.sh"
-alias triple="/home/carson/bin/displays/triple.sh"
+# alias dual="/home/carson/bin/displays/dual.sh"
+# alias triple="/home/carson/bin/displays/triple.sh"
 alias laptop="/home/carson/bin/displays/laptop.sh"
-alias ultrawide="/home/carson/bin/displays/ultrawide.sh"
+alias dock="/home/carson/bin/displays/dock.sh"
+# alias ultrawide="/home/carson/bin/displays/ultrawide.sh"
 alias dlsong="/home/carson/files/music/spotify/edm/new/dlsong.sh"
 
 # system
@@ -101,6 +103,8 @@ alias pwrestart="systemctl --user restart pipewire.service pipewire.socket pipew
 alias battery='acpi'
 alias ctrl='setxkbmap -option ctrl:nocaps'
 alias webcam='guvcview -e --gui=none -d /dev/video2 -a none -c read -F 30 -x 1280x960'
+alias playmic='pactl load-module module-loopback latency-msec=0'
+alias unplaymic='pactl unload-module module-loopback'
 
 # pacman 
 alias p='pacman' # install

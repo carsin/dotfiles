@@ -473,6 +473,7 @@ static const Rule rules[] = {
     RULE(.instance = "Sodium 1.18.1", .tags = 1 << 4, .monitor = 0)
     RULE(.instance = "riotclientux.exe", .tags = 1 << 4, .monitor = 0)
     RULE(.instance = "anomalydx11avx.exe", .tags = 1 << 4, .monitor = 0)
+    RULE(.instance = "eu4", .tags = 1 << 4, .monitor = 1)
     // scratcpads
 #if SCRATCHPADS_PATCH
     RULE(.instance = "spterm1", .tags = SPTAG(0), .isfloating = 1)
@@ -950,9 +951,9 @@ static Key keys[] = {
 	{0, XF86XK_AudioRaiseVolume, spawn, SHCMD("/home/carson/bin/changevol -n -p -y up 5")},
     {0, XF86XK_AudioLowerVolume, spawn, SHCMD("/home/carson/bin/changevol -n -p -y down 5")},
 	{0, XF86XK_AudioMute, spawn, SHCMD("/home/carson/bin/changevol -n -p -y mute")},
-    {0, XF86XK_AudioPlay, spawn, SHCMD("playerctl play-pause")},
-	{0, XF86XK_AudioNext, spawn, SHCMD("playerctl next")},
-	{0, XF86XK_AudioPrev, spawn, SHCMD("playerctl previous")},
+    {0, XF86XK_AudioPlay, spawn, SHCMD("playerctl play-pause -a")},
+	{0, XF86XK_AudioNext, spawn, SHCMD("playerctl next -a")},
+	{0, XF86XK_AudioPrev, spawn, SHCMD("playerctl previous -a")},
     {0, XF86XK_MonBrightnessUp, spawn, SHCMD("/home/carson/bin/bright up") },
     {0, XF86XK_MonBrightnessDown, spawn, SHCMD("/home/carson/bin/bright down") },
     {MODKEY | ShiftMask, XK_Print, spawn, SHCMD("/usr/bin/flameshot &")},
