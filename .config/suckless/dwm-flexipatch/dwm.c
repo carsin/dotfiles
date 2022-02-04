@@ -360,7 +360,7 @@ struct Client {
 	int needresize;
 	#endif // AUTORESIZE_PATCH
 	#if CENTER_PATCH
-	int iscentered;
+	// int iscentered;
 	#endif // CENTER_PATCH
 	#if ISPERMANENT_PATCH
 	int ispermanent;

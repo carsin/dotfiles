@@ -459,6 +459,7 @@ static const Rule rules[] = {
     RULE(.instance = "obs", .monitor = 1)
     RULE(.instance = "guvcview", .monitor = 2)
     // gaming
+    RULE(.class = "steam_app_", .tags = 1 << 4, .monitor = 0)
     RULE(.title = "Grand Theft Auto V", .tags = 1 << 4, .monitor = 0)
     RULE(.title = "Rockstar Games Launcher", .tags = 1 << 4, .monitor = 0)
     RULE(.title = "Just Cause 3", .tags = 1 << 4, .monitor = 0)
@@ -474,6 +475,7 @@ static const Rule rules[] = {
     RULE(.instance = "riotclientux.exe", .tags = 1 << 4, .monitor = 0)
     RULE(.instance = "anomalydx11avx.exe", .tags = 1 << 4, .monitor = 0)
     RULE(.instance = "eu4", .tags = 1 << 4, .monitor = 1)
+    RULE(.title = "!dwmfloat", .isfloating = 1, .noswallow=1, .iscentered=1)
     // scratcpads
 #if SCRATCHPADS_PATCH
     RULE(.instance = "spterm1", .tags = SPTAG(0), .isfloating = 1)
