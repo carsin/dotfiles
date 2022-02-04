@@ -41,7 +41,8 @@ return packer.startup({
 		use("sainnhe/gruvbox-material")
 		use({ "norcalli/nvim-colorizer.lua", event = "BufRead" })
 		use("ggandor/lightspeed.nvim")
-		use("chaoren/vim-wordmotion")
+		use("chaoren/vim-wordmotion") -- more intuitive w/W motion
+    use("wellle/targets.vim") -- more text objects to target
 		use("tpope/vim-surround")
 		use("tpope/vim-repeat")
 		use("tpope/vim-fugitive")
@@ -56,6 +57,7 @@ return packer.startup({
     use("tpope/vim-unimpaired") -- handy ][ mappings that should be builtin
 		use("RRethy/vim-illuminate") -- highlight matches of symbol under cursor
 		use("editorconfig/editorconfig-vim")
+    
 
 		use({ -- lsp config
 			"neovim/nvim-lspconfig",
@@ -158,17 +160,7 @@ return packer.startup({
 		use({ -- FTerm
 			"numtostr/FTerm.nvim",
 			config = function()
-				local fterm = require("FTerm")
-				fterm.setup({
-					cmd = "export IS_FTERM=1 && " .. os.getenv("SHELL"),
-					dimensions = {
-						height = 0.75,
-						width = 0.65,
-						x = 0.5,
-						y = 0.5,
-					},
-					border = "single",
-				})
+				require("settings.fterm")
 			end,
 		})
 

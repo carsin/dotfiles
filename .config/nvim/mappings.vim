@@ -140,8 +140,8 @@ endfunction
 
 " TODO: handle project compilation by language
 " execute ./run command
-nnoremap <F2> <CMD>call CompileProject()<cr>
-inoremap <F2> <CMD>call CompileProject()<cr>
+" nnoremap <F2> <CMD>call CompileProject()<cr>
+" inoremap <F2> <CMD>call CompileProject()<cr>
 
 " change directory to current file
 nnoremap <leader>cd :cd %:p:h<CR>:pwd<CR>
@@ -199,7 +199,11 @@ tnoremap <silent> <C-q> <CMD>lua require("FTerm").toggle()<CR>
 nnoremap <silent> <F3> <CMD>:w<CR><CMD>lua require("FTerm").toggle()<CR>
 inoremap <silent> <F3> <CMD>:w<CR><CMD>lua require("FTerm").toggle()<CR>
 tnoremap <silent> <F3> <CMD>lua require("FTerm").toggle()<CR>
-tnoremap <silent> <ESC> <CMD>lua require("FTerm").toggle()<CR>
+tnoremap <silent> <ESC> <CMD>lua require("FTerm").close()<CR>
+
+" compile 
+nnoremap <F2> <CMD>lua require('FTerm').scratch({ cmd = './run' })<cr>
+nnoremap <leader>o <CMD>lua __fterm_ranger()<cr>
 
 " Trouble
 nnoremap <leader>d <cmd>TroubleToggle workspace_diagnostics<cr>
