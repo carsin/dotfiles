@@ -44,6 +44,7 @@ return packer.startup({
 		use("chaoren/vim-wordmotion")
 		use("tpope/vim-surround")
 		use("tpope/vim-repeat")
+		use("tpope/vim-fugitive")
 		use("christoomey/vim-tmux-navigator")
 		use("famiu/bufdelete.nvim")
 		use("antoinemadec/FixCursorHold.nvim") -- Needed while issue https://github.com/neovim/neovim/issues/12587 is still open
@@ -52,6 +53,7 @@ return packer.startup({
 		use("nathom/filetype.nvim")
 		use("airblade/vim-rooter")
 		use("mbbill/undotree")
+    use("tpope/vim-unimpaired") -- handy ][ mappings that should be builtin
 		use("RRethy/vim-illuminate") -- highlight matches of symbol under cursor
 		use("editorconfig/editorconfig-vim")
 
@@ -110,6 +112,8 @@ return packer.startup({
 				"nvim-lua/plenary.nvim",
 				"nvim-telescope/telescope-project.nvim",
 				"nvim-telescope/telescope-ui-select.nvim",
+        "jvgrootveld/telescope-zoxide",
+        "LinArcX/telescope-env.nvim",
 				{ "nvim-telescope/telescope-fzf-native.nvim", run = "make" },
 				{ "nvim-telescope/telescope-frecency.nvim", requires = { "tami5/sqlite.lua" } },
 			},
@@ -243,13 +247,13 @@ return packer.startup({
 			end,
 		})
 
-		use({ -- neogit, magit for neovim
-			"TimUntersberger/neogit",
-			requires = "nvim-lua/plenary.nvim",
-			config = function()
-				require("neogit").setup({})
-			end,
-		})
+		-- use({ -- neogit, magit for neovim
+		-- 	"TimUntersberger/neogit",
+		-- 	requires = "nvim-lua/plenary.nvim",
+		-- 	config = function()
+		-- 		require("neogit").setup({})
+		-- 	end,
+		-- })
 
 		use({ -- zenmode
 			"Pocco81/TrueZen.nvim",

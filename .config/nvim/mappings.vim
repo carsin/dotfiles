@@ -146,21 +146,32 @@ inoremap <F2> <CMD>call CompileProject()<cr>
 " change directory to current file
 nnoremap <leader>cd :cd %:p:h<CR>:pwd<CR>
 
-" --- PLUGINS {{{
-" Telescope
-" Find files using Telescope command-line sugar.
-nnoremap <leader>f <cmd>Telescope find_files<cr>
-nnoremap <leader>s <cmd>Telescope live_grep<cr>
-nnoremap <leader>pp <cmd>lua require'telescope'.extensions.project.project{ display_type = 'full' }<cr>
-" nnoremap <leader>h <cmd>SessionManager load_session<cr>
-nnoremap <leader>wf <cmd>lua require('telescope').extensions.vimwiki.vimwiki({})<cr>
-nnoremap <leader>wg <cmd>Telescope vimwiki live_grep<cr>
-nnoremap <leader>r <cmd>lua require('telescope').extensions.frecency.frecency()<cr>
-
 vmap <Space> <Nop>
 
-" Neogit
-nnoremap <leader>gg <cmd>Neogit<cr>
+" --- PLUGINS {{{
+" Telescope
+" find and get stuff
+nnoremap <leader>f <cmd>Telescope find_files<cr>
+nnoremap <leader>r <cmd>lua require('telescope').extensions.frecency.frecency()<cr>
+nnoremap <leader>s <cmd>Telescope live_grep<cr>
+" pickers
+nnoremap <leader>pp <cmd>lua require'telescope'.extensions.project.project{ display_type = 'full' }<cr>
+nnoremap <leader>ph <cmd>SessionManager load_session<cr>
+nnoremap <leader>pz <cmd>Telescope zoxide list<cr>
+nnoremap <leader>pe <cmd>Telescope env<cr>
+
+" -- telescope-dap
+nnoremap <leader>pdc <cmd>lua require"telescope".extensions.dap.commands{}<CR>
+nnoremap <leader>pdo <cmd>lua require"telescope".extensions.dap.configurations{}<CR>
+nnoremap <leader>pdb <cmd>lua require"telescope".extensions.dap.list_breakpoints{}<CR>
+nnoremap <leader>pdv <cmd>lua require"telescope".extensions.dap.variables{}<CR>
+nnoremap <leader>pdf <cmd>lua require"telescope".extensions.dap.frames{}<CR>
+
+" Vim fugitive - git handler
+nnoremap <leader>gg <cmd>G<cr>
+nnoremap <leader>gl <cmd>Gclog<cr>
+nnoremap <leader>ge <cmd>Gedit<cr>
+nnoremap <leader>gd <cmd>Gdiff<cr>
 
 " EasyAlign
 xmap ga <Plug>(EasyAlign)
@@ -271,12 +282,6 @@ nnoremap <leader>u :UndotreeToggle<CR>
 " map('n', '<leader>dro', '<cmd>lua require"dap".repl.open()<CR>')
 " map('n', '<leader>drl', '<cmd>lua require"dap".repl.run_last()<CR>')
 "
-" -- telescope-dap
-" map('n', '<leader>dcc', '<cmd>lua require"telescope".extensions.dap.commands{}<CR>')
-" map('n', '<leader>dco', '<cmd>lua require"telescope".extensions.dap.configurations{}<CR>')
-" map('n', '<leader>dlb', '<cmd>lua require"telescope".extensions.dap.list_breakpoints{}<CR>')
-" map('n', '<leader>dv', '<cmd>lua require"telescope".extensions.dap.variables{}<CR>')
-" map('n', '<leader>df', '<cmd>lua require"telescope".extensions.dap.frames{}<CR>')
 "
 " -- nvim-dap-ui
 " map('n', '<leader>mui', '<cmd>lua require"dapui".toggle()<CR>')
