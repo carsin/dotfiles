@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # START SLOW ASS SPOTIFY NICE AND EARLY
-spotify &
+# spotify &
 
 # load xresources
 xrdb -merge ~/.Xresources 
