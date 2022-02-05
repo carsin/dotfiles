@@ -193,16 +193,16 @@ endfunction
 
 " FTerm
 nnoremap <silent> <leader>t <CMD>call OpenTerm()<CR>
-nnoremap <silent> <C-t> <CMD>:w<CR><CMD>lua require("FTerm").toggle()<CR>
+nnoremap <silent> <C-t> <CMD>w<CR><CMD>lua require("FTerm").toggle()<CR>
 tnoremap <silent> <C-t> <CMD>lua require("FTerm").toggle()<CR>
 tnoremap <silent> <C-q> <CMD>lua require("FTerm").toggle()<CR>
-nnoremap <silent> <F3> <CMD>:w<CR><CMD>lua require("FTerm").toggle()<CR>
-inoremap <silent> <F3> <CMD>:w<CR><CMD>lua require("FTerm").toggle()<CR>
+nnoremap <silent> <F3> <CMD>w<CR><CMD>lua require("FTerm").toggle()<CR>
+inoremap <silent> <F3> <CMD>w<CR><CMD>lua require("FTerm").toggle()<CR>
 tnoremap <silent> <F3> <CMD>lua require("FTerm").toggle()<CR>
 tnoremap <silent> <ESC> <CMD>lua require("FTerm").close()<CR>
 
 " compile 
-nnoremap <F2> <CMD>lua require('FTerm').scratch({ cmd = './run' })<cr>
+nnoremap <F2> <cmd>w<CR><CMD>lua require('FTerm').scratch({ cmd = './run' })<cr>
 nnoremap <leader>o <CMD>lua __fterm_ranger()<cr>
 
 " Trouble

@@ -350,7 +350,7 @@ const char *spcmd3[]  = {"alacritty", "--class", "spterm3,Alacritty", "-o", "win
 const char *spcmd4[]  = {"alacritty", "--class", "spsptui,Alacritty", "-o", "window.dimensions.columns=135", "-o", "window.dimensions.lines=50", "-e", "/home/carson/bin/scratchpads/sptuistart", NULL};
 const char *spcmd5[]  = {"alacritty", "--class", "spfiles,Alacritty", "-o", "window.dimensions.columns=155", "-o", "window.dimensions.lines=50", "-e", "ranger", NULL};
 const char *spcmd6[]  = {"alacritty", "--class", "sppulsemixer,Alacritty", "-o", "window.dimensions.columns=90", "-o", "window.dimensions.lines=30", "-e", "pulsemixer", NULL};
-const char *spcmd7[]  = {"alacritty", "--class", "sptop,Alacritty", "-o", "window.dimensions.columns=140", "-o", "window.dimensions.lines=43", "-e", "bpytop", NULL};
+const char *spcmd7[]  = {"alacritty", "--class", "sptop,Alacritty", "-o", "window.dimensions.columns=140", "-o", "window.dimensions.lines=43", "-e", "btop", NULL};
 const char *spcmd8[]  = {"alacritty", "--class", "spnvtop,Alacritty", "-o", "window.dimensions.columns=138", "-o", "window.dimensions.lines=41", "-e", "nvtop", NULL};
 const char *spcmd9[]  = {"alacritty", "--class", "spccal,Alacritty", "-o", "window.dimensions.columns=130", "-o", "window.dimensions.lines=42", "-e", "/home/carson/bin/scratchpads/calstart", NULL};
 const char *spcmd10[] = {"alacritty", "--class", "spnvim,Alacritty", "-o", "window.dimensions.columns=173", "-o", "window.dimensions.lines=53", "-e", "/home/carson/bin/scratchpads/editorstart", NULL};
@@ -958,10 +958,9 @@ static Key keys[] = {
 	{0, XF86XK_AudioPrev, spawn, SHCMD("playerctl previous -a")},
     {0, XF86XK_MonBrightnessUp, spawn, SHCMD("/home/carson/bin/bright up") },
     {0, XF86XK_MonBrightnessDown, spawn, SHCMD("/home/carson/bin/bright down") },
-    {MODKEY | ShiftMask, XK_Print, spawn, SHCMD("/usr/bin/flameshot &")},
+    {MODKEY | ShiftMask, XK_Print, spawn, SHCMD("/usr/bin/flameshot gui &")},
     {MODKEY | ShiftMask, XK_s, spawn, SHCMD("spotify")}, // --no-zygote flag disables hardware (gpu) accel
     {MODKEY, XK_Home, spawn, SHCMD("timeout 3 /home/carson/bin/newpape.sh")},
-    {MODKEY | ControlMask, XK_Home, spawn, SHCMD("killall -USR1 /usr/local/bin/st")},
     {MODKEY | ShiftMask | ControlMask, XK_l, spawn, SHCMD("slock")},
 #if KEYMODES_PATCH
     {MODKEY, XK_Escape, setkeymode, {.ui = COMMANDMODE}},
@@ -1088,8 +1087,10 @@ static Key keys[] = {
     // {MODKEY, XK_p, shiftview, {.i = -1}},
 #endif // SHIFTVIEW_PATCH
 #if SHIFTVIEW_CLIENTS_PATCH
-    {MODKEY | Mod4Mask, XK_Tab, shiftviewclients, {.i = -1}},
-    {MODKEY | Mod4Mask, XK_backslash, shiftviewclients, {.i = +1}},
+    // {MODKEY | Mod4Mask, XK_Tab, shiftviewclients, {.i = -1}},
+    // {MODKEY | Mod4Mask, XK_backslash, shiftviewclients, {.i = +1}},
+    {MODKEY, XK_g, shiftviewclients, {.i = -1}},
+    {MODKEY, XK_semicolon, shiftviewclients, {.i = +2}},
 #endif // SHIFTVIEW_CLIENTS_PATCH
 #if BAR_WINTITLEACTIONS_PATCH
     {MODKEY, XK_m, showhideclient, {0}},
@@ -1410,8 +1411,8 @@ static Key keys[] = {
 #if CYCLELAYOUTS_PATCH
     {MODKEY | ShiftMask, XK_comma, cyclelayout, {.i = -1}},
     {MODKEY | ShiftMask, XK_period, cyclelayout, {.i = +1}},
-    {MODKEY | ShiftMask, XK_g, cyclelayout, {.i = -1}},
-    {MODKEY | ShiftMask, XK_semicolon, cyclelayout, {.i = +1}},
+    // {MODKEY | ShiftMask, XK_g, cyclelayout, {.i = -1}},
+    // {MODKEY | ShiftMask, XK_semicolon, cyclelayout, {.i = +1}},
 #endif // CYCLELAYOUTS_PATCH
 #if MPDCONTROL_PATCH
     {MODKEY, XK_F1, mpdchange, {.i = -1}},

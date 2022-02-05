@@ -142,7 +142,7 @@ return packer.startup({
 				"L3MON4D3/LuaSnip",
 				"f3fora/cmp-spell",
 				"hrsh7th/cmp-cmdline",
-				"Furkanzmc/sekme.nvim",
+				-- "Furkanzmc/sekme.nvim",
 				"andersevenrud/cmp-tmux",
         "hrsh7th/cmp-nvim-lsp-signature-help",
 			},
