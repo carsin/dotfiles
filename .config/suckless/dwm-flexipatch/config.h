@@ -962,6 +962,7 @@ static Key keys[] = {
     {MODKEY | ShiftMask, XK_s, spawn, SHCMD("spotify")}, // --no-zygote flag disables hardware (gpu) accel
     {MODKEY, XK_Home, spawn, SHCMD("timeout 3 /home/carson/bin/newpape.sh")},
     {MODKEY | ControlMask, XK_Home, spawn, SHCMD("killall -USR1 /usr/local/bin/st")},
+    {MODKEY | ShiftMask | ControlMask, XK_l, spawn, SHCMD("slock")},
 #if KEYMODES_PATCH
     {MODKEY, XK_Escape, setkeymode, {.ui = COMMANDMODE}},
 #endif // KEYMODES_PATCH&
