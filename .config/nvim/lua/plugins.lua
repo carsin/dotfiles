@@ -87,7 +87,7 @@ return packer.startup({
 			},
 			run = ":TSUpdate",
 			config = function()
-				require("settings.treesitter")
+				require("settings.treesitter").setup()
 			end,
 		})
 
@@ -144,6 +144,7 @@ return packer.startup({
 				"hrsh7th/cmp-cmdline",
 				"Furkanzmc/sekme.nvim",
 				"andersevenrud/cmp-tmux",
+        "hrsh7th/cmp-nvim-lsp-signature-help",
 			},
 			config = function()
 				require("settings.lsp.cmp")

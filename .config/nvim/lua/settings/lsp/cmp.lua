@@ -2,10 +2,6 @@ local cmp = require 'cmp'
 local luasnip = require 'luasnip'
 local cmp_autopairs = require('nvim-autopairs.completion.cmp')
 
--- don't intiialize cmp in telescope buffs
-vim.cmd([[
-autocmd FileType TelescopePrompt lua require('cmp').setup.buffer { enabled = false }
-]])
 
 local has_words_before = function()
   local line, col = unpack(vim.api.nvim_win_get_cursor(0))
@@ -88,6 +84,29 @@ cmp.setup {
       })
     }),
 	},
+  enabled = function() 
+        if vim.bo.ft == "TelescopePrompt" then
+            return false
+        end
+        if vim.bo.ft == "markdown" then
+            return false
+        end
+        local lnum, col =
+            vim.fn.line("."), math.min(vim.fn.col("."), #vim.fn.getline("."))
+        for _, syn_id in ipairs(vim.fn.synstack(lnum, col)) do
+            syn_id = vim.fn.synIDtrans(syn_id) -- Resolve :highlight links
+            if vim.fn.synIDattr(syn_id, "name") == "Comment" then
+                return false
+            end
+        end
+        if vim.tbl_contains(require('settings.treesitter').get_hl(), "TSComment") then
+            return false
+        end
+        if string.find(vim.api.nvim_buf_get_name(0), "s_popup:/") then
+            return false
+        end
+        return true
+    end,
   documentation = {
     border = nil,
   },
@@ -112,7 +131,4 @@ cmp.setup.cmdline(":", {
     { name = "cmdline" },
   }),
 })
-
--- don't start cmp in file types
--- vim.cmd([[ autocmd FileType vimwiki lua require('cmp').setup.buffer { enabled = false } ]])
--- vim.cmd([[ autocmd FileType markdown lua require('cmp').setup.buffer { enabled = false } ]])
+  

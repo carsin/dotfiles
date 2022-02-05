@@ -46,6 +46,8 @@ let g:undotree_ShortIndicators = 0
 let g:undotree_SetFocusWhenToggle = 1
 let g:undotree_SplitWidth = 40
 let g:undotree_DiffpanelHeight = 13
+" targets use builtins if one exists
+let g:targets_seekRanges = 'cc cr cb cB lc ac Ac lr lb ar ab lB Ar aB Ab AB rr ll rb al rB Al bb aa bB Aa BB AA'
 " let g:rooter_resolve_links = 1
 " run template script on new daily wiki file
 
