@@ -466,14 +466,15 @@ static const Rule rules[] = {
     RULE(.title = "Red Dead Redemption 2", .tags = 1 << 4, .monitor = 0)
     RULE(.instance = "origin.exe", .tags = 1 << 4, .isfloating = 1, .monitor = 0)
     RULE(.instance = "bf4.exe", .tags = 1 << 4, .isfloating = 1, .monitor = 0)
-    RULE(.instance = "lutris", .tags = 1 << 4, .monitor = 0)
-    RULE(.instance = "Steam", .tags = 1 << 4)
+    RULE(.instance = "lutris", .tags = 1 << 3, .monitor = 0)
+    RULE(.instance = "Steam", .tags = 1 << 3)
     RULE(.instance = "eadesktop.exe", .tags = 1 << 4, .monitor = 0)
     RULE(.instance = "multimc", .tags = 1 << 4, .monitor = 0)
     RULE(.instance = "Minecraft* 1.18.1", .tags = 1 << 4, .monitor = 0)
     RULE(.instance = "Sodium 1.18.1", .tags = 1 << 4, .monitor = 0)
     RULE(.instance = "riotclientux.exe", .tags = 1 << 4, .monitor = 0)
     RULE(.instance = "anomalydx11avx.exe", .tags = 1 << 4, .monitor = 0)
+    RULE(.instance = "modorganizer.exe", .tags = 1 << 4, .monitor = 0)
     RULE(.instance = "eu4", .tags = 1 << 4, .monitor = 1)
     RULE(.title = "!dwmfloat", .isfloating = 1, .noswallow=1, .iscentered=1)
     // scratcpads
@@ -497,11 +498,11 @@ static const Rule rules[] = {
 static const MonitorRule monrules[] = {
     /* monitor  tag   layout  mfact  nmaster  showbar  topbar */
     // {1, -1, 2, -1, -1, -1, -1}, // use a different layout for the second monitor
-    {1, 1, 1, 0.52, -1, -1, -1}, // 1 (ultrawide)
-    {1, 2, 1, 0.52, -1, -1, -1}, // 1 (ultrawide)
-    {1, 3, 1, 0.52, -1, -1, -1}, // 1 (ultrawide)
-    {1, 4, 1, 0.52, -1, -1, -1}, // 1 (ultrawide)
-    {1, 5, 1, 0.52, -1, -1, -1}, // 1 (ultrawide)
+    {1, 1, 1, 0.5, -1, -1, -1}, // 1 (ultrawide)
+    {1, 2, 1, 0.5, -1, -1, -1}, // 1 (ultrawide)
+    {1, 3, 1, 0.5, -1, -1, -1}, // 1 (ultrawide)
+    {1, 4, 1, 0.5, -1, -1, -1}, // 1 (ultrawide)
+    {1, 5, 1, 0.5, -1, -1, -1}, // 1 (ultrawide)
     {-1, -1, 0, -1, -1, -1, -1}, // default
 };
 #else
@@ -643,7 +644,7 @@ static const BarRule barrules[] = {
 };
 
 /* layout(s) */
-static const float mfact = 0.50; /* factor of master area size [0.05..0.95] */
+static const float mfact = 0.55; /* factor of master area size [0.05..0.95] */
 static const int nmaster = 1;    /* number of clients in master area */
 #if FLEXTILE_DELUXE_LAYOUT
 static const int nstack = 0; /* number of clients in primary stack area */
@@ -821,13 +822,17 @@ static const char *xkb_layouts[] = {
       // {MODKEY | Mod4Mask, KEY, toggletag, {.ui = 1 << TAG}},   
       // // {MODKEY | Mod4Mask | ControlMask, KEY, tagprevmon, {.ui = 1 << TAG}},
       // {MODKEY | ControlMask, KEY, toggleview, {.ui = 1 << TAG}},               
-#elif COMBO_PATCH && SWAPTAGS_PATCH
+#elif COMBO_PATCH && SWAPTAGS_PATCH // active
 #define TAGKEYS(KEY, TAG)                                                      \
   {MODKEY, KEY, comboview, {.ui = 1 << TAG}},                                  \
       {MODKEY | ControlMask, KEY, toggleview, {.ui = 1 << TAG}},               \
-      {MODKEY | ShiftMask, KEY, combotag, {.ui = 1 << TAG}},                   \
-      {MODKEY | ControlMask | ShiftMask, KEY, toggletag, {.ui = 1 << TAG}},    \
-      {MODKEY | Mod4Mask | ShiftMask, KEY, swaptags, {.ui = 1 << TAG}},
+      {MODKEY | ShiftMask, KEY, tag, {.ui = 1 << TAG}},                        \
+      {MODKEY | Mod4Mask, KEY, swaptags, {.ui = 1 << TAG}},     \
+  // {MODKEY, KEY, comboview, {.ui = 1 << TAG}},                                  \
+  //     {MODKEY | ControlMask, KEY, toggleview, {.ui = 1 << TAG}},               \
+  //     {MODKEY | ShiftMask, KEY, combotag, {.ui = 1 << TAG}},                   \
+  //     {MODKEY | ControlMask | ShiftMask, KEY, toggletag, {.ui = 1 << TAG}},    \
+  //     {MODKEY | Mod4Mask | ShiftMask, KEY, swaptags, {.ui = 1 << TAG}},
 #elif COMBO_PATCH && TAGOTHERMONITOR_PATCH
 #define TAGKEYS(KEY, TAG)                                                      \
   {MODKEY, KEY, comboview, {.ui = 1 << TAG}},                                  \
@@ -953,9 +958,9 @@ static Key keys[] = {
 	{0, XF86XK_AudioRaiseVolume, spawn, SHCMD("/home/carson/bin/changevol -n -p -y up 5")},
     {0, XF86XK_AudioLowerVolume, spawn, SHCMD("/home/carson/bin/changevol -n -p -y down 5")},
 	{0, XF86XK_AudioMute, spawn, SHCMD("/home/carson/bin/changevol -n -p -y mute")},
-    {0, XF86XK_AudioPlay, spawn, SHCMD("playerctl play-pause -a")},
-	{0, XF86XK_AudioNext, spawn, SHCMD("playerctl next -a")},
-	{0, XF86XK_AudioPrev, spawn, SHCMD("playerctl previous -a")},
+    {0, XF86XK_AudioPlay, spawn, SHCMD("playerctl play-pause -p 'spotify,firefox,mpv'")},
+	{0, XF86XK_AudioNext, spawn, SHCMD("playerctl next -p 'spotify,firefox,mpv'")},
+	{0, XF86XK_AudioPrev, spawn, SHCMD("playerctl previous -p 'spotify,firefox,mpv'")},
     {0, XF86XK_MonBrightnessUp, spawn, SHCMD("/home/carson/bin/bright up") },
     {0, XF86XK_MonBrightnessDown, spawn, SHCMD("/home/carson/bin/bright down") },
     {MODKEY | ShiftMask, XK_Print, spawn, SHCMD("/usr/bin/flameshot gui &")},

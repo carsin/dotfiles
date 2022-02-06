@@ -190,20 +190,20 @@ return packer.startup({
 			end,
 		})
 
-		-- use({ -- bufferline
-		-- 	"akinsho/bufferline.nvim",
-		-- 	requires = "kyazdani43/nvim-web-devicons",
-		-- 	config = function()
-		-- 		require("settings.bufferline")
-		-- 	end,
-		-- })
+		use({ -- bufferline
+			"akinsho/bufferline.nvim",
+			requires = "kyazdani43/nvim-web-devicons",
+			config = function()
+				require("settings.bufferline")
+			end,
+		})
 
-    use({
-      "noib3/nvim-cokeline",
-      config = function ()
-				require("settings.cokeline")
-      end
-    })
+    -- use({
+    --   "noib3/nvim-cokeline",
+    --   config = function ()
+				-- require("settings.cokeline")
+    --   end
+    -- })
 
 		use({ -- nvim tree
 			"kyazdani42/nvim-tree.lua",
