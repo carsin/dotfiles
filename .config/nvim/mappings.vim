@@ -146,7 +146,22 @@ endfunction
 " change directory to current file
 nnoremap <leader>cd :cd %:p:h<CR>:pwd<CR>
 
+" no more fatfingering and removing visual selection
 vmap <Space> <Nop>
+
+" markdown checkboxes toggling
+command! -nargs=1 -complete=command StayWinToggle call <SID>StayWinToggle(<f-args>)
+function! s:StayWinToggle(cmd) range
+  let view = winsaveview()
+  execute a:cmd
+  call winrestview(view)
+endfunction
+" toggle progress
+autocmd FileType markdown nnoremap <buffer> <silent> - :StayWinToggle keeppatterns s/^\s*-\s*\[\zs.\ze\]/\=get({' ': '~', '~': '.', '.': 'o', 'o': 'X', 'X': ' '}, submatch(0), ' ')/e<cr>
+autocmd FileType markdown nnoremap <buffer> <silent> <leader><leader> :StayWinToggle keeppatterns s/^\s*-\s*\[\zs.\ze\]/\=get({' ': '~', '~': '.', '.': 'o', 'o': 'X', 'X': ' '}, submatch(0), ' ')/e<cr>
+" toggle completion
+autocmd FileType markdown nnoremap <buffer> <silent> <leader><S-Space> :StayWinToggle keeppatterns s/^\s*-\s*\[\zs.\ze\]/\=get({' ': 'X', '~': 'X', '.': 'X', 'o': 'X', 'X': ' '}, submatch(0), ' ')/e<cr>
+autocmd FileType markdown nnoremap <buffer> <silent> _ :StayWinToggle keeppatterns s/^\s*-\s*\[\zs.\ze\]/\=get({' ': 'X', '~': 'X', '.': 'X', 'o': 'X', 'X': ' '}, submatch(0), ' ')/e<cr>
 
 " --- PLUGINS {{{
 " Telescope

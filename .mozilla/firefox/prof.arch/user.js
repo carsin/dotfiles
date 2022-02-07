@@ -1349,6 +1349,7 @@ user_pref("app.update.background.scheduling.enabled", false);
 /* END: internal custom pref to test for syntax errors ***/
 user_pref("_user.js.parrot", "SUCCESS: No no he's not dead, he's, he's restin'!");
 
+// im lazy; do stuff for me at the cost of privacy(?)
 /* 2801: delete cookies and site data on exit
  * 0=keep until they expire (default), 2=keep until you close Firefox
  * [NOTE] A "cookie" block permission also controls localStorage/sessionStorage, indexedDB,
@@ -1393,3 +1394,9 @@ user_pref("webgl.disabled", false);
  * [1] https://bugzilla.mozilla.org/1407366
  * [2] https://hg.mozilla.org/mozilla-central/rev/6d2d7856e468#l2.32 ***/
 user_pref("privacy.resistFingerprinting.letterboxing", false); // [HIDDEN PREF]
+
+/* 4501: enable privacy.resistFingerprinting [FF41+]
+ * [SETUP-WEB] RFP can cause some website breakage: mainly canvas, use a site exception via the urlbar
+ * RFP also has a few side effects: mainly timezone is UTC0, and websites will prefer light theme
+ * [1] https://bugzilla.mozilla.org/418986 ***/
+user_pref("privacy.resistFingerprinting", false);

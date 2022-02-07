@@ -295,6 +295,8 @@ return packer.startup({
 		})
 		use({ -- zettlekasten
 			"mickael-menu/zk-nvim",
+      -- requires = "SidOfc/mkdx", -- TODO
+      requires = "jkramer/vim-checkbox", -- TODO
 			config = function()
 				require("settings.zk")
 			end,

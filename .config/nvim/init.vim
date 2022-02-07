@@ -51,8 +51,6 @@ let g:targets_seekRanges = 'cc cr cb cB lc ac Ac lr lb ar ab lB Ar aB Ab AB rr l
 " let g:rooter_resolve_links = 1
 " run template script on new daily wiki file
 
-autocmd BufNewFile /home/carson/files/text/wiki/[0-9]\\\{4\}-[0-9]\\\{2\}-[0-9]\\\{2\}.md :silent 0r !~/.config/nvim/bin/template.py '%'
-
 " Load plugins
 lua require('plugins')
 
