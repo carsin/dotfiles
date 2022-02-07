@@ -1,3 +1,4 @@
+// im lazy; do stuff for me at the cost of privacy(?)
 /* 2801: delete cookies and site data on exit
  * 0=keep until they expire (default), 2=keep until you close Firefox
  * [NOTE] A "cookie" block permission also controls localStorage/sessionStorage, indexedDB,
