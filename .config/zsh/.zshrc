@@ -31,6 +31,9 @@ zmodload zsh/complist
 # compinit
 _comp_options+=(globdots) # Include hidden files.
 
+# dont close with ctrl-d
+set -o ignoreeof
+
 # Don't show inverted % when zsh inserts a newline
 unsetopt PROMPT_CR
 unsetopt PROMPT_SP 

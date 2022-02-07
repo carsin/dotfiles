@@ -27,7 +27,7 @@ browser = firefox --new-window
 chat_method = browser
 player = mpv --force-window=yes
 streamlink = streamlink -t '{author} - {title}' --twitch-disable-hosting --twitch-disable-ads
-term = urxvt -e
+term = alacritty -e
 
 [twitch]
 client_id = caozjg12y6hjop39wx996mxn585yqyk

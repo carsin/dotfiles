@@ -84,9 +84,11 @@ alias yt="ytfzf -t --preview-side=right --thumbnail-quality=high --notify-playin
 alias ytsub="yt"
 # youtube audio
 alias yta="ytfzf -m -t"
-alias 'twitchlive'="reflex-curses -f"
+alias ttv="reflex-curses"
+alias twitchlive="reflex-curses -f"
+alias ttvlive="reflex-curses -f"
+alias ttvl="reflex-curses -f"
 alias twitch="reflex-curses"
-alias twitchvod="mpv $1"
 
 
 # scripts 
