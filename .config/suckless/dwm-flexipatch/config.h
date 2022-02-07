@@ -822,7 +822,7 @@ static const char *xkb_layouts[] = {
       // {MODKEY | Mod4Mask, KEY, toggletag, {.ui = 1 << TAG}},   
       // // {MODKEY | Mod4Mask | ControlMask, KEY, tagprevmon, {.ui = 1 << TAG}},
       // {MODKEY | ControlMask, KEY, toggleview, {.ui = 1 << TAG}},               
-#elif COMBO_PATCH && SWAPTAGS_PATCH // active
+#elif COMBO_PATCH && SWAPTAGS_PATCH 
 #define TAGKEYS(KEY, TAG)                                                      \
   {MODKEY, KEY, comboview, {.ui = 1 << TAG}},                                  \
       {MODKEY | ControlMask, KEY, toggleview, {.ui = 1 << TAG}},               \
@@ -847,22 +847,35 @@ static const char *xkb_layouts[] = {
       {MODKEY | ControlMask, KEY, toggleview, {.ui = 1 << TAG}},               \
       {MODKEY | ShiftMask, KEY, combotag, {.ui = 1 << TAG}},                   \
       {MODKEY | ControlMask | ShiftMask, KEY, toggletag, {.ui = 1 << TAG}},
-#elif SWAPTAGS_PATCH && TAGOTHERMONITOR_PATCH
+#elif SWAPTAGS_PATCH && TAGOTHERMONITOR_PATCH // active
 #define TAGKEYS(KEY, TAG)                                                      \
   {MODKEY, KEY, view, {.ui = 1 << TAG}},                                       \
       {MODKEY | ShiftMask, KEY, tag, {.ui = 1 << TAG}},                        \
-      {MODKEY | Mod4Mask, KEY, toggletag, {.ui = 1 << TAG}},    \
-      {MODKEY | ControlMask | ShiftMask, KEY, swaptags, {.ui = 1 << TAG}},        \
-      {MODKEY | ControlMask, KEY, tagnextmon, {.ui = 1 << TAG}},                  \
+      {MODKEY | ControlMask, KEY, toggleview, {.ui = 1 << TAG}},               \
+      {MODKEY | ControlMask | ShiftMask, KEY, swaptags, {.ui = 1 << TAG}},     \
+      {MODKEY | Mod4Mask, KEY, tagnextmon, {.ui = 1 << TAG}},                  \
+      {MODKEY | Mod4Mask | ShiftMask, KEY, tagprevmon, {.ui = 1 << TAG}},
+// #define TAGKEYS(KEY, TAG)                                                      \
+//   {MODKEY, KEY, view, {.ui = 1 << TAG}},                                       \
+//       {MODKEY | ShiftMask, KEY, tag, {.ui = 1 << TAG}},                        \
+//       {MODKEY | Mod4Mask, KEY, toggletag, {.ui = 1 << TAG}},    \
+//       {MODKEY | ControlMask | ShiftMask, KEY, swaptags, {.ui = 1 << TAG}},        \
+//       {MODKEY | ControlMask, KEY, tagnextmon, {.ui = 1 << TAG}},                  \
       // {MODKEY | Mod4Mask | ControlMask, KEY, tagprevmon, {.ui = 1 << TAG}},
       // {MODKEY | ControlMask, KEY, toggleview, {.ui = 1 << TAG}},               
-#elif SWAPTAGS_PATCH
+#elif SWAPTAGS_PATCH 
 #define TAGKEYS(KEY, TAG)                                                      \
   {MODKEY, KEY, view, {.ui = 1 << TAG}},                                       \
-      {MODKEY | ControlMask, KEY, toggleview, {.ui = 1 << TAG}},               \
       {MODKEY | ShiftMask, KEY, tag, {.ui = 1 << TAG}},                        \
-      {MODKEY | ControlMask | ShiftMask, KEY, toggletag, {.ui = 1 << TAG}},    \
-      {MODKEY | Mod4Mask | ShiftMask, KEY, swaptags, {.ui = 1 << TAG}},
+      {MODKEY | ControlMask, KEY, toggleview, {.ui = 1 << TAG}},               \
+      {MODKEY | ControlMask | ShiftMask, KEY, swaptags, {.ui = 1 << TAG}},
+// default
+// #define TAGKEYS(KEY, TAG)                                                      \
+//   {MODKEY, KEY, view, {.ui = 1 << TAG}},                                       \
+//       {MODKEY | ControlMask, KEY, toggleview, {.ui = 1 << TAG}},               \
+//       {MODKEY | ShiftMask, KEY, tag, {.ui = 1 << TAG}},                        \
+//       {MODKEY | ControlMask | ShiftMask, KEY, toggletag, {.ui = 1 << TAG}},    \
+//       {MODKEY | Mod4Mask | ShiftMask, KEY, swaptags, {.ui = 1 << TAG}},
 #elif TAGOTHERMONITOR_PATCH
 #define TAGKEYS(KEY, TAG)                                                      \
   {MODKEY, KEY, view, {.ui = 1 << TAG}},                                       \

@@ -506,7 +506,7 @@
  * https://dwm.suckless.org/patches/combo/
  */
 // not working with VIEWONTAG
-#define COMBO_PATCH 1
+#define COMBO_PATCH 0
 
 /* Allow dwm to execute commands from autostart array in your config.h file. When dwm exits
  * then all processes from autostart array will be killed.
@@ -1103,7 +1103,7 @@ config.h *
  * or previous (left) monitor from the currently selected monitor.
  * https://dwm.suckless.org/patches/tagothermonitor/
  */
-#define TAGOTHERMONITOR_PATCH 0
+#define TAGOTHERMONITOR_PATCH 1
 
 /* This patch allows you to swap all visible windows on one monitor with those of an
  * adjacent monitor.
