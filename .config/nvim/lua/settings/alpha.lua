@@ -585,7 +585,7 @@ local buttons = {
     button("p", "  > Browse Projects" , "<cmd>lua require'telescope'.extensions.project.project{ display_type = 'full' }<cr>"),
     button("s", "  > Search Directory", ":Telescope live_grep<CR>"),
     button("t", "  > Terminal", "<CMD>call OpenTerm()<CR>"),
-    -- button("o", "  > Open Directory " , "<cmd>silent !open .<cr>"), 
+    button("o", "  > Open Directory " , "<CMD>lua __fterm_ranger()<cr>"),
     button("u", "  > Update Plugins", ":PackerSync<CR>"),
     button("q", "  > Quit Neovim", ":qa<CR>"),
   },

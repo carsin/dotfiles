@@ -354,7 +354,7 @@ const char *spcmd7[]  = {"alacritty", "--class", "sptop,Alacritty", "-o", "windo
 const char *spcmd8[]  = {"alacritty", "--class", "spnvtop,Alacritty", "-o", "window.dimensions.columns=138", "-o", "window.dimensions.lines=41", "-e", "nvtop", NULL};
 const char *spcmd9[]  = {"alacritty", "--class", "spccal,Alacritty", "-o", "window.dimensions.columns=130", "-o", "window.dimensions.lines=42", "-e", "/home/carson/bin/scratchpads/calstart", NULL};
 const char *spcmd10[] = {"alacritty", "--class", "spnvim,Alacritty", "-o", "window.dimensions.columns=173", "-o", "window.dimensions.lines=53", "-e", "/home/carson/bin/scratchpads/editorstart", NULL};
-const char *spcmd11[] = {"alacritty", "--class", "spnvim,Alacritty", "-o", "window.dimensions.columns=173", "-o", "window.dimensions.lines=53", "-e", "/home/carson/bin/scratchpads/editorstartzk", NULL};
+// const char *spcmd11[] = {"alacritty", "--class", "spnvim,Alacritty", "-o", "window.dimensions.columns=173", "-o", "window.dimensions.lines=53", "-e", "/home/carson/bin/scratchpads/editorstartzk", NULL};
 
 static Sp scratchpads[] = {
     /* name          cmd  */
@@ -368,7 +368,7 @@ static Sp scratchpads[] = {
     {"spnvtop", spcmd8},
     {"spccal", spcmd9},
     {"spnvim", spcmd10},
-    {"spnvim", spcmd11},
+    // {"spnvim", spcmd11},
 };
 #endif // SCRATCHPADS_PATCH
 
@@ -1207,7 +1207,6 @@ static Key keys[] = {
     {MODKEY | ShiftMask, XK_q, togglescratch, {.ui = 7}}, // nvtop
     {MODKEY, XK_c, togglescratch, {.ui = 8}}, // calcurse
     {MODKEY, XK_e, togglescratch, {.ui = 9}}, // nvim
-    {MODKEY | ShiftMask, XK_e, togglescratch, {.ui = 10}}, // nvim with daily
     // {MODKEY | ControlMask, XK_grave, setscratch, {.ui = 0}},
     // {MODKEY | ShiftMask, XK_grave, removescratch, {.ui = 0}},
 #endif // SCRATCHPADS_PATCH
