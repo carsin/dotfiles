@@ -1,14 +1,14 @@
 [user]
 	email = 20868514+carsin@users.noreply.github.com
 	name = carsin
-	# signingkey = 528F41716A62A8A1
+	signingkey = 8A0DB99F
 [core]
 	editor = nvim
 	pager = less -r
 [credential "https://dev.azure.com"]
 	useHttpPath = true
 [commit]
-	# gpgsign = true
+	gpgSign = true
 [color]
 	ui = auto
 [alias]
@@ -26,3 +26,5 @@
 	st = status
 [credential]
 	helper = store --file ~/.cache/git/.git-credentials
+[tag]
+	gpgSign = true

@@ -11,7 +11,7 @@ null_ls.setup({
     -- sh
 		builtins.formatting.shfmt,
     builtins.diagnostics.shellcheck,
-    -- builtins.code_actions.shellcheck, -- only actions to disable error
+    builtins.code_actions.shellcheck, -- only actions to disable error
     -- markdown(prose)
 		builtins.diagnostics.write_good,
 		builtins.diagnostics.codespell.with({

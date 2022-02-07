@@ -20,6 +20,11 @@ export FZF_DEFAULT_COMMAND='rg --files --hidden -g "!.git" '
 export CARGO_HOME=$XDG_CACHE_HOME/cargo
 export RUSTUP_HOME=$XDG_CACHE_HOME/rustup
 export VAGRANT_HOME=$XDG_CACHE_HOME/.vagrant.d
+export GNUPGHOME=$XDG_CONFIG_HOME/.gnupg
+
+# gpg setup
+export GPG_TTY=$(tty)
+gpg-connect-agent updatestartuptty /bye >/dev/null
 
 export PAGER=nvimpager
 export ZK_NOTEBOOK_DIR=/home/carson/files/docs/wiki
