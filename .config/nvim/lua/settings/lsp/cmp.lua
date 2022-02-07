@@ -66,6 +66,7 @@ cmp.setup {
     { name = 'spell' },
     { name = 'tmux', options = { all_panes = false }},
     { name = 'crates' },
+    { name = 'orgmode' },
   },
 	formatting = {
     format = require("lspkind").cmp_format({
@@ -81,6 +82,7 @@ cmp.setup {
         calc = "[Calc]",
         latex_symbols = "[Latex]",
         crates = "[Crates]",
+        orgmode = "[Org]",
       })
     }),
 	},
@@ -131,4 +133,23 @@ cmp.setup.cmdline(":", {
     { name = "cmdline" },
   }),
 })
-  
+
+-- ignore stuff
+vim.opt.wildignore = {
+  '*.o',
+  '*.obj,*~',
+  '*.git*',
+  '*.meteor*',
+  '*vim/backups*',
+  '*sass-cache*',
+  '*mypy_cache*',
+  '*__pycache__*',
+  '*cache*',
+  '*logs*',
+  '*node_modules*',
+  '**/node_modules/**',
+  '*DS_Store*',
+  '*.gem',
+  'log/**',
+  'tmp/**',
+}

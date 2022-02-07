@@ -15,9 +15,9 @@ M.setup = function()
 			enable = true,
 			keymaps = {
 				init_selection = "gnn",
-				node_incremental = "grn",
+				node_incremental = ".",
 				scope_incremental = "grc",
-				node_decremental = "grm",
+				node_decremental = ",",
 			},
 		},
 		autopairs = { enable = true },
@@ -79,6 +79,10 @@ M.setup = function()
 		matchup = {
 			enable = true,
 		},
+    -- lsp_interop = {
+    --   enable = false,
+    -- },
+    ensure_installed = { 'vim', 'bash', 'c', 'rust', 'lua', 'org', 'comment' },
 	})
 end
 

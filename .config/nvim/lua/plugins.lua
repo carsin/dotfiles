@@ -51,15 +51,13 @@ return packer.startup({
 	use("antoinemadec/FixCursorHold.nvim") -- Needed while issue https://github.com/neovim/neovim/issues/12587 is still open
 	use("junegunn/vim-easy-align")
 	use("kyazdani42/nvim-web-devicons")
-	use("nathom/filetype.nvim")
+	-- use("nathom/filetype.nvim")
 	use("airblade/vim-rooter")
 	use("mbbill/undotree")
 	use("tpope/vim-unimpaired") -- handy ][ mappings that should be builtin
 	use("RRethy/vim-illuminate") -- highlight matches of symbol under cursor
 	use("editorconfig/editorconfig-vim")
 	-- TODO: orgmode
-	-- https://github.com/akinsho/org-bullets.nvim
-	-- 'lukas-reineke/headlines.nvim',
 
 	use({ -- zettlekasten
 		"mickael-menu/zk-nvim",
@@ -74,7 +72,7 @@ return packer.startup({
 		requires = {
 			"williamboman/nvim-lsp-installer",
 			"mfussenegger/nvim-jdtls",
-			"https://gitlab.com/yorickpeterse/nvim-dd.git",
+			"https://gitlab.com/yorickpeterse/nvim-dd",
 		},
 		config = function()
 			require("settings.lsp.lspconfig")
@@ -101,6 +99,18 @@ return packer.startup({
 			require("settings.treesitter").setup()
 		end,
 	})
+
+	-- use({ -- orgmode TODO: Fix
+	-- 	"nvim-orgmode/orgmode",
+	-- 	config = function()
+ --    requires = {
+	-- -- https://github.com/akinsho/org-bullets.nvim
+	-- -- 'lukas-reineke/headlines.nvim',
+ --    }
+	-- 		require("settings.orgmode")
+	-- 	end,
+	-- })
+
 
 	use({ -- lsp signature
 		"ray-x/lsp_signature.nvim",
