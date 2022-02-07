@@ -119,5 +119,8 @@ alias pacro='paclo && sudo pacman -Rns $(pacman -Qtdq)' # remove orphans
 alias pacc='sudo pacman -Scc' # clean cache
 alias paclf='pacman -Ql' # list files
 
+# make sure everything is done writing from cache before shutting down
+alias shutdown="sync && sync && sync && shutdown 0"
+
 # go to root of git dir
 alias gitroot='cd $(git rev-parse --show-toplevel)'

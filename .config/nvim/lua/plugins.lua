@@ -57,7 +57,15 @@ return packer.startup({
     use("tpope/vim-unimpaired") -- handy ][ mappings that should be builtin
 		use("RRethy/vim-illuminate") -- highlight matches of symbol under cursor
 		use("editorconfig/editorconfig-vim")
-    
+
+		use({ -- zettlekasten
+			"mickael-menu/zk-nvim",
+      -- requires = "SidOfc/mkdx", -- TODO
+      requires = "jkramer/vim-checkbox", -- TODO
+			config = function()
+				require("settings.zk")
+			end,
+		})
 
 		use({ -- lsp config
 			"neovim/nvim-lspconfig",
@@ -291,14 +299,6 @@ return packer.startup({
 			"folke/which-key.nvim",
 			config = function()
 				require("which-key").setup({})
-			end,
-		})
-		use({ -- zettlekasten
-			"mickael-menu/zk-nvim",
-      -- requires = "SidOfc/mkdx", -- TODO
-      requires = "jkramer/vim-checkbox", -- TODO
-			config = function()
-				require("settings.zk")
 			end,
 		})
 

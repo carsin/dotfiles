@@ -354,6 +354,7 @@ const char *spcmd7[]  = {"alacritty", "--class", "sptop,Alacritty", "-o", "windo
 const char *spcmd8[]  = {"alacritty", "--class", "spnvtop,Alacritty", "-o", "window.dimensions.columns=138", "-o", "window.dimensions.lines=41", "-e", "nvtop", NULL};
 const char *spcmd9[]  = {"alacritty", "--class", "spccal,Alacritty", "-o", "window.dimensions.columns=130", "-o", "window.dimensions.lines=42", "-e", "/home/carson/bin/scratchpads/calstart", NULL};
 const char *spcmd10[] = {"alacritty", "--class", "spnvim,Alacritty", "-o", "window.dimensions.columns=173", "-o", "window.dimensions.lines=53", "-e", "/home/carson/bin/scratchpads/editorstart", NULL};
+const char *spcmd11[] = {"alacritty", "--class", "spnvim,Alacritty", "-o", "window.dimensions.columns=173", "-o", "window.dimensions.lines=53", "-e", "/home/carson/bin/scratchpads/editorstartzk", NULL};
 
 static Sp scratchpads[] = {
     /* name          cmd  */
@@ -367,6 +368,7 @@ static Sp scratchpads[] = {
     {"spnvtop", spcmd8},
     {"spccal", spcmd9},
     {"spnvim", spcmd10},
+    {"spnvim", spcmd11},
 };
 #endif // SCRATCHPADS_PATCH
 
@@ -1198,14 +1200,14 @@ static Key keys[] = {
     {MODKEY, XK_Escape, togglescratch, {.ui = 0}}, //scratch 1 (def)
     {MODKEY, XK_grave, togglescratch, {.ui = 1}}, //scratch 2 (small)
     {MODKEY | ControlMask, XK_Escape, togglescratch, {.ui = 2}}, //scratch 2 (large)
-    {MODKEY, XK_s, togglescratch, {.ui = 3}}, // ncspot
+    {MODKEY, XK_s, togglescratch, {.ui = 3}}, // music
     {MODKEY, XK_r, togglescratch, {.ui = 4}}, // files
     {MODKEY, XK_d, togglescratch, {.ui = 5}}, // pulsemixer
     {MODKEY, XK_q, togglescratch, {.ui = 6}}, // top
     {MODKEY | ShiftMask, XK_q, togglescratch, {.ui = 7}}, // nvtop
     {MODKEY, XK_c, togglescratch, {.ui = 8}}, // calcurse
     {MODKEY, XK_e, togglescratch, {.ui = 9}}, // nvim
-    // {MODKEY | ShiftMask, XK_s, togglescratch, {.ui = 10}}, // sptui
+    {MODKEY | ShiftMask, XK_e, togglescratch, {.ui = 10}}, // nvim with daily
     // {MODKEY | ControlMask, XK_grave, setscratch, {.ui = 0}},
     // {MODKEY | ShiftMask, XK_grave, removescratch, {.ui = 0}},
 #endif // SCRATCHPADS_PATCH
