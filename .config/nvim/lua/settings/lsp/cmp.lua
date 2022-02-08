@@ -87,7 +87,7 @@ cmp.setup {
     }),
 	},
   enabled = function() 
-        if vim.bo.ft == "Telescope" then
+        if vim.bo.ft == "TelescopePrompt" then
             return false
         end
         if vim.bo.ft == "markdown" then

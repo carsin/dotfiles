@@ -97,7 +97,7 @@ alias twitch="reflex-curses"
 alias laptop="/home/carson/bin/displays/laptop.sh"
 alias dock="/home/carson/bin/displays/dock.sh"
 # alias ultrawide="/home/carson/bin/displays/ultrawide.sh"
-alias dlsong="/home/carson/files/music/spotify/edm/new/dlsong.sh"
+alias dlsong="/home/carson/files/music/spotify/bp/scrape2/dlsong.sh"
 
 # system
 alias pmrestart="systemctl --user restart pipewire.service pipewire.socket pipewire-pulse.socket"

@@ -456,8 +456,10 @@ static const Rule rules[] = {
     RULE(.class = "St", .isterminal = 1)
     RULE(.class = "Alacritty", .isterminal = 1)
     // move to other mon
-    RULE(.instance = "spotify", .tags = 1 << 0, .monitor = 1)
-    RULE(.instance = "discord", .tags = 1 << 0, .monitor = 1)
+    // RULE(.instance = "spotify", .tags = 1 << 0, .monitor = 1)
+    // RULE(.instance = "discord", .tags = 1 << 0, .monitor = 1)
+    RULE(.instance = "spotify", .monitor = 1)
+    RULE(.instance = "discord", .monitor = 1)
     RULE(.instance = "obs", .monitor = 1)
     RULE(.instance = "guvcview", .monitor = 2)
     // gaming
@@ -468,7 +470,7 @@ static const Rule rules[] = {
     RULE(.title = "Red Dead Redemption 2", .tags = 1 << 4, .monitor = 0)
     RULE(.instance = "origin.exe", .tags = 1 << 4, .isfloating = 1, .monitor = 0)
     RULE(.instance = "bf4.exe", .tags = 1 << 4, .isfloating = 1, .monitor = 0)
-    RULE(.instance = "lutris", .tags = 1 << 3, .monitor = 0)
+    RULE(.instance = "lutris", .tags = 1 << 4, .monitor = 0)
     RULE(.instance = "Steam", .tags = 1 << 3)
     RULE(.instance = "eadesktop.exe", .tags = 1 << 4, .monitor = 0)
     RULE(.instance = "multimc", .tags = 1 << 4, .monitor = 0)
@@ -500,11 +502,11 @@ static const Rule rules[] = {
 static const MonitorRule monrules[] = {
     /* monitor  tag   layout  mfact  nmaster  showbar  topbar */
     // {1, -1, 2, -1, -1, -1, -1}, // use a different layout for the second monitor
-    {1, 1, 1, 0.5, -1, -1, -1}, // 1 (ultrawide)
-    {1, 2, 1, 0.5, -1, -1, -1}, // 1 (ultrawide)
-    {1, 3, 1, 0.5, -1, -1, -1}, // 1 (ultrawide)
-    {1, 4, 1, 0.5, -1, -1, -1}, // 1 (ultrawide)
-    {1, 5, 1, 0.5, -1, -1, -1}, // 1 (ultrawide)
+    {1, 1, 1, 0.45, -1, -1, -1}, // 1 (ultrawide)
+    {1, 2, 1, 0.45, -1, -1, -1}, // 1 (ultrawide)
+    {1, 3, 1, 0.45, -1, -1, -1}, // 1 (ultrawide)
+    {1, 4, 1, 0.45, -1, -1, -1}, // 1 (ultrawide)
+    {1, 5, 1, 0.45, -1, -1, -1}, // 1 (ultrawide)
     {-1, -1, 0, -1, -1, -1, -1}, // default
 };
 #else

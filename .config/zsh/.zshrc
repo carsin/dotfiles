@@ -4,7 +4,7 @@
 (cat ~/.cache/wal/sequences &)
 
 # Useful options & defaults
-setopt autocd extendedglob nomatch menucomplete interactive_comments
+setopt autocd extendedglob menucomplete interactive_comments nonomatch
 stty stop undef # Disable ctrl-s to freeze terminal.
 
 # let st's terminfo handle key sequences

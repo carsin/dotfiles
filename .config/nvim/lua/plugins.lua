@@ -51,7 +51,7 @@ return packer.startup({
 	use("antoinemadec/FixCursorHold.nvim") -- Needed while issue https://github.com/neovim/neovim/issues/12587 is still open
 	use("junegunn/vim-easy-align")
 	use("kyazdani42/nvim-web-devicons")
-	-- use("nathom/filetype.nvim")
+	use("nathom/filetype.nvim")
 	use("airblade/vim-rooter")
 	use("mbbill/undotree")
 	use("tpope/vim-unimpaired") -- handy ][ mappings that should be builtin

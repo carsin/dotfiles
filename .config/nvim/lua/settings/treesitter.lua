@@ -82,7 +82,7 @@ M.setup = function()
     -- lsp_interop = {
     --   enable = false,
     -- },
-    ensure_installed = { 'vim', 'bash', 'c', 'rust', 'lua', 'org', 'comment' },
+    ensure_installed = { 'c', 'rust', 'lua', 'org', 'comment' },
 	})
 end
 
