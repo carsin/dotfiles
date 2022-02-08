@@ -158,6 +158,40 @@ lsp_installer.on_server_ready(function(server)
 	elseif server.name == "jdtls" then -- override jdtls
 		-- local jdtls_opts = require'plugins.lsp.jdtls'.config
 		-- require("jdtls").start_or_attach(jdtls_opts)
+	elseif server.name == "clangd" then -- use clangd extensions
+		require("clangd_extensions").setup({
+			server = vim.tbl_deep_extend("force", server:get_default_options(), {
+				on_attach = opts.on_attach,
+				capabilities = opts.capaibilities,
+				flags = opts.flags,
+				handlers = opts.handlers,
+			}),
+			extensions = {
+				autoSetHints = true, -- Automatically set inlay hints (type hints)
+				-- Whether to show hover actions inside the hover window
+				-- This overrides the default hover handler
+				hover_with_actions = true,
+				-- These apply to the default ClangdSetInlayHints command
+				inlay_hints = {
+					only_current_line = true,
+					-- Event which triggers a refersh of the inlay hints.
+					-- You can make this "CursorMoved" or "CursorMoved,CursorMovedI" but
+					-- not that this may cause  higher CPU usage.
+					-- This option is only respected when only_current_line and
+					-- autoSetHints both are true.
+					only_current_line_autocmd = "CursorHold,CursorHoldI",
+					show_parameter_hints = true,
+					show_variable_name = false,
+					parameter_hints_prefix = "params: ",
+					other_hints_prefix = "-> ",
+					max_len_align = false,
+					max_len_align_padding = 1,
+					right_align = false,
+					right_align_padding = 7,
+					highlight = "Comment",
+				},
+			},
+		})
 	else
 		-- check to see if any custom server_opts exist for the LSP server
 		server:setup(server_opts[server.name] and server_opts[server.name]() or opts)

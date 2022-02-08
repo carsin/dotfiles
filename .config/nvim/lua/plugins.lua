@@ -73,6 +73,7 @@ return packer.startup({
 			"williamboman/nvim-lsp-installer",
 			"mfussenegger/nvim-jdtls",
 			"https://gitlab.com/yorickpeterse/nvim-dd",
+      "p00f/clangd_extensions.nvim"
 		},
 		config = function()
 			require("settings.lsp.lspconfig")
