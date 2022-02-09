@@ -215,10 +215,8 @@ nnoremap <silent> <F3> <CMD>w<CR><CMD>lua require("FTerm").toggle()<CR>
 inoremap <silent> <F3> <CMD>w<CR><CMD>lua require("FTerm").toggle()<CR>
 tnoremap <silent> <F3> <CMD>lua require("FTerm").toggle()<CR>
 tnoremap <silent> <ESC> <CMD>lua require("FTerm").close()<CR>
-
 " compile 
 nnoremap <F2> <cmd>w<CR><CMD>lua require('FTerm').scratch({ cmd = './run' })<cr>
-
 " open current dir in ranger
 nnoremap <leader>o <CMD>lua __fterm_ranger()<cr>
 
@@ -248,7 +246,6 @@ nnoremap <silent> <leader>9 <Cmd>BufferLineGoToBuffer 9<CR>
 " nnoremap <silent><leader>q <Cmd>:silent lua require('bufdelete').bufdelete(0, true)<CR>
 " intuitive tab change
 " nnoremap <silent><leader>q <Cmd>:BufferlineCyclePrev<CR><Cmd>:silent lua require('bufdelete').bufdelete(0, true)<CR>
-
 " a little more intuitive, but breaks when changes are mad to tabline with leader-H & L
 nnoremap <silent><leader>q <Cmd>:Bdelete<CR><Cmd>:bp<CR>
 " nnoremap <silent><leader>q <Cmd>:silent Bdelete!<CR>
@@ -261,11 +258,6 @@ nnoremap <leader>e :NvimTreeToggle<CR>
 nnoremap <leader>zz <cmd>:silent TZAtaraxis<cr>
 nnoremap <leader>we <cmd>:silent TZAtaraxis<cr>
 nnoremap <silent><F4> <cmd>:silent TZAtaraxis<cr>
-
-" Vimwiki
-" unmap this, as it overrides my <BS> map
-nmap <F21> <Plug>VimwikiGoBackLink
-
 
 " Sniprun
 " nmap <silent> <leader>cr :lua require'sniprun'.run()<CR>

@@ -21,6 +21,7 @@ alias watch="watch --color"
 
 alias w="/home/carson/bin/newpape2.sh"
 alias uw="/home/carson/bin/newpape.sh"
+alias cw="/home/carson/bin/choosepape.sh"
 
 # config storage
 alias config="/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME"
