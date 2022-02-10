@@ -64,9 +64,8 @@ require'nvim-tree'.setup {
     }
   },
   update_focused_file = { -- update the focused file on `BufEnter`, un-collapses the folders recursively until it finds the file
-    enable = true, -- enables the feature
-    update_cwd = false,
-    -- list of buffer names / filetypes that will not update the cwd if the file isn't found under the current root directory
+    enable = true, 
+    update_cwd = true,
     ignore_list = {},
   },
   view = {

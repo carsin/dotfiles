@@ -39,8 +39,6 @@ cnoremap w!! execute 'silent! write !sudo tee % >/dev/null' <bar> edit!
 " Plugins {{{
 " Misc vim settings
 " TODO: Move this
-let g:rooter_patterns = ['src/', '.git', 'Makefile', '*.sln', '.classpath', 'build/env.sh']
-let g:rooter_change_directory_for_non_project_files = 'current'
 let g:undotree_WindowLayout = 3 " diff on bot tree on right
 " e.g. using 'd' instead of 'days' to save some space.
 let g:undotree_ShortIndicators = 0
@@ -49,8 +47,6 @@ let g:undotree_SplitWidth = 40
 let g:undotree_DiffpanelHeight = 13
 " targets use builtins if one exists
 let g:targets_seekRanges = 'cc cr cb cB lc ac Ac lr lb ar ab lB Ar aB Ab AB rr ll rb al rB Al bb aa bB Aa BB AA'
-" let g:rooter_resolve_links = 1
-" run template script on new daily wiki file
 
 " Load plugins
 lua require('plugins')

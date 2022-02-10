@@ -52,12 +52,12 @@ return packer.startup({
 		use("junegunn/vim-easy-align")
 		use("kyazdani42/nvim-web-devicons")
 		use("nathom/filetype.nvim")
-		use("airblade/vim-rooter")
 		use("mbbill/undotree")
 		use("tpope/vim-unimpaired") -- handy ][ mappings that should be builtin
 		use("RRethy/vim-illuminate") -- highlight matches of symbol under cursor
 		use("editorconfig/editorconfig-vim")
 		-- TODO: orgmode
+    
 
 		use({ -- zettlekasten
 			"mickael-menu/zk-nvim",
@@ -358,14 +358,23 @@ return packer.startup({
 				require("crates").setup()
 			end,
 		})
-		if packer_bootstrap then -- auto set up conf after cloning packer.nvim
-			require("packer").sync()
-		end
+
+	use({ -- rooter
+		"jedi2610/nvim-rooter.lua",
+		config = function()
+			require("nvim-rooter").setup({
+        rooter_patterns = { '.git', 'Makefile', '*.sln', '.classpath', 'build/env.sh' }
+			})
+		end,
+	})
+	if packer_bootstrap then -- auto set up conf after cloning packer.nvim
+		require("packer").sync()
+	end
 	end,
 	config = {
 		display = {
 			open_fn = function()
-				return require("packer.util").float({ border = "single" })
+	return require("packer.util").float({ border = "single" })
 			end,
 		},
 		git = {
