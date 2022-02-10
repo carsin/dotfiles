@@ -502,11 +502,11 @@ static const Rule rules[] = {
 static const MonitorRule monrules[] = {
     /* monitor  tag   layout  mfact  nmaster  showbar  topbar */
     // {1, -1, 2, -1, -1, -1, -1}, // use a different layout for the second monitor
-    {1, 1, 1, 0.45, -1, -1, -1}, // 1 (ultrawide)
-    {1, 2, 1, 0.45, -1, -1, -1}, // 1 (ultrawide)
-    {1, 3, 1, 0.45, -1, -1, -1}, // 1 (ultrawide)
-    {1, 4, 1, 0.45, -1, -1, -1}, // 1 (ultrawide)
-    {1, 5, 1, 0.45, -1, -1, -1}, // 1 (ultrawide)
+    {1, 1, 1, 0.4, -1, -1, -1}, // 1 (ultrawide)
+    {1, 2, 1, 0.4, -1, -1, -1}, // 1 (ultrawide)
+    {1, 3, 1, 0.4, -1, -1, -1}, // 1 (ultrawide)
+    {1, 4, 1, 0.4, -1, -1, -1}, // 1 (ultrawide)
+    {1, 5, 1, 0.4, -1, -1, -1}, // 1 (ultrawide)
     {-1, -1, 0, -1, -1, -1, -1}, // default
 };
 #else
@@ -693,7 +693,7 @@ static const int scrollargs[][2] = {
 static const Layout layouts[] = {
     /* symbol     arrange function, { nmaster, nstack, layout, master axis,
        stack axis, secondary stack axis, symbol func } */
-    {"[]=", flextile, {1, -1, SPLIT_VERTICAL, TOP_TO_BOTTOM, TOP_TO_BOTTOM, 0, NULL}},           // default tile layout
+    {"[]=", flextile, {1, -1, SPLIT_VERTICAL, LEFT_TO_RIGHT, TOP_TO_BOTTOM, 0, NULL}},           // default tile layout
     {"|M|", flextile, {1, -1, SPLIT_CENTERED_VERTICAL, LEFT_TO_RIGHT, TOP_TO_BOTTOM, TOP_TO_BOTTOM, NULL}}, // centeredmaster
     {"[]:", flextile, {1, -1, SPLIT_VERTICAL, TOP_TO_BOTTOM, GAPPLESSGRID_ALT2, 0, NULL}},           // tile layout with comfortable stack
     {"[D]", flextile, {1, -1, SPLIT_VERTICAL, TOP_TO_BOTTOM, MONOCLE, 0, NULL}}, // deck

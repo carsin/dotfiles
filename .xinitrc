@@ -46,7 +46,7 @@ xset r rate 170 57
 # no screen blanking
 xset s off
 
-redshift-gtk &
+# redshift-gtk &
 
 # start window manager
 while :; do 

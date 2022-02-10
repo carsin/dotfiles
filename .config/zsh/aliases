@@ -83,9 +83,9 @@ alias ncdu="ncdu --color dark"
 alias yts="ytfzf -t --preview-side=right --thumbnail-quality=high --notify-playing -l --pages=3"
 alias yt="ytfzf -t --preview-side=right --thumbnail-quality=high --notify-playing -l --pages=3 -c S --sort"
 alias ytsub="yt"
-# youtube audio
-alias yta="ytfzf -m -t"
+alias yta="ytfzf -m -t" # youtube audio
 alias ttv="reflex-curses"
+alias red='systemctl enable --user --now redshift'
 alias twitchlive="reflex-curses -f"
 alias ttvlive="reflex-curses -f"
 alias ttvl="reflex-curses -f"
