@@ -363,7 +363,7 @@ return packer.startup({
 		"jedi2610/nvim-rooter.lua",
 		config = function()
 			require("nvim-rooter").setup({
-        rooter_patterns = { '.git', 'Makefile', '*.sln', '.classpath', 'build/env.sh' }
+        rooter_patterns = { '.git', 'Makefile', '*.sln', '.classpath', 'build/env.sh', 'Cargo.toml' }
 			})
 		end,
 	})
