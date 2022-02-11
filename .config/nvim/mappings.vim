@@ -156,9 +156,10 @@ function! s:StayWinToggle(cmd) range
   execute a:cmd
   call winrestview(view)
 endfunction
+
 " toggle progress
-autocmd FileType markdown nnoremap <buffer> <silent> - :StayWinToggle keeppatterns s/^\s*-\s*\[\zs.\ze\]/\=get({' ': '~', '~': '.', '.': 'o', 'o': 'X', 'X': ' '}, submatch(0), ' ')/e<cr>
-autocmd FileType markdown nnoremap <buffer> <silent> <leader><leader> :StayWinToggle keeppatterns s/^\s*-\s*\[\zs.\ze\]/\=get({' ': '~', '~': '.', '.': 'o', 'o': 'X', 'X': ' '}, submatch(0), ' ')/e<cr>
+autocmd FileType markdown nnoremap <buffer> <silent> - :StayWinToggle keeppatterns s/^\s*-\s*\[\zs.\ze\]/\=get({' ': '.', '.': 'o', 'o': 'X', 'X': ' '}, submatch(0), ' ')/e<cr>
+autocmd FileType markdown nnoremap <buffer> <silent> <leader><leader> :StayWinToggle keeppatterns s/^\s*-\s*\[\zs.\ze\]/\=get({' ': '.', '.': 'o', 'o': 'X', 'X': ' '}, submatch(0), ' ')/e<cr>
 " toggle completion
 autocmd FileType markdown nnoremap <buffer> <silent> <leader><S-Space> :StayWinToggle keeppatterns s/^\s*-\s*\[\zs.\ze\]/\=get({' ': 'X', '~': 'X', '.': 'X', 'o': 'X', 'X': ' '}, submatch(0), ' ')/e<cr>
 autocmd FileType markdown nnoremap <buffer> <silent> _ :StayWinToggle keeppatterns s/^\s*-\s*\[\zs.\ze\]/\=get({' ': 'X', '~': 'X', '.': 'X', 'o': 'X', 'X': ' '}, submatch(0), ' ')/e<cr>
@@ -255,9 +256,9 @@ nnoremap <C-e> :NvimTreeToggle<CR>
 nnoremap <leader>e :NvimTreeToggle<CR>
 
 " TrueZen
-nnoremap <leader>zz <cmd>:silent TZAtaraxis<cr>
-nnoremap <leader>we <cmd>:silent TZAtaraxis<cr>
-nnoremap <silent><F4> <cmd>:silent TZAtaraxis<cr>
+nnoremap <leader>zz <cmd>:silent TZAtaraxis<cr><cmd>set nu<cr>
+nnoremap <leader>we <cmd>:silent TZAtaraxis<cr><cmd>set nu<cr>
+nnoremap <silent><F4> <cmd>:silent TZAtaraxis<cr><cmd>set nu<cr>
 
 " Sniprun
 " nmap <silent> <leader>cr :lua require'sniprun'.run()<CR>

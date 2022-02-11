@@ -172,7 +172,7 @@ set foldmethod=expr
 set foldexpr=nvim_treesitter#foldexpr()
 
 " Show / hide cursorline in normal and insert
-augroup numbertoggle
+augroup dynamicnumbers
   autocmd!
   " autocmd BufEnter,FocusGained,InsertLeave,WinEnter * if &ft != "alpha" && &nu && mode() != "i" | set cursorline   | endif
   " autocmd BufLeave,FocusLost,InsertEnter,WinLeave   * if &ft != "alpha" && &nu                  | set nocursorline | endif

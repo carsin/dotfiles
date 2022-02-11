@@ -13,8 +13,8 @@ true_zen.setup({
 			showtabline = 1,
 		},
 		left = {
-			number = false,
-			relativenumber = false,
+			number = true,
+			relativenumber = true,
 			signcolumn = "no",
 		},
 	},
@@ -24,7 +24,7 @@ true_zen.setup({
 			right_padding = 25,
 			top_padding = 0,
 			bottom_padding = 1,
-			ideal_writing_area_width = {85},
+			ideal_writing_area_width = {86},
 			auto_padding = true,
 			keep_default_fold_fillchars = true,
 			custom_bg = {"none", ""},
@@ -63,7 +63,7 @@ true_zen.setup({
 		feline = false,
 	},
 	misc = {
-		on_off_commands = false,
+		on_off_commands = true,
 		ui_elements_commands = false,
 		cursor_by_mode = true,
 	}
