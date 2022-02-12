@@ -455,10 +455,8 @@ static const Rule rules[] = {
     // RULE(.title = "Picture-In-Picture", .tags = SPTAG(99), .isfloating = 1)
     RULE(.class = "St", .isterminal = 1)
     RULE(.class = "Alacritty", .isterminal = 1)
+    RULE(.instance = "spotify", .monitor = 0, .tags = 1 << 3 )
     // move to other mon
-    // RULE(.instance = "spotify", .tags = 1 << 0, .monitor = 1)
-    // RULE(.instance = "discord", .tags = 1 << 0, .monitor = 1)
-    RULE(.instance = "spotify", .monitor = 1)
     RULE(.instance = "discord", .monitor = 1)
     RULE(.instance = "obs", .monitor = 1)
     RULE(.instance = "guvcview", .monitor = 2)
@@ -984,7 +982,7 @@ static Key keys[] = {
     {0, XF86XK_MonBrightnessUp, spawn, SHCMD("/home/carson/bin/bright up") },
     {0, XF86XK_MonBrightnessDown, spawn, SHCMD("/home/carson/bin/bright down") },
     {MODKEY | ShiftMask, XK_Print, spawn, SHCMD("/usr/bin/flameshot gui")},
-    {MODKEY | ShiftMask, XK_s, spawn, SHCMD("spotify")}, // --no-zygote flag disables hardware (gpu) accel
+    {MODKEY | ShiftMask, XK_s, spawn, SHCMD("spotify --no-zygote")}, // --no-zygote flag disables hardware (gpu) accel
     {MODKEY, XK_Home, spawn, SHCMD("timeout 3 /home/carson/bin/newpape.sh")},
     {MODKEY | ControlMask, XK_Home, spawn, SHCMD("timeout 3 /home/carson/bin/newpape.sh -i")},
     {Mod4Mask | ShiftMask | ControlMask, XK_l, spawn, SHCMD("slock")},
