@@ -46,6 +46,8 @@ xset r rate 170 57
 # no screen blanking
 xset s off
 
+playerctld daemon
+
 # redshift-gtk &
 
 # start window manager

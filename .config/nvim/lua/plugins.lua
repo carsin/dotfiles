@@ -101,16 +101,16 @@ return packer.startup({
 			end,
 		})
 
-		-- use({ -- orgmode TODO: Fix
-		-- 	"nvim-orgmode/orgmode",
-		-- 	config = function()
-		--    requires = {
-		-- -- https://github.com/akinsho/org-bullets.nvim
-		-- -- 'lukas-reineke/headlines.nvim',
-		--    }
-		-- 		require("settings.orgmode")
-		-- 	end,
-		-- })
+		use({ -- orgmode TODO: Fix
+			"nvim-orgmode/orgmode",
+			config = function()
+				require("settings.orgmode")
+      end,
+		   -- requires = {
+		-- https://github.com/akinsho/org-bullets.nvim
+		-- 'lukas-reineke/headlines.nvim',
+		   -- },
+		})
 
 		use({ -- lsp signature
 			"ray-x/lsp_signature.nvim",
