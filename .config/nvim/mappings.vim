@@ -219,7 +219,7 @@ tnoremap <silent> <ESC> <CMD>lua require("FTerm").close()<CR>
 " compile 
 nnoremap <F2> <cmd>w<CR><CMD>lua require('FTerm').scratch({ cmd = './run' })<cr>
 " open current dir in ranger
-nnoremap <leader>o <CMD>lua __fterm_ranger()<cr>
+nnoremap <leader>oo <CMD>lua __fterm_ranger()<cr>
 
 " Trouble
 nnoremap <leader>d <cmd>TroubleToggle workspace_diagnostics<cr>

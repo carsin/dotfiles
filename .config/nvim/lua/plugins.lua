@@ -56,12 +56,11 @@ return packer.startup({
 		use("tpope/vim-unimpaired") -- handy ][ mappings that should be builtin
 		use("RRethy/vim-illuminate") -- highlight matches of symbol under cursor
 		use("editorconfig/editorconfig-vim")
-		-- TODO: orgmode
+    -- todo: https://github.com/pianocomposer321/yabs.nvim
     
-
 		use({ -- zettlekasten
 			"mickael-menu/zk-nvim",
-			-- requires = "SidOfc/mkdx", -- TODO
+			-- requires = "SidOfc/mkdx", -- TODO(?)
 			config = function()
 				require("settings.zk")
 			end,
@@ -105,11 +104,11 @@ return packer.startup({
 			"nvim-orgmode/orgmode",
 			config = function()
 				require("settings.orgmode")
-      end,
-		   -- requires = {
-		-- https://github.com/akinsho/org-bullets.nvim
-		-- 'lukas-reineke/headlines.nvim',
-		   -- },
+			end,
+			requires = {
+				"akinsho/org-bullets.nvim",
+				"lukas-reineke/headlines.nvim",
+			},
 		})
 
 		use({ -- lsp signature
@@ -359,22 +358,30 @@ return packer.startup({
 			end,
 		})
 
-	use({ -- rooter
-		"jedi2610/nvim-rooter.lua",
-		config = function()
-			require("nvim-rooter").setup({
-        rooter_patterns = { '.git', 'Makefile', '*.sln', '.classpath', 'build/env.sh', 'Cargo.toml', 'init.vim' }
-			})
-		end,
-	})
-	if packer_bootstrap then -- auto set up conf after cloning packer.nvim
-		require("packer").sync()
-	end
+		use({ -- rooter
+			"jedi2610/nvim-rooter.lua",
+			config = function()
+				require("nvim-rooter").setup({
+					rooter_patterns = {
+						".git",
+						"Makefile",
+						"*.sln",
+						".classpath",
+						"build/env.sh",
+						"Cargo.toml",
+						"init.vim",
+					},
+				})
+			end,
+		})
+		if packer_bootstrap then -- auto set up conf after cloning packer.nvim
+			require("packer").sync()
+		end
 	end,
 	config = {
 		display = {
 			open_fn = function()
-	return require("packer.util").float({ border = "single" })
+				return require("packer.util").float({ border = "single" })
 			end,
 		},
 		git = {

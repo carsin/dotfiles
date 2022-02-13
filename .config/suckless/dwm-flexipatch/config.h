@@ -353,7 +353,7 @@ const char *spcmd6[]  = {"alacritty", "--class", "sppulsemixer,Alacritty", "-o",
 const char *spcmd7[]  = {"alacritty", "--class", "sptop,Alacritty", "-o", "window.dimensions.columns=140", "-o", "window.dimensions.lines=43", "-e", "btop", NULL};
 const char *spcmd8[]  = {"alacritty", "--class", "spnvtop,Alacritty", "-o", "window.dimensions.columns=138", "-o", "window.dimensions.lines=41", "-e", "nvtop", NULL};
 const char *spcmd9[]  = {"alacritty", "--class", "spccal,Alacritty", "-o", "window.dimensions.columns=130", "-o", "window.dimensions.lines=42", "-e", "/home/carson/bin/scratchpads/calstart", NULL};
-const char *spcmd10[] = {"alacritty", "--class", "spnvim,Alacritty", "-o", "window.dimensions.columns=173", "-o", "window.dimensions.lines=53", "-e", "/home/carson/bin/scratchpads/editorstart", NULL};
+const char *spcmd10[] = {"alacritty", "--class", "spnvim,Alacritty", "-o", "window.dimensions.columns=169", "-o", "window.dimensions.lines=49", "-e", "/home/carson/bin/scratchpads/editorstart", NULL};
 // const char *spcmd11[] = {"alacritty", "--class", "spnvim,Alacritty", "-o", "window.dimensions.columns=173", "-o", "window.dimensions.lines=53", "-e", "/home/carson/bin/scratchpads/editorstartzk", NULL};
 
 static Sp scratchpads[] = {
@@ -455,7 +455,8 @@ static const Rule rules[] = {
     // RULE(.title = "Picture-In-Picture", .tags = SPTAG(99), .isfloating = 1)
     RULE(.class = "St", .isterminal = 1)
     RULE(.class = "Alacritty", .isterminal = 1)
-    RULE(.instance = "spotify", .monitor = 0, .tags = 1 << 3 )
+    RULE(.instance = "spotify", .tags = 1 << 3, .monitor = 0)
+    RULE(.instance = "easyeffects", .tags = 1 << 3, .monitor = 0)
     // move to other mon
     RULE(.instance = "discord", .monitor = 1)
     RULE(.instance = "obs", .monitor = 1)
@@ -1149,41 +1150,17 @@ static Key keys[] = {
     {MODKEY, XK_c, setlayout, {.v = &layouts[3]}},
 #endif // COLUMNS_LAYOUT
 #if FLEXTILE_DELUXE_LAYOUT
-    {MODKEY | ControlMask,
-     XK_t,
-     rotatelayoutaxis,
-     {.i = +1}}, /* flextile, 1 = layout axis */
-    {MODKEY | ControlMask,
-     XK_Tab,
-     rotatelayoutaxis,
-     {.i = +2}}, /* flextile, 2 = master axis */
-    {MODKEY | ControlMask | ShiftMask,
-     XK_Tab,
-     rotatelayoutaxis,
-     {.i = +3}}, /* flextile, 3 = stack axis */
-    {MODKEY | ControlMask | Mod1Mask,
-     XK_Tab,
-     rotatelayoutaxis,
-     {.i = +4}}, /* flextile, 4 = secondary stack axis */
-    {MODKEY | Mod5Mask,
-     XK_t,
-     rotatelayoutaxis,
-     {.i = -1}}, /* flextile, 1 = layout axis */
-    {MODKEY | Mod5Mask,
-     XK_Tab,
-     rotatelayoutaxis,
-     {.i = -2}}, /* flextile, 2 = master axis */
-    {MODKEY | Mod5Mask | ShiftMask,
-     XK_Tab,
-     rotatelayoutaxis,
-     {.i = -3}}, /* flextile, 3 = stack axis */
-    {MODKEY | Mod5Mask | Mod1Mask,
-     XK_Tab,
-     rotatelayoutaxis,
-     {.i = -4}}, /* flextile, 4 = secondary stack axis */
-    {MODKEY | ControlMask,
-     XK_Return,
-     mirrorlayout,
+    {MODKEY | Mod4Mask, XK_period, rotatelayoutaxis, {.i = +1}}, /* flextile, 1 = layout axis */
+    {MODKEY | Mod4Mask, XK_comma, rotatelayoutaxis, {.i = -1}}, /* flextile, 1 = layout axis */
+    {MODKEY | Mod4Mask, XK_space, mirrorlayout,
+    {MODKEY | Mod4Mask, XK_f, mirrorlayout,
+    // {MODKEY | ControlMask, XK_Tab, rotatelayoutaxis, {.i = +2}}, /* flextile, 2 = master axis */
+    // {MODKEY | ControlMask | ShiftMask, XK_Tab, rotatelayoutaxis, {.i = +3}}, /* flextile, 3 = stack axis */
+    // {MODKEY | ControlMask | Mod1Mask, XK_Tab, rotatelayoutaxis, {.i = +4}}, /* flextile, 4 = secondary stack axis */
+    // {MODKEY | Mod5Mask, XK_t, rotatelayoutaxis, {.i = -1}}, /* flextile, 1 = layout axis */
+    // {MODKEY | Mod5Mask, XK_Tab, rotatelayoutaxis, {.i = -2}}, /* flextile, 2 = master axis */
+    // {MODKEY | Mod5Mask | ShiftMask, XK_Tab, rotatelayoutaxis, {.i = -3}}, /* flextile, 3 = stack axis */
+    // {MODKEY | Mod5Mask | Mod1Mask, XK_Tab, rotatelayoutaxis, {.i = -4}}, /* flextile, 4 = secondary stack axis */
      {0}}, /* flextile, flip master and stack areas */
 #endif     // FLEXTILE_DELUXE_LAYOUT
     // {MODKEY, XK_space, setlayout, {0}},

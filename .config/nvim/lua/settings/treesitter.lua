@@ -4,7 +4,7 @@ M.setup = function()
 	require("nvim-treesitter.configs").setup({
 		highlight = {
 			enable = true,
-			additional_vim_regex_highlighting = { "markdown" },
+			additional_vim_regex_highlighting = { "markdown", "org" },
 		},
 		rainbow = {
 			enable = true,

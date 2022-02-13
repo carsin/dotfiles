@@ -25,6 +25,11 @@ fi
 # input configuration
 # capslock is ctrl
 setxkbmap -option ctrl:nocaps
+# key repeat
+xset r rate 170 57
+# no screen blanking
+xset s off
+
 # xinput stuff
 . /home/carson/bin/initmouse
 . /home/carson/bin/inittrackpad
@@ -41,14 +46,9 @@ picom -f --xrender-sync-fence &
 # autohide xcursor
 unclutter &
 
-# key repeat
-xset r rate 170 57
-# no screen blanking
-xset s off
-
 playerctld daemon
 
-# redshift-gtk &
+aw-qt & 
 
 # start window manager
 while :; do 

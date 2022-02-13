@@ -154,6 +154,9 @@ set pumheight=30         " Shorten number of autocomplete suggestions
 set pumwidth=25          " Shorten width of autocomplete suggestions
 set pumblend=10          " Autocomplete background transparency
 let &fcs='eob: '         " No fugly eob tildas
+" link/ shortening 
+" set conceallevel=2
+" set concealcursor=nc
 " set colorcolumn=80   " 80 char column guide
 " set winwidth=80
 " set winminwidth=30
@@ -179,6 +182,7 @@ augroup dynamicnumbers
   autocmd BufEnter,FocusGained,InsertLeave,WinEnter * if &ft != "alpha" && &nu && mode() != "i" | set rnu   | set cursorline   | endif
   autocmd BufLeave,FocusLost,InsertEnter,WinLeave   * if &ft != "alpha" && &nu                  | set nornu | set nocursorline | endif
 augroup END
+
 
 " Fold markdown based on header
 function MarkdownLevel()   
