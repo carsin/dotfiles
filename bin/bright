@@ -35,12 +35,12 @@ case $1 in
     ;;
   s)
     # set backlight
-    xbacklight -set $2
+    xbacklight -set "$2"
     send_notification
     ;;
   set)
     # set backlight
-    xbacklight -set $2
+    xbacklight -set "$2"
     send_notification
     ;;
   auto)
@@ -48,3 +48,8 @@ case $1 in
     /home/carson/bin/autobrightness
     ;;
 esac
+
+if [[ $1 -ge '0' || $1 -le '100' ]]; then
+    xbacklight -set "$1"
+    send_notification
+fi

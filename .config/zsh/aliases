@@ -68,7 +68,9 @@ alias reddit="tuir"
 alias rtv="tuir"
 # alias t='tmux attach -t $(tmux ls | grep -v attached | head -1 | cut -f1 -d:) || tmux' # attach to any available session
 alias t="/home/carson/bin/fetchtmuxstart $1"
-alias tm="/home/carson/bin/fetchtmuxstart main"
+alias ts="/home/carson/bin/fetchtmuxstart study"
+alias td="/home/carson/bin/fetchtmuxstart dev"
+# alias tm="/home/carson/bin/fetchtmuxstart main"
 alias t0="tmux a -t 0 || tmux new"
 alias t1="tmux a -t 1 || tmux new"
 # alias matrix="neo-matrix -d 0.5 -f 144 -G 0 -s -S 5.5 --maxdpc=2"
@@ -90,7 +92,6 @@ alias twitchlive="reflex-curses -f"
 alias ttvlive="reflex-curses -f"
 alias ttvl="reflex-curses -f"
 alias twitch="reflex-curses"
-
 
 # scripts 
 # alias dual="/home/carson/bin/displays/dual.sh"

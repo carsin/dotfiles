@@ -1,0 +1,8 @@
+#!/bin/sh
+
+if [[ $1 = "" ]]; then
+    read -p "url: " $1
+fi
+
+cd /home/carson/files/music/spotify/bp/scrape2/ || exit
+youtube-dl --no-continue --download-archive downloaded.txt -f m4a --extract-audio --audio-format best -o '%(title)s - %(uploader)s.%(ext)s' --ignore-errors --add-metadata --embed-thumbnail --compat-options embed-metadata $1
