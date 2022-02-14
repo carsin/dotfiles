@@ -1,10 +1,15 @@
 require("neorg").setup({
 	load = {
 		["core.defaults"] = {},
+		["core.keybinds"] = {
+      config = {
+        neorg_leader = "<Leader>o"
+      }
+    },
 		["core.norg.dirman"] = {
 			config = {
 				workspaces = {
-					home = "/home/carson/files/docs/org/home",
+					home = "/home/carson/files/docs/org/",
 					gtd = "/home/carson/files/docs/org/gtd",
 
 				},
@@ -20,6 +25,12 @@ require("neorg").setup({
         inbox = "inbox.norg",
       },
 		},
+    -- compe is only supported for now
+    -- ["core.norg.completion"] = {
+    --   config = {
+    --     engine = "cmp",
+    --   }
+    -- },
 
     -- ["core.gtd.ui"] = {
     --   config = {

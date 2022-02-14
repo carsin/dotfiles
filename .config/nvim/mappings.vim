@@ -280,9 +280,12 @@ nnoremap <leader>u :UndotreeToggle<CR>
 
 " neorg
 " gtd
-nnoremap <leader>ogv <Cmd>NeorgStart silent=true<CR><Cmd>Neorg gtd views<CR>
-nnoremap <leader>ogc <Cmd>NeorgStart silent=true<CR><Cmd>Neorg gtd capture<CR>
-nnoremap <leader>oge <Cmd>NeorgStart silent=true<CR><Cmd>Neorg gtd edit<CR>
+nnoremap <leader>ogg <Cmd>Neorg workspace gtd<CR>
+nnoremap <leader>ogo <Cmd>Neorg workspace gtd<CR>
+nnoremap <leader>ogh <Cmd>Neorg workspace home<CR>
+nnoremap <expr> <leader>ogt exists(":NeorgStart") ? ':NeorgStart silent=true<CR>:Neorg gtd views<CR>' : ':Neorg gtd views<CR>'
+nnoremap <expr> <leader>ogc exists(":NeorgStart") ? ':NeorgStart silent=true<CR>:Neorg gtd capture<CR>' : ':Neorg gtd capture<CR>'
+nnoremap <expr> <leader>oge exists(":NeorgStart") ? ':NeorgStart silent=true<CR>:Neorg gtd capture<CR>' : ':Neorg gtd edit<CR>'
 
 " dap
 " TODO: to vimscript
