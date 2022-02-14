@@ -278,6 +278,12 @@ vnoremap <leader>zf :'<,'>ZkMatch<CR>
 " undotree
 nnoremap <leader>u :UndotreeToggle<CR>
 
+" neorg
+" gtd
+nnoremap <leader>ogv <Cmd>NeorgStart silent=true<CR><Cmd>Neorg gtd views<CR>
+nnoremap <leader>ogc <Cmd>NeorgStart silent=true<CR><Cmd>Neorg gtd capture<CR>
+nnoremap <leader>oge <Cmd>NeorgStart silent=true<CR><Cmd>Neorg gtd edit<CR>
+
 " dap
 " TODO: to vimscript
 

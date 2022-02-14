@@ -48,6 +48,9 @@ let g:undotree_DiffpanelHeight = 13
 " targets use builtins if one exists
 let g:targets_seekRanges = 'cc cr cb cB lc ac Ac lr lb ar ab lB Ar aB Ab AB rr ll rb al rB Al bb aa bB Aa BB AA'
 
+" automatically switch a buffer name when the target file is not readable or writable.
+let g:suda_smart_edit = 1
+
 " Load plugins
 lua require('plugins')
 

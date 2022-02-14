@@ -1,10 +1,31 @@
 M = {}
 
+-- ensure neorg is properly setup before treesitter loads its defaults
+local parser_configs = require('nvim-treesitter.parsers').get_parser_configs()
+
+-- These two are optional and provide syntax highlighting
+-- for Neorg tables and the @document.meta tag
+-- parser_configs.norg_meta = {
+--     install_info = {
+--         url = "https://github.com/nvim-neorg/tree-sitter-norg-meta",
+--         files = { "src/parser.c" },
+--         branch = "main"
+--     },
+-- }
+--
+-- parser_configs.norg_table = {
+--     install_info = {
+--         url = "https://github.com/nvim-neorg/tree-sitter-norg-table",
+--         files = { "src/parser.c" },
+--         branch = "main"
+--     },
+-- }
+
 M.setup = function()
 	require("nvim-treesitter.configs").setup({
 		highlight = {
 			enable = true,
-			additional_vim_regex_highlighting = { "markdown", "org" },
+			additional_vim_regex_highlighting = { "markdown" },
 		},
 		rainbow = {
 			enable = true,
@@ -82,7 +103,7 @@ M.setup = function()
     -- lsp_interop = {
     --   enable = false,
     -- },
-    ensure_installed = { 'c', 'rust', 'lua', 'org', 'comment' },
+    ensure_installed = { 'c', 'rust', 'lua', 'norg', 'comment' },
 	})
 end
 

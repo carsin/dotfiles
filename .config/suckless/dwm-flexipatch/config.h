@@ -406,7 +406,7 @@ static Sp scratchpads[] = {
 // 龎   ﮕ
     
 static char *tagicons[][NUMTAGS] = {
-    [DEFAULT_TAGS] = {"龎 ", " ", " ", "礪 ", " "},
+    [DEFAULT_TAGS] = {" ", " ", " ", "龎 ", " "},
 };
 
 #if BAR_TAGGRID_PATCH
@@ -1152,8 +1152,8 @@ static Key keys[] = {
 #if FLEXTILE_DELUXE_LAYOUT
     {MODKEY | Mod4Mask, XK_period, rotatelayoutaxis, {.i = +1}}, /* flextile, 1 = layout axis */
     {MODKEY | Mod4Mask, XK_comma, rotatelayoutaxis, {.i = -1}}, /* flextile, 1 = layout axis */
-    {MODKEY | Mod4Mask, XK_space, mirrorlayout,
-    {MODKEY | Mod4Mask, XK_f, mirrorlayout,
+    {MODKEY | Mod4Mask, XK_space, mirrorlayout, {0}},
+    {MODKEY | Mod4Mask, XK_f, mirrorlayout, {0}},
     // {MODKEY | ControlMask, XK_Tab, rotatelayoutaxis, {.i = +2}}, /* flextile, 2 = master axis */
     // {MODKEY | ControlMask | ShiftMask, XK_Tab, rotatelayoutaxis, {.i = +3}}, /* flextile, 3 = stack axis */
     // {MODKEY | ControlMask | Mod1Mask, XK_Tab, rotatelayoutaxis, {.i = +4}}, /* flextile, 4 = secondary stack axis */
@@ -1161,7 +1161,7 @@ static Key keys[] = {
     // {MODKEY | Mod5Mask, XK_Tab, rotatelayoutaxis, {.i = -2}}, /* flextile, 2 = master axis */
     // {MODKEY | Mod5Mask | ShiftMask, XK_Tab, rotatelayoutaxis, {.i = -3}}, /* flextile, 3 = stack axis */
     // {MODKEY | Mod5Mask | Mod1Mask, XK_Tab, rotatelayoutaxis, {.i = -4}}, /* flextile, 4 = secondary stack axis */
-     {0}}, /* flextile, flip master and stack areas */
+     // {0}}, /* flextile, flip master and stack areas */
 #endif     // FLEXTILE_DELUXE_LAYOUT
     // {MODKEY, XK_space, setlayout, {0}},
     // {MODKEY | ShiftMask | ControlMask, XK_f, togglefloating, {0}},

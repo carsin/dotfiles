@@ -56,8 +56,9 @@ return packer.startup({
 		use("tpope/vim-unimpaired") -- handy ][ mappings that should be builtin
 		use("RRethy/vim-illuminate") -- highlight matches of symbol under cursor
 		use("editorconfig/editorconfig-vim")
-    -- todo: https://github.com/pianocomposer321/yabs.nvim
-    
+    use("lambdalisue/suda.vim") -- read and write as sudo 
+		-- todo: https://github.com/pianocomposer321/yabs.nvim
+
 		use({ -- zettlekasten
 			"mickael-menu/zk-nvim",
 			-- requires = "SidOfc/mkdx", -- TODO(?)
@@ -100,16 +101,24 @@ return packer.startup({
 			end,
 		})
 
-		use({ -- orgmode TODO: Fix
-			"nvim-orgmode/orgmode",
+		use({
+			"nvim-neorg/neorg",
 			config = function()
-				require("settings.orgmode")
+				require("settings.neorg")
 			end,
-			requires = {
-				"akinsho/org-bullets.nvim",
-				"lukas-reineke/headlines.nvim",
-			},
+			requires = "nvim-lua/plenary.nvim",
 		})
+
+		-- use({ -- orgmode TODO: Fix
+		-- 	"nvim-orgmode/orgmode",
+		-- 	config = function()
+		-- 		require("settings.orgmode")
+		-- 	end,
+		-- 	requires = {
+		-- 		"akinsho/org-bullets.nvim",
+		-- 		"lukas-reineke/headlines.nvim",
+		-- 	},
+		-- })
 
 		use({ -- lsp signature
 			"ray-x/lsp_signature.nvim",
