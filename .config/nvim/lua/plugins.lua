@@ -56,8 +56,7 @@ return packer.startup({
 		use("tpope/vim-unimpaired") -- handy ][ mappings that should be builtin
 		use("RRethy/vim-illuminate") -- highlight matches of symbol under cursor
 		use("editorconfig/editorconfig-vim")
-    use("lambdalisue/suda.vim") -- read and write as sudo 
-		-- todo: https://github.com/pianocomposer321/yabs.nvim
+    use("lambdalisue/suda.vim") -- read and write as sudo
 
 		use({ -- zettlekasten
 			"mickael-menu/zk-nvim",
@@ -384,14 +383,22 @@ return packer.startup({
 				})
 			end,
 		})
-		if packer_bootstrap then -- auto set up conf after cloning packer.nvim
-			require("packer").sync()
-		end
+
+	use({ -- build system TODO: not working; see yabs.lua
+		"pianocomposer321/yabs.nvim",
+		requires = { "nvim-lua/plenary.nvim" },
+		config = function()
+        require('settings.yabs')
+		end,
+	})
+	if packer_bootstrap then -- auto set up conf after cloning packer.nvim
+		require("packer").sync()
+	end
 	end,
 	config = {
 		display = {
 			open_fn = function()
-				return require("packer.util").float({ border = "single" })
+	return require("packer.util").float({ border = "single" })
 			end,
 		},
 		git = {
