@@ -75,7 +75,7 @@ M.on_attach = function(client, bufnr)
 	-- cursor symbol hl
 	require("illuminate").on_attach(client)
 	-- Show line diagnostics on hover
-	vim.api.nvim_exec([[ autocmd CursorHold * lua vim.diagnostic.open_float({border="none", focusable=false}) ]], false)
+	-- vim.api.nvim_exec([[ autocmd CursorHold * lua vim.diagnostic.open_float({border="none", focusable=false}) ]], false)
 end
 
 M.get_config = function()

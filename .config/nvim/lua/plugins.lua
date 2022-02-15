@@ -2,7 +2,7 @@
 local fn = vim.fn
 local install_path = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
 if fn.empty(fn.glob(install_path)) > 0 then
-	packer_bootstrap = fn.system({
+	Packer_Bootstrap = fn.system({
 		"git",
 		"clone",
 		"--depth",
@@ -412,14 +412,21 @@ return packer.startup({
 			end,
 		})
 
-		use({ -- build system TODO: not working; see yabs.lua
-			"pianocomposer321/yabs.nvim",
-			requires = { "nvim-lua/plenary.nvim" },
+		-- use({ -- build system TODO: not working; see yabs.lua
+		-- 	"pianocomposer321/yabs.nvim",
+		-- 	requires = { "nvim-lua/plenary.nvim" },
+		-- 	config = function()
+		-- 		require("settings.yabs")
+		-- 	end,
+		-- })
+
+		use({ -- show diagnostics in virtual lines
+			"https://git.sr.ht/~whynothugo/lsp_lines.nvim",
 			config = function()
-				require("settings.yabs")
+				require("lsp_lines").register_lsp_virtual_lines()
 			end,
 		})
-		if packer_bootstrap then -- auto set up conf after cloning packer.nvim
+		if Packer_Bootstrap then -- auto set up conf after cloning packer.nvim
 			require("packer").sync()
 		end
 	end,

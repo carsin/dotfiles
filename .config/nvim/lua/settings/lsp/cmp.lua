@@ -1,7 +1,7 @@
 local cmp = require 'cmp'
 local luasnip = require 'luasnip'
 local cmp_autopairs = require('nvim-autopairs.completion.cmp')
-
+local cmp_buffer = require('cmp_buffer')
 
 local has_words_before = function()
   local line, col = unpack(vim.api.nvim_win_get_cursor(0))
@@ -86,7 +86,13 @@ cmp.setup {
       })
     }),
 	},
-  enabled = function() 
+  -- sorting = {
+  --   comparators = {
+  --     function(...) return cmp_buffer:compare_locality(...) end,
+  --     -- The rest of your comparators...
+  --   }
+  -- },
+  enabled = function()
         if vim.bo.ft == "TelescopePrompt" then
             return false
         end
