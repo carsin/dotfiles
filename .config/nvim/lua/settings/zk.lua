@@ -61,6 +61,9 @@ M.set_mappings = function()
     map("n", "K", "<Cmd>lua vim.lsp.buf.hover()<CR>", opts)
     -- Open the code actions for a visual selection.
     map("v", "<leader>za", ":'<,'>lua vim.lsp.buf.range_code_action()<CR>", opts)
+    -- jump between links [currently borked]
+    -- map('n', ']n', [[lua vim.diagnostic.goto_next { severity = vim.diagnostic.severity.HINT }<cr>]], { noremap = true, silent = true })
+    -- map('n', '[n', [[lua vim.diagnostic.goto_prev { severity = vim.diagnostic.severity.HINT }<cr>]], { noremap = true, silent = true })
   end
 end
 

@@ -1,3 +1,5 @@
+# sanity
+alias sudo='sudo ' # allow aliases in sudo
 alias ..="cd .."
 alias ...="cd ../.."
 alias ....="cd ../../.."
@@ -19,6 +21,7 @@ alias grep="grep --color=auto"
 alias diff="diff --color=auto"
 alias watch="watch --color"
 
+# wallpaper management
 alias w="/home/carson/bin/newpape2.sh"
 alias uw="/home/carson/bin/newpape.sh"
 alias cw="/home/carson/bin/choosepape.sh"
@@ -26,16 +29,6 @@ alias cw="/home/carson/bin/choosepape.sh"
 # config storage
 alias config="/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME"
 alias cfg="config"
-
-alias ka="killall"
-
-alias python="python3"
-alias calpoly="TERM=screen ssh ckfreedm@unix3.csc.calpoly.edu"
-alias calpoly1="TERM=screen ssh ckfreedm@unix1.csc.calpoly.edu"
-alias calpoly2="TERM=screen ssh ckfreedm@unix2.csc.calpoly.edu"
-alias calpoly4="TERM=screen ssh ckfreedm@unix4.csc.calpoly.edu"
-alias calpoly5="TERM=screen ssh ckfreedm@unix5.csc.calpoly.edu"
-alias cpftp="sftp ckfreedm@unix3.csc.calpoly.edu"
 
 # comfort
 alias cr="cargo run"
@@ -50,6 +43,15 @@ alias jj='nohup java -jar'
 alias smci='sudo make clean install'
 alias :q='exit'
 alias :wq='exit'
+alias ka="killall"
+alias python="python3"
+alias calpoly="TERM=screen ssh ckfreedm@unix3.csc.calpoly.edu"
+alias calpoly1="TERM=screen ssh ckfreedm@unix1.csc.calpoly.edu"
+alias calpoly2="TERM=screen ssh ckfreedm@unix2.csc.calpoly.edu"
+alias calpoly4="TERM=screen ssh ckfreedm@unix4.csc.calpoly.edu"
+alias calpoly5="TERM=screen ssh ckfreedm@unix5.csc.calpoly.edu"
+alias cpftp="sftp ckfreedm@unix3.csc.calpoly.edu"
+alias fuck="sudo !!"
 
 # applications, apps
 alias top="htop"
@@ -70,10 +72,8 @@ alias rtv="tuir"
 alias t="/home/carson/bin/fetchtmuxstart $1"
 alias ts="/home/carson/bin/fetchtmuxstart study"
 alias td="/home/carson/bin/fetchtmuxstart dev"
-# alias tm="/home/carson/bin/fetchtmuxstart main"
 alias t0="tmux a -t 0 || tmux new"
 alias t1="tmux a -t 1 || tmux new"
-# alias matrix="neo-matrix -d 0.5 -f 144 -G 0 -s -S 5.5 --maxdpc=2"
 alias fontpreview='fontpreview-ueberzug'
 alias wttr="curl wttr.in/San+Luis+Obispo"
 alias wttr2="curl v2d.wttr.in/San+Luis+Obispo"
@@ -93,12 +93,10 @@ alias ttvlive="reflex-curses -f"
 alias ttvl="reflex-curses -f"
 alias twitch="reflex-curses"
 
-# scripts 
-# alias dual="/home/carson/bin/displays/dual.sh"
-# alias triple="/home/carson/bin/displays/triple.sh"
+# scripts
 alias laptop="/home/carson/bin/displays/laptop.sh"
 alias dock="/home/carson/bin/displays/dock.sh"
-# alias ultrawide="/home/carson/bin/displays/ultrawide.sh"
+
 alias updateedm="/home/carson/bin/updateplaylist.sh"
 alias dlsong="/home/carson/bin/dlsong.sh"
 

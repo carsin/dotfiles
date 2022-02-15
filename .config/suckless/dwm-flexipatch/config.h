@@ -353,7 +353,7 @@ const char *spcmd6[]  = {"alacritty", "--class", "sppulsemixer,Alacritty", "-o",
 const char *spcmd7[]  = {"alacritty", "--class", "sptop,Alacritty", "-o", "window.dimensions.columns=140", "-o", "window.dimensions.lines=43", "-e", "btop", NULL};
 const char *spcmd8[]  = {"alacritty", "--class", "spnvtop,Alacritty", "-o", "window.dimensions.columns=138", "-o", "window.dimensions.lines=41", "-e", "nvtop", NULL};
 const char *spcmd9[]  = {"alacritty", "--class", "spccal,Alacritty", "-o", "window.dimensions.columns=130", "-o", "window.dimensions.lines=42", "-e", "/home/carson/bin/scratchpads/calstart", NULL};
-const char *spcmd10[] = {"alacritty", "--class", "spnvim,Alacritty", "-o", "window.dimensions.columns=169", "-o", "window.dimensions.lines=49", "-e", "/home/carson/bin/scratchpads/editorstart", NULL};
+const char *spcmd10[] = {"alacritty", "--class", "spnvim,Alacritty", "-o", "window.dimensions.columns=169", "-o", "window.dimensions.lines=52", "-e", "/home/carson/bin/scratchpads/editorstart", NULL};
 // const char *spcmd11[] = {"alacritty", "--class", "spnvim,Alacritty", "-o", "window.dimensions.columns=173", "-o", "window.dimensions.lines=53", "-e", "/home/carson/bin/scratchpads/editorstartzk", NULL};
 
 static Sp scratchpads[] = {
@@ -406,7 +406,7 @@ static Sp scratchpads[] = {
 // 龎   ﮕ
     
 static char *tagicons[][NUMTAGS] = {
-    [DEFAULT_TAGS] = {" ", " ", " ", "龎 ", " "},
+    [DEFAULT_TAGS] = {"龎 ", " ", " ", " ", " "},
 };
 
 #if BAR_TAGGRID_PATCH
@@ -470,7 +470,7 @@ static const Rule rules[] = {
     RULE(.instance = "origin.exe", .tags = 1 << 4, .isfloating = 1, .monitor = 0)
     RULE(.instance = "bf4.exe", .tags = 1 << 4, .isfloating = 1, .monitor = 0)
     RULE(.instance = "lutris", .tags = 1 << 4, .monitor = 0)
-    RULE(.instance = "Steam", .tags = 1 << 3)
+    RULE(.instance = "Steam", .tags = 1 << 4)
     RULE(.instance = "eadesktop.exe", .tags = 1 << 4, .monitor = 0)
     RULE(.instance = "multimc", .tags = 1 << 4, .monitor = 0)
     RULE(.instance = "Minecraft* 1.18.1", .tags = 1 << 4, .monitor = 0)

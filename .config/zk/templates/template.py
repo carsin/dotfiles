@@ -20,6 +20,9 @@ def suffix(d):
 def custom_strftime(format, t):
     return t.strftime(format).replace('{S}', str(t.day) + suffix(t.day))
 
+def main(): 
+
+    
 # days since birth
 b_date = date(2002, 10, 6)
 c_date = date(2022, 4, 13)
@@ -42,14 +45,10 @@ entrycount = len(fnmatch.filter(os.listdir('/home/carson/files/docs/wiki/log/'),
 template = "# " + now.strftime("%-m/%d") + " - An Untitled Day\n" + genQuote() + """
  
 """ + date + """
--------------------------------------------------------------------------------
-# OBJECTIVES
-- [ ]
-
--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
 # ENTRY """ + str(entrycount) + """ -- INIT LOG -- CREATED """ + timestart + """
 
 # MIDNIGHT -- END OF LOG -- DAY """ + str(dayno.days) + """
--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
 :daily:"""
 print(template)

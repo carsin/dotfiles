@@ -66,7 +66,7 @@ cmp.setup {
     { name = 'spell' },
     { name = 'tmux', options = { all_panes = false }},
     { name = 'crates' },
-    { name = 'orgmode' },
+    { name = 'neorg' },
   },
 	formatting = {
     format = require("lspkind").cmp_format({
@@ -82,7 +82,7 @@ cmp.setup {
         calc = "[Calc]",
         latex_symbols = "[Latex]",
         crates = "[Crates]",
-        orgmode = "[Org]",
+        neorg = "[Org]",
       })
     }),
 	},
