@@ -159,13 +159,14 @@ lsp_installer.on_server_ready(function(server)
 		-- local jdtls_opts = require'plugins.lsp.jdtls'.config
 		-- require("jdtls").start_or_attach(jdtls_opts)
 	elseif server.name == "clangd" then -- use clangd extensions
+    local c_opts = vim.tbl_deep_extend("force", server:get_default_options(), {
+      on_attach = opts.on_attach,
+      capabilities = opts.capaibilities,
+      flags = opts.flags,
+      handlers = opts.handlers,
+    });
 		require("clangd_extensions").setup({
-			server = vim.tbl_deep_extend("force", server:get_default_options(), {
-				on_attach = opts.on_attach,
-				capabilities = opts.capaibilities,
-				flags = opts.flags,
-				handlers = opts.handlers,
-			}),
+			server = c_opts,
 			extensions = {
 				autoSetHints = true, -- Automatically set inlay hints (type hints)
 				-- Whether to show hover actions inside the hover window
@@ -192,6 +193,7 @@ lsp_installer.on_server_ready(function(server)
 				},
 			},
 		})
+		server:setup(c_opts)
 	else
 		-- check to see if any custom server_opts exist for the LSP server
 		server:setup(server_opts[server.name] and server_opts[server.name]() or opts)
