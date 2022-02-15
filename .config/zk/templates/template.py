@@ -20,9 +20,6 @@ def suffix(d):
 def custom_strftime(format, t):
     return t.strftime(format).replace('{S}', str(t.day) + suffix(t.day))
 
-def main(): 
-
-    
 # days since birth
 b_date = date(2002, 10, 6)
 c_date = date(2022, 4, 13)

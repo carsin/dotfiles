@@ -56,7 +56,7 @@ return packer.startup({
 		use("tpope/vim-unimpaired") -- handy ][ mappings that should be builtin
 		use("RRethy/vim-illuminate") -- highlight matches of symbol under cursor
 		use("editorconfig/editorconfig-vim")
-    use("lambdalisue/suda.vim") -- read and write as sudo
+		use("lambdalisue/suda.vim") -- read and write as sudo
 
 		use({ -- zettlekasten
 			"mickael-menu/zk-nvim",
@@ -234,7 +234,7 @@ return packer.startup({
 
 		use({ -- nvim tree
 			"kyazdani42/nvim-tree.lua",
-      commit="3f4ed9b6c2598ab8304186486a0",
+			commit = "3f4ed9b6c2598ab8304186486a0",
 			config = function()
 				require("settings.nvimtree")
 			end,
@@ -384,21 +384,49 @@ return packer.startup({
 			end,
 		})
 
-	use({ -- build system TODO: not working; see yabs.lua
-		"pianocomposer321/yabs.nvim",
-		requires = { "nvim-lua/plenary.nvim" },
-		config = function()
-        require('settings.yabs')
-		end,
-	})
-	if packer_bootstrap then -- auto set up conf after cloning packer.nvim
-		require("packer").sync()
-	end
+		use({ -- pretty folding
+			"anuvyklack/pretty-fold.nvim",
+			config = function()
+				require("pretty-fold").setup({
+					fill_char = "─",
+					sections = {
+						left = {
+							"─ ",
+							function()
+								return string.rep("*", vim.v.foldlevel)
+							end,
+							" ─┤",
+							"content",
+							"├",
+						},
+						right = {
+							"┤ ",
+							"number_of_folded_lines",
+							": ",
+							"percentage",
+							" ├──",
+						},
+					},
+				})
+				require("pretty-fold.preview").setup({})
+			end,
+		})
+
+		use({ -- build system TODO: not working; see yabs.lua
+			"pianocomposer321/yabs.nvim",
+			requires = { "nvim-lua/plenary.nvim" },
+			config = function()
+				require("settings.yabs")
+			end,
+		})
+		if packer_bootstrap then -- auto set up conf after cloning packer.nvim
+			require("packer").sync()
+		end
 	end,
 	config = {
 		display = {
 			open_fn = function()
-	return require("packer.util").float({ border = "single" })
+				return require("packer.util").float({ border = "single" })
 			end,
 		},
 		git = {
