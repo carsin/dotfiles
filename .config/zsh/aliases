@@ -92,6 +92,7 @@ alias twitchlive="reflex-curses -f"
 alias ttvlive="reflex-curses -f"
 alias ttvl="reflex-curses -f"
 alias twitch="reflex-curses"
+alias define="dict"
 
 # scripts
 alias laptop="/home/carson/bin/displays/laptop.sh"
