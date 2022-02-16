@@ -110,6 +110,8 @@ autocmd InsertLeave * set nopaste
 
 " filetype stuff
 autocmd FileType make setlocal noexpandtab
+" autocmd FileType markdown setlocal spell
+autocmd FileType gitcommit setlocal spell
 
 " }}}
 " UI {{{

@@ -9,7 +9,7 @@ autosave.setup({
   clean_command_line_interval = 0,
   debounce_delay = 800,
   conditions = {
-      exists = true,
+    exists = true,
       filename_is_not = {},
       filetype_is_not = {},
       modifiable = true

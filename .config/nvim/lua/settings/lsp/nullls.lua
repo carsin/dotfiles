@@ -13,28 +13,34 @@ null_ls.setup({
     builtins.diagnostics.shellcheck,
     builtins.code_actions.shellcheck, -- only actions to disable error
     -- markdown(prose)
-		builtins.diagnostics.write_good,
-		builtins.diagnostics.codespell.with({
-      filetypes = { "markdown" }
-    }),
+		-- builtins.diagnostics.write_good,
+		-- builtins.formatting.markdownlint.with({
+  --     filetypes = { "markdown" }
+  --   }),
 		builtins.formatting.codespell.with({
       filetypes = { "markdown" }
     }),
-  --   builtins.code_actions.proselint,
-		-- builtins.diagnostics.proselint.with({ -- see https://github.com/jose-elias-alvarez/null-ls.nvim/issues/443
-		-- 	parseJson = {
-		-- 		errorsRoot = "data.errors",
-		-- 		line = "line",
-		-- 		column = "column",
-		-- 		message = "[proselint] ${message} (${check})",
-		-- 		security = "severity",
-		-- 	},
-		-- 	securities = {
-		-- 		error = "error",
-		-- 		warning = "warning",
-		-- 		info = "suggestion",
-		-- 	},
-		-- }),
+		builtins.diagnostics.codespell.with({
+      filetypes = { "markdown" }
+    }),
+    builtins.code_actions.proselint.with({
+      filetypes = { "markdown" }
+    }),
+		builtins.diagnostics.proselint.with({ -- see https://github.com/jose-elias-alvarez/null-ls.nvim/issues/443
+      filetypes = { "markdown" },
+			-- parseJson = {
+			-- 	errorsRoot = "data.errors",
+			-- 	line = "line",
+			-- 	column = "column",
+			-- 	message = "[proselint] ${message} (${check})",
+			-- 	security = "severity",
+			-- },
+			-- securities = {
+			-- 	error = "error",
+			-- 	warning = "warning",
+			-- 	info = "suggestion",
+			-- },
+		}),
 	},
 	on_attach = config.on_attach,
 	debounce = config.flags.debounce_text_changes,

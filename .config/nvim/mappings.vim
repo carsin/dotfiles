@@ -60,7 +60,9 @@ inoremap <C-v> <C-r>*
 
 " Split binds
 nnoremap <leader>v :vsplit<CR>
+nnoremap <silent> <C-v> :vsplit<CR>
 nnoremap <leader>b :split<CR>
+nnoremap <silent> <C-b> :vsplit<CR>
 
 " Close window
 " nnoremap <leader>c :close<CR>
@@ -256,9 +258,9 @@ nnoremap <C-e> :NvimTreeToggle<CR>
 nnoremap <leader>e :NvimTreeToggle<CR>
 
 " TrueZen
-nnoremap <leader>zz <cmd>:silent TZAtaraxis<cr><cmd>set nu<cr>
-nnoremap <leader>we <cmd>:silent TZAtaraxis<cr><cmd>set nu<cr>
-nnoremap <silent><F4> <cmd>:silent TZAtaraxis<cr><cmd>set nu<cr>
+nnoremap <leader>zz <cmd>:silent TZAtaraxis<cr><cmd>set rnu<cr><cmd>set nu<cr>
+nnoremap <leader>we <cmd>:silent TZAtaraxis<cr><cmd>set rnu<cr><cmd>set nu<cr>
+nnoremap <silent><F4> <cmd>:silent TZAtaraxis<cr><cmd>set rnu<cr><cmd>set nu<cr>
 
 " Sniprun
 " nmap <silent> <leader>cr :lua require'sniprun'.run()<CR>

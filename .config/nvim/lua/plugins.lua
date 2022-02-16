@@ -79,13 +79,20 @@ return packer.startup({
 			end,
 		})
 
-		use({
+		use({ -- null ls
 			"jose-elias-alvarez/null-ls.nvim",
 			config = function()
 				require("settings.lsp.nullls")
 			end,
 			requires = { "nvim-lua/plenary.nvim" },
 		})
+
+		-- use({ -- replace null-ls when formatting funct no longer needed(?)
+		-- 	"mfussenegger/nvim-lint",
+		-- 	config = function()
+		-- 		require("settings.lsp.nvimlint")
+		-- 	end,
+		-- })
 
 		use({ -- treesitter
 			"nvim-treesitter/nvim-treesitter",
@@ -107,17 +114,6 @@ return packer.startup({
 			end,
 			requires = "nvim-lua/plenary.nvim",
 		})
-
-		-- use({ -- orgmode TODO: Fix
-		-- 	"nvim-orgmode/orgmode",
-		-- 	config = function()
-		-- 		require("settings.orgmode")
-		-- 	end,
-		-- 	requires = {
-		-- 		"akinsho/org-bullets.nvim",
-		-- 		"lukas-reineke/headlines.nvim",
-		-- 	},
-		-- })
 
 		use({ -- lsp signature
 			"ray-x/lsp_signature.nvim",
@@ -287,14 +283,6 @@ return packer.startup({
 			end,
 		})
 
-		-- use({ -- neogit, magit for neovim
-		-- 	"TimUntersberger/neogit",
-		-- 	requires = "nvim-lua/plenary.nvim",
-		-- 	config = function()
-		-- 		require("neogit").setup({})
-		-- 	end,
-		-- })
-
 		use({ -- zenmode
 			"Pocco81/TrueZen.nvim",
 			config = function()
@@ -339,7 +327,7 @@ return packer.startup({
 			end,
 		})
 
-		use({ -- lsp status
+		use({ -- lsp status widget
 			"j-hui/fidget.nvim",
 			config = function()
 				require("fidget").setup({})
@@ -387,28 +375,7 @@ return packer.startup({
 		use({ -- pretty folding
 			"anuvyklack/pretty-fold.nvim",
 			config = function()
-				require("pretty-fold").setup({
-					fill_char = "─",
-					sections = {
-						left = {
-							"─ ",
-							function()
-								return string.rep("*", vim.v.foldlevel)
-							end,
-							" ─┤",
-							"content",
-							"├",
-						},
-						right = {
-							"┤ ",
-							"number_of_folded_lines",
-							": ",
-							"percentage",
-							" ├──",
-						},
-					},
-				})
-				require("pretty-fold.preview").setup({})
+				require("settings.prettyfold")
 			end,
 		})
 
@@ -426,6 +393,7 @@ return packer.startup({
 				require("lsp_lines").register_lsp_virtual_lines()
 			end,
 		})
+
 		if Packer_Bootstrap then -- auto set up conf after cloning packer.nvim
 			require("packer").sync()
 		end
