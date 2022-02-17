@@ -1,23 +1,18 @@
-local border = {
-	{ "╭", "FloatBorder" },
-	{ "─", "FloatBouder" },
-	{ "╮", "FloatBorder" },
-	{ "│", "FloatBorder" },
-	{ "╯", "FloatBorder" },
-	{ "─", "FloatBorder" },
-	{ "╰", "FloatBorder" },
-	{ "│", "FloatBorder" },
-}
+-- unneded
+-- local border = {
+-- 	{ "╭", "FloatBorder" },
+-- 	{ "─", "FloatBouder" },
+-- 	{ "╮", "FloatBorder" },
+-- 	{ "│", "FloatBorder" },
+-- 	{ "╯", "FloatBorder" },
+-- 	{ "─", "FloatBorder" },
+-- 	{ "╰", "FloatBorder" },
+-- 	{ "│", "FloatBorder" },
+-- }
+-- local lsp = require("vim.lsp")
 local sumneko = require("settings.lsp.sumneko")
-local nvim_lsp = require("lspconfig")
 local lsp_installer = require("nvim-lsp-installer")
-local lsp = require("vim.lsp")
-local api = vim.api
 local M = {}
-local lspc = {}
--- local status = require('settings.lsp.status')
--- status.activate()
-
 vim.fn.sign_define("DiagnosticSignError", { text = "E", texthl = "DiagnosticSignError" })
 vim.fn.sign_define("DiagnosticSignWarn", { text = "!", texthl = "DiagnosticSignWarn" })
 vim.fn.sign_define("DiagnosticSignInformation", { text = "i", texthl = "DiagnosticSignInfo" })
@@ -26,21 +21,38 @@ vim.fn.sign_define("DiagnosticSignHint", { text = "?", texthl = "DiagnosticSignH
 -- global config
 vim.diagnostic.config({
 	underline = true,
-	virtual_text = false,
+	virtual_text = {
+    source = "if_many",
+    prefix = "-",
+  },
+  float = {
+    -- border = border,
+    source = "if_many",
+    focusable = false,
+  },
 	signs = true,
 	severity_sort = true,
+  update_in_insert = false,
 })
+
+-- virtual text icons
+local signs = { Error = "X ", Warn = "! ", Hint = "? ", Info = "i " }
+-- local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
+for type, icon in pairs(signs) do
+  local hl = "DiagnosticSign" .. type
+  vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
+end
 
 M.on_attach = function(client, bufnr)
 	-- status.on_attach(client)
 	require("dd").setup({
-		timeout = 350,
+		timeout = 250,
 	})
 	vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = nil })
 	vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = nil })
 	vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
-		update_in_insert = true,
-		virtual_text = false,
+		update_in_insert = false,
+		virtual_text = true,
 	})
 	local function buf_set_keymap(...)
 		vim.api.nvim_buf_set_keymap(bufnr, ...)
@@ -75,7 +87,22 @@ M.on_attach = function(client, bufnr)
 	-- cursor symbol hl
 	require("illuminate").on_attach(client)
 	-- Show line diagnostics on hover
+  vim.cmd [[autocmd! CursorHold,CursorHoldI * lua vim.diagnostic.open_float(nil, {focus=false, scope="cursor"})]]
 	-- vim.api.nvim_exec([[ autocmd CursorHold * lua vim.diagnostic.open_float({border="none", focusable=false}) ]], false)
+
+  -- highlight cursor symbol
+  -- if client.resolved_capabilities.document_highlight then
+  --   vim.cmd [[
+  --     hi! LspReferenceRead ctermbg=gray guibg=gray
+  --     hi! LspReferenceText ctermbg=gray guibg=gray
+  --     hi! LspReferenceWrite ctermbg=gray guibg=gray
+  --     augroup lsp_document_highlight
+  --       autocmd! * <buffer>
+  --       autocmd! CursorHold <buffer> lua vim.lsp.buf.document_highlight()
+  --       autocmd! CursorMoved <buffer> lua vim.lsp.buf.clear_references()
+  --     augroup END
+  --   ]]
+  -- end
 end
 
 M.get_config = function()

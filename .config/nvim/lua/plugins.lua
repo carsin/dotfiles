@@ -155,6 +155,17 @@ return packer.startup({
 			end,
 		})
 
+		use({ -- smart pairs
+			"ZhiyuanLck/smart-pairs",
+			config = function()
+				require("pairs"):setup({
+					enter = {
+						enable_mapping = false,
+					},
+				})
+			end,
+		})
+
 		use({ -- nvim-cmp
 			"hrsh7th/nvim-cmp",
 			requires = {
@@ -172,13 +183,6 @@ return packer.startup({
 			},
 			config = function()
 				require("settings.lsp.cmp")
-			end,
-		})
-
-		use({ -- autopairs
-			"windwp/nvim-autopairs",
-			config = function()
-				require("settings.autopairs")
 			end,
 		})
 
@@ -390,7 +394,7 @@ return packer.startup({
 		use({ -- show diagnostics in virtual lines
 			"https://git.sr.ht/~whynothugo/lsp_lines.nvim",
 			config = function()
-				require("lsp_lines").register_lsp_virtual_lines()
+				-- require("lsp_lines").register_lsp_virtual_lines()
 			end,
 		})
 
