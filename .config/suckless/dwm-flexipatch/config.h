@@ -458,7 +458,7 @@ static const Rule rules[] = {
     RULE(.instance = "spotify", .tags = 1 << 3, .monitor = 0)
     RULE(.instance = "easyeffects", .tags = 1 << 3, .monitor = 0)
     // move to other mon
-    RULE(.instance = "discord", .monitor = 1)
+    RULE(.instance = "discord", .tags = 1 << 3, .monitor = 1)
     RULE(.instance = "obs", .monitor = 1)
     RULE(.instance = "guvcview", .monitor = 2)
     // gaming
