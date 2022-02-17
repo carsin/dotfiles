@@ -40,7 +40,7 @@ cmp.setup({
 		["<C-Space>"] = cmp.mapping.complete(),
 		["<C-e>"] = cmp.mapping.close(),
 		["<CR>"] = cmp.mapping(function() -- smart pairs
-			if not cmp.confirm({ select = false }) then
+			if not cmp.confirm({ select = true }) then
 				require("pairs.enter").type()
 			end
 		end),
@@ -114,7 +114,7 @@ cmp.setup({
 			local sources = cmp.get_config().sources
 			for i = #sources, 1, -1 do
 				local c = sources[i].name
-				if c == "buffer" or c == "tmux" or c == "luasnip" or c == "path" then
+				if c == "buffer" or c == "tmux" or c == "luasnip" then
 					table.remove(sources, i)
 				end
 			end

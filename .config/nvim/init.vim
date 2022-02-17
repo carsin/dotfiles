@@ -82,20 +82,21 @@ set ttimeoutlen=0                 " Make escape timeout faster
 set timeoutlen=600                " Wait before timing out a mapping
 set wrapscan                      " Searches wrap around end-of-file.
 set report=0                      " Always report changed lines.
-set lbr                           " Break at end of line
-set formatoptions+=a              " format on insert/delete
+set lbr                           " Break by word rather than character
+" set fo+=tnp                      " formatoptions
+" set fo-=aw                       " formatoptions
 set tw=80                         " Lines should be 80 chars
 set nrformats=                    " Force decimal based arithmetic
 set nolist                        " ensure lbr  works
 set backspace=eol,start,indent    " Configure backspace so it acts as it should act
 set whichwrap+=<,>,h,l "          " go to nextline with hl
-
+set wrapmargin=2
 " Enable persistent undo so that undo history persists across vim sessions
 set undofile
 set undodir=~/.cache/nvim/undo
 
 " Disables automatic commenting on newline:
-" autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o 
+autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 
 
 " Delete trailing whitespace
@@ -112,6 +113,7 @@ autocmd InsertLeave * set nopaste
 
 " filetype stuff
 autocmd FileType make setlocal noexpandtab
+" autocmd FileType markdown setlocal fo+=a
 autocmd FileType gitcommit setlocal spell
 
 " }}}

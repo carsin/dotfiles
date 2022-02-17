@@ -99,6 +99,9 @@ nnoremap <silent> <F8> :execute "set colorcolumn=" . (&colorcolumn == "" ? "81" 
 nnoremap <leader>S :%s//g<Left><Left>
 vnoremap <leader>S :s//g<Left><Left>
 
+" format to 80 chars with gq in markdown
+autocmd FileType markdown nnoremap gz :%s/.\{80}\($\)\@!/&\r/g<CR>
+
 " Perform dot commands over visual blocks:
 vnoremap . :normal .<CR>
 xnoremap . :norm.<CR>

@@ -88,7 +88,9 @@ M.on_attach = function(client, bufnr)
 	require("illuminate").on_attach(client)
 	-- Show line diagnostics on hover
   vim.cmd [[autocmd! CursorHold,CursorHoldI * lua vim.diagnostic.open_float(nil, {focus=false, scope="cursor"})]]
-	-- vim.api.nvim_exec([[ autocmd CursorHold * lua vim.diagnostic.open_float({border="none", focusable=false}) ]], false)
+  -- vim.api.nvim_exec([[ autocmd CursorHold * lua
+  -- vim.diagnostic.open_float({border="none", focusable=false}) ]], false)
+  -- vim.cmd [[autocmd FileType markdown nmap gz <buffer> :g/./ normal gqq<CR>]]
 
   -- highlight cursor symbol
   -- if client.resolved_capabilities.document_highlight then
