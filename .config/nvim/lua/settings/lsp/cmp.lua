@@ -39,12 +39,12 @@ cmp.setup({
 		["<C-f>"] = cmp.mapping.scroll_docs(4),
 		["<C-Space>"] = cmp.mapping.complete(),
 		["<C-e>"] = cmp.mapping.close(),
-    ["<CR>"] = cmp.mapping(function() -- smart pairs
-      if not cmp.confirm({ select = false }) then
-        require("pairs.enter").type()
-      end
-    end),
-		["<esc>"] = cmp.mapping({ i = cmp.mapping.abort(), c = cmp.mapping.close() }),
+		["<CR>"] = cmp.mapping(function() -- smart pairs
+			if not cmp.confirm({ select = false }) then
+				require("pairs.enter").type()
+			end
+		end),
+		["<Esc>"] = cmp.mapping({ i = cmp.mapping.abort(), c = cmp.mapping.close() }),
 		["<Tab>"] = cmp.mapping(function(fallback)
 			if cmp.visible() then
 				cmp.select_next_item()
@@ -108,9 +108,9 @@ cmp.setup({
 	--   }
 	-- },
 	enabled = function()
-		if vim.bo.ft == "TelescopePrompt" then
+		if vim.bo.ft == "TelescopePrompt" or vim.bo.ft == "frecency" then -- disable tscope
 			return false
-    elseif vim.bo.ft == "markdown" then
+		elseif vim.bo.ft == "markdown" then
 			local sources = cmp.get_config().sources
 			for i = #sources, 1, -1 do
 				local c = sources[i].name
@@ -120,19 +120,18 @@ cmp.setup({
 			end
 			cmp.setup.buffer({ sources = sources })
 			return true
-    else
-      -- disable completion in comments
-      local context = require 'cmp.config.context'
-      -- keep command mode completion enabled when cursor is in a comment
-      if vim.api.nvim_get_mode().mode == 'c' then
-        return true
-      else
-        return not context.in_treesitter_capture("comment")
-          and not context.in_syntax_group("Comment")
-      end
-      return true
-    end
-    return true
+		else
+			-- disable completion in comments
+			-- keep command mode completion enabled when cursor is in a comment
+			if vim.api.nvim_get_mode().mode == "c" then
+				return true
+			else
+				local context = require("cmp.config.context")
+				return not context.in_treesitter_capture("comment") and not context.in_syntax_group("Comment")
+			end
+			return true
+		end
+		return true
 	end,
 	documentation = {
 		border = nil,

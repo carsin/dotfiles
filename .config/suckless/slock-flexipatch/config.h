@@ -127,7 +127,7 @@ static const int controlkeyclear = 1;
 
 #if DPMS_PATCH
 /* time in seconds before the monitor shuts down */
-static const int monitortime = 60;
+static const int monitortime = 120;
 #endif // DPMS_PATCH
 
 #if KEYPRESS_FEEDBACK_PATCH

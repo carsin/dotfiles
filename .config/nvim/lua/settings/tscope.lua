@@ -86,8 +86,11 @@ telescope.setup {
       show_unindexed = true,
       ignore_patterns = {"*.git/*", "*/tmp/*"},
       workspaces = {
-        ["conf"]    = "~/.config",
-        ["wiki"]    = "~/files/wiki/"
+        ["config"]    = "/home/carson/.config/",
+        ["wiki"]    = "/home/carson/files/docs/wiki/",
+        ["org"]    = "/home/carson/files/docs/org/",
+        ["projects"]    = "/home/carson/files/dev/projects/",
+        ["studies"]    = "/home/carson/files/dev/studies/",
       }
     }
   },

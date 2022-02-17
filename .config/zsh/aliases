@@ -82,12 +82,12 @@ alias cal="calcurse"
 alias egpu="sudo egpu-switcher"
 alias gpu="sudo egpu-switcher"
 alias ncdu="ncdu --color dark"
-alias yts="ytfzf -t --preview-side=right --thumbnail-quality=high --notify-playing -l --pages=3"
-alias yt="ytfzf -t --preview-side=right --thumbnail-quality=high --notify-playing -l --pages=3 -c S --sort"
+alias yts="ytfzf -t --preview-side=right --thumbnail-quality=high --notify-playing -l --pages=4"
+alias yt="ytfzf -t --preview-side=right --thumbnail-quality=high --notify-playing -l --pages=4 -c S --sort"
 alias ytsub="yt"
 alias yta="ytfzf -m -t" # youtube audio
 alias ttv="reflex-curses"
-alias red='systemctl enable --user --now redshift'
+alias red='systemctl restart --user --now redshift-gtk'
 alias twitchlive="reflex-curses -f"
 alias ttvlive="reflex-curses -f"
 alias ttvl="reflex-curses -f"
