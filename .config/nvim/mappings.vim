@@ -88,6 +88,13 @@ vnoremap . :normal .<CR>
 " Replace ex mode with gq (shorten long line)
 map Q gq
 
+" format 80 line limit
+" vnoremap gz :s/\v(.{80})/\1\r/g<CR>
+
+" show 80 line charcolumn
+inoremap <silent> <F8> <ESC>:execute "set colorcolumn=" . (&colorcolumn == "" ? "81" : "")<CR>a
+nnoremap <silent> <F8> :execute "set colorcolumn=" . (&colorcolumn == "" ? "81" : "")<CR>
+
 " Replace all on S
 nnoremap <leader>S :%s//g<Left><Left>
 vnoremap <leader>S :s//g<Left><Left>

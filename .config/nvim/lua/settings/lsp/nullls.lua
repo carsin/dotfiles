@@ -41,9 +41,6 @@ null_ls.setup({
 			-- 	info = "suggestion",
 			-- },
 		}),
-   builtins.formatting.clang_format.with({
-      filetypes = { "c" },
-    })
 	},
 	on_attach = config.on_attach,
 	debounce = config.flags.debounce_text_changes,
