@@ -18,25 +18,26 @@ DIR=$(dirname "$LOC")
 export IDENTIFIER="unicode"
 
 # Change the charachter(s) used to seperate modules. If two are used, they will be placed at the start and end.
-export SEP1=""
-export SEP2=""
+export SEP1="["
+export SEP2="]"
 
 # Import the modules
 . "$DIR/bar-functions/dwm_spotify.sh"
 . "$DIR/bar-functions/dwm_resources.sh"
 . "$DIR/bar-functions/dwm_battery.sh"
+. "$DIR/bar-functions/dwm_pomo.sh"
 # . "$DIR/bar-functions/dwm_pulse.sh"
 # . "$DIR/bar-functions/dwm_weather.sh"
 . "$DIR/bar-functions/dwm_date.sh"
 
-parallelize() {
-    while true
-    do
-        printf "Running parallel processes\n"
-        # dwm_weather &
-        sleep 20
-    done
-}
+# parallelize() {
+#     while true
+#     do
+#         printf "Running parallel processes\n"
+#         # dwm_weather &
+#         sleep 20
+#     done
+# }
 # parallelize &
 
 # Update dwm status bar every second
@@ -44,6 +45,7 @@ while true
 do
     # Append results of each func one by one to the upperbar string
     upperbar=""
+    upperbar="$upperbar$(dwm_pomo) "
     upperbar="$upperbar$(dwm_spotify) "
     upperbar="$upperbar$(dwm_resources) "
     upperbar="$upperbar$(dwm_battery)"

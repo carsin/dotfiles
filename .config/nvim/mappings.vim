@@ -41,11 +41,11 @@ nnoremap <silent> <C-p> :set invpaste <CR>
 
 " Insert date / time
 nnoremap <leader>id "=strftime("%a, %b %d %Y")<CR>p
-nnoremap <leader>it "=strftime("%-I:%M:%S %p")<CR>p
+nnoremap <leader>it "=strftime("%I:%M:%S %p")<CR>p
 nnoremap <leader>is "=strftime("-- CKF %-I:%M:%S %p")<CR>p
 " wiki entries
-nnoremap <leader>ie "=strftime("## %-I:%M:%S %p \n")<CR>po
-nnoremap <leader>ih "=strftime("## %-I:%M:%S %p \n")<CR>po
+nnoremap <leader>ie "=strftime("## %I:%M:%S %p \n")<CR>po
+nnoremap <leader>ih "=strftime("## %I:%M:%S %p \n")<CR>po
 
 
 " Dont put change operations into register
@@ -284,7 +284,8 @@ nnoremap <leader>zn <Cmd>ZkNew { title = vim.fn.input('Title: ') }<CR>
 nnoremap <leader>zd <Cmd>ZkNew { dir = "log" }<CR>
 nnoremap <leader>zf <Cmd>ZkNotes<CR>
 nnoremap <leader>zt <Cmd>ZkTags<CR>
-nnoremap <leader>zs <Cmd>ZkNotes { match = vim.fn.input('Search: ') }<CR>
+" nnoremap <leader>zs <Cmd>ZkNotes { match = vim.fn.input('Search: ') }<CR>
+nnoremap <leader>zs <Cmd>cd /home/carson/files/docs/wiki/<CR><Cmd>Telescope live_grep<CR>
 vnoremap <leader>zf :'<,'>ZkMatch<CR>
 
 " undotree

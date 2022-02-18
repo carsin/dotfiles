@@ -28,7 +28,15 @@ require("neorg").setup({
 		["core.integrations.nvim-cmp"] = {
 			config = {},
 		},
-
+		["core.norg.concealer"] = {
+			config = {},
+		},
+		["core.integrations.treesitter"] = {
+			config = {},
+		},
+		["core.highlights"] = {
+			config = {},
+		},
 		["core.gtd.ui"] = {
 			config = {
 				index = "index.neorg",
