@@ -34,7 +34,7 @@ daysInYear = 365 + calendar.isleap(now.year)
 # yearmath
 dayOfYear = now.timetuple().tm_yday
 yearPerc = round(dayOfYear / daysInYear * 100, 2)
-date += " • Day " + str(dayOfYear) + "/" + str(daysInYear) + " (" + f"{yearPerc:05}" + "%) • " + str(daysInYear - dayOfYear) + " left [" + str(temptf.days) + "TCF]"
+date += " • Day " + str(dayOfYear) + "/" + str(daysInYear) + " (" + f"{yearPerc:04}" + "%) • " + str(daysInYear - dayOfYear) + " left [" + str(temptf.days) + "TCF]"
 # count number of files with prefix 20*.md
 # dateshort = now.strftime("%a %m/%d/%Y").upper()
 entrycount = len(fnmatch.filter(os.listdir('/home/carson/files/docs/wiki/log/'), '20*.md'))
@@ -46,6 +46,11 @@ template = "# " + now.strftime("%-m/%d") + " - An Untitled Day\n" + genQuote() +
 # ENTRY """ + str(entrycount) + """ -- INIT LOG -- CREATED """ + timestart + """
 
 # MIDNIGHT -- END OF LOG -- DAY """ + str(dayno.days) + """
+
+## NIGHTLY REFLECTION
+### Accomplishments
+### Thankful for
+### Tomorrow's intentions
 --------------------------------------------------------------------------------
 :daily:"""
 print(template)
