@@ -405,8 +405,11 @@ static Sp scratchpads[] = {
  */
 // 龎   ﮕ
     
-static char *tagicons[][NUMTAGS] = {
-    [DEFAULT_TAGS] = {"龎 ", " ", " ", " ", " "},
+// static char *tagicons[][NUMTAGS] = {
+//     [DEFAULT_TAGS] = {"龎 ", " ", " ", " ", " "},
+// };
+static char *tagicons[][NUMTAGS*2] = {
+    [DEFAULT_TAGS] = {"龎 ", " ", " ", " ", " ", " ", " ", " ", " ", " "},
 };
 
 #if BAR_TAGGRID_PATCH

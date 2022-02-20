@@ -39,14 +39,13 @@ date += " • Day " + str(dayOfYear) + "/" + str(daysInYear) + " (" + f"{yearPer
 # dateshort = now.strftime("%a %m/%d/%Y").upper()
 entrycount = len(fnmatch.filter(os.listdir('/home/carson/files/docs/wiki/log/'), '20*.md'))
 
-template = "# " + now.strftime("%-m/%d") + " - An Untitled Day\n" + genQuote() + """
+template = "# " + now.strftime("%-m/%d/%Y") + "\n" + genQuote() + """
  
 """ + date + """
 --------------------------------------------------------------------------------
 # ENTRY """ + str(entrycount) + """ -- INIT LOG -- CREATED """ + timestart + """
 
 # MIDNIGHT -- END OF LOG -- DAY """ + str(dayno.days) + """
-
 ## NIGHTLY REFLECTION
 ### Accomplishments
 ### Thankful for
