@@ -43,6 +43,9 @@ template = "# " + now.strftime("%-m/%d/%Y") + "\n" + genQuote() + """
  
 """ + date + """
 --------------------------------------------------------------------------------
+# OBJECTIVES
+- [ ]
+--------------------------------------------------------------------------------
 # ENTRY """ + str(entrycount) + """ -- INIT LOG -- CREATED """ + timestart + """
 
 # MIDNIGHT -- END OF LOG -- DAY """ + str(dayno.days) + """

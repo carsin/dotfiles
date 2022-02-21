@@ -107,7 +107,7 @@ return packer.startup({
 			end,
 		})
 
-		use({
+		use({ -- orgmode
 			"nvim-neorg/neorg",
 			config = function()
 				require("settings.neorg")
