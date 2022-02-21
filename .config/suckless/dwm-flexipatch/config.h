@@ -1169,7 +1169,7 @@ static Key keys[] = {
     // {MODKEY, XK_space, setlayout, {0}},
     // {MODKEY | ShiftMask | ControlMask, XK_f, togglefloating, {0}},
     {MODKEY | ControlMask, XK_space, togglefloating, {0}},
-    {MODKEY | ShiftMask | ControlMask, XK_space, togglealwaysontop, {0}},
+    // {MODKEY | ShiftMask | ControlMask, XK_space, togglealwaysontop, {0}},
 #if MAXIMIZE_PATCH
     // {MODKEY | ControlMask | ShiftMask, XK_h, togglehorizontalmax, {0}},
     // {MODKEY | ControlMask | ShiftMask, XK_l, togglehorizontalmax, {0}},

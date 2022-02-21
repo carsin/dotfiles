@@ -342,7 +342,7 @@ struct Client {
 	#if SWITCHTAG_PATCH
 	unsigned int switchtag;
 	#endif // SWITCHTAG_PATCH
-	int isfixed, iscentered, isfloating, isalwaysontop, isurgent, neverfocus, oldstate, isfullscreen;
+	int isfixed, isfloating, isurgent, neverfocus, oldstate, isfullscreen;
 	#if !FAKEFULLSCREEN_PATCH && FAKEFULLSCREEN_CLIENT_PATCH
 	int fakefullscreen;
 	#endif // FAKEFULLSCREEN_CLIENT_PATCH
@@ -360,7 +360,7 @@ struct Client {
 	int needresize;
 	#endif // AUTORESIZE_PATCH
 	#if CENTER_PATCH
-	// int iscentered;
+	int iscentered;
 	#endif // CENTER_PATCH
 	#if ISPERMANENT_PATCH
 	int ispermanent;
@@ -368,6 +368,9 @@ struct Client {
 	#if PLACEMOUSE_PATCH
 	int beingmoved;
 	#endif // PLACEMOUSE_PATCH
+	#if SIZEHINTS_ISFREESIZE_PATCH
+	int isfreesize;
+	#endif // SIZEHINTS_ISFREESIZE_PATCH
 	#if SWALLOW_PATCH
 	int isterminal, noswallow;
 	pid_t pid;
@@ -515,6 +518,9 @@ typedef struct {
 	#if SELECTIVEFAKEFULLSCREEN_PATCH && FAKEFULLSCREEN_CLIENT_PATCH && !FAKEFULLSCREEN_PATCH
 	int isfakefullscreen;
 	#endif // SELECTIVEFAKEFULLSCREEN_PATCH
+	#if SIZEHINTS_ISFREESIZE_PATCH
+	int isfreesize;
+	#endif // SIZEHINTS_ISFREESIZE_PATCH
 	#if ISPERMANENT_PATCH
 	int ispermanent;
 	#endif // ISPERMANENT_PATCH
@@ -674,7 +680,6 @@ static void tag(const Arg *arg);
 static void tagmon(const Arg *arg);
 static void togglebar(const Arg *arg);
 static void togglefloating(const Arg *arg);
-static void togglealwaysontop(const Arg *arg);
 static void toggletag(const Arg *arg);
 static void toggleview(const Arg *arg);
 static void unfocus(Client *c, int setfocus, Client *nextfocus);
@@ -826,6 +831,9 @@ applyrules(Client *c)
 	#if SWALLOW_PATCH
 	c->noswallow = -1;
 	#endif // SWALLOW_PATCH
+	#if SIZEHINTS_ISFREESIZE_PATCH
+	c->isfreesize = 1;
+	#endif // SIZEHINTS_ISFREESIZE_PATCH
 	c->isfloating = 0;
 	c->tags = 0;
 	XGetClassHint(dpy, c->win, &ch);
@@ -864,6 +872,9 @@ applyrules(Client *c)
 			c->isterminal = r->isterminal;
 			c->noswallow = r->noswallow;
 			#endif // SWALLOW_PATCH
+			#if SIZEHINTS_ISFREESIZE_PATCH
+			c->isfreesize = r->isfreesize;
+			#endif // SIZEHINTS_ISFREESIZE_PATCH
 			c->isfloating = r->isfloating;
 			c->tags |= r->tags;
 			#if SCRATCHPADS_PATCH
@@ -912,8 +923,14 @@ applyrules(Client *c)
 						view(&((Arg) { .ui = newtagset }));
 						#endif // PERTAG_PATCH
 					} else {
+						#if TAGSYNC_PATCH
+						for (m = mons; m; m = m->next)
+							m->tagset[m->seltags] = newtagset;
+						arrange(NULL);
+						#else
 						c->mon->tagset[c->mon->seltags] = newtagset;
 						arrange(c->mon);
+						#endif // TAGSYNC_PATCH
 					}
 				}
 			}
@@ -3001,7 +3018,7 @@ resizemouse(const Arg *arg)
 void
 restack(Monitor *m)
 {
-	Client *c;
+	Client *c, *f = NULL;
 	XEvent ev;
 	XWindowChanges wc;
 	#if WARP_PATCH && FLEXTILE_DELUXE_LAYOUT
@@ -3016,21 +3033,17 @@ restack(Monitor *m)
 		return;
 	if (m->sel->isfloating || !m->lt[m->sellt]->arrange)
 		XRaiseWindow(dpy, m->sel->win);
- 	/* raise the aot window */
-        for (Monitor *m_search = mons; m_search; m_search = m_search->next) {
-          for (c = m_search->clients; c; c = c->next) {
-            if (c->isalwaysontop) {
-              XRaiseWindow(dpy, c->win);
-              break;
-            }
-          }
-        }
-
-        if (m->lt[m->sellt]->arrange && m->bar) {
+	if (m->lt[m->sellt]->arrange) {
 		wc.stack_mode = Below;
-		wc.sibling = m->bar->win;
+		if (m->bar) {
+			wc.sibling = m->bar->win;
+		} else {
+			for (f = m->stack; f && (f->isfloating || !ISVISIBLE(f)); f = f->snext); // find first tiled stack client
+			if (f)
+				wc.sibling = f->win;
+		}
 		for (c = m->stack; c; c = c->snext)
-			if (!c->isfloating && ISVISIBLE(c)) {
+			if (!c->isfloating && ISVISIBLE(c) && c != f) {
 				XConfigureWindow(dpy, c->win, CWSibling|CWStackMode, &wc);
 				wc.sibling = c->win;
 			}
@@ -3161,57 +3174,59 @@ scan(void)
 	#endif // SWALLOW_PATCH
 }
 
-void sendmon(Client *c, Monitor *m) {
-#if EXRESIZE_PATCH
-  Monitor *oldm = selmon;
-#endif // EXRESIZE_PATCH
-  if (c->mon == m)
-    return;
-#if SENDMON_KEEPFOCUS_PATCH && !EXRESIZE_PATCH
-  int hadfocus = (c == selmon->sel);
-#endif // SENDMON_KEEPFOCUS_PATCH
-  unfocus(c, 1, NULL);
-  detach(c);
-  detachstack(c);
-#if SENDMON_KEEPFOCUS_PATCH && !EXRESIZE_PATCH
-  arrange(c->mon);
-#endif // SENDMON_KEEPFOCUS_PATCH
-  c->mon = m;
-#if SCRATCHPADS_PATCH
-  if (!(c->tags & SPTAGMASK))
-#endif // SCRATCHPADS_PATCH
-#if EMPTYVIEW_PATCH
-    c->tags = (m->tagset[m->seltags] ? m->tagset[m->seltags] : 1);
-#else
-  c->tags = m->tagset[m->seltags]; /* assign tags of target monitor */
-#endif // EMPTYVIEW_PATCH
-#if ATTACHABOVE_PATCH || ATTACHASIDE_PATCH || ATTACHBELOW_PATCH || ATTACHBOTTOM_PATCH
-  attachx(c);
-#else
-  attach(c);
-#endif
-  attachstack(c);
-#if EXRESIZE_PATCH
-  if (oldm != m)
-    arrange(oldm);
-  arrange(m);
-  focus(c);
-  restack(m);
-#elif SENDMON_KEEPFOCUS_PATCH
-  arrange(m);
-  if (hadfocus) {
-    focus(c);
-    restack(m);
-  } else
-    focus(NULL);
-#else
-  focus(NULL);
-  arrange(NULL);
-#endif // EXRESIZE_PATCH / SENDMON_KEEPFOCUS_PATCH
-#if SWITCHTAG_PATCH
-  if (c->switchtag)
-    c->switchtag = 0;
-#endif // SWITCHTAG_PATCH
+void
+sendmon(Client *c, Monitor *m)
+{
+	#if EXRESIZE_PATCH
+	Monitor *oldm = selmon;
+	#endif // EXRESIZE_PATCH
+	if (c->mon == m)
+		return;
+	#if SENDMON_KEEPFOCUS_PATCH && !EXRESIZE_PATCH
+	int hadfocus = (c == selmon->sel);
+	#endif // SENDMON_KEEPFOCUS_PATCH
+	unfocus(c, 1, NULL);
+	detach(c);
+	detachstack(c);
+	#if SENDMON_KEEPFOCUS_PATCH && !EXRESIZE_PATCH
+	arrange(c->mon);
+	#endif // SENDMON_KEEPFOCUS_PATCH
+	c->mon = m;
+	#if SCRATCHPADS_PATCH
+	if (!(c->tags & SPTAGMASK))
+	#endif // SCRATCHPADS_PATCH
+	#if EMPTYVIEW_PATCH
+	c->tags = (m->tagset[m->seltags] ? m->tagset[m->seltags] : 1);
+	#else
+	c->tags = m->tagset[m->seltags]; /* assign tags of target monitor */
+	#endif // EMPTYVIEW_PATCH
+	#if ATTACHABOVE_PATCH || ATTACHASIDE_PATCH || ATTACHBELOW_PATCH || ATTACHBOTTOM_PATCH
+	attachx(c);
+	#else
+	attach(c);
+	#endif
+	attachstack(c);
+	#if EXRESIZE_PATCH
+	if (oldm != m)
+		arrange(oldm);
+	arrange(m);
+	focus(c);
+	restack(m);
+	#elif SENDMON_KEEPFOCUS_PATCH
+	arrange(m);
+	if (hadfocus) {
+		focus(c);
+		restack(m);
+	} else
+		focus(NULL);
+	#else
+	focus(NULL);
+	arrange(NULL);
+	#endif // EXRESIZE_PATCH / SENDMON_KEEPFOCUS_PATCH
+	#if SWITCHTAG_PATCH
+	if (c->switchtag)
+		c->switchtag = 0;
+	#endif // SWITCHTAG_PATCH
 }
 
 void
@@ -4005,7 +4020,6 @@ togglefloating(const Arg *arg)
 		c->sfy = c->y;
 		c->sfw = c->w;
 		c->sfh = c->h;
-        selmon->sel->isalwaysontop = 0; /* disabled, turn this off too */
 	#endif // SAVEFLOATS_PATCH / EXRESIZE_PATCH
 	}
 	arrange(c->mon);
@@ -4013,27 +4027,6 @@ togglefloating(const Arg *arg)
 	#if BAR_EWMHTAGS_PATCH
 	setfloatinghint(c);
 	#endif // BAR_EWMHTAGS_PATCH
-}
-void togglealwaysontop(const Arg *arg) {
-  if (!selmon->sel)
-    return;
-  if (selmon->sel->isfullscreen)
-    return;
-
-  if (selmon->sel->isalwaysontop) {
-    selmon->sel->isalwaysontop = 0;
-  } else {
-    /* disable others */
-    for (Monitor *m = mons; m; m = m->next)
-      for (Client *c = m->clients; c; c = c->next)
-        c->isalwaysontop = 0;
-
-    /* turn on, make it float too */
-    selmon->sel->isfloating = 1;
-    selmon->sel->isalwaysontop = 1;
-  }
-
-  arrange(selmon);
 }
 
 void
@@ -4065,7 +4058,11 @@ toggletag(const Arg *arg)
 void
 toggleview(const Arg *arg)
 {
-	unsigned int newtagset = selmon->tagset[selmon->seltags] ^ (arg->ui & TAGMASK);
+	unsigned int newtagset = selmon->tagset[selmon->seltags] ^ (arg->ui & TAGMASK);;
+	#if TAGSYNC_PATCH
+	Monitor *origselmon = selmon;
+	for (selmon = mons; selmon; selmon = selmon->next) {
+	#endif // TAGSYNC_PATCH
 	#if PERTAG_PATCH
 	int i;
 	#endif // PERTAG_PATCH
@@ -4136,11 +4133,25 @@ toggleview(const Arg *arg)
 			togglebar(NULL);
 		#endif // PERTAGBAR_PATCH
 		#endif // PERTAG_PATCH
+		#if !TAGSYNC_PATCH
 		focus(NULL);
 		arrange(selmon);
+		#endif // TAGSYNC_PATCH
 	#if !EMPTYVIEW_PATCH
 	}
 	#endif // EMPTYVIEW_PATCH
+	#if TAGSYNC_PATCH
+	}
+	selmon = origselmon;
+	#if !EMPTYVIEW_PATCH
+	if (newtagset) {
+	#endif // EMPTYVIEW_PATCH
+		focus(NULL);
+		arrange(NULL);
+	#if !EMPTYVIEW_PATCH
+	}
+	#endif // EMPTYVIEW_PATCH
+	#endif // TAGSYNC_PATCH
 	#if BAR_EWMHTAGS_PATCH
 	updatecurrentdesktop();
 	#endif // BAR_EWMHTAGS_PATCH
@@ -4356,13 +4367,22 @@ updatebarpos(Monitor *m)
 	m->ww = m->mw;
 	m->wh = m->mh;
 	Bar *bar;
-	#if BAR_PADDING_PATCH
-	int y_pad = vertpad;
-	int x_pad = sidepad;
-	#else
 	int y_pad = 0;
 	int x_pad = 0;
-	#endif // BAR_PADDING_PATCH
+	#if BAR_PADDING_VANITYGAPS_PATCH && VANITYGAPS_PATCH
+	#if PERTAG_VANITYGAPS_PATCH && PERTAG_PATCH
+	if (!selmon || selmon->pertag->enablegaps[selmon->pertag->curtag])
+	#else
+	if (enablegaps)
+	#endif // PERTAG_VANITYGAPS_PATCH
+	{
+		y_pad = gappoh;
+		x_pad = gappov;
+	}
+	#elif BAR_PADDING_PATCH
+	y_pad = vertpad;
+	x_pad = sidepad;
+	#endif // BAR_PADDING_PATCH | BAR_PADDING_VANITYGAPS_PATCH
 
 	#if INSETS_PATCH
 	// Custom insets
@@ -4546,11 +4566,11 @@ updatesizehints(Client *c)
 
 	if (!XGetWMNormalHints(dpy, c->win, &size, &msize))
 		/* size is uninitialized, ensure that size.flags aren't used */
-		#if SIZEHINTS_PATCH || SIZEHINTS_RULED_PATCH
+		#if SIZEHINTS_PATCH || SIZEHINTS_RULED_PATCH || SIZEHINTS_ISFREESIZE_PATCH
 		size.flags = 0;
 		#else
 		size.flags = PSize;
-		#endif // SIZEHINTS_PATCH | SIZEHINTS_RULED_PATCH
+		#endif // SIZEHINTS_PATCH | SIZEHINTS_RULED_PATCH | SIZEHINTS_ISFREESIZE_PATCH
 	if (size.flags & PBaseSize) {
 		c->basew = size.base_width;
 		c->baseh = size.base_height;
@@ -4582,8 +4602,13 @@ updatesizehints(Client *c)
 		c->maxa = (float)size.max_aspect.x / size.max_aspect.y;
 	} else
 		c->maxa = c->mina = 0.0;
-	#if SIZEHINTS_PATCH || SIZEHINTS_RULED_PATCH
-	if (size.flags & PSize) {
+	#if SIZEHINTS_PATCH || SIZEHINTS_RULED_PATCH || SIZEHINTS_ISFREESIZE_PATCH
+	#if SIZEHINTS_ISFREESIZE_PATCH
+	if ((size.flags & PSize) && c->isfreesize)
+	#else
+	if (size.flags & PSize)
+	#endif // SIZEHINTS_ISFREESIZE_PATCH
+	{
 		c->basew = size.base_width;
 		c->baseh = size.base_height;
 		c->isfloating = 1;
@@ -4684,6 +4709,10 @@ updatewmhints(Client *c)
 void
 view(const Arg *arg)
 {
+	#if TAGSYNC_PATCH
+	Monitor *origselmon = selmon;
+	for (selmon = mons; selmon; selmon = selmon->next) {
+	#endif // TAGSYNC_PATCH
 	#if EMPTYVIEW_PATCH
 	if (arg->ui && (arg->ui & TAGMASK) == selmon->tagset[selmon->seltags])
 	#else
@@ -4698,18 +4727,20 @@ view(const Arg *arg)
 	selmon->seltags ^= 1; /* toggle sel tagset */
 	#if PERTAG_PATCH
 	pertagview(arg);
-	#if SWAPFOCUS_PATCH
-	Client *unmodified = selmon->pertag->prevclient[selmon->pertag->curtag];
-	#endif // SWAPFOCUS_PATCH
 	#else
 	if (arg->ui & TAGMASK)
 		selmon->tagset[selmon->seltags] = arg->ui & TAGMASK;
 	#endif // PERTAG_PATCH
+	#if TAGSYNC_PATCH
+	}
+	selmon = origselmon;
+	#endif // TAGSYNC_PATCH
 	focus(NULL);
-	#if SWAPFOCUS_PATCH && PERTAG_PATCH
-	selmon->pertag->prevclient[selmon->pertag->curtag] = unmodified;
-	#endif // SWAPFOCUS_PATCH
+	#if TAGSYNC_PATCH
+	arrange(NULL);
+	#else
 	arrange(selmon);
+	#endif // TAGSYNC_PATCH
 	#if BAR_EWMHTAGS_PATCH
 	updatecurrentdesktop();
 	#endif // BAR_EWMHTAGS_PATCH
