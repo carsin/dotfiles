@@ -56,7 +56,7 @@ return packer.startup({
 		use("tpope/vim-unimpaired") -- handy ][ mappings that should be builtin
 		use("RRethy/vim-illuminate") -- highlight matches of symbol under cursor
 		use("editorconfig/editorconfig-vim")
-		use("lambdalisue/suda.vim") -- read and write as sudo
+		-- use("lambdalisue/suda.vim") -- read and write as sudo
 
 		use({ -- zettlekasten
 			"mickael-menu/zk-nvim",

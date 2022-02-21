@@ -11,6 +11,7 @@ alias .........="cd ../../../../../../../../"
 alias ~="cd ~"
 alias l='ls'
 alias ls='exa -aF --color=always --sort=type --group-directories-first --ignore-glob=".DS_Store" --icons' # lots of icons are causing lag in st
+alias ll='ls -l' # lots of icons are causing lag in st
 alias cp="cp -iv"
 alias mv="mv -iv"
 alias rm="rm -v"

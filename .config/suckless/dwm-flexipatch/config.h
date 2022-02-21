@@ -409,7 +409,7 @@ static Sp scratchpads[] = {
 //     [DEFAULT_TAGS] = {"龎 ", " ", " ", " ", " "},
 // };
 static char *tagicons[][NUMTAGS*2] = {
-    [DEFAULT_TAGS] = {"龎 ", " ", " ", " ", " ", " ", " ", " ", " ", " "},
+    [DEFAULT_TAGS] = {"龎 ", " ", " ", " ", " ", " ", "ﳲ ", "露 ", " ", " "},
 };
 
 #if BAR_TAGGRID_PATCH
@@ -977,8 +977,8 @@ static Key keys[] = {
 	{0, XF86XK_AudioRaiseVolume, spawn, SHCMD("/home/carson/bin/changevol -n -p -y up 5")},
     {0, XF86XK_AudioLowerVolume, spawn, SHCMD("/home/carson/bin/changevol -n -p -y down 5")},
 	{0, XF86XK_AudioMute, spawn, SHCMD("/home/carson/bin/changevol -n -p -y mute")},
-	{0, XF86XK_AudioNext, spawn, SHCMD("playerctl next -p 'spotify,firefox,mpv'")},
-	{0, XF86XK_AudioPrev, spawn, SHCMD("playerctl previous -p 'spotify,firefox,mpv'")},
+	{0, XF86XK_AudioNext, spawn, SHCMD("playerctl next -p 'ncspot,spotify,firefox,mpv'")},
+	{0, XF86XK_AudioPrev, spawn, SHCMD("playerctl previous -p 'ncspot,spotify,firefox,mpv'")},
     {0, XF86XK_AudioPlay, spawn, SHCMD("playerctl play-pause")},
 	// {0, XF86XK_AudioNext, spawn, SHCMD("playerctl next")},
     // {0, XF86XK_AudioPlay, spawn, SHCMD("playerctl play-pause -p 'spotify,firefox,mpv'")},
