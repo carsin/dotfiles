@@ -1,2 +1,2 @@
 cd /home/carson/files/docs/wiki/
-tmux new-session -A -s editor nvim -c 'ZkNew { dir = "log" }'
+tmux new-session -A -s editor nvim -c "ZkNew { dir = 'log' }"

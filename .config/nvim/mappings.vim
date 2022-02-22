@@ -2,6 +2,8 @@
 " Bd: buffer delete while keeping current window layout
 command Bd bp\|bd \#
 
+command FocusDaily ZkNew { dir = 'log' }|silent TZAtaraxis
+
 " --- MAPS {{{
 let mapleader=" "
 
@@ -297,6 +299,7 @@ nnoremap <leader>ogg <Cmd>Neorg workspace gtd<CR>
 nnoremap <leader>ogd <Cmd>Neorg workspace gtd<CR>
 nnoremap <leader>ogh <Cmd>Neorg workspace home<CR>
 nnoremap <expr> <leader>ogt exists(":NeorgStart") ? ':NeorgStart silent=true<CR>:Neorg gtd views<CR>' : ':Neorg gtd views<CR>'
+nnoremap <expr> <leader>ogs exists(":NeorgStart") ? ':NeorgStart silent=true<CR>:Neorg gtd views<CR>' : ':Neorg gtd views<CR>'
 nnoremap <expr> <leader>ogc exists(":NeorgStart") ? ':NeorgStart silent=true<CR>:Neorg gtd capture<CR>' : ':Neorg gtd capture<CR>'
 nnoremap <expr> <leader>oge exists(":NeorgStart") ? ':NeorgStart silent=true<CR>:Neorg gtd capture<CR>' : ':Neorg gtd edit<CR>'
 nnoremap <leader>onn <Cmd>Neorg workspace notes<CR>
