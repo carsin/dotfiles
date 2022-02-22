@@ -459,12 +459,13 @@ static const Rule rules[] = {
     // RULE(.title = "Picture-In-Picture", .tags = SPTAG(99), .isfloating = 1)
     RULE(.class = "St", .isterminal = 1)
     RULE(.class = "Alacritty", .isterminal = 1)
-    RULE(.instance = "spotify", .tags = 1 << 3, .monitor = 0)
-    RULE(.instance = "easyeffects", .tags = 1 << 3, .monitor = 0)
+    RULE(.instance = "spotify", .tags = 1 << 2, .monitor = 0)
+    RULE(.instance = "easyeffects", .tags = 1 << 2, .monitor = 1)
     // move to other mon
     RULE(.instance = "discord", .tags = 1 << 3, .monitor = 1)
     RULE(.instance = "obs", .monitor = 1)
     RULE(.instance = "guvcview", .monitor = 2)
+    RULE(.instance = "chatterino", .tags = 1 << 1, .monitor = 1)
     // gaming
     RULE(.class = "steam_app_", .tags = 1 << 4, .monitor = 0)
     RULE(.title = "Grand Theft Auto V", .tags = 1 << 4, .monitor = 0)

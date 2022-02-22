@@ -42,17 +42,16 @@ entrycount = len(fnmatch.filter(os.listdir('/home/carson/files/docs/wiki/log/'),
 template = "# " + now.strftime("%-m/%d/%Y") + "\n" + genQuote() + """
  
 """ + date + """
---------------------------------------------------------------------------------
-# OBJECTIVES
+## OBJECTIVES
 - [ ]
 --------------------------------------------------------------------------------
-# ENTRY """ + str(entrycount) + """ -- INIT LOG -- CREATED """ + timestart + """
+## ENTRY """ + str(entrycount) + """ -- INIT LOG -- CREATED """ + timestart + """
 
-# MIDNIGHT -- END OF LOG -- DAY """ + str(dayno.days) + """
-## NIGHTLY REFLECTION
-### Accomplishments
-### Thankful for
-### Tomorrow's intentions
+## MIDNIGHT -- END OF LOG -- DAY """ + str(dayno.days) + """
+### NIGHTLY REFLECTION
+#### ACCOMPLISHMENTS
+#### GRATITUDE
+#### TOMORROWS INTENTIONS
 --------------------------------------------------------------------------------
 :daily:"""
 print(template)

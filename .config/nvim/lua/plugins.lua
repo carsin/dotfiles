@@ -391,12 +391,20 @@ return packer.startup({
 		-- 	end,
 		-- })
 
-		use({ -- show diagnostics in virtual lines
-			"https://git.sr.ht/~whynothugo/lsp_lines.nvim",
+		-- use({ -- show diagnostics in virtual lines
+		-- 	"https://git.sr.ht/~whynothugo/lsp_lines.nvim",
+		-- 	config = function()
+		--    require("lsp_lines").register_lsp_virtual_lines()
+		-- 	end,
+		-- })
+
+		use({ -- symboloutline column
+			"simrat39/symbols-outline.nvim",
 			config = function()
-				-- require("lsp_lines").register_lsp_virtual_lines()
+        require('settings.symbolsoutline')
 			end,
 		})
+
 
 		if Packer_Bootstrap then -- auto set up conf after cloning packer.nvim
 			require("packer").sync()

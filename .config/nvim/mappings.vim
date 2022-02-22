@@ -46,8 +46,8 @@ nnoremap <leader>id "=strftime("%a, %b %d %Y")<CR>p
 nnoremap <leader>it "=strftime("%I:%M:%S %p")<CR>p
 nnoremap <leader>is "=strftime("-- CKF %-I:%M:%S %p")<CR>p
 " wiki entries
-nnoremap <leader>ie "=strftime("## %I:%M:%S %p \n")<CR>po
-nnoremap <leader>ih "=strftime("## %I:%M:%S %p \n")<CR>po
+nnoremap <leader>ie "=strftime("### %I:%M:%S %p \n")<CR>po
+nnoremap <leader>ih "=strftime("### %I:%M:%S %p \n")<CR>po
 
 
 " Dont put change operations into register
@@ -304,6 +304,9 @@ nnoremap <expr> <leader>ogc exists(":NeorgStart") ? ':NeorgStart silent=true<CR>
 nnoremap <expr> <leader>oge exists(":NeorgStart") ? ':NeorgStart silent=true<CR>:Neorg gtd capture<CR>' : ':Neorg gtd edit<CR>'
 nnoremap <leader>onn <Cmd>Neorg workspace notes<CR>
 nnoremap <leader>ono <Cmd>Neorg workspace notes<CR>
+
+" symbol outlines
+nnoremap <leader>co <Cmd>SymbolsOutline<CR>
 
 " dap
 " TODO: to vimscript
