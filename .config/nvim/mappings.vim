@@ -275,10 +275,10 @@ nnoremap <leader>we <cmd>:silent TZAtaraxis<cr><cmd>set rnu<cr><cmd>set nu<cr>
 nnoremap <silent><F4> <cmd>:silent TZAtaraxis<cr><cmd>set rnu<cr><cmd>set nu<cr>
 
 " Sniprun
-" nmap <silent> <leader>cr :lua require'sniprun'.run()<CR>
-" vmap <silent> <leader>cr :lua require'sniprun'.run()<CR>
-" nmap <leader>cx <Cmd>:SnipReset<CR> 
-" nmap <leader>cc <Plug>SnipClose
+nmap <silent> <leader>cr :lua require'sniprun'.run()<CR>
+vmap <silent> <leader>cr :lua require'sniprun'.run()<CR>
+nmap <leader>cR <Cmd>:SnipReset<CR>
+nmap <leader>cc <Plug>SnipClose
 
 " zk-nvim
 " infile maps located in ./lua/settings/zk.lua

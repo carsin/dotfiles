@@ -342,7 +342,7 @@ struct Client {
 	#if SWITCHTAG_PATCH
 	unsigned int switchtag;
 	#endif // SWITCHTAG_PATCH
-    int isfixed, iscentered, isfloating, isalwaysontop, isurgent, neverfocus, oldstate, isfullscreen;
+	int isfixed, isfloating, isurgent, neverfocus, oldstate, isfullscreen;
 	#if !FAKEFULLSCREEN_PATCH && FAKEFULLSCREEN_CLIENT_PATCH
 	int fakefullscreen;
 	#endif // FAKEFULLSCREEN_CLIENT_PATCH

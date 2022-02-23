@@ -404,6 +404,13 @@ return packer.startup({
         require('settings.symbolsoutline')
 			end,
 		})
+    use ({
+      'michaelb/sniprun',
+      run = 'bash ./install.sh',
+			config = function()
+        require('settings.sniprun')
+			end,
+    })
 
 
 		if Packer_Bootstrap then -- auto set up conf after cloning packer.nvim

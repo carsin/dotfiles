@@ -1,6 +1,6 @@
 /******************** BEGIN PYWALFOX CUSTOM CSS ********************/
 #main-window {
-  --pywalfox-font-size: 13px;
+  --pywalfox-font-size: 14px;
   --pywalfox-font-size-sm: calc(var(--pywalfox-font-size) * 0.9);
   --pywalfox-background: var(--lwt-accent-color);
   --pywalfox-background-light: var(--arrowpanel-background);
