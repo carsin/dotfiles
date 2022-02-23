@@ -50,4 +50,17 @@ user_pref("privacy.resistFingerprinting.letterboxing", false); // [HIDDEN PREF]
  * [1] https://bugzilla.mozilla.org/418986 ***/
 user_pref("privacy.resistFingerprinting", false);
 
-user_pref("toolkit.legacyUserProfileCustomizations.stylesheets", true); // [FF68+] allow userChrome/userContent
+// [FF68+] allow userChrome/userContent
+user_pref("toolkit.legacyUserProfileCustomizations.stylesheets", true); 
+
+/* 0102: set startup page [SETUP-CHROME]
+ * 0=blank, 1=home, 2=last visited page, 3=resume previous session
+ * [NOTE] Session Restore is cleared with history (2811, 2812), and not used in Private Browsing mode
+ * [SETTING] General>Startup>Restore previous session ***/
+user_pref("browser.startup.page", 1);
+
+/* 0103: set HOME+NEWWINDOW page
+ * about:home=Activity Stream (default, see 0105), custom URL, about:blank
+ * [SETTING] Home>New Windows and Tabs>Homepage and new windows ***/
+/* use tabbliss */
+user_pref("browser.startup.homepage", "moz-extension://f081c3fb-ad4a-48a4-916b-d6f14ba86147/index.html");

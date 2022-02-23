@@ -51,6 +51,7 @@ template = "# " + now.strftime("%-m/%d/%Y") + "\n" + genQuote() + """
 ### NIGHTLY REFLECTION
 #### ACCOMPLISHMENTS
 #### GRATITUDE
+#### LESSONS
 #### TOMORROWS INTENTIONS
 --------------------------------------------------------------------------------
 :daily:"""

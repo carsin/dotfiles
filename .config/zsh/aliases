@@ -95,11 +95,11 @@ alias yts="ytfzf -t --preview-side=right --thumbnail-quality=high --notify-playi
 alias yt="ytfzf -t --preview-side=right --thumbnail-quality=high --notify-playing -l --pages=4 -c S --sort"
 alias ytsub="yt"
 alias yta="ytfzf -m -t" # youtube audio
-alias 'ttv\ live'="reflex-curses -f"
 alias red='systemctl restart --user --now redshift-gtk'
 alias twitchlive="reflex-curses -f"
 alias ttvlive="reflex-curses -f"
 alias ttvl="reflex-curses -f"
+alias ttv="reflex-curses"
 alias twitch="reflex-curses"
 alias define="dict"
 alias dic="dict"
