@@ -64,7 +64,7 @@ inoremap <C-v> <C-r>*
 nnoremap <leader>v :vsplit<CR>
 nnoremap <silent> <C-v> :vsplit<CR>
 nnoremap <leader>b :split<CR>
-nnoremap <silent> <C-b> :vsplit<CR>
+nnoremap <silent> <C-b> :split<CR>
 
 " Close window
 " nnoremap <leader>c :close<CR>

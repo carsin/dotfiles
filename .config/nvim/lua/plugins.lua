@@ -46,6 +46,7 @@ return packer.startup({
 		use("tpope/vim-surround")
 		use("tpope/vim-repeat")
 		use("tpope/vim-fugitive")
+		use("tpope/vim-unimpaired") -- handy ][ mappings that should be builtin
 		use("christoomey/vim-tmux-navigator")
 		use("famiu/bufdelete.nvim")
 		use("antoinemadec/FixCursorHold.nvim") -- Needed while issue https://github.com/neovim/neovim/issues/12587 is still open
@@ -53,10 +54,8 @@ return packer.startup({
 		use("kyazdani42/nvim-web-devicons")
 		use("nathom/filetype.nvim")
 		use("mbbill/undotree")
-		use("tpope/vim-unimpaired") -- handy ][ mappings that should be builtin
 		use("RRethy/vim-illuminate") -- highlight matches of symbol under cursor
 		use("editorconfig/editorconfig-vim")
-		-- use("lambdalisue/suda.vim") -- read and write as sudo
 
 		use({ -- zettlekasten
 			"mickael-menu/zk-nvim",
@@ -234,7 +233,7 @@ return packer.startup({
 
 		use({ -- nvim tree
 			"kyazdani42/nvim-tree.lua",
-			commit = "3f4ed9b6c2598ab8304186486a0",
+			-- commit = "3f4ed9b6c2598ab8304186486a0",
 			config = function()
 				require("settings.nvimtree")
 			end,

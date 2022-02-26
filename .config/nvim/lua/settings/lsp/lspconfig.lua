@@ -22,25 +22,25 @@ vim.fn.sign_define("DiagnosticSignHint", { text = "?", texthl = "DiagnosticSignH
 vim.diagnostic.config({
 	underline = true,
 	virtual_text = {
-    source = "if_many",
-    prefix = "-",
-  },
-  float = {
-    -- border = border,
-    source = "if_many",
-    focusable = false,
-  },
+		source = "if_many",
+		prefix = "-",
+	},
+	float = {
+		-- border = border,
+		source = "if_many",
+		focusable = false,
+	},
 	signs = true,
 	severity_sort = true,
-  update_in_insert = false,
+	update_in_insert = false,
 })
 
 -- virtual text icons
 local signs = { Error = "X ", Warn = "! ", Hint = "? ", Info = "i " }
 -- local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
 for type, icon in pairs(signs) do
-  local hl = "DiagnosticSign" .. type
-  vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
+	local hl = "DiagnosticSign" .. type
+	vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
 end
 
 M.on_attach = function(client, bufnr)
@@ -87,24 +87,24 @@ M.on_attach = function(client, bufnr)
 	-- cursor symbol hl
 	require("illuminate").on_attach(client)
 	-- Show line diagnostics on hover
-  vim.cmd [[autocmd! CursorHold,CursorHoldI * lua vim.diagnostic.open_float(nil, {focus=false, scope="cursor"})]]
-  -- vim.api.nvim_exec([[ autocmd CursorHold * lua
-  -- vim.diagnostic.open_float({border="none", focusable=false}) ]], false)
-  -- vim.cmd [[autocmd FileType markdown nmap gz <buffer> :g/./ normal gqq<CR>]]
+	vim.cmd([[autocmd! CursorHold,CursorHoldI * lua vim.diagnostic.open_float(nil, {focus=false, scope="cursor"})]])
+	-- vim.api.nvim_exec([[ autocmd CursorHold * lua
+	-- vim.diagnostic.open_float({border="none", focusable=false}) ]], false)
+	-- vim.cmd [[autocmd FileType markdown nmap gz <buffer> :g/./ normal gqq<CR>]]
 
-  -- highlight cursor symbol
-  -- if client.resolved_capabilities.document_highlight then
-  --   vim.cmd [[
-  --     hi! LspReferenceRead ctermbg=gray guibg=gray
-  --     hi! LspReferenceText ctermbg=gray guibg=gray
-  --     hi! LspReferenceWrite ctermbg=gray guibg=gray
-  --     augroup lsp_document_highlight
-  --       autocmd! * <buffer>
-  --       autocmd! CursorHold <buffer> lua vim.lsp.buf.document_highlight()
-  --       autocmd! CursorMoved <buffer> lua vim.lsp.buf.clear_references()
-  --     augroup END
-  --   ]]
-  -- end
+	-- highlight cursor symbol
+	-- if client.resolved_capabilities.document_highlight then
+	--   vim.cmd [[
+	--     hi! LspReferenceRead ctermbg=gray guibg=gray
+	--     hi! LspReferenceText ctermbg=gray guibg=gray
+	--     hi! LspReferenceWrite ctermbg=gray guibg=gray
+	--     augroup lsp_document_highlight
+	--       autocmd! * <buffer>
+	--       autocmd! CursorHold <buffer> lua vim.lsp.buf.document_highlight()
+	--       autocmd! CursorMoved <buffer> lua vim.lsp.buf.clear_references()
+	--     augroup END
+	--   ]]
+	-- end
 end
 
 M.get_config = function()
@@ -153,9 +153,17 @@ lsp_installer.on_server_ready(function(server)
 			opts.cmd = {
 				"clangd",
 				"--background-index",
-				"--suggest-missing-includes",
+				"-j=12",
+				"--query-driver=/usr/bin/**/clang-*,/bin/clang,/bin/clang++,/usr/bin/gcc,/usr/bin/g++",
 				"--clang-tidy",
+				"--suggest-missing-includes",
+				"--clang-tidy-checks=*",
+				"--all-scopes-completion",
+				"--cross-file-rename",
+				"--completion-style=detailed",
+				"--header-insertion-decorators",
 				"--header-insertion=iwyu",
+				"--pch-storage=memory",
 			}
 		end,
 	}
@@ -188,12 +196,27 @@ lsp_installer.on_server_ready(function(server)
 		-- local jdtls_opts = require'plugins.lsp.jdtls'.config
 		-- require("jdtls").start_or_attach(jdtls_opts)
 	elseif server.name == "clangd" then -- use clangd extensions
-    local c_opts = vim.tbl_deep_extend("force", server:get_default_options(), {
-      on_attach = opts.on_attach,
-      capabilities = opts.capaibilities,
-      flags = opts.flags,
-      handlers = opts.handlers,
-    });
+		local c_opts = vim.tbl_deep_extend("force", server:get_default_options(), {
+			on_attach = opts.on_attach,
+			capabilities = opts.capaibilities,
+			flags = opts.flags,
+			handlers = opts.handlers,
+      cmd = {
+				"clangd",
+				"--background-index",
+				"-j=12",
+				"--query-driver=/usr/bin/**/clang-*,/bin/clang,/bin/clang++,/usr/bin/gcc,/usr/bin/g++",
+				"--clang-tidy",
+				"--suggest-missing-includes",
+				"--clang-tidy-checks=*",
+				"--all-scopes-completion",
+				"--cross-file-rename",
+				"--completion-style=detailed",
+				"--header-insertion-decorators",
+				"--header-insertion=iwyu",
+				"--pch-storage=memory",
+			}
+		})
 		require("clangd_extensions").setup({
 			server = c_opts,
 			extensions = {

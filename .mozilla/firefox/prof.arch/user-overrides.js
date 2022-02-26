@@ -1,4 +1,3 @@
-// im lazy; do stuff for me at the cost of privacy(?)
 /* 2801: delete cookies and site data on exit
  * 0=keep until they expire (default), 2=keep until you close Firefox
  * [NOTE] A "cookie" block permission also controls localStorage/sessionStorage, indexedDB,
@@ -64,3 +63,19 @@ user_pref("browser.startup.page", 1);
  * [SETTING] Home>New Windows and Tabs>Homepage and new windows ***/
 /* use tabbliss */
 user_pref("browser.startup.homepage", "moz-extension://f081c3fb-ad4a-48a4-916b-d6f14ba86147/index.html");
+
+/* 1003: disable storing extra session data [SETUP-CHROME]
+ * define on which sites to save extra session data such as form content, cookies and POST data
+ * 0=everywhere, 1=unencrypted sites, 2=nowhere ***/
+user_pref("browser.sessionstore.privacy_level", 0);
+
+/* 2802: delete cache on exit [FF96+]
+ * [NOTE] We already disable disk cache (1001) and clear on exit (2811) which is more robust
+ * [1] https://bugzilla.mozilla.org/1671182 ***/
+   // user_pref("privacy.clearsitedata.cache.enabled", true);
+/* 2803: set third-party cookies to session-only
+ * [NOTE] .sessionOnly overrides .nonsecureSessionOnly except when .sessionOnly=false and
+ * .nonsecureSessionOnly=true. This allows you to keep HTTPS cookies, but session-only HTTP ones
+ * [1] https://feeding.cloud.geek.nz/posts/tweaking-cookies-for-privacy-in-firefox/ ***/
+user_pref("network.cookie.thirdparty.sessionOnly", false);
+user_pref("network.cookie.thirdparty.nonsecureSessionOnly", false); // [FF58+]

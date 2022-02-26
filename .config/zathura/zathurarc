@@ -9,35 +9,35 @@ set recolor-keephue 'false'
 set recolor-reverse-video 'false'
 
 # Command line completion entries
-set completion-fg '#c5c5c5'
-set completion-bg '#1a1a1a'
+set completion-fg '#c5c5c6'
+set completion-bg '#19191b'
 
 # Command line completion group elements
-set completion-group-fg '#4d5b71'
-set completion-group-bg '#1a1a1a'
+set completion-group-fg '#62444a'
+set completion-group-bg '#19191b'
 
 # Current command line completion element
-set completion-highlight-fg '#1a1a1a'
-set completion-highlight-bg '#c5c5c5'
+set completion-highlight-fg '#19191b'
+set completion-highlight-bg '#c5c5c6'
 
 # Default foreground/background color
-set default-bg rgba(26,26,26,0.80)
+set default-bg rgba(25,25,27,0.80)
 
 # Input bar
-set inputbar-fg '#c5c5c5'
-set inputbar-bg '#1a1a1a'
+set inputbar-fg '#c5c5c6'
+set inputbar-bg '#19191b'
 
 # Notification
-set notification-fg '#c5c5c5'
-set notification-bg '#1a1a1a'
+set notification-fg '#c5c5c6'
+set notification-bg '#19191b'
 
 # Error notification
-set notification-error-fg '#c5c5c5'
-set notification-error-bg '#464d5e'
+set notification-error-fg '#c5c5c6'
+set notification-error-bg '#404669'
 
 # Warning notification
-set notification-warning-fg '#c5c5c5'
-set notification-warning-bg '#464d5e'
+set notification-warning-fg '#c5c5c6'
+set notification-warning-bg '#404669'
 
 # Tab - TODO
 # set tabbar-fg
@@ -48,25 +48,25 @@ set notification-warning-bg '#464d5e'
 # set tabbar-focus-bg
 
 # Status bar
-set statusbar-fg '#c5c5c5'
-set statusbar-bg '#1a1a1a'
+set statusbar-fg '#c5c5c6'
+set statusbar-bg '#19191b'
 
 # Highlighting parts of the document (e.g. show search results)
-set highlight-color '#4d5b71'
-set highlight-active-color '#4d5b71'
+set highlight-color '#62444a'
+set highlight-active-color '#62444a'
 
 # Represent light/dark colors in recoloring mode
 set recolor-lightcolor rgba(0,0,0,0)
-set recolor-darkcolor '#c5c5c5'
+set recolor-darkcolor '#c5c5c6'
 
 # 'Loading...' text
-set render-loading-fg '#c5c5c5'
-set render-loading-bg '#1a1a1a'
+set render-loading-fg '#c5c5c6'
+set render-loading-bg '#19191b'
 
 # Index mode
-set index-fg '#c5c5c5'
-set index-bg '#1a1a1a'
+set index-fg '#c5c5c6'
+set index-bg '#19191b'
 
 # Selected element in index mode
-set index-active-fg '#1a1a1a'
-set index-active-bg '#c5c5c5'
+set index-active-fg '#19191b'
+set index-active-bg '#c5c5c6'
