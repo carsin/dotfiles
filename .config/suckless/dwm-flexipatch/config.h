@@ -7,7 +7,7 @@
 static const unsigned int borderpx = 0; /* border pixel of windows */
 static const int corner_radius = 10;
 #else
-static const unsigned int borderpx = 2; /* border pixel of windows */
+static const unsigned int borderpx = 3; /* border pixel of windows */
 #endif                               // ROUNDED_CORNERS_PATCH
 static const unsigned int snap = 32; /* snap pixel */
 #if SWALLOW_PATCH

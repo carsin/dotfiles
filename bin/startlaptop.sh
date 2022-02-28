@@ -1,4 +1,6 @@
 #!/bin/bash
 
-gpu switch internal && startx
-./displays/laptop.sh &
+sudo -v
+egpu-switcher switch internal 
+startx
+./displays/laptop.sh
