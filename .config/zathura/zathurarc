@@ -10,34 +10,34 @@ set recolor-reverse-video 'false'
 
 # Command line completion entries
 set completion-fg '#c4c4c5'
-set completion-bg '#151619'
+set completion-bg '#161618'
 
 # Command line completion group elements
-set completion-group-fg '#3c5a7d'
-set completion-group-bg '#151619'
+set completion-group-fg '#763c3f'
+set completion-group-bg '#161618'
 
 # Current command line completion element
-set completion-highlight-fg '#151619'
+set completion-highlight-fg '#161618'
 set completion-highlight-bg '#c4c4c5'
 
 # Default foreground/background color
-set default-bg rgba(21,22,25,0.80)
+set default-bg rgba(22,22,24,0.80)
 
 # Input bar
 set inputbar-fg '#c4c4c5'
-set inputbar-bg '#151619'
+set inputbar-bg '#161618'
 
 # Notification
 set notification-fg '#c4c4c5'
-set notification-bg '#151619'
+set notification-bg '#161618'
 
 # Error notification
 set notification-error-fg '#c4c4c5'
-set notification-error-bg '#2b415a'
+set notification-error-bg '#32446b'
 
 # Warning notification
 set notification-warning-fg '#c4c4c5'
-set notification-warning-bg '#2b415a'
+set notification-warning-bg '#32446b'
 
 # Tab - TODO
 # set tabbar-fg
@@ -49,11 +49,11 @@ set notification-warning-bg '#2b415a'
 
 # Status bar
 set statusbar-fg '#c4c4c5'
-set statusbar-bg '#151619'
+set statusbar-bg '#161618'
 
 # Highlighting parts of the document (e.g. show search results)
-set highlight-color '#3c5a7d'
-set highlight-active-color '#3c5a7d'
+set highlight-color '#763c3f'
+set highlight-active-color '#763c3f'
 
 # Represent light/dark colors in recoloring mode
 set recolor-lightcolor rgba(0,0,0,0)
@@ -61,12 +61,12 @@ set recolor-darkcolor '#c4c4c5'
 
 # 'Loading...' text
 set render-loading-fg '#c4c4c5'
-set render-loading-bg '#151619'
+set render-loading-bg '#161618'
 
 # Index mode
 set index-fg '#c4c4c5'
-set index-bg '#151619'
+set index-bg '#161618'
 
 # Selected element in index mode
-set index-active-fg '#151619'
+set index-active-fg '#161618'
 set index-active-bg '#c4c4c5'

@@ -390,49 +390,20 @@ return packer.startup({
 		-- 	end,
 		-- })
 
-		-- use({ -- show diagnostics in virtual lines
-		-- 	"https://git.sr.ht/~whynothugo/lsp_lines.nvim",
-		-- 	config = function()
-		--    require("lsp_lines").register_lsp_virtual_lines()
-		-- 	end,
-		-- })
-
 		use({ -- symboloutline column
 			"simrat39/symbols-outline.nvim",
 			config = function()
 				require("settings.symbolsoutline")
 			end,
 		})
-		use({
-			"michaelb/sniprun",
-			run = "bash ./install.sh",
-			config = function()
-				require("settings.sniprun")
-			end,
-		})
-    
-		use({
-			"aserowy/tmux.nvim",
-			config = function()
-				require("tmux").setup({
-					-- overwrite default configuration
-					-- here, e.g. to enable default bindings
-					copy_sync = {
-						-- enables copy sync and overwrites all register actions to
-						-- sync registers *, +, unnamed, and 0 till 9 from tmux in advance
-						enable = true,
-					},
-					navigation = {
-						-- enables default keybindings (C-hjkl) for normal mode
-						enable_default_keybindings = true,
-					},
-					resize = {
-						-- enables default keybindings (A-hjkl) for normal mode
-						enable_default_keybindings = true,
-					},
-				})
-			end,
-		})
+
+		-- use({
+		-- 	"michaelb/sniprun",
+		-- 	run = "bash ./install.sh",
+		-- 	config = function()
+		-- 		require("settings.sniprun")
+		-- 	end,
+		-- })
 
 		if Packer_Bootstrap then -- auto set up conf after cloning packer.nvim
 			require("packer").sync()
