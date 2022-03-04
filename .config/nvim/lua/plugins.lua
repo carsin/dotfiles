@@ -47,6 +47,7 @@ return packer.startup({
 		use("tpope/vim-repeat")
 		use("tpope/vim-fugitive")
 		use("tpope/vim-unimpaired") -- handy ][ mappings that should be builtin
+    use("tpope/vim-sleuth") -- heurestically set indent & other buf opts
 		use("christoomey/vim-tmux-navigator")
 		use("famiu/bufdelete.nvim")
 		use("antoinemadec/FixCursorHold.nvim") -- Needed while issue https://github.com/neovim/neovim/issues/12587 is still open
@@ -55,7 +56,7 @@ return packer.startup({
 		use("nathom/filetype.nvim")
 		use("mbbill/undotree")
 		use("RRethy/vim-illuminate") -- highlight matches of symbol under cursor
-		use("editorconfig/editorconfig-vim")
+		-- use("editorconfig/editorconfig-vim")
 
 		use({ -- zettlekasten
 			"mickael-menu/zk-nvim",

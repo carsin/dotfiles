@@ -23,8 +23,8 @@ alias diff="diff --color=auto"
 alias watch="watch --color"
 
 # wallpaper management
-alias w="/home/carson/bin/newpape2.sh"
-alias uw="/home/carson/bin/newpape.sh"
+alias w2="/home/carson/bin/newpape2.sh"
+alias w="/home/carson/bin/newpape.sh"
 alias cw="/home/carson/bin/choosepape.sh"
 
 # config storage
