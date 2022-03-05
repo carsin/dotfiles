@@ -40,14 +40,14 @@ return packer.startup({
 		use("nvim-lua/plenary.nvim")
 		use("sainnhe/gruvbox-material")
 		use({ "norcalli/nvim-colorizer.lua", event = "BufRead" })
-		use("ggandor/lightspeed.nvim")
 		use("chaoren/vim-wordmotion") -- more intuitive w/W motion
 		use("wellle/targets.vim") -- more text objects to target
 		use("tpope/vim-surround")
 		use("tpope/vim-repeat")
 		use("tpope/vim-fugitive")
 		use("tpope/vim-unimpaired") -- handy ][ mappings that should be builtin
-    use("tpope/vim-sleuth") -- heurestically set indent & other buf opts
+		use("tpope/vim-sleuth") -- heurestically set indent & other buf opts
+		use("editorconfig/editorconfig-vim")
 		use("christoomey/vim-tmux-navigator")
 		use("famiu/bufdelete.nvim")
 		use("antoinemadec/FixCursorHold.nvim") -- Needed while issue https://github.com/neovim/neovim/issues/12587 is still open
@@ -56,7 +56,6 @@ return packer.startup({
 		use("nathom/filetype.nvim")
 		use("mbbill/undotree")
 		use("RRethy/vim-illuminate") -- highlight matches of symbol under cursor
-		-- use("editorconfig/editorconfig-vim")
 
 		use({ -- zettlekasten
 			"mickael-menu/zk-nvim",
@@ -140,6 +139,7 @@ return packer.startup({
 				"nvim-telescope/telescope-ui-select.nvim",
 				"jvgrootveld/telescope-zoxide",
 				"LinArcX/telescope-env.nvim",
+				"natecraddock/telescope-zf-native.nvim",
 				{ "nvim-telescope/telescope-fzf-native.nvim", run = "make" },
 				{ "nvim-telescope/telescope-frecency.nvim", requires = { "tami5/sqlite.lua" } },
 			},
@@ -177,7 +177,7 @@ return packer.startup({
 				"L3MON4D3/LuaSnip",
 				"f3fora/cmp-spell",
 				"hrsh7th/cmp-cmdline",
-				-- "Furkanzmc/sekme.nvim",
+				"Furkanzmc/sekme.nvim",
 				"andersevenrud/cmp-tmux",
 				"hrsh7th/cmp-nvim-lsp-signature-help",
 			},
@@ -405,6 +405,23 @@ return packer.startup({
 		-- 		require("settings.sniprun")
 		-- 	end,
 		-- })
+
+		use({ -- jetpack
+			"ggandor/lightspeed.nvim",
+			config = function()
+				require("lightspeed").opts.ignore_case = false
+				require("lightspeed").opts.safe_labels = {}
+			end,
+		})
+    
+		use({ -- increment numbers & more with +/-
+			"zegervdv/nrpattern.nvim",
+			config = function()
+				-- Basic setup
+				-- See below for more options
+				require("nrpattern").setup()
+			end,
+		})
 
 		if Packer_Bootstrap then -- auto set up conf after cloning packer.nvim
 			require("packer").sync()

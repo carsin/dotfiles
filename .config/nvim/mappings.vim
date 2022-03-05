@@ -98,8 +98,8 @@ inoremap <silent> <F8> <ESC>:execute "set colorcolumn=" . (&colorcolumn == "" ? 
 nnoremap <silent> <F8> :execute "set colorcolumn=" . (&colorcolumn == "" ? "81" : "")<CR>
 
 " Replace all on S
-nnoremap <leader>S :%s//g<Left><Left>
-vnoremap <leader>S :s//g<Left><Left>
+nnoremap <leader>R :%s//g<Left><Left>
+vnoremap <leader>R :s//g<Left><Left>
 
 " format to 80 chars with gq in markdown
 autocmd FileType markdown nnoremap gz :%s/.\{80}\($\)\@!/&\r/g<CR>
@@ -183,7 +183,8 @@ autocmd FileType markdown nnoremap <buffer> <silent> _ :StayWinToggle keeppatter
 " find and get stuff
 nnoremap <leader>f <cmd>Telescope find_files<cr>
 nnoremap <leader>r <cmd>lua require('telescope').extensions.frecency.frecency()<cr>
-nnoremap <leader>s <cmd>Telescope live_grep<cr>
+nnoremap S <cmd>Telescope live_grep<cr>
+
 " pickers
 nnoremap <leader>pp <cmd>lua require'telescope'.extensions.project.project{ display_type = 'full' }<cr>
 nnoremap <leader>ph <cmd>SessionManager load_session<cr>
@@ -208,10 +209,13 @@ xmap ga <Plug>(EasyAlign)
 nmap ga <Plug>(EasyAlign)
 
 " Lightspeed
+nmap s <Plug>Lightspeed_omni_s
+nmap gs <Plug>Lightspeed_omni_gs
 nmap <expr> f reg_recording() . reg_executing() == "" ? "<Plug>Lightspeed_f" : "f"
 nmap <expr> F reg_recording() . reg_executing() == "" ? "<Plug>Lightspeed_F" : "F"
 nmap <expr> t reg_recording() . reg_executing() == "" ? "<Plug>Lightspeed_t" : "t"
 nmap <expr> T reg_recording() . reg_executing() == "" ? "<Plug>Lightspeed_T" : "T"
+
 
 " Save buffer before opening fterm, but not in startup screen
 function! OpenTerm()
@@ -231,7 +235,8 @@ inoremap <silent> <F3> <CMD>w<CR><CMD>lua require("FTerm").toggle()<CR>
 tnoremap <silent> <F3> <CMD>lua require("FTerm").toggle()<CR>
 tnoremap <silent> <ESC> <CMD>lua require("FTerm").close()<CR>
 " compile 
-nnoremap <F2> <cmd>w<CR><CMD>lua require('FTerm').scratch({ cmd = './run' })<cr>
+nmap <F2> <cmd>w<CR><CMD>lua require('FTerm').scratch({ cmd = './run' })<cr>
+imap <F2> <cmd>w<CR><CMD>lua require('FTerm').scratch({ cmd = './run' })<cr>
 " open current dir in ranger
 nnoremap <leader>oo <CMD>lua __fterm_ranger()<cr>
 
@@ -279,6 +284,10 @@ nmap <silent> <leader>cr :lua require'sniprun'.run()<CR>
 vmap <silent> <leader>cr :lua require'sniprun'.run()<CR>
 nmap <leader>cR <Cmd>:SnipReset<CR>
 nmap <leader>cc <Plug>SnipClose
+
+" nrpattern
+nmap + <Plug>(PatternIncrement)
+nmap _ <Plug>(PatternDecrement)
 
 " zk-nvim
 " infile maps located in ./lua/settings/zk.lua

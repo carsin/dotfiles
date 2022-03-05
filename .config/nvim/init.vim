@@ -16,7 +16,7 @@ set title            " report title to terminal
 set history=500      " How many lines of history vim has to remember
 set encoding=utf8    " Set utf8 as standard encoding and en_US as the standard language
 set ffs=unix,dos,mac " Use Unix as the standard file type
-set updatetime=250   " Fast updatetime for snappier experience
+set updatetime=150   " Fast updatetime for snappier experience
 set mouse=a          " Set proper mouse mode
 
 " Turn backup off, since most stuff is in SVN, git etc anyway...
