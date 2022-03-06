@@ -105,6 +105,7 @@ alias twitch="reflex-curses"
 alias define="dict"
 alias dic="dict"
 alias tempmail="tmpmail"
+alias via="sudo via --no-sandbox"
 
 # scripts
 alias laptop="/home/carson/bin/displays/laptop.sh"
