@@ -53,6 +53,7 @@ alias calpoly4="TERM=screen ssh ckfreedm@unix4.csc.calpoly.edu"
 alias calpoly5="TERM=screen ssh ckfreedm@unix5.csc.calpoly.edu"
 alias cpftp="sftp ckfreedm@unix3.csc.calpoly.edu"
 alias fuck="sudo !!"
+alias clr="clear"
 
 # applications, apps
 alias top="htop"

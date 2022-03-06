@@ -120,6 +120,8 @@ nnoremap ]c ]czz
 nnoremap [c [czz
 nnoremap [j <C-o>zz
 nnoremap <C-o> <C-o>zz
+" nmap <C-d> <C-d>zz
+" nmap <C-u> <C-u>zz
 
 " Join current line and next line properly
 nnoremap J mzJ`z

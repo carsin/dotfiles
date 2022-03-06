@@ -226,15 +226,14 @@ return packer.startup({
 		})
 
 		-- use({
-		--   "noib3/nvim-cokeline",
-		--   config = function ()
-		-- require("settings.cokeline")
-		--   end
+		-- 	"noib3/nvim-cokeline",
+		-- 	config = function()
+		-- 		require("settings.cokeline")
+		-- 	end,
 		-- })
 
 		use({ -- nvim tree
 			"kyazdani42/nvim-tree.lua",
-			-- commit = "3f4ed9b6c2598ab8304186486a0",
 			config = function()
 				require("settings.nvimtree")
 			end,
@@ -413,7 +412,7 @@ return packer.startup({
 				require("lightspeed").opts.safe_labels = {}
 			end,
 		})
-    
+
 		use({ -- increment numbers & more with +/-
 			"zegervdv/nrpattern.nvim",
 			config = function()

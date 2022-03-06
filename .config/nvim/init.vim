@@ -48,8 +48,18 @@ let g:undotree_DiffpanelHeight = 13
 " targets use builtins if one exists
 let g:targets_seekRanges = 'cc cr cb cB lc ac Ac lr lb ar ab lB Ar aB Ab AB rr ll rb al rB Al bb aa bB Aa BB AA'
 
-" automatically switch a buffer name when the target file is not readable or writable.
-let g:suda_smart_edit = 1
+" setup colorscheme 
+let g:gruvbox_material_transparent_background = 1
+let g:gruvbox_material_enable_italic = 1
+let g:gruvbox_material_enable_bold = 1
+let g:gruvbox_material_show_eob = 0
+let g:gruvbox_material_background = 'hard'
+let g:gruvbox_material_visual = 'reverse'
+let g:gruvbox_material_diagnostic_virtual_text = 'colored'
+let g:gruvbox_material_palette = 'original' " I prefer the vibrancy of the original
+let g:gruvbox_material_better_performance = 1
+
+colorscheme gruvbox-material
 
 " Load plugins
 lua require('plugins')
@@ -123,18 +133,6 @@ autocmd FileType gitcommit setlocal spell
 set background=dark
 
 " set t_Co=256
-
-let g:gruvbox_material_transparent_background = 1
-let g:gruvbox_material_enable_italic = 1
-let g:gruvbox_material_enable_bold = 1
-let g:gruvbox_material_show_eob = 0
-let g:gruvbox_material_background = 'hard'
-let g:gruvbox_material_visual = 'reverse'
-let g:gruvbox_material_diagnostic_virtual_text = 'colored'
-let g:gruvbox_material_palette = 'original' " I prefer the vibrancy of the original
-let g:gruvbox_material_better_performance = 1
-
-colorscheme gruvbox-material
 
 set showtabline=2        " Show top tab line
 set cursorline
