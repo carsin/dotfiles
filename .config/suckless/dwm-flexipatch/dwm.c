@@ -837,7 +837,12 @@ applyrules(Client *c)
 	c->isfloating = 0;
 	c->tags = 0;
 	XGetClassHint(dpy, c->win, &ch);
-	class    = ch.res_class ? ch.res_class : broken;
+    /* make spotify respect rules */
+    if (0 == system("[ $(ps -o etimes= -p $(pgrep -o spotify)) -lt 3 ]")) {
+		class    = ch.res_class ? ch.res_class : "spotify";
+	} else {
+		class    = ch.res_class ? ch.res_class : broken;
+	}
 	instance = ch.res_name  ? ch.res_name  : broken;
 	wintype  = getatomprop(c, netatom[NetWMWindowType]);
 	#if WINDOWROLERULE_PATCH

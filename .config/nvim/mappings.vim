@@ -120,8 +120,7 @@ nnoremap ]c ]czz
 nnoremap [c [czz
 nnoremap [j <C-o>zz
 nnoremap <C-o> <C-o>zz
-" nmap <C-d> <C-d>zz
-" nmap <C-u> <C-u>zz
+" nmap <C-d> <C-d>zz nmap <C-u> <C-u>zz
 
 " Join current line and next line properly
 nnoremap J mzJ`z
@@ -137,6 +136,10 @@ inoremap ? ?<c-g>u
 " Intuitive text movement
 vnoremap J :m '>+1<CR>gv=gv
 vnoremap K :m '<-2<CR>gv=gv
+
+" Format (selected) paragraph to 80 character lines.
+nnoremap <Leader>cf gqap
+xnoremap <Leader>cf gqa
 
 " Switch to previous buffer
 nnoremap <Backspace> <C-^>

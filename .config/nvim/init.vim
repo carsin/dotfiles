@@ -93,8 +93,8 @@ set timeoutlen=600                " Wait before timing out a mapping
 set wrapscan                      " Searches wrap around end-of-file.
 set report=0                      " Always report changed lines.
 set lbr                           " Break by word rather than character
-" set fo+=tnp                      " formatoptions
-" set fo-=aw                       " formatoptions
+set fo+=ltnp                      " formatoptions
+set fo-=ro                        " no annoying comment autoformat 
 set tw=80                         " Lines should be 80 chars
 set nrformats=                    " Force decimal based arithmetic
 set nolist                        " ensure lbr  works
@@ -106,7 +106,7 @@ set undofile
 set undodir=~/.cache/nvim/undo
 
 " Disables automatic commenting on newline:
-autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
+" autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 
 
 " Delete trailing whitespace
