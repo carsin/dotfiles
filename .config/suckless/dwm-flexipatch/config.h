@@ -402,13 +402,16 @@ static Sp scratchpads[] = {
  * them. This works seamlessly with alternative tags and alttagsdecoration
  * patches.
  */
-// 龎   ﮕ
+// 龎   ﮕ ﰀ 烈
     
 // static char *tagicons[][NUMTAGS] = {
 //     [DEFAULT_TAGS] = {"龎 ", " ", " ", " ", " "},
 // };
-static char *tagicons[][NUMTAGS*2] = {
-    [DEFAULT_TAGS] = {"龎 ", " ", " ", " ", " ", " ", "ﳲ ", "露 ", " ", " "},
+//       ﮕ  
+static char *tagicons[][NUMTAGS*3] = {
+    [DEFAULT_TAGS] = {"龎 ", " ", " ", " ", "ﮕ ", " ",
+                      " ", "ﳲ ", "露 ", " ", " ", " ",
+                      "I", "II", "III", "IV", "V", "VI"},
 };
 
 #if BAR_TAGGRID_PATCH
@@ -986,7 +989,7 @@ static Key keys[] = {
     {0, XF86XK_MonBrightnessDown, spawn, SHCMD("/home/carson/bin/bright down") },
     {MODKEY | ShiftMask, XK_Print, spawn, SHCMD("/usr/bin/flameshot gui")},
     {MODKEY | ShiftMask, XK_s, spawn, SHCMD("spotify --no-zygote")}, // --no-zygote flag disables hardware (gpu) accel
-    {MODKEY, XK_Home, spawn, SHCMD("timeout 3 /home/carson/bin/newpape.sh")},
+    {MODKEY, XK_backslash, spawn, SHCMD("timeout 3 /home/carson/bin/newpape.sh")},
     {MODKEY | ControlMask, XK_Home, spawn, SHCMD("timeout 3 /home/carson/bin/newpape.sh -i")},
     {Mod4Mask | ShiftMask | ControlMask, XK_l, spawn, SHCMD("slock")},
 #if KEYMODES_PATCH
@@ -1297,67 +1300,22 @@ static Key keys[] = {
     {MODKEY, XK_KP_2, explace, {.ui = EX_S}},  /* XK_KP_Down,  */
     {MODKEY, XK_KP_3, explace, {.ui = EX_SE}}, /* XK_KP_Next,  */
 
-    {MODKEY | ShiftMask,
-     XK_KP_8,
-     exresize,
-     {.v = (int[]){0, 25}}}, /* XK_KP_Up,    */
-    {MODKEY | ShiftMask,
-     XK_KP_2,
-     exresize,
-     {.v = (int[]){0, -25}}}, /* XK_KP_Down,  */
-    {MODKEY | ShiftMask,
-     XK_KP_6,
-     exresize,
-     {.v = (int[]){25, 0}}}, /* XK_KP_Right, */
-    {MODKEY | ShiftMask,
-     XK_KP_4,
-     exresize,
-     {.v = (int[]){-25, 0}}}, /* XK_KP_Left,  */
-    {MODKEY | ShiftMask,
-     XK_KP_5,
-     exresize,
-     {.v = (int[]){25, 25}}}, /* XK_KP_Begin, */
-    {MODKEY | ShiftMask | ControlMask,
-     XK_KP_5,
-     exresize,
-     {.v = (int[]){-25, -25}}}, /* XK_KP_Begin, */
+    {MODKEY | ShiftMask, XK_KP_8, exresize, {.v = (int[]){0, 25}}}, /* XK_KP_Up,    */
+    {MODKEY | ShiftMask, XK_KP_2, exresize, {.v = (int[]){0, -25}}}, /* XK_KP_Down,  */
+    {MODKEY | ShiftMask, XK_KP_6, exresize, {.v = (int[]){25, 0}}}, /* XK_KP_Right, */
+    {MODKEY | ShiftMask, XK_KP_4, exresize, {.v = (int[]){-25, 0}}}, /* XK_KP_Left,  */
+    {MODKEY | ShiftMask, XK_KP_5, exresize, {.v = (int[]){25, 25}}}, /* XK_KP_Begin, */
+    {MODKEY | ShiftMask | ControlMask, XK_KP_5, exresize, {.v = (int[]){-25, -25}}}, /* XK_KP_Begin, */
 
-    {MODKEY | ControlMask,
-     XK_KP_6,
-     togglehorizontalexpand,
-     {.i = +1}}, /* XK_KP_Right, */
-    {MODKEY | ControlMask,
-     XK_KP_3,
-     togglehorizontalexpand,
-     {.i = 0}}, /* XK_KP_Next,  */
-    {MODKEY | ControlMask,
-     XK_KP_4,
-     togglehorizontalexpand,
-     {.i = -1}}, /* XK_KP_Left,  */
-    {MODKEY | ControlMask,
-     XK_KP_8,
-     toggleverticalexpand,
-     {.i = +1}}, /* XK_KP_Up,    */
-    {MODKEY | ControlMask,
-     XK_KP_1,
-     toggleverticalexpand,
-     {.i = 0}}, /* XK_KP_End,   */
-    {MODKEY | ControlMask,
-     XK_KP_2,
-     toggleverticalexpand,
-     {.i = -1}}, /* XK_KP_Down,  */
-    {MODKEY | ControlMask,
-     XK_KP_9,
-     togglemaximize,
-     {.i = -1}}, /* XK_KP_Prior, */
-    {MODKEY | ControlMask,
-     XK_KP_7,
-     togglemaximize,
-     {.i = +1}}, /* XK_KP_Home,  */
-    {MODKEY | ControlMask,
-     XK_KP_5,
-     togglemaximize,
-     {.i = 0}}, /* XK_KP_Begin, */
+    {MODKEY | ControlMask, XK_KP_6, togglehorizontalexpand, {.i = +1}}, /* XK_KP_Right, */
+    {MODKEY | ControlMask, XK_KP_3, togglehorizontalexpand, {.i = 0}}, /* XK_KP_Next,  */
+    {MODKEY | ControlMask, XK_KP_4, togglehorizontalexpand, {.i = -1}}, /* XK_KP_Left,  */
+    {MODKEY | ControlMask, XK_KP_8, toggleverticalexpand, {.i = +1}}, /* XK_KP_Up,    */
+    {MODKEY | ControlMask, XK_KP_1, toggleverticalexpand, {.i = 0}}, /* XK_KP_End,   */
+    {MODKEY | ControlMask, XK_KP_2, toggleverticalexpand, {.i = -1}}, /* XK_KP_Down,  */
+    {MODKEY | ControlMask, XK_KP_9, togglemaximize, {.i = -1}}, /* XK_KP_Prior, */
+    {MODKEY | ControlMask, XK_KP_7, togglemaximize, {.i = +1}}, /* XK_KP_Home,  */
+    {MODKEY | ControlMask, XK_KP_5, togglemaximize, {.i = 0}}, /* XK_KP_Begin, */
 #endif          // EXRESIZE_PATCH
 #if FLOATPOS_PATCH
     /* Note that due to key limitations the below example kybindings are defined
@@ -1419,8 +1377,7 @@ static Key keys[] = {
     {MODKEY, XK_F2, mpdchange, {.i = +1}},
     {MODKEY, XK_Escape, mpdcontrol, {0}},
 #endif // MPDCONTROL_PATCH
-    TAGKEYS(XK_1, 0) TAGKEYS(XK_2, 1) TAGKEYS(XK_3, 2) TAGKEYS(XK_4, 3)
-        TAGKEYS(XK_5, 4)};
+    TAGKEYS(XK_1, 0) TAGKEYS(XK_2, 1) TAGKEYS(XK_3, 2) TAGKEYS(XK_4, 3) TAGKEYS(XK_5, 4) TAGKEYS(XK_6, 5)};
 
 #if KEYMODES_PATCH
 static Key cmdkeys[] = {

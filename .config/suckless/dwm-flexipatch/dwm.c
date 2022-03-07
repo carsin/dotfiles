@@ -40,7 +40,6 @@
 #include <X11/extensions/Xinerama.h>
 #endif /* XINERAMA */
 #include <X11/Xft/Xft.h>
-
 #include "patches.h"
 #include "drw.h"
 #include "util.h"
@@ -71,7 +70,7 @@
 #define Button7                 7
 #define Button8                 8
 #define Button9                 9
-#define NUMTAGS                 5
+#define NUMTAGS                 6
 #define BARRULES                20
 #if TAB_PATCH
 #define MAXTABS                 50

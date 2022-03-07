@@ -12,6 +12,7 @@ alias ~="cd ~"
 alias l='ls'
 alias ls='exa -aF --color=always --sort=type --group-directories-first --ignore-glob=".DS_Store" --icons' # lots of icons are causing lag in st
 alias ll='ls -l' # lots of icons are causing lag in st
+alias lt='ls --tree'
 alias cp="cp -iv"
 alias mv="mv -iv"
 alias rm="rm -v"
@@ -93,6 +94,7 @@ alias cal="calcurse"
 alias egpu="sudo egpu-switcher"
 alias gpu="sudo egpu-switcher"
 alias ncdu="ncdu --color dark"
+alias visuals="mpv https://www.youtube.com/playlist?list=PLHz5hL1kaCdx7FfIfBWof7-p0mNwNFrRU --shuffle"
 alias yts="ytfzf -t --preview-side=right --thumbnail-quality=high --notify-playing -l --pages=4"
 alias yt="ytfzf -t --preview-side=right --thumbnail-quality=high --notify-playing -l --pages=4 -c S --sort"
 alias ytsub="yt"
