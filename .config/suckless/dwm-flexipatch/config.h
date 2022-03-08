@@ -114,15 +114,15 @@ static const unsigned int systrayspacing = 2; /* systray spacing */
 static const int showsystray = 1;             /* 0 means no systray */
 #endif                                        // BAR_SYSTRAY_PATCH
 #if BAR_TAGLABELS_PATCH
-static const char ptagf[] = "%s{%s}"; /* format of a tag label */
+static const char ptagf[] = "%s {%s}"; /* format of a tag label */
 static const char etagf[] = "%s";    /* format of an empty tag */
 static const int lcaselbl = 1;         /* 1 means make tag label lowercase */
 #endif                                 // BAR_TAGLABELS_PATCH
 #if BAR_UNDERLINETAGS_PATCH
 static const unsigned int ulinepad =
-    5; /* horizontal padding between the underline and tag */
+    0; /* horizontal padding between the underline and tag */
 static const unsigned int ulinestroke =
-    2; /* thickness / height of the underline */
+    1; /* thickness / height of the underline */
 static const unsigned int ulinevoffset =
     0; /* how far above the bottom of the bar the line should appear */
 static const int ulineall =
@@ -409,8 +409,8 @@ static Sp scratchpads[] = {
 // };
 //       ﮕ  力
 static char *tagicons[][NUMTAGS*3] = {
-    [DEFAULT_TAGS] = {"龎 ", " ", " ", " ", " ", " ",
-                      " ", "ﳲ ", "露 ", " ", " ", " ",
+    [DEFAULT_TAGS] = {"龎", "", "", "", "", "",
+                      "", "ﳲ", "露", "", "", "",
                       "I", "II", "III", "IV", "V", "VI"},
 };
 
@@ -1110,7 +1110,7 @@ static Key keys[] = {
     {MODKEY, XK_Tab, view, {0}},
 #if SHIFTVIEW_PATCH
     {MODKEY, XK_g, shiftview, {.i = -1}},
-    {MODKEY, XK_semicolon, shiftview, {.i = +2}},
+    {MODKEY, XK_semicolon, shiftview, {.i = +1}},
     // {MODKEY | ShiftMask, XK_g, shiftview, {.i = -1}},
     // {MODKEY | ShiftMask, XK_semicolon, shiftview, {.i = +1}},
     // {MODKEY, XK_n, shiftview, {.i = +1}},
@@ -1120,7 +1120,7 @@ static Key keys[] = {
     // {MODKEY | Mod4Mask, XK_Tab, shiftviewclients, {.i = -1}},
     // {MODKEY | Mod4Mask, XK_backslash, shiftviewclients, {.i = +1}},
     {MODKEY, XK_g, shiftviewclients, {.i = -1}},
-    {MODKEY, XK_semicolon, shiftviewclients, {.i = +2}},
+    {MODKEY, XK_semicolon, shiftviewclients, {.i = +1}},
 #endif // SHIFTVIEW_CLIENTS_PATCH
 #if BAR_WINTITLEACTIONS_PATCH
     {MODKEY, XK_m, showhideclient, {0}},

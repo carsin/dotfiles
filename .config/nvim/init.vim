@@ -127,7 +127,7 @@ autocmd InsertLeave * set nopaste
 
 " always open quickfix to size
 augroup quickfixsize
-    autocmd QuickFixCmdPost * botright copen 15
+    autocmd QuickFixCmdPost * botright copen 11
 augroup END
 
 " filetype stuff
