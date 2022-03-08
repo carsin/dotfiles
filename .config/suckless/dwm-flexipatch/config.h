@@ -485,7 +485,7 @@ static const Rule rules[] = {
     RULE(.instance = "anomalydx11avx.exe", .tags = 1 << 5, .monitor = 0)
     RULE(.instance = "modorganizer.exe", .tags = 1 << 5, .monitor = 0)
     RULE(.instance = "eu4", .tags = 1 << 5, .monitor = 1)
-    RULE(.title = "!dwmfloat", .isfloating = 1, .noswallow=1, .iscentered=1)
+    RULE(.title = "!dwmf", .isfloating = 1, .noswallow=1, .iscentered=1)
     // scratcpads
 #if SCRATCHPADS_PATCH
     RULE(.instance = "spterm1", .tags = SPTAG(0), .isfloating = 1)

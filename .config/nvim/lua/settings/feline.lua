@@ -37,6 +37,7 @@ local colors = {
 	fg = "#a89984",
 	skyblue = "#83a598",
 	red = "#fb4934",
+	gray = "#a89984",
 }
 
 local vi_mode_colors = {
@@ -132,6 +133,53 @@ table.insert(components.active[1], {
 		-- style = 'bold'
 	},
 	type = "unique",
+	right_sep = " ",
+})
+
+-- asyncrun command status
+table.insert(components.active[1], {
+	-- provider = "%{g:asyncrun_status}",
+	provider = function()
+		local status_icon = ""
+		local icon = ""
+		if vim.g.asyncrun_status ~= nil then
+			if vim.g.asyncrun_status == "stopped" then
+				status_icon = " P"
+				icon = " "
+			elseif vim.g.asyncrun_status == "success" then
+				status_icon = " ✓"
+				icon = " "
+			elseif vim.g.asyncrun_status == "running" then
+				status_icon = "  "
+				icon = " "
+			elseif vim.g.asyncrun_status == "failure" then
+				status_icon = " !"
+				icon = " "
+			end
+		end
+		return icon .. "%{g:asyncrun_status}" .. status_icon
+	end,
+	enabled = function()
+		return (vim.g.asyncrun_status ~= nil and vim.g.asyncrun_status ~= "stopped") or vim.bo.filetype == "qf"
+	end,
+	hl = function()
+		local fg = "gray"
+		if vim.g.asyncrun_status ~= nil then
+			if vim.g.asyncrun_status == "stopped" then
+				fg = "gray"
+			elseif vim.g.asyncrun_status == "success" then
+				fg = "green"
+			elseif vim.g.asyncrun_status == "running" then
+				fg = "yellow"
+			elseif vim.g.asyncrun_status == "failure" then
+				fg = "red"
+			end
+		end
+		return {
+			fg = fg,
+			bg = "bg",
+		}
+	end,
 	right_sep = " ",
 })
 
