@@ -133,7 +133,7 @@ table.insert(components.active[1], {
 		-- style = 'bold'
 	},
 	type = "unique",
-	right_sep = " ",
+	right_sep = "",
 })
 
 -- asyncrun command status
@@ -144,16 +144,16 @@ table.insert(components.active[1], {
 		local icon = ""
 		if vim.g.asyncrun_status ~= nil then
 			if vim.g.asyncrun_status == "stopped" then
-				status_icon = " P"
+				status_icon = " P "
 				icon = " "
 			elseif vim.g.asyncrun_status == "success" then
-				status_icon = " ✓"
+				status_icon = " ✓ "
 				icon = " "
 			elseif vim.g.asyncrun_status == "running" then
-				status_icon = "  "
+				status_icon = "   "
 				icon = " "
 			elseif vim.g.asyncrun_status == "failure" then
-				status_icon = " !"
+				status_icon = " ! "
 				icon = " "
 			end
 		end
@@ -180,13 +180,14 @@ table.insert(components.active[1], {
 			bg = "bg",
 		}
 	end,
-	right_sep = " ",
+	left_sep = " ",
+	right_sep = "",
 })
 
 -- gitBranch
 table.insert(components.active[1], {
 	provider = "git_branch",
-	icon = " ",
+	-- icon = " ",
 	hl = {
 		fg = "yellow",
 		bg = "bg",
@@ -254,7 +255,7 @@ table.insert(components.active[3], {
 	enabled = function()
 		return lsp.diagnostics_exist(vim.diagnostic.severity.ERROR)
 	end,
-	icon = " E",
+	icon = "E",
 	hl = {
 		fg = "red",
 		-- style = 'bold'
@@ -268,12 +269,12 @@ table.insert(components.active[3], {
 	enabled = function()
 		return lsp.diagnostics_exist(vim.diagnostic.severity.WARN)
 	end,
-	icon = " !",
+	icon = "!",
 	hl = {
 		fg = "yellow",
 		-- style = 'bold'
 	},
-	right_sep = "",
+	left_sep = " ",
 })
 
 -- diagnosticHint
@@ -282,12 +283,13 @@ table.insert(components.active[3], {
 	enabled = function()
 		return lsp.diagnostics_exist(vim.diagnostic.severity.HINT)
 	end,
-	icon = " ?",
+	icon = "?",
 	hl = {
 		fg = "bgreen",
 		-- style = 'bold'
 	},
-	right_sep = " ",
+	left_sep = " ",
+	right_sep = "",
 })
 
 -- diagnosticInfo
@@ -296,11 +298,12 @@ table.insert(components.active[3], {
 	enabled = function()
 		return lsp.diagnostics_exist(vim.diagnostic.severity.INFO)
 	end,
-	icon = " i",
+	icon = "i",
 	hl = {
 		fg = "cyan",
 		-- style = 'bold'
 	},
+	left_sep = " ",
 	right_sep = "",
 })
 
@@ -335,13 +338,24 @@ table.insert(components.active[3], {
 -- fileSize
 table.insert(components.active[3], {
 	provider = "file_size",
-	enabled = function()
-		return vim.fn.getfsize(vim.fn.expand("%:t")) > 0
-	end,
+	-- enabled = function()
+	-- 	return vim.fn.getfsize(vim.fn.expand("%:t")) > 0
+	-- end,
 	hl = {
 		fg = "red",
 		bg = "bg",
 		-- style = 'bold'
+	},
+	left_sep = " ",
+	right_sep = "",
+})
+
+-- file format
+table.insert(components.active[3], {
+	provider = "file_format",
+	hl = {
+		fg = "gray",
+		bg = "bg",
 	},
 	left_sep = " ",
 	right_sep = "",

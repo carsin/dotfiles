@@ -49,12 +49,12 @@ let g:undotree_DiffpanelHeight = 13
 let g:targets_seekRanges = 'cc cr cb cB lc ac Ac lr lb ar ab lB Ar aB Ab AB rr ll rb al rB Al bb aa bB Aa BB AA'
 
 " automatically open quickfix window when AsyncRun command is executed
-" let g:asyncrun_open = 15 " set the quickfix window height
+let g:asyncrun_open = 12 " set the quickfix window height
 " let g:asyncrun_bell = 1 " ring the bell to notify you job finished
-let g:asyncrun_auto = "make" " trigger QuickFixCmdPost to process content in quickfix 
-let g:asyncrun_rootmarks = ['.svn', '.git', '.root', '_darcs', 'build.xml', 'Makefile'] 
+let g:asyncrun_auto = "make" " trigger QuickFixCmdPost to process content in quickfix
+let g:asyncrun_rootmarks = ['.svn', '.git', '.root', '_darcs', 'build.xml', 'Makefile']
 
-" setup colorscheme 
+" setup colorscheme
 let g:gruvbox_material_transparent_background = 1
 let g:gruvbox_material_enable_italic = 1
 let g:gruvbox_material_enable_bold = 1
@@ -99,7 +99,7 @@ set wrapscan                      " Searches wrap around end-of-file.
 set report=0                      " Always report changed lines.
 set lbr                           " Break by word rather than character
 set fo+=ltnp                      " formatoptions
-set fo-=ro                        " no annoying comment autoformat 
+set fo-=ro                        " no annoying comment autoformat
 set tw=80                         " Lines should be 80 chars
 set nrformats=                    " Force decimal based arithmetic
 set nolist                        " ensure lbr  works
@@ -125,9 +125,10 @@ command! TrimWhitespace call TrimWhitespace()
 " Turn off paste mode when leaving insert
 autocmd InsertLeave * set nopaste
 
-" always open quickfix to size
+" always open quickfix to size and don't jump the newly opened buffer
 augroup quickfixsize
-    autocmd QuickFixCmdPost * botright copen 11
+    autocmd QuickFixCmdPre * let g:mybufname=bufname('%')
+    autocmd QuickFixCmdPost * botright copen 12 | exec bufwinnr(g:mybufname) . 'wincmd w'
 augroup END
 
 " filetype stuff
@@ -169,7 +170,7 @@ set pumheight=30         " Shorten number of autocomplete suggestions
 set pumwidth=25          " Shorten width of autocomplete suggestions
 set pumblend=10          " Autocomplete background transparency
 let &fcs='eob: '         " No fugly eob tildas
-" link/ shortening 
+" link/ shortening
 " set conceallevel=2
 " set concealcursor=nc
 " set colorcolumn=80   " 80 char column guide
@@ -200,17 +201,17 @@ augroup END
 
 
 " Fold markdown based on header
-function MarkdownLevel()   
-  let h = matchstr(getline(v:lnum), '^#\+')   
-  if empty(h)     
-    return "="   
-  else     
-    return ">" . len(h)   
+function MarkdownLevel()
+  let h = matchstr(getline(v:lnum), '^#\+')
+  if empty(h)
+    return "="
+  else
+    return ">" . len(h)
   endif
 endfunction
 "
 au BufEnter *.md setlocal foldexpr=MarkdownLevel()
-au BufEnter *.md setlocal foldmethod=expr   
+au BufEnter *.md setlocal foldmethod=expr
 
 " Highlight yank
 augroup highlight_yank

@@ -28,7 +28,7 @@ nnoremap <silent><F5> :w!<cr>
  " Clear search highlight
 nnoremap <silent><leader><space> :let @/ = ""<CR>
 
-" Multifunctional escape!
+" Multifunctional escape! (close popup windows & clear search hl)
 nnoremap <silent><ESC> :nohlsearch \| :cclose<CR>
 
 " Remap VIM 0 to first non-blank character

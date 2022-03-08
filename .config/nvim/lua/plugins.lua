@@ -210,14 +210,6 @@ return packer.startup({
 				require("settings.bufferline")
 			end,
 		})
-
-		-- use({
-		-- 	"noib3/nvim-cokeline",
-		-- 	config = function()
-		-- 		require("settings.cokeline")
-		-- 	end,
-		-- })
-
 		use({ -- nvim tree
 			"kyazdani42/nvim-tree.lua",
 			config = function()
@@ -323,18 +315,6 @@ return packer.startup({
 			end,
 		})
 
-		use({ -- keep windows in position
-			"luukvbaal/stabilize.nvim",
-			config = function()
-				require("stabilize").setup({
-					ignore = { -- do not manage windows matching these file/buftypes
-						filetype = { "list", "help" },
-						buftype = { "terminal" },
-					},
-				})
-			end,
-		})
-
 		use({ -- help managing crates
 			"saecki/crates.nvim",
 			requires = { "nvim-lua/plenary.nvim" },
@@ -374,15 +354,6 @@ return packer.startup({
 				require("settings.symbolsoutline")
 			end,
 		})
-
-		-- use({
-		-- 	"michaelb/sniprun",
-		-- 	run = "bash ./install.sh",
-		-- 	config = function()
-		-- 		require("settings.sniprun")
-		-- 	end,
-		-- })
-
 		use({ -- jetpack
 			"ggandor/lightspeed.nvim",
 			config = function()
@@ -408,12 +379,40 @@ return packer.startup({
 			requires = { "nvim-lua/plenary.nvim" },
 		})
 
-		use({ -- null ls
+		use({ -- better quick fix buffer
 			"kevinhwang91/nvim-bqf",
 			config = function()
 				require("settings.bqf")
 			end,
 		})
+
+		-- ############## DUNGEON -- HERE LIE TEMP, OLD & DEPRECATED PLUGINS ##################
+		-- use({ -- keep windows in position
+		-- 	"luukvbaal/stabilize.nvim",
+		-- 	config = function()
+		-- 		require("stabilize").setup({
+		-- 			ignore = { -- do not manage windows matching these file/buftypes
+		-- 				filetype = { "list", "help" },
+		-- 				buftype = { "terminal" },
+		-- 			},
+		-- 		})
+		-- 	end,
+		-- })
+
+		-- use({
+		-- 	"michaelb/sniprun",
+		-- 	run = "bash ./install.sh",
+		-- 	config = function()
+		-- 		require("settings.sniprun")
+		-- 	end,
+		-- })
+
+		-- use({
+		-- 	"noib3/nvim-cokeline",
+		-- 	config = function()
+		-- 		require("settings.cokeline")
+		-- 	end,
+		-- })
 
 		if Packer_Bootstrap then -- auto set up conf after cloning packer.nvim
 			require("packer").sync()
