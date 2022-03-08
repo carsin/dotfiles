@@ -42,7 +42,6 @@ return packer.startup({
 		use({ "norcalli/nvim-colorizer.lua", event = "BufRead" })
 		use("chaoren/vim-wordmotion") -- more intuitive w/W motion
 		use("wellle/targets.vim") -- more text objects to target
-    use {'kevinhwang91/nvim-bqf'} -- better quickfix window
 		use("skywind3000/asyncrun.vim") -- asynchronously run tasks such as make
 		use("tpope/vim-surround")
 		use("tpope/vim-repeat")
@@ -407,6 +406,13 @@ return packer.startup({
 				require("settings.lsp.nullls")
 			end,
 			requires = { "nvim-lua/plenary.nvim" },
+		})
+
+		use({ -- null ls
+			"kevinhwang91/nvim-bqf",
+			config = function()
+				require("settings.bqf")
+			end,
 		})
 
 		if Packer_Bootstrap then -- auto set up conf after cloning packer.nvim

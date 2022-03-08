@@ -257,17 +257,17 @@ table.insert(components.active[3], {
 })
 
 -- LspName
--- table.insert(components.active[3], {
---   provider = 'lsp_client_names',
---   icon = '',
---   hl = {
---     fg = 'skyblue',
---     bg = 'bg',
---     style = 'bold'
---   },
---   left_sep = ' ',
---   right_sep = ''
--- })
+table.insert(components.active[3], {
+  provider = 'lsp_client_names',
+  icon = '',
+  hl = {
+    fg = 'skyblue',
+    bg = 'bg',
+    style = 'bold'
+  },
+  left_sep = ' ',
+  right_sep = ''
+})
 
 -- LspStatus
 -- table.insert(components.active[3], {

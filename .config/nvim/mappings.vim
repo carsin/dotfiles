@@ -78,7 +78,8 @@ nnoremap <leader>pd :PackerProfile<CR>
 
 " Quit everything with :qq / Q
 cmap qq qa!
-cmap Q qa!
+" cmap Q qa!
+cmap QQ qa!
 cmap WQ wqa!
 
 " Toggle folds in normal mode with tab
@@ -327,7 +328,7 @@ nnoremap <expr> <leader>ogs exists(":NeorgStart") ? ':NeorgStart silent=true<CR>
 nnoremap <leader>co <Cmd>SymbolsOutline<CR>
 
 " asyncrun
-nnoremap <silent> <F10> :call asyncrun#quickfix_toggle(9)<cr>
+nnoremap <silent> <F10> :call asyncrun#quickfix_toggle(10)<cr>
 
 " dap
 " TODO: to vimscript
