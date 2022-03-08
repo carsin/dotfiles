@@ -49,7 +49,7 @@ let g:undotree_DiffpanelHeight = 13
 let g:targets_seekRanges = 'cc cr cb cB lc ac Ac lr lb ar ab lB Ar aB Ab AB rr ll rb al rB Al bb aa bB Aa BB AA'
 
 " automatically open quickfix window when AsyncRun command is executed
-let g:asyncrun_open = 6 " set the quickfix window 6 lines height.
+" let g:asyncrun_open = 15 " set the quickfix window height
 " let g:asyncrun_bell = 1 " ring the bell to notify you job finished
 let g:asyncrun_auto = "make" " trigger QuickFixCmdPost to process content in quickfix 
 let g:asyncrun_rootmarks = ['.svn', '.git', '.root', '_darcs', 'build.xml', 'Makefile'] 
@@ -110,9 +110,8 @@ set wrapmargin=2
 set undofile
 set undodir=~/.cache/nvim/undo
 
-" Disables automatic commenting on newline:
-" autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
-
+" Disables automatic commenting on newline: autocmd FileType * setlocal
+" formatoptions-=c formatoptions-=r formatoptions-=o
 
 " Delete trailing whitespace
 function! TrimWhitespace()
@@ -126,9 +125,9 @@ command! TrimWhitespace call TrimWhitespace()
 " Turn off paste mode when leaving insert
 autocmd InsertLeave * set nopaste
 
-" properly open quickfix
+" always open quickfix to size
 augroup quickfixsize
-    autocmd QuickFixCmdPost * botright copen 10
+    autocmd QuickFixCmdPost * botright copen 15
 augroup END
 
 " filetype stuff

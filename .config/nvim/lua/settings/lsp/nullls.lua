@@ -5,7 +5,7 @@ local builtins = null_ls.builtins
 null_ls.setup({
 	sources = {
 		-- glob
-		builtins.code_actions.refactoring,
+		-- builtins.code_actions.refactoring,
 		-- lua
 		builtins.formatting.stylua.with({
 			filetypes = { "lua" },

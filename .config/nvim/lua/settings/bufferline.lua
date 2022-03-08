@@ -43,7 +43,7 @@ require("bufferline").setup({
 		diagnostics_indicator = function(count, level, diagnostics_dict, context)
 			local s = " "
 			for e, n in pairs(diagnostics_dict) do
-				local sym = e == "error" and "E " or (e == "warning" and "! " or "i " or "? ")
+				local sym = e == "error" and "E " or (e == "warning" and "! " or "? " or "i ")
 				s = s .. n .. sym
 			end
 			return s

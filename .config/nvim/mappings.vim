@@ -57,6 +57,7 @@ nnoremap C "_C
 " Clone paragraph
 nnoremap cp vap:t'><CR>
 
+" 
 " Paste in insert mode
 inoremap <C-v> <C-r>*
 

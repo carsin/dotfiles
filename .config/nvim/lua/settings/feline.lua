@@ -206,7 +206,7 @@ table.insert(components.active[3], {
 	enabled = function()
 		return lsp.diagnostics_exist(vim.diagnostic.severity.ERROR)
 	end,
-	icon = " E ",
+	icon = " E",
 	hl = {
 		fg = "red",
 		-- style = 'bold'
@@ -220,7 +220,7 @@ table.insert(components.active[3], {
 	enabled = function()
 		return lsp.diagnostics_exist(vim.diagnostic.severity.WARN)
 	end,
-	icon = " ! ",
+	icon = " !",
 	hl = {
 		fg = "yellow",
 		-- style = 'bold'
@@ -234,7 +234,7 @@ table.insert(components.active[3], {
 	enabled = function()
 		return lsp.diagnostics_exist(vim.diagnostic.severity.HINT)
 	end,
-	icon = " ? ",
+	icon = " ?",
 	hl = {
 		fg = "bgreen",
 		-- style = 'bold'
@@ -248,7 +248,7 @@ table.insert(components.active[3], {
 	enabled = function()
 		return lsp.diagnostics_exist(vim.diagnostic.severity.INFO)
 	end,
-	icon = " i ",
+	icon = " i",
 	hl = {
 		fg = "cyan",
 		-- style = 'bold'
@@ -258,15 +258,15 @@ table.insert(components.active[3], {
 
 -- LspName
 table.insert(components.active[3], {
-  provider = 'lsp_client_names',
-  icon = '',
-  hl = {
-    fg = 'skyblue',
-    bg = 'bg',
-    style = 'bold'
-  },
-  left_sep = ' ',
-  right_sep = ''
+	provider = "lsp_client_names",
+	icon = "",
+	hl = {
+		fg = "skyblue",
+		bg = "bg",
+		style = "bold",
+	},
+	left_sep = " ",
+	right_sep = "",
 })
 
 -- LspStatus
