@@ -48,6 +48,12 @@ let g:undotree_DiffpanelHeight = 13
 " targets use builtins if one exists
 let g:targets_seekRanges = 'cc cr cb cB lc ac Ac lr lb ar ab lB Ar aB Ab AB rr ll rb al rB Al bb aa bB Aa BB AA'
 
+" automatically open quickfix window when AsyncRun command is executed
+let g:asyncrun_open = 9 " set the quickfix window 6 lines height.
+let g:asyncrun_bell = 1 " ring the bell to notify you job finished
+let g:asyncrun_auto = "make" " trigger QuickFixCmdPost to process content in quickfix 
+let g:asyncrun_rootmarks = ['.svn', '.git', '.root', '_darcs', 'build.xml', 'Makefile'] 
+
 " setup colorscheme 
 let g:gruvbox_material_transparent_background = 1
 let g:gruvbox_material_enable_italic = 1
@@ -60,7 +66,6 @@ let g:gruvbox_material_palette = 'original' " I prefer the vibrancy of the origi
 let g:gruvbox_material_better_performance = 1
 
 colorscheme gruvbox-material
-
 " Load plugins
 lua require('plugins')
 

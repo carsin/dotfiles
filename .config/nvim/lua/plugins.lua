@@ -42,6 +42,8 @@ return packer.startup({
 		use({ "norcalli/nvim-colorizer.lua", event = "BufRead" })
 		use("chaoren/vim-wordmotion") -- more intuitive w/W motion
 		use("wellle/targets.vim") -- more text objects to target
+    use {'kevinhwang91/nvim-bqf'} -- better quickfix window
+		use("skywind3000/asyncrun.vim") -- asynchronously run tasks such as make
 		use("tpope/vim-surround")
 		use("tpope/vim-repeat")
 		use("tpope/vim-fugitive")
@@ -77,21 +79,6 @@ return packer.startup({
 				require("settings.lsp.lspconfig")
 			end,
 		})
-
-		use({ -- null ls
-			"jose-elias-alvarez/null-ls.nvim",
-			config = function()
-				require("settings.lsp.nullls")
-			end,
-			requires = { "nvim-lua/plenary.nvim" },
-		})
-
-		-- use({ -- replace null-ls when formatting funct no longer needed(?)
-		-- 	"mfussenegger/nvim-lint",
-		-- 	config = function()
-		-- 		require("settings.lsp.nvimlint")
-		-- 	end,
-		-- })
 
 		use({ -- treesitter
 			"nvim-treesitter/nvim-treesitter",
@@ -382,14 +369,6 @@ return packer.startup({
 			end,
 		})
 
-		-- use({ -- build system TODO: not working; see yabs.lua
-		-- 	"pianocomposer321/yabs.nvim",
-		-- 	requires = { "nvim-lua/plenary.nvim" },
-		-- 	config = function()
-		-- 		require("settings.yabs")
-		-- 	end,
-		-- })
-
 		use({ -- symboloutline column
 			"simrat39/symbols-outline.nvim",
 			config = function()
@@ -420,6 +399,14 @@ return packer.startup({
 				-- See below for more options
 				require("nrpattern").setup()
 			end,
+		})
+
+		use({ -- null ls
+			"jose-elias-alvarez/null-ls.nvim",
+			config = function()
+				require("settings.lsp.nullls")
+			end,
+			requires = { "nvim-lua/plenary.nvim" },
 		})
 
 		if Packer_Bootstrap then -- auto set up conf after cloning packer.nvim

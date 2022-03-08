@@ -178,6 +178,16 @@ lsp_installer.on_server_ready(function(server)
 		})
 		rust_opts.server.settings = {
 			["rust-analyzer"] = {
+				assist = {
+					importGranularity = "module",
+					importPrefix = "by_self",
+				},
+				cargo = {
+					loadOutDirsFromCheck = true,
+				},
+				procMacro = {
+					enable = true,
+				},
 				checkOnSave = {
 					allFeatures = true,
 					overrideCommand = {
@@ -201,7 +211,7 @@ lsp_installer.on_server_ready(function(server)
 			capabilities = opts.capaibilities,
 			flags = opts.flags,
 			handlers = opts.handlers,
-      cmd = {
+			cmd = {
 				"clangd",
 				"--background-index",
 				"-j=12",
@@ -215,7 +225,7 @@ lsp_installer.on_server_ready(function(server)
 				"--header-insertion-decorators",
 				"--header-insertion=iwyu",
 				"--pch-storage=memory",
-			}
+			},
 		})
 		require("clangd_extensions").setup({
 			server = c_opts,

@@ -35,10 +35,15 @@ require("bufferline").setup({
 		diagnostics = "nvim_lsp",
 		diagnostics_update_in_insert = false,
 		sort_by = "id",
+		custom_filter = function(buf) -- don't show [No Name] buffers
+			if vim.fn.bufname(buf) ~= "NvimTree" and vim.fn.bufname(buf) ~= "" then
+				return true
+			end
+		end,
 		diagnostics_indicator = function(count, level, diagnostics_dict, context)
 			local s = " "
 			for e, n in pairs(diagnostics_dict) do
-				local sym = e == "error" and " E " or (e == "warning" and " ! " or " i " or " ? ")
+				local sym = e == "error" and "E " or (e == "warning" and "! " or "i " or "? ")
 				s = s .. n .. sym
 			end
 			return s

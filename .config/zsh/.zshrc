@@ -107,6 +107,7 @@ source "$ZDOTDIR/aliases"
 
 # append stuff to path
 path+=('/home/carson/.local/bin')
+path+=('/home/carson/.cache/cargo/bin')
 path+=('/home/carson/bin')
 
 export PATH

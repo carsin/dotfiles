@@ -95,7 +95,7 @@ alias egpu="sudo egpu-switcher"
 alias gpu="sudo egpu-switcher"
 alias ncdu="ncdu --color dark"
 alias visuals="mpv https://www.youtube.com/playlist?list=PLHz5hL1kaCdx7FfIfBWof7-p0mNwNFrRU --shuffle"
-alias yts="ytfzf -t --preview-side=right --thumbnail-quality=high --notify-playing -l --pages=4"
+alias yts="ytfzf -t --preview-side=right --thumbnail-quality=high --notify-playing -l --pages=alias4"
 alias yt="ytfzf -t --preview-side=right --thumbnail-quality=high --notify-playing -l --pages=4 -c S --sort"
 alias ytsub="yt"
 alias yta="ytfzf -m -t" # youtube audio

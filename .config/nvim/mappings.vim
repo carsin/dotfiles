@@ -138,8 +138,11 @@ vnoremap J :m '>+1<CR>gv=gv
 vnoremap K :m '<-2<CR>gv=gv
 
 " Format (selected) paragraph to 80 character lines.
-nnoremap <Leader>cf gqap
-xnoremap <Leader>cf gqa
+nnoremap <Leader>cf gqap<ESC>
+xnoremap <Leader>cf gqa<ESC>
+nnoremap <Leader>zp gqap<ESC>
+xnoremap <Leader>zp gqa<ESC>
+
 
 " Switch to previous buffer
 nnoremap <Backspace> <C-^>
@@ -240,8 +243,9 @@ inoremap <silent> <F3> <CMD>w<CR><CMD>lua require("FTerm").toggle()<CR>
 tnoremap <silent> <F3> <CMD>lua require("FTerm").toggle()<CR>
 tnoremap <silent> <ESC> <CMD>lua require("FTerm").close()<CR>
 " compile 
-nmap <F2> <cmd>w<CR><CMD>lua require('FTerm').scratch({ cmd = './run' })<cr>
-imap <F2> <cmd>w<CR><CMD>lua require('FTerm').scratch({ cmd = './run' })<cr>
+" nmap <F2> <cmd>w<CR><CMD>lua require('FTerm').scratch({ cmd = './run' })<cr>
+" imap <F2> <cmd>w<CR><CMD>lua require('FTerm').scratch({ cmd = './run' })<cr>
+"
 " open current dir in ranger
 nnoremap <leader>oo <CMD>lua __fterm_ranger()<cr>
 
@@ -285,10 +289,10 @@ nnoremap <leader>we <cmd>:silent TZAtaraxis<cr><cmd>set rnu<cr><cmd>set nu<cr>
 nnoremap <silent><F4> <cmd>:silent TZAtaraxis<cr><cmd>set rnu<cr><cmd>set nu<cr>
 
 " Sniprun
-nmap <silent> <leader>cr :lua require'sniprun'.run()<CR>
-vmap <silent> <leader>cr :lua require'sniprun'.run()<CR>
-nmap <leader>cR <Cmd>:SnipReset<CR>
-nmap <leader>cc <Plug>SnipClose
+" nmap <silent> <leader>cr :lua require'sniprun'.run()<CR>
+" vmap <silent> <leader>cr :lua require'sniprun'.run()<CR>
+" nmap <leader>cR <Cmd>:SnipReset<CR>
+" nmap <leader>cc <Plug>SnipClose
 
 " nrpattern
 nmap + <Plug>(PatternIncrement)
@@ -308,19 +312,22 @@ vnoremap <leader>zf :'<,'>ZkMatch<CR>
 nnoremap <leader>u :UndotreeToggle<CR>
 
 " neorg
+nnoremap <leader>ogh <Cmd>Neorg workspace home<CR>
+nnoremap <leader>onn <Cmd>Neorg workspace notes<CR>
+nnoremap <leader>ono <Cmd>Neorg workspace notes<CR>
 " gtd
 nnoremap <leader>ogg <Cmd>Neorg workspace gtd<CR>
 nnoremap <leader>ogd <Cmd>Neorg workspace gtd<CR>
-nnoremap <leader>ogh <Cmd>Neorg workspace home<CR>
-nnoremap <expr> <leader>ogt exists(":NeorgStart") ? ':NeorgStart silent=true<CR>:Neorg gtd views<CR>' : ':Neorg gtd views<CR>'
-nnoremap <expr> <leader>ogs exists(":NeorgStart") ? ':NeorgStart silent=true<CR>:Neorg gtd views<CR>' : ':Neorg gtd views<CR>'
 nnoremap <expr> <leader>ogc exists(":NeorgStart") ? ':NeorgStart silent=true<CR>:Neorg gtd capture<CR>' : ':Neorg gtd capture<CR>'
 nnoremap <expr> <leader>oge exists(":NeorgStart") ? ':NeorgStart silent=true<CR>:Neorg gtd capture<CR>' : ':Neorg gtd edit<CR>'
-nnoremap <leader>onn <Cmd>Neorg workspace notes<CR>
-nnoremap <leader>ono <Cmd>Neorg workspace notes<CR>
+nnoremap <expr> <leader>ogt exists(":NeorgStart") ? ':NeorgStart silent=true<CR>:Neorg gtd views<CR>' : ':Neorg gtd views<CR>'
+nnoremap <expr> <leader>ogs exists(":NeorgStart") ? ':NeorgStart silent=true<CR>:Neorg gtd views<CR>' : ':Neorg gtd views<CR>'
 
 " symbol outlines
 nnoremap <leader>co <Cmd>SymbolsOutline<CR>
+
+" asyncrun
+nnoremap <silent> <F10> :call asyncrun#quickfix_toggle(9)<cr>
 
 " dap
 " TODO: to vimscript
