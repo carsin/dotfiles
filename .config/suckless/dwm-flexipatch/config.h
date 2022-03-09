@@ -828,7 +828,7 @@ static const char *xkb_layouts[] = {
       {MODKEY | ControlMask, KEY, tagnextmon, {.ui = 1 << TAG}},               \
       {MODKEY | ControlMask | ShiftMask, KEY, swaptags, {.ui = 1 << TAG}},     \
       // {MODKEY | Mod4Mask, KEY, toggletag, {.ui = 1 << TAG}},   
-      // // {MODKEY | Mod4Mask | ControlMask, KEY, tagprevmon, {.ui = 1 << TAG}},
+      // {MODKEY | Mod4Mask | ControlMask, KEY, tagprevmon, {.ui = 1 << TAG}},
       // {MODKEY | ControlMask, KEY, toggleview, {.ui = 1 << TAG}},               
 #elif COMBO_PATCH && SWAPTAGS_PATCH 
 #define TAGKEYS(KEY, TAG)                                                      \
@@ -837,10 +837,10 @@ static const char *xkb_layouts[] = {
       {MODKEY | ShiftMask, KEY, tag, {.ui = 1 << TAG}},                        \
       {MODKEY | Mod4Mask, KEY, swaptags, {.ui = 1 << TAG}},     \
   // {MODKEY, KEY, comboview, {.ui = 1 << TAG}},                                  \
-  //     {MODKEY | ControlMask, KEY, toggleview, {.ui = 1 << TAG}},               \
-  //     {MODKEY | ShiftMask, KEY, combotag, {.ui = 1 << TAG}},                   \
-  //     {MODKEY | ControlMask | ShiftMask, KEY, toggletag, {.ui = 1 << TAG}},    \
-  //     {MODKEY | Mod4Mask | ShiftMask, KEY, swaptags, {.ui = 1 << TAG}},
+       {MODKEY | ControlMask, KEY, toggleview, {.ui = 1 << TAG}},               \
+       {MODKEY | ShiftMask, KEY, combotag, {.ui = 1 << TAG}},                   \
+       {MODKEY | ControlMask | ShiftMask, KEY, toggletag, {.ui = 1 << TAG}},    \
+       {MODKEY | Mod4Mask | ShiftMask, KEY, swaptags, {.ui = 1 << TAG}},
 #elif COMBO_PATCH && TAGOTHERMONITOR_PATCH
 #define TAGKEYS(KEY, TAG)                                                      \
   {MODKEY, KEY, comboview, {.ui = 1 << TAG}},                                  \
@@ -987,7 +987,7 @@ static Key keys[] = {
 	// {0, XF86XK_AudioPrev, spawn, SHCMD("playerctl previous")},
     {0, XF86XK_MonBrightnessUp, spawn, SHCMD("/home/carson/bin/bright up") },
     {0, XF86XK_MonBrightnessDown, spawn, SHCMD("/home/carson/bin/bright down") },
-    {MODKEY | ShiftMask, XK_Print, spawn, SHCMD("/usr/bin/flameshot gui")},
+    {MODKEY, XK_Print, spawn, SHCMD("flameshot gui")},
     {MODKEY | ShiftMask, XK_s, spawn, SHCMD("spotify --no-zygote")}, // --no-zygote flag disables hardware (gpu) accel
     {MODKEY, XK_backslash, spawn, SHCMD("timeout 3 /home/carson/bin/newpape.sh")},
     {MODKEY | ControlMask, XK_Home, spawn, SHCMD("timeout 3 /home/carson/bin/newpape.sh -i")},

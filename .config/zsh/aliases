@@ -25,7 +25,7 @@ alias watch="watch --color"
 
 # wallpaper management
 alias w2="/home/carson/bin/newpape2.sh"
-alias w="/home/carson/bin/newpape.sh"
+alias rw="/home/carson/bin/newpape.sh"
 alias cw="/home/carson/bin/choosepape.sh"
 
 # config storage
