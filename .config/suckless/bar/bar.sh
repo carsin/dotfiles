@@ -48,8 +48,8 @@ while true; do
     # Append results of each func one by one to the upperbar string
     upperbar=""
     upperbar="$upperbar$(dwm_idle)"
-    upperbar="$upperbar$(dwm_pomo) "
-    upperbar="$upperbar$(dwm_spotify) "
+    upperbar="$upperbar$(dwm_pomo)"
+    upperbar="$upperbar$(dwm_spotify)"
     upperbar="$upperbar$(dwm_resources) "
     upperbar="$upperbar$(dwm_battery)"
     # upperbar="$upperbar$(dwm_pulse) "

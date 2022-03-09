@@ -17,7 +17,7 @@ dwm_resources () {
 	printf "%s" "$SEP1"
     # ﬙
 	if [ "$IDENTIFIER" = "unicode" ]; then
-		printf " %s ﬘ %s" "$CPU" "$MEMUSED" 
+		printf " %s ﬙ %s" "$CPU" "$MEMUSED" 
 	fi
 	printf "%s\n" "$SEP2"
 }

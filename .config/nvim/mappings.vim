@@ -81,6 +81,8 @@ nnoremap <leader>pd :PackerProfile<CR>
 cmap qq qa!
 " cmap Q qa!
 cmap QQ qa!
+cmap Qq qa!
+cmap qQ qa!
 cmap WQ wqa!
 
 " Toggle folds in normal mode with tab

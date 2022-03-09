@@ -11,7 +11,7 @@ dwm_idle () {
         
         #  TODO: icon animation
         SECS=$((IDLE/1000))
-        printf "%s%s %ss%s" "$SEP1" "$ICON" "$SECS" "$SEP2" 
+        printf "%s%s %ss%s " "$SEP1" "$ICON" "$SECS" "$SEP2" 
     fi
 }
 

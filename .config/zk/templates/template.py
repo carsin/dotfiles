@@ -68,9 +68,9 @@ template = (
     + date
     + """
 ## OBJECTIVES
-- [ ]
+- [ ] [[Morning Routine]]
 --------------------------------------------------------------------------------
-## ENTRY """
+# ENTRY """
     + str(entrycount)
     + """ -- INIT LOG -- CREATED """
     + timestart
