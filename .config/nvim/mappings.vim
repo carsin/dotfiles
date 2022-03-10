@@ -98,8 +98,8 @@ map Q gq
 " vnoremap gz :s/\v(.{80})/\1\r/g<CR>
 
 " show 80 line charcolumn
-inoremap <silent> <F8> <ESC>:execute "set colorcolumn=" . (&colorcolumn == "" ? "81" : "")<CR>a
-nnoremap <silent> <F8> :execute "set colorcolumn=" . (&colorcolumn == "" ? "81" : "")<CR>
+inoremap <silent> <F9> <ESC>:execute "set colorcolumn=" . (&colorcolumn == "" ? "81" : "")<CR>a
+nnoremap <silent> <F9> :execute "set colorcolumn=" . (&colorcolumn == "" ? "81" : "")<CR>
 
 " Replace all on S
 nnoremap <leader>R :%s//g<Left><Left>
@@ -331,7 +331,7 @@ nnoremap <expr> <leader>ogs exists(":NeorgStart") ? ':NeorgStart silent=true<CR>
 nnoremap <leader>co <Cmd>SymbolsOutline<CR>
 
 " asyncrun
-nnoremap <silent> <F10> :call asyncrun#quickfix_toggle(10)<cr>
+nnoremap <silent> <F10> :call asyncrun#quickfix_toggle(7)<cr>
 
 " dap
 " TODO: to vimscript

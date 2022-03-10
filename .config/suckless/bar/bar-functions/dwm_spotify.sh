@@ -20,8 +20,8 @@ dwm_spotify () {
     if [ "$PLAYER" = "spotify" ] || [ "$PLAYER" = "spotifyd" ] || [ "$PLAYER" = "ncspot" ]; then
         ARTIST=$(playerctl --player="$PLAYER" metadata artist)
         TRACK=$(playerctl --player="$PLAYER" metadata title)
-        POSITION=$(playerctl --player="$PLAYER" position | sed 's/..\{6\}$//')
-        DURATION=$(playerctl --player="$PLAYER"metadata mpris:length | sed 's/.\{6\}$//')
+        # POSITION=$(playerctl --player="$PLAYER" position | sed 's/..\{6\}$//')
+        # DURATION=$(playerctl --player="$PLAYER"metadata mpris:length | sed 's/.\{6\}$//')
         STATUS=$(playerctl --player="$PLAYER" status)
         SHUFFLE=$(playerctl shuffle)
 

@@ -13,15 +13,15 @@
 LOC=$(readlink -f "$0")
 DIR=$(dirname "$LOC")
 
-export TOG=0
+export TOG=1
 
 # Change the appearance of the module identifier. if this is set to "unicode", then symbols will be used as identifiers instead of text. E.g. [📪 0] instead of [MAIL 0].
 # Requires a font with adequate unicode character support
 export IDENTIFIER="unicode"
 
 # Change the charachter(s) used to seperate modules. If two are used, they will be placed at the start and end.
-export SEP1="["
-export SEP2="]"
+export SEP1=""
+export SEP2=" |"
 
 # Import the modules
 . "$DIR/bar-functions/dwm_idle.sh"
@@ -46,6 +46,11 @@ export SEP2="]"
 # Update dwm status bar every second
 while true; do
     # Append results of each func one by one to the upperbar string
+    if [ "$TOG" = 1 ]; then
+        export TOG=0
+    elif [ "$TOG" = 0 ]; then
+        export TOG=1
+    fi
     upperbar=""
     upperbar="$upperbar$(dwm_idle)"
     upperbar="$upperbar$(dwm_pomo)"
@@ -57,10 +62,4 @@ while true; do
     upperbar="$upperbar$(dwm_date)"
     xsetroot -name "$upperbar"
     sleep 2
-
-    if [ "$TOG" = 1 ]; then
-        export TOG=0
-    elif [ "$TOG" = 0 ]; then
-        export TOG=1
-    fi
 done

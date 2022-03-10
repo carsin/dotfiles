@@ -49,7 +49,7 @@ let g:undotree_DiffpanelHeight = 13
 let g:targets_seekRanges = 'cc cr cb cB lc ac Ac lr lb ar ab lB Ar aB Ab AB rr ll rb al rB Al bb aa bB Aa BB AA'
 
 " automatically open quickfix window when AsyncRun command is executed
-let g:asyncrun_open = 12 " set the quickfix window height
+let g:asyncrun_open = 7 " set the quickfix window height
 " let g:asyncrun_bell = 1 " ring the bell to notify you job finished
 let g:asyncrun_auto = "make" " trigger QuickFixCmdPost to process content in quickfix
 let g:asyncrun_rootmarks = ['.svn', '.git', '.root', '_darcs', 'build.xml', 'Makefile']
@@ -128,7 +128,7 @@ autocmd InsertLeave * set nopaste
 " always open quickfix to size and don't jump the newly opened buffer
 augroup quickfixsize
     autocmd QuickFixCmdPre * let g:mybufname=bufname('%')
-    autocmd QuickFixCmdPost * botright copen 12 | exec bufwinnr(g:mybufname) . 'wincmd w'
+    autocmd QuickFixCmdPost * botright copen 7 | exec bufwinnr(g:mybufname) . 'wincmd w'
 augroup END
 
 " filetype stuff
