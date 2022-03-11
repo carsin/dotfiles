@@ -21,7 +21,7 @@ export IDENTIFIER="unicode"
 
 # Change the charachter(s) used to seperate modules. If two are used, they will be placed at the start and end.
 export SEP1=""
-export SEP2=" |"
+export SEP2=" │"
 
 # Import the modules
 . "$DIR/bar-functions/dwm_idle.sh"

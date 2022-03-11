@@ -965,11 +965,11 @@ static const char *statuscmd[] = {"/bin/sh", "-c", NULL, NULL};
 #endif // BAR_DWMBLOCKS_PATCH
 #endif // BAR_STATUSCMD_PATCH
 
-static const char *firefoxcmd[] = {"firefox", NULL};
+static const char *browsercmd[] = {"chromium", NULL};
 #if ON_EMPTY_KEYS_PATCH
 static Key on_empty_keys[] = {
     /* modifier key            function                argument */
-    {0, XK_f, spawn, {.v = firefoxcmd}},
+    {0, XK_f, spawn, {.v = browsercmd}},
 };
 #endif // ON_EMPTY_KEYS_PATCH
 
@@ -979,8 +979,8 @@ static Key keys[] = {
 	{0, XF86XK_AudioRaiseVolume, spawn, SHCMD("/home/carson/bin/changevol -n -p -y up 5")},
     {0, XF86XK_AudioLowerVolume, spawn, SHCMD("/home/carson/bin/changevol -n -p -y down 5")},
 	{0, XF86XK_AudioMute, spawn, SHCMD("/home/carson/bin/changevol -n -p -y mute")},
-	{0, XF86XK_AudioNext, spawn, SHCMD("playerctl next -p 'ncspot,spotify,firefox,mpv'")},
-	{0, XF86XK_AudioPrev, spawn, SHCMD("playerctl previous -p 'ncspot,spotify,firefox,mpv'")},
+	{0, XF86XK_AudioNext, spawn, SHCMD("playerctl next -p 'ncspot,spotify,chromium,mpv'")},
+	{0, XF86XK_AudioPrev, spawn, SHCMD("playerctl previous -p 'ncspot,spotify,chromium,mpv'")},
     {0, XF86XK_AudioPlay, spawn, SHCMD("playerctl play-pause")},
 	// {0, XF86XK_AudioNext, spawn, SHCMD("playerctl next")},
     // {0, XF86XK_AudioPlay, spawn, SHCMD("playerctl play-pause -p 'spotify,firefox,mpv'")},
@@ -996,7 +996,7 @@ static Key keys[] = {
     {MODKEY, XK_Escape, setkeymode, {.ui = COMMANDMODE}},
 #endif // KEYMODES_PATCH&
     {MODKEY | ShiftMask, XK_Return, spawn, {.v = dmenucmd }},
-    {MODKEY, XK_w, spawn, {.v = firefoxcmd }},
+    {MODKEY, XK_w, spawn, {.v = browsercmd }},
     {MODKEY, XK_Return, spawn, {.v = termcmd }},
 #if RIODRAW_PATCH
     {MODKEY | ControlMask, XK_p, riospawnsync, {.v = dmenucmd}},

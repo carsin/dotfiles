@@ -79,3 +79,11 @@ user_pref("browser.sessionstore.privacy_level", 0);
  * [1] https://feeding.cloud.geek.nz/posts/tweaking-cookies-for-privacy-in-firefox/ ***/
 user_pref("network.cookie.thirdparty.sessionOnly", false);
 user_pref("network.cookie.thirdparty.nonsecureSessionOnly", false); // [FF58+]
+
+/* 2022: enable all DRM content (EME: Encryption Media Extension)
+ * Optionally hide the setting which also disables the DRM prompt
+ * [SETUP-WEB] e.g. Netflix, Amazon Prime, Hulu, HBO, Disney+, Showtime, Starz, DirectTV
+ * [SETTING] General>DRM Content>Play DRM-controlled content
+ * [TEST] https://bitmovin.com/demos/drm
+ * [1] https://www.eff.org/deeplinks/2017/10/drms-dead-canary-how-we-just-lost-web-what-we-learned-it-and-what-we-need-do-next ***/
+user_pref("media.eme.enabled", true);
