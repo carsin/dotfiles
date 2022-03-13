@@ -57,7 +57,7 @@ nnoremap C "_C
 " Clone paragraph
 nnoremap cp vap:t'><CR>
 
-" 
+"
 " Paste in insert mode
 inoremap <C-v> <C-r>*
 
@@ -172,6 +172,9 @@ endfunction
 " change directory to current file
 nnoremap <leader>cd :cd %:p:h<CR>:pwd<CR>
 
+"  delete current file without removing buffer data (useful for restoration)
+nnoremap <leader>zx :call delete(expand('%:p'))\|bd!<CR>
+
 " no more fatfingering and removing visual selection
 vmap <Space> <Nop>
 
@@ -246,7 +249,7 @@ nnoremap <silent> <F3> <CMD>w<CR><CMD>lua require("FTerm").toggle()<CR>
 inoremap <silent> <F3> <CMD>w<CR><CMD>lua require("FTerm").toggle()<CR>
 tnoremap <silent> <F3> <CMD>lua require("FTerm").toggle()<CR>
 tnoremap <silent> <ESC> <CMD>lua require("FTerm").close()<CR>
-" compile 
+" compile
 " nmap <F2> <cmd>w<CR><CMD>lua require('FTerm').scratch({ cmd = './run' })<cr>
 " imap <F2> <cmd>w<CR><CMD>lua require('FTerm').scratch({ cmd = './run' })<cr>
 "

@@ -4,7 +4,7 @@
 	signingkey = 8A0DB99F
 [core]
 	editor = nvim
-	pager = delta
+	pager = delta --syntax-theme gruvbox-dark --true-color always
 [credential "https://dev.azure.com"]
 	useHttpPath = true
 [commit]
