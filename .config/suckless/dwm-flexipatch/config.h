@@ -1223,19 +1223,21 @@ static Key keys[] = {
 #endif // SCRATCHPAD_ALT_1_PATCH
     {MODKEY | ControlMask, XK_j, focusmon, {.i = -1}},
     {MODKEY | ControlMask, XK_k, focusmon, {.i = +1}},
-    {MODKEY, XK_comma, focusmon, {.i = -1}},
-    {MODKEY, XK_period, focusmon, {.i = +1}},
-    {MODKEY | ControlMask, XK_comma, tagmon, {.i = -1}},
-    {MODKEY | ControlMask, XK_period, tagmon, {.i = +1}},
+    // {MODKEY, XK_comma, focusmon, {.i = -1}},
+    // {MODKEY, XK_period, focusmon, {.i = +1}},
+    // {MODKEY | ControlMask, XK_comma, tagmon, {.i = -1}},
+    // {MODKEY | ControlMask, XK_period, tagmon, {.i = +1}},
     {MODKEY | ShiftMask | ControlMask, XK_j, tagmon, {.i = -1}},
     {MODKEY | ShiftMask | ControlMask, XK_k, tagmon, {.i = +1}},
 #if FOCUSADJACENTTAG_PATCH
-    {MODKEY, XK_h, viewtoleft, {0}}, 
-    {MODKEY, XK_l, viewtoright, {0}}, 
-    {MODKEY | ShiftMask, XK_Left, tagtoleft, {0}},
-    {MODKEY | ShiftMask, XK_Right, tagtoright, {0}},
-    {MODKEY | ControlMask, XK_Left, tagandviewtoleft, {0}},
-    {MODKEY | ControlMask, XK_Right, tagandviewtoright, {0}},
+    // {MODKEY, XK_h, viewtoleft, {0}}, 
+    // {MODKEY, XK_l, viewtoright, {0}}, 
+    // {MODKEY | ShiftMask, XK_Left, tagtoleft, {0}},
+    // {MODKEY | ShiftMask, XK_Right, tagtoright, {0}},
+    {MODKEY | ShiftMask, XK_g, tagandviewtoleft, {0}},
+    {MODKEY | ShiftMask, XK_semicolon, tagandviewtoright, {0}},
+    {MODKEY | ShiftMask, XK_comma, tagandviewtoleft, {0}},
+    {MODKEY | ShiftMask, XK_period, tagandviewtoright, {0}},
 #endif // FOCUSADJACENTTAG_PATCH
 #if TAGALL_PATCH
     {MODKEY | ShiftMask, XK_F1, tagall, {.v = "F1"}},
@@ -1310,7 +1312,7 @@ static Key keys[] = {
     {MODKEY | ControlMask, XK_KP_6, togglehorizontalexpand, {.i = +1}}, /* XK_KP_Right, */
     {MODKEY | ControlMask, XK_KP_3, togglehorizontalexpand, {.i = 0}}, /* XK_KP_Next,  */
     {MODKEY | ControlMask, XK_KP_4, togglehorizontalexpand, {.i = -1}}, /* XK_KP_Left,  */
-    {MODKEY | ControlMask, XK_KP_8, toggleverticalexpand, {.i = +1}}, /* XK_KP_Up,    */
+    {MODKEY1| ControlMask, XK_KP_8, toggleverticalexpand, {.i = +1}}, /* XK_KP_Up,    */
     {MODKEY | ControlMask, XK_KP_1, toggleverticalexpand, {.i = 0}}, /* XK_KP_End,   */
     {MODKEY | ControlMask, XK_KP_2, toggleverticalexpand, {.i = -1}}, /* XK_KP_Down,  */
     {MODKEY | ControlMask, XK_KP_9, togglemaximize, {.i = -1}}, /* XK_KP_Prior, */
@@ -1367,8 +1369,8 @@ static Key keys[] = {
     {MODKEY | ShiftMask, XK_b, setborderpx, {.i = -1}},
 #endif // SETBORDERPX_PATCH
 #if CYCLELAYOUTS_PATCH
-    {MODKEY | ShiftMask, XK_comma, cyclelayout, {.i = -1}},
-    {MODKEY | ShiftMask, XK_period, cyclelayout, {.i = +1}},
+    {MODKEY, XK_comma, cyclelayout, {.i = -1}},
+    {MODKEY, XK_period, cyclelayout, {.i = +1}},
     // {MODKEY | ShiftMask, XK_g, cyclelayout, {.i = -1}},
     // {MODKEY | ShiftMask, XK_semicolon, cyclelayout, {.i = +1}},
 #endif // CYCLELAYOUTS_PATCH
