@@ -66,8 +66,8 @@ static const int toptab = False;         /* False means bottom tab bar */
 static const int bar_height = 0; /* 0 means derive from font, >= 1 explicit height */
 #endif // BAR_HEIGHT_PATCH
 #if BAR_PADDING_PATCH
-static const int vertpad = 5; /* vertical padding of bar */
-static const int sidepad = 5; /* horizontal padding of bar */
+static const int vertpad = 4; /* vertical padding of bar */
+static const int sidepad = 4; /* horizontal padding of bar */
 #endif                         // BAR_PADDING_PATCH
 #if BAR_WINICON_PATCH
 #define ICONSIZE 15   /* icon size */
@@ -107,7 +107,7 @@ static const int horizpadbar = 2; /* horizontal padding for statusbar */
 static const int vertpadbar = 0;  /* vertical padding for statusbar */
 #endif                            // BAR_STATUSPADDING_PATCH
 #if BAR_STATUSBUTTON_PATCH
-static const char buttonbar[] = "";
+static const char buttonbar[] = " │";
 #endif // BAR_STATUSBUTTON_PATCH
 #if BAR_SYSTRAY_PATCH
 static const unsigned int systrayspacing = 1; /* systray spacing */
@@ -130,9 +130,9 @@ static const int ulineall =
 #endif // BAR_UNDERLINETAGS_PATCH
 
 /* TODO: Indicators: see patch/bar_indicators.h for options */
-static int tagindicatortype = INDICATOR_TOP_LEFT_SQUARE;
-static int tiledindicatortype = INDICATOR_NONE;
-static int floatindicatortype = INDICATOR_TOP_LEFT_SQUARE;
+static int tagindicatortype = INDICATOR_CLIENT_DOTS;
+static int tiledindicatortype = INDICATOR_CLIENT_DOTS;
+static int floatindicatortype = INDICATOR_BOTTOM_BAR_SLIM;
 #if FAKEFULLSCREEN_CLIENT_PATCH && !FAKEFULLSCREEN_PATCH
 static int fakefsindicatortype = INDICATOR_PLUS;
 static int floatfakefsindicatortype = INDICATOR_PLUS_AND_LARGER_SQUARE;
