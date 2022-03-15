@@ -107,10 +107,10 @@ static const int horizpadbar = 2; /* horizontal padding for statusbar */
 static const int vertpadbar = 0;  /* vertical padding for statusbar */
 #endif                            // BAR_STATUSPADDING_PATCH
 #if BAR_STATUSBUTTON_PATCH
-static const char buttonbar[] = "<O>";
+static const char buttonbar[] = "";
 #endif // BAR_STATUSBUTTON_PATCH
 #if BAR_SYSTRAY_PATCH
-static const unsigned int systrayspacing = 2; /* systray spacing */
+static const unsigned int systrayspacing = 1; /* systray spacing */
 static const int showsystray = 1;             /* 0 means no systray */
 #endif                                        // BAR_SYSTRAY_PATCH
 #if BAR_TAGLABELS_PATCH
@@ -129,7 +129,7 @@ static const int ulineall =
     0; /* 1 to show underline on all tags, 0 for just the active ones */
 #endif // BAR_UNDERLINETAGS_PATCH
 
-/* Indicators: see patch/bar_indicators.h for options */
+/* TODO: Indicators: see patch/bar_indicators.h for options */
 static int tagindicatortype = INDICATOR_TOP_LEFT_SQUARE;
 static int tiledindicatortype = INDICATOR_NONE;
 static int floatindicatortype = INDICATOR_TOP_LEFT_SQUARE;
