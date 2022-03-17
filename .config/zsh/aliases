@@ -1,3 +1,4 @@
+#!/usr/bin/zsh
 # sanity
 alias sudo='sudo ' # allow aliases in sudo
 alias ..="cd .."
@@ -27,6 +28,12 @@ alias watch="watch --color"
 alias w2="/home/carson/bin/newpape2.sh"
 alias rw="/home/carson/bin/newpape.sh"
 alias cw="/home/carson/bin/choosepape.sh"
+# archive wallpaper
+function archivePape {
+    mv $(sed -n '2p' ~/.fehbg | awk -F"'" '{print $4}') ~/files/photos/papes/old
+}
+alias archivew="archivePape"
+alias archive-w="archivePape"
 
 # config storage
 alias config="/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME"
