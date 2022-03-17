@@ -55,6 +55,7 @@ alias calpoly5="TERM=screen ssh ckfreedm@unix5.csc.calpoly.edu"
 alias cpftp="sftp ckfreedm@unix3.csc.calpoly.edu"
 alias fuck="sudo !!"
 alias clr="clear"
+alias cl="clear"
 
 # applications, apps
 alias top="htop"
