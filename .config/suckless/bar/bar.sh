@@ -17,11 +17,13 @@ export SEP2=" │"
 . "$DIR/bar-functions/dwm_weather.sh"
 . "$DIR/bar-functions/dwm_date.sh"
 
+# TODO: fix weather only updating on initial run
 parallelize() {
-    while true; do
+    while true;
+    do
         # printf "running parallel processes\n"
         dwm_weather &
-        sleep 60
+        sleep 20
     done
 }
 parallelize &
