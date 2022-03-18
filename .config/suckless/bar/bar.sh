@@ -32,8 +32,8 @@ while true; do
     elif [ "$TOG" = 0 ]; then
         export TOG=1
     fi
-    # remove broken char
-    WEATHER=${__DWM_BAR_WEATHER__/${__DWM_BAR_WEATHER__:1:2}/}
+    WEATHER=${__DWM_BAR_WEATHER__/${__DWM_BAR_WEATHER__:1:2}/} # strip broken char
+    WEATHER=$(echo "$WEATHER" | tr -d F) # remove fahrenheight F indicator char
     upperbar=""
     upperbar="$upperbar$(dwm_pomo)"
     upperbar="$upperbar$(dwm_spotify)"
@@ -42,8 +42,8 @@ while true; do
     upperbar="$upperbar$(dwm_battery)"
     upperbar="$upperbar$WEATHER"
     # upperbar="$upperbar$__DWM_BAR_WEATHER__"
-    upperbar="$upperbar$(dwm_idle)"
     upperbar="$upperbar$(dwm_date)"
+    upperbar="$upperbar$(dwm_idle)"
     xsetroot -name "$upperbar"
     sleep 2
 done

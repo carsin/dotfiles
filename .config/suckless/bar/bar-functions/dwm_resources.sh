@@ -12,12 +12,11 @@ dwm_resources() {
     if [ "$TEMP" = "" ]; then
         TEMP=$(sensors | grep -oP 'Physical.*?\+\K[0-9.]+')
     fi
+    # TEMP=${TEMP}
 
     printf "%s" "$SEP1"
     # ﬙
-    if [ "$IDENTIFIER" = "unicode" ]; then
-        printf " %s +%s° ﬙ %s" "$CPU" "$TEMP" "$MEMUSED"
-    fi
+    printf " %s° %s ﬙ %s" "$(echo "$TEMP" | cut -f1 -d'.')" "$CPU" "$MEMUSED"
     printf "%s" "$SEP2"
 }
 
