@@ -132,7 +132,7 @@ static const int ulineall =
 /* TODO: Indicators: see patch/bar_indicators.h for options */
 static int tagindicatortype = INDICATOR_CLIENT_DOTS;
 static int tiledindicatortype = INDICATOR_CLIENT_DOTS;
-static int floatindicatortype = INDICATOR_CLIENT_DOTS;
+static int floatindicatortype = INDICATOR_TOP_LEFT_SQUARE;
 #if FAKEFULLSCREEN_CLIENT_PATCH && !FAKEFULLSCREEN_PATCH
 static int fakefsindicatortype = INDICATOR_PLUS;
 static int floatfakefsindicatortype = INDICATOR_PLUS_AND_LARGER_SQUARE;
