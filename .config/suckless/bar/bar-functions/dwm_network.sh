@@ -17,10 +17,10 @@ dwm_network() {
     tx=$(update /sys/class/net/[ew]*/statistics/tx_bytes)
     UP_ICON='↑ '
     DOWN_ICON='↓ '
-    if [ "$rx" = '0' ]; then
+    if [ "$tx" = '0' ]; then
         UP_ICON=''
     fi
-    if [ "$tx" = '0' ]; then
+    if [ "$rx" = '0' ]; then
         DOWN_ICON=''
     fi
 
