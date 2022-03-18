@@ -2,7 +2,7 @@
 
 dwm_idle () {
    IDLE=$(xprintidle)
-    if [ "$IDLE" -ge 15000 ]; then
+    if [ "$IDLE" -ge 30000 ]; then
         if [ "$TOG" == 1 ]; then
             ICON="羽"
         elif [[ "$TOG" == 0 ]]; then
