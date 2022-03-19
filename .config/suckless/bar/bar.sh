@@ -2,7 +2,7 @@
 
 LOC=$(readlink -f "$0")
 DIR=$(dirname "$LOC")
-export TOG=1
+TOG=1
 export IDENTIFIER="unicode"
 export SEP1=""
 export SEP2=" │"
@@ -29,11 +29,12 @@ parallelize() {
 parallelize &
 
 while true; do
-    if [ "$TOG" = 1 ]; then
-        export TOG=0
-    elif [ "$TOG" = 0 ]; then
-        export TOG=1
+    if [ "$TOG" -lt 6 ]; then
+        TOG=$((TOG + 1))
+    else
+        TOG=1
     fi
+    export TOG
     WEATHER=${__DWM_BAR_WEATHER__/${__DWM_BAR_WEATHER__:1:2}/} # strip broken char
     WEATHER=$(echo "$WEATHER" | tr -d F+) # remove fahrenheight&+ indicator chars
     upperbar=""

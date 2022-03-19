@@ -3,9 +3,9 @@
 dwm_idle() {
     IDLE=$(xprintidle)
     if [ "$IDLE" -ge 30000 ]; then
-        if [ "$TOG" == 1 ]; then
+        if [ $((TOG % 2)) -eq 0 ]; then
             ICON="羽"
-        elif [[ "$TOG" == 0 ]]; then
+        else
             ICON="ﮫ"
         fi
 
