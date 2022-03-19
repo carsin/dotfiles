@@ -41,7 +41,7 @@ PROMPT_EOL_MARK=''
 
 # Syntax highlighting
 # Plugins (provided by zsh-functions)
-# zsh_add_plugin "zsh-users/zsh-syntax-highlighting"
+# zsh_add_plugin "zsh-users/zsh-syntax-highlighting" # TODO: constant 
 zsh_add_plugin "hlissner/zsh-autopair"
 zsh_add_plugin "zsh-users/zsh-autosuggestions"
 zsh_add_plugin "agkozak/agkozak-zsh-prompt"
@@ -86,7 +86,7 @@ bindkey -s '^f' 'cd "$(dirname "$(fzf)")"\n'
 # nvim
 bindkey -s '^e' 'nvim\n'
 
-
+# TODO: make work in tmux
 # word manip
 # ctrl+backspace: delete word before
 bindkey '^H' backward-kill-word
