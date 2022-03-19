@@ -23,7 +23,7 @@ dwm_network() {
         else
             DOWN_ICON='∙'
         fi
-        ro=''
+        to=''
     else
         DOWN_ICON='↓'
         to="$(numfmt --to=iec "$tx") "
