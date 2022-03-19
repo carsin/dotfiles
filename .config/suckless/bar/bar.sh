@@ -35,7 +35,7 @@ while true; do
         export TOG=1
     fi
     WEATHER=${__DWM_BAR_WEATHER__/${__DWM_BAR_WEATHER__:1:2}/} # strip broken char
-    WEATHER=$(echo "$WEATHER" | tr -d F) # remove fahrenheight F indicator char
+    WEATHER=$(echo "$WEATHER" | tr -d F+) # remove fahrenheight&+ indicator chars
     upperbar=""
     upperbar="$upperbar$(dwm_pomo)"
     upperbar="$upperbar$(dwm_spotify)"

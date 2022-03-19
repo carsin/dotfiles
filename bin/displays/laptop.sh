@@ -7,8 +7,13 @@
 newdpi=167
 echo "Xft.dpi: $newdpi" | xrdb -merge
 
+
 xrandr --output eDP1 --auto --primary --dpi $newdpi 
 
+# set kbd backlight
+echo 15 > /sys/class/leds/apple::kbd_backlight/brightness
+
+# set screen brightness based on ambient light
 ~/bin/autobrightness
        
 # kill apps with incorrect scaling
