@@ -42,7 +42,9 @@ while true; do
     upperbar="$upperbar$(dwm_network) "
     upperbar="$upperbar$(dwm_resources) "
     upperbar="$upperbar$(dwm_battery)"
-    upperbar="$upperbar$WEATHER"
+    if [ "$WEATHER" != " " ]; then
+        upperbar="$upperbar$WEATHER"
+    fi
     # upperbar="$upperbar$__DWM_BAR_WEATHER__"
     upperbar="$upperbar$(dwm_date)"
     upperbar="$upperbar$(dwm_idle)"

@@ -394,7 +394,8 @@ struct Client {
 	XkbInfo *xkb;
 	#endif // XKB_PATCH
 	#if BAR_WINICON_PATCH
-	XImage *icon;
+    unsigned int icw, ich;
+	Picture icon;
 	#endif // BAR_WINICON_PATCH
 };
 
@@ -2330,7 +2331,6 @@ manage(Window w, XWindowAttributes *wa)
 	c->cfact = 1.0;
 	#endif // CFACTS_PATCH
 	#if BAR_WINICON_PATCH
-	c->icon = NULL;
 	updateicon(c);
 	#endif // BAR_WINICON_PATCH
 	updatetitle(c);

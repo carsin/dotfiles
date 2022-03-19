@@ -17,7 +17,8 @@ echo 15 > /sys/class/leds/apple::kbd_backlight/brightness
 ~/bin/autobrightness
        
 # kill apps with incorrect scaling
-killall /usr/lib/firefox/firefox 
+killall firefox 
+killall chromium
 
 # restart dwm
 pkill dwm

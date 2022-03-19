@@ -28,7 +28,7 @@ FREETYPEINC = /usr/include/freetype2
 # OpenBSD - Uncomment this for the swallow patch / SWALLOW_PATCH
 #KVMLIB = -lkvm
 
-# Uncomment this for the alpha patch / BAR_ALPHA_PATCH
+# Uncomment this for the alpha patch and the winicon patch (BAR_ALPHA_PATCH, BAR_WINICON_PATCH)
 XRENDER = -lXrender
 
 # Uncomment this for the mdpcontrol patch / MDPCONTROL_PATCH
@@ -49,7 +49,7 @@ XRENDER = -lXrender
 XCBLIBS = -lX11-xcb -lxcb -lxcb-res
 
 # This is needed for the winicon patch / BAR_WINICON_PATCH
-#IMLIB2LIBS = -lImlib2
+IMLIB2LIBS = -lImlib2
 
 # includes and libs
 INCS = -I${X11INC} -I${FREETYPEINC} ${YAJLINC} ${PANGOINC}
@@ -58,7 +58,7 @@ LIBS = -L${X11LIB} -lX11 ${XINERAMALIBS} ${FREETYPELIBS}  ${XRENDER} ${MPDCLIENT
 # flags
 CPPFLAGS = -D_DEFAULT_SOURCE -D_BSD_SOURCE -D_POSIX_C_SOURCE=200809L -DVERSION=\"${VERSION}\" ${XINERAMAFLAGS}
 #CFLAGS   = -g -std=c99 -pedantic -Wall -O0 ${INCS} ${CPPFLAGS}
-CFLAGS   = -std=c99 -pedantic -Wall -Wno-deprecated-declarations -Os ${INCS} ${CPPFLAGS}
+CFLAGS   = -std=c99 -pedantic -Wall -Wno-deprecated-declarations -O3 -march=native -Os ${INCS} ${CPPFLAGS}
 LDFLAGS  = ${LIBS}
 
 # Solaris

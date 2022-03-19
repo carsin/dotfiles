@@ -70,8 +70,8 @@ static const int vertpad = 4; /* vertical padding of bar */
 static const int sidepad = 4; /* horizontal padding of bar */
 #endif                         // BAR_PADDING_PATCH
 #if BAR_WINICON_PATCH
-#define ICONSIZE 15   /* icon size */
-#define ICONSPACING 5 /* space between icon and title */
+#define ICONSIZE 12   /* icon size */
+#define ICONSPACING 6 /* space between icon and title */
 #endif                // BAR_WINICON_PATCH
 #if FOCUSONCLICK_PATCH
 static const int focusonwheel = 0;
@@ -114,7 +114,7 @@ static const unsigned int systrayspacing = 1; /* systray spacing */
 static const int showsystray = 1;             /* 0 means no systray */
 #endif                                        // BAR_SYSTRAY_PATCH
 #if BAR_TAGLABELS_PATCH
-static const char ptagf[] = "%s {%s}"; /* format of a tag label */
+static const char ptagf[] = "%s %s"; /* format of a tag label */
 static const char etagf[] = "%s";    /* format of an empty tag */
 static const int lcaselbl = 1;         /* 1 means make tag label lowercase */
 #endif                                 // BAR_TAGLABELS_PATCH
