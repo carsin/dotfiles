@@ -15,43 +15,35 @@ dwm_network() {
     }
     rx=$(update /sys/class/net/[ew]*/statistics/rx_bytes)
     tx=$(update /sys/class/net/[ew]*/statistics/tx_bytes)
-    # toggle anim
-    # if [ "$TOG" == 1 ]; then
-    #     UP_ICON='↑'
-    #     DOWN_ICON='↓'
-    # elif [[ "$TOG" == 0 ]]; then
-    #     UP_ICON='▲'
-    #     DOWN_ICON='▼'
-    # fi
 
-    # change based on hour
-    if [ "$(($(date +'%H') % 2))" -eq 0 ]; then
-        UP_ICON='▲'
-        DOWN_ICON='▼'
-    else
-        UP_ICON='↑'
-        DOWN_ICON='↓'
-    fi
 
     if [ "$tx" = '0' ]; then
-        if [ "$TOG" == 1 ]; then
-            UP_ICON='•'
-        elif [[ "$TOG" == 0 ]]; then
-            UP_ICON='∙'
-        fi
-    fi
-    if [ "$rx" = '0' ]; then
         if [ $((TOG % 2)) -eq 0 ]; then
             DOWN_ICON='•'
         else
             DOWN_ICON='∙'
         fi
+        ro=''
+    else
+        DOWN_ICON='↓'
+        to="$(numfmt --to=iec "$tx") "
+    fi
+    if [ "$rx" = '0' ]; then
+        if [ $((TOG % 2)) -eq 0 ]; then
+            UP_ICON='•'
+        else
+            UP_ICON='∙'
+        fi
+        ro=''
+    else
+        UP_ICON='↑'
+        ro="$(numfmt --to=iec "$rx") "
     fi
 
     printf "%s" "$SEP1"
     if [ "$IDENTIFIER" = "unicode" ]; then
         # printf "%s%4sB %s%4sB" "$DOWN_ICON" "$(numfmt --to=iec "$rx")" "$UP_ICON" "$(numfmt --to=iec "$tx")"
-        printf "%4s %s %4s %s" "$(numfmt --to=iec "$rx")" "$DOWN_ICON" "$(numfmt --to=iec "$tx")" "$UP_ICON"
+        printf "%s%s %s%s" "$ro" "$DOWN_ICON" "$to"  "$UP_ICON"
     fi
     printf "%s" "$SEP2"
 }

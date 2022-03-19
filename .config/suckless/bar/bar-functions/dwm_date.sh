@@ -48,11 +48,16 @@ dwm_date() {
     DATESTR=$(echo "$DATESTR" | tr : "$ICON" | tr / "$ICON2")
     printf " %s" "$DATESTR"
     # percentage of day complete
-    DAYPERCENT=$(echo "($(date -d "1970-01-01 UTC $(date +%T)" +%s)/86400)*100" | bc -l | sed 's/\..*//')
+    # DAYPERCENT=$(echo "($(date -d "1970-01-01 UTC $(date +%T)" +%s)/86400)*100" | bc -l | sed 's/\..*//')
+    DAYPERCENT=$(echo "($(date -d "1970-01-01 UTC $(date +%T)" +%s)/86400)*100" | bc -l)
     if [ "$DAYPERCENT" = "" ]; then
         DAYPERCENT=0
     fi
-    printf "%s%%" "$DAYPERCENT"
+    if [ "$TOG" -eq 5 ]; then
+        printf "%0.5s%%" "$DAYPERCENT"
+    else
+        printf "%0.4s%%" "$DAYPERCENT"
+    fi
 }
 
 dwm_date

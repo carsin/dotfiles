@@ -31,13 +31,15 @@ parallelize &
 while true; do
     if [ "$TOG" -lt 6 ]; then
         TOG=$((TOG + 1))
+        export TOG
     else
+        export TOG
         TOG=1
     fi
-    export TOG
     WEATHER=${__DWM_BAR_WEATHER__/${__DWM_BAR_WEATHER__:1:2}/} # strip broken char
     WEATHER=$(echo "$WEATHER" | tr -d F+) # remove fahrenheight&+ indicator chars
     upperbar=""
+    upperbar="$upperbar$(dwm_idle)"
     upperbar="$upperbar$(dwm_pomo)"
     upperbar="$upperbar$(dwm_spotify)"
     upperbar="$upperbar$(dwm_network) "
@@ -48,7 +50,6 @@ while true; do
     fi
     # upperbar="$upperbar$__DWM_BAR_WEATHER__"
     upperbar="$upperbar$(dwm_date)"
-    upperbar="$upperbar$(dwm_idle)"
     xsetroot -name "$upperbar"
     sleep 2
 done

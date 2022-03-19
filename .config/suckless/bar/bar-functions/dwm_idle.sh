@@ -3,22 +3,46 @@
 dwm_idle() {
     IDLE=$(xprintidle)
     if [ "$IDLE" -ge 30000 ]; then
-        if [ $((TOG % 2)) -eq 0 ]; then
-            ICON="羽"
-        else
-            ICON="ﮫ"
+        # simple anim
+        # if [ $((TOG % 2)) -eq 0 ]; then
+        #     ICON="羽"
+        # else
+        #     ICON="ﮫ"
+        # fi
+
+        if [ "$TOG" == 1 ]; then
+            ICON="┤"
+        elif [[ "$TOG" == 2 ]]; then
+            ICON="┘"
+        elif [[ "$TOG" == 3 ]]; then
+            ICON="┴"
+        elif [[ "$TOG" == 4 ]]; then
+            ICON="└"
+        elif [[ "$TOG" == 5 ]]; then
+            ICON="├"
+        elif [[ "$TOG" == 6 ]]; then
+            ICON="┬"
         fi
 
         #  TODO: icon animation
-        SECS=$((IDLE / 1000))
-        printf "%s %s %ss" "$SEP2" "$ICON" "$SECS"
+        i=$((IDLE / 1000))
+        ((sec = i % 60, i /= 60, min = i % 60, hrs = i / 60))
+        if [[ i -ge 3600 ]]; then
+            printf "%s " "$ICON"
+            printf "%dh %dm %ds" $hrs $min $sec
+            printf "%s" "$SEC2"
+        elif [[ i -ge 60 ]]; then
+            printf "%s " "$ICON"
+            printf "%dm %ds" $min $sec
+            printf "%s" "$SEC2"
+        else
+            printf "%s %ds%s " "$ICON" "$sec" "$SEP2"
+        fi
     fi
 }
 
 dwm_idle
 
-# TODO: replace xprintidle with this custom async functionality since doing it
-# in main loop wouldn't work'
 # idleloop() {
 #     touch /tmp/.{,last_}input
 #     cmd='stat --printf="%s"'
