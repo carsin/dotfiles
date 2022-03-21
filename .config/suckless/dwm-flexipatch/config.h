@@ -1209,6 +1209,7 @@ static Key keys[] = {
 #endif // FULLSCREEN_PATCH
 #if STICKY_PATCH
     {MODKEY, XK_z, togglesticky, {0}},
+    {MODKEY, XK_p, togglesticky, {0}},
 #endif // STICKY_PATCH
 #if SCRATCHPAD_ALT_1_PATCH
     {MODKEY, XK_minus, scratchpad_show, {0}},

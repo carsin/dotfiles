@@ -19,24 +19,24 @@ dwm_network() {
 
     if [ "$tx" = '0' ]; then
         if [ $((TOG % 2)) -eq 0 ]; then
-            DOWN_ICON='•'
-        else
-            DOWN_ICON='∙'
-        fi
-        to=''
-    else
-        DOWN_ICON='↓'
-        to="$(numfmt --to=iec "$tx") "
-    fi
-    if [ "$rx" = '0' ]; then
-        if [ $((TOG % 2)) -eq 0 ]; then
             UP_ICON='•'
         else
             UP_ICON='∙'
         fi
-        ro=''
+        to=''
     else
         UP_ICON='↑'
+        to="$(numfmt --to=iec "$tx") "
+    fi
+    if [ "$rx" = '0' ]; then
+        if [ $((TOG % 2)) -eq 0 ]; then
+            DOWN_ICON='•'
+        else
+            DOWN_ICON='∙'
+        fi
+        ro=''
+    else
+        DOWN_ICON='↓'
         ro="$(numfmt --to=iec "$rx") "
     fi
 
