@@ -379,12 +379,12 @@ return packer.startup({
 			requires = { "nvim-lua/plenary.nvim" },
 		})
 
-		-- use({ -- better quick fix buffer
-		-- 	"kevinhwang91/nvim-bqf",
-		-- 	config = function()
-		-- 		require("settings.bqf")
-		-- 	end,
-		-- })
+		use({ -- better quick fix buffer
+			"kevinhwang91/nvim-bqf",
+			config = function()
+				require("settings.bqf")
+			end,
+		})
 
 		-- ############## DUNGEON -- HERE LIE TEMP, OLD & DEPRECATED PLUGINS ##################
 		-- use({ -- keep windows in position
