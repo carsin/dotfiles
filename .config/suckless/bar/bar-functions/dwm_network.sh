@@ -43,7 +43,8 @@ dwm_network() {
     printf "%s" "$SEP1"
     if [ "$IDENTIFIER" = "unicode" ]; then
         # printf "%s%4sB %s%4sB" "$DOWN_ICON" "$(numfmt --to=iec "$rx")" "$UP_ICON" "$(numfmt --to=iec "$tx")"
-        printf "%s%s %s%s" "$ro" "$DOWN_ICON" "$to"  "$UP_ICON"
+        printf "%s%3s %s%3s" "$ro" "$DOWN_ICON" "$to"  "$UP_ICON"
+        # printf "%s%s %s%s" "$ro" "$DOWN_ICON" "$to"  "$UP_ICON"
     fi
     printf "%s" "$SEP2"
 }

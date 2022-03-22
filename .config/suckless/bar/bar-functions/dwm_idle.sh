@@ -10,6 +10,7 @@ dwm_idle() {
         #     ICON="ﮫ"
         # fi
 
+        # TODO: extend to 8 
         if [ "$TOG" == 1 ]; then
             ICON="┤"
         elif [[ "$TOG" == 2 ]]; then

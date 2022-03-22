@@ -29,7 +29,7 @@ parallelize() {
 parallelize &
 
 while true; do
-    if [ "$TOG" -lt 6 ]; then
+    if [ "$TOG" -lt 6 ]; then # TODO: extend to 8 
         TOG=$((TOG + 1))
         export TOG
     else

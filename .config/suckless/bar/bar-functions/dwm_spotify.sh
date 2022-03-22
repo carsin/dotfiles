@@ -1,12 +1,4 @@
-#!/bin/sh
-
-# A dwm_bar function that shows the current artist, track, duration, and status from Spotify using playerctl
-# Joe Standring <git@joestandring.com>
-# GNU GPLv3
-
-# Dependencies: spotify/spotifyd, playerctl
-
-# NOTE: The official spotify client does not provide the track position or shuffle status through playerctl. This does work through spotifyd however.
+#!/bin/bash
 
 dwm_spotify () {
     if ps -C spotify > /dev/null; then
@@ -16,10 +8,44 @@ dwm_spotify () {
     elif ps -C ncspot > /dev/null; then
         PLAYER="ncspot"
     fi
+    
+    # TODO: extend to 8 
+    # if [ "$TOG" == 1 ]; then
+    #     ANIM_ICON="⣷ "
+    # elif [[ "$TOG" == 2 ]]; then
+    #     ANIM_ICON="⣯ "
+    # elif [[ "$TOG" == 3 ]]; then
+    #     ANIM_ICON="⣟ "
+    # elif [[ "$TOG" == 4 ]]; then
+    #     ANIM_ICON="⢿ "
+    # elif [[ "$TOG" == 5 ]]; then
+    #     ANIM_ICON="⣻ "
+    # elif [[ "$TOG" == 6 ]]; then
+    #     ANIM_ICON="⣽ "
+    # fi
+    
+    if [ "$TOG" == 1 ]; then
+        # ⬒ ⬔ ⬓ ⬕	
+        # ⬖ ⬘ ⬗ ⬙	
+        # ◜ ◝ ◞ ◟	
+        ANIM_ICON="◜"
+    elif [[ "$TOG" == 2 ]]; then
+        ANIM_ICON="◝"
+    elif [[ "$TOG" == 3 ]]; then
+        ANIM_ICON="◞"
+    elif [[ "$TOG" == 4 ]]; then
+        ANIM_ICON="◟"
+    elif [[ "$TOG" == 5 ]]; then
+        ANIM_ICON="◞"
+    elif [[ "$TOG" == 6 ]]; then
+        ANIM_ICON="◝"
+    fi
 
     if [ "$PLAYER" = "spotify" ] || [ "$PLAYER" = "spotifyd" ] || [ "$PLAYER" = "ncspot" ]; then
-        ARTIST=$(playerctl --player="$PLAYER" metadata artist)
-        TRACK=$(playerctl --player="$PLAYER" metadata title)
+        # get info and shorten artist/track to 25 char
+        ARTIST=$(playerctl --player="$PLAYER" metadata artist | sed 's/\(.\{25\}\).*/\1…/')
+        TRACK=$(playerctl --player="$PLAYER" metadata title | sed 's/\(.\{25\}\).*/\1…/')
+        
         # POSITION=$(playerctl --player="$PLAYER" position | sed 's/..\{6\}$//')
         # DURATION=$(playerctl --player="$PLAYER"metadata mpris:length | sed 's/.\{6\}$//')
         STATUS=$(playerctl --player="$PLAYER" status)
@@ -52,7 +78,7 @@ dwm_spotify () {
         fi
         
         if [ "$STATUS" = "Playing" ]; then
-            printf "%s%s - %s" "$SEP1" "$ARTIST" "$TRACK"
+            printf "%s%s %s %s" "$SEP1" "$ARTIST" "$ANIM_ICON" "$TRACK" 
             # printf " %0d:%02d/" $((POSITION%3600/60)) $((POSITION%60))
             # printf "%0d:%02d" $((DURATION%3600/60)) $((DURATION%60))
             printf "%s " "$SEP2"
