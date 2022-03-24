@@ -43,7 +43,7 @@ while true; do
     upperbar="$upperbar$(dwm_network) "
     upperbar="$upperbar$(dwm_resources) "
     upperbar="$upperbar$(dwm_battery)"
-    WEATHER=${__DWM_BAR_WEATHER__/${__DWM_BAR_WEATHER__:1:3}/} # strip broken char
+    WEATHER=${__DWM_BAR_WEATHER__/${__DWM_BAR_WEATHER__:1:2}/} # strip broken char
     WEATHER=$(echo "$WEATHER" | tr -d F+) # remove fahrenheight&+ indicator chars
     if [ "$WEATHER" != "" ]; then
         upperbar="$upperbar$WEATHER"

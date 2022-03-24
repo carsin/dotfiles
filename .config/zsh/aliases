@@ -131,6 +131,8 @@ alias pwrestart="systemctl --user restart pipewire.service pipewire.socket pipew
 alias battery='acpi'
 alias ctrl='setxkbmap -option ctrl:nocaps'
 alias webcam='guvcview -e --gui=none -d /dev/video2 -a none -c read -F 30 -x 1280x960'
+alias webcam1='guvcview -e --gui=none -d /dev/video1 -a none -c read -F 30 -x 1280x960'
+alias webcam0='guvcview -e --gui=none -d /dev/video0 -a none -c read -F 30 -x 1280x960'
 alias playmic='pactl load-module module-loopback latency-msec=0'
 alias unplaymic='pactl unload-module module-loopback'
 

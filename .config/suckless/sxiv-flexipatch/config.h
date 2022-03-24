@@ -101,6 +101,8 @@ static const keymap_t keys[] = {
 	{ 0,            XK_KP_Add,        g_zoom,               +1 },
 	{ 0,            XK_minus,         g_zoom,               -1 },
 	{ 0,            XK_KP_Subtract,   g_zoom,               -1 },
+	{ 0,            XK_period,        g_zoom,               +1 },
+	{ 0,            XK_comma,         g_zoom,               -1 },
 	{ 0,            XK_m,             g_toggle_image_mark,  None },
 	{ 0,            XK_M,             g_mark_range,         None },
 	{ ControlMask,  XK_m,             g_reverse_marks,      None },
