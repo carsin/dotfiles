@@ -1,0 +1,56 @@
+# [global]
+# progress_full_character = "="
+# progress_empty_character = "="
+# progress_prefix = "["
+# progress_suffix = "]"
+# time_format = "%Y-%m-%d %H:%M:%S"
+
+[banner]
+color = "green"
+# command = "hostname | figlet -f slant"
+command = "cowsay $(fortune -n 600 -s)"
+# if you don't want a dependency on figlet, you can generate your
+# banner however you want, put it in a file, and then use something like:
+# command = "cat banner.txt"
+
+# [weather]
+# url = "https://wttr.in/San+Luis+Obispo?0"
+# proxy = "http://proxy:8080"
+
+# [service_status]
+# Accounts = "accounts-daemon"
+# Cron = "cron"
+
+# [docker_status]
+# Local containers MUST start with a slash
+# https://github.com/moby/moby/issues/6705
+# "/nextcloud-nextcloud-1" = "Nextcloud"
+# "/nextcloud-nextcloud-mariadb-1" = "Nextcloud Database"
+
+[user_service_status]
+gpg-agent = "gpg-agent"
+
+# [ssl_certificates]
+# sort_method = "manual"
+#
+#    [ssl_certificates.certs]
+#    CertName1 = "/path/to/cert1.pem"
+#    CertName2 = "/path/to/cert2.pem"
+
+[filesystems]
+root = "/"
+
+[memory]
+swap_pos = "beside" # or "below" or "none"
+
+# [fail_2_ban]
+# jails = ["sshd", "anotherjail"]
+
+# [last_login]
+# sally = 2
+# jimmy = 1
+
+[uptime]
+prefix = "up"
+
+[last_run]

@@ -3,7 +3,7 @@
 dwm_date() {
     printf "%s" "$SEP1"
     # different anims based on hour
-    if [ "$(($(date +'%H') % 2))" -eq 0 ]; then
+    if [ "$(($(date +'%-H') % 2))" == 0 ]; then
         # anim 1: subtle flutter
         if [ "$TOG" == 1 ]; then
             ICON=":"
@@ -44,7 +44,7 @@ dwm_date() {
             ICON2="-"
         fi
     fi
-    DATESTR="$(date "+%-I:%M:%S %p %-m/%-d/%Y %a ")"
+    DATESTR="$(date '+%-I:%M:%S %p %-m/%-d/%Y %a ')"
     DATESTR=$(echo "$DATESTR" | tr : "$ICON" | tr / "$ICON2")
     printf " %s" "$DATESTR"
     # percentage of day complete
@@ -53,7 +53,7 @@ dwm_date() {
     if [ "$DAYPERCENT" = "" ]; then
         DAYPERCENT=0
     fi
-    if [ "$TOG" -eq 5 ]; then
+    if [ "$TOG" == 5 ]; then
         printf "%0.5s%%" "$DAYPERCENT"
     else
         printf "%0.4s%%" "$DAYPERCENT"
