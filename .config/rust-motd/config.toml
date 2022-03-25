@@ -6,7 +6,7 @@
 # time_format = "%Y-%m-%d %H:%M:%S"
 
 [banner]
-color = "green"
+color = "yellow"
 # command = "hostname | figlet -f slant"
 command = "cowsay $(fortune -n 600 -s)"
 # if you don't want a dependency on figlet, you can generate your
@@ -28,7 +28,7 @@ command = "cowsay $(fortune -n 600 -s)"
 # "/nextcloud-nextcloud-mariadb-1" = "Nextcloud Database"
 
 [user_service_status]
-gpg-agent = "gpg-agent"
+gpg-agent = "gpg-connect-agent"
 
 # [ssl_certificates]
 # sort_method = "manual"

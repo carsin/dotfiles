@@ -223,9 +223,12 @@ nnoremap <leader>gd <cmd>Gdiff<cr>
 xmap ga <Plug>(EasyAlign)
 nmap ga <Plug>(EasyAlign)
 
-" Lightspeed
+" Lightspeed jetpack
 nmap s <Plug>Lightspeed_omni_s
+" cross window navigation
 nmap gs <Plug>Lightspeed_omni_gs
+nmap gS <Plug>Lightspeed_omni_gS
+" inline f/t replacer
 nmap <expr> f reg_recording() . reg_executing() == "" ? "<Plug>Lightspeed_f" : "f"
 nmap <expr> F reg_recording() . reg_executing() == "" ? "<Plug>Lightspeed_F" : "F"
 nmap <expr> t reg_recording() . reg_executing() == "" ? "<Plug>Lightspeed_t" : "t"
