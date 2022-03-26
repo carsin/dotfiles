@@ -1,7 +1,6 @@
 #!/bin/bash
 
 dwm_date() {
-    printf "%s" "$SEP1"
     # different anims based on hour
     if [ "$(($(date +'%-H') % 2))" == 0 ]; then
         # anim 1: subtle flutter
@@ -46,7 +45,7 @@ dwm_date() {
     fi
     DATESTR="$(date '+%-I:%M:%S %p %-m/%-d/%Y %a ')"
     DATESTR=$(echo "$DATESTR" | tr : "$ICON" | tr / "$ICON2")
-    printf " %s" "$DATESTR"
+    printf "%s" "$DATESTR"
     # percentage of day complete
     # DAYPERCENT=$(echo "($(date -d "1970-01-01 UTC $(date +%T)" +%s)/86400)*100" | bc -l | sed 's/\..*//')
     DAYPERCENT=$(echo "($(date -d "1970-01-01 UTC $(date +%T)" +%s)/86400)*100" | bc -l)

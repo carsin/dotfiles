@@ -3,13 +3,13 @@
 #video input width
 width=1280
 #video input height
-height=720
+height=960
 #video input format
 v4l2_format=842094158
 #video input capture method
-capture=mmap
+capture=read
 #audio api
-audio=port
+audio=none
 #gui api
 gui=none
 #render api
@@ -39,7 +39,7 @@ fps_num=1
 #fps denominator (def. 25)
 fps_denom=30
 #audio device index (-1 - api default)
-audio_device=8
+audio_device=0
 #video fx mask 
 video_fx=0x0
 #audio fx mask 

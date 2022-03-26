@@ -17,7 +17,7 @@ dwm_battery () {
                 printf " %s" "$CHARGE" 
             fi
         fi
-        printf "%s\n" "$SEP2 "
+        printf "%s" "$SEP2 "
     fi
 }
 
