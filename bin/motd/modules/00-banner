@@ -5,4 +5,4 @@ source "$BASE_DIR/framework.sh"
 
 hostname=${HOSTNAME:-$(hostname)}
 
-print_columns "" "${CA}$(figlet -w $WIDTH -c -p -f /usr/share/figlet/fonts/slant.flf $hostname)${CN}"
+print_columns "" "${CA}$(figlet -w $WIDTH -p -f /usr/share/figlet/fonts/slant.flf $hostname)${CN}"

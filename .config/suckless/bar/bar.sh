@@ -18,15 +18,15 @@ export SEP2=" │"
 . "$DIR/bar-functions/dwm_date.sh"
 
 # TODO: fix weather only updating on initial run
-parallelize() {
-    while true;
-    do
-        # printf "running parallel processes\n"
-        dwm_weather &
-        sleep 20
-    done
-}
-parallelize &
+# parallelize() {
+#     while true;
+#     do
+#         # printf "running parallel processes\n"
+#         dwm_weather &
+#         sleep 20
+#     done
+# }
+# parallelize &
 
 while true; do
     if [ "$TOG" -lt 6 ]; then # TODO: extend to 8 
@@ -43,11 +43,11 @@ while true; do
     upperbar="$upperbar$(dwm_network) "
     upperbar="$upperbar$(dwm_resources) "
     upperbar="$upperbar$(dwm_battery)"
-    WEATHER=${__DWM_BAR_WEATHER__/${__DWM_BAR_WEATHER__:1:2}/} # strip broken char
-    WEATHER=$(echo "$WEATHER" | tr -d F+) # remove fahrenheight&+ indicator chars
-    if [ "$WEATHER" != "" ]; then
-        upperbar="$upperbar$WEATHER"
-    fi
+    # WEATHER=${__DWM_BAR_WEATHER__/${__DWM_BAR_WEATHER__:1:2}/} # strip broken char
+    # WEATHER=$(echo "$WEATHER" | tr -d F+) # remove fahrenheight&+ indicator chars
+    # if [ "$WEATHER" != "" ]; then
+    #     upperbar="$upperbar$WEATHER"
+    # fi
     # upperbar="$upperbar$__DWM_BAR_WEATHER__"
     upperbar="$upperbar$(dwm_date)"
     xsetroot -name "$upperbar"
