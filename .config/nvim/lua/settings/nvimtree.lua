@@ -46,7 +46,6 @@ require("nvim-tree").setup({
 	open_on_setup = false,
 	tree_ignore = { ".git", "node_modules", "target" },
 	ignore_ft_on_setup = { "startify" }, -- will not open on setup if the filetype is in this list
-	auto_close = true, -- closes neovim automatically when the tree is the last **WINDOW** in the view
 	open_on_tab = false, -- opens the tree when changing/opening a new tab if the tree wasn't previously opened
 	update_to_buf_dir = { -- hijacks new directory buffers when they are opened.
 		enable = false,

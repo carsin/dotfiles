@@ -237,6 +237,9 @@ telescope.setup({
 			},
 			n = {
 				["<Esc>"] = actions.close,
+				["<C-q>"] = actions.close,
+				["q"] = actions.close,
+				["Q"] = actions.close,
 				["<tab>"] = actions.toggle_selection + actions.move_selection_next,
 				["<s-tab>"] = actions.toggle_selection + actions.move_selection_previous,
 			},

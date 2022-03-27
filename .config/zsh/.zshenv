@@ -31,3 +31,4 @@ export ZK_NOTEBOOK_DIR=/home/carson/files/docs/wiki
 export LIBVA_DRIVER_NAME=vdpau
 export VDPAU_DRIVER=nvidia
 export COLORTERM=truecolor
+export GOPATH=~/files/dev/projects/go

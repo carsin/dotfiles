@@ -73,7 +73,11 @@ alias lg="lazygit"
 alias nf="neofetch"
 # alias ff="fastfetch"
 alias fff="fastfetch"
-alias ff="fastfetch && tput setaf 6; fortune -n 400 -s | cowsay; tput sgr0"
+# random cow and fortune
+function randomCowsay {
+    cowsay -W 60 -f $(cowsay -l | sed '1d' | tr ' ' '\n' | sort -R | head -1)
+}
+alias ff="fastfetch && tput setaf 6; fortune -n 400 -s | randomCowsay; tput sgr0"
 # alias ff="~/bin/motd/motd.sh"
 alias zath="zathura"
 alias e="nvim"
@@ -134,6 +138,7 @@ alias pmrestart="systemctl --user restart pipewire.service pipewire.socket pipew
 alias pwrestart="systemctl --user restart pipewire.service pipewire.socket pipewire-pulse.socket"
 alias battery='acpi'
 alias ctrl='setxkbmap -option ctrl:nocaps'
+alias webcam='guvcview -e --gui=none -d /dev/video0 -a none -c read -F 30 -x 1280x960'
 alias webcam1='guvcview -e --gui=none -d /dev/video0 -a none -c read -F 30 -x 1280x960'
 alias webcam2='guvcview -e --gui=none -d /dev/video1 -a none -c read -F 30 -x 1280x960'
 alias webcam3='guvcview -e --gui=none -d /dev/video2 -a none -c read -F 30 -x 1280x960'
