@@ -121,7 +121,7 @@
 /* This patch adds a clickable button to the left hand side of the statusbar.
  * https://dwm.suckless.org/patches/statusbutton/
  */
-#define BAR_STATUSBUTTON_PATCH 1
+#define BAR_STATUSBUTTON_PATCH 0
 
 /* This patch adds the ability to execute shell commands based on the mouse button and position
  * when clicking the status bar. Refer to the website for usage.

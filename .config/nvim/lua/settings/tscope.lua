@@ -255,6 +255,7 @@ telescope.load_extension("zoxide")
 telescope.load_extension("env")
 telescope.load_extension("ui-select")
 telescope.load_extension("zf-native")
+telescope.load_extension('harpoon')
 -- telescope.load_extension('sessions')
 -- telescope.load_extension('notify')
 return M

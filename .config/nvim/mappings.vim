@@ -265,10 +265,12 @@ nnoremap <leader>d <cmd>TroubleToggle workspace_diagnostics<cr>
 " Bufferline
 nnoremap <silent>[b :BufferLineCyclePrev<CR>
 nnoremap <silent>]b :BufferLineCycleNext<CR>
-nnoremap <leader>h :BufferLineCyclePrev<CR>
-nnoremap <leader>l :BufferLineCycleNext<CR>
-nnoremap <leader>H :BufferLineMovePrev<CR>
-nnoremap <leader>L :BufferLineMoveNext<CR>
+nnoremap <silent>[B :BufferLineMovePrev<CR>
+nnoremap <silent>]B :BufferLineMoveNext<CR>
+" nnoremap <leader>h :BufferLineCyclePrev<CR>
+" nnoremap <leader>l :BufferLineCycleNext<CR>
+" nnoremap <leader>H :BufferLineMovePrev<CR>
+" nnoremap <leader>L :BufferLineMoveNext<CR>
 " Switch to buffer
 nnoremap <silent> <leader>1 <Cmd>BufferLineGoToBuffer 1<CR>
 nnoremap <silent> <leader>2 <Cmd>BufferLineGoToBuffer 2<CR>
@@ -360,3 +362,7 @@ nnoremap <silent> <F10> :call asyncrun#quickfix_toggle(7)<cr>
 "
 " -- nvim-dap-ui
 " map('n', '<leader>mui', '<cmd>lua require"dapui".toggle()<CR>')
+ 
+" harpoon
+nnoremap <leader>h <cmd>lua require("harpoon.ui").toggle_quick_menu()<cr>
+nnoremap <leader>H <cmd>lua require("harpoon.mark").add_file()<cr>

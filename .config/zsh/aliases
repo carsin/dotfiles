@@ -89,6 +89,7 @@ alias fastfetch='fastfetch --load-config /home/carson/.config/fastfetch/config.c
 alias reddit="tuir"
 alias doom="~/.emacs.d/bin/doom"
 alias rtv="tuir"
+alias ncdu="gdu"
 alias pomo="pomo -p /home/carson/.config/pomo/config.json"
 alias ps1="pomo -p /home/carson/.config/pomo/config.json b 1"
 alias ps2="pomo -p /home/carson/.config/pomo/config.json b 2"

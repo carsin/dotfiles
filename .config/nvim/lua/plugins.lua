@@ -57,6 +57,7 @@ return packer.startup({
 		use("nathom/filetype.nvim")
 		use("mbbill/undotree")
 		use("RRethy/vim-illuminate") -- highlight matches of symbol under cursor
+		use("ThePrimeagen/harpoon")
 
 		use({ -- zettlekasten
 			"mickael-menu/zk-nvim",

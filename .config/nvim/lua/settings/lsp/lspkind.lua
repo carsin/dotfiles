@@ -25,8 +25,8 @@ M.icons = {
   Constant = "",
   -- Struct = "",
 	Struct = "פּ",
-  -- Event = "",
-	Event = "",
+  -- Event = "",
+	Event = "",
   Operator = "",
   TypeParameter = ""
 }
