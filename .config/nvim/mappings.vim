@@ -364,5 +364,5 @@ nnoremap <silent> <F10> :call asyncrun#quickfix_toggle(7)<cr>
 " map('n', '<leader>mui', '<cmd>lua require"dapui".toggle()<CR>')
  
 " harpoon
-nnoremap <leader>h <cmd>lua require("harpoon.ui").toggle_quick_menu()<cr>
-nnoremap <leader>H <cmd>lua require("harpoon.mark").add_file()<cr>
+nnoremap <C-f> <cmd>lua require("harpoon.ui").toggle_quick_menu()<cr>
+nnoremap <leader>F <cmd>lua require("harpoon.mark").add_file()<cr>

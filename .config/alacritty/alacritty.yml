@@ -163,6 +163,10 @@ colors:
   #   magenta: '0xebdbb2'
   #   cyan:    '0xd65d0e'
   #   white:   '0xfbf1c7'
+  #   
+mappings:
+    - { key: E, mods:  Control|Shift, chars: "\x1b[69;5u" }
+    
       
 import:
   - /home/carson/.cache/wal/colors-alacritty.yml
