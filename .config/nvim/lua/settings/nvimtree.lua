@@ -83,6 +83,7 @@ require("nvim-tree").setup({
 			-- list of mappings to set on the tree manually
 			list = {
 				{ key = "<C-b>", action = "split" },
+				{ key = "<Esc>", action = "quit" },
 			},
 		},
 	},

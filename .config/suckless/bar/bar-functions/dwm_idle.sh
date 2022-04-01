@@ -25,16 +25,15 @@ dwm_idle() {
             ICON="┬"
         fi
 
-        #  TODO: icon animation
         i=$((IDLE / 1000))
         ((sec = i % 60, i /= 60, min = i % 60, hrs = i / 60))
-        if [[ i -ge 3600 ]]; then
+        if [[ $IDLE -ge 3600000 ]]; then #
             printf "%s " "$ICON"
-            printf "%dh %dm %ds" $hrs $min $sec
+            printf "%dh %dm %ds " $hrs $min $sec
             printf "%s" "$SEC2"
-        elif [[ i -ge 60 ]]; then
+        elif [[ $IDLE -ge 60000 ]]; then # minute
             printf "%s " "$ICON"
-            printf "%dm %ds" $min $sec
+            printf "%dm %ds " $min $sec
             printf "%s" "$SEC2"
         else
             printf "%s %ds%s " "$ICON" "$sec" "$SEP2"

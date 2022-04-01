@@ -1,5 +1,7 @@
 #!/bin/bash
 
+ANIM=0
+
 dwm_spotify () {
     if ps -C spotify > /dev/null; then
         PLAYER="spotify"
@@ -24,28 +26,33 @@ dwm_spotify () {
     #     ANIM_ICON="⣽ "
     # fi
     
-    if [ "$TOG" == 1 ]; then
-        # ⬒ ⬔ ⬓ ⬕	
-        # ⬖ ⬘ ⬗ ⬙	
-        # ◜ ◝ ◞ ◟	
-        ANIM_ICON="◜"
-    elif [[ "$TOG" == 2 ]]; then
-        ANIM_ICON="◝"
-    elif [[ "$TOG" == 3 ]]; then
-        ANIM_ICON="◞"
-    elif [[ "$TOG" == 4 ]]; then
-        ANIM_ICON="◟"
-    elif [[ "$TOG" == 5 ]]; then
-        ANIM_ICON="◞"
-    elif [[ "$TOG" == 6 ]]; then
-        ANIM_ICON="◝"
+    
+    if [ "$ANIM" == 1 ]; then
+        if [ "$TOG" == 1 ]; then
+            # ⬒ ⬔ ⬓ ⬕	
+            # ⬖ ⬘ ⬗ ⬙	
+            # ◜ ◝ ◞ ◟	
+            ANIM_ICON="◜"
+        elif [[ "$TOG" == 2 ]]; then
+            ANIM_ICON="◝"
+        elif [[ "$TOG" == 3 ]]; then
+            ANIM_ICON="◞"
+        elif [[ "$TOG" == 4 ]]; then
+            ANIM_ICON="◟"
+        elif [[ "$TOG" == 5 ]]; then
+            ANIM_ICON="◞"
+        elif [[ "$TOG" == 6 ]]; then
+            ANIM_ICON="◝"
+        fi
+    else
+        ANIM_ICON="-"
     fi
+        
 
     if [ "$PLAYER" = "spotify" ] || [ "$PLAYER" = "spotifyd" ] || [ "$PLAYER" = "ncspot" ]; then
         # get info and shorten artist/track to 25 char
         ARTIST=$(playerctl --player="$PLAYER" metadata artist | sed 's/\(.\{25\}\).*/\1…/')
         TRACK=$(playerctl --player="$PLAYER" metadata title | sed 's/\(.\{25\}\).*/\1…/')
-        
         # POSITION=$(playerctl --player="$PLAYER" position | sed 's/..\{6\}$//')
         # DURATION=$(playerctl --player="$PLAYER"metadata mpris:length | sed 's/.\{6\}$//')
         STATUS=$(playerctl --player="$PLAYER" status)
