@@ -1,5 +1,4 @@
 vim.g.nvim_tree_indent_markers = 1
-vim.g.nvim_tree_width = 30
 vim.g.nvim_tree_respect_buf_cwd = 1
 vim.g.nvim_tree_add_trailing = 1
 vim.g.tree_git_hl = 1

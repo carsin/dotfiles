@@ -61,9 +61,9 @@ nnoremap cp vap:t'><CR>
 inoremap <C-v> <C-r>*
 
 " Split binds
-nnoremap <leader>v :vsplit<CR>
+" nnoremap <leader>v :vsplit<CR>
 nnoremap <silent> <C-v> :vsplit<CR>
-nnoremap <leader>b :split<CR>
+" nnoremap <leader>b :split<CR>
 nnoremap <silent> <C-b> :split<CR>
 
 " Close window
@@ -290,9 +290,14 @@ nnoremap <leader>d <cmd>TroubleToggle workspace_diagnostics<cr>
 nnoremap <silent><leader>q <Cmd>:Bdelete<CR><Cmd>:bp<CR>
 " nnoremap <silent><leader>q <Cmd>:silent Bdelete!<CR>
 
-" Tree
-nnoremap <C-e> :NvimTreeToggle<CR>
-nnoremap <leader>e :NvimTreeToggle<CR>
+" nvim-tree
+" nnoremap <C-e> :NvimTreeToggle<CR>
+" nnoremap <leader>e :NvimTreeToggle<CR>
+
+" neotree
+nnoremap <Leader>e :Neotree source=filesystem reveal=true<CR>
+" nnoremap <Leader>E :Neotree show=true position=left<CR>
+nnoremap <leader>b :Neotree float buffers<CR>
 
 " TrueZen
 nnoremap <leader>zz <cmd>:silent TZAtaraxis<cr><cmd>set rnu<cr><cmd>set nu<cr>
