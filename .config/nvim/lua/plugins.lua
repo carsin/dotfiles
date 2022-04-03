@@ -204,13 +204,14 @@ return packer.startup({
 			end,
 		})
 
-		use({ -- bufferline
-			"akinsho/bufferline.nvim",
-			requires = "kyazdani43/nvim-web-devicons",
-			config = function()
-				require("settings.bufferline")
-			end,
-		})
+		-- use({ -- bufferline
+		-- 	"akinsho/bufferline.nvim",
+		-- 	requires = "kyazdani43/nvim-web-devicons",
+		-- 	config = function()
+		-- 		require("settings.bufferline")
+		-- 	end,
+		-- })
+    
 		use({ -- nvim tree
 			"kyazdani42/nvim-tree.lua",
 			config = function()

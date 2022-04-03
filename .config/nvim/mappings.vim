@@ -57,7 +57,6 @@ nnoremap C "_C
 " Clone paragraph
 nnoremap cp vap:t'><CR>
 
-"
 " Paste in insert mode
 inoremap <C-v> <C-r>*
 
@@ -367,3 +366,10 @@ nnoremap <silent> <F10> :call asyncrun#quickfix_toggle(7)<cr>
 nnoremap <C-f> <cmd>lua require("harpoon.ui").toggle_quick_menu()<cr>
 nnoremap <C-e> <cmd>lua require("harpoon.ui").toggle_quick_menu()<cr>
 nnoremap <leader>F <cmd>lua require("harpoon.mark").add_file()<cr>
+nnoremap <leader>! <cmd>:lua require("harpoon.ui").nav_file(1)<cr>
+nnoremap <leader>@ <cmd>:lua require("harpoon.ui").nav_file(2)<cr>
+nnoremap <leader># <cmd>:lua require("harpoon.ui").nav_file(3)<cr>
+nnoremap <leader>$ <cmd>:lua require("harpoon.ui").nav_file(4)<cr>
+nnoremap <leader>% <cmd>:lua require("harpoon.ui").nav_file(5)<cr>
+nnoremap <leader>^ <cmd>:lua require("harpoon.ui").nav_file(6)<cr>
+nnoremap <leader>& <cmd>:lua require("harpoon.ui").nav_file(7)<cr>

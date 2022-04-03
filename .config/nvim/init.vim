@@ -144,7 +144,7 @@ set background=dark
 
 " set t_Co=256
 
-set showtabline=2        " Show top tab line
+set showtabline=0        " Show top tab line
 set cursorline
 set so=7                 " How many lines from cursor to top / bottom of the screen before scrolling
 set number               " file line numbering
