@@ -126,6 +126,8 @@ alias define="dict"
 alias dic="dict"
 alias tempmail="tmpmail"
 alias via="sudo via --no-sandbox"
+alias kanban="kabmat"
+alias km="km"
 
 # scripts
 alias laptop="/home/carson/bin/displays/laptop.sh"

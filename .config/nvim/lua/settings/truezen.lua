@@ -51,7 +51,7 @@ true_zen.setup({
 		galaxyline = false,
 		tmux = false,
 		gitsigns = true,
-		nvim_bufferline = true,
+		nvim_bufferline = false,
 		limelight = false,
 		twilight = false,
 		vim_airline = false,
