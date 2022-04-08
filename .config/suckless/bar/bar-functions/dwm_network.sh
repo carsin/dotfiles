@@ -16,7 +16,6 @@ dwm_network() {
     rx=$(update /sys/class/net/[ew]*/statistics/rx_bytes)
     tx=$(update /sys/class/net/[ew]*/statistics/tx_bytes)
 
-
     if [ "$tx" = '0' ]; then
         if [ $((TOG % 2)) -eq 0 ]; then
             UP_ICON='•'
@@ -41,11 +40,9 @@ dwm_network() {
     fi
 
     printf "%s" "$SEP1"
-    if [ "$IDENTIFIER" = "unicode" ]; then
-        # printf "%s%4sB %s%4sB" "$DOWN_ICON" "$(numfmt --to=iec "$rx")" "$UP_ICON" "$(numfmt --to=iec "$tx")"
-        printf "%s%3s %s%3s" "$ro" "$DOWN_ICON" "$to"  "$UP_ICON"
-        # printf "%s%s %s%s" "$ro" "$DOWN_ICON" "$to"  "$UP_ICON"
-    fi
+    # printf "%s%4sB %s%4sB" "$DOWN_ICON" "$(numfmt --to=iec "$rx")" "$UP_ICON" "$(numfmt --to=iec "$tx")"
+    printf " %s%3s %s%3s" "$ro" "$DOWN_ICON" "$to" "$UP_ICON"
+    # printf "%s%s %s%s" "$ro" "$DOWN_ICON" "$to"  "$UP_ICON"
     printf "%s" "$SEP2"
 }
 
