@@ -29,11 +29,11 @@ dwm_idle() {
         ((sec = i % 60, i /= 60, min = i % 60, hrs = i / 60))
         if [[ $IDLE -ge 3600000 ]]; then # hour
             printf "%s " "$ICON"
-            printf "%dh %dm %ds " $hrs $min $sec
+            printf "%dh %dm %ds" $hrs $min $sec
             printf "%s" "$SEP2"
         elif [[ $IDLE -ge 60000 ]]; then # minute
             printf "%s " "$ICON"
-            printf "%dm %ds " $min $sec
+            printf "%dm %ds" $min $sec
             printf "%s" "$SEP2"
         else
             printf "%s %ds%s " "$ICON" "$sec" "$SEP2"
