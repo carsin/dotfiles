@@ -19,7 +19,6 @@ alias lt='ls --tree'
 alias mv="mv -iv"
 alias rm="rm -v"
 alias bc="bc -ql"
-alias find="fd"
 alias mkdir="mkdir -pv"
 alias grep="grep --color=auto"
 alias diff="diff --color=auto"
