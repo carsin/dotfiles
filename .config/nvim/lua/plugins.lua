@@ -356,13 +356,6 @@ return packer.startup({
 			end,
 		})
 
-		use({ -- pretty folding
-			"anuvyklack/pretty-fold.nvim",
-			config = function()
-				require("settings.prettyfold")
-			end,
-		})
-
 		use({ -- symboloutline column
 			"simrat39/symbols-outline.nvim",
 			config = function()
@@ -398,6 +391,13 @@ return packer.startup({
 			"kevinhwang91/nvim-bqf",
 			config = function()
 				require("settings.bqf")
+			end,
+		})
+
+		use({ -- pretty folding
+			"anuvyklack/pretty-fold.nvim",
+			config = function()
+				require("settings.prettyfold")
 			end,
 		})
 

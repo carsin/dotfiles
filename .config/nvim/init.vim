@@ -156,7 +156,8 @@ set noeb vb t_vb=        " no visual bell or beeping
 set ruler                " Always show current position
 set magic                " For regular expressions turn magic on
 set noshowmode           " Remove redundant status bar elements
-" set nofoldenable       " Don't autofold code
+set foldenable           " autofold code
+" set nofoldenable         " Don't autofold code
 set foldlevel=99         " Don't autofold past a certain ident level
 set linespace=0          " No extra space between lines
 set laststatus=2         " Show statusline
@@ -186,9 +187,6 @@ set completeopt=menu,menuone,noselect
 " Avoid showing extra messages when using completion
 set shortmess+=c
 
-" Fold with treesitter
-set foldmethod=expr
-set foldexpr=nvim_treesitter#foldexpr()
 
 " Show / hide cursorline in normal and insert
 augroup dynamicnumbers
@@ -199,8 +197,10 @@ augroup dynamicnumbers
   autocmd BufLeave,FocusLost,InsertEnter,WinLeave   * if &ft != "alpha" && &nu                  | set nornu | set nocursorline | endif
 augroup END
 
+" Fold parsed langs with treesitter
+autocmd FileType norg,rust,lua setlocal foldmethod=expr foldexpr=nvim_treesitter#foldexpr()
 
-" Fold markdown based on header
+" Custom markdown folding:
 function MarkdownLevel()
   let h = matchstr(getline(v:lnum), '^#\+')
   if empty(h)
@@ -209,9 +209,8 @@ function MarkdownLevel()
     return ">" . len(h)
   endif
 endfunction
-"
-au BufEnter *.md setlocal foldexpr=MarkdownLevel()
 au BufEnter *.md setlocal foldmethod=expr
+au BufEnter *.md setlocal foldexpr=MarkdownLevel()
 
 " Highlight yank
 augroup highlight_yank

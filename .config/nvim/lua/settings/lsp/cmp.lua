@@ -40,7 +40,7 @@ cmp.setup({
 		["<C-Space>"] = cmp.mapping.complete(),
 		["<C-e>"] = cmp.mapping.close(),
 		["<CR>"] = cmp.mapping(function() -- smart pairs
-			if not cmp.confirm({ select = true }) then
+      if not cmp.confirm({ select = false }) then
 				require("pairs.enter").type()
 			end
 		end),
