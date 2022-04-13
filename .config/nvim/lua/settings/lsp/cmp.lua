@@ -133,9 +133,11 @@ cmp.setup({
 		end
 		return true
 	end,
-	documentation = {
-		border = nil,
-	},
+  window = {
+    documentation = {
+      border = nil,
+    },
+  },
 	experimental = {
 		ghost_text = true,
 	},

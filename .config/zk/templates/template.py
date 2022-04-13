@@ -26,10 +26,10 @@ def custom_strftime(format, t):
 
 # days since birth
 b_date = date(2002, 10, 6)
-c_date = date(2022, 4, 13)
+future_date = date(2022, 6, 10)
 t_date = date.today()
 dayno = t_date - b_date
-temptf = c_date - t_date
+temptf = future_date - t_date
 now = datetime.now()
 # display formatting
 timestart = now.strftime("%-I:%M %p")
@@ -49,7 +49,7 @@ date += (
     + str(daysInYear - dayOfYear)
     + " left ["
     + str(temptf.days)
-    + "TCF]"
+    + " TIL SUMMER]"
 )
 # count number of files with prefix 20*.md
 # dateshort = now.strftime("%a %m/%d/%Y").upper()
