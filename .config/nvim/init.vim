@@ -198,20 +198,8 @@ augroup dynamicnumbers
 augroup END
 
 " Fold parsed langs with treesitter
-autocmd FileType norg,rust,lua setlocal foldmethod=expr foldexpr=nvim_treesitter#foldexpr()
-
-" Custom markdown folding:
-function MarkdownLevel()
-  let h = matchstr(getline(v:lnum), '^#\+')
-  if empty(h)
-    return "="
-  else
-    return ">" . len(h)
-  endif
-endfunction
-au BufEnter *.md setlocal foldmethod=expr
-au BufEnter *.md setlocal foldexpr=MarkdownLevel()
-
+" autocmd FileType norg,rust,lua setlocal foldmethod=expr foldexpr=nvim_treesitter#foldexpr()
+" 
 " Highlight yank
 augroup highlight_yank
     autocmd!

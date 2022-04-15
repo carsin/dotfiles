@@ -128,6 +128,7 @@ alias tempmail="tmpmail"
 alias via="sudo via --no-sandbox"
 alias kanban="kabmat"
 alias km="kabmat"
+alias visual="/usr/local/bin/visual/VisUAL.sh"
 
 # scripts
 alias laptop="/home/carson/bin/displays/laptop.sh"

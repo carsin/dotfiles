@@ -401,6 +401,8 @@ return packer.startup({
 			end,
 		})
 
+    use 'ThePrimeagen/vim-be-good'
+
 		-- ############## DUNGEON -- HERE LIE TEMP, OLD & DEPRECATED PLUGINS ##################
 		-- use({ -- keep windows in position
 		-- 	"luukvbaal/stabilize.nvim",
