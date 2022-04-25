@@ -329,16 +329,7 @@ return packer.startup({
 				require("fidget").setup({})
 			end,
 		})
-
-		use({ -- help managing crates
-			"saecki/crates.nvim",
-			requires = { "nvim-lua/plenary.nvim" },
-			event = { "BufRead Cargo.toml" },
-			config = function()
-				require("crates").setup()
-			end,
-		})
-
+    
 		use({ -- rooter
 			"jedi2610/nvim-rooter.lua",
 			config = function()

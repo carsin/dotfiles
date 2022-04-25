@@ -7,9 +7,9 @@ null_ls.setup({
 		-- glob
 		-- builtins.code_actions.refactoring,
 		-- lua
-		builtins.formatting.stylua.with({
-			filetypes = { "lua" },
-		}),
+		-- builtins.formatting.stylua.with({
+		-- 	filetypes = { "lua" },
+		-- }),
 		-- builtins.diagnostics.selene.with({
 		-- 	filetypes = { "lua" },
 		-- }),
