@@ -45,7 +45,7 @@ return packer.startup({
 		use("skywind3000/asyncrun.vim") -- asynchronously run tasks such as make
 		use("tpope/vim-surround")
 		use("tpope/vim-repeat")
-		use("tpope/vim-fugitive")
+		-- use("tpope/vim-fugitive")
 		use("tpope/vim-unimpaired") -- handy ][ mappings that should be builtin
 		use("tpope/vim-sleuth") -- heurestically set indent & other buf opts
 		use("editorconfig/editorconfig-vim")

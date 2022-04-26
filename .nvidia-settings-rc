@@ -2,7 +2,7 @@
 # /home/carson/.nvidia-settings-rc
 #
 # Configuration file for nvidia-settings - the NVIDIA Settings utility
-# Generated on Fri Feb 11 17:47:23 2022
+# Generated on Mon Apr 25 20:13:36 2022
 #
 
 # ConfigProperties:
@@ -13,13 +13,13 @@ SliderTextEntries = Yes
 IncludeDisplayNameInConfigFile = No
 ShowQuitDialog = Yes
 UpdateRulesOnProfileNameChange = Yes
-Timer = Memory_Used_(GPU_0),Yes,3000
-Timer = Thermal_Monitor_(GPU_0),Yes,1000
 Timer = PowerMizer_Monitor_(GPU_0),Yes,1000
+Timer = Thermal_Monitor_(GPU_0),Yes,1000
+Timer = Memory_Used_(GPU_0),Yes,3000
 
 # Attributes:
 
-0/SyncToVBlank=1
+0/SyncToVBlank=0
 0/LogAniso=0
 0/FSAA=0
 0/TextureClamping=1
@@ -27,12 +27,8 @@ Timer = PowerMizer_Monitor_(GPU_0),Yes,1000
 0/AllowFlipping=1
 0/FSAAAppControlled=1
 0/LogAnisoAppControlled=1
-0/OpenGLImageSettings=2
+0/OpenGLImageSettings=3
 0/FSAAAppEnhanced=0
-0/AllowGSYNC=0
-0/AllowVRR=0
-0/ShowGSYNCVisualIndicator=0
-0/ShowVRRVisualIndicator=0
 0/ShowGraphicsVisualIndicator=0
 0/XVideoSyncToDisplayID=DP-4
 [DPY:DVI-D-0]/Dithering=0
@@ -47,9 +43,19 @@ Timer = PowerMizer_Monitor_(GPU_0),Yes,1000
 [DPY:HDMI-0]/ColorSpace=0
 [DPY:HDMI-0]/ColorRange=0
 [DPY:HDMI-0]/SynchronousPaletteUpdates=0
+[DPY:DP-0]/RedBrightness=0.000000
+[DPY:DP-0]/GreenBrightness=0.000000
+[DPY:DP-0]/BlueBrightness=0.000000
+[DPY:DP-0]/RedContrast=0.000000
+[DPY:DP-0]/GreenContrast=0.000000
+[DPY:DP-0]/BlueContrast=0.000000
+[DPY:DP-0]/RedGamma=1.000000
+[DPY:DP-0]/GreenGamma=1.000000
+[DPY:DP-0]/BlueGamma=1.000000
 [DPY:DP-0]/Dithering=0
 [DPY:DP-0]/DitheringMode=0
 [DPY:DP-0]/DitheringDepth=0
+[DPY:DP-0]/DigitalVibrance=0
 [DPY:DP-0]/ColorSpace=0
 [DPY:DP-0]/ColorRange=0
 [DPY:DP-0]/SynchronousPaletteUpdates=0
@@ -59,19 +65,9 @@ Timer = PowerMizer_Monitor_(GPU_0),Yes,1000
 [DPY:DP-1]/ColorSpace=0
 [DPY:DP-1]/ColorRange=0
 [DPY:DP-1]/SynchronousPaletteUpdates=0
-[DPY:DP-2]/RedBrightness=0.000000
-[DPY:DP-2]/GreenBrightness=0.000000
-[DPY:DP-2]/BlueBrightness=0.000000
-[DPY:DP-2]/RedContrast=0.000000
-[DPY:DP-2]/GreenContrast=0.000000
-[DPY:DP-2]/BlueContrast=0.000000
-[DPY:DP-2]/RedGamma=1.000000
-[DPY:DP-2]/GreenGamma=1.000000
-[DPY:DP-2]/BlueGamma=1.000000
 [DPY:DP-2]/Dithering=0
 [DPY:DP-2]/DitheringMode=0
 [DPY:DP-2]/DitheringDepth=0
-[DPY:DP-2]/DigitalVibrance=0
 [DPY:DP-2]/ColorSpace=0
 [DPY:DP-2]/ColorRange=0
 [DPY:DP-2]/SynchronousPaletteUpdates=0
