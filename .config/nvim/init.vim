@@ -158,7 +158,7 @@ set magic                " For regular expressions turn magic on
 set noshowmode           " Remove redundant status bar elements
 set foldenable           " autofold code
 " set nofoldenable         " Don't autofold code
-set foldlevel=99         " Don't autofold past a certain ident level
+set foldlevel=20         " Don't autofold past a certain ident level
 set linespace=0          " No extra space between lines
 set laststatus=2         " Show statusline
 set splitbelow           " Always vertically split below
@@ -198,7 +198,7 @@ augroup dynamicnumbers
 augroup END
 
 " Fold parsed langs with treesitter
-" autocmd FileType norg,rust,lua setlocal foldmethod=expr foldexpr=nvim_treesitter#foldexpr()
+autocmd FileType norg,rust,lua setlocal foldmethod=expr foldexpr=nvim_treesitter#foldexpr()
 " 
 " Highlight yank
 augroup highlight_yank
@@ -210,8 +210,8 @@ augroup END
 autocmd VimResized * wincmd =
 
 " Remember folds
-autocmd BufWrite * mkview
-autocmd BufRead * silent! loadview
+" autocmd BufWrite * mkview
+" autocmd BufRead * silent! loadview
 
 " Don't take up scrollbar with match
 " let g:matchup_matchparen_offscreen = { 'method': 'popup' }

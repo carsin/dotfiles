@@ -471,6 +471,8 @@ static const Rule rules[] = {
     RULE(.instance = "chatterino", .tags = 1 << 1, .monitor = 1)
     // gaming
     RULE(.class = "steam_app_", .tags = 1 << 5, .monitor = 0)
+    RULE(.class = "battle.net.exe", .tags = 1 << 5, .monitor = 0)
+    RULE(.class = "overwatch.exe", .tags = 1 << 5, .monitor = 0)
     RULE(.title = "Grand Theft Auto V", .tags = 1 << 5, .monitor = 0)
     RULE(.title = "Rockstar Games Launcher", .tags = 1 << 5, .monitor = 0)
     RULE(.title = "Just Cause 3", .tags = 1 << 5, .monitor = 0)

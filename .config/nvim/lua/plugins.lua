@@ -219,7 +219,7 @@ return packer.startup({
 		-- 	end,
 		-- })
 
-		use({
+		use({ -- neo tree
 			"nvim-neo-tree/neo-tree.nvim",
 			branch = "v2.x",
 			requires = {
@@ -329,7 +329,7 @@ return packer.startup({
 				require("fidget").setup({})
 			end,
 		})
-    
+
 		use({ -- rooter
 			"jedi2610/nvim-rooter.lua",
 			config = function()
@@ -353,6 +353,7 @@ return packer.startup({
 				require("settings.symbolsoutline")
 			end,
 		})
+
 		use({ -- jetpack
 			"ggandor/lightspeed.nvim",
 			config = function()
