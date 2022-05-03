@@ -1,4 +1,5 @@
 require("pretty-fold").setup({
+  default_keybindings = false,
 	fill_char = "─",
 	sections = {
 		left = {
@@ -19,5 +20,3 @@ require("pretty-fold").setup({
 		},
 	},
 })
-
-require("pretty-fold.preview").setup({})
