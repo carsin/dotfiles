@@ -49,7 +49,7 @@ unclutter &
 
 playerctld daemon
 
-aw-qt & 
+# aw-qt & 
 
 # start window manager
 while :; do 
