@@ -1,11 +1,15 @@
 local cmp = require("cmp")
 local luasnip = require("luasnip")
 local kind = cmp.lsp.CompletionItemKind
--- autopairs: old
--- local cmp_autopairs = require('nvim-autopairs.completion.cmp')
--- local cmp_buffer = require('cmp_buffer')
--- handle <CR> properly
--- cmp.event:on( 'confirm_done', cmp_autopairs.on_confirm_done({  map_char = { tex = '' } }))
+
+-- autopairs: If you want insert `(` after select function or method item
+local cmp_autopairs = require('nvim-autopairs.completion.cmp')
+local cmp = require('cmp')
+cmp.event:on( 'confirm_done', cmp_autopairs.on_confirm_done({  map_char = { tex = '' } }))
+
+
+-- add a lisp filetype (wrap my-function), FYI: Hardcoded = { "clojure", "clojurescript", "fennel", "janet" }
+cmp_autopairs.lisp[#cmp_autopairs.lisp+1] = "racket"
 
 local has_words_before = function()
 	local line, col = unpack(vim.api.nvim_win_get_cursor(0))
@@ -39,11 +43,11 @@ cmp.setup({
 		["<C-f>"] = cmp.mapping.scroll_docs(4),
 		["<C-Space>"] = cmp.mapping.complete(),
 		["<C-e>"] = cmp.mapping.close(),
-		["<CR>"] = cmp.mapping(function() -- smart pairs
-      if not cmp.confirm({ select = false }) then
-				require("pairs.enter").type()
-			end
-		end),
+		-- ["<CR>"] = cmp.mapping(function() -- smart pairs
+    --   if not cmp.confirm({ select = false }) then
+		-- 		require("pairs.enter").type()
+		-- 	end
+		-- end),
 		["<Esc>"] = cmp.mapping({ i = cmp.mapping.abort(), c = cmp.mapping.close() }),
 		["<Tab>"] = cmp.mapping(function(fallback)
 			if cmp.visible() then

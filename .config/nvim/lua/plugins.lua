@@ -142,14 +142,12 @@ return packer.startup({
 			end,
 		})
 
-		use({ -- smart pairs
-			"ZhiyuanLck/smart-pairs",
+		use({ -- autopairs
+			"windwp/nvim-autopairs",
 			config = function()
-				require("pairs"):setup({
-					enter = {
-						enable_mapping = false,
-					},
-				})
+        require('nvim-autopairs').setup({
+          disable_filetype = { "TelescopePrompt", "vim", "markdown" }
+        })
 			end,
 		})
 
@@ -393,7 +391,7 @@ return packer.startup({
 			end,
 		})
 
-    use 'ThePrimeagen/vim-be-good'
+    -- use 'ThePrimeagen/vim-be-good'
 
 		-- ############## DUNGEON -- HERE LIE TEMP, OLD & DEPRECATED PLUGINS ##################
 		-- use({ -- keep windows in position
