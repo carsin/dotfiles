@@ -179,7 +179,7 @@ return packer.startup({
 		})
 
 		use({ -- Feline
-			"famiu/feline.nvim",
+			"feline-nvim/feline.nvim",
 			config = function()
 				require("settings.feline")
 			end,
