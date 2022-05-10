@@ -48,7 +48,7 @@ cmp.setup({
 		-- 		require("pairs.enter").type()
 		-- 	end
 		-- end),
-		["<CR>"] = cmp.mapping.confirm(),
+		["<CR>"] = cmp.mapping.confirm({ select = true }),
 		["<Esc>"] = cmp.mapping({ i = cmp.mapping.abort(), c = cmp.mapping.close() }),
 		["<Tab>"] = cmp.mapping(function(fallback)
 			if cmp.visible() then

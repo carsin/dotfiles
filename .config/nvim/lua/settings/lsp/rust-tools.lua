@@ -3,6 +3,7 @@ local extension_path = '/home/carson/.local/share/nvim/user_servers/codelldb/ext
 local codelldb_path = extension_path .. 'adapter/codelldb'
 local liblldb_path = extension_path .. 'lldb/lib/liblldb.so'
 M.opts = {
+  server = {},
   tools = { -- rust-tools options
     autoSetHints = true, -- Automatically set inlay hints (type hints)
     hover_with_actions = true, -- Whether to show hover actions inside the hover window
@@ -38,6 +39,30 @@ M.opts = {
 
       -- whether the hover action window gets automatically focused
       auto_focus = false
+    },
+
+    ["rust-analyzer"] = {
+      assist = {
+        importGranularity = "module",
+        importPrefix = "by_self",
+      },
+      cargo = {
+        loadOutDirsFromCheck = true,
+      },
+      procMacro = {
+        enable = true,
+      },
+      checkOnSave = {
+        allFeatures = true,
+        overrideCommand = {
+          "cargo",
+          "clippy",
+          "--workspace",
+          "--all-targets",
+          "--all-features",
+          "--message-format=json",
+        },
+      },
     },
   },
   dap = { -- use codeLLDB
