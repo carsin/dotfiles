@@ -47,7 +47,7 @@ end
 M.on_attach = function(client, bufnr)
   -- status.on_attach(client)
   require("dd").setup({
-    timeout = 200,
+    timeout = 250,
   })
   vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = nil })
   vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = nil })
@@ -191,5 +191,6 @@ rust_opts.server = {
   handlers = opts.handlers,
 }
 require("rust-tools").setup(rust_opts)
+
 
 return M;
