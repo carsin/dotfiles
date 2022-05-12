@@ -1,15 +1,3 @@
--- unneded
--- local border = {
--- 	{ "╭", "FloatBorder" },
--- 	{ "─", "FloatBouder" },
--- 	{ "╮", "FloatBorder" },
--- 	{ "│", "FloatBorder" },
--- 	{ "╯", "FloatBorder" },
--- 	{ "─", "FloatBorder" },
--- 	{ "╰", "FloatBorder" },
--- 	{ "│", "FloatBorder" },
--- }
--- local lsp = require("vim.lsp")
 local sumneko = require("settings.lsp.sumneko")
 local lsp_installer = require("nvim-lsp-installer")
 local lspconfig = require("lspconfig")
@@ -38,7 +26,6 @@ vim.diagnostic.config({
 
 -- virtual text icons
 local signs = { Error = "X ", Warn = "! ", Hint = "? ", Info = "i " }
--- local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
 for type, icon in pairs(signs) do
   local hl = "DiagnosticSign" .. type
   vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
@@ -127,14 +114,12 @@ M.get_config = function()
 end
 
 --  set up servers
-lsp_installer.setup {}
+lsp_installer.setup({})
 
 -- sumneko
 local lua_opts = M.get_config()
 lua_opts.settings = sumneko.lua_settings
-lspconfig.sumneko_lua.setup {
-  opts = lua_opts
-}
+lspconfig.sumneko_lua.setup(lua_opts)
 
 -- clangd
 local clangd_opts = M.get_config()
@@ -154,8 +139,9 @@ clangd_opts.cmd = {
   "--pch-storage=memory",
 }
 require("clangd_extensions").setup({
-  server = c_opts,
-  extensions = { autoSetHints = true, -- Automatically set inlay hints (type hints)
+  server = clangd_opts,
+  extensions = {
+    autoSetHints = true, -- Automatically set inlay hints (type hints)
     -- Whether to show hover actions inside the hover window
     -- This overrides the default hover handler
     hover_with_actions = true,
@@ -163,8 +149,8 @@ require("clangd_extensions").setup({
     inlay_hints = {
       only_current_line = true,
       -- Event which triggers a refersh of the inlay hints.
-      -- You can make this "CursorMoved" or "CursorMoved,CursorMovedI" but
-      -- not that this may cause  higher CPU usage. This option is only
+      -- You can make this "CursorMoved" or "CursorMoved,CursorMovedI" but not
+      -- that this may cause  higher CPU usage. This option is only
       -- respected when only_current_line and
       -- autoSetHints both are true.
       only_current_line_autocmd = "CursorHold,CursorHoldI",
@@ -192,5 +178,4 @@ rust_opts.server = {
 }
 require("rust-tools").setup(rust_opts)
 
-
-return M;
+return M
