@@ -66,6 +66,8 @@ let g:gruvbox_material_palette = 'original' " I prefer the vibrancy of the origi
 let g:gruvbox_material_better_performance = 1
 
 colorscheme gruvbox-material
+" Load lua stuff
+lua require('init')
 " Load plugins
 lua require('plugins')
 

@@ -49,6 +49,9 @@ nnoremap <leader>is "=strftime("-- CKF %-I:%M:%S %p")<CR>p
 nnoremap <leader>ie "=strftime("### %I:%M:%S %p \n")<CR>po
 nnoremap <leader>ih "=strftime("### %I:%M:%S %p \n")<CR>po
 
+" Open URI under cursor with lua function
+nnoremap gu :OpenURIUnderCursor<CR>
+nnoremap <Leader>gu :OpenURIUnderCursor<CR>
 
 " Dont put change operations into register
 nnoremap c "_c

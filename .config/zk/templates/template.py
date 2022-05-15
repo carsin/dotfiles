@@ -39,13 +39,13 @@ daysInYear = 365 + calendar.isleap(now.year)
 dayOfYear = now.timetuple().tm_yday
 yearPerc = round(dayOfYear / daysInYear * 100, 2)
 date += (
-    " • Day "
+    " - Day "
     + str(dayOfYear)
     + "/"
     + str(daysInYear)
     + " ("
     + f"{yearPerc:04}"
-    + "%) • "
+    + "%) -- "
     + str(daysInYear - dayOfYear)
     + " left ["
     + str(temptf.days)
