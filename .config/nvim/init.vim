@@ -16,7 +16,7 @@ set title            " report title to terminal
 set history=500      " How many lines of history vim has to remember
 set encoding=utf8    " Set utf8 as standard encoding and en_US as the standard language
 set ffs=unix,dos,mac " Use Unix as the standard file type
-set updatetime=150   " Fast updatetime for snappier experience
+set updatetime=250   " Time before plugins and inserthold is fired
 set mouse=a          " Set proper mouse mode
 
 " Turn backup off, since most stuff is in SVN, git etc anyway...
@@ -146,8 +146,8 @@ set background=dark
 
 " set t_Co=256
 
-set showtabline=0        " Show top tab line
-set cursorline
+set showtabline=0        " No show top tab line
+set nocursorline         " No laggy bar causing many redraws
 set so=7                 " How many lines from cursor to top / bottom of the screen before scrolling
 set number               " file line numbering
 set showcmd              " show last entered command
@@ -162,7 +162,7 @@ set foldenable           " autofold code
 " set nofoldenable         " Don't autofold code
 set foldlevel=20         " Don't autofold past a certain ident level
 set linespace=0          " No extra space between lines
-set laststatus=2         " Show statusline
+set laststatus=3         " Show statusline
 set splitbelow           " Always vertically split below
 set splitright           " Always horizontally split to the right
 set fillchars+=vert:│    " Change vertical split character to solid line instead of line with gaps
@@ -190,13 +190,16 @@ set completeopt=menu,menuone,noselect
 set shortmess+=c
 
 
-" Show / hide cursorline in normal and insert
+" Show / hide cursorline/rnu in normal and insert
 augroup dynamicnumbers
   autocmd!
-  " autocmd BufEnter,FocusGained,InsertLeave,WinEnter * if &ft != "alpha" && &nu && mode() != "i" | set cursorline   | endif
   " autocmd BufLeave,FocusLost,InsertEnter,WinLeave   * if &ft != "alpha" && &nu                  | set nocursorline | endif
-  autocmd BufEnter,FocusGained,InsertLeave,WinEnter * if &ft != "alpha" && &nu && mode() != "i" | set rnu   | set cursorline   | endif
-  autocmd BufLeave,FocusLost,InsertEnter,WinLeave   * if &ft != "alpha" && &nu                  | set nornu | set nocursorline | endif
+  " 
+  " autocmd BufEnter,FocusGained,InsertLeave,WinEnter * if &ft != "alpha" && &nu && mode() != "i" | set rnu   | set cursorline   | endif
+  " autocmd BufLeave,FocusLost,InsertEnter,WinLeave   * if &ft != "alpha" && &nu                  | set nornu | set nocursorline | endif
+   
+  autocmd BufEnter,FocusGained,InsertLeave,WinEnter * if &ft != "alpha" && &nu && mode() != "i" | set rnu   | endif
+  autocmd BufLeave,FocusLost,InsertEnter,WinLeave   * if &ft != "alpha" && &nu                  | set nornu | endif
 augroup END
 
 " Fold parsed langs with treesitter

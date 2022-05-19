@@ -250,7 +250,7 @@ telescope.setup({
 telescope.load_extension("fzf")
 telescope.load_extension("project")
 telescope.load_extension("frecency")
-telescope.load_extension("dap")
+-- telescope.load_extension("dap")
 telescope.load_extension("zoxide")
 telescope.load_extension("env")
 telescope.load_extension("ui-select")

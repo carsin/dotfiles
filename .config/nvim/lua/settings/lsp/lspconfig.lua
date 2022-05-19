@@ -78,7 +78,7 @@ M.on_attach = function(client, bufnr)
   -- cursor symbol hl
   require("illuminate").on_attach(client)
   -- Show line diagnostics on hover
-  vim.cmd([[autocmd! CursorHold,CursorHoldI * lua vim.diagnostic.open_float(nil, {focus=false, scope="cursor"})]])
+  vim.cmd([[autocmd! CursorHold * lua vim.diagnostic.open_float(nil, {focus=false, scope="cursor"})]])
   -- vim.api.nvim_exec([[ autocmd CursorHold * lua
   -- vim.diagnostic.open_float({border="none", focusable=false}) ]], false)
   -- vim.cmd [[autocmd FileType markdown nmap gz <buffer> :g/./ normal gqq<CR>]]
@@ -151,11 +151,11 @@ require("clangd_extensions").setup({
     inlay_hints = {
       only_current_line = true,
       -- Event which triggers a refersh of the inlay hints.
-      -- You can make this "CursorMoved" or "CursorMoved,CursorMovedI" but not
+      -- You can make this "CursorMoved" or "CursorMoved,CursorMovedI" but note
       -- that this may cause  higher CPU usage. This option is only
       -- respected when only_current_line and
       -- autoSetHints both are true.
-      only_current_line_autocmd = "CursorHold,CursorHoldI",
+      only_current_line_autocmd = "CursorHold",
       show_parameter_hints = true,
       show_variable_name = false,
       parameter_hints_prefix = "params: ",
