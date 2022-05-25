@@ -76,7 +76,7 @@ M.on_attach = function(client, bufnr)
   -- set mappings for zk if in wikidir
   require("settings.zk").set_mappings()
   -- cursor symbol hl
-  require("illuminate").on_attach(client)
+  -- require("illuminate").on_attach(client)
   -- Show line diagnostics on hover
   vim.cmd([[autocmd! CursorHold * lua vim.diagnostic.open_float(nil, {focus=false, scope="cursor"})]])
   -- vim.api.nvim_exec([[ autocmd CursorHold * lua

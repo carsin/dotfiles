@@ -47,18 +47,18 @@ return packer.startup({
     use("tpope/vim-surround")
     use("tpope/vim-repeat")
     use("tpope/vim-unimpaired") -- handy ][ mappings that should be builtin
-    use("tpope/vim-sleuth") -- heurestically set indent & other buf opts
+    -- use("tpope/vim-sleuth") -- heurestically set indent & other buf opts
     use("editorconfig/editorconfig-vim")
     use("christoomey/vim-tmux-navigator")
     use("famiu/bufdelete.nvim")
     use("antoinemadec/FixCursorHold.nvim") -- Needed while issue https://github.com/neovim/neovim/issues/12587 is still open
     -- use("junegunn/vim-easy-align")
     use("kyazdani42/nvim-web-devicons")
-    use("nathom/filetype.nvim")
     -- use("mbbill/undotree")
-    use("RRethy/vim-illuminate") -- highlight matches of symbol under cursor
+    -- use("RRethy/vim-illuminate") -- highlight matches of symbol under cursor
     use("ThePrimeagen/harpoon")
     use("stevearc/dressing.nvim")
+    use("nathom/filetype.nvim")
 
     use({ -- zettlekasten
       "mickael-menu/zk-nvim",
@@ -124,9 +124,8 @@ return packer.startup({
       requires = {
         "nvim-lua/plenary.nvim",
         "nvim-telescope/telescope-project.nvim",
-        "nvim-telescope/telescope-ui-select.nvim",
+        -- "nvim-telescope/telescope-ui-select.nvim",
         "jvgrootveld/telescope-zoxide",
-        "LinArcX/telescope-env.nvim",
         "natecraddock/telescope-zf-native.nvim",
         { "nvim-telescope/telescope-fzf-native.nvim", run = "make" },
         { "nvim-telescope/telescope-frecency.nvim", requires = { "tami5/sqlite.lua" } },
@@ -161,7 +160,7 @@ return packer.startup({
         "saadparwaiz1/cmp_luasnip",
         "rafamadriz/friendly-snippets",
         "L3MON4D3/LuaSnip",
-        "f3fora/cmp-spell",
+        -- "f3fora/cmp-spell",
         "hrsh7th/cmp-cmdline",
         "Furkanzmc/sekme.nvim",
         "andersevenrud/cmp-tmux",
@@ -298,7 +297,23 @@ return packer.startup({
     use({ -- lsp status widget
       "j-hui/fidget.nvim",
       config = function()
-        require("fidget").setup({})
+        require("fidget").setup({
+          text = {
+            spinner = "dots_footsteps",
+            done = "✓",
+          },
+          sources = {
+            ["null-ls"] = {
+              ignore = true,
+            }
+          },
+          timer = {
+            task_decay = 2000, -- how long to keep around completed task, in ms
+          },
+          fmt = {
+            max_width = 50,
+          }
+        })
       end,
     })
 
@@ -319,12 +334,12 @@ return packer.startup({
       end,
     })
 
-    use({ -- symboloutline column
-      "simrat39/symbols-outline.nvim",
-      config = function()
-        require("settings.symbolsoutline")
-      end,
-    })
+    -- use({ -- symboloutline column
+    --   "simrat39/symbols-outline.nvim",
+    --   config = function()
+    --     require("settings.symbolsoutline")
+    --   end,
+    -- })
 
     use({ -- jetpack
       "ggandor/lightspeed.nvim",
@@ -350,14 +365,14 @@ return packer.startup({
       end,
       requires = { "nvim-lua/plenary.nvim" },
     })
-    --
+
     -- use({ -- better quick fix buffer
     -- 	"kevinhwang91/nvim-bqf",
     -- 	config = function()
     -- 		require("settings.bqf")
     -- 	end,
     -- })
-    --
+
     use({ -- pretty folding
       "anuvyklack/pretty-fold.nvim",
       config = function()

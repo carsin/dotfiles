@@ -344,15 +344,16 @@ static const char *const autostart[] = {
 #endif // COOL_AUTOSTART_PATCH
 
 #if SCRATCHPADS_PATCH
-const char *spcmd1[]  = {"alacritty", "--class", "spterm1,Alacritty", "-o", "window.dimensions.columns=138", "-o", "window.dimensions.lines=45", "-e", "/home/carson/bin/scratchpads/scratchstart", NULL};
-const char *spcmd2[]  = {"alacritty", "--class", "spterm2,Alacritty", "-o", "window.dimensions.columns=100", "-o", "window.dimensions.lines=36", "-e", "/home/carson/bin/scratchpads/scratchstart",  NULL};
-const char *spcmd3[]  = {"alacritty", "--class", "spterm3,Alacritty", "-o", "window.dimensions.columns=165", "-o", "window.dimensions.lines=60",  "-e","/home/carson/bin/scratchpads/scratchstart", NULL};
+const char *spcmd1[] = {"alacritty", "--class", "spterm1,Alacritty", "-o", "window.dimensions.columns=138", "-o", "window.dimensions.lines=45", "-e", "/home/carson/bin/scratchpads/scratchstart", NULL};
+const char *spcmd2[] = {"alacritty", "--class", "spterm2,Alacritty", "-o", "window.dimensions.columns=100", "-o", "window.dimensions.lines=36", "-e", "/home/carson/bin/scratchpads/scratchstart",  NULL};
+const char *spcmd3[] = {"alacritty", "--class", "spterm3,Alacritty", "-o", "window.dimensions.columns=165", "-o", "window.dimensions.lines=60",  "-e","/home/carson/bin/scratchpads/scratchstart", NULL};
 // const char *spcmd4[]  = {"alacritty", "--class", "spsptui,Alacritty", "-o", "window.dimensions.columns=135", "-o", "window.dimensions.lines=50", "-e", "/home/carson/bin/scratchpads/sptuistart", NULL};
-const char *spcmd4[]  = {"alacritty", "--class", "spfiles,Alacritty", "-o", "window.dimensions.columns=155", "-o", "window.dimensions.lines=50", "-e", "ranger", NULL};
-const char *spcmd5[]  = {"alacritty", "--class", "sppulsemixer,Alacritty", "-o", "window.dimensions.columns=90", "-o", "window.dimensions.lines=30", "-e", "pulsemixer", NULL};
-const char *spcmd6[]  = {"alacritty", "--class", "sptop,Alacritty", "-o", "window.dimensions.columns=140", "-o", "window.dimensions.lines=43", "-e", "btop", NULL};
-const char *spcmd7[]  = {"alacritty", "--class", "spnvtop,Alacritty", "-o", "window.dimensions.columns=138", "-o", "window.dimensions.lines=41", "-e", "nvtop", NULL};
-const char *spcmd8[] = {"alacritty", "--class", "spnvim,Alacritty", "-o", "window.dimensions.columns=176", "-o", "window.dimensions.lines=52", "-e", "/home/carson/bin/scratchpads/editorstart", NULL};
+const char *spcmd4[] = {"alacritty", "--class", "spfiles,Alacritty", "-o", "window.dimensions.columns=155", "-o", "window.dimensions.lines=50", "-e", "ranger", NULL};
+const char *spcmd5[] = {"alacritty", "--class", "sppulsemixer,Alacritty", "-o", "window.dimensions.columns=90", "-o", "window.dimensions.lines=30", "-e", "pulsemixer", NULL};
+const char *spcmd6[] = {"alacritty", "--class", "sptop,Alacritty", "-o", "window.dimensions.columns=140", "-o", "window.dimensions.lines=43", "-e", "btop", NULL};
+const char *spcmd7[] = {"alacritty", "--class", "spnvtop,Alacritty", "-o", "window.dimensions.columns=138", "-o", "window.dimensions.lines=41", "-e", "nvtop", NULL};
+const char *spcmd8[] = {"alacritty", "--class", "spnvim,Alacritty", "-o", "window.dimensions.columns=170", "-o", "window.dimensions.lines=52", "-e", "/home/carson/bin/scratchpads/editorstart", NULL}; // 170 = 2 80 col splits
+const char *spcmd8alt[] = {"alacritty", "--class", "spnvim2,Alacritty", "-o", "window.dimensions.columns=88", "-o", "window.dimensions.lines=52", "-e", "/home/carson/bin/scratchpads/editorstart", NULL}; 
 const char *spcmd9[] = {"alacritty", "--class", "spboard,Alacritty", "-o", "window.dimensions.columns=130", "-o", "window.dimensions.lines=47", "-e", "/home/carson/bin/scratchpads/kanbanstart", NULL};
 // const char *spcmd10[]  = {"alacritty", "--class", "sppomo,Alacritty", "-o", "window.dimensions.columns=25", "-o", "window.dimensions.lines=25", "-e", "pomo -p /home/carson/.config/pomo/config.json b 1", NULL};
 // const char *spcmd11[] = {"alacritty", "--class", "spnvim,Alacritty", "-o", "window.dimensions.columns=173", "-o", "window.dimensions.lines=53", "-e", "/home/carson/bin/scratchpads/editorstartzk", NULL};
@@ -367,6 +368,7 @@ static Sp scratchpads[] = {
     {"sptop", spcmd6},
     {"spnvtop", spcmd7},
     {"spnvim", spcmd8},
+    {"spnvim2", spcmd8alt},
     {"spboard", spcmd9},
 };
 #endif // SCRATCHPADS_PATCH
@@ -498,7 +500,8 @@ static const Rule rules[] = {
     RULE(.instance = "sptop", .tags = SPTAG(5), .isfloating = 1)
     RULE(.instance = "spnvtop", .tags = SPTAG(6), .isfloating = 1)
     RULE(.instance = "spnvim", .tags = SPTAG(7), .isfloating = 1)
-    RULE(.instance = "spboard", .tags = SPTAG(8), .isfloating = 1)
+    RULE(.instance = "spnvim2", .tags = SPTAG(8), .isfloating = 1)
+    RULE(.instance = "spboard", .tags = SPTAG(9), .isfloating = 1)
 #endif // SCRATCHPADS_PATCH
 };
 
@@ -1193,7 +1196,8 @@ static Key keys[] = {
     {MODKEY, XK_q, togglescratch, {.ui = 5}}, // top
     {MODKEY | ShiftMask, XK_q, togglescratch, {.ui = 6}}, // nvtop
     {MODKEY, XK_e, togglescratch, {.ui = 7}}, // nvim
-    {MODKEY, XK_c, togglescratch, {.ui = 8}}, // kanban
+    {MODKEY, XK_s, togglescratch, {.ui = 8}}, // nvim
+    {MODKEY, XK_c, togglescratch, {.ui = 9}}, // kanban
 #endif // SCRATCHPADS_PATCH
 #if UNFLOATVISIBLE_PATCH
     {MODKEY | Mod4Mask, XK_space, unfloatvisible, {0}},
