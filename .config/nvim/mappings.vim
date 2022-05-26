@@ -23,6 +23,8 @@ endfunction
 " nnoremap <silent><leader>s :silent :call WriteSavePosition()<cr>
 " nnoremap <silent><leader>w :w!<cr>
 nnoremap <silent><F5> :w!<cr>
+nnoremap <leader>ww :wa!<cr>
+nnoremap <leader>ws :w!<cr>
 " nnoremap <silent><leader>hw :TrimWhitespace<cr>
 
  " Clear search highlight
@@ -46,8 +48,8 @@ nnoremap <leader>id "=strftime("%a, %b %d %Y")<CR>p
 nnoremap <leader>it "=strftime("%I:%M:%S %p")<CR>p
 nnoremap <leader>is "=strftime("-- CKF %-I:%M:%S %p")<CR>p
 " wiki entries
-nnoremap <leader>ie "=strftime("### %I:%M:%S %p \n")<CR>po
-nnoremap <leader>ih "=strftime("### %I:%M:%S %p \n")<CR>po
+nnoremap <leader>ie "=strftime("### %I:%M:%S %p")<CR>po
+nnoremap <leader>ih "=strftime("### %I:%M:%S %p")<CR>po
 
 " Open URI under cursor with lua function
 nnoremap gu :OpenURIUnderCursor<CR>

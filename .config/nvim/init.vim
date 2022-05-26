@@ -160,7 +160,7 @@ set magic                " For regular expressions turn magic on
 set noshowmode           " Remove redundant status bar elements
 set foldenable           " autofold code
 " set nofoldenable         " Don't autofold code
-set foldlevel=20         " Don't autofold past a certain ident level
+set foldlevel=99         " Don't autofold past a certain ident level
 set linespace=0          " No extra space between lines
 set laststatus=3         " Show statusline
 set splitbelow           " Always vertically split below
@@ -205,24 +205,12 @@ augroup END
 " Fold parsed langs with treesitter
 autocmd FileType norg,rust,lua setlocal foldmethod=expr foldexpr=nvim_treesitter#foldexpr()
 
-" Don't screw up folds when inserting text that might affect them, until
-" leaving insert mode. Foldmethod is local to the window. Protect against
-" screwing up folding when switching between windows.
-autocmd InsertEnter * if !exists('w:last_fdm') | let w:last_fdm=&foldmethod | setlocal foldmethod=manual | endif
-autocmd InsertLeave,WinLeave * if exists('w:last_fdm') | let &l:foldmethod=w:last_fdm | unlet w:last_fdm | endif
-" 
-" Highlight yank
-augroup highlight_yank
-    autocmd!
-    au TextYankPost * silent! lua vim.highlight.on_yank{higroup="IncSearch", timeout=200}
-augroup END
-
 " Automatically equalize splits when vim is resized
 autocmd VimResized * wincmd =
 
 " Remember folds
-" autocmd BufWrite * mkview
-" autocmd BufRead * silent! loadview
+autocmd BufWrite * mkview 1
+autocmd BufRead * silent! loadview 1
 
 " Don't take up scrollbar with match
 " let g:matchup_matchparen_offscreen = { 'method': 'popup' }

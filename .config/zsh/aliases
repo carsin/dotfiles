@@ -70,8 +70,8 @@ alias top="htop"
 alias pm="pulsemixer"
 alias g="git"
 alias lg="lazygit"
-alias nf="neofetch"
-# alias ff="fastfetch"
+# alias nf="neofetch"
+alias nf="fastfetch"
 alias fff="fastfetch"
 # random cow and fortune
 function randomCowsay {
