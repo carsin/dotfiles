@@ -57,8 +57,10 @@ return packer.startup({
     -- use("mbbill/undotree")
     -- use("RRethy/vim-illuminate") -- highlight matches of symbol under cursor
     use("ThePrimeagen/harpoon")
-    use("stevearc/dressing.nvim")
+    use("stevearc/dressing.nvim") -- make default UI components look good
     use("nathom/filetype.nvim")
+    use("zhimsel/vim-stay") -- automated view session creation & restore for buffers, sesssions and windows
+    use("Konfekt/FastFold") -- don't recompute expr and syntax folds
 
     use({ -- zettlekasten
       "mickael-menu/zk-nvim",
@@ -373,12 +375,12 @@ return packer.startup({
     -- 	end,
     -- })
 
-    use({ -- pretty folding
-      "anuvyklack/pretty-fold.nvim",
-      config = function()
-        require("settings.prettyfold")
-      end,
-    })
+    -- use({ -- pretty folding
+    --   "anuvyklack/pretty-fold.nvim",
+    --   config = function()
+    --     require("settings.prettyfold")
+    --   end,
+    -- })
 
     use({ -- floating winbar statuslines (until neovim winbar is merged to master)
       "b0o/incline.nvim",
@@ -400,9 +402,6 @@ return packer.startup({
         })
       end,
     })
-
-    -- use 'ThePrimeagen/vim-be-good'
-
     -- ############## DUNGEON -- HERE LIE TEMP, OLD & DEPRECATED PLUGINS ##################
     -- use({ -- keep windows in position
     -- 	"luukvbaal/stabilize.nvim",

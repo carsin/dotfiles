@@ -108,6 +108,7 @@ set nolist                        " ensure lbr  works
 set backspace=eol,start,indent    " Configure backspace so it acts as it should act
 set whichwrap+=<,>,h,l "          " go to nextline with hl
 set wrapmargin=2
+set sessionoptions-=folds         " ensure sessions don't override default method of buffer
 " Enable persistent undo so that undo history persists across vim sessions
 set undofile
 set undodir=~/.cache/nvim/undo
@@ -172,6 +173,7 @@ set signcolumn=yes:1     " Column for diagnostics & git gutter
 set pumheight=30         " Shorten number of autocomplete suggestions
 set pumwidth=25          " Shorten width of autocomplete suggestions
 set pumblend=10          " Autocomplete background transparency
+set viewoptions-=options " storing local options in view session files causes no end of trouble
 let &fcs='eob: '         " No fugly eob tildas
 " link/ shortening
 " set conceallevel=2
@@ -194,10 +196,10 @@ set shortmess+=c
 augroup dynamicnumbers
   autocmd!
   " autocmd BufLeave,FocusLost,InsertEnter,WinLeave   * if &ft != "alpha" && &nu                  | set nocursorline | endif
-  " 
+  "
   " autocmd BufEnter,FocusGained,InsertLeave,WinEnter * if &ft != "alpha" && &nu && mode() != "i" | set rnu   | set cursorline   | endif
   " autocmd BufLeave,FocusLost,InsertEnter,WinLeave   * if &ft != "alpha" && &nu                  | set nornu | set nocursorline | endif
-   
+
   autocmd BufEnter,FocusGained,InsertLeave,WinEnter * if &ft != "alpha" && &nu && mode() != "i" | set rnu   | endif
   autocmd BufLeave,FocusLost,InsertEnter,WinLeave   * if &ft != "alpha" && &nu                  | set nornu | endif
 augroup END
@@ -208,12 +210,50 @@ autocmd FileType norg,rust,lua setlocal foldmethod=expr foldexpr=nvim_treesitter
 " Automatically equalize splits when vim is resized
 autocmd VimResized * wincmd =
 
-" Remember folds
-autocmd BufWrite * mkview 1
-autocmd BufRead * silent! loadview 1
+" Customized version of folded text, idea by
+" http://www.gregsexton.org/2011/03/improving-the-text-displayed-in-a-fold/
+fu! CustomFoldText(string) "{{{1
+    "get first non-blank line
+    let fs = v:foldstart
+    if getline(fs) =~ '^\s*$'
+      let fs = nextnonblank(fs + 1)
+    endif
+    if fs > v:foldend
+        let line = getline(v:foldstart)
+    else
+        let line = substitute(getline(fs), '\t', repeat(' ', &tabstop), 'g')
+    endif
+    let pat  = matchstr(&l:cms, '^\V\.\{-}\ze%s\m')
+    " remove leading comments from line
+    let line = substitute(line, '^\s*'.pat.'\s*', '', '')
+    " remove foldmarker from line
+    let pat  = '\%('. pat. '\)\?\s*'. split(&l:fmr, ',')[0]. '\s*\d\+'
+    let line = substitute(line, pat, '', '')
 
-" Don't take up scrollbar with match
-" let g:matchup_matchparen_offscreen = { 'method': 'popup' }
+"   let line = substitute(line, matchstr(&l:cms,
+"	    \ '^.\{-}\ze%s').'\?\s*'. split(&l:fmr,',')[0].'\s*\d\+', '', '')
+
+    let w = get(g:, 'custom_foldtext_max_width', winwidth(0)) - &foldcolumn - (&number ? 8 : 0)
+    let foldSize = 1 + v:foldend - v:foldstart
+    let foldSizeStr = " " . foldSize . " lines "
+    let foldLevelStr = '+'. v:folddashes
+    let lineCount = line("$")
+    if has("float")
+	try
+	    let foldPercentage = printf("[%.1f", (foldSize*1.0)/lineCount*100) . "%] "
+	catch /^Vim\%((\a\+)\)\=:E806/	" E806: Using Float as String
+	    let foldPercentage = printf("[of %d lines] ", lineCount)
+	endtry
+    endif
+    if exists("*strwdith")
+	let expansionString = repeat(a:string, w - strwidth(foldSizeStr.line.foldLevelStr.foldPercentage))
+    else
+	let expansionString = repeat(a:string, w - strlen(substitute(foldSizeStr.line.foldLevelStr.foldPercentage, '.', 'x', 'g')))
+    endif
+    return line . expansionString . foldSizeStr . foldPercentage . foldLevelStr
+endf
+
+set foldtext=CustomFoldText('.')
 
 " }}}
 " Binds & Mappings
