@@ -2,7 +2,7 @@ local autosave = require("autosave")
 
 autosave.setup({
   enabled = true,
-  execution_message = "",
+  execution_message = " ",
   events = { "InsertLeave", "TextChanged", "WinLeave", "BufWinLeave" },
   write_all_buffers = false,
   on_off_commands = true,

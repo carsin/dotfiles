@@ -369,26 +369,26 @@ return packer.startup({
     -- 	end,
     -- })
 
-    use({ -- floating winbar statuslines (until neovim winbar is merged to master)
-      "b0o/incline.nvim",
-      config = function()
-        require('incline').setup({
-          window = {
-            padding = {
-              left = 1,
-              right = 1
-            },
-            placement = {
-              horizontal = "right",
-              vertical = "top"
-            },
-          },
-          hide = {
-            only_win = true,
-          }
-        })
-      end,
-    })
+    -- use({ -- floating winbar statuslines (until neovim winbar is merged to master)
+    --   "b0o/incline.nvim",
+    --   config = function()
+    --     require('incline').setup({
+    --       window = {
+    --         padding = {
+    --           left = 1,
+    --           right = 1
+    --         },
+    --         placement = {
+    --           horizontal = "right",
+    --           vertical = "top"
+    --         },
+    --       },
+    --       hide = {
+    --         only_win = true,
+    --       }
+    --     })
+    --   end,
+    -- })
     -- ############## DUNGEON -- HERE LIE TEMP, OLD & DEPRECATED PLUGINS ##################
     -- use({ -- keep windows in position
     -- 	"luukvbaal/stabilize.nvim",

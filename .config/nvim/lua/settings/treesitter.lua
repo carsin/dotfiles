@@ -35,10 +35,10 @@ M.setup = function()
     incremental_selection = {
       enable = true,
       keymaps = {
-        init_selection = "gnn",
-        node_incremental = ".",
-        scope_incremental = "grc",
-        node_decremental = ",",
+        init_selection = "gnn", -- maps in normal mode to init the node/scope selection
+        scope_incremental = "gnn", -- increment to the upper scope (as defined in locals.scm)
+        node_incremental = "<TAB>", -- increment to the upper named parent
+        node_decremental = "<S-TAB>", -- decrement to the previous node
       },
     },
     autopairs = { enable = true },
@@ -167,6 +167,42 @@ M.get_hl = function()
     end
   end, true)
   return matches
+end
+
+M.treesitter_context = function(width)
+  if not packer_plugins["nvim-treesitter"] or packer_plugins["nvim-treesitter"].loaded == false then
+    return " "
+  end
+  local type_patterns = {
+    "class",
+    "function",
+    "method",
+    "interface",
+    "type_spec",
+    "table",
+    "if_statement",
+    "for_statement",
+    "for_in_statement",
+    "call_expression",
+    "comment",
+  }
+
+  if vim.o.ft == "json" then
+    type_patterns = { "object", "pair" }
+  end
+
+  local f = require("nvim-treesitter").statusline({
+    indicator_size = width,
+    type_patterns = type_patterns,
+  })
+  local context = string.format("%s", f) -- convert to string, it may be a empty ts node
+
+  -- lprint(context)
+  if context == "vim.NIL" then
+    return " "
+  end
+
+  return " " .. context
 end
 
 return M

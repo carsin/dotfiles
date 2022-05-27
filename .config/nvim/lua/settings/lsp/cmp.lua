@@ -90,7 +90,7 @@ cmp.setup({
     -- ["<CR>"] = cmp.mapping.confirm({ select = true }),
     ["<CR>"] = cmp.mapping.confirm {
       behavior = cmp.ConfirmBehavior.Replace,
-      select = false,
+      select = true,
     },
     ["<Esc>"] = cmp.mapping({ i = cmp.mapping.abort(), c = cmp.mapping.close() }),
     ["<Tab>"] = cmp.mapping(function(fallback)
