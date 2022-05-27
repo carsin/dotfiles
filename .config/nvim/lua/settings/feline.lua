@@ -6,6 +6,7 @@ local force_inactive = {
   buftypes = {},
   bufnames = {},
 }
+local gps = require("nvim-gps")
 
 force_inactive.filetypes = {
   "NvimTree",
@@ -532,8 +533,11 @@ table.insert(winbar_components.inactive, {})
 
 table.insert(winbar_components.active[1], {
   provider = "file_info",
+  opts = {
+    type = 'unique'
+  },
   hl = {
-    fg = 'skyblue',
+    fg = 'bgreen',
     bg = 'NONE',
     style = 'bold',
   },
@@ -541,6 +545,30 @@ table.insert(winbar_components.active[1], {
     return vim.fn.expand("%") ~= ""
   end
 })
+
+table.insert(winbar_components.active[1], {
+  provider = function()
+    return gps.get_location()
+  end,
+  hl = {
+    fg = 'white',
+    bg = 'NONE',
+    style = 'NONE',
+  },
+  left_sep = {
+    {
+      str = " > ",
+      hl = {
+        fg = "white",
+        bg = "NONE",
+      },
+    },
+  },
+  enabled = function()
+    return gps.is_available()
+  end
+})
+
 
 table.insert(winbar_components.inactive[1], {
   provider = "file_info",
@@ -551,6 +579,10 @@ table.insert(winbar_components.inactive[1], {
   --     style = 'bold',
   --   },
   -- },
+  --
+  opts = {
+    type = 'unique'
+  },
   hl = {
     fg = 'grey',
     bg = 'NONE',

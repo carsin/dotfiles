@@ -362,6 +362,14 @@ return packer.startup({
       requires = { "nvim-lua/plenary.nvim" },
     })
 
+    use {
+      "SmiteshP/nvim-gps",
+      requires = "nvim-treesitter/nvim-treesitter",
+      config = function()
+        require("settings.lsp.gps")
+      end
+    }
+
     -- use({ -- better quick fix buffer
     -- 	"kevinhwang91/nvim-bqf",
     -- 	config = function()
