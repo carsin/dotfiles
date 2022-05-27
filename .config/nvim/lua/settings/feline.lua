@@ -7,6 +7,19 @@ local force_inactive = {
   bufnames = {},
 }
 
+force_inactive.filetypes = {
+  "NvimTree",
+  "dbui",
+  "packer",
+  "startify",
+  "fugitive",
+  "fugitiveblame",
+}
+
+force_inactive.buftypes = {
+  "terminal",
+}
+
 local components = {
   active = {},
   inactive = {},
@@ -27,8 +40,7 @@ local colors = {
   byellow = "#fadb2f",
   cyan = "#689d6a",
   oceanblue = "#458588",
-  bgreen = "#b8bb26",
-  green = "#98971a",
+  bgreen = "#b8bb26", green = "#98971a",
   orange = "#d65d0e",
   violet = "#b16286",
   magenta = "#d3869b",
@@ -74,20 +86,6 @@ local vi_mode_text = {
   TERM = "<|",
   NONE = "<>",
 }
-
-force_inactive.filetypes = {
-  "NvimTree",
-  "dbui",
-  "packer",
-  "startify",
-  "fugitive",
-  "fugitiveblame",
-}
-
-force_inactive.buftypes = {
-  "terminal",
-}
-
 -- LEFT
 
 -- vi-mode
@@ -477,15 +475,22 @@ require("feline").setup({
   force_inactive = force_inactive,
 })
 
--- SET UP WINBAR
-vim.api.nvim_set_hl(0, "WinBarSignature", { fg = "#dedede", bg = "#363636" })
-vim.api.nvim_set_hl(0, "WinBarSigDoc", { fg = "#dedede", bg = "#363636" })
-vim.api.nvim_set_hl(0, "WinBarSigActParm", { fg = "#dedede", bg = "#9f3838" })
+local treesitter_context = require "settings.treesitter".treesitter_context
+local winbar_components = {
+  active = {},
+  inactive = {}
+}
 
-local treesitter_context = require "settings.treesitter".context
-local winbar_components = {}
+-- Insert three sections (left, mid and right) for the active statusline
+table.insert(winbar_components.active, {})
+table.insert(winbar_components.active, {})
+table.insert(winbar_components.active, {})
 
-table.insert(winbar_components, {
+-- Insert two sections (left and right) for the inactive statusline
+table.insert(winbar_components.inactive, {})
+table.insert(winbar_components.inactive, {})
+
+table.insert(winbar_components.active[1], {
   provider = function()
     local columns = vim.api.nvim_get_option("columns")
     if not pcall(require, "lsp_signature") then
@@ -525,9 +530,33 @@ table.insert(winbar_components, {
   end
 })
 
+local winbar_force_inactive = {
+  filetypes = {},
+  buftypes = {},
+  bufnames = {},
+}
+
+winbar_force_inactive.filetypes = {
+  "NvimTree",
+  "neo-tree",
+  "startify",
+  "alpha",
+  "fugitive",
+  "fugitiveblame",
+}
+
+winbar_force_inactive.buftypes = {
+  "terminal",
+}
+
+winbar_force_inactive.bufnames = {
+  "[No Name]",
+  "No Name",
+}
 
 require("feline").winbar.setup({
-  components = winbar_components,
+  -- components = winbar_components, -- comment for simple filename
+  force_inactive = winbar_force_inactive,
 })
 
 return M
