@@ -96,6 +96,7 @@ M.on_attach = function(client, bufnr)
   --     augroup END
   --   ]]
   -- end
+  require("lsp_signature").on_attach()
 end
 
 M.get_config = function()

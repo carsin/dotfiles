@@ -66,10 +66,10 @@ let g:gruvbox_material_palette = 'original' " I prefer the vibrancy of the origi
 let g:gruvbox_material_better_performance = 1
 
 colorscheme gruvbox-material
-" Load lua stuff
-lua require('init')
 " Load plugins
 lua require('plugins')
+" Load lua commands
+lua require('commands')
 
 augroup jdtls_lsp
     autocmd!
@@ -170,9 +170,9 @@ set fillchars+=vert:│    " Change vertical split character to solid line inste
 set shortmess+=W         " Don't pass messages to ins-completion-menu.
 set formatoptions-=cro   " Disable auto insert comment
 set signcolumn=yes:1     " Column for diagnostics & git gutter
-set pumheight=30         " Shorten number of autocomplete suggestions
-set pumwidth=25          " Shorten width of autocomplete suggestions
-set pumblend=10          " Autocomplete background transparency
+set pumheight=13         " Shorten number of autocomplete suggestions
+set pumwidth=22          " Shorten width of autocomplete suggestions
+set pumblend=0          " Autocomplete background transparency
 set viewoptions-=options " storing local options in view session files causes no end of trouble
 let &fcs='eob: '         " No fugly eob tildas
 " link/ shortening

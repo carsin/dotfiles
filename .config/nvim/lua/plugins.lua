@@ -39,6 +39,7 @@ return packer.startup({
     use("nvim-lua/popup.nvim")
     use("nvim-lua/plenary.nvim")
     use("sainnhe/gruvbox-material")
+    -- use('ellisonleao/gruvbox.nvim')
     use({ "norcalli/nvim-colorizer.lua", event = "BufRead" })
     use("chaoren/vim-wordmotion") -- more intuitive w/W motion
     use("wellle/targets.vim") -- more text objects to target
@@ -134,13 +135,6 @@ return packer.startup({
       },
       config = function()
         require("settings.tscope")
-      end,
-    })
-
-    use({ -- lspkind
-      "onsails/lspkind-nvim",
-      config = function()
-        require("settings.lsp.lspkind")
       end,
     })
 
@@ -289,12 +283,12 @@ return packer.startup({
       end,
     })
 
-    use({ -- which key
-      "folke/which-key.nvim",
-      config = function()
-        require("which-key").setup({})
-      end,
-    })
+    -- use({ -- which key
+    --   "folke/which-key.nvim",
+    --   config = function()
+    --     require("which-key").setup({})
+    --   end,
+    -- })
 
     use({ -- lsp status widget
       "j-hui/fidget.nvim",
@@ -373,13 +367,6 @@ return packer.startup({
     -- 	config = function()
     -- 		require("settings.bqf")
     -- 	end,
-    -- })
-
-    -- use({ -- pretty folding
-    --   "anuvyklack/pretty-fold.nvim",
-    --   config = function()
-    --     require("settings.prettyfold")
-    --   end,
     -- })
 
     use({ -- floating winbar statuslines (until neovim winbar is merged to master)

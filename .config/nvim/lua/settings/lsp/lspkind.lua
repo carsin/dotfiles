@@ -6,7 +6,7 @@ M.icons = {
   Constructor = "",
   Field = "",
   -- Variable = "",
-	Variable = "",
+  Variable = "",
   Class = "ﴯ",
   Interface = "",
   Module = "",
@@ -15,22 +15,22 @@ M.icons = {
   Value = "",
   Enum = "",
   Keyword = "",
-  Snippet = "",
+  Snippet = "",
   Color = "",
   File = "",
   -- Reference = "",
-	Reference = "",
+  Reference = "",
   Folder = "",
   EnumMember = "",
-  Constant = "",
+  Constant = "",
   -- Struct = "",
-	Struct = "פּ",
+  Struct = "פּ",
   -- Event = "",
-	Event = "",
+  Event = "",
   Operator = "",
   TypeParameter = ""
 }
-  
+
 -- defaults: for reference
 -- M.symbol_map = {
 -- 	Text = "",
@@ -56,9 +56,37 @@ M.icons = {
 -- 	TypeParameter = "",
 -- }
 --
+--
+-- local icons = {
+--     Text = "",
+--     Method = "",
+--     Function = "",
+--     Constructor = "⌘",
+--     Field = "ﰠ",
+--     Variable = "",
+--     Class = "ﴯ",
+--     Interface = "",
+--     Module = "",
+--     Property = "ﰠ",
+--     Unit = "塞",
+--     Value = "",
+--     Enum = "",
+--     Keyword = "廓",
+--     Snippet = "",
+--     Color = "",
+--     File = "",
+--     Reference = "",
+--     Folder = "",
+--     EnumMember = "",
+--     Constant = "",
+--     Struct = "פּ",
+--     Event = "",
+--     Operator = "",
+--     TypeParameter = "",
+-- }
 require("lspkind").init({
-		mode = "symbol_text",
-		symbol_map = M.icons,
+  mode = "symbol_text",
+  symbol_map = M.icons,
 })
 
 return M

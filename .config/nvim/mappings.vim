@@ -48,8 +48,8 @@ nnoremap <leader>id "=strftime("%a, %b %d %Y")<CR>p
 nnoremap <leader>it "=strftime("%I:%M:%S %p")<CR>p
 nnoremap <leader>is "=strftime("-- CKF %-I:%M:%S %p")<CR>p
 " wiki entries
-nnoremap <leader>ie "=strftime("### %I:%M:%S %p")<CR>po
-nnoremap <leader>ih "=strftime("### %I:%M:%S %p")<CR>po
+nnoremap <leader>ie o<ESC>"=strftime("### %I:%M:%S %p")<CR>po
+nnoremap <leader>ih o<ESC>"=strftime("### %I:%M:%S %p")<CR>po
 
 " Open URI under cursor with lua function
 nnoremap gu :OpenURIUnderCursor<CR>
@@ -330,15 +330,13 @@ nnoremap <leader>zs <Cmd>cd /home/carson/files/docs/wiki/<CR><Cmd>Telescope live
 vnoremap <leader>zf :'<,'>ZkMatch<CR>
 
 " undotree
-nnoremap <leader>u :UndotreeToggle<CR>
+" nnoremap <leader>u :UndotreeToggle<CR>
 
 " neorg
 nnoremap <leader>ogh <Cmd>Neorg workspace home<CR>
-nnoremap <leader>onn <Cmd>Neorg workspace notes<CR>
-nnoremap <leader>ono <Cmd>Neorg workspace notes<CR>
+nnoremap <leader>on <Cmd>Neorg workspace notes<CR>
 " gtd
 nnoremap <leader>ogg <Cmd>Neorg workspace gtd<CR>
-nnoremap <leader>ogd <Cmd>Neorg workspace gtd<CR>
 nnoremap <expr> <leader>ogc exists(":NeorgStart") ? ':NeorgStart silent=true<CR>:Neorg gtd capture<CR>' : ':Neorg gtd capture<CR>'
 nnoremap <expr> <leader>oge exists(":NeorgStart") ? ':NeorgStart silent=true<CR>:Neorg gtd capture<CR>' : ':Neorg gtd edit<CR>'
 nnoremap <expr> <leader>ogt exists(":NeorgStart") ? ':NeorgStart silent=true<CR>:Neorg gtd views<CR>' : ':Neorg gtd views<CR>'
