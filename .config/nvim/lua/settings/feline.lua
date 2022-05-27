@@ -91,7 +91,9 @@ local vi_mode_text = {
 
 -- vi-mode
 table.insert(components.active[1], {
-  provider = "vi_mode",
+  provider = function()
+    return string.format("  %s  ", vi_mode_utils.get_vim_mode())
+  end,
   hl = function()
     local val = {}
     val.name = vi_mode_utils.get_mode_highlight_name()
@@ -100,9 +102,10 @@ table.insert(components.active[1], {
     val.style = "bold"
     return val
   end,
-  left_sep = "░▒▓█",
-  right_sep = "█▓▒░ ",
-  icon = "",
+  -- left_sep = "░▒▓█",
+  -- right_sep = "█▓▒░ ",
+  right_sep = " ",
+  -- icon = "",
 })
 
 -- vi-symbol
@@ -123,14 +126,27 @@ table.insert(components.active[1], {
 
 -- filename
 table.insert(components.active[1], {
-  provider = "file_info",
-  file_modified_icon = "+",
+  provider = {
+    name = "file_info",
+    opts = {
+      type = 'full-path',
+      file_modified_icon = "+",
+      file_readonly_icon = "-- READ ONLY",
+    },
+  },
+  short_provider = {
+    name = 'file_info',
+    opts = {
+      type = 'short-path',
+      file_modified_icon = "+",
+      file_readonly_icon = "-- READ ONLY",
+    }
+  },
   hl = {
     fg = "white",
     bg = "bg",
     -- style = 'bold'
   },
-  type = "relative",
   right_sep = "",
 })
 
@@ -445,11 +461,13 @@ table.insert(components.inactive[1], {
 
 -- filename
 table.insert(components.inactive[1], {
-  provider = "file_info",
-  opts = {
-    file_modified_icon = "+",
-    file_readonly_icon = "-- READ ONLY",
-    type = "full-path",
+  provider = {
+    name = "file_info",
+    opts = {
+      type = 'full-path',
+      file_readonly_icon = "-- READ ONLY",
+      file_modified_icon = "+",
+    },
   },
 })
 
@@ -476,7 +494,7 @@ require("feline").setup({
   force_inactive = force_inactive,
 })
 
-local treesitter_context = require "settings.treesitter".treesitter_context
+-- local treesitter_context = require "settings.treesitter".treesitter_context
 local winbar_components = {
   active = {},
   inactive = {}
@@ -532,9 +550,12 @@ table.insert(winbar_components.inactive, {})
 -- })
 
 table.insert(winbar_components.active[1], {
-  provider = "file_info",
-  opts = {
-    type = 'unique'
+  provider = {
+    name = "file_info",
+    opts = {
+      type = 'unique',
+      file_modified_icon = "+",
+    },
   },
   hl = {
     fg = 'bgreen',
@@ -571,7 +592,14 @@ table.insert(winbar_components.active[1], {
 
 
 table.insert(winbar_components.inactive[1], {
-  provider = "file_info",
+  provider = {
+    name = "file_info",
+    opts = {
+      file_readonly_icon = "-- READ ONLY",
+      type = 'unique',
+      file_modified_icon = "+",
+    },
+  },
   -- icon = {
   --   hl = {
   --     fg = 'white',
@@ -580,9 +608,6 @@ table.insert(winbar_components.inactive[1], {
   --   },
   -- },
   --
-  opts = {
-    type = 'unique'
-  },
   hl = {
     fg = 'grey',
     bg = 'NONE',
