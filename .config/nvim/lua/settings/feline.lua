@@ -129,7 +129,7 @@ table.insert(components.active[1], {
     bg = "bg",
     -- style = 'bold'
   },
-  type = "unique",
+  type = "relative",
   right_sep = "",
 })
 
@@ -490,73 +490,79 @@ table.insert(winbar_components.active, {})
 table.insert(winbar_components.inactive, {})
 table.insert(winbar_components.inactive, {})
 
+-- table.insert(winbar_components.active[1], {
+--   provider = function()
+--     local columns = vim.api.nvim_get_option("columns")
+--     if not pcall(require, "lsp_signature") then
+--       return treesitter_context(columns)
+--     end
+--     local sig = require("lsp_signature").status_line(columns)
+--
+--     if sig == nil or sig.label == nil or sig.range == nil then
+--       return treesitter_context(columns)
+--     end
+--     local label1 = sig.label
+--     local label2 = ""
+--     if sig.range then
+--       label1 = sig.label:sub(1, sig.range["start"] - 1)
+--       label2 = sig.label:sub(sig.range["end"] + 1, #sig.label)
+--     end
+--     local doc = sig.doc or ""
+--     if #doc + #sig.label >= columns then
+--       local trim = math.max(5, columns - #sig.label - #sig.hint - 10)
+--       doc = doc:sub(1, trim) .. "..."
+--       -- lprint(doc)
+--     end
+--
+--
+--     return "%#WinBarSignature#"
+--         .. label1
+--         .. "%*"
+--         .. "%#WinBarSigActParm#"
+--         .. sig.hint
+--         .. "%*"
+--         .. "%#WinBarSignature#"
+--         .. label2
+--         .. "%*"
+--         .. "%#WinBarSigDoc#"
+--         .. " " .. doc
+--         or "" .. "%*"
+--   end
+-- })
+
 table.insert(winbar_components.active[1], {
-  provider = function()
-    local columns = vim.api.nvim_get_option("columns")
-    if not pcall(require, "lsp_signature") then
-      return treesitter_context(columns)
-    end
-    local sig = require("lsp_signature").status_line(columns)
-
-    if sig == nil or sig.label == nil or sig.range == nil then
-      return treesitter_context(columns)
-    end
-    local label1 = sig.label
-    local label2 = ""
-    if sig.range then
-      label1 = sig.label:sub(1, sig.range["start"] - 1)
-      label2 = sig.label:sub(sig.range["end"] + 1, #sig.label)
-    end
-    local doc = sig.doc or ""
-    if #doc + #sig.label >= columns then
-      local trim = math.max(5, columns - #sig.label - #sig.hint - 10)
-      doc = doc:sub(1, trim) .. "..."
-      -- lprint(doc)
-    end
-
-
-    return "%#WinBarSignature#"
-        .. label1
-        .. "%*"
-        .. "%#WinBarSigActParm#"
-        .. sig.hint
-        .. "%*"
-        .. "%#WinBarSignature#"
-        .. label2
-        .. "%*"
-        .. "%#WinBarSigDoc#"
-        .. " " .. doc
-        or "" .. "%*"
+  provider = "file_info",
+  hl = {
+    fg = 'skyblue',
+    bg = 'NONE',
+    style = 'bold',
+  },
+  enabled = function()
+    return vim.fn.expand("%") ~= ""
   end
 })
 
-local winbar_force_inactive = {
-  filetypes = {},
-  buftypes = {},
-  bufnames = {},
-}
-
-winbar_force_inactive.filetypes = {
-  "NvimTree",
-  "neo-tree",
-  "startify",
-  "alpha",
-  "fugitive",
-  "fugitiveblame",
-}
-
-winbar_force_inactive.buftypes = {
-  "terminal",
-}
-
-winbar_force_inactive.bufnames = {
-  "[No Name]",
-  "No Name",
-}
+table.insert(winbar_components.inactive[1], {
+  provider = "file_info",
+  -- icon = {
+  --   hl = {
+  --     fg = 'white',
+  --     bg = 'NONE',
+  --     style = 'bold',
+  --   },
+  -- },
+  hl = {
+    fg = 'grey',
+    bg = 'NONE',
+    style = 'NONE',
+  },
+  enabled = function()
+    return vim.fn.expand("%") ~= "" -- don't display [No Name] buffers
+  end
+})
 
 require("feline").winbar.setup({
-  -- components = winbar_components, -- comment for simple filename
-  force_inactive = winbar_force_inactive,
+  components = winbar_components, -- comment for simple filename
 })
 
 return M

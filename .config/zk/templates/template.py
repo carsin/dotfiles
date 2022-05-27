@@ -75,7 +75,6 @@ template = (
     + """ -- INIT LOG -- CREATED """
     + timestart
     + """
-
 ## MIDNIGHT -- END OF LOG -- DAY """
     + str(dayno.days)
     + """
