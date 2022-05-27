@@ -558,7 +558,7 @@ table.insert(winbar_components.active[1], {
     },
   },
   hl = {
-    fg = 'bgreen',
+    -- fg = select(2, require('nvim-web-devicons').get_icon_color(vim.fn.expand('%:t'), nil, { default = false })),
     bg = 'NONE',
     style = 'bold',
   },
