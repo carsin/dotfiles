@@ -61,7 +61,7 @@ local vi_mode_colors = {
   LINES = "violet",
   REPLACE = "violet",
   ["V-REPLACE"] = "violet",
-  ENTER = "cyan",
+  ENTEg= "cyan",
   MORE = "cyan",
   SELECT = "orange",
   COMMAND = "cyan",
@@ -79,7 +79,7 @@ local vi_mode_text = {
   BLOCK = "<>",
   REPLACE = "<>",
   ["V-REPLACE"] = "<>",
-  ENTER = "<>",
+  ENTEg= "<>",
   MORE = "<>",
   SELECT = "<>",
   COMMAND = "<|",
@@ -131,7 +131,7 @@ table.insert(components.active[1], {
     opts = {
       type = 'full-path',
       file_modified_icon = "+",
-      file_readonly_icon = "-- READ ONLY",
+      file_readonly_icon = " ",
     },
   },
   short_provider = {
@@ -139,7 +139,7 @@ table.insert(components.active[1], {
     opts = {
       type = 'short-path',
       file_modified_icon = "+",
-      file_readonly_icon = "-- READ ONLY",
+      file_readonly_icon = " ",
     }
   },
   hl = {
@@ -465,7 +465,7 @@ table.insert(components.inactive[1], {
     name = "file_info",
     opts = {
       type = 'full-path',
-      file_readonly_icon = "-- READ ONLY",
+      file_readonly_icon = " ",
       file_modified_icon = "+",
     },
   },
@@ -554,7 +554,8 @@ table.insert(winbar_components.active[1], {
     name = "file_info",
     opts = {
       type = 'unique',
-      file_modified_icon = "+",
+      file_readonly_icon = " ",
+      file_modified_icon = "[+]",
     },
   },
   hl = {
@@ -595,7 +596,7 @@ table.insert(winbar_components.inactive[1], {
   provider = {
     name = "file_info",
     opts = {
-      file_readonly_icon = "-- READ ONLY",
+      file_readonly_icon = " ",
       type = 'unique',
       file_modified_icon = "+",
     },

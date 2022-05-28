@@ -96,7 +96,7 @@ nnoremap <Tab> za
 vnoremap . :normal .<CR>
 
 " Replace ex mode with gq (shorten long line)
-map Q gq
+" nmap Q gq
 
 " format 80 line limit
 " vnoremap gz :s/\v(.{80})/\1\r/g<CR>
@@ -105,12 +105,14 @@ map Q gq
 inoremap <silent> <F9> <ESC>:execute "set colorcolumn=" . (&colorcolumn == "" ? "81" : "")<CR>a
 nnoremap <silent> <F9> :execute "set colorcolumn=" . (&colorcolumn == "" ? "81" : "")<CR>
 
+
 " Replace all on S
 nnoremap <leader>R :%s//g<Left><Left>
 vnoremap <leader>R :s//g<Left><Left>
 
 " format to 80 chars with gq in markdown
-autocmd FileType markdown nnoremap gz :%s/.\{80}\($\)\@!/&\r/g<CR>
+" autocmd FileType markdown nnoremap gz :%s/.\{80}\($\)\@!/&\r/g<CR>
+" autocmd FileType markdown nnoremap gz :%s/\v(.{80}.{-}\s)/\1\r/g<CR>
 
 " Perform dot commands over visual blocks:
 vnoremap . :normal .<CR>
@@ -207,8 +209,8 @@ nnoremap S <cmd>Telescope live_grep<cr>
 " pickers
 nnoremap <leader>pp <cmd>lua require'telescope'.extensions.project.project{ display_type = 'full' }<cr>
 nnoremap <leader>ph <cmd>SessionManager load_session<cr>
-nnoremap <leader>pz <cmd>Telescope zoxide list<cr>
-nnoremap <leader>pe <cmd>Telescope env<cr>
+" nnoremap <leader>pz <cmd>Telescope zoxide list<cr>
+" nnoremap <leader>pe <cmd>Telescope env<cr>
 
 " -- telescope-dap
 nnoremap <leader>pdc <cmd>lua require"telescope".extensions.dap.commands{}<CR>

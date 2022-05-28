@@ -38,6 +38,7 @@ cnoremap w!! execute 'silent! write !sudo tee % >/dev/null' <bar> edit!
 
 " Plugins {{{
 " Misc vim settings
+let g:loaded_matchit = 1
 " TODO: Move this
 let g:undotree_WindowLayout = 3 " diff on bot tree on right
 " e.g. using 'd' instead of 'days' to save some space.
@@ -209,6 +210,9 @@ autocmd FileType norg,rust,lua setlocal foldmethod=expr foldexpr=nvim_treesitter
 
 " Automatically equalize splits when vim is resized
 autocmd VimResized * wincmd =
+
+" Don't take up scrollbar with match
+let g:matchup_matchparen_offscreen = { 'method': 'popup' }
 
 " Customized version of folded text, idea by
 " http://www.gregsexton.org/2011/03/improving-the-text-displayed-in-a-fold/

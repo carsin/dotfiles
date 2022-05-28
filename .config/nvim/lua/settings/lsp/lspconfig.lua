@@ -70,8 +70,8 @@ M.on_attach = function(client, bufnr)
   buf_set_keymap("n", "gr", "<cmd>Telescope lsp_references<cr>", opts)
   buf_set_keymap("n", "gd", "<cmd>Telescope lsp_definitions<CR>", opts)
   buf_set_keymap("n", "gi", "<cmd>Telescope lsp_implementations<CR>", opts)
-  buf_set_keymap("n", "gq", "<Cmd>lua vim.lsp.buf.format { async=true }<CR>", opts)
-  buf_set_keymap("v", "gq", "<Esc><Cmd>lua vim.lsp.buf.range_formatting()<CR>", opts)
+  buf_set_keymap("n", "gQ", "<Cmd>lua vim.lsp.buf.format { async=true }<CR>", opts)
+  buf_set_keymap("v", "gQ", "<Esc><Cmd>lua vim.lsp.buf.range_formatting()<CR>", opts)
 
   -- set mappings for zk if in wikidir
   require("settings.zk").set_mappings()
@@ -180,5 +180,7 @@ rust_opts.server = {
   handlers = opts.handlers,
 }
 require("rust-tools").setup(rust_opts)
+
+lspconfig.vimls.setup(M.get_config())
 
 return M

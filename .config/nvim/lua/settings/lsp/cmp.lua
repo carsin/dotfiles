@@ -8,8 +8,8 @@ local icons = {
   Function = "",
   Constructor = "",
   Field = "",
-  -- Variable = "",
-  Variable = "",
+  Variable = "",
+  -- Variable = "",
   Class = "ﴯ",
   Interface = "",
   Module = "",
@@ -25,7 +25,7 @@ local icons = {
   Reference = "",
   Folder = "",
   EnumMember = "",
-  Constant = "",
+  Constant = "",
   -- Struct = "",
   Struct = "פּ",
   -- Event = "",
@@ -61,7 +61,7 @@ cmp.setup({
   },
   completion = {
     -- completeopt = "menu,menuone,noinsert",
-    keyword_pattern = [[\%(-\?\d\+\%(\.\d\+\)\?\|\h\w*\%(-\w*\)*\)]],
+    -- keyword_pattern = [[\%(-\?\d\+\%(\.\d\+\)\?\|\h\w*\%(-\w*\)*\)]],
     keyword_length = 1,
   },
   formatting = {
@@ -73,6 +73,29 @@ cmp.setup({
       return vim_item
     end,
   },
+  -- formatting = {
+  --   format = require("lspkind").cmp_format({
+  --     with_text = true,
+  --     mode = "symbol", -- show only symbol annotations
+  --     maxwidth = 50, -- prevent the popup from showing more than provided characters (e.g 50 will not show more than 50 characters)
+  --     menu = {
+  --       buffer = "[Buffer]",
+  --       nvim_lua = "[VimApi]",
+  --       nvim_lsp = "[LSP]",
+  --       luasnip = "[LuaSnip]",
+  --       tmux = "[Tmux]",
+  --       path = "[Path]",
+  --       -- spell = "[Spell]",
+  --       calc = "[Calc]",
+  --       latex_symbols = "[Latex]",
+  --       crates = "[Crates]",
+  --       neorg = "[Org]",
+  --     },
+  --     before = function(entry, vim_item)
+  --       return vim_item
+  --     end,
+  --   }),
+  -- },
   snippet = {
     expand = function(args)
       luasnip.lsp_expand(args.body)
@@ -89,8 +112,8 @@ cmp.setup({
     ["<C-e>"] = cmp.mapping.close(),
     -- ["<CR>"] = cmp.mapping.confirm({ select = true }),
     ["<CR>"] = cmp.mapping.confirm {
-      behavior = cmp.ConfirmBehavior.Replace,
       select = true,
+      behavior = cmp.ConfirmBehavior.Replace,
     },
     ["<Esc>"] = cmp.mapping({ i = cmp.mapping.abort(), c = cmp.mapping.close() }),
     ["<Tab>"] = cmp.mapping(function(fallback)
@@ -126,29 +149,6 @@ cmp.setup({
     { name = "crates" },
     { name = "neorg" },
   },
-  -- formatting = {
-  --   format = require("lspkind").cmp_format({
-  --     with_text = true,
-  --     mode = "symbol", -- show only symbol annotations
-  --     maxwidth = 50, -- prevent the popup from showing more than provided characters (e.g 50 will not show more than 50 characters)
-  --     menu = {
-  --       buffer = "[Buffer]",
-  --       nvim_lua = "[VimApi]",
-  --       nvim_lsp = "[LSP]",
-  --       luasnip = "[LuaSnip]",
-  --       tmux = "[Tmux]",
-  --       path = "[Path]",
-  --       -- spell = "[Spell]",
-  --       calc = "[Calc]",
-  --       latex_symbols = "[Latex]",
-  --       crates = "[Crates]",
-  --       neorg = "[Org]",
-  --     },
-  --     before = function(entry, vim_item)
-  --       return vim_item
-  --     end,
-  --   }),
-  -- },
   sorting = {
     priority_weight = 1.0,
     comparators = {

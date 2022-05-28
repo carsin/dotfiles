@@ -96,13 +96,17 @@ M.setup = function()
           ["gpiC"] = "@call.inner",
         },
       },
+      lsp_interop = {
+        enable = true,
+        peek_definition_code = { ["DF"] = "@function.outer", ["CF"] = "@class.outer" },
+      },
     },
     matchup = {
       enable = true,
     },
-    -- lsp_interop = {
-    --   enable = false,
-    -- },
+    lsp_interop = {
+      enable = false,
+    },
     ensure_installed = { "c", "rust", "lua", "norg", "comment" },
   })
 end

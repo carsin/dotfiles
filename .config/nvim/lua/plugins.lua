@@ -62,6 +62,7 @@ return packer.startup({
     use("nathom/filetype.nvim")
     use("zhimsel/vim-stay") -- automated view session creation & restore for buffers, sesssions and windows
     use("Konfekt/FastFold") -- don't recompute expr and syntax folds
+    use("andymass/vim-matchup") -- extend %: highlight, navigate, and operate on sets of matching text
 
     use({ -- zettlekasten
       "mickael-menu/zk-nvim",
@@ -127,8 +128,6 @@ return packer.startup({
       requires = {
         "nvim-lua/plenary.nvim",
         "nvim-telescope/telescope-project.nvim",
-        -- "nvim-telescope/telescope-ui-select.nvim",
-        "jvgrootveld/telescope-zoxide",
         "natecraddock/telescope-zf-native.nvim",
         { "nvim-telescope/telescope-fzf-native.nvim", run = "make" },
         { "nvim-telescope/telescope-frecency.nvim", requires = { "tami5/sqlite.lua" } },
@@ -282,14 +281,7 @@ return packer.startup({
         })
       end,
     })
-
-    -- use({ -- which key
-    --   "folke/which-key.nvim",
-    --   config = function()
-    --     require("which-key").setup({})
-    --   end,
-    -- })
-
+    
     use({ -- lsp status widget
       "j-hui/fidget.nvim",
       config = function()
@@ -329,14 +321,7 @@ return packer.startup({
         })
       end,
     })
-
-    -- use({ -- symboloutline column
-    --   "simrat39/symbols-outline.nvim",
-    --   config = function()
-    --     require("settings.symbolsoutline")
-    --   end,
-    -- })
-
+    
     use({ -- jetpack
       "ggandor/lightspeed.nvim",
       config = function()
@@ -362,7 +347,7 @@ return packer.startup({
       requires = { "nvim-lua/plenary.nvim" },
     })
 
-    use {
+    use { -- winbar
       "SmiteshP/nvim-gps",
       requires = "nvim-treesitter/nvim-treesitter",
       config = function()
@@ -370,33 +355,6 @@ return packer.startup({
       end
     }
 
-    -- use({ -- better quick fix buffer
-    -- 	"kevinhwang91/nvim-bqf",
-    -- 	config = function()
-    -- 		require("settings.bqf")
-    -- 	end,
-    -- })
-
-    -- use({ -- floating winbar statuslines (until neovim winbar is merged to master)
-    --   "b0o/incline.nvim",
-    --   config = function()
-    --     require('incline').setup({
-    --       window = {
-    --         padding = {
-    --           left = 1,
-    --           right = 1
-    --         },
-    --         placement = {
-    --           horizontal = "right",
-    --           vertical = "top"
-    --         },
-    --       },
-    --       hide = {
-    --         only_win = true,
-    --       }
-    --     })
-    --   end,
-    -- })
     -- ############## DUNGEON -- HERE LIE TEMP, OLD & DEPRECATED PLUGINS ##################
     -- use({ -- keep windows in position
     -- 	"luukvbaal/stabilize.nvim",
@@ -410,6 +368,13 @@ return packer.startup({
     -- 	end,
     -- })
 
+    -- use({ -- better quick fix buffer
+    -- 	"kevinhwang91/nvim-bqf",
+    -- 	config = function()
+    -- 		require("settings.bqf")
+    -- 	end,
+    -- })
+    
     -- use({
     -- 	"michaelb/sniprun",
     -- 	run = "bash ./install.sh",
@@ -418,28 +383,13 @@ return packer.startup({
     -- 	end,
     -- })
 
-    -- use({
-    -- 	"noib3/nvim-cokeline",
-    -- 	config = function()
-    -- 		require("settings.cokeline")
-    -- 	end,
-    -- })
-    --
-
-    -- use({ -- bufferline
-    -- 	"akinsho/bufferline.nvim",
-    -- 	requires = "kyazdani43/nvim-web-devicons",
-    -- 	config = function()
-    -- 		require("settings.bufferline")
-    -- 	end,
+    -- use({ -- symboloutline column
+    --   "simrat39/symbols-outline.nvim",
+    --   config = function()
+    --     require("settings.symbolsoutline")
+    --   end,
     -- })
 
-    -- use({ -- nvim tree
-    -- 	"kyazdani42/nvim-tree.lua",
-    -- 	config = function()
-    -- 		require("settings.nvimtree")
-    -- 	end,
-    -- })
 
     -- use({ -- DAP
     -- 	"mfussenegger/nvim-dap",
@@ -452,7 +402,14 @@ return packer.startup({
     -- 		require("settings.lsp.dap")
     -- 	end,
     -- })
-    --
+
+    -- use({ -- which key
+    --   "folke/which-key.nvim",
+    --   config = function()
+    --     require("which-key").setup({})
+    --   end,
+    -- })
+
     if Packer_Bootstrap then -- auto set up conf after cloning packer.nvim
       require("packer").sync()
     end
