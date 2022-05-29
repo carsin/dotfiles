@@ -28,7 +28,7 @@ require("nvim-gps").setup({
     },
     ["norg"] = {
       icons = {
-        ["title-name"] = " ",
+        ["title-name"] = "﬌ ",
       },
     },
     ["toml"] = {

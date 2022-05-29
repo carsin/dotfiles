@@ -81,6 +81,7 @@ alias ff="fastfetch && tput setaf 6; fortune -n 400 -s | randomCowsay; tput sgr0
 # alias ff="~/bin/motd/motd.sh"
 alias zath="zathura"
 alias e="nvim"
+alias v="vim"
 alias se="sudoedit"
 alias magit="nvim -c Neogit"
 alias tt="tt -quotes en -t 30 -theme carson -showwpm -bold -noskip"
