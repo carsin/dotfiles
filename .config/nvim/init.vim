@@ -36,7 +36,7 @@ cnoremap w!! execute 'silent! write !sudo tee % >/dev/null' <bar> edit!
 
 " }}}
 
-" Plugins {{{
+" Plugins settings {{{
 " Misc vim settings
 let g:loaded_matchit = 1
 " TODO: Move this
@@ -65,6 +65,9 @@ let g:gruvbox_material_visual = 'reverse'
 let g:gruvbox_material_diagnostic_virtual_text = 'colored'
 let g:gruvbox_material_palette = 'original' " I prefer the vibrancy of the original
 let g:gruvbox_material_better_performance = 1
+
+" matchup + tpope surround
+let g:matchup_surround_enabled = 1
 
 colorscheme gruvbox-material
 " Load plugins
