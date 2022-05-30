@@ -78,11 +78,14 @@ template = (
 ## MIDNIGHT -- END OF LOG -- DAY """
     + str(dayno.days)
     + """
-### NIGHTLY REFLECTION
+### TODAY'S RECAP
 #### ACCOMPLISHMENTS
+-
 #### GRATITUDE
 #### LESSONS
+* 
 #### TOMORROWS INTENTIONS
++
 --------------------------------------------------------------------------------
 :daily:"""
 )
