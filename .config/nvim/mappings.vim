@@ -179,7 +179,7 @@ endfunction
 nnoremap <leader>cd :cd %:p:h<CR>:pwd<CR>
 
 "  delete current file without removing buffer data (useful for restoration)
-nnoremap <leader>zx :call delete(expand('%:p'))\|bd!<CR>
+" nnoremap <leader>zx :call delete(expand('%:p'))\|bd!<CR>
 
 " no more fatfingering and removing visual selection
 vmap <Space> <Nop>

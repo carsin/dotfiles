@@ -19,7 +19,7 @@ set ffs=unix,dos,mac " Use Unix as the standard file type
 set updatetime=250   " Time before plugins and inserthold is fired
 set mouse=a          " Set proper mouse mode
 
-" Turn backup off, since most stuff is in SVN, git etc anyway...
+" Turn swap off, since most stuff is in SVN, git etc anyway...
 set nobackup
 set nowb
 set noswapfile
@@ -116,6 +116,9 @@ set sessionoptions-=folds         " ensure sessions don't override default metho
 " Enable persistent undo so that undo history persists across vim sessions
 set undofile
 set undodir=~/.cache/nvim/undo
+
+set backup
+set backupdir=~/.cache/nvim/backup
 
 " Disables automatic commenting on newline: autocmd FileType * setlocal
 " formatoptions-=c formatoptions-=r formatoptions-=o
