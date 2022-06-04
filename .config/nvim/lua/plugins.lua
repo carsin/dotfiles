@@ -281,7 +281,7 @@ return packer.startup({
         })
       end,
     })
-    
+
     use({ -- lsp status widget
       "j-hui/fidget.nvim",
       config = function()
@@ -294,6 +294,13 @@ return packer.startup({
             ["null-ls"] = {
               ignore = true,
             }
+          },
+          window = {
+            blend = 10, -- &winblend for the window
+          },
+          align = {
+            bottom = true, -- align fidgets along bottom edge of buffer
+            right = true, -- align fidgets along right edge of buffer
           },
           timer = {
             task_decay = 2000, -- how long to keep around completed task, in ms
@@ -321,7 +328,7 @@ return packer.startup({
         })
       end,
     })
-    
+
     use({ -- jetpack
       "ggandor/lightspeed.nvim",
       config = function()
@@ -374,7 +381,7 @@ return packer.startup({
     -- 		require("settings.bqf")
     -- 	end,
     -- })
-    
+
     -- use({
     -- 	"michaelb/sniprun",
     -- 	run = "bash ./install.sh",
