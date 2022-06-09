@@ -71,6 +71,7 @@ alias pm="pulsemixer"
 alias g="git"
 alias lg="lazygit"
 # alias nf="neofetch"
+alias discord="LIBVA_DRIVER_NAME=i915 discord --ignore-gpu-blocklist --disable-features=UseOzonePlatform --enable-features=VaapiVideoDecoder --use-gl=desktop --enable-gpu-rasterization --enable-zero-copy"
 alias nf="fastfetch"
 alias fff="fastfetch"
 # random cow and fortune

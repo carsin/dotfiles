@@ -1,6 +1,5 @@
 local cmp = require("cmp")
 local luasnip = require("luasnip")
--- local kind = cmp.lsp.CompletionItemKind
 
 local icons = {
   Text = "",
@@ -54,14 +53,14 @@ cmp.setup({
     native_menu = false,
     ghost_text = false,
   },
-  confirmation = {
-    get_commit_characters = function()
-      return {}
-    end,
-  },
+  -- confirmation = {
+  --   get_commit_characters = function()
+  --     return {}
+  --   end,
+  -- },
   completion = {
     -- completeopt = "menu,menuone,noinsert",
-    -- keyword_pattern = [[\%(-\?\d\+\%(\.\d\+\)\?\|\h\w*\%(-\w*\)*\)]],
+    keyword_pattern = [[\%(-\?\d\+\%(\.\d\+\)\?\|\h\w*\%(-\w*\)*\)]],
     keyword_length = 1,
   },
   formatting = {

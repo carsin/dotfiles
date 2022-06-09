@@ -354,12 +354,19 @@ return packer.startup({
       requires = { "nvim-lua/plenary.nvim" },
     })
 
-    use { -- winbar
+    use { -- winbar widget
       "SmiteshP/nvim-gps",
       requires = "nvim-treesitter/nvim-treesitter",
       config = function()
         require("settings.lsp.gps")
       end
+    }
+
+    use {
+      "smjonas/inc-rename.nvim",
+      config = function()
+        require("inc_rename").setup()
+      end,
     }
 
     -- ############## DUNGEON -- HERE LIE TEMP, OLD & DEPRECATED PLUGINS ##################
