@@ -1,124 +1,5 @@
 ### Settings from original zathurarc ###
 set selection-clipboard clipboard
-set selection-clipboard clipboard
-set selection-clipboard clipboard
-set selection-clipboard clipboard
-set selection-clipboard clipboard
-set selection-clipboard clipboard
-set selection-clipboard clipboard
-set selection-clipboard clipboard
-set selection-clipboard clipboard
-set selection-clipboard clipboard
-set selection-clipboard clipboard
-set selection-clipboard clipboard
-set selection-clipboard clipboard
-set selection-clipboard clipboard
-set selection-clipboard clipboard
-set selection-clipboard clipboard
-set selection-clipboard clipboard
-set selection-clipboard clipboard
-set selection-clipboard clipboard
-set selection-clipboard clipboard
-set selection-clipboard clipboard
-set selection-clipboard clipboard
-set selection-clipboard clipboard
-set selection-clipboard clipboard
-set selection-clipboard clipboard
-set selection-clipboard clipboard
-set selection-clipboard clipboard
-set selection-clipboard clipboard
-set selection-clipboard clipboard
-set selection-clipboard clipboard
-set selection-clipboard clipboard
-set selection-clipboard clipboard
-set selection-clipboard clipboard
-set selection-clipboard clipboard
-set selection-clipboard clipboard
-set selection-clipboard clipboard
-set selection-clipboard clipboard
-set selection-clipboard clipboard
-set selection-clipboard clipboard
-set selection-clipboard clipboard
-set selection-clipboard clipboard
-set selection-clipboard clipboard
-set selection-clipboard clipboard
-set selection-clipboard clipboard
-set selection-clipboard clipboard
-set selection-clipboard clipboard
-set selection-clipboard clipboard
-set selection-clipboard clipboard
-set selection-clipboard clipboard
-set selection-clipboard clipboard
-set selection-clipboard clipboard
-set selection-clipboard clipboard
-set selection-clipboard clipboard
-set selection-clipboard clipboard
-set selection-clipboard clipboard
-set selection-clipboard clipboard
-set selection-clipboard clipboard
-set selection-clipboard clipboard
-set selection-clipboard clipboard
-set selection-clipboard clipboard
-set selection-clipboard clipboard
-set selection-clipboard clipboard
-set selection-clipboard clipboard
-set selection-clipboard clipboard
-set selection-clipboard clipboard
-set selection-clipboard clipboard
-set selection-clipboard clipboard
-set selection-clipboard clipboard
-set selection-clipboard clipboard
-set selection-clipboard clipboard
-set selection-clipboard clipboard
-set selection-clipboard clipboard
-set selection-clipboard clipboard
-set selection-clipboard clipboard
-set selection-clipboard clipboard
-set selection-clipboard clipboard
-set selection-clipboard clipboard
-set selection-clipboard clipboard
-set selection-clipboard clipboard
-set selection-clipboard clipboard
-set selection-clipboard clipboard
-set selection-clipboard clipboard
-set selection-clipboard clipboard
-set selection-clipboard clipboard
-set selection-clipboard clipboard
-set selection-clipboard clipboard
-set selection-clipboard clipboard
-set selection-clipboard clipboard
-set selection-clipboard clipboard
-set selection-clipboard clipboard
-set selection-clipboard clipboard
-set selection-clipboard clipboard
-set selection-clipboard clipboard
-set selection-clipboard clipboard
-set selection-clipboard clipboard
-set selection-clipboard clipboard
-set selection-clipboard clipboard
-set selection-clipboard clipboard
-set selection-clipboard clipboard
-set selection-clipboard clipboard
-set selection-clipboard clipboard
-set selection-clipboard clipboard
-set selection-clipboard clipboard
-set selection-clipboard clipboard
-set selection-clipboard clipboard
-set selection-clipboard clipboard
-set selection-clipboard clipboard
-set selection-clipboard clipboard
-set selection-clipboard clipboard
-set selection-clipboard clipboard
-set selection-clipboard clipboard
-set selection-clipboard clipboard
-set selection-clipboard clipboard
-set selection-clipboard clipboard
-set selection-clipboard clipboard
-set selection-clipboard clipboard
-set selection-clipboard clipboard
-set selection-clipboard clipboard
-set selection-clipboard clipboard
-set selection-clipboard clipboard
 
 ### zathura-pywal ###
 # Allow recolor
@@ -131,35 +12,35 @@ set recolor-keephue 'false'
 set recolor-reverse-video 'false'
 
 # Command line completion entries
-set completion-fg '#c5c5c4'
-set completion-bg '#181916'
+set completion-fg '#c5c5c5'
+set completion-bg '#171718'
 
 # Command line completion group elements
-set completion-group-fg '#55452e'
-set completion-group-bg '#181916'
+set completion-group-fg '#4d4d5d'
+set completion-group-bg '#171718'
 
 # Current command line completion element
-set completion-highlight-fg '#181916'
-set completion-highlight-bg '#c5c5c4'
+set completion-highlight-fg '#171718'
+set completion-highlight-bg '#c5c5c5'
 
 # Default foreground/background color
-set default-bg rgba(24,25,22,0.80)
+set default-bg rgba(23,23,24,0.80)
 
 # Input bar
-set inputbar-fg '#c5c5c4'
-set inputbar-bg '#181916'
+set inputbar-fg '#c5c5c5'
+set inputbar-bg '#171718'
 
 # Notification
-set notification-fg '#c5c5c4'
-set notification-bg '#181916'
+set notification-fg '#c5c5c5'
+set notification-bg '#171718'
 
 # Error notification
-set notification-error-fg '#c5c5c4'
-set notification-error-bg '#3c4951'
+set notification-error-fg '#c5c5c5'
+set notification-error-bg '#763c38'
 
 # Warning notification
-set notification-warning-fg '#c5c5c4'
-set notification-warning-bg '#3c4951'
+set notification-warning-fg '#c5c5c5'
+set notification-warning-bg '#763c38'
 
 # Tab - TODO
 # set tabbar-fg
@@ -170,25 +51,25 @@ set notification-warning-bg '#3c4951'
 # set tabbar-focus-bg
 
 # Status bar
-set statusbar-fg '#c5c5c4'
-set statusbar-bg '#181916'
+set statusbar-fg '#c5c5c5'
+set statusbar-bg '#171718'
 
 # Highlighting parts of the document (e.g. show search results)
-set highlight-color '#55452e'
-set highlight-active-color '#55452e'
+set highlight-color '#4d4d5d'
+set highlight-active-color '#4d4d5d'
 
 # Represent light/dark colors in recoloring mode
 set recolor-lightcolor rgba(0,0,0,0)
-set recolor-darkcolor '#c5c5c4'
+set recolor-darkcolor '#c5c5c5'
 
 # 'Loading...' text
-set render-loading-fg '#c5c5c4'
-set render-loading-bg '#181916'
+set render-loading-fg '#c5c5c5'
+set render-loading-bg '#171718'
 
 # Index mode
-set index-fg '#c5c5c4'
-set index-bg '#181916'
+set index-fg '#c5c5c5'
+set index-bg '#171718'
 
 # Selected element in index mode
-set index-active-fg '#181916'
-set index-active-bg '#c5c5c4'
+set index-active-fg '#171718'
+set index-active-bg '#c5c5c5'
