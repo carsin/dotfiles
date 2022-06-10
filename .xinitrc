@@ -50,6 +50,7 @@ unclutter &
 playerctld daemon
 
 # aw-qt & 
+laptop
 
 # start window manager
 while :; do 
