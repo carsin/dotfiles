@@ -344,15 +344,15 @@ static const char *const autostart[] = {
 #endif // COOL_AUTOSTART_PATCH
 
 #if SCRATCHPADS_PATCH
-const char *spcmd1[] = {"alacritty", "--class", "spterm1,Alacritty", "-o", "window.dimensions.columns=138", "-o", "window.dimensions.lines=45", "-e", "/home/carson/bin/scratchpads/scratchstart", NULL};
+const char *spcmd1[] = {"alacritty", "--class", "spterm1,Alacritty", "-o", "window.dimensions.columns=108", "-o", "window.dimensions.lines=36", "-e", "/home/carson/bin/scratchpads/scratchstart", NULL};
 const char *spcmd2[] = {"alacritty", "--class", "spterm2,Alacritty", "-o", "window.dimensions.columns=100", "-o", "window.dimensions.lines=36", "-e", "/home/carson/bin/scratchpads/scratchstart",  NULL};
 const char *spcmd3[] = {"alacritty", "--class", "spterm3,Alacritty", "-o", "window.dimensions.columns=165", "-o", "window.dimensions.lines=60",  "-e","/home/carson/bin/scratchpads/scratchstart", NULL};
 // const char *spcmd4[]  = {"alacritty", "--class", "spsptui,Alacritty", "-o", "window.dimensions.columns=135", "-o", "window.dimensions.lines=50", "-e", "/home/carson/bin/scratchpads/sptuistart", NULL};
-const char *spcmd4[] = {"alacritty", "--class", "spfiles,Alacritty", "-o", "window.dimensions.columns=155", "-o", "window.dimensions.lines=50", "-e", "ranger", NULL};
+const char *spcmd4[] = {"alacritty", "--class", "spfiles,Alacritty", "-o", "window.dimensions.columns=130", "-o", "window.dimensions.lines=39", "-e", "ranger", NULL};
 const char *spcmd5[] = {"alacritty", "--class", "sppulsemixer,Alacritty", "-o", "window.dimensions.columns=90", "-o", "window.dimensions.lines=30", "-e", "pulsemixer", NULL};
-const char *spcmd6[] = {"alacritty", "--class", "sptop,Alacritty", "-o", "window.dimensions.columns=140", "-o", "window.dimensions.lines=43", "-e", "btop", NULL};
+const char *spcmd6[] = {"alacritty", "--class", "sptop,Alacritty", "-o", "window.dimensions.columns=120", "-o", "window.dimensions.lines=39", "-e", "btop", NULL};
 const char *spcmd7[] = {"alacritty", "--class", "spnvtop,Alacritty", "-o", "window.dimensions.columns=138", "-o", "window.dimensions.lines=41", "-e", "nvtop", NULL};
-const char *spcmd8[] = {"alacritty", "--class", "spnvim,Alacritty", "-o", "window.dimensions.columns=173", "-o", "window.dimensions.lines=52", "-e", "/home/carson/bin/scratchpads/editorstart", NULL}; 
+const char *spcmd8[] = {"alacritty", "--class", "spnvim,Alacritty", "-o", "window.dimensions.columns=140", "-o", "window.dimensions.lines=41", "-e", "/home/carson/bin/scratchpads/editorstart", NULL}; 
 const char *spcmd8alt[] = {"alacritty", "--class", "spnvim2,Alacritty", "-o", "window.dimensions.columns=88", "-o", "window.dimensions.lines=82", "-e", "/home/carson/bin/scratchpads/editorstart", NULL}; 
 const char *spcmd9[] = {"alacritty", "--class", "spboard,Alacritty", "-o", "window.dimensions.columns=130", "-o", "window.dimensions.lines=47", "-e", "/home/carson/bin/scratchpads/kanbanstart", NULL};
 // const char *spcmd10[]  = {"alacritty", "--class", "sppomo,Alacritty", "-o", "window.dimensions.columns=25", "-o", "window.dimensions.lines=25", "-e", "pomo -p /home/carson/.config/pomo/config.json b 1", NULL};
@@ -406,16 +406,15 @@ static Sp scratchpads[] = {
  */
 // 龎   ﮕ ﰀ 烈
     
-// static char *tagicons[][NUMTAGS] = {
-//     [DEFAULT_TAGS] = {"龎 ", " ", " ", " ", " "},
-// };
-//       ﮕ  力
-static char *tagicons[][NUMTAGS*3] = {
-    [DEFAULT_TAGS] = {"龎", "", "", "", "", "",
-                      "", "ﳲ", "露", "", "", "",
-                      "I", "II", "III", "IV", "V", "VI"},
+static char *tagicons[][NUMTAGS] = {
+    [DEFAULT_TAGS] = {"", "", "", "", "", ""},
 };
-
+//       ﮕ  力
+// static char *tagicons[][NUMTAGS*3] = {
+//     [DEFAULT_TAGS] = {"龎", "", "", "", "", ""},
+//                       "", "ﳲ", "露", "", "", "",
+//                       "I", "II", "III", "IV", "V", "VI"},
+// };
 #if BAR_TAGGRID_PATCH
 /* grid of tags */
 #define SWITCHTAG_UP 1 << 0
