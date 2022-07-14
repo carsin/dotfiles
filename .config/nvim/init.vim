@@ -73,7 +73,7 @@ colorscheme gruvbox-material
 " Load plugins
 lua require('plugins')
 " Load lua commands
-lua require('commands')
+" lua require('commands')
 
 augroup jdtls_lsp
     autocmd!
@@ -197,7 +197,6 @@ let &fcs='eob: '         " No fugly eob tildas
 set completeopt=menu,menuone,noselect
 " Avoid showing extra messages when using completion
 set shortmess+=c
-
 
 " Show / hide cursorline/rnu in normal and insert
 augroup dynamicnumbers
