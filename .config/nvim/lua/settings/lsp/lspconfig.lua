@@ -1,11 +1,49 @@
 local sumneko = require("settings.lsp.sumneko")
 local lsp_installer = require("nvim-lsp-installer")
 local lspconfig = require("lspconfig")
+local navic = require("nvim-navic")
 local M = {}
+
 vim.fn.sign_define("DiagnosticSignError", { text = "E", texthl = "DiagnosticSignError" })
 vim.fn.sign_define("DiagnosticSignWarn", { text = "!", texthl = "DiagnosticSignWarn" })
 vim.fn.sign_define("DiagnosticSignInformation", { text = "i", texthl = "DiagnosticSignInfo" })
 vim.fn.sign_define("DiagnosticSignHint", { text = "?", texthl = "DiagnosticSignHint" })
+
+-- setup navbar context
+navic.setup {
+  icons = {
+    File          = " ",
+    Module        = " ",
+    Namespace     = " ",
+    Package       = " ",
+    Class         = "ﴯ ",
+    Method        = " ",
+    Property      = "ﰠ ",
+    Field         = " ",
+    Constructor   = " ",
+    Enum          = "練",
+    Interface     = "",
+    Function      = " ",
+    Variable      = " ",
+    Constant      = " ",
+    String        = " ",
+    Number        = " ",
+    Boolean       = "◩ ",
+    Array         = " ",
+    Object        = " ",
+    Key           = " ",
+    Null          = "ﳠ ",
+    EnumMember    = " ",
+    Struct        = "פּ ",
+    Event         = " ",
+    Operator      = " ",
+    TypeParameter = " ",
+  },
+  highlight = true,
+  separator = ' > ',
+  depth = 10, -- limit for amount of context shown
+  depth_limit_indicator = "...", -- indicator used when context hits depth limit
+}
 
 -- global config
 vim.diagnostic.config({
@@ -36,6 +74,7 @@ M.on_attach = function(client, bufnr)
   require("dd").setup({
     timeout = 250,
   })
+  navic.attach(client, bufnr) -- attach navbar context compoment
   vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = nil })
   vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = nil })
   vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {

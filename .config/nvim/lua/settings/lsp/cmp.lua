@@ -5,7 +5,7 @@ local icons = {
   Text = "",
   Method = "",
   Function = "",
-  Constructor = "",
+  Constructor = "",
   Field = "",
   Variable = "",
   -- Variable = "",
@@ -15,7 +15,7 @@ local icons = {
   Property = "ﰠ",
   Unit = "",
   Value = "",
-  Enum = "",
+  Enum = "練",
   Keyword = "",
   Snippet = "",
   Color = "",
@@ -30,7 +30,7 @@ local icons = {
   -- Event = "",
   Event = "",
   Operator = "",
-  TypeParameter = ""
+  TypeParameter = ""
 }
 
 -- autopairs: If you want insert `(` after select function or method item

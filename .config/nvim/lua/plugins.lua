@@ -63,6 +63,7 @@ return packer.startup({
     use("zhimsel/vim-stay") -- automated view session creation & restore for buffers, sesssions and windows
     use("Konfekt/FastFold") -- don't recompute expr and syntax folds
     use("andymass/vim-matchup") -- extend %: highlight, navigate, and operate on sets of matching text
+    use("SmiteshP/nvim-navic") -- lsp code context winbar component
 
     use({ -- zettlekasten
       "mickael-menu/zk-nvim",
@@ -354,15 +355,7 @@ return packer.startup({
       requires = { "nvim-lua/plenary.nvim" },
     })
 
-    use { -- winbar widget
-      "SmiteshP/nvim-gps",
-      requires = "nvim-treesitter/nvim-treesitter",
-      config = function()
-        require("settings.lsp.gps")
-      end
-    }
-
-    use {
+    use { -- incremental rename
       "smjonas/inc-rename.nvim",
       config = function()
         require("inc_rename").setup()

@@ -6,7 +6,7 @@ local force_inactive = {
   buftypes = {},
   bufnames = {},
 }
-local gps = require("nvim-gps")
+local navic = require("nvim-navic")
 
 force_inactive.filetypes = {
   "NvimTree",
@@ -570,7 +570,7 @@ table.insert(winbar_components.active[1], {
 
 table.insert(winbar_components.active[1], {
   provider = function()
-    return gps.get_location()
+    return navic.get_location()
   end,
   hl = {
     fg = 'white',
@@ -587,7 +587,7 @@ table.insert(winbar_components.active[1], {
     },
   },
   enabled = function()
-    return gps.is_available()
+    return navic.is_available()
   end
 })
 
