@@ -50,7 +50,7 @@ unclutter &
 playerctld daemon
 
 # aw-qt & 
-/home/carson/bin/displays/laptop.sh
+# /home/carson/bin/displays/dual2.sh
 
 # start window manager
 while :; do 

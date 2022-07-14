@@ -136,6 +136,7 @@ alias visual="/usr/local/bin/visual/VisUAL.sh"
 # scripts
 alias laptop="/home/carson/bin/displays/laptop.sh"
 alias dock="/home/carson/bin/displays/dock.sh"
+alias dual="/home/carson/bin/displays/dual2.sh"
 
 alias updateedm="/home/carson/bin/updateplaylist.sh"
 alias dlsong="/home/carson/bin/dlsong.sh"

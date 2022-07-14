@@ -29,7 +29,7 @@ b_date = date(2002, 10, 6)
 future_date = date(2022, 6, 10)
 t_date = date.today()
 dayno = t_date - b_date
-temptf = future_date - t_date
+# temptf = future_date - t_date
 now = datetime.now()
 # display formatting
 timestart = now.strftime("%-I:%M %p")
@@ -47,9 +47,10 @@ date += (
     + f"{yearPerc:04}"
     + "%) -- "
     + str(daysInYear - dayOfYear)
-    + " left ["
-    + str(temptf.days)
-    + " TIL SUMMER]"
+    + " left"
+    # + " left ["
+    # + str(temptf.days)
+    # + " TIL SUMMER]"
 )
 # count number of files with prefix 20*.md
 # dateshort = now.strftime("%a %m/%d/%Y").upper()
@@ -61,7 +62,7 @@ template = (
     "# "
     + now.strftime("%-m/%d/%Y")
     + "\n"
-    + genQuote()
+    # + genQuote()
     + """
  
 """

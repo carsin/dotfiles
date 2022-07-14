@@ -13,3 +13,5 @@ xrandr --output eDP1 \
     --output DP4 --primary --dpi $newdpi --rate 144.00 --mode 1920x1080 --pos 1992x0 --rotate normal \
     --output DP5 --dpi $newdpi --rate 144.00 --mode 1920x1080 --pos 3912x0 --rotate normal \
     --output HDMI1 --off --output VIRTUAL1 --off
+
+~/bin/newpape.sh
