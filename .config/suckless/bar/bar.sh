@@ -12,7 +12,7 @@ export SEP2=" │"
 . "$DIR/bar-functions/dwm_spotify.sh"
 . "$DIR/bar-functions/dwm_network.sh"
 . "$DIR/bar-functions/dwm_resources.sh"
-. "$DIR/bar-functions/dwm_battery.sh"
+# . "$DIR/bar-functions/dwm_battery.sh"
 . "$DIR/bar-functions/dwm_pomo.sh"
 . "$DIR/bar-functions/dwm_weather.sh"
 . "$DIR/bar-functions/dwm_date.sh"
@@ -42,7 +42,7 @@ while true; do
     upperbar="$upperbar$(dwm_spotify)"
     upperbar="$upperbar$(dwm_network) "
     upperbar="$upperbar$(dwm_resources) "
-    upperbar="$upperbar$(dwm_battery)"
+    # upperbar="$upperbar$(dwm_battery)"
     # WEATHER=${__DWM_BAR_WEATHER__/${__DWM_BAR_WEATHER__:1:2}/} # strip broken char
     # WEATHER=$(echo "$WEATHER" | tr -d F+) # remove fahrenheight&+ indicator chars
     # if [ "$WEATHER" != "" ]; then

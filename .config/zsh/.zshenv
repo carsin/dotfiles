@@ -14,7 +14,7 @@ export LANGUAGE='en'
 export LANG='en_US.UTF-8'
 
 # hidden 
-source ~/.config/zsh/.zprivate
+# source ~/.config/zsh/.zprivate
 # etc
 export FZF_DEFAULT_COMMAND='rg --files --hidden -g "!.git" '
 export CARGO_HOME=$XDG_CACHE_HOME/cargo

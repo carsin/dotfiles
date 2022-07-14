@@ -8,10 +8,9 @@ xrdb -merge ~/.Xresources
 
 xrandr --auto
 
-echo "Initializing dock configuration"
+echo "Initializing triple monitor configuration"
 # xrandr --setprovideroutputsource modesetting NVIDIA-0
-# sudo egpu-switcher switch egpu # TODO: this hangs startup because of sudo prompt. fix
-. /home/carson/bin/displays/dock.sh
+. /home/carson/bin/displays/triple.sh
 xset -dpms
 
 # start some nice programs
@@ -31,10 +30,6 @@ xset r rate 160 55
 # no screen blanking
 xset s off
 
-# xinput stuff
-. /home/carson/bin/initmouse
-. /home/carson/bin/inittrackpad
-
 # statusbar
 /home/carson/.config/suckless/bar/bar.sh &
 
@@ -50,7 +45,6 @@ unclutter &
 playerctld daemon
 
 # aw-qt & 
-/home/carson/bin/displays/laptop.sh
 
 # start window manager
 while :; do 
