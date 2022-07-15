@@ -7,7 +7,7 @@
 static const unsigned int borderpx = 0; /* border pixel of windows */
 static const int corner_radius = 10;
 #else
-static const unsigned int borderpx = 1; /* border pixel of windows */
+static const unsigned int borderpx = 2; /* border pixel of windows */
 #endif                               // ROUNDED_CORNERS_PATCH
 static const unsigned int snap = 32; /* snap pixel */
 #if SWALLOW_PATCH
@@ -461,13 +461,14 @@ static const Rule rules[] = {
     // RULE(.title = "Picture-In-Picture", .tags = SPTAG(99), .isfloating = 1)
     RULE(.class = "St", .isterminal = 1)
     RULE(.class = "Alacritty", .isterminal = 1)
-    // move to other mon
-    RULE(.instance = "discord", .tags = 1 << 3, .monitor = 1)
+    // vertical monitor
     RULE(.instance = "easyeffects", .tags = 1 << 2, .monitor = 1)
-    RULE(.instance = "spotify", .tags = 1 << 2, .monitor = 1)
-    RULE(.instance = "obs", .monitor = 1)
+    RULE(.instance = "spotify", .tags = 1 << 1, .monitor = 1)
     RULE(.instance = "guvcview", .monitor = 2)
     RULE(.instance = "chatterino", .tags = 1 << 1, .monitor = 1)
+    // 2nd monitor
+    RULE(.instance = "discord", .tags = 1 << 3, .monitor = 2)
+    RULE(.instance = "obs", .monitor = 1)
     // gaming
     RULE(.class = "steam_app_", .tags = 1 << 5, .monitor = 0)
     RULE(.class = "battle.net.exe", .tags = 1 << 5, .monitor = 0)
@@ -509,11 +510,12 @@ static const Rule rules[] = {
 static const MonitorRule monrules[] = {
     /* monitor  tag   layout  mfact  nmaster  showbar  topbar */
     // {1, -1, 2, -1, -1, -1, -1}, // use a different layout for the second monitor
-    {1, 1, 1, 0.4, -1, -1, -1}, // 1 (ultrawide)
-    {1, 2, 1, 0.4, -1, -1, -1}, // 1 (ultrawide)
-    {1, 3, 1, 0.4, -1, -1, -1}, // 1 (ultrawide)
-    {1, 4, 1, 0.4, -1, -1, -1}, // 1 (ultrawide)
-    {1, 5, 1, 0.4, -1, -1, -1}, // 1 (ultrawide)
+    // {1, 1, 1, 0.4, -1, -1, -1}, // 1 (ultrawide)
+    // {1, 2, 1, 0.4, -1, -1, -1}, // 1 (ultrawide)
+    // {1, 3, 1, 0.4, -1, -1, -1}, // 1 (ultrawide)
+    // {1, 4, 1, 0.4, -1, -1, -1}, // 1 (ultrawide)
+    // {1, 5, 1, 0.4, -1, -1, -1}, // 1 (ultrawide)
+    {1, -1, 3, -1, -1, -1, -1}, // vertical
     {-1, -1, 0, -1, -1, -1, -1}, // default
 };
 #else
@@ -703,11 +705,11 @@ static const Layout layouts[] = {
     {"[]=", flextile, {1, -1, SPLIT_VERTICAL, LEFT_TO_RIGHT, TOP_TO_BOTTOM, 0, NULL}},           // default tile layout
     {"|M|", flextile, {1, -1, SPLIT_CENTERED_VERTICAL, LEFT_TO_RIGHT, TOP_TO_BOTTOM, TOP_TO_BOTTOM, NULL}}, // centeredmaster
     {"[]:", flextile, {1, -1, SPLIT_VERTICAL, TOP_TO_BOTTOM, GAPPLESSGRID_ALT2, 0, NULL}},           // tile layout with comfortable stack
+    {"-M-", flextile, {1, -1, SPLIT_CENTERED_HORIZONTAL, TOP_TO_BOTTOM, LEFT_TO_RIGHT, LEFT_TO_RIGHT, NULL}}, // centeredmaster horiz
     {"[D]", flextile, {1, -1, SPLIT_VERTICAL, TOP_TO_BOTTOM, MONOCLE, 0, NULL}}, // deck
     {"[T]", flextile, {1, -1, SPLIT_VERTICAL, LEFT_TO_RIGHT, TATAMI, 0, NULL}}, // tatami mats
     {"||:", flextile, {2, -1, SPLIT_VERTICAL, LEFT_TO_RIGHT, TOP_TO_BOTTOM, 0, NULL}},           // 2 masters tiled
     {":::", flextile, {1, -1, NO_SPLIT, GAPPLESSGRID, GAPPLESSGRID, 0, NULL}}, // gappless grid
-    {"-M-", flextile, {1, -1, SPLIT_CENTERED_HORIZONTAL, TOP_TO_BOTTOM, LEFT_TO_RIGHT, LEFT_TO_RIGHT, NULL}}, // centeredmaster horiz
     {"TTT", flextile, {1, -1, SPLIT_HORIZONTAL, LEFT_TO_RIGHT, LEFT_TO_RIGHT, 0, NULL}}, // bstack
     {"(@)", flextile, {1, -1, NO_SPLIT, SPIRAL, SPIRAL, 0, NULL}}, // fibonacci spiral
     {"[M]", flextile, {1, -1, NO_SPLIT, MONOCLE, MONOCLE, 0, NULL}}, // monocle

@@ -375,18 +375,6 @@ table.insert(components.active[3], {
   right_sep = "",
 })
 
--- position
-table.insert(components.active[3], {
-  provider = "position",
-  hl = {
-    fg = "white",
-    bg = "bg",
-    style = "bold",
-  },
-  left_sep = " ",
-  right_sep = " ",
-})
-
 -- fileType
 table.insert(components.active[3], {
   provider = "file_type",
@@ -405,7 +393,19 @@ table.insert(components.active[3], {
     return val
   end,
   right_sep = "",
-  left_sep = "",
+  left_sep = " ",
+})
+
+-- position
+table.insert(components.active[3], {
+  provider = "position",
+  hl = {
+    fg = "white",
+    bg = "bg",
+    style = "bold",
+  },
+  left_sep = " ",
+  right_sep = "",
 })
 
 -- linePercent

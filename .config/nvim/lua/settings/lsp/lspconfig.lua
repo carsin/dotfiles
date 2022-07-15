@@ -39,7 +39,7 @@ navic.setup {
     Operator      = " ",
     TypeParameter = " ",
   },
-  highlight = true,
+  highlight = false,
   separator = ' > ',
   depth = 10, -- limit for amount of context shown
   depth_limit_indicator = "...", -- indicator used when context hits depth limit
@@ -106,8 +106,8 @@ M.on_attach = function(client, bufnr)
   -- buf_set_keymap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts
   buf_set_keymap("n", "[d", "<cmd>lua vim.diagnostic.goto_prev()<CR>zz", opts)
   buf_set_keymap("n", "]d", "<cmd>lua vim.diagnostic.goto_next()<CR>zz", opts)
-  buf_set_keymap("n", "<leader>a", "<Cmd>Telescope lsp_code_actions theme=cursor<CR>", opts)
-  buf_set_keymap("v", "<leader>a", "<Cmd>Telescope lsp_range_code_actions theme=cursor<CR>", opts)
+  buf_set_keymap("n", "<leader>a", "<Cmd>lua vim.lsp.buf.code_action()<CR>", opts)
+  buf_set_keymap("v", "<leader>a", "<Cmd>lua vim.lsp.buf.range_code_action()<CR>", opts)
   buf_set_keymap("n", "gr", "<cmd>Telescope lsp_references<cr>", opts)
   buf_set_keymap("n", "gd", "<cmd>Telescope lsp_definitions<CR>", opts)
   buf_set_keymap("n", "gi", "<cmd>Telescope lsp_implementations<CR>", opts)
@@ -222,6 +222,14 @@ rust_opts.server = {
 }
 require("rust-tools").setup(rust_opts)
 
+-- vimls
 lspconfig.vimls.setup(M.get_config())
+
+-- toml
+lspconfig.taplo.setup(M.get_config())
+
+-- wgsl
+vim.cmd[[au BufRead,BufNewFile *.wgsl	set filetype=wgsl]]
+lspconfig.wgsl_analyzer.setup(M.get_config())
 
 return M

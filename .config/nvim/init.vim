@@ -153,7 +153,6 @@ autocmd FileType gitcommit setlocal spell
 set background=dark
 
 " set t_Co=256
-
 set showtabline=0        " No show top tab line
 set nocursorline         " No laggy bar causing many redraws
 set so=7                 " How many lines from cursor to top / bottom of the screen before scrolling
@@ -177,10 +176,11 @@ set fillchars+=vert:│    " Change vertical split character to solid line inste
 set shortmess+=W         " Don't pass messages to ins-completion-menu.
 set formatoptions-=cro   " Disable auto insert comment
 set signcolumn=yes:1     " Column for diagnostics & git gutter
-set pumheight=13         " Shorten number of autocomplete suggestions
+set pumheight=20         " Shorten number of autocomplete suggestions
 set pumwidth=22          " Shorten width of autocomplete suggestions
-set pumblend=0          " Autocomplete background transparency
+set pumblend=0           " Autocomplete background transparency
 set viewoptions-=options " storing local options in view session files causes no end of trouble
+set cmdheight=0          " hide cmdbar when unneeded
 let &fcs='eob: '         " No fugly eob tildas
 " link/ shortening
 " set conceallevel=2

@@ -59,7 +59,6 @@ return packer.startup({
     -- use("RRethy/vim-illuminate") -- highlight matches of symbol under cursor
     use("ThePrimeagen/harpoon")
     use("stevearc/dressing.nvim") -- make default UI components look good
-    use("nathom/filetype.nvim")
     use("zhimsel/vim-stay") -- automated view session creation & restore for buffers, sesssions and windows
     use("Konfekt/FastFold") -- don't recompute expr and syntax folds
     use("andymass/vim-matchup") -- extend %: highlight, navigate, and operate on sets of matching text
