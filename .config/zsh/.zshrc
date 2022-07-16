@@ -74,8 +74,8 @@ bindkey -M menuselect '^M' .accept-line
 bindkey '^[[Z' reverse-menu-complete
 
 # Go up and down in history with ctrl+p & ctrl+n
-bindkey '^P' history-search-backward
-bindkey '^N' history-search-forward
+bindkey '^p' history-search-backward
+bindkey '^n' history-search-forward
 
 # Edit line in vim with ctrl-e:
 autoload edit-command-line; zle -N edit-command-line
@@ -101,6 +101,12 @@ bindkey -M emacs '^[[1;5D' backward-word
 bindkey -M viins '^[[1;5D' backward-word
 bindkey -M vicmd '^[[1;5D' backward-word
 
+# flashing prompt cursor 
+# _fix_cursor() {
+#    echo -ne '\e[1 q'
+# }
+# precmd_functions+=(_fix_cursor)
+
 # import aliases
 source "$ZDOTDIR/aliases"
 # source ~/.config/zsh/themes/carson.zsh-theme # load prompt
@@ -109,8 +115,7 @@ source "$ZDOTDIR/aliases"
 path+=('/home/carson/.local/bin')
 path+=('/home/carson/.cache/cargo/bin')
 path+=('/home/carson/bin')
-
 export PATH
-# run fortune at startup as welcome message
 
+# run fortune at startup as welcome message
 fortune ~/.config/fortune/fortunes
