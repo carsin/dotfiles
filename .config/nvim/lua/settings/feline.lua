@@ -349,6 +349,17 @@ table.insert(components.active[3], {
 --   right_sep = ''
 -- })
 
+-- file format
+table.insert(components.active[3], {
+  provider = "file_format",
+  hl = {
+    fg = "gray",
+    bg = "bg",
+  },
+  left_sep = " ",
+  right_sep = "",
+})
+
 -- fileSize
 table.insert(components.active[3], {
   provider = "file_size",
@@ -359,17 +370,6 @@ table.insert(components.active[3], {
     fg = "red",
     bg = "bg",
     -- style = 'bold'
-  },
-  left_sep = " ",
-  right_sep = "",
-})
-
--- file format
-table.insert(components.active[3], {
-  provider = "file_format",
-  hl = {
-    fg = "gray",
-    bg = "bg",
   },
   left_sep = " ",
   right_sep = "",
