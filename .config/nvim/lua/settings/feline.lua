@@ -124,6 +124,19 @@ table.insert(components.active[1], {
 --   right_sep = ' ',
 -- })
 
+-- gitBranch
+table.insert(components.active[1], {
+  provider = "git_branch",
+  -- icon = " ",
+  hl = {
+    fg = "yellow",
+    bg = "bg",
+    -- style = 'bold'
+  },
+  right_sep = " ",
+})
+
+
 -- filename
 table.insert(components.active[1], {
   provider = {
@@ -196,18 +209,6 @@ table.insert(components.active[1], {
   end,
   left_sep = " ",
   right_sep = "",
-})
-
--- gitBranch
-table.insert(components.active[1], {
-  provider = "git_branch",
-  -- icon = " ",
-  hl = {
-    fg = "yellow",
-    bg = "bg",
-    -- style = 'bold'
-  },
-  right_sep = " ",
 })
 
 -- diffAdd
