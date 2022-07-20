@@ -374,12 +374,12 @@ return packer.startup({
     -- 	end,
     -- })
 
-    -- use({ -- better quick fix buffer
-    -- 	"kevinhwang91/nvim-bqf",
-    -- 	config = function()
-    -- 		require("settings.bqf")
-    -- 	end,
-    -- })
+    use({ -- better quick fix buffer
+    	"kevinhwang91/nvim-bqf",
+    	config = function()
+    		require("settings.bqf")
+    	end,
+    })
 
     -- use({
     -- 	"michaelb/sniprun",
@@ -389,12 +389,12 @@ return packer.startup({
     -- 	end,
     -- })
 
-    -- use({ -- symboloutline column
-    --   "simrat39/symbols-outline.nvim",
-    --   config = function()
-    --     require("settings.symbolsoutline")
-    --   end,
-    -- })
+    use({ -- symboloutline column
+      "simrat39/symbols-outline.nvim",
+      config = function()
+        require("settings.symbolsoutline")
+      end,
+    })
 
 
     -- use({ -- DAP
@@ -409,12 +409,12 @@ return packer.startup({
     -- 	end,
     -- })
 
-    -- use({ -- which key
-    --   "folke/which-key.nvim",
-    --   config = function()
-    --     require("which-key").setup({})
-    --   end,
-    -- })
+    use({ -- which key
+      "folke/which-key.nvim",
+      config = function()
+        require("which-key").setup({})
+      end,
+    })
 
     if Packer_Bootstrap then -- auto set up conf after cloning packer.nvim
       require("packer").sync()

@@ -129,38 +129,11 @@ table.insert(components.active[1], {
   provider = "git_branch",
   -- icon = " ",
   hl = {
-    fg = "yellow",
+    fg = "skyblue",
     bg = "bg",
     -- style = 'bold'
   },
   right_sep = " ",
-})
-
-
--- filename
-table.insert(components.active[1], {
-  provider = {
-    name = "file_info",
-    opts = {
-      type = 'full-path',
-      file_modified_icon = "+",
-      file_readonly_icon = " ",
-    },
-  },
-  short_provider = {
-    name = 'file_info',
-    opts = {
-      type = 'short-path',
-      file_modified_icon = "+",
-      file_readonly_icon = " ",
-    }
-  },
-  hl = {
-    fg = "white",
-    bg = "bg",
-    -- style = 'bold'
-  },
-  right_sep = "",
 })
 
 -- asyncrun command status
@@ -207,8 +180,34 @@ table.insert(components.active[1], {
       bg = "bg",
     }
   end,
-  left_sep = " ",
+  left_sep = "",
   right_sep = "",
+})
+
+-- filename
+table.insert(components.active[1], {
+  provider = {
+    name = "file_info",
+    opts = {
+      type = 'full-path',
+      file_modified_icon = "+",
+      file_readonly_icon = " ",
+    },
+  },
+  short_provider = {
+    name = 'file_info',
+    opts = {
+      type = 'short-path',
+      file_modified_icon = "+",
+      file_readonly_icon = " ",
+    }
+  },
+  hl = {
+    fg = "white",
+    bg = "bg",
+    -- style = 'bold'
+  },
+  right_sep = " ",
 })
 
 -- diffAdd

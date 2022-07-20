@@ -74,12 +74,14 @@ M.on_attach = function(client, bufnr)
   require("dd").setup({
     timeout = 250,
   })
-  navic.attach(client, bufnr) -- attach navbar context compoment
+   if client.supports_method('textDocument/documentSymbol') then 
+    navic.attach(client, bufnr) -- attach navbar context compoment
+  end
   vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = nil })
   vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = nil })
   vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
     update_in_insert = false,
-    virtual_text = true,
+    virtual_text = false,
   })
   local function buf_set_keymap(...)
     vim.api.nvim_buf_set_keymap(bufnr, ...)
@@ -119,9 +121,8 @@ M.on_attach = function(client, bufnr)
   -- cursor symbol hl
   -- require("illuminate").on_attach(client)
   -- Show line diagnostics on hover
-  vim.cmd([[autocmd! CursorHold * lua vim.diagnostic.open_float(nil, {focus=false, scope="cursor"})]])
-  -- vim.api.nvim_exec([[ autocmd CursorHold * lua
-  -- vim.diagnostic.open_float({border="none", focusable=false}) ]], false)
+  -- vim.cmd([[autocmd! CursorHold * lua vim.diagnostic.open_float(nil, {focus=false, scope="cursor"})]])
+  vim.api.nvim_exec([[ autocmd CursorHold * lua vim.diagnostic.open_float({border="none", focusable=false}) ]], false)
   -- vim.cmd [[autocmd FileType markdown nmap gz <buffer> :g/./ normal gqq<CR>]]
 
   -- highlight cursor symbol
@@ -229,7 +230,7 @@ lspconfig.vimls.setup(M.get_config())
 lspconfig.taplo.setup(M.get_config())
 
 -- wgsl
-vim.cmd[[au BufRead,BufNewFile *.wgsl	set filetype=wgsl]]
+vim.cmd [[au BufRead,BufNewFile *.wgsl	set filetype=wgsl]]
 lspconfig.wgsl_analyzer.setup(M.get_config())
 
 return M

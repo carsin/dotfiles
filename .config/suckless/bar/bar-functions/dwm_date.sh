@@ -53,7 +53,7 @@ dwm_date() {
         DAYPERCENT=0
     fi
     if [ "$TOG" == 5 ]; then
-        printf "%0.5s%%" "$DAYPERCENT"
+        printf "%0.5s" "$DAYPERCENT"
     else
         printf "%0.4s%%" "$DAYPERCENT"
     fi
