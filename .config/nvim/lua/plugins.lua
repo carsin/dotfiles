@@ -374,12 +374,12 @@ return packer.startup({
     -- 	end,
     -- })
 
-    use({ -- better quick fix buffer
-    	"kevinhwang91/nvim-bqf",
-    	config = function()
-    		require("settings.bqf")
-    	end,
-    })
+    -- use({ -- better quick fix buffer
+    -- 	"kevinhwang91/nvim-bqf",
+    -- 	config = function()
+    -- 		require("settings.bqf")
+    -- 	end,
+    -- })
 
     -- use({
     -- 	"michaelb/sniprun",

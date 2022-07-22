@@ -227,7 +227,7 @@ require("rust-tools").setup(rust_opts)
 lspconfig.vimls.setup(M.get_config())
 
 -- toml
-lspconfig.taplo.setup(M.get_config())
+-- lspconfig.taplo.setup(M.get_config())
 
 -- wgsl
 vim.cmd [[au BufRead,BufNewFile *.wgsl	set filetype=wgsl]]
