@@ -75,7 +75,6 @@ return packer.startup({
     use({ -- lsp config
       "neovim/nvim-lspconfig",
       requires = {
-        "williamboman/nvim-lsp-installer",
         "mfussenegger/nvim-jdtls",
         "https://gitlab.com/yorickpeterse/nvim-dd",
         "p00f/clangd_extensions.nvim",
@@ -83,6 +82,13 @@ return packer.startup({
       config = function()
         require("settings.lsp.lspconfig")
       end,
+    })
+
+    use({ -- lsp installer
+      "williamboman/mason.nvim",
+      requires = {
+        "williamboman/mason-lspconfig.nvim",
+      }
     })
 
     use({ -- treesitter

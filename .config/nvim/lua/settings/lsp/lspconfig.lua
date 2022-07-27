@@ -1,5 +1,4 @@
 local sumneko = require("settings.lsp.sumneko")
-local lsp_installer = require("nvim-lsp-installer")
 local lspconfig = require("lspconfig")
 local navic = require("nvim-navic")
 local M = {}
@@ -158,8 +157,19 @@ M.get_config = function()
   }
 end
 
---  set up servers
-lsp_installer.setup({})
+--  set up installed servers
+ require("mason").setup({
+    ui = {
+        icons = {
+            package_installed = "✓",
+            package_pending = "➜",
+            package_uninstalled = "✗"
+        }
+    }
+})
+require("mason-lspconfig").setup({
+    ensure_installed = { "sumneko_lua", "rust_analyzer", "clangd" }
+})
 
 -- sumneko
 local lua_opts = M.get_config()
