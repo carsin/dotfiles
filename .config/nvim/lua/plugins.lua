@@ -56,7 +56,7 @@ return packer.startup({
     -- use("junegunn/vim-easy-align")
     use("kyazdani42/nvim-web-devicons")
     -- use("mbbill/undotree")
-    -- use("RRethy/vim-illuminate") -- highlight matches of symbol under cursor
+    use("RRethy/vim-illuminate") -- highlight matches of symbol under cursor
     use("ThePrimeagen/harpoon")
     use("stevearc/dressing.nvim") -- make default UI components look good
     use("zhimsel/vim-stay") -- automated view session creation & restore for buffers, sesssions and windows
