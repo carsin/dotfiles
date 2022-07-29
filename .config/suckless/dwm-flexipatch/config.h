@@ -344,16 +344,16 @@ static const char *const autostart[] = {
 #endif // COOL_AUTOSTART_PATCH
 
 #if SCRATCHPADS_PATCH
-const char *spcmd1[] = {"alacritty", "--class", "spterm1,Alacritty", "-o", "window.dimensions.columns=108", "-o", "window.dimensions.lines=36", "-e", "/home/carson/bin/scratchpads/scratchstart", NULL};
+const char *spcmd1[] = {"alacritty", "--class", "spterm1,Alacritty", "-o", "window.dimensions.columns=138", "-o", "window.dimensions.lines=42", "-e", "/home/carson/bin/scratchpads/scratchstart", NULL};
 const char *spcmd2[] = {"alacritty", "--class", "spterm2,Alacritty", "-o", "window.dimensions.columns=100", "-o", "window.dimensions.lines=36", "-e", "/home/carson/bin/scratchpads/scratchstart",  NULL};
 const char *spcmd3[] = {"alacritty", "--class", "spterm3,Alacritty", "-o", "window.dimensions.columns=165", "-o", "window.dimensions.lines=60",  "-e","/home/carson/bin/scratchpads/scratchstart", NULL};
 // const char *spcmd4[]  = {"alacritty", "--class", "spsptui,Alacritty", "-o", "window.dimensions.columns=135", "-o", "window.dimensions.lines=50", "-e", "/home/carson/bin/scratchpads/sptuistart", NULL};
-const char *spcmd4[] = {"alacritty", "--class", "spfiles,Alacritty", "-o", "window.dimensions.columns=130", "-o", "window.dimensions.lines=39", "-e", "ranger", NULL};
-const char *spcmd5[] = {"alacritty", "--class", "sppulsemixer,Alacritty", "-o", "window.dimensions.columns=90", "-o", "window.dimensions.lines=30", "-e", "pulsemixer", NULL};
-const char *spcmd6[] = {"alacritty", "--class", "sptop,Alacritty", "-o", "window.dimensions.columns=120", "-o", "window.dimensions.lines=39", "-e", "btop", NULL};
-const char *spcmd7[] = {"alacritty", "--class", "spnvtop,Alacritty", "-o", "window.dimensions.columns=138", "-o", "window.dimensions.lines=41", "-e", "nvtop", NULL};
-const char *spcmd8[] = {"alacritty", "--class", "spnvim,Alacritty", "-o", "window.dimensions.columns=140", "-o", "window.dimensions.lines=41", "-e", "/home/carson/bin/scratchpads/editorstart", NULL}; 
-const char *spcmd8alt[] = {"alacritty", "--class", "spnvim2,Alacritty", "-o", "window.dimensions.columns=88", "-o", "window.dimensions.lines=82", "-e", "/home/carson/bin/scratchpads/editorstart", NULL}; 
+const char *spcmd4[] = {"alacritty", "--class", "spfiles,Alacritty", "-o", "window.dimensions.columns=190", "-o", "window.dimensions.lines=64", "-e", "ranger", NULL};
+const char *spcmd5[] = {"alacritty", "--class", "sppulsemixer,Alacritty", "-o", "window.dimensions.columns=84", "-o", "window.dimensions.lines=32", "-e", "pulsemixer", NULL};
+const char *spcmd6[] = {"alacritty", "--class", "sptop,Alacritty", "-o", "window.dimensions.columns=140", "-o", "window.dimensions.lines=54", "-e", "btop", NULL};
+const char *spcmd7[] = {"alacritty", "--class", "spnvtop,Alacritty", "-o", "window.dimensions.columns=138", "-o", "window.dimensions.lines=54", "-e", "nvtop", NULL};
+const char *spcmd8[] = {"alacritty", "--class", "spnvim,Alacritty", "-o", "window.dimensions.columns=140", "-o", "window.dimensions.lines=58", "-e", "/home/carson/bin/scratchpads/editorstart", NULL}; 
+const char *spcmd8alt[] = {"alacritty", "--class", "spnvim2,Alacritty", "-o", "window.dimensions.columns=88", "-o", "window.dimensions.lines=71", "-e", "/home/carson/bin/scratchpads/editorstart", NULL}; 
 const char *spcmd9[] = {"alacritty", "--class", "spboard,Alacritty", "-o", "window.dimensions.columns=130", "-o", "window.dimensions.lines=47", "-e", "/home/carson/bin/scratchpads/kanbanstart", NULL};
 // const char *spcmd10[]  = {"alacritty", "--class", "sppomo,Alacritty", "-o", "window.dimensions.columns=25", "-o", "window.dimensions.lines=25", "-e", "pomo -p /home/carson/.config/pomo/config.json b 1", NULL};
 // const char *spcmd11[] = {"alacritty", "--class", "spnvim,Alacritty", "-o", "window.dimensions.columns=173", "-o", "window.dimensions.lines=53", "-e", "/home/carson/bin/scratchpads/editorstartzk", NULL};

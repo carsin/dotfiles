@@ -60,7 +60,7 @@ return packer.startup({
     use("ThePrimeagen/harpoon")
     use("stevearc/dressing.nvim") -- make default UI components look good
     use("zhimsel/vim-stay") -- automated view session creation & restore for buffers, sesssions and windows
-    use("Konfekt/FastFold") -- don't recompute expr and syntax folds
+    -- use("Konfekt/FastFold") -- don't recompute expr and syntax folds
     use("andymass/vim-matchup") -- extend %: highlight, navigate, and operate on sets of matching text
     use("SmiteshP/nvim-navic") -- lsp code context winbar component
 
@@ -104,13 +104,13 @@ return packer.startup({
       end,
     })
 
-    use({ -- orgmode
-      "nvim-neorg/neorg",
-      config = function()
-        require("settings.neorg")
-      end,
-      requires = "nvim-lua/plenary.nvim",
-    })
+    -- use({ -- orgmode
+    --   "nvim-neorg/neorg",
+    --   config = function()
+    --     require("settings.neorg")
+    --   end,
+    --   requires = "nvim-lua/plenary.nvim",
+    -- })
 
     use({ -- lsp signature
       "ray-x/lsp_signature.nvim",

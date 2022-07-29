@@ -166,7 +166,7 @@ set ruler                " Always show current position
 set magic                " For regular expressions turn magic on
 set noshowmode           " Remove redundant status bar elements
 set foldenable           " autofold code
-" set nofoldenable         " Don't autofold code
+" set nofoldenable       " Don't autofold code
 set foldlevel=99         " Don't autofold past a certain ident level
 set linespace=0          " No extra space between lines
 set laststatus=3         " Show statusline

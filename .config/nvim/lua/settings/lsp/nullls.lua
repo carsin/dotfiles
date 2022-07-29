@@ -26,11 +26,11 @@ null_ls.setup({
     builtins.diagnostics.codespell.with({
       filetypes = { "markdown" },
     }),
-    builtins.code_actions.proselint.with({
-      filetypes = { "markdown" },
-    }),
-    builtins.diagnostics.proselint.with({ -- see https://github.com/jose-elias-alvarez/null-ls.nvim/issues/443
-      filetypes = { "markdown" },
+    -- builtins.code_actions.proselint.with({
+    --   filetypes = { "markdown" },
+    -- }),
+    -- builtins.diagnostics.proselint.with({ -- see https://github.com/jose-elias-alvarez/null-ls.nvim/issues/443
+    --   filetypes = { "markdown" },
       -- parseJson = {
       -- 	errorsRoot = "data.errors",
       -- 	line = "line",
@@ -43,7 +43,7 @@ null_ls.setup({
       -- 	warning = "warning",
       -- 	info = "suggestion",
       -- },
-    }),
+    -- }),
   },
   on_attach = config.on_attach,
   debounce = config.flags.debounce_text_changes,

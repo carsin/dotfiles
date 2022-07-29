@@ -148,6 +148,10 @@ M.get_config = function()
   require("cmp_nvim_lsp").update_capabilities(capabilities)
   capabilities.workspace.configuration = true
   capabilities.textDocument.completion.completionItem.snippetSupport = true
+  capabilities.textDocument.foldingRange = {
+    dynamicRegistration = false,
+    lineFoldingOnly = true
+}
   return {
     flags = {
       debounce_text_changes = 350,
