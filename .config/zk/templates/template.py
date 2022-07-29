@@ -7,12 +7,12 @@ from datetime import date, datetime
 def genQuote():
     quote = requests.get("http://api.quotable.io/random").json()
     content = quote["content"]
-    content = textwrap.indent(textwrap.fill(content, width=80), "  ")[
-        2:
-    ]  # autoinsert 80 char linebreak
+    # content = textwrap.indent(textwrap.fill(content, width=79), "  ")[
+        # 2:
+    # ]  # autoinsert 80 char linebreak
+    content = textwrap.fill(content, 80, subsequent_indent="  ")
     author = quote["author"]
     return ' "' + content + '"\n  -- ' + author
-
 
 # date stuff
 # formatting for strftime to allow suffix for day of month
@@ -26,7 +26,7 @@ def custom_strftime(format, t):
 
 # days since birth
 b_date = date(2002, 10, 6)
-future_date = date(2022, 6, 10)
+future_date = date(2022, 9, 11)
 t_date = date.today()
 dayno = t_date - b_date
 temptf = future_date - t_date
@@ -49,7 +49,7 @@ date += (
     + str(daysInYear - dayOfYear)
     + " left ["
     + str(temptf.days)
-    + " TIL SUMMER]"
+    + " TIL SLO]"
 )
 # count number of files with prefix 20*.md
 # dateshort = now.strftime("%a %m/%d/%Y").upper()
@@ -67,8 +67,6 @@ template = (
 """
     + date
     + """
-## ACTION PLAN
-- [ ] [[Morning Routine]]
 --------------------------------------------------------------------------------
 ## ENTRY """
     + str(entrycount)
@@ -78,14 +76,6 @@ template = (
 ## MIDNIGHT -- END OF LOG -- DAY """
     + str(dayno.days)
     + """
-### TODAY'S RECAP
-#### ACCOMPLISHMENTS
--
-#### GRATITUDE
-#### LESSONS
-* 
-#### TOMORROWS INTENTIONS
-+
 --------------------------------------------------------------------------------
 :daily:"""
 )

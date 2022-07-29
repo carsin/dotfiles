@@ -250,4 +250,7 @@ lspconfig.vimls.setup(M.get_config())
 vim.cmd [[au BufRead,BufNewFile *.wgsl	set filetype=wgsl]]
 lspconfig.wgsl_analyzer.setup(M.get_config())
 
+-- python pyright
+lspconfig.pyright.setup(M.get_config())
+
 return M

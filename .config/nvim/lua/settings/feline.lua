@@ -61,7 +61,7 @@ local vi_mode_colors = {
   LINES = "violet",
   REPLACE = "violet",
   ["V-REPLACE"] = "violet",
-  ENTEg= "cyan",
+  ENTEg = "cyan",
   MORE = "cyan",
   SELECT = "orange",
   COMMAND = "cyan",
@@ -79,7 +79,7 @@ local vi_mode_text = {
   BLOCK = "<>",
   REPLACE = "<>",
   ["V-REPLACE"] = "<>",
-  ENTEg= "<>",
+  ENTEg = "<>",
   MORE = "<>",
   SELECT = "<>",
   COMMAND = "<|",
@@ -555,8 +555,16 @@ table.insert(winbar_components.active[1], {
     opts = {
       type = 'relative',
       file_readonly_icon = " ",
-      file_modified_icon = "[+]",
+      file_modified_icon = "[~]",
     },
+  },
+  short_provider = {
+    name = 'file_info',
+    opts = {
+      type = 'relative-short',
+      file_modified_icon = "[~]",
+      file_readonly_icon = " ",
+    }
   },
   hl = {
     -- fg = select(2, require('nvim-web-devicons').get_icon_color(vim.fn.expand('%:t'), nil, { default = false })),
@@ -597,9 +605,17 @@ table.insert(winbar_components.inactive[1], {
     name = "file_info",
     opts = {
       file_readonly_icon = " ",
-      type = 'unique',
-      file_modified_icon = "+",
+      type = 'relative',
+      file_modified_icon = "[~]",
     },
+  },
+  short_provider = {
+    name = 'file_info',
+    opts = {
+      type = 'relative-short',
+      file_modified_icon = "[~]",
+      file_readonly_icon = " ",
+    }
   },
   -- icon = {
   --   hl = {

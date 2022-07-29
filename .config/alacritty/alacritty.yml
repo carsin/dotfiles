@@ -12,7 +12,7 @@ window:
   dimensions:
     columns: 120
     lines: 50
-  opacity: 0.86
+  opacity: 0.9
   dynamic_padding: false # Spread additional padding evenly around the terminal content.
   decorations: full
   startup_mode: Windowed
