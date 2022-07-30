@@ -252,7 +252,7 @@ return packer.startup({
     })
 
     use({ -- zenmode
-      "Pocco81/TrueZen.nvim",
+      "Pocco81/true-zen.nvim",
       config = function()
         require("settings.truezen")
       end,
