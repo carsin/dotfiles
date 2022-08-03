@@ -576,7 +576,7 @@ local buttons = {
   type = "group",
   val = {
     button("w", "  > Wiki Home" , ":e /home/carson/files/docs/wiki/Dashboard.md<CR>"),
-    button("d", "  > Daily Log" , "<cmd>ZkNew { dir = 'log' }<CR><cmd>silent TZAtaraxis<cr>"),
+    button("d", "  > Daily Log" , "<cmd>ZkNew { dir = 'log' }<CR>"),
     button("n", "ﮕ  > Neorg Start" , ":NeorgStart<CR>"),
     button("l", "  > Last Session" , ":SessionManager load_last_session<CR>"),
     button(".", "  > Directory Session " , ":SessionManager load_current_dir_session<cr>"),

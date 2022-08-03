@@ -251,12 +251,12 @@ return packer.startup({
       end,
     })
 
-    use({ -- zenmode
-      "Pocco81/true-zen.nvim",
-      config = function()
-        require("settings.truezen")
-      end,
-    })
+    -- use({ -- zenmode
+    --   "Pocco81/true-zen.nvim",
+    --   config = function()
+    --     require("settings.truezen")
+    --   end,
+    -- })
 
     use({ -- alpha startup screen; startify & dashboard but developed
       "goolord/alpha-nvim",
