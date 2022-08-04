@@ -39,7 +39,6 @@ return packer.startup({
     use("nvim-lua/popup.nvim")
     use("nvim-lua/plenary.nvim")
     use("sainnhe/gruvbox-material")
-    -- use('ellisonleao/gruvbox.nvim')
     use({ "norcalli/nvim-colorizer.lua", event = "BufRead" })
     use("chaoren/vim-wordmotion") -- more intuitive w/W motion
     use("wellle/targets.vim") -- more text objects to target
@@ -60,9 +59,30 @@ return packer.startup({
     use("ThePrimeagen/harpoon")
     use("stevearc/dressing.nvim") -- make default UI components look good
     use("zhimsel/vim-stay") -- automated view session creation & restore for buffers, sesssions and windows
-    -- use("Konfekt/FastFold") -- don't recompute expr and syntax folds
     use("andymass/vim-matchup") -- extend %: highlight, navigate, and operate on sets of matching text
     use("SmiteshP/nvim-navic") -- lsp code context winbar component
+
+    -- use({ -- gruvbox lua
+    --   "ellisonleao/gruvbox.nvim",
+    --   config = function()
+    --     require("gruvbox").setup({
+    --       undercurl = true,
+    --       underline = true,
+    --       bold = true,
+    --       italic = true,
+    --       strikethrough = true,
+    --       invert_selection = false,
+    --       invert_signs = false,
+    --       invert_tabline = false,
+    --       invert_intend_guides = false,
+    --       inverse = true, -- invert background for search, diffs, statuslines and errors
+    --       contrast = "", -- can be "hard", "soft" or empty string
+    --       overrides = {},
+    --     })
+    --     vim.cmd("colorscheme gruvbox")
+    --     vim.api.nvim_set_hl(0, "Normal", {guibg = NONE, ctermbg = NONE})
+    --   end,
+    -- })
 
     use({ -- zettlekasten
       "mickael-menu/zk-nvim",
@@ -227,7 +247,7 @@ return packer.startup({
     })
 
     use({ -- AutoSaves the buffer
-      "Pocco81/AutoSave.nvim",
+      "Pocco81/auto-save.nvim",
       config = function()
         require("settings.autosave")
       end,
@@ -360,12 +380,13 @@ return packer.startup({
       requires = { "nvim-lua/plenary.nvim" },
     })
 
-    use { -- incremental rename
-      "smjonas/inc-rename.nvim",
+    use({
+      "glepnir/lspsaga.nvim",
+      branch = "main",
       config = function()
-        require("inc_rename").setup()
+        require("settings.lsp.lspsaga")
       end,
-    }
+    })
 
     -- ############## DUNGEON -- HERE LIE TEMP, OLD & DEPRECATED PLUGINS ##################
     -- use({ -- keep windows in position

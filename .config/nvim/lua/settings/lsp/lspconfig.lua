@@ -1,5 +1,6 @@
 local sumneko = require("settings.lsp.sumneko")
 local lspconfig = require("lspconfig")
+local action = require("lspsaga.codeaction")
 local navic = require("nvim-navic")
 local M = {}
 
@@ -73,7 +74,7 @@ M.on_attach = function(client, bufnr)
   require("dd").setup({
     timeout = 250,
   })
-   if client.supports_method('textDocument/documentSymbol') then 
+  if client.supports_method('textDocument/documentSymbol') then
     navic.attach(client, bufnr) -- attach navbar context compoment
   end
   vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = nil })
@@ -94,23 +95,26 @@ M.on_attach = function(client, bufnr)
   -- Mappings.
   local opts = { noremap = true, silent = true }
   buf_set_keymap("n", "gD", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts)
-  buf_set_keymap("n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>", opts)
-  buf_set_keymap("n", "<c-space>", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opts)
-  buf_set_keymap("i", "<c-space>", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opts)
+  --  hover doc
+  vim.keymap.set("n", "K", "<cmd>Lspsaga hover_doc<CR>", { silent = true })
+  -- scroll down hover doc or scroll in definition preview
+  vim.keymap.set("n", "<C-n>", function()
+    action.smart_scroll_with_saga(1)
+  end, { silent = true })
+  -- scroll up hover doc
+  vim.keymap.set("n", "<C-p>", function()
+    action.smart_scroll_with_saga(-1)
+  end, { silent = true })
+  vim.keymap.set("n", "<c-space>", "<Cmd>Lspsaga signature_help<CR>", opts)
+  vim.keymap.set("i", "<c-space>", "<Cmd>Lspsaga signature_help<CR>", opts)
   buf_set_keymap("n", "<space>D", "<cmd>lua vim.lsp.buf.type_definition()<CR>", opts)
-  -- buf_set_keymap("n", "gR", "<cmd>lua vim.lsp.buf.rename()<CR>", opts)
-  -- buf_set_keymap("n", "gR", ":IncRename ", opts)
-  vim.keymap.set("n", "gR", function()
-    return ":IncRename " .. vim.fn.expand("<cword>")
-  end, { expr = true })
-  buf_set_keymap("n", "gh", '<cmd>lua require "telescope.builtin".lsp_code_actions()<CR>', opts)
-  -- buf_set_keymap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts
   buf_set_keymap("n", "[d", "<cmd>lua vim.diagnostic.goto_prev()<CR>zz", opts)
   buf_set_keymap("n", "]d", "<cmd>lua vim.diagnostic.goto_next()<CR>zz", opts)
-  buf_set_keymap("n", "<leader>a", "<Cmd>lua vim.lsp.buf.code_action()<CR>", opts)
-  buf_set_keymap("v", "<leader>a", "<Cmd>lua vim.lsp.buf.range_code_action()<CR>", opts)
+  vim.keymap.set("n", "gR", "<cmd>Lspsaga rename<CR>", { silent = true })
+  vim.keymap.set("n", "<leader>a", "<cmd>Lspsaga code_action<CR>", { silent = true })
+  vim.keymap.set("v", "<leader>a", "<cmd><C-U>Lspsaga range_code_action<CR>", { silent = true })
   buf_set_keymap("n", "gr", "<cmd>Telescope lsp_references<cr>", opts)
-  buf_set_keymap("n", "gd", "<cmd>Telescope lsp_definitions<CR>", opts)
+  vim.keymap.set("n", "gd", "<cmd>Lspsaga preview_definition<CR>", { silent = true })
   buf_set_keymap("n", "gi", "<cmd>Telescope lsp_implementations<CR>", opts)
   buf_set_keymap("n", "gQ", "<Cmd>lua vim.lsp.buf.format { async=true }<CR>", opts)
   buf_set_keymap("v", "gQ", "<Esc><Cmd>lua vim.lsp.buf.range_formatting()<CR>", opts)
@@ -124,7 +128,8 @@ M.on_attach = function(client, bufnr)
   vim.api.nvim_command [[ hi def link LspReferenceRead CursorLine ]]
   -- Show line diagnostics on hover
   -- vim.cmd([[autocmd! CursorHold * lua vim.diagnostic.open_float(nil, {focus=false, scope="cursor"})]])
-  vim.api.nvim_exec([[ autocmd CursorHold * lua vim.diagnostic.open_float({border="none", focusable=false}) ]], false)
+  -- vim.api.nvim_exec([[ autocmd CursorHold * Lspsaga show_line_diagnostics ]], false)
+  vim.cmd [[autocmd! CursorHold * lua require'lspsaga.diagnostic'.show_line_diagnostics()]]
   -- vim.cmd [[autocmd FileType markdown nmap gz <buffer> :g/./ normal gqq<CR>]]
 
   -- highlight cursor symbol
@@ -149,9 +154,9 @@ M.get_config = function()
   capabilities.workspace.configuration = true
   capabilities.textDocument.completion.completionItem.snippetSupport = true
   capabilities.textDocument.foldingRange = {
-    dynamicRegistration = false,
+    dynamicRegistration = true,
     lineFoldingOnly = true
-}
+  }
   return {
     flags = {
       debounce_text_changes = 350,
@@ -165,17 +170,17 @@ M.get_config = function()
 end
 
 --  set up installed servers
- require("mason").setup({
-    ui = {
-        icons = {
-            package_installed = "✓",
-            package_pending = "➜",
-            package_uninstalled = "✗"
-        }
+require("mason").setup({
+  ui = {
+    icons = {
+      package_installed = "✓",
+      package_pending = "➜",
+      package_uninstalled = "✗"
     }
+  }
 })
 require("mason-lspconfig").setup({
-    ensure_installed = { "sumneko_lua", "rust_analyzer", "clangd" }
+  ensure_installed = { "sumneko_lua", "rust_analyzer", "clangd" }
 })
 
 -- sumneko
