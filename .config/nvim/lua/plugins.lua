@@ -227,7 +227,7 @@ return packer.startup({
     })
 
     use({ -- AutoSaves the buffer
-      "Pocco81/AutoSave.nvim",
+      "Pocco81/auto-save.nvim",
       config = function()
         require("settings.autosave")
       end,
