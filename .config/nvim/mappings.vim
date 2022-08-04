@@ -344,6 +344,9 @@ nnoremap <expr> <leader>oge exists(":NeorgStart") ? ':NeorgStart silent=true<CR>
 nnoremap <expr> <leader>ogt exists(":NeorgStart") ? ':NeorgStart silent=true<CR>:Neorg gtd views<CR>' : ':Neorg gtd views<CR>'
 nnoremap <expr> <leader>ogs exists(":NeorgStart") ? ':NeorgStart silent=true<CR>:Neorg gtd views<CR>' : ':Neorg gtd views<CR>'
 
+" symbol outlines
+nnoremap <leader>co <Cmd>SymbolsOutline<CR>
+
 " asyncrun
 nnoremap <silent> <F10> :call asyncrun#quickfix_toggle(7)<cr>
 

@@ -1,4 +1,4 @@
-local autosave = require("auto-save")
+local autosave = require("autosave")
 
 autosave.setup({
   enabled = true,
