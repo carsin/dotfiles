@@ -407,7 +407,7 @@ static Sp scratchpads[] = {
 // 龎   ﮕ ﰀ 烈
     
 static char *tagicons[][NUMTAGS] = {
-    [DEFAULT_TAGS] = {"", "", "", "", "", ""},
+    [DEFAULT_TAGS] = {"", "", "", "", ""},
 };
 //       ﮕ  力
 // static char *tagicons[][NUMTAGS*3] = {
