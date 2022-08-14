@@ -6,7 +6,7 @@ M.opts = {
   server = {},
   tools = { -- rust-tools options
     autoSetHints = true, -- Automatically set inlay hints (type hints)
-    hover_with_actions = true, -- Whether to show hover actions inside the hover window
+    -- hover_with_actions = true, -- Whether to show hover actions inside the hover window
     runnables = { use_telescope = true },
     debuggables = { use_telescope = true },
     inlay_hints = {
