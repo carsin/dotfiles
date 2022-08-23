@@ -352,8 +352,7 @@ const char *spcmd4[] = {"alacritty", "--class", "spfiles,Alacritty", "-o", "wind
 const char *spcmd5[] = {"alacritty", "--class", "sppulsemixer,Alacritty", "-o", "window.dimensions.columns=84", "-o", "window.dimensions.lines=32", "-e", "pulsemixer", NULL};
 const char *spcmd6[] = {"alacritty", "--class", "sptop,Alacritty", "-o", "window.dimensions.columns=140", "-o", "window.dimensions.lines=54", "-e", "btop", NULL};
 const char *spcmd7[] = {"alacritty", "--class", "spnvtop,Alacritty", "-o", "window.dimensions.columns=138", "-o", "window.dimensions.lines=54", "-e", "nvtop", NULL};
-const char *spcmd8[] = {"alacritty", "--class", "spnvim,Alacritty", "-o", "window.dimensions.columns=140", "-o", "window.dimensions.lines=47", "-e", "/home/carson/bin/scratchpads/editorstart", NULL}; 
-const char *spcmd8alt[] = {"alacritty", "--class", "spnvim2,Alacritty", "-o", "window.dimensions.columns=88", "-o", "window.dimensions.lines=71", "-e", "/home/carson/bin/scratchpads/editorstart", NULL}; 
+const char *spcmd8[] = {"alacritty", "--class", "spnvim,Alacritty", "-o", "window.dimensions.columns=87", "-o", "window.dimensions.lines=71", "-e", "/home/carson/bin/scratchpads/editorstart", NULL}; 
 const char *spcmd9[] = {"alacritty", "--class", "spboard,Alacritty", "-o", "window.dimensions.columns=130", "-o", "window.dimensions.lines=47", "-e", "/home/carson/bin/scratchpads/kanbanstart", NULL};
 // const char *spcmd10[]  = {"alacritty", "--class", "sppomo,Alacritty", "-o", "window.dimensions.columns=25", "-o", "window.dimensions.lines=25", "-e", "pomo -p /home/carson/.config/pomo/config.json b 1", NULL};
 // const char *spcmd11[] = {"alacritty", "--class", "spnvim,Alacritty", "-o", "window.dimensions.columns=173", "-o", "window.dimensions.lines=53", "-e", "/home/carson/bin/scratchpads/editorstartzk", NULL};
@@ -368,7 +367,6 @@ static Sp scratchpads[] = {
     {"sptop", spcmd6},
     {"spnvtop", spcmd7},
     {"spnvim", spcmd8},
-    {"spnvim2", spcmd8alt},
     {"spboard", spcmd9},
 };
 #endif // SCRATCHPADS_PATCH
@@ -502,8 +500,7 @@ static const Rule rules[] = {
     RULE(.instance = "sptop", .tags = SPTAG(5), .isfloating = 1)
     RULE(.instance = "spnvtop", .tags = SPTAG(6), .isfloating = 1)
     RULE(.instance = "spnvim", .tags = SPTAG(7), .isfloating = 1)
-    RULE(.instance = "spnvim2", .tags = SPTAG(8), .isfloating = 1)
-    RULE(.instance = "spboard", .tags = SPTAG(9), .isfloating = 1)
+    RULE(.instance = "spboard", .tags = SPTAG(8), .isfloating = 1)
 #endif // SCRATCHPADS_PATCH
 };
 
