@@ -114,8 +114,17 @@ set whichwrap+=<,>,h,l "          " go to nextline with hl
 set wrapmargin=2
 set sessionoptions-=folds         " ensure sessions don't override default method of buffer
 " Enable persistent undo so that undo history persists across vim sessions
-set undofile
-set undodir=~/.cache/nvim/undo
+if has("persistent_undo")
+   let target_path = expand('~/.cache/nvim/undo')
+    " create the directory and any parent directories
+    " if the location does not exist.
+    if !isdirectory(target_path)
+        call mkdir(target_path, "p", 0700)
+    endif
+
+    let &undodir=target_path
+    set undofile
+endif
 
 set backup
 set backupdir=~/.cache/nvim/backup

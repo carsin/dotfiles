@@ -55,7 +55,7 @@ return packer.startup({
     use("antoinemadec/FixCursorHold.nvim") -- Needed while issue https://github.com/neovim/neovim/issues/12587 is still open
     -- use("junegunn/vim-easy-align")
     use("kyazdani42/nvim-web-devicons")
-    -- use("mbbill/undotree")
+    use("mbbill/undotree")
     use("RRethy/vim-illuminate") -- highlight matches of symbol under cursor
     use("ThePrimeagen/harpoon")
     use("stevearc/dressing.nvim") -- make default UI components look good

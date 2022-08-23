@@ -307,9 +307,9 @@ nnoremap <Leader>e :Neotree source=filesystem reveal=true<CR>
 nnoremap <leader>b :Neotree float buffers<CR>
 
 " TrueZen
-nnoremap <leader>zz <cmd>:silent TZAtaraxis<cr><cmd>set rnu<cr><cmd>set nu<cr>
-nnoremap <leader>we <cmd>:silent TZAtaraxis<cr><cmd>set rnu<cr><cmd>set nu<cr>
-nnoremap <silent><F4> <cmd>:silent TZAtaraxis<cr><cmd>set rnu<cr><cmd>set nu<cr>
+" nnoremap <leader>zz <cmd>:silent TZAtaraxis<cr><cmd>set rnu<cr><cmd>set nu<cr>
+" nnoremap <leader>we <cmd>:silent TZAtaraxis<cr><cmd>set rnu<cr><cmd>set nu<cr>
+" nnoremap <silent><F4> <cmd>:silent TZAtaraxis<cr><cmd>set rnu<cr><cmd>set nu<cr>
 
 " Sniprun
 " nmap <silent> <leader>cr :lua require'sniprun'.run()<CR>
@@ -327,12 +327,13 @@ nnoremap <leader>zn <Cmd>ZkNew { title = vim.fn.input('Title: ') }<CR>
 nnoremap <leader>zd <Cmd>ZkNew { dir = "log" }<CR>
 nnoremap <leader>zf <Cmd>ZkNotes<CR>
 nnoremap <leader>zt <Cmd>ZkTags<CR>
-" nnoremap <leader>zs <Cmd>ZkNotes { match = vim.fn.input('Search: ') }<CR>
 nnoremap <leader>zs <Cmd>cd /home/carson/files/docs/wiki/<CR><Cmd>Telescope live_grep<CR>
 vnoremap <leader>zf :'<,'>ZkMatch<CR>
+nnoremap <leader>zh :e /home/carson/files/docs/wiki/Dashboard.md<CR>
+nnoremap <leader>zw :e /home/carson/files/docs/wiki/Dashboard.md<CR>
 
 " undotree
-" nnoremap <leader>u :UndotreeToggle<CR>
+nnoremap <leader>u :UndotreeToggle<CR>
 
 " neorg
 nnoremap <leader>ogh <Cmd>Neorg workspace home<CR>
