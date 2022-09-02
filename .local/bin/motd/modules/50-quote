@@ -1,8 +1,0 @@
-#!/usr/bin/env bash
-
-set -euo pipefail
-source "$BASE_DIR/framework.sh"
-
-quote="$(fortune -s -n 600 | fold -sw $WIDTH)"
-
-print_columns "FORTUNE" "$quote"
