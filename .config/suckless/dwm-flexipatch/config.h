@@ -344,16 +344,16 @@ static const char *const autostart[] = {
 #endif // COOL_AUTOSTART_PATCH
 
 #if SCRATCHPADS_PATCH
-const char *spcmd1[] = {"alacritty", "--class", "spterm1,Alacritty", "-o", "window.dimensions.columns=102", "-o", "window.dimensions.lines=42", "-e", "/home/carson/bin/scratchpads/scratchstart", NULL};
-const char *spcmd2[] = {"alacritty", "--class", "spterm2,Alacritty", "-o", "window.dimensions.columns=100", "-o", "window.dimensions.lines=36", "-e", "/home/carson/bin/scratchpads/scratchstart",  NULL};
-const char *spcmd3[] = {"alacritty", "--class", "spterm3,Alacritty", "-o", "window.dimensions.columns=165", "-o", "window.dimensions.lines=60",  "-e","/home/carson/bin/scratchpads/scratchstart", NULL};
+const char *spcmd1[] = {"alacritty", "--class", "spterm1,Alacritty", "-o", "window.dimensions.columns=102", "-o", "window.dimensions.lines=42", "-e", "/home/carson/.local/bin/scratchpads/scratchstart", NULL};
+const char *spcmd2[] = {"alacritty", "--class", "spterm2,Alacritty", "-o", "window.dimensions.columns=100", "-o", "window.dimensions.lines=36", "-e", "/home/carson/.local/bin/scratchpads/scratchstart",  NULL};
+const char *spcmd3[] = {"alacritty", "--class", "spterm3,Alacritty", "-o", "window.dimensions.columns=165", "-o", "window.dimensions.lines=60",  "-e","/home/carson/.local/bin/scratchpads/scratchstart", NULL};
 // const char *spcmd4[]  = {"alacritty", "--class", "spsptui,Alacritty", "-o", "window.dimensions.columns=135", "-o", "window.dimensions.lines=50", "-e", "/home/carson/bin/scratchpads/sptuistart", NULL};
 const char *spcmd4[] = {"alacritty", "--class", "spfiles,Alacritty", "-o", "window.dimensions.columns=190", "-o", "window.dimensions.lines=64", "-e", "ranger", NULL};
 const char *spcmd5[] = {"alacritty", "--class", "sppulsemixer,Alacritty", "-o", "window.dimensions.columns=84", "-o", "window.dimensions.lines=32", "-e", "pulsemixer", NULL};
 const char *spcmd6[] = {"alacritty", "--class", "sptop,Alacritty", "-o", "window.dimensions.columns=140", "-o", "window.dimensions.lines=54", "-e", "btop", NULL};
 const char *spcmd7[] = {"alacritty", "--class", "spnvtop,Alacritty", "-o", "window.dimensions.columns=138", "-o", "window.dimensions.lines=54", "-e", "nvtop", NULL};
-const char *spcmd8[] = {"alacritty", "--class", "spnvim,Alacritty", "-o", "window.dimensions.columns=87", "-o", "window.dimensions.lines=71", "-e", "/home/carson/bin/scratchpads/editorstart", NULL}; 
-const char *spcmd9[] = {"alacritty", "--class", "spboard,Alacritty", "-o", "window.dimensions.columns=130", "-o", "window.dimensions.lines=47", "-e", "/home/carson/bin/scratchpads/kanbanstart", NULL};
+const char *spcmd8[] = {"alacritty", "--class", "spnvim,Alacritty", "-o", "window.dimensions.columns=87", "-o", "window.dimensions.lines=71", "-e", "/home/carson/.local/bin/scratchpads/editorstart", NULL}; 
+const char *spcmd9[] = {"alacritty", "--class", "spboard,Alacritty", "-o", "window.dimensions.columns=130", "-o", "window.dimensions.lines=47", "-e", "/home/carson/.local/bin/scratchpads/kanbanstart", NULL};
 // const char *spcmd10[]  = {"alacritty", "--class", "sppomo,Alacritty", "-o", "window.dimensions.columns=25", "-o", "window.dimensions.lines=25", "-e", "pomo -p /home/carson/.config/pomo/config.json b 1", NULL};
 // const char *spcmd11[] = {"alacritty", "--class", "spnvim,Alacritty", "-o", "window.dimensions.columns=173", "-o", "window.dimensions.lines=53", "-e", "/home/carson/bin/scratchpads/editorstartzk", NULL};
 
@@ -980,28 +980,32 @@ static Key on_empty_keys[] = {
 static Key keys[] = {
 /* modifier                     key            function                argument
  */
-	{0, XF86XK_AudioRaiseVolume, spawn, SHCMD("/home/carson/bin/changevol -n -p -y up 5")},
-    {0, XF86XK_AudioLowerVolume, spawn, SHCMD("/home/carson/bin/changevol -n -p -y down 5")},
-	{0, XF86XK_AudioMute, spawn, SHCMD("/home/carson/bin/changevol -n -p -y mute")},
+	{0, XF86XK_AudioRaiseVolume, spawn, SHCMD("/home/carson/.local/bin/changevol -n -p -y up 5")},
+    {0, XF86XK_AudioLowerVolume, spawn, SHCMD("/home/carson/.local/bin/changevol -n -p -y down 5")},
 	{0, XF86XK_AudioNext, spawn, SHCMD("playerctl next -p 'ncspot,spotify,firefox,chromium,mpv'")},
 	{0, XF86XK_AudioPrev, spawn, SHCMD("playerctl previous -p 'ncspot,spotify,firefox,chromium,mpv'")},
     {0, XF86XK_AudioPlay, spawn, SHCMD("playerctl play-pause")},
-	// {0, XF86XK_AudioNext, spawn, SHCMD("playerctl next")},
-    // {0, XF86XK_AudioPlay, spawn, SHCMD("playerctl play-pause -p 'spotify,firefox,mpv'")},
-	// {0, XF86XK_AudioPrev, spawn, SHCMD("playerctl previous")},
-    {0, XF86XK_MonBrightnessUp, spawn, SHCMD("/home/carson/bin/bright up") },
-    {0, XF86XK_MonBrightnessDown, spawn, SHCMD("/home/carson/bin/bright down") },
-    {MODKEY, XK_Print, spawn, SHCMD("flameshot gui")},
+	{MODKEY, XK_F1, spawn, SHCMD("/home/carson/.local/bin/changevol -n -p -y mute")},
+    {MODKEY, XK_F2, spawn, SHCMD("asusctl -p") },
+    {MODKEY, XK_F3, spawn, SHCMD("asusctl -n") },
+    {MODKEY, XK_F5, spawn, SHCMD("asusctl profile -n") },
+    {MODKEY, XK_F6, spawn, SHCMD("flameshot gui")},
+    {MODKEY, XK_F7, spawn, SHCMD("brightnessctl s 5%-") },
+    {MODKEY, XK_F8, spawn, SHCMD("brightnessctl s +5%") },
+    {MODKEY, XK_F9, spawn, SHCMD("playerctl previous") },
+    {MODKEY, XK_F10, spawn, SHCMD("playerctl play-pause -p 'spotify,firefox,mpv'") },
+    {MODKEY, XK_F11, spawn, SHCMD("playerctl next") },
     {MODKEY | ShiftMask, XK_s, spawn, SHCMD("spotify --no-zygote")}, // --no-zygote flag disables hardware (gpu) accel
-    {MODKEY, XK_backslash, spawn, SHCMD("timeout 3 /home/carson/bin/newpape.sh")},
-    {MODKEY | ControlMask, XK_Home, spawn, SHCMD("timeout 3 /home/carson/bin/newpape.sh -i")},
+    {MODKEY, XK_backslash, spawn, SHCMD("timeout 3 /home/carson/.local/bin/newpape.sh")},
+    {MODKEY | ControlMask, XK_Home, spawn, SHCMD("timeout 3 /home/carson/.local/bin/newpape.sh -i")},
     {Mod4Mask | ShiftMask | ControlMask, XK_l, spawn, SHCMD("slock")},
+    {MODKEY | ShiftMask, XK_Return, spawn, {.v = dmenucmd }},
+    // {MODKEY, XK_w, spawn, {.v = browsercmd }},
+    {MODKEY, XK_w, spawn, SHCMD("/home/carson/.local/bin/primeifhybrid.sh firefox")},
+    {MODKEY, XK_Return, spawn, SHCMD("alacritty")},
 #if KEYMODES_PATCH
     {MODKEY, XK_Escape, setkeymode, {.ui = COMMANDMODE}},
 #endif // KEYMODES_PATCH&
-    {MODKEY | ShiftMask, XK_Return, spawn, {.v = dmenucmd }},
-    {MODKEY, XK_w, spawn, {.v = browsercmd }},
-    {MODKEY, XK_Return, spawn, {.v = termcmd }},
 #if RIODRAW_PATCH
     {MODKEY | ControlMask, XK_p, riospawnsync, {.v = dmenucmd}},
     {MODKEY | ControlMask, XK_Return, riospawn, {.v = termcmd}},

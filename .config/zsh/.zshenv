@@ -26,7 +26,7 @@ export GNUPGHOME=$XDG_CONFIG_HOME/.gnupg
 export GPG_TTY=$(tty)
 gpg-connect-agent updatestartuptty /bye >/dev/null 2>&1
 
-export PAGER=nvimpager
+#export PAGER=nvimpager
 export ZK_NOTEBOOK_DIR=/home/carson/files/docs/wiki
 export LIBVA_DRIVER_NAME=vdpau
 export VDPAU_DRIVER=nvidia

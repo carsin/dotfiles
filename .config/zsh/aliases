@@ -25,9 +25,9 @@ alias diff="diff --color=auto"
 alias watch="watch --color"
 
 # wallpaper management
-alias w2="/home/carson/bin/newpape2.sh"
-alias rw="/home/carson/bin/newpape.sh"
-alias cw="/home/carson/bin/choosepape.sh"
+alias w2="/home/carson/.local/bin/newpape2.sh"
+alias rw="/home/carson/.local/bin/newpape.sh"
+alias cw="/home/carson/.local/bin/choosepape.sh"
 # archive current wallpaper by moving out of selection pool
 function archivePape {
     mv $(sed -n '2p' ~/.fehbg | awk -F"'" '{print $4}') ~/files/photos/papes/old
@@ -100,9 +100,9 @@ alias ps3="pomo -p /home/carson/.config/pomo/config.json b 3"
 alias ps4="pomo -p /home/carson/.config/pomo/config.json b 4"
 alias ps5="pomo -p /home/carson/.config/pomo/config.json b 5"
 # alias t='tmux attach -t $(tmux ls | grep -v attached | head -1 | cut -f1 -d:) || tmux' # attach to any available session
-alias t="/home/carson/bin/fetchtmuxstart $1"
-alias ts="/home/carson/bin/fetchtmuxstart study"
-alias td="/home/carson/bin/fetchtmuxstart dev"
+alias t="/home/carson/.local/bin/fetchtmuxstart $1"
+alias ts="/home/carson/.local/bin/fetchtmuxstart study"
+alias td="/home/carson/.local/bin/fetchtmuxstart dev"
 alias t0="tmux a -t 0 || tmux new"
 alias t1="tmux a -t 1 || tmux new"
 alias fontpreview='fontpreview-ueberzug'
@@ -133,11 +133,12 @@ alias km="kabmat"
 alias visual="/usr/local/bin/visual/VisUAL.sh"
 
 # scripts
-alias laptop="/home/carson/bin/displays/laptop.sh"
-alias dock="/home/carson/bin/displays/dock.sh"
+# alias laptop="/home/carson/bin/displays/laptop.sh"
+# alias dock="/home/carson/bin/displays/dock.sh"
+alias triple="/home/carson/.local/bin/displays/triple2.sh"
 
-alias updateedm="/home/carson/bin/updateplaylist.sh"
-alias dlsong="/home/carson/bin/dlsong.sh"
+alias updateedm="/home/carson/.local/bin/updateplaylist.sh"
+alias dlsong="/home/carson/.local/bin/dlsong.sh"
 
 # system
 alias pmrestart="systemctl --user restart pipewire.service pipewire.socket pipewire-pulse.socket"

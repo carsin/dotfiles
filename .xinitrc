@@ -7,10 +7,11 @@
 xrdb -merge ~/.Xresources 
 
 xrandr --auto
+xrandr --dpi 170
 
-echo "Initializing triple monitor configuration"
+# echo "Initializing triple monitor configuration"
 # xrandr --setprovideroutputsource modesetting NVIDIA-0
-. /home/carson/bin/displays/triple.sh
+# . /home/carson/bin/displays/triple.sh
 xset -dpms
 
 # start some nice programs
@@ -37,10 +38,10 @@ xset s off
 wal -R
 
 # start window compositor
-picom -f --xrender-sync-fence &
+picom &
 
 # autohide xcursor
-unclutter &
+#unclutter &
 
 playerctld daemon
 
@@ -48,7 +49,7 @@ playerctld daemon
 
 # start window manager
 while :; do 
-    ssh-agent dwm 
+   ssh-agent dwm 
 done 
 
 # exec dwm

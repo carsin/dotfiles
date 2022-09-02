@@ -7,12 +7,12 @@ window:
   # Blank space added around the window in pixels. This padding is scaled
   # by DPI and the specified value is always added at both opposing sides.
   padding:
-   x: 7
-   y: 7
+   x: 5
+   y: 5
   dimensions:
     columns: 120
     lines: 50
-  opacity: 0.75
+  opacity: 0.80
   dynamic_padding: false # Spread additional padding evenly around the terminal content.
   decorations: full
   startup_mode: Windowed

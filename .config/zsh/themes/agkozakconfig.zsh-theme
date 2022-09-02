@@ -20,3 +20,9 @@ fi
 
 # modified promtpstring @ line 955
 # AGKOZAK[PROMPT]+='%(!.%S%B.%F{${AGKOZAK_COLORS_USER_HOST:-green}})%n%F{$AGKOZAK_COLORS_AT_SYMBOL}%B@%b%F{$AGKOZAK_COLORS_HOST_HOST}%1v%(!.%s.%f%b) '
+# hostname for non-ssh @ line 1033
+# if _agkozak_is_ssh || (( EUID == 0 )); then
+#   psvar[1]="${(%):-%m}"
+# else
+#   psvar[1]="${(%):-%m}"
+# fi

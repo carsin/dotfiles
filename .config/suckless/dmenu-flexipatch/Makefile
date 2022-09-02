@@ -10,7 +10,7 @@ all: options dmenu stest
 
 options:
 	@echo dmenu build options:
-	@echo "CFLAGS   = $(CFLAGS)"
+	@echo "CFLAGS   = $(CFLAGS) -O3 -march=native"
 	@echo "LDFLAGS  = $(LDFLAGS)"
 	@echo "CC       = $(CC)"
 

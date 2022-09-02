@@ -16,7 +16,7 @@ endif
 
 options:
 	@echo dwm build options:
-	@echo "CFLAGS   = ${CFLAGS}"
+	@echo "CFLAGS   = ${CFLAGS} -O3 -march=native"
 	@echo "LDFLAGS  = ${LDFLAGS}"
 	@echo "CC       = ${CC}"
 

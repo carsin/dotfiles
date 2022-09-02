@@ -1,7 +1,6 @@
 [user]
 	email = 20868514+carsin@users.noreply.github.com
 	name = carsin
-	signingkey = DB73B9EE68B35018
 [core]
 	editor = nvim
 	pager = delta --syntax-theme gruvbox-dark --true-color always
