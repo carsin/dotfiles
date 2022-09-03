@@ -327,10 +327,10 @@ nnoremap <leader>zn <Cmd>ZkNew { title = vim.fn.input('Title: ') }<CR>
 nnoremap <leader>zd <Cmd>ZkNew { dir = "log" }<CR>
 nnoremap <leader>zf <Cmd>ZkNotes<CR>
 nnoremap <leader>zt <Cmd>ZkTags<CR>
-nnoremap <leader>zs <Cmd>cd /home/carson/files/docs/wiki/<CR><Cmd>Telescope live_grep<CR>
+nnoremap <leader>zs <Cmd>cd /home/carson/files/documents/wiki/<CR><Cmd>Telescope live_grep<CR>
 vnoremap <leader>zf :'<,'>ZkMatch<CR>
-nnoremap <leader>zh :e /home/carson/files/docs/wiki/Dashboard.md<CR>
-nnoremap <leader>zw :e /home/carson/files/docs/wiki/Dashboard.md<CR>
+nnoremap <leader>zh :e /home/carson/files/documents/wiki/Dashboard.md<CR>
+nnoremap <leader>zw :e /home/carson/files/documents/wiki/Dashboard.md<CR>
 
 " undotree
 nnoremap <leader>u :UndotreeToggle<CR>

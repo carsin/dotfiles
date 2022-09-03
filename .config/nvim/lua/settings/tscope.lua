@@ -89,8 +89,8 @@ telescope.setup({
 			ignore_patterns = { "*.git/*", "*/tmp/*" },
 			workspaces = {
 				["config"] = "/home/carson/.config/",
-				["wiki"] = "/home/carson/files/docs/wiki/",
-				["org"] = "/home/carson/files/docs/org/",
+				["wiki"] = "/home/carson/files/documents/wiki/",
+				["org"] = "/home/carson/files/documents/org/",
 				["projects"] = "/home/carson/files/dev/projects/",
 				["studies"] = "/home/carson/files/dev/studies/",
 			},

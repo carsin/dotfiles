@@ -1,0 +1,10 @@
+<driconf>
+   <device>
+       <application name="Default">
+           <option name="vblank_mode" value="0" />
+       </application>
+       <application name="alacritty">
+          <option name="vblank_mode" value="1"/>
+       </application>
+   </device>
+</driconf>

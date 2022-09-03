@@ -3,7 +3,7 @@ export XDG_CONFIG_HOME=~/.config
 export XDG_CACHE_HOME=~/.cache
 export XDG_DATA_HOME=~/.local/share
 export XDG_RUNTIME_DIR=/run/user/$UID
-export XDG_DESKTOP_DIR=~/files/dtop
+export XDG_DESKTOP_DIR=~/files/desktop
 export XDG_DOWNLOAD_DIR=~/files/downloads
 export XDG_MUSIC_DIR=~/files/music
 export XDG_PICTURES_DIR=~/files/photos
@@ -27,8 +27,6 @@ export GPG_TTY=$(tty)
 gpg-connect-agent updatestartuptty /bye >/dev/null 2>&1
 
 #export PAGER=nvimpager
-export ZK_NOTEBOOK_DIR=/home/carson/files/docs/wiki
-export LIBVA_DRIVER_NAME=vdpau
-export VDPAU_DRIVER=nvidia
+export ZK_NOTEBOOK_DIR=$HOME/files/documents/wiki
 export COLORTERM=truecolor
-export GOPATH=~/files/dev/projects/go
+export GOPATH=/home/carson/dev/projects/go

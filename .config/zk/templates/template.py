@@ -54,7 +54,7 @@ date += (
 # count number of files with prefix 20*.md
 # dateshort = now.strftime("%a %m/%d/%Y").upper()
 entrycount = len(
-    fnmatch.filter(os.listdir("/home/carson/files/docs/wiki/log/"), "20*.md")
+    fnmatch.filter(os.listdir("/home/carson/files/documents/wiki/log/"), "20*.md")
 )
 
 template = (

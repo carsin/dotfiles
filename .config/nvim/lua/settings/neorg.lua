@@ -9,9 +9,9 @@ require("neorg").setup({
 		["core.norg.dirman"] = {
 			config = {
 				workspaces = {
-					home = "/home/carson/files/docs/org/",
-					gtd = "/home/carson/files/docs/org/gtd",
-					notes = "/home/carson/files/docs/org/notes/",
+					home = "/home/carson/files/documents/org/",
+					gtd = "/home/carson/files/documents/org/gtd",
+					notes = "/home/carson/files/documents/org/notes/",
 				},
 				autochdir = true, -- Automatically change the directory to the current workspace's root every time
 				index = "index.norg",

@@ -352,7 +352,7 @@ const char *spcmd4[] = {"alacritty", "--class", "spfiles,Alacritty", "-o", "wind
 const char *spcmd5[] = {"alacritty", "--class", "sppulsemixer,Alacritty", "-o", "window.dimensions.columns=84", "-o", "window.dimensions.lines=32", "-e", "pulsemixer", NULL};
 const char *spcmd6[] = {"alacritty", "--class", "sptop,Alacritty", "-o", "window.dimensions.columns=140", "-o", "window.dimensions.lines=54", "-e", "btop", NULL};
 const char *spcmd7[] = {"alacritty", "--class", "spnvtop,Alacritty", "-o", "window.dimensions.columns=138", "-o", "window.dimensions.lines=54", "-e", "nvtop", NULL};
-const char *spcmd8[] = {"alacritty", "--class", "spnvim,Alacritty", "-o", "window.dimensions.columns=87", "-o", "window.dimensions.lines=71", "-e", "/home/carson/.local/bin/scratchpads/editorstart", NULL}; 
+const char *spcmd8[] = {"alacritty", "--class", "spnvim,Alacritty", "-o", "window.dimensions.columns=87", "-o", "window.dimensions.lines=62", "-e", "/home/carson/.local/bin/scratchpads/editorstart", NULL}; 
 const char *spcmd9[] = {"alacritty", "--class", "spboard,Alacritty", "-o", "window.dimensions.columns=130", "-o", "window.dimensions.lines=47", "-e", "/home/carson/.local/bin/scratchpads/kanbanstart", NULL};
 // const char *spcmd10[]  = {"alacritty", "--class", "sppomo,Alacritty", "-o", "window.dimensions.columns=25", "-o", "window.dimensions.lines=25", "-e", "pomo -p /home/carson/.config/pomo/config.json b 1", NULL};
 // const char *spcmd11[] = {"alacritty", "--class", "spnvim,Alacritty", "-o", "window.dimensions.columns=173", "-o", "window.dimensions.lines=53", "-e", "/home/carson/bin/scratchpads/editorstartzk", NULL};
@@ -404,10 +404,11 @@ static Sp scratchpads[] = {
  */
 // 龎   ﮕ ﰀ 烈
     
-static char *tagicons[][NUMTAGS*3] = {
+static char *tagicons[][NUMTAGS*4] = {
     [DEFAULT_TAGS] = {"", "", "", "",
                       "I", "II", "III", "IV", 
-                      "", "ﳲ", "露", ""},
+                      "", "ﳲ", "露", "",
+                      "I", "II", "III", "IV"}, 
 };
 //       ﮕ  力
 // static char *tagicons[][NUMTAGS*3] = {
@@ -463,7 +464,7 @@ static const Rule rules[] = {
     RULE(.class = "Alacritty", .isterminal = 1)
     // vertical monitor
     RULE(.instance = "easyeffects", .tags = 1 << 2, .monitor = 1)
-    RULE(.instance = "spotify", .tags = 1 << 1, .monitor = 1)
+    RULE(.instance = "spotify", .tags = 1 << 1, .monitor = 3)
     RULE(.instance = "guvcview", .monitor = 2)
     RULE(.instance = "chatterino", .tags = 1 << 1, .monitor = 1)
     // 2nd monitor

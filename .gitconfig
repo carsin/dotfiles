@@ -4,7 +4,7 @@
 	signingkey = 6F6EB22ACD96F6EE
 [core]
 	editor = nvim
-	pager = delta --syntax-theme gruvbox-dark --true-color always
+	; pager = delta --syntax-theme gruvbox-dark --true-color always
 [credential "https://dev.azure.com"]
 	useHttpPath = true
 [commit]
@@ -40,3 +40,5 @@
     colorMoved = default
 [delta]
     side-by-side = true
+[push]
+	autoSetupRemote = true

@@ -24,8 +24,8 @@ parser_config.org = {
 }
 
 require("orgmode").setup({
-	org_agenda_files = { "/home/carson/docs/org/*" },
-	org_default_notes_file = "/home/carson/docs/org/notes.org",
+	org_agenda_files = { "/home/carson/documents/org/*" },
+	org_default_notes_file = "/home/carson/documents/org/notes.org",
 	org_agenda_start_on_weekday = true,
 	org_hide_emphasis_markers = true,
 	org_todo_keywords = {'TODO(t)', 'NEXT(n)', '|', 'DONE(d)'},
@@ -37,12 +37,12 @@ require("orgmode").setup({
 		T = {
 			description = "Todo",
 			template = "* TODO %?\n  DEADLINE: %T",
-			target = "/home/carson/files/docs/org/todos.org",
+			target = "/home/carson/files/documents/org/todos.org",
 		},
 		w = {
 			description = "Uni todo",
 			template = "* TODO %?\n  DEADLINE: %T",
-			target = "/home/carson/files/docs/org/university.org",
+			target = "/home/carson/files/documents/org/university.org",
 		},
 	},
 	notifications = {
