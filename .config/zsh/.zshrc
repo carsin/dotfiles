@@ -109,6 +109,7 @@ bindkey -M vicmd '^[[1;5D' backward-word
 
 # import aliases
 source "$ZDOTDIR/aliases"
+source ~/.config/zsh/.zsecret
 # source ~/.config/zsh/themes/carson.zsh-theme # load prompt
 
 # append stuff to path
