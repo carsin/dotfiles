@@ -25,7 +25,7 @@ export GPG_TTY=$(tty)
 gpg-connect-agent updatestartuptty /bye >/dev/null 2>&1
 
 #export PAGER=nvimpager
-export ZK_NOTEBOOK_DIR=$HOME/files/documeents/wiki
+export ZK_NOTEBOOK_DIR=$HOME/files/documents/wiki
 export GOPATH=/home/carson/dev/projecnts/wiki
 export COLORTERM=truecolor
 export GOPATH=/home/carson/dev/projects/go

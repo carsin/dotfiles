@@ -41,7 +41,7 @@ wal -R
 picom &
 
 # autohide xcursor
-#unclutter &
+unclutter &
 
 playerctld daemon
 

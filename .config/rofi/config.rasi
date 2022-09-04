@@ -10,7 +10,7 @@ configuration {
     kb-mode-previous: "Shift+Left,Control+Shift+Tab,Control+h";
     kb-remove-char-back: "BackSpace";
     modi: "window,drun,combi";
-    font: "terminus 16";
+    font: "terminus 14";
     combi-modi: "window,drun";
     show-icons:                     true;
 	sidebar-mode:                   true;

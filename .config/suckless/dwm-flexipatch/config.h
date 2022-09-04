@@ -404,11 +404,11 @@ static Sp scratchpads[] = {
  */
 // 龎   ﮕ ﰀ 烈
     
-static char *tagicons[][NUMTAGS*4] = {
-    [DEFAULT_TAGS] = {"", "", "", "",
-                      "I", "II", "III", "IV", 
-                      "", "ﳲ", "露", "",
-                      "I", "II", "III", "IV"}, 
+static char *tagicons[][NUMTAGS*5] = {
+    [DEFAULT_TAGS] = {"龎", "", "", "", "",
+                      "I", "II", "III", "IV", "V", 
+                      "I", "II", "III", "IV", "V", 
+                      "", "ﳲ", "露", "", ""}
 };
 //       ﮕ  力
 // static char *tagicons[][NUMTAGS*3] = {
@@ -1003,7 +1003,7 @@ static Key keys[] = {
     // {MODKEY | ShiftMask, XK_Return, spawn, {.v = dmenucmd }},
     {MODKEY | ShiftMask, XK_Return, spawn, SHCMD("rofi -show drun")},
     // {MODKEY, XK_w, spawn, {.v = browsercmd }},
-    {MODKEY, XK_w, spawn, SHCMD("/home/carson/.local/bin/primeifhybrid.sh firefox")},
+    {MODKEY, XK_w, spawn, SHCMD("firefox")},
     {MODKEY, XK_Return, spawn, SHCMD("alacritty")},
 #if KEYMODES_PATCH
     {MODKEY, XK_Escape, setkeymode, {.ui = COMMANDMODE}},

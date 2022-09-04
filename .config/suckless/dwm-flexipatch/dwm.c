@@ -70,7 +70,7 @@
 #define Button7                 7
 #define Button8                 8
 #define Button9                 9
-#define NUMTAGS                 4
+#define NUMTAGS                 5
 #define BARRULES                20
 #if TAB_PATCH
 #define MAXTABS                 50

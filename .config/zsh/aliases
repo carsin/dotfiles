@@ -30,7 +30,7 @@ alias rw="/home/carson/.local/bin/newpape.sh"
 alias cw="/home/carson/.local/bin/choosepape.sh"
 # archive current wallpaper by moving out of selection pool
 function archivePape {
-    mv $(sed -n '2p' ~/.fehbg | awk -F"'" '{print $4}') ~/files/photos/papes/old
+    mv $(sed -n '2p' ~/.fehbg | awk -F"'" '{print $4}') ~/files/photos/oldpapes
 }
 alias archivew="archivePape"
 alias archive-w="archivePape"
@@ -78,8 +78,8 @@ alias fff="fastfetch"
 function randomCowsay {
     cowsay -W 60 -f $(cowsay -l | sed '1d' | tr ' ' '\n' | sort -R | head -1)
 }
-# alias ff="fastfetch && tput setaf 6; fortune -n 400 -s | randomCowsay; tput sgr0"
-alias ff="tput setaf 6; fortune -n 400 -s | randomCowsay; tput sgr0"
+alias ff="fastfetch && tput setaf 6; fortune -n 400 -s | randomCowsay; tput sgr0"
+# alias ff="tput setaf 6; fortune -n 400 -s | randomCowsay; tput sgr0"
 # alias ff="~/bin/motd/motd.sh"
 alias zath="zathura"
 alias e="nvim"
