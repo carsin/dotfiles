@@ -16,7 +16,7 @@ dwm_resources() {
 
     printf "%s" "$SEP1"
     # ﬙
-    printf " %s° %s ﬙ %s" "$(echo "$TEMP" | cut -f1 -d'.')" "$CPU" "$MEMUSED"
+    printf "%s° %s ﬙ %s" "$(echo "$TEMP" | cut -f1 -d'.')" "$CPU" "$MEMUSED"
     printf "%s" "$SEP2"
 }
 

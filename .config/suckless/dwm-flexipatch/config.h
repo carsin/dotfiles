@@ -13,6 +13,9 @@ static const unsigned int snap = 32; /* snap pixel */
 #if SWALLOW_PATCH
 static const int swallowfloating = 1; /* 1 means swallow floating windows by default */
 #endif // SWALLOW_PATCH
+#if BAR_TAGPREVIEW_PATCH
+static const int scalepreview            = 4;        /* Tag preview scaling */
+#endif // BAR_TAGPREVIEW_PATCH
 #if NO_MOD_BUTTONS_PATCH
 static int nomodbuttons =
     1; /* allow client mouse button bindings that have no modifier */
@@ -129,7 +132,23 @@ static const int ulineall =
     0; /* 1 to show underline on all tags, 0 for just the active ones */
 #endif // BAR_UNDERLINETAGS_PATCH
 
-/* TODO: Indicators: see patch/bar_indicators.h for options */
+#if NAMETAG_PATCH
+#if NAMETAG_PREPEND_PATCH
+/* The format in which the tag is written when named. E.g. %d: %.12s will write the tag number
+ * followed the first 12 characters of the given string. You can also just use "%d: %s" here. */
+#define NAMETAG_FORMAT "%d: %.12s"
+#else
+#define NAMETAG_FORMAT "%s"
+#endif // NAMETAG_PREPEND_PATCH
+/* The maximum amount of bytes reserved for each tag text. */
+#define MAX_TAGLEN 16
+/* The command to run (via popen). This can be tailored by adding a prompt, passing other command
+ * line arguments or providing name options. Optionally you can use other dmenu like alternatives
+ * like rofi -dmenu. */
+#define NAMETAG_COMMAND "dmenu < /dev/null"
+#endif // NAMETAG_PATCH
+       // 
+/* Indicators: see patch/bar_indicators.h for options */
 static int tagindicatortype = INDICATOR_CLIENT_DOTS;
 static int tiledindicatortype = INDICATOR_CLIENT_DOTS;
 static int floatindicatortype = INDICATOR_TOP_LEFT_SQUARE;
@@ -176,6 +195,7 @@ static const unsigned int alphas[][3] = {
     [SchemeHidNorm] = {OPAQUE, baralpha, borderalpha},
     [SchemeHidSel] = {OPAQUE, baralpha, borderalpha},
     [SchemeUrg] = {OPAQUE, baralpha, borderalpha},
+    
 #if BAR_FLEXWINTITLE_PATCH
     [SchemeFlexActTTB] = {OPAQUE, baralpha, borderalpha},
     [SchemeFlexActLTR] = {OPAQUE, baralpha, borderalpha},
@@ -515,7 +535,7 @@ static const MonitorRule monrules[] = {
     // {1, 3, 1, 0.4, -1, -1, -1}, // 1 (ultrawide)
     // {1, 4, 1, 0.4, -1, -1, -1}, // 1 (ultrawide)
     // {1, 5, 1, 0.4, -1, -1, -1}, // 1 (ultrawide)
-    {1, -1, 3, -1, -1, -1, -1}, // vertical
+    {2, -1, 3, -1, -1, -1, -1}, // vertical
     {-1, -1, 0, -1, -1, -1, -1}, // default
 };
 #else

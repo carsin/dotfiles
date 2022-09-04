@@ -90,7 +90,7 @@ placemouse(const Arg *arg)
 				detach(c);
 				if (c->mon != r->mon) {
 					arrangemon(c->mon);
-                    c->tags = r->mon->tagset[r->mon->seltags];
+					c->tags = r->mon->tagset[r->mon->seltags];
 				}
 
 				c->mon = r->mon;
