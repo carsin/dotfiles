@@ -130,7 +130,7 @@
  *
  * https://dwm.suckless.org/patches/tag-previews/
  */
-#define BAR_TAGPREVIEW_PATCH 1
+#define BAR_TAGPREVIEW_PATCH 0
 
 /* Show status in bar */
 #define BAR_STATUS_PATCH 1

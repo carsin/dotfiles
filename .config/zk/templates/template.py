@@ -26,7 +26,7 @@ def custom_strftime(format, t):
 
 # days since birth
 b_date = date(2002, 10, 6)
-future_date = date(2022, 9, 14)
+future_date = date(2022, 9, 13)
 t_date = date.today()
 dayno = t_date - b_date
 temptf = future_date - t_date
