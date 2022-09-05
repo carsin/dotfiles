@@ -146,13 +146,14 @@ alias pmrestart="systemctl --user restart pipewire.service pipewire.socket pipew
 alias pwrestart="systemctl --user restart pipewire.service pipewire.socket pipewire-pulse.socket"
 alias battery='acpi'
 alias ctrl='setxkbmap -option ctrl:nocaps'
-alias webcam='guvcview -e --gui=none -d /dev/video0 -a none -c read -F 30 -x 1280x960'
-alias webcam1='guvcview -e --gui=none -d /dev/video0 -a none -c read -F 30 -x 1280x960'
-alias webcam2='guvcview -e --gui=none -d /dev/video1 -a none -c read -F 30 -x 1280x960'
-alias webcam3='guvcview -e --gui=none -d /dev/video2 -a none -c read -F 30 -x 1280x960'
-alias webcam4='guvcview -e --gui=none -d /dev/video3 -a none -c read -F 30 -x 1280x960'
+# alias webcam='guvcview -e --gui=none -d /dev/video0 -a none -c read -F 30 -x 1280x960'
 alias playmic='pactl load-module module-loopback latency-msec=0'
 alias unplaymic='pactl unload-module module-loopback'
+function getBatteryDrawNow {
+    printf $(awk '{print $1*10^-6 " W"}' /sys/class/power_supply/BAT0/power_now)
+    printf " Watts \n"
+}
+alias powerdraw="getBatteryDrawNow"
 
 # pacman 
 alias p='pacman' # install

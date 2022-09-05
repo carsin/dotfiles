@@ -575,8 +575,8 @@ end
 local buttons = {
   type = "group",
   val = {
-    button("w", "  > Wiki Hub" , ":e /home/carson/files/documents/wiki/Dashboard.md<CR>"),
-    button("d", "  > Today's Note" , "<cmd>ZkNew { dir = 'log' }<CR>"),
+    button("w", "  > Wiki Hub" , ":cd /home/carson/files/documents/wiki <CR>:e /home/carson/files/documents/wiki/Dashboard.md<CR>"),
+    button("d", "  > Today's Note" , ":cd /home/carson/files/documents/wiki <CR><cmd>ZkNew { dir = 'log' }<CR>"),
     button("n", "ﮕ  > Neorg Start" , ":NeorgStart<CR>"),
     button("l", "  > Last Session" , ":SessionManager load_last_session<CR>"),
     button(".", "  > Directory Session " , ":SessionManager load_current_dir_session<cr>"),

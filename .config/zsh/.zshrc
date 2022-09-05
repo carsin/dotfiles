@@ -39,15 +39,6 @@ unsetopt PROMPT_CR
 unsetopt PROMPT_SP 
 PROMPT_EOL_MARK=''
 
-# Syntax highlighting
-# Plugins (provided by zsh-functions)
-# zsh_add_plugin "zsh-users/zsh-syntax-highlighting" # TODO: constant 
-zsh_add_plugin "hlissner/zsh-autopair"
-zsh_add_plugin "zsh-users/zsh-autosuggestions"
-zsh_add_plugin "agkozak/agkozak-zsh-prompt"
-source ~/.config/zsh/themes/agkozakconfig.zsh-theme
-eval "$(zoxide init zsh)" # zoxide
-
 # BINDINGS
 # jk/kj as escape
 bindkey -M viins 'jk' vi-cmd-mode
@@ -106,6 +97,15 @@ bindkey -M vicmd '^[[1;5D' backward-word
 #    echo -ne '\e[1 q'
 # }
 # precmd_functions+=(_fix_cursor)
+ 
+# Plugins (provided by zsh-functions)
+# zsh_add_plugin "zsh-users/zsh-syntax-highlighting" # TODO: constant 
+zsh_add_plugin "zsh-users/zsh-autosuggestions"
+zsh_add_plugin "agkozak/agkozak-zsh-prompt"
+zsh_add_plugin "hlissner/zsh-autopair"
+source ~/.config/zsh/themes/agkozakconfig.zsh-theme
+eval "$(zoxide init zsh)" # zoxide
+
 
 # import aliases
 source "$ZDOTDIR/aliases"

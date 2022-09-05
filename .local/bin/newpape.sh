@@ -15,3 +15,5 @@ pywalfox update & # may be causing instability
 # zathura-pywal -a 0.80 &
 # pywal-discord
 # wal_steam -w -d
+
+notify-send "Wallpaper changed."

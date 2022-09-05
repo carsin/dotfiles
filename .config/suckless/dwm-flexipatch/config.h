@@ -255,15 +255,15 @@ static char normfloatcolor[] = "#1d2021";
 // currently selected 
 static char selfgcolor[] = "#8ec07c";
 static char selbgcolor[] = "#000000";
-static char selbordercolor[] = "#689d6a";
-static char selfloatcolor[] = "#689d6a";
+static char selbordercolor[] = "#458588"; //hl color
+static char selfloatcolor[] = "#458588"; // hl color
 // inactive
 static char titlenormfgcolor[] = "#bdae93";
 static char titlenormbgcolor[] = "#181818";
 static char titlenormbordercolor[] = "#3c3836";
 static char titlenormfloatcolor[] = "#212121";
-static char titleselfgcolor[] = "#8ec07c";
-static char titleselbgcolor[] = "#181818";
+static char titleselfgcolor[] = "#6dadb0"; //winbar hl
+static char titleselbgcolor[] = "#181818"; 
 static char titleselbordercolor[] = "#101010";
 static char titleselfloatcolor[] = "#212121";
 static char tagsnormfgcolor[] = "#fbf1c7";
@@ -372,7 +372,8 @@ const char *spcmd4[] = {"alacritty", "--class", "sppulsemixer,Alacritty", "-o", 
 const char *spcmd5[] = {"alacritty", "--class", "sptop,Alacritty", "-o", "window.dimensions.columns=140", "-o", "window.dimensions.lines=54", "-e", "btop", NULL};
 const char *spcmd6[] = {"alacritty", "--class", "spnvtop,Alacritty", "-o", "window.dimensions.columns=138", "-o", "window.dimensions.lines=54", "-e", "nvtop", NULL};
 const char *spcmd7[] = {"alacritty", "--class", "spnvim,Alacritty", "-o", "window.dimensions.columns=87", "-o", "window.dimensions.lines=62", "-e", "/home/carson/.local/bin/scratchpads/editorstart", NULL}; 
-const char *spcmd8[] = {"alacritty", "--class", "spboard,Alacritty", "-o", "window.dimensions.columns=130", "-o", "window.dimensions.lines=47", "-e", "/home/carson/.local/bin/scratchpads/kanbanstart", NULL};
+const char *spcmd8[] = {"qalculate-gtk",NULL};
+// const char *spcmd8[] = {"alacritty", "--class", "spboard,Alacritty", "-o", "window.dimensions.columns=130", "-o", "window.dimensions.lines=47", "-e", "/home/carson/.local/bin/scratchpads/kanbanstart", NULL};
 // const char *spcmd10[]  = {"alacritty", "--class", "sppomo,Alacritty", "-o", "window.dimensions.columns=25", "-o", "window.dimensions.lines=25", "-e", "pomo -p /home/carson/.config/pomo/config.json b 1", NULL};
 // const char *spcmd11[] = {"alacritty", "--class", "spnvim,Alacritty", "-o", "window.dimensions.columns=173", "-o", "window.dimensions.lines=53", "-e", "/home/carson/bin/scratchpads/editorstartzk", NULL};
 
@@ -385,7 +386,7 @@ static Sp scratchpads[] = {
     {"sptop", spcmd5},
     {"spnvtop", spcmd6},
     {"spnvim", spcmd7},
-    {"spboard", spcmd8},
+    {"qalculate-gtk", spcmd8},
 };
 #endif // SCRATCHPADS_PATCH
 
@@ -518,7 +519,7 @@ static const Rule rules[] = {
     RULE(.instance = "sptop", .tags = SPTAG(4), .isfloating = 1)
     RULE(.instance = "spnvtop", .tags = SPTAG(5), .isfloating = 1)
     RULE(.instance = "spnvim", .tags = SPTAG(6), .isfloating = 1)
-    RULE(.instance = "spboard", .tags = SPTAG(7), .isfloating = 1)
+    RULE(.instance = "qalculate-gtk", .tags = SPTAG(7), .isfloating = 1)
 #endif // SCRATCHPADS_PATCH
 };
 
