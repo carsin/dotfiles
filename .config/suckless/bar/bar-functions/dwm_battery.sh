@@ -1,9 +1,5 @@
 #!/bin/sh
 
-# A dwm_bar function to read the battery level and status
-# Joe Standring <git@joestandring.com>
-# GNU GPLv3
-
 dwm_battery () {
     CHARGE=$(acpi | awk '{ print $4 }' | tr -d \,)
     STATUS=$(cat /sys/class/power_supply/BAT0/status)
@@ -22,4 +18,3 @@ dwm_battery () {
 }
 
 dwm_battery
-

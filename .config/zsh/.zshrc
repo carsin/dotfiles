@@ -8,12 +8,12 @@ setopt autocd extendedglob menucomplete interactive_comments nonomatch
 stty stop undef # Disable ctrl-s to freeze terminal.
 
 # let st's terminfo handle key sequences
-if [[ $TERM =~ 'st-256color' ]]; then
-    function zle-line-init () { echoti smkx }
-    function zle-line-finish () { echoti rmkx }
-    zle -N zle-line-init
-    zle -N zle-line-finish
-fi
+# if [[ $TERM =~ 'st-256color' ]]; then
+#     function zle-line-init () { echoti smkx }
+#     function zle-line-finish () { echoti rmkx }
+#     zle -N zle-line-init
+#     zle -N zle-line-finish
+# fi
 
 # import functions
 source "$ZDOTDIR/functions"
@@ -49,12 +49,6 @@ source ~/.config/zsh/themes/agkozakconfig.zsh-theme
 eval "$(zoxide init zsh)" # zoxide
 
 # BINDINGS
-# Accept autosuggestion
-bindkey '^ ' autosuggest-accept
-bindkey '^l' autosuggest-accept
-bindkey '^[[Z' autosuggest-accept
-bindkey '<Tab>' autosuggest-accept
-
 # jk/kj as escape
 bindkey -M viins 'jk' vi-cmd-mode
 bindkey -M viins 'kj' vi-cmd-mode
@@ -83,13 +77,19 @@ bindkey '^e' edit-command-line
 
 # fzf
 bindkey -s '^f' 'cd "$(dirname "$(fzf)")"\n'
-# nvim
-bindkey -s '^e' 'nvim\n'
+
+# Accept autosuggestion
+bindkey '^ ' autosuggest-accept
+bindkey '^l' autosuggest-accept
+bindkey '^[[Z' autosuggest-accept
+bindkey '<Tab>' autosuggest-accept
+
 
 # TODO: make work in tmux
 # word manip
 # ctrl+backspace: delete word before
 bindkey '^H' backward-kill-word
+bindkey '\e[[7;5~' backward-kill-word
 # ctrl+delete: delete word after
 bindkey "\e[3;5~" kill-word
 # [Ctrl-RightArrow] - move forward one word

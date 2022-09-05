@@ -1,5 +1,22 @@
 #!/bin/bash
 
+dwm_battery () {
+    CHARGE=$(acpi | awk '{ print $4 }' | tr -d \,)
+    STATUS=$(cat /sys/class/power_supply/BAT0/status)
+
+    if [[ "$STATUS" != "Full" ]]; then
+        # printf "%s" "$SEP1"
+        if [ "$IDENTIFIER" = "unicode" ]; then
+            if [ "$STATUS" = "Charging" ]; then
+                printf " %s" "$CHARGE" 
+            else
+                printf " %s" "$CHARGE" 
+            fi
+        fi
+        # printf "%s" "$SEP2 "
+    fi
+}
+
 dwm_resources() {
     # get all the infos first to avoid high resources usage
     free_output=$(free -h | grep Mem)
@@ -16,7 +33,8 @@ dwm_resources() {
 
     printf "%s" "$SEP1"
     # ﬙
-    printf "%s° %s ﬙ %s" "$(echo "$TEMP" | cut -f1 -d'.')" "$CPU" "$MEMUSED"
+    printf "%s° %s %s " "$(echo "$TEMP" | cut -f1 -d'.')" "$CPU" "$MEMUSED"
+    dwm_battery
     printf "%s" "$SEP2"
 }
 
