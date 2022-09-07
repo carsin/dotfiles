@@ -31,21 +31,12 @@ xset r rate 160 55
 # no screen blanking
 xset s off
 
-# statusbar
-/home/carson/.config/suckless/bar/bar.sh &
-
-# restore wallpaper and colorschemes
-wal -R
-
-# start window compositor
-picom &
-
-# autohide xcursor
-unclutter &
-
-playerctld daemon
-
-# aw-qt & 
+/home/carson/.config/suckless/bar/bar.sh & # statusbar
+wal -R # restore wallpaper and colorschemes
+picom & # start window compositor
+unclutter & # autohide xcursor
+playerctld daemon & # audio control
+jamesdsp -t & # audio tuning
 
 # start window manager
 while :; do 
