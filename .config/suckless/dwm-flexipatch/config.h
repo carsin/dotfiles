@@ -1004,6 +1004,7 @@ static Key keys[] = {
 	{0, XF86XK_AudioNext, spawn, SHCMD("playerctl next -p 'ncspot,spotify,firefox,chromium,mpv'")},
 	{0, XF86XK_AudioPrev, spawn, SHCMD("playerctl previous -p 'ncspot,spotify,firefox,chromium,mpv'")},
     {0, XF86XK_AudioPlay, spawn, SHCMD("playerctl play-pause")},
+	{0, XF86XK_AudioMute, spawn, SHCMD("/home/carson/.local/bin/changevol -n -p -y mute")},
 	{MODKEY, XK_F1, spawn, SHCMD("/home/carson/.local/bin/changevol -n -p -y mute")},
     {MODKEY, XK_F2, spawn, SHCMD("asusctl -p") },
     {MODKEY, XK_F3, spawn, SHCMD("asusctl -n") },
