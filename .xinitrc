@@ -35,8 +35,8 @@ xset s off
 wal -R # restore wallpaper and colorschemes
 picom & # start window compositor
 unclutter & # autohide xcursor
-playerctld daemon & # audio control
-jamesdsp -t & # audio tuning
+playerctld daemon # audio control
+easyeffects --gapplication-service & # audio tuning
 
 # start window manager
 while :; do 
