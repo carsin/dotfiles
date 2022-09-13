@@ -5,7 +5,7 @@
 /* appearance */
 #if ROUNDED_CORNERS_PATCH
 static const unsigned int borderpx = 0; /* border pixel of windows */
-static const int corner_radius = 10;
+static const int corner_radius = 8;
 #else
 static const unsigned int borderpx = 2; /* border pixel of windows */
 #endif                               // ROUNDED_CORNERS_PATCH
@@ -249,7 +249,7 @@ static const int color_ptrs[][ColCount] = {
 // SETUP COLORS
 static char c000000[] = "#000000"; // placeholder value
 static char normfgcolor[] = "#fbf1c7";
-static char normbgcolor[] = "#161616";
+static char normbgcolor[] = "#101010";
 static char normbordercolor[] = "#3c3836";
 static char normfloatcolor[] = "#1d2021";
 // currently selected 
@@ -267,7 +267,7 @@ static char titleselbgcolor[] = "#181818";
 static char titleselbordercolor[] = "#101010";
 static char titleselfloatcolor[] = "#212121";
 static char tagsnormfgcolor[] = "#fbf1c7";
-static char tagsnormbgcolor[] = "#181818";
+static char tagsnormbgcolor[] = "#101010";
 static char tagsnormbordercolor[] = "#101010";
 static char tagsnormfloatcolor[] = "#db8fd9";
 static char tagsselfgcolor[] = "#fb4934";
