@@ -423,11 +423,11 @@ static Sp scratchpads[] = {
  */
 // 龎   ﮕ ﰀ 烈
     
-static char *tagicons[][NUMTAGS*5] = {
-    [DEFAULT_TAGS] = {"龎", "", "", "", "",
+static char *tagicons[][NUMTAGS*3] = {
+    [DEFAULT_TAGS] = {"", "ﳲ", "露", "", "",
                       "I", "II", "III", "IV", "V", 
-                      "I", "II", "III", "IV", "V", 
-                      "", "ﳲ", "露", "", ""}
+                      "龎", "", "", "", ""}
+                      
 };
 //       ﮕ  力
 // static char *tagicons[][NUMTAGS*3] = {
@@ -528,12 +528,12 @@ static const Rule rules[] = {
 static const MonitorRule monrules[] = {
     /* monitor  tag   layout  mfact  nmaster  showbar  topbar */
     // {1, -1, 2, -1, -1, -1, -1}, // use a different layout for the second monitor
-    // {1, 1, 1, 0.4, -1, -1, -1}, // 1 (ultrawide)
-    // {1, 2, 1, 0.4, -1, -1, -1}, // 1 (ultrawide)
-    // {1, 3, 1, 0.4, -1, -1, -1}, // 1 (ultrawide)
-    // {1, 4, 1, 0.4, -1, -1, -1}, // 1 (ultrawide)
-    // {1, 5, 1, 0.4, -1, -1, -1}, // 1 (ultrawide)
-    {2, -1, 3, -1, -1, -1, -1}, // vertical
+    {0, 1, 1, 0.4, -1, -1, -1}, // 1 (ultrawide)
+    {0, 2, 1, 0.4, -1, -1, -1}, // 1 (ultrawide)
+    {0, 3, 1, 0.4, -1, -1, -1}, // 1 (ultrawide)
+    {0, 4, 1, 0.4, -1, -1, -1}, // 1 (ultrawide)
+    {0, 5, 1, 0.4, -1, -1, -1}, // 1 (ultrawide)
+    // {2, -1, 3, -1, -1, -1, -1}, // vertical
     {-1, -1, 0, -1, -1, -1, -1}, // default
 };
 #else
