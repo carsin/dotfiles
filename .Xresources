@@ -1,6 +1,6 @@
 #include "/home/carson/.cache/wal/colors.Xresources"
 ! multiples of 96 ideal, 92 for 24 1920x1080
-Xft.dpi: 170
+Xft.dpi: 155
 ! https://freedesktop.org/software/fontconfig/fontconfig-user.html
 Xft.font: Terminus:size=11:antialias=true:hinting=true:embeddedbitmap=false
 ! st.font: Terminus:size=11:antialias=true:hinting=true:embeddedbitmap=false
