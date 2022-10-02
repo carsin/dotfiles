@@ -47,9 +47,7 @@ date += (
     + f"{yearPerc:04}"
     + "%) -- "
     + str(daysInYear - dayOfYear)
-    + " left ["
-    + str(temptf.days)
-    + " TIL SLO]"
+    + " left "
 )
 # count number of files with prefix 20*.md
 # dateshort = now.strftime("%a %m/%d/%Y").upper()

@@ -28,7 +28,7 @@ setxkbmap -option ctrl:nocaps
 # key repeat
 xset r rate 160 55
 # touchpad
-xinput --set-prop 'ASUE120D:00 04F3:31FB Touchpad' "Synaptics Finger" 50 120 255
+xinput --set-prop 'ASUE120D:00 04F3:31FB Touchpad' "Synaptics Finger" 90 120 255
 xinput --set-prop 'ASUE120D:00 04F3:31FB Touchpad' "Synaptics Noise Cancellation" 10 10 
 
 

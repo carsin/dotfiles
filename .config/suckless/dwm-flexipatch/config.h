@@ -244,6 +244,7 @@ static const int color_ptrs[][ColCount] = {
     [SchemeHidNorm] = {5, 0, 0, -1},     [SchemeHidSel] = {6, -1, -1, -1},
     [SchemeUrg] = {7, 9, 9, 15},
 };
+
 #endif // BAR_VTCOLORS_PATCH
 
 // SETUP COLORS
@@ -371,7 +372,7 @@ const char *spcmd3[] = {"alacritty", "--class", "spfiles,Alacritty", "-o", "wind
 const char *spcmd4[] = {"alacritty", "--class", "sppulsemixer,Alacritty", "-o", "window.dimensions.columns=84", "-o", "window.dimensions.lines=32", "-e", "pulsemixer", NULL};
 const char *spcmd5[] = {"alacritty", "--class", "sptop,Alacritty", "-o", "window.dimensions.columns=140", "-o", "window.dimensions.lines=54", "-e", "btop", NULL};
 const char *spcmd6[] = {"alacritty", "--class", "spnvtop,Alacritty", "-o", "window.dimensions.columns=138", "-o", "window.dimensions.lines=54", "-e", "nvtop", NULL};
-const char *spcmd7[] = {"alacritty", "--class", "spnvim,Alacritty", "-o", "window.dimensions.columns=87", "-o", "window.dimensions.lines=62", "-e", "/home/carson/.local/bin/scratchpads/editorstart", NULL}; 
+const char *spcmd7[] = {"alacritty", "--class", "spnvim,Alacritty", "-o", "window.dimensions.columns=87", "-o", "window.dimensions.lines=61", "-e", "/home/carson/.local/bin/scratchpads/editorstart", NULL}; 
 const char *spcmd8[] = {"qalculate-gtk",NULL};
 // const char *spcmd8[] = {"alacritty", "--class", "spboard,Alacritty", "-o", "window.dimensions.columns=130", "-o", "window.dimensions.lines=47", "-e", "/home/carson/.local/bin/scratchpads/kanbanstart", NULL};
 // const char *spcmd10[]  = {"alacritty", "--class", "sppomo,Alacritty", "-o", "window.dimensions.columns=25", "-o", "window.dimensions.lines=25", "-e", "pomo -p /home/carson/.config/pomo/config.json b 1", NULL};
@@ -426,8 +427,10 @@ static Sp scratchpads[] = {
 static char *tagicons[][NUMTAGS*3] = {
     [DEFAULT_TAGS] = {"龎", "", "", "", "",
                       "I", "II", "III", "IV", "V", 
-                      "", "ﳲ", "露", "", ""}
+                      "龎", "", "", "", ""}
+                      
 };
+// ", "ﳲ", "露", "", "",
 //       ﮕ  力
 // static char *tagicons[][NUMTAGS*3] = {
 //     [DEFAULT_TAGS] = {"龎", "", "", "", "", ""},
@@ -527,11 +530,11 @@ static const Rule rules[] = {
 static const MonitorRule monrules[] = {
     /* monitor  tag   layout  mfact  nmaster  showbar  topbar */
     // {1, -1, 2, -1, -1, -1, -1}, // use a different layout for the second monitor
-    {1, 1, 1, 0.4, -1, -1, -1}, // 1 (ultrawide)
-    {1, 2, 1, 0.4, -1, -1, -1}, // 1 (ultrawide)
-    {1, 3, 1, 0.4, -1, -1, -1}, // 1 (ultrawide)
-    {1, 4, 1, 0.4, -1, -1, -1}, // 1 (ultrawide)
-    {1, 5, 1, 0.4, -1, -1, -1}, // 1 (ultrawide)
+    // {0, 1, 1, 0.4, -1, -1, -1}, // 1 (ultrawide)
+    // {0, 2, 1, 0.4, -1, -1, -1}, // 1 (ultrawide)
+    // {0, 3, 1, 0.4, -1, -1, -1}, // 1 (ultrawide)
+    // {0, 4, 1, 0.4, -1, -1, -1}, // 1 (ultrawide)
+    // {0, 5, 1, 0.4, -1, -1, -1}, // 1 (ultrawide)
     // {2, -1, 3, -1, -1, -1, -1}, // vertical
     {-1, -1, 0, -1, -1, -1, -1}, // default
 };

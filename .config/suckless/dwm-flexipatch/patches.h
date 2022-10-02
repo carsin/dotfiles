@@ -1086,7 +1086,7 @@
  * comes to focusmon, tagmon and similar functionality.
  * https://www.mail-archive.com/hackers@suckless.org/msg09400.html
  */
-#define SORTSCREENS_PATCH 0
+#define SORTSCREENS_PATCH 1
 
 /* Spawns programs from currently focused client's working directory.
  * https://dwm.suckless.org/patches/spawn_cwd/
