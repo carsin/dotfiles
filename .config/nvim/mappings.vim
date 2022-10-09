@@ -318,6 +318,8 @@ nnoremap <leader>b :Neotree float buffers<CR>
 " nmap <leader>cc <Plug>SnipClose
 
 " nrpattern
+nmap <C-a> <Plug>(PatternIncrement)
+nmap <C-x> <Plug>(PatternDecrement)
 nmap + <Plug>(PatternIncrement)
 nmap _ <Plug>(PatternDecrement)
 
