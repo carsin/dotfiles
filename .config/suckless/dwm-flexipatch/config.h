@@ -21,10 +21,10 @@ static int nomodbuttons =
     1; /* allow client mouse button bindings that have no modifier */
 #endif // NO_MOD_BUTTONS_PATCH
 #if VANITYGAPS_PATCH
-static const unsigned int gappih = 5; /* horiz inner gap between windows */
-static const unsigned int gappiv = 5; /* vert inner gap between windows */
-static const unsigned int gappoh = 5; /* horiz outer gap between windows and screen edge */
-static const unsigned int gappov = 6; /* vert outer gap between windows and screen edge */
+static const unsigned int gappih = 3; /* horiz inner gap between windows */
+static const unsigned int gappiv = 3; /* vert inner gap between windows */
+static const unsigned int gappoh = 3; /* horiz outer gap between windows and screen edge */
+static const unsigned int gappov = 3; /* vert outer gap between windows and screen edge */
 static const int smartgaps_fact = 1; /* gap factor when there is only one client; 0 = no gaps, 3 = 3x outer
           gaps */
 #endif // VANITYGAPS_PATCH
@@ -484,13 +484,13 @@ static const Rule rules[] = {
     RULE(.class = "St", .isterminal = 1)
     RULE(.class = "Alacritty", .isterminal = 1)
     // vertical monitor
-    RULE(.instance = "easyeffects", .tags = 1 << 2, .monitor = 1)
-    RULE(.instance = "spotify", .tags = 1 << 1, .monitor = 3)
-    RULE(.instance = "guvcview", .monitor = 2)
-    RULE(.instance = "chatterino", .tags = 1 << 1, .monitor = 1)
+    RULE(.class = "easyeffects", .tags = 1 << 2, .monitor = 1)
+    RULE(.class = "spotify", .tags = 1 << 1, .monitor = 3)
+    RULE(.class = "guvcview", .monitor = 2)
+    RULE(.class = "chatterino", .tags = 1 << 1, .monitor = 1)
     // 2nd monitor
-    RULE(.instance = "discord", .tags = 1 << 3, .monitor = 2)
-    RULE(.instance = "obs", .monitor = 1)
+    RULE(.class = "discord", .tags = 1 << 3, .monitor = 2)
+    RULE(.class = "obs", .monitor = 1)
     // gaming
     RULE(.class = "steam_app_", .tags = 1 << 5, .monitor = 0)
     RULE(.class = "battle.net.exe", .tags = 1 << 5, .monitor = 0)
@@ -499,29 +499,29 @@ static const Rule rules[] = {
     RULE(.title = "Rockstar Games Launcher", .tags = 1 << 5, .monitor = 0)
     RULE(.title = "Just Cause 3", .tags = 1 << 5, .monitor = 0)
     RULE(.title = "Red Dead Redemption 2", .tags = 1 << 5, .monitor = 0)
-    RULE(.instance = "origin.exe", .tags = 1 << 5, .isfloating = 1, .monitor = 0)
-    RULE(.instance = "bf5.exe", .tags = 1 << 5, .isfloating = 1, .monitor = 0)
-    RULE(.instance = "lutris", .tags = 1 << 5, .monitor = 0)
-    RULE(.instance = "Steam", .tags = 1 << 5)
-    RULE(.instance = "eadesktop.exe", .tags = 1 << 5, .monitor = 0)
-    RULE(.instance = "multimc", .tags = 1 << 5, .monitor = 0)
-    RULE(.instance = "Minecraft* 1.18.1", .tags = 1 << 5, .monitor = 0)
-    RULE(.instance = "Sodium 1.18.1", .tags = 1 << 5, .monitor = 0)
-    RULE(.instance = "riotclientux.exe", .tags = 1 << 5, .monitor = 0)
-    RULE(.instance = "anomalydx11avx.exe", .tags = 1 << 5, .monitor = 0)
-    RULE(.instance = "modorganizer.exe", .tags = 1 << 5, .monitor = 0)
-    RULE(.instance = "eu4", .tags = 1 << 5, .monitor = 1)
+    RULE(.class = "origin.exe", .tags = 1 << 5, .isfloating = 1, .monitor = 0)
+    RULE(.class = "bf5.exe", .tags = 1 << 5, .isfloating = 1, .monitor = 0)
+    RULE(.class = "lutris", .tags = 1 << 5, .monitor = 0)
+    RULE(.class = "Steam", .tags = 1 << 5)
+    RULE(.class = "eadesktop.exe", .tags = 1 << 5, .monitor = 0)
+    RULE(.class = "multimc", .tags = 1 << 5, .monitor = 0)
+    RULE(.class = "Minecraft* 1.18.1", .tags = 1 << 5, .monitor = 0)
+    RULE(.class = "Sodium 1.18.1", .tags = 1 << 5, .monitor = 0)
+    RULE(.class = "riotclientux.exe", .tags = 1 << 5, .monitor = 0)
+    RULE(.class = "anomalydx11avx.exe", .tags = 1 << 5, .monitor = 0)
+    RULE(.class = "modorganizer.exe", .tags = 1 << 5, .monitor = 0)
+    RULE(.class = "eu4", .tags = 1 << 5, .monitor = 1)
     RULE(.title = "!dwmf", .isfloating = 1, .noswallow=1, .iscentered=1)
     // scratcpads
 #if SCRATCHPADS_PATCH
-    RULE(.instance = "spterm1", .tags = SPTAG(0), .isfloating = 1)
-    RULE(.instance = "spterm2", .tags = SPTAG(1), .isfloating = 1)
-    RULE(.instance = "spfiles", .tags = SPTAG(2), .isfloating = 1)
-    RULE(.instance = "sppulsemixer", .tags = SPTAG(3), .isfloating = 1)
-    RULE(.instance = "sptop", .tags = SPTAG(4), .isfloating = 1)
-    RULE(.instance = "spnvtop", .tags = SPTAG(5), .isfloating = 1)
-    RULE(.instance = "spnvim", .tags = SPTAG(6), .isfloating = 1)
-    RULE(.instance = "qalculate-gtk", .tags = SPTAG(7), .isfloating = 1)
+    RULE(.class = "spterm1", .tags = SPTAG(0), .isfloating = 1)
+    RULE(.class = "spterm2", .tags = SPTAG(1), .isfloating = 1)
+    RULE(.class = "spfiles", .tags = SPTAG(2), .isfloating = 1)
+    RULE(.class = "sppulsemixer", .tags = SPTAG(3), .isfloating = 1)
+    RULE(.class = "sptop", .tags = SPTAG(4), .isfloating = 1)
+    RULE(.class = "spnvtop", .tags = SPTAG(5), .isfloating = 1)
+    RULE(.class = "spnvim", .tags = SPTAG(6), .isfloating = 1)
+    RULE(.class = "qalculate-gtk", .tags = SPTAG(7), .isfloating = 1)
 #endif // SCRATCHPADS_PATCH
 };
 

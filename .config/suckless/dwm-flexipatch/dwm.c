@@ -1245,6 +1245,10 @@ cleanup(void)
 	Layout foo = { "", NULL };
 	size_t i;
 
+	#if ALT_TAB_PATCH
+	alttabend();
+	#endif // ALT_TAB_PATCH
+
 	#if SEAMLESS_RESTART_PATCH
 	for (m = mons; m; m = m->next)
 		persistmonitorstate(m);
@@ -2490,8 +2494,6 @@ manage(Window w, XWindowAttributes *wa)
 	#endif // BAR_FLEXWINTITLE_PATCH
 	configure(c); /* propagates border_width, if size doesn't change */
 	updatesizehints(c);
-	if (getatomprop(c, netatom[NetWMState], XA_ATOM) == netatom[NetWMFullscreen])
-		setfullscreen(c, 1);
 	updatewmhints(c);
 	#if DECORATION_HINTS_PATCH
 	updatemotifhints(c);
@@ -2520,6 +2522,9 @@ manage(Window w, XWindowAttributes *wa)
 		c->sfh = c->h;
 	}
 	#endif // SAVEFLOATS_PATCH / EXRESIZE_PATCH
+
+	if (getatomprop(c, netatom[NetWMState], XA_ATOM) == netatom[NetWMFullscreen])
+		setfullscreen(c, 1);
 
 	XSelectInput(dpy, w, EnterWindowMask|FocusChangeMask|PropertyChangeMask|StructureNotifyMask);
 	grabbuttons(c, 0);
@@ -3477,6 +3482,10 @@ setfullscreen(Client *c, int fullscreen)
 		c->bw = 0;
 		c->isfloating = 1;
 		resizeclient(c, c->mon->mx, c->mon->my, c->mon->mw, c->mon->mh);
+		#if ROUNDED_CORNERS_PATCH
+		XRectangle rect = { .x = 0, .y = 0, .width = c->w, .height = c->h };
+		XShapeCombineRectangles(dpy, c->win, ShapeBounding, 0, 0, &rect, 1, ShapeSet, 1);
+		#endif // ROUNDED_CORNERS_PATCH
 		XRaiseWindow(dpy, c->win);
 	} else if (restorestate && (c->oldstate & (1 << 1))) {
 		c->bw = c->oldbw;
@@ -3511,6 +3520,10 @@ setfullscreen(Client *c, int fullscreen)
 		c->bw = 0;
 		c->isfloating = 1;
 		resizeclient(c, c->mon->mx, c->mon->my, c->mon->mw, c->mon->mh);
+		#if ROUNDED_CORNERS_PATCH
+		XRectangle rect = { .x = 0, .y = 0, .width = c->w, .height = c->h };
+		XShapeCombineRectangles(dpy, c->win, ShapeBounding, 0, 0, &rect, 1, ShapeSet, 1);
+		#endif // ROUNDED_CORNERS_PATCH
 		XRaiseWindow(dpy, c->win);
 		#endif // !FAKEFULLSCREEN_PATCH
 	} else if (!fullscreen && c->isfullscreen){

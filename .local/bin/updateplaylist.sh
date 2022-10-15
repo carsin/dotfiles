@@ -1,12 +1,13 @@
 #!/bin/sh
 # shellcheck disable=2016
 
-cd ~/files/music/spotify/bp/scrape2/
+cd ~/files/music/spotify/bp/scrape/ || exit
 
 # CSX
 echo 'Downloading CSX'
 
 yt-dlp --download-archive downloaded.txt --extract-audio --audio-format best -S'+acodec:140,m4a,mp3' -o '%(title)s - %(uploader)s [%(id)s].%(ext)s' https://www.youtube.com/playlist?list=PL4PofEZT9GHow6tHzD8Gp6NpSXbPHO97B --ignore-errors --add-metadata --embed-thumbnail --compat-options embed-metadata --trim-filenames 200
+yt-dlp --download-archive downloaded.txt --extract-audio --audio-format best -S'+acodec:140,m4a,mp3' -o '%(title)s - %(uploader)s [%(id)s].%(ext)s' https://www.youtube.com/playlist?list=PLhelXIJEzFPDWIs3NUK_E6MibN4vYe0hZ --ignore-errors --add-metadata --embed-thumbnail --compat-options embed-metadata --trim-filenames 200
 
 
 echo 'Playlist CSX finished downloading'
@@ -85,5 +86,35 @@ echo 'Playlist KING finished downloading'
 echo "Downloading firgi's tired"
 yt-dlp --download-archive downloaded.txt -f m4a --extract-audio --audio-format best -S'+acodec:140,m4a,mp3' -o '%(title)s - (uploader)s [%(id)s].%(ext)s' https://www.youtube.com/playlist?list=PLdIDJawYJSxVyTuflOiKIxVfczb6h5SFA --ignore-errors --add-metadata --embed-thumbnail --compat-options embed-metadata --trim-filenames 200
 echo 'Playlist tired finished downloading'
+
+# eto unlisted
+echo "Downloading eto unlisted"
+yt-dlp --download-archive downloaded.txt -f m4a --extract-audio --audio-format best -S'+acodec:140,m4a,mp3' -o '%(title)s - (uploader)s [%(id)s].%(ext)s' https://www.youtube.com/playlist?list=PLmF-mtoxUrRbf7Rqcjq6NmoDi-lghweWE --ignore-errors --add-metadata --embed-thumbnail --compat-options embed-metadata --trim-filenames 200
+echo 'Playlist eto unlisted finished downloading'
+
+# eto wonderland
+echo "Downloading eto wonderland"
+yt-dlp --download-archive downloaded.txt -f m4a --extract-audio --audio-format best -S'+acodec:140,m4a,mp3' -o '%(title)s - (uploader)s [%(id)s].%(ext)s' https://www.youtube.com/playlist?list=PLmF-mtoxUrRYGIqmACu29FTgTyObdVsFE --ignore-errors --add-metadata --embed-thumbnail --compat-options embed-metadata --trim-filenames 200
+echo 'Playlist eto wonderland finished downloading'
+
+# eto full
+echo "Downloading eto full"
+yt-dlp --download-archive downloaded.txt -f m4a --extract-audio --audio-format best -S'+acodec:140,m4a,mp3' -o '%(title)s - (uploader)s [%(id)s].%(ext)s' https://www.youtube.com/playlist?list=PLmF-mtoxUrRakTFbcOZQY-izbneg3Z13A --ignore-errors --add-metadata --embed-thumbnail --compat-options embed-metadata --trim-filenames 200
+echo 'Playlist eto full finished downloading'
+
+# shmurda secret
+echo "Downloading shmurda secret"
+yt-dlp --download-archive downloaded.txt -f m4a --extract-audio --audio-format best -S'+acodec:140,m4a,mp3' -o '%(title)s - (uploader)s [%(id)s].%(ext)s' https://www.youtube.com/playlist?list=PLluWecZRzY_TsaiHsb5Yif1fbGCjvNN91 --ignore-errors --add-metadata --embed-thumbnail --compat-options embed-metadata --trim-filenames 200
+echo 'Playlist shmurda secret finished downloading'
+
+# tomas secret
+echo "Downloading tomas secret"
+yt-dlp --download-archive downloaded.txt -f m4a --extract-audio --audio-format best -S'+acodec:140,m4a,mp3' -o '%(title)s - (uploader)s [%(id)s].%(ext)s' https://www.youtube.com/playlist?list=PLjdRAQ9W4wSY8a8zIjU_-xWJmiCcoNzaq --ignore-errors --add-metadata --embed-thumbnail --compat-options embed-metadata --trim-filenames 200
+echo 'Playlist tomas secret finished downloading'
+
+# tomas secret
+echo "Downloading tomas secret"
+yt-dlp --download-archive downloaded.txt -f m4a --extract-audio --audio-format best -S'+acodec:140,m4a,mp3' -o '%(title)s - (uploader)s [%(id)s].%(ext)s' https://www.youtube.com/playlist?list=PLjdRAQ9W4wSY8a8zIjU_-xWJmiCcoNzaq --ignore-errors --add-metadata --embed-thumbnail --compat-options embed-metadata --trim-filenames 200
+echo 'Playlist tomas secret finished downloading'
 
 echo 'EDM update complete!'
