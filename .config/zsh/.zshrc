@@ -93,10 +93,10 @@ bindkey -M viins '^[[1;5D' backward-word
 bindkey -M vicmd '^[[1;5D' backward-word
 
 # flashing prompt cursor 
-# _fix_cursor() {
-#    echo -ne '\e[1 q'
-# }
-# precmd_functions+=(_fix_cursor)
+_fix_cursor() {
+   echo -ne '\e[1 q'
+}
+precmd_functions+=(_fix_cursor)
  
 # Plugins (provided by zsh-functions)
 # zsh_add_plugin "zsh-users/zsh-syntax-highlighting" # TODO: constant 

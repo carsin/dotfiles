@@ -512,6 +512,7 @@ static const Rule rules[] = {
     RULE(.class = "modorganizer.exe", .tags = 1 << 5, .monitor = 0)
     RULE(.class = "eu4", .tags = 1 << 5, .monitor = 1)
     RULE(.title = "!dwmf", .isfloating = 1, .noswallow=1, .iscentered=1)
+    RULE(.class = "nofloat", .isfloating = 1)
     // scratcpads
 #if SCRATCHPADS_PATCH
     RULE(.class = "spterm1", .tags = SPTAG(0), .isfloating = 1)
