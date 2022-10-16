@@ -147,7 +147,17 @@ static const int ulineall =
  * like rofi -dmenu. */
 #define NAMETAG_COMMAND "dmenu < /dev/null"
 #endif // NAMETAG_PATCH
-       // 
+    
+#if ALT_TAB_PATCH
+/* alt-tab configuration */
+static const unsigned int tabmodkey        = 0x40; /* (Alt) when this key is held down the alt-tab functionality stays active. Must be the same modifier as used to run alttabstart */
+static const unsigned int tabcyclekey      = 0x17; /* (Tab) when this key is hit the menu moves one position forward in client stack. Must be the same key as used to run alttabstart */
+static const unsigned int tabposy          = 1;    /* tab position on Y axis, 0 = top, 1 = center, 2 = bottom */
+static const unsigned int tabposx          = 1;    /* tab position on X axis, 0 = left, 1 = center, 2 = right */
+static const unsigned int maxwtab          = 600;  /* tab menu width */
+static const unsigned int maxhtab          = 200;  /* tab menu height */
+#endif // ALT_TAB_PATCH
+
 /* Indicators: see patch/bar_indicators.h for options */
 static int tagindicatortype = INDICATOR_CLIENT_DOTS;
 static int tiledindicatortype = INDICATOR_CLIENT_DOTS;
@@ -1139,7 +1149,11 @@ static Key keys[] = {
     // {MODKEY | Mod4Mask | ShiftMask, XK_8, incrohgaps, {.i = -1}},
     // {MODKEY | Mod4Mask | ShiftMask, XK_9, incrovgaps, {.i = -1}},
 #endif // VANITYGAPS_PATCH
-    {MODKEY, XK_Tab, view, {0}},
+    #if ALT_TAB_PATCH
+	{ Mod1Mask,                     XK_Tab,        alttabstart,            {0} },
+	#else
+	{ MODKEY,                       XK_Tab,        view,                   {0} },
+	#endif // ALT_TAB_PATCH
 #if SHIFTVIEW_PATCH
     {MODKEY, XK_g, shiftview, {.i = -1}},
     {MODKEY, XK_semicolon, shiftview, {.i = +1}},
