@@ -10,6 +10,7 @@ export XDG_PICTURES_DIR=~/files/photos
 
 # locale
 # export TZ='Pacific/Honolulu'
+export TZ='America/Los_Angeles'
 export LANGUAGE='en'
 export LANG='en_US.UTF-8'
 
@@ -26,7 +27,6 @@ gpg-connect-agent updatestartuptty /bye >/dev/null 2>&1
 
 #export PAGER=nvimpager
 export ZK_NOTEBOOK_DIR=$HOME/files/documents/wiki
-export GOPATH=/home/carson/dev/projecnts/wiki
 export COLORTERM=truecolor
 export GOPATH=/home/carson/dev/projects/go
 export SUDO_EDITOR=/usr/bin/nvim

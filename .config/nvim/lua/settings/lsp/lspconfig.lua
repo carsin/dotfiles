@@ -253,4 +253,7 @@ lspconfig.wgsl_analyzer.setup(M.get_config())
 -- python pyright
 lspconfig.pyright.setup(M.get_config())
 
+-- gopls
+lspconfig.gopls.setup(M.get_config())
+
 return M
