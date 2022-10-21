@@ -1,5 +1,7 @@
 #!/bin/sh
 
+# start in quiet mode
+asusctl profile -P quiet
 # START SLOW ASS SPOTIFY NICE AND EARLY
 # spotify &
 
@@ -27,10 +29,11 @@ fi
 setxkbmap -option ctrl:nocaps
 # key repeat
 xset r rate 160 55
-# touchpad
-xinput --set-prop 'ASUE120D:00 04F3:31FB Touchpad' "Synaptics Finger" 90 120 255
-xinput --set-prop 'ASUE120D:00 04F3:31FB Touchpad' "Synaptics Noise Cancellation" 10 10 
-
+# synaptics touchpad
+# xinput --set-prop 'ASUE120D:00 04F3:31FB Touchpad' "Synaptics Finger" 90 120 255
+# xinput --set-prop 'ASUE120D:00 04F3:31FB Touchpad' "Synaptics Noise Cancellation" 10 10 
+# libinput touchpad
+xinput --set-prop 'ASUE120D:00 04F3:31FB Touchpad' "libinput Accel Speed" 0.175
 
 # no screen blanking
 xset s off
