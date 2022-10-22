@@ -383,7 +383,6 @@ const char *spcmd4[] = {"alacritty", "--class", "sppulsemixer,Alacritty", "-o", 
 const char *spcmd5[] = {"alacritty", "--class", "sptop,Alacritty", "-o", "window.dimensions.columns=140", "-o", "window.dimensions.lines=54", "-e", "btop", NULL};
 const char *spcmd6[] = {"alacritty", "--class", "spnvtop,Alacritty", "-o", "window.dimensions.columns=138", "-o", "window.dimensions.lines=54", "-e", "nvtop", NULL};
 const char *spcmd7[] = {"alacritty", "--class", "spnvim,Alacritty", "-o", "window.dimensions.columns=87", "-o", "window.dimensions.lines=61", "-e", "/home/carson/.local/bin/scratchpads/editorstart", NULL}; 
-const char *spcmd8[] = {"qalculate-gtk",NULL};
 // const char *spcmd8[] = {"alacritty", "--class", "spboard,Alacritty", "-o", "window.dimensions.columns=130", "-o", "window.dimensions.lines=47", "-e", "/home/carson/.local/bin/scratchpads/kanbanstart", NULL};
 // const char *spcmd10[]  = {"alacritty", "--class", "sppomo,Alacritty", "-o", "window.dimensions.columns=25", "-o", "window.dimensions.lines=25", "-e", "pomo -p /home/carson/.config/pomo/config.json b 1", NULL};
 // const char *spcmd11[] = {"alacritty", "--class", "spnvim,Alacritty", "-o", "window.dimensions.columns=173", "-o", "window.dimensions.lines=53", "-e", "/home/carson/bin/scratchpads/editorstartzk", NULL};
@@ -397,7 +396,6 @@ static Sp scratchpads[] = {
     {"sptop", spcmd5},
     {"spnvtop", spcmd6},
     {"spnvim", spcmd7},
-    {"qalculate-gtk", spcmd8},
 };
 #endif // SCRATCHPADS_PATCH
 
@@ -532,7 +530,6 @@ static const Rule rules[] = {
     RULE(.class = "sptop", .tags = SPTAG(4), .isfloating = 1)
     RULE(.class = "spnvtop", .tags = SPTAG(5), .isfloating = 1)
     RULE(.class = "spnvim", .tags = SPTAG(6), .isfloating = 1)
-    RULE(.class = "qalculate-gtk", .tags = SPTAG(7), .isfloating = 1)
 #endif // SCRATCHPADS_PATCH
 };
 
@@ -688,7 +685,7 @@ static const BarRule barrules[] = {
 };
 
 /* layout(s) */
-static const float mfact = 0.525; /* factor of master area size [0.05..0.95] */
+static const float mfact = 0.5; /* factor of master area size [0.05..0.95] */
 static const int nmaster = 1;    /* number of clients in master area */
 #if FLEXTILE_DELUXE_LAYOUT
 static const int nstack = 0; /* number of clients in primary stack area */
@@ -1237,7 +1234,6 @@ static Key keys[] = {
     {MODKEY, XK_q, togglescratch, {.ui = 4}}, // top
     {MODKEY | ShiftMask, XK_q, togglescratch, {.ui = 5}}, // nvtop
     {MODKEY, XK_e, togglescratch, {.ui = 6}}, // nvim
-    {MODKEY, XK_c, togglescratch, {.ui = 7}}, // kanban
 #endif // SCRATCHPADS_PATCH
 #if UNFLOATVISIBLE_PATCH
     {MODKEY | Mod4Mask, XK_space, unfloatvisible, {0}},
