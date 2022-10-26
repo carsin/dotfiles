@@ -43,7 +43,7 @@ dwm_date() {
             ICON2="-"
         fi
     fi
-    DATESTR="$(date '+%-I:%M:%S %p %-m/%-d/%Y %a ')"
+    DATESTR="$(date '+%-I:%M:%S %p %-m/%-d/%y %a ')"
     DATESTR=$(echo "$DATESTR" | tr : "$ICON" | tr / "$ICON2")
     printf "%s" "$DATESTR"
     # percentage of day complete

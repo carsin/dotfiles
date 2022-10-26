@@ -147,6 +147,7 @@ alias updateedm="/home/carson/.local/bin/updateplaylist.sh"
 alias dlsong="/home/carson/.local/bin/dlsong.sh"
 
 # system
+alias igpu="supergfxctl -m integrated"
 alias pmrestart="systemctl --user restart pipewire.service pipewire.socket pipewire-pulse.socket"
 alias pwrestart="systemctl --user restart pipewire.service pipewire.socket pipewire-pulse.socket"
 alias battery='acpi'

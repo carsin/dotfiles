@@ -62,10 +62,6 @@ bindkey '^[[Z' reverse-menu-complete
 bindkey '^p' history-search-backward
 bindkey '^n' history-search-forward
 
-# Edit line in vim with ctrl-e:
-autoload edit-command-line; zle -N edit-command-line
-bindkey '^e' edit-command-line
-
 # fzf
 bindkey -s '^f' 'cd "$(dirname "$(fzf)")"\n'
 
@@ -91,6 +87,10 @@ bindkey -M vicmd '^[[1;5C' forward-word
 bindkey -M emacs '^[[1;5D' backward-word
 bindkey -M viins '^[[1;5D' backward-word
 bindkey -M vicmd '^[[1;5D' backward-word
+
+# Edit line in vim with ctrl-e:
+autoload edit-command-line; zle -N edit-command-line
+bindkey '^e' edit-command-line
 
 # flashing prompt cursor 
 _fix_cursor() {
