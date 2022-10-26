@@ -59,6 +59,17 @@ dwm_date() {
     else
         printf "%0.4s%%" "$DAYPERCENT"
     fi
+    
+    # laptop mode
+    MODE=$(asusctl profile -p | cut -d " " -f 4)
+    if [[ "$MODE" == "Quiet" ]]; then
+        printf " "
+    elif [[ "$MODE" == "Balanced" ]]; then
+        printf " 𢡄"
+    elif [[ "$MODE" == "Performance" ]]; then
+        printf " 龍"
+    fi
+    printf "%s" "$SEP2"
 }
 
 dwm_date

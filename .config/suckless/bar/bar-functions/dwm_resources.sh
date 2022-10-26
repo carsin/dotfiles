@@ -11,7 +11,7 @@ dwm_resources() {
     TEMP=$(sensors | grep -oP 'Package.*?\+\K[0-9.]+')
     BATSTATUS=$(cat /sys/class/power_supply/BAT0/status)
     CHARGE=$(cat /sys/class/power_supply/BAT0/capacity)
-    MODE=$(asusctl profile -p | cut -d " " -f 4)
+    # MODE=$(asusctl profile -p | cut -d " " -f 4)
     if [ "$TEMP" = "" ]; then
         TEMP=$(sensors | grep -oP 'Physical.*?\+\K[0-9.]+')
     fi
@@ -29,14 +29,14 @@ dwm_resources() {
         fi
     fi
     # laptop mode
-    if [[ "$MODE" == "Quiet" ]]; then
-        printf " "
-    elif [[ "$MODE" == "Balanced" ]]; then
-        printf " 𢡄"
-    elif [[ "$MODE" == "Performance" ]]; then
-        printf " 龍"
-    fi
-    printf "%s" "$SEP2"
+    # if [[ "$MODE" == "Quiet" ]]; then
+    #     printf " "
+    # elif [[ "$MODE" == "Balanced" ]]; then
+    #     printf " 𢡄"
+    # elif [[ "$MODE" == "Performance" ]]; then
+    #     printf " 龍"
+    # fi
+    # printf "%s" "$SEP2"
 }
 
 dwm_resources

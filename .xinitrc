@@ -29,11 +29,8 @@ fi
 setxkbmap -option ctrl:nocaps
 # key repeat
 xset r rate 160 55
-# synaptics touchpad
-# xinput --set-prop 'ASUE120D:00 04F3:31FB Touchpad' "Synaptics Finger" 90 120 255
-# xinput --set-prop 'ASUE120D:00 04F3:31FB Touchpad' "Synaptics Noise Cancellation" 10 10 
 # libinput touchpad
-xinput --set-prop 'ASUE120D:00 04F3:31FB Touchpad' "libinput Accel Speed" 0.175
+xinput --set-prop 'ASUE120D:00 04F3:31FB Touchpad' "libinput Accel Speed" 0.176
 
 # no screen blanking
 xset s off
@@ -44,6 +41,7 @@ picom & # start window compositor
 unclutter & # autohide xcursor
 playerctld daemon # audio control
 easyeffects --gapplication-service & # audio tuning
+asusctltray # laptop power control tray widget
 
 # start window manager
 while :; do 
