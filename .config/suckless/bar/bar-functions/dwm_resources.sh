@@ -36,7 +36,7 @@ dwm_resources() {
     # elif [[ "$MODE" == "Performance" ]]; then
     #     printf " 龍"
     # fi
-    # printf "%s" "$SEP2"
+    printf "%s" "$SEP2"
 }
 
 dwm_resources

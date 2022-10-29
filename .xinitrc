@@ -25,10 +25,12 @@ if [ -d /etc/X11/xinit/xinitrc.d ] ; then
 fi 
 
 # input configuration
+# TEMP disable broken b key on laptop 
+/home/carson/.local/bin/disablelaptopb.sh &
 # capslock is ctrl
 setxkbmap -option ctrl:nocaps
 # key repeat
-xset r rate 160 55
+xset r rate 150 52
 # libinput touchpad
 xinput --set-prop 'ASUE120D:00 04F3:31FB Touchpad' "libinput Accel Speed" 0.176
 
@@ -41,7 +43,7 @@ picom & # start window compositor
 unclutter & # autohide xcursor
 playerctld daemon # audio control
 easyeffects --gapplication-service & # audio tuning
-asusctltray # laptop power control tray widget
+asusctltray & # laptop power control tray widget
 
 # start window manager
 while :; do 

@@ -1025,6 +1025,7 @@ static Key keys[] = {
     {MODKEY, XK_F9, spawn, SHCMD("playerctl previous") },
     {MODKEY, XK_F10, spawn, SHCMD("playerctl play-pause -p 'spotify,firefox,mpv'") },
     {MODKEY, XK_F11, spawn, SHCMD("playerctl next") },
+    {MODKEY, XK_F12, spawn, SHCMD("xdotool key b") },
     {MODKEY | ShiftMask, XK_s, spawn, SHCMD("spotify --no-zygote")}, // --no-zygote flag disables hardware (gpu) accel
     {MODKEY, XK_backslash, spawn, SHCMD("timeout 3 /home/carson/.local/bin/newpape.sh")},
     {MODKEY | ControlMask, XK_Home, spawn, SHCMD("timeout 3 /home/carson/.local/bin/newpape.sh -i")},
@@ -1042,7 +1043,7 @@ static Key keys[] = {
     {MODKEY | ControlMask, XK_Return, riospawn, {.v = termcmd}},
     {MODKEY, XK_s, rioresize, {0}},
 #endif // RIODRAW_PATCH
-    {MODKEY, XK_b, togglebar, {0}},
+    {MODKEY | ShiftMask, XK_b, togglebar, {0}},
 #if TAB_PATCH
     {MODKEY | ControlMask, XK_b, tabmode, {-1}},
 #endif // TAB_PATCH
