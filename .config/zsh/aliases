@@ -15,7 +15,7 @@ alias ............="cd ../../../../../../../../../../../"
 alias ~="cd ~"
 alias l='ls'
 alias ls='exa -aF --color=always --sort=type --group-directories-first --ignore-glob=".DS_Store" --icons' # lots of icons are causing lag in st
-alias ll='ls -l' # lots of icons are causing lag in st
+alias ll='ls -l' 
 alias lt='ls --tree'
 # alias cpI="cp"
 # alias cp="cp -iv"
@@ -74,7 +74,6 @@ alias pm="pulsemixer"
 alias g="git"
 alias bt="bluetuith"
 alias lg="lazygit"
-# alias nf="neofetch"
 alias discord="LIBVA_DRIVER_NAME=i915 discord --ignore-gpu-blocklist --disable-features=UseOzonePlatform --enable-features=VaapiVideoDecoder --use-gl=desktop --enable-gpu-rasterization --enable-zero-copy"
 alias nf="fastfetch"
 alias fff="fastfetch"
@@ -85,7 +84,6 @@ function randomCowsay {
 # alias ff="fastfetch && tput setaf 6; fortune -n 400 -s | randomCowsay; tput sgr0"
 alias fastfetch=''
 alias ff="fastfetch --load-config /home/carson/.config/fastfetch/configsm.conf && tput setaf 6; fortune -n 400 -s | randomCowsay; tput sgr0"
-# alias ff="~/bin/motd/motd.sh"
 alias zath="zathura"
 alias e="nvim"
 alias v="vim"
@@ -139,10 +137,8 @@ alias km="kabmat"
 alias visual="/usr/local/bin/visual/VisUAL.sh"
 
 # scripts
-# alias laptop="/home/carson/bin/displays/laptop.sh"
-alias dock="/home/carson/.local/bin/displays/dock2.sh"
-# alias triple="/home/carson/.local/bin/displays/triple2.sh"
-
+alias dock="/home/carson/.local/bin/displays/dock.sh"
+alias dk="/home/carson/.local/bin/displays/dock.sh"
 alias updateedm="/home/carson/.local/bin/updateplaylist.sh"
 alias dlsong="/home/carson/.local/bin/dlsong.sh"
 
@@ -160,6 +156,8 @@ function getBatteryDrawNow {
     printf " Watts \n"
 }
 alias powerdraw="getBatteryDrawNow"
+alias batterydraw="getBatteryDrawNow"
+alias bdraw="getBatteryDrawNow"
 
 # pacman 
 alias p='pacman' # install

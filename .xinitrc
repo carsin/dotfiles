@@ -1,20 +1,12 @@
 #!/bin/sh
-
-# start in quiet mode
+# start laptop in quiet mode
 asusctl profile -P quiet
-# START SLOW ASS SPOTIFY NICE AND EARLY
-# spotify &
 
 # load xresources
 xrdb -merge ~/.Xresources 
 
 xrandr --auto
 xrandr --dpi 170
-
-# echo "Initializing triple monitor configuration"
-# xrandr --setprovideroutputsource modesetting NVIDIA-0
-# . /home/carson/bin/displays/triple.sh
-xset -dpms
 
 # start some nice programs
 if [ -d /etc/X11/xinit/xinitrc.d ] ; then 
@@ -25,17 +17,18 @@ if [ -d /etc/X11/xinit/xinitrc.d ] ; then
 fi 
 
 # input configuration
-# TEMP disable broken b key on laptop 
+# TEMP 
+# disable broken b key on laptop 
 /home/carson/.local/bin/disablelaptopb.sh &
+echo b | xclip -sel c
 # capslock is ctrl
 setxkbmap -option ctrl:nocaps
 # key repeat
-xset r rate 150 52
-# libinput touchpad
+xset r rate 147 52
 xinput --set-prop 'ASUE120D:00 04F3:31FB Touchpad' "libinput Accel Speed" 0.176
 
 # no screen blanking
-xset s off
+xset s 3600 3600 # blank screen after 1 hour
 
 /home/carson/.config/suckless/bar/bar.sh & # statusbar
 wal -R # restore wallpaper and colorschemes
