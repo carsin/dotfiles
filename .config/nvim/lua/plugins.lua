@@ -402,6 +402,13 @@ return packer.startup({
       end,
     })
 
+    use { -- bufferline
+      'akinsho/bufferline.nvim',
+      config = function()
+        require("settings.bufferline")
+      end,
+    }
+
 
     -- use({ -- DAP
     -- 	"mfussenegger/nvim-dap",

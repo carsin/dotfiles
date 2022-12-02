@@ -1025,8 +1025,11 @@ static Key keys[] = {
     {MODKEY, XK_F9, spawn, SHCMD("playerctl previous") },
     {MODKEY, XK_F10, spawn, SHCMD("playerctl play-pause -p 'spotify,firefox,mpv'") },
     {MODKEY, XK_F11, spawn, SHCMD("playerctl next") },
-    {MODKEY, XK_F12, spawn, SHCMD("echo 'b' | xclip -sel c") },
-    {MODKEY | ShiftMask, XK_F12, spawn, SHCMD("echo 'B' | xclip -sel c") },
+    // TEMP
+    {MODKEY, XK_F12, spawn, SHCMD("echo -n 'b' | xclip -sel c && xdotool key --window $(xdotool getactivewindow) 'Control_L+shift+v'") },
+    {MODKEY, XK_v, spawn, SHCMD("echo -n 'b' | xclip -sel c && xdotool key --window $(xdotool getactivewindow) 'Control_L+shift+v'") },
+    {MODKEY | ShiftMask, XK_F12, spawn, SHCMD("echo -n 'B' | xclip -sel c && xdotool key --window $(xdotool getactivewindow) 'Control_L+shift+v'") },
+    {MODKEY | ShiftMask, XK_v, spawn, SHCMD("echo -n 'B' | xclip -sel c && xdotool key --window $(xdotool getactivewindow) 'Control_L+shift+v'") },
     {MODKEY | ShiftMask, XK_s, spawn, SHCMD("spotify --no-zygote")}, // --no-zygote flag disables hardware (gpu) accel
     {MODKEY, XK_backslash, spawn, SHCMD("timeout 3 /home/carson/.local/bin/newpape.sh")},
     {MODKEY | ControlMask, XK_Home, spawn, SHCMD("timeout 3 /home/carson/.local/bin/newpape.sh -i")},

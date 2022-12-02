@@ -1,6 +1,6 @@
 #!/bin/sh
 
-cd /home/carson/files/music/spotify/bp/scrape2/ || exit
+cd /home/carson/files/music/spotify/bp/scrape/ || exit
 
 if [[ $1 = "" ]]; then
     read -p "url: " url 
