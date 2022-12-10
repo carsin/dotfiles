@@ -140,6 +140,7 @@ alias visual="/usr/local/bin/visual/VisUAL.sh"
 
 # scripts
 alias dock="/home/carson/.local/bin/displays/dock.sh"
+alias triple="/home/carson/.local/bin/displays/triple.sh"
 alias dk="/home/carson/.local/bin/displays/dock.sh"
 alias updateedm="/home/carson/.local/bin/updateplaylist.sh"
 alias dlsong="/home/carson/.local/bin/dlsong.sh"
