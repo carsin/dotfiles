@@ -1,4 +1,4 @@
-local config = require("settings.lsp.lspconfig").get_config()
+local config = require("plugins.lsp.lspconfig").get_config()
 local null_ls = require("null-ls")
 local builtins = null_ls.builtins
 

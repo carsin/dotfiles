@@ -2,6 +2,7 @@ local M = {}
 local extension_path = '/home/carson/.local/share/nvim/user_servers/codelldb/extension/'
 local codelldb_path = extension_path .. 'adapter/codelldb'
 local liblldb_path = extension_path .. 'lldb/lib/liblldb.so'
+
 M.opts = {
   server = {},
   tools = { -- rust-tools options
@@ -65,9 +66,9 @@ M.opts = {
       },
     },
   },
-  dap = { -- use codeLLDB
-    adapter = require('rust-tools.dap').get_codelldb_adapter(codelldb_path, liblldb_path)
-  }
+  -- dap = { -- use codeLLDB
+  --   adapter = require('rust-tools.dap').get_codelldb_adapter(codelldb_path, liblldb_path)
+  -- }
 }
 
 return M;

@@ -5,12 +5,9 @@ set nocompatible
 filetype plugin indent on " Load plugins according to detected filetype.
 syntax on                 " Enable syntax highlighting.
 
-" Set colors before impatient makes it work for some reason
 if has('termguicolors')
     set termguicolors
 endif
-lua require('compiled/packer_compiled')
-lua require('impatient')
 
 set title            " report title to terminal
 set history=500      " How many lines of history vim has to remember
@@ -71,7 +68,8 @@ let g:matchup_surround_enabled = 1
 
 colorscheme gruvbox-material
 " Load plugins
-lua require('plugins')
+let mapleader=" "
+lua require('init')
 " Load lua commands
 " lua require('commands')
 

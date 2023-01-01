@@ -1,4 +1,4 @@
-local lspc = require("settings.lsp.lspconfig").get_config()
+local lspc = require("plugins.lsp.lspconfig").get_config()
 local zk = require("zk")
 local commands = require("zk.commands")
 local M = {}

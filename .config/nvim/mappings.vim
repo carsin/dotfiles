@@ -200,24 +200,6 @@ autocmd FileType markdown nnoremap <buffer> <silent> <leader><S-Space> :StayWinT
 autocmd FileType markdown nnoremap <buffer> <silent> _ :StayWinToggle keeppatterns s/^\s*-\s*\[\zs.\ze\]/\=get({' ': 'X', '~': 'X', '.': 'X', 'o': 'X', 'X': ' '}, submatch(0), ' ')/e<cr>
 
 " --- PLUGINS {{{
-" Telescope
-" find and get stuff
-nnoremap <leader>f <cmd>Telescope find_files<cr>
-nnoremap <leader>r <cmd>lua require('telescope').extensions.frecency.frecency()<cr>
-nnoremap S <cmd>Telescope live_grep<cr>
-
-" pickers
-nnoremap <leader>pp <cmd>lua require'telescope'.extensions.project.project{ display_type = 'full' }<cr>
-nnoremap <leader>ph <cmd>SessionManager load_session<cr>
-" nnoremap <leader>pz <cmd>Telescope zoxide list<cr>
-" nnoremap <leader>pe <cmd>Telescope env<cr>
-
-" -- telescope-dap
-nnoremap <leader>pdc <cmd>lua require"telescope".extensions.dap.commands{}<CR>
-nnoremap <leader>pdo <cmd>lua require"telescope".extensions.dap.configurations{}<CR>
-nnoremap <leader>pdb <cmd>lua require"telescope".extensions.dap.list_breakpoints{}<CR>
-nnoremap <leader>pdv <cmd>lua require"telescope".extensions.dap.variables{}<CR>
-nnoremap <leader>pdf <cmd>lua require"telescope".extensions.dap.frames{}<CR>
 
 " Vim fugitive - git handler
 nnoremap <leader>gg <cmd>G<cr>
