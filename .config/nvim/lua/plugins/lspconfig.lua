@@ -1,7 +1,6 @@
 local M = {
   "neovim/nvim-lspconfig",
-  -- event = "BufReadPre",
-  lazy = false,
+  event = "BufReadPre",
   dependencies = {
     "mfussenegger/nvim-jdtls",
     "p00f/clangd_extensions.nvim",
@@ -143,7 +142,7 @@ M.config = function()
     }
   })
   require("mason-lspconfig").setup({
-    ensure_installed = { "sumneko_lua", "rust_analyzer", "clangd" }
+    ensure_installed = { "sumneko_lua", "clangd" }
   })
 
   -- sumneko
@@ -216,6 +215,9 @@ M.config = function()
 
   -- gopls
   lspconfig.gopls.setup(M.get_config())
+
+  -- start null ls
+  require("plugins.nullls").setup(M.get_config())
 end
 
 return M

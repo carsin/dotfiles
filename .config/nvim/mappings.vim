@@ -204,20 +204,20 @@ autocmd FileType markdown nnoremap <buffer> <silent> _ :StayWinToggle keeppatter
 " --- PLUGINS {{{
 
 " Vim fugitive - git handler
-nnoremap <leader>gg <cmd>G<cr>
-nnoremap <leader>gl <cmd>Gclog<cr>
-nnoremap <leader>ge <cmd>Gedit<cr>
-nnoremap <leader>gd <cmd>Gdiff<cr>
+" nnoremap <leader>gg <cmd>G<cr>
+" nnoremap <leader>gl <cmd>Gclog<cr>
+" nnoremap <leader>ge <cmd>Gedit<cr>
+" nnoremap <leader>gd <cmd>Gdiff<cr>
 
 " EasyAlign
-xmap ga <Plug>(EasyAlign)
-nmap ga <Plug>(EasyAlign)
+" xmap ga <Plug>(EasyAlign)
+" nmap ga <Plug>(EasyAlign)
 
 " Lightspeed jetpack
-nmap s <Plug>Lightspeed_omni_s
+" nmap s <Plug>Lightspeed_omni_s
 " cross window navigation
-nmap gs <Plug>Lightspeed_omni_gs
-nmap gS <Plug>Lightspeed_omni_gS
+" nmap gs <Plug>Lightspeed_omni_gs
+" nmap gS <Plug>Lightspeed_omni_gS
 " inline f/t replacer
 nmap <expr> f reg_recording() . reg_executing() == "" ? "<Plug>Lightspeed_f" : "f"
 nmap <expr> F reg_recording() . reg_executing() == "" ? "<Plug>Lightspeed_F" : "F"
@@ -234,20 +234,10 @@ function! OpenTerm()
 endfunction
 
 " FTerm
-nnoremap <silent> <leader>t <CMD>call OpenTerm()<CR>
-nnoremap <silent> <C-t> <CMD>w<CR><CMD>lua require("FTerm").toggle()<CR>
-tnoremap <silent> <C-t> <CMD>lua require("FTerm").toggle()<CR>
-tnoremap <silent> <C-q> <CMD>lua require("FTerm").toggle()<CR>
-nnoremap <silent> <F3> <CMD>w<CR><CMD>lua require("FTerm").toggle()<CR>
-inoremap <silent> <F3> <CMD>w<CR><CMD>lua require("FTerm").toggle()<CR>
-tnoremap <silent> <F3> <CMD>lua require("FTerm").toggle()<CR>
-tnoremap <silent> <ESC> <CMD>lua require("FTerm").close()<CR>
 " compile
 " nmap <F2> <cmd>w<CR><CMD>lua require('FTerm').scratch({ cmd = './run' })<cr>
 " imap <F2> <cmd>w<CR><CMD>lua require('FTerm').scratch({ cmd = './run' })<cr>
-"
-" open current dir in ranger
-nnoremap <leader>oo <CMD>lua __fterm_ranger()<cr>
+" nnoremap <leader>oo <CMD>lua __fterm_ranger()<cr>
 
 " Trouble
 " nnoremap <leader>d <cmd>TroubleToggle workspace_diagnostics<cr>
@@ -281,20 +271,6 @@ nnoremap <leader>oo <CMD>lua __fterm_ranger()<cr>
 nnoremap <silent><leader>q <Cmd>:Bdelete<CR><Cmd>:bp<CR>
 " nnoremap <silent><leader>q <Cmd>:silent Bdelete!<CR>
 
-" nvim-tree
-" nnoremap <C-e> :NvimTreeToggle<CR>
-" nnoremap <leader>e :NvimTreeToggle<CR>
-
-" neotree
-" nnoremap <Leader>e :Neotree source=filesystem reveal=true<CR>
-" nnoremap <Leader>E :Neotree show=true position=left<CR>
-" nnoremap <leader>b :Neotree float buffers<CR>
-
-" TrueZen
-" nnoremap <leader>zz <cmd>:silent TZAtaraxis<cr><cmd>set rnu<cr><cmd>set nu<cr>
-" nnoremap <leader>we <cmd>:silent TZAtaraxis<cr><cmd>set rnu<cr><cmd>set nu<cr>
-" nnoremap <silent><F4> <cmd>:silent TZAtaraxis<cr><cmd>set rnu<cr><cmd>set nu<cr>
-
 " Sniprun
 " nmap <silent> <leader>cr :lua require'sniprun'.run()<CR>
 " vmap <silent> <leader>cr :lua require'sniprun'.run()<CR>
@@ -306,19 +282,6 @@ nmap <C-a> <Plug>(PatternIncrement)
 nmap <C-x> <Plug>(PatternDecrement)
 nmap + <Plug>(PatternIncrement)
 nmap _ <Plug>(PatternDecrement)
-
-" zk-nvim
-nnoremap <leader>zn <Cmd>ZkNew { title = vim.fn.input('Title: ') }<CR>
-nnoremap <leader>zd <Cmd>ZkNew { dir = "log" }<CR>
-nnoremap <leader>zf <Cmd>ZkNotes<CR>
-nnoremap <leader>zt <Cmd>ZkTags<CR>
-nnoremap <leader>zs <Cmd>cd /home/carson/files/documents/wiki/<CR><Cmd>Telescope live_grep<CR>
-vnoremap <leader>zf :'<,'>ZkMatch<CR>
-nnoremap <leader>zh :e /home/carson/files/documents/wiki/Dashboard.md<CR>
-nnoremap <leader>zw :e /home/carson/files/documents/wiki/Dashboard.md<CR>
-
-" undotree
-" nnoremap <leader>u :UndotreeToggle<CR>
 
 " neorg
 " nnoremap <leader>ogh <Cmd>Neorg workspace home<CR>
@@ -337,7 +300,6 @@ nnoremap <leader>zw :e /home/carson/files/documents/wiki/Dashboard.md<CR>
 " nnoremap <silent> <F10> :call asyncrun#quickfix_toggle(7)<cr>
 
 " dap
-" TODO: to vimscript
 
 " map('n', '<leader>dct', '<cmd>lua require"dap".continue()<CR>')
 " map('n', '<leader>dsv', '<cmd>lua require"dap".step_over()<CR>')
@@ -357,15 +319,15 @@ nnoremap <leader>zw :e /home/carson/files/documents/wiki/Dashboard.md<CR>
 "
 " -- nvim-dap-ui
 " map('n', '<leader>mui', '<cmd>lua require"dapui".toggle()<CR>')
- 
+
 " harpoon
-" nnoremap <C-f> <cmd>lua require("harpoon.ui").toggle_quick_menu()<cr>
-" nnoremap <C-e> <cmd>lua require("harpoon.ui").toggle_quick_menu()<cr>
-" nnoremap <leader>F <cmd>lua require("harpoon.mark").add_file()<cr>
-" nnoremap <leader>! <cmd>:lua require("harpoon.ui").nav_file(1)<cr>
-" nnoremap <leader>@ <cmd>:lua require("harpoon.ui").nav_file(2)<cr>
-" nnoremap <leader># <cmd>:lua require("harpoon.ui").nav_file(3)<cr>
-" nnoremap <leader>$ <cmd>:lua require("harpoon.ui").nav_file(4)<cr>
-" nnoremap <leader>% <cmd>:lua require("harpoon.ui").nav_file(5)<cr>
-" nnoremap <leader>^ <cmd>:lua require("harpoon.ui").nav_file(6)<cr>
-" nnoremap <leader>& <cmd>:lua require("harpoon.ui").nav_file(7)<cr>
+nnoremap <C-f> <cmd>lua require("harpoon.ui").toggle_quick_menu()<cr>
+nnoremap <C-e> <cmd>lua require("harpoon.ui").toggle_quick_menu()<cr>
+nnoremap <leader>F <cmd>lua require("harpoon.mark").add_file()<cr>
+nnoremap <leader>! <cmd>:lua require("harpoon.ui").nav_file(1)<cr>
+nnoremap <leader>@ <cmd>:lua require("harpoon.ui").nav_file(2)<cr>
+nnoremap <leader># <cmd>:lua require("harpoon.ui").nav_file(3)<cr>
+nnoremap <leader>$ <cmd>:lua require("harpoon.ui").nav_file(4)<cr>
+nnoremap <leader>% <cmd>:lua require("harpoon.ui").nav_file(5)<cr>
+nnoremap <leader>^ <cmd>:lua require("harpoon.ui").nav_file(6)<cr>
+nnoremap <leader>& <cmd>:lua require("harpoon.ui").nav_file(7)<cr>

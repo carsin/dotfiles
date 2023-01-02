@@ -1,5 +1,15 @@
 local M = {
   "mickael-menu/zk-nvim",
+  keys = {
+    {"<leader>zn", "<Cmd>ZkNew { title = vim.fn.input('Title: ') }<CR>" },
+    {"<leader>zd", "<Cmd>ZkNew { dir = \"log\" }<CR>" },
+    {"<leader>zf", "<Cmd>ZkNotes<CR>" },
+    {"<leader>zt", "<Cmd>ZkTags<CR>" },
+    {"<leader>zs", "<Cmd>cd /home/carson/files/documents/wiki/<CR><Cmd>Telescope live_grep<CR>" },
+    {"<leader>zf", ":'<,'>ZkMatch<CR>" },
+    {"<leader>zh", ":e /home/carson/files/documents/wiki/Dashboard.md<CR>" },
+    {"<leader>zw", ":e /home/carson/files/documents/wiki/Dashboard.md<CR>" },
+  }
 }
 M.config = function()
   local lspc = require("plugins.lspconfig").get_config()

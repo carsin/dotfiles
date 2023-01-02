@@ -2,8 +2,8 @@ local M = {
   "jose-elias-alvarez/null-ls.nvim",
   dependencies = { "nvim-lua/plenary.nvim" },
 }
-M.config = function()
-  local config = require("plugins.lspconfig").get_config()
+
+M.setup = function(opts)
   local null_ls = require("null-ls")
   local builtins = null_ls.builtins
 
@@ -50,10 +50,11 @@ M.config = function()
       -- },
       -- }),
     },
-    on_attach = config.on_attach,
-    debounce = config.flags.debounce_text_changes,
+    on_attach = opts.on_attach,
+    debounce = opts.flags.debounce_text_changes,
     save_after_format = false,
     root_dir = require("null-ls.utils").root_pattern(".null-ls-root", ".neoconf.json", ".git"),
   })
 end
+
 return M;

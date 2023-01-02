@@ -8,10 +8,12 @@ M.opts = {
     -- hover_with_actions = true, -- Whether to show hover actions inside the hover window
     runnables = { use_telescope = true },
     debuggables = { use_telescope = true },
+    -- automatically call RustReloadWorkspace when writing to a Cargo.toml file.
+    reload_workspace_from_cargo_toml = true,
     inlay_hints = {
       auto = true, -- Automatically set inlay hints (type hints)
       only_current_line = true,
-      only_current_line_autocmd = "CursorHold,CursorHoldI",
+      -- only_current_line_autocmd = "CursorHold,CursorHoldI",
       show_parameter_hints = true, -- whether to show parameter hints with the inlay hints or not
       parameter_hints_prefix = "params: ", -- prefix for parameter hints
       other_hints_prefix = "-> ", -- prefix for all the other hints (type, chaining)
@@ -34,36 +36,37 @@ M.opts = {
 
       -- whether the hover action window gets automatically focused
       auto_focus = false
-    },
-    server = {
-      settings = {
-        ["rust-analyzer"] = {
-          assist = {
-            importGranularity = "module",
-            importPrefix = "by_self",
-          },
-          cargo = {
-            allFeatures = true,
-            loadOutDirsFromCheck = true,
-          },
-          procMacro = {
-            enable = true,
-          },
-          checkOnSave = {
-            allFeatures = true,
-            overrideCommand = {
-              "cargo",
-              "clippy",
-              "--workspace",
-              "--all-targets",
-              "--all-features",
-              "--message-format=json",
-              "--no-deps",
-            },
+    }
+  },
+  server = {
+    settings = {
+      ["rust-analyzer"] = {
+        inlayHints = { locationLinks = false },
+        assist = {
+          importGranularity = "module",
+          importPrefix = "by_self",
+        },
+        cargo = {
+          allFeatures = true,
+          loadOutDirsFromCheck = true,
+        },
+        procMacro = {
+          enable = true,
+        },
+        checkOnSave = {
+          allFeatures = true,
+          overrideCommand = {
+            "cargo",
+            "clippy",
+            "--workspace",
+            "--all-targets",
+            "--all-features",
+            "--message-format=json",
+            "--no-deps",
           },
         },
       },
-    }
+    },
   },
   -- dap = { -- use codeLLDB
   --   adapter = require('rust-tools.dap').get_codelldb_adapter(codelldb_path, liblldb_path)

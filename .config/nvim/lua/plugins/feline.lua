@@ -97,7 +97,7 @@ M.config = function()
   -- vi-mode
   table.insert(components.active[1], {
     provider = function()
-      return string.format("  %s  ", vi_mode_utils.get_vim_mode())
+      return string.format(" %s ", vi_mode_utils.get_vim_mode())
     end,
     hl = function()
       local val = {}
@@ -162,7 +162,8 @@ M.config = function()
           icon = " "
         end
       end
-      return icon .. "%{g:asyncrun_status}" .. status_icon
+      -- return icon .. "%{g:asyncrun_status}" .. status_icon
+      return icon .. status_icon
     end,
     enabled = function()
       return (vim.g.asyncrun_status ~= nil and vim.g.asyncrun_status ~= "stopped") or vim.bo.filetype == "qf"
@@ -225,7 +226,6 @@ M.config = function()
       -- style = 'bold'
     },
     left_sep = " ",
-    right_sep = " ",
   })
 
   -- diffModified
@@ -237,7 +237,7 @@ M.config = function()
       bg = "bg",
       -- style = 'bold'
     },
-    right_sep = " ",
+    left_sep = " ",
   })
 
   -- diffRemove
@@ -249,7 +249,7 @@ M.config = function()
       bg = "bg",
       -- style = 'bold'
     },
-    right_sep = " ",
+    left_sep = " ",
   })
   
   table.insert(components.active[1], {
@@ -378,30 +378,15 @@ M.config = function()
   -- })
 
   -- file format
-  table.insert(components.active[3], {
-    provider = "file_format",
-    hl = {
-      fg = "gray",
-      bg = "bg",
-    },
-    left_sep = " ",
-    right_sep = "",
-  })
-
-  -- fileSize
-  table.insert(components.active[3], {
-    provider = "file_size",
-    -- enabled = function()
-    -- 	return vim.fn.getfsize(vim.fn.expand("%:t")) > 0
-    -- end,
-    hl = {
-      fg = "red",
-      bg = "bg",
-      -- style = 'bold'
-    },
-    left_sep = " ",
-    right_sep = "",
-  })
+  -- table.insert(components.active[3], {
+  --   provider = "file_format",
+  --   hl = {
+  --     fg = "gray",
+  --     bg = "bg",
+  --   },
+  --   left_sep = " ",
+  --   right_sep = "",
+  -- })
 
   -- fileType
   table.insert(components.active[3], {
@@ -423,6 +408,22 @@ M.config = function()
     right_sep = "",
     left_sep = " ",
   })
+  
+  -- fileSize
+  table.insert(components.active[3], {
+    provider = "file_size",
+    -- enabled = function()
+    -- 	return vim.fn.getfsize(vim.fn.expand("%:t")) > 0
+    -- end,
+    hl = {
+      fg = "red",
+      bg = "bg",
+      -- style = 'bold'
+    },
+    left_sep = " ",
+    right_sep = "",
+  })
+
 
   -- position
   table.insert(components.active[3], {

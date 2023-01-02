@@ -19,8 +19,9 @@ return {
   "zhimsel/vim-stay", -- automated view session creation & restore for buffers, sesssions and windows
   "andymass/vim-matchup", -- extend %: highlight, navigate, and operate on sets of matching text
   "SmiteshP/nvim-navic", -- lsp code context winbar component
+  "wakatime/vim-wakatime", -- track editing statistics
   { "stevearc/dressing.nvim", event = "VeryLazy" }, -- make default UI components look good
-  { "skywind3000/asyncrun.vim", keys = { "<F10>", ":call asyncrun#quickfix_toggle(7)" } }, -- asynchronously run tasks such as make
+  { "skywind3000/asyncrun.vim", lazy = false, keys = { "<F10>", ":call asyncrun#quickfix_toggle(7)" } }, -- asynchronously run tasks such as make
   { -- autopairs
     "windwp/nvim-autopairs",
     config = function()
@@ -55,7 +56,7 @@ return {
         events = { "InsertLeave", "TextChanged", "WinLeave", "BufWinLeave" },
         write_all_buffers = false,
         clean_command_line_interval = 0,
-        debounce_delay = 900,
+        debounce_delay = 1000,
         conditions = {
           exists = true,
           filename_is_not = {},
@@ -144,6 +145,11 @@ return {
       require("lightspeed").opts.ignore_case = false
       require("lightspeed").opts.safe_labels = {}
     end,
+    keys = {
+      { "s", "<Plug>Lightspeed_omni_s" },
+      { "gs", "<Plug>Lightspeed_omni_gs" },
+      { "gS", "<Plug>Lightspeed_omni_gS" },
+    }
   },
   { -- increment numbers & more with +/-
     "zegervdv/nrpattern.nvim",
