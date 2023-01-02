@@ -7,7 +7,7 @@
 static const unsigned int borderpx = 0; /* border pixel of windows */
 static const int corner_radius = 8;
 #else
-static const unsigned int borderpx = 2; /* border pixel of windows */
+static const unsigned int borderpx = 1; /* border pixel of windows */
 #endif                               // ROUNDED_CORNERS_PATCH
 static const unsigned int snap = 32; /* snap pixel */
 #if SWALLOW_PATCH
@@ -21,10 +21,10 @@ static int nomodbuttons =
     1; /* allow client mouse button bindings that have no modifier */
 #endif // NO_MOD_BUTTONS_PATCH
 #if VANITYGAPS_PATCH
-static const unsigned int gappih = 3; /* horiz inner gap between windows */
-static const unsigned int gappiv = 3; /* vert inner gap between windows */
-static const unsigned int gappoh = 3; /* horiz outer gap between windows and screen edge */
-static const unsigned int gappov = 3; /* vert outer gap between windows and screen edge */
+static const unsigned int gappih = 2; /* horiz inner gap between windows */
+static const unsigned int gappiv = 2; /* vert inner gap between windows */
+static const unsigned int gappoh = 2; /* horiz outer gap between windows and screen edge */
+static const unsigned int gappov = 2; /* vert outer gap between windows and screen edge */
 static const int smartgaps_fact = 1; /* gap factor when there is only one client; 0 = no gaps, 3 = 3x outer
           gaps */
 #endif // VANITYGAPS_PATCH
@@ -433,9 +433,9 @@ static Sp scratchpads[] = {
 // 龎   ﮕ ﰀ 烈
     
 static char *tagicons[][NUMTAGS*3] = {
-    [DEFAULT_TAGS] = {"龎", "", "", "", "",
-                      "I", "II", "III", "IV", "V", 
-                      "龎", "", "", "", ""}
+    [DEFAULT_TAGS] = {"", "", "", "",
+                      "I", "II", "III", "IV", 
+                      "", "", "", ""}
                       
 };
 // ", "ﳲ", "露", "", "",

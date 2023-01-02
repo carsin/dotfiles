@@ -39,8 +39,9 @@ M.config = function()
   table.insert(components.inactive, {})
   table.insert(components.inactive, {})
 
-  local colors = {
+  M.colors = {
     bg = "#282828",
+    bg_hi = "#383838",
     black = "#282828",
     yellow = "#d79921",
     byellow = "#fadb2f",
@@ -251,7 +252,7 @@ M.config = function()
     },
     left_sep = " ",
   })
-  
+
   table.insert(components.active[1], {
     provider = function()
       return navic.get_location()
@@ -408,7 +409,7 @@ M.config = function()
     right_sep = "",
     left_sep = " ",
   })
-  
+
   -- fileSize
   table.insert(components.active[3], {
     provider = "file_size",
@@ -617,7 +618,7 @@ M.config = function()
   })
 
   require("feline").setup({
-    theme = colors,
+    theme = M.colors,
     vi_mode_colors = vi_mode_colors,
     components = components,
     force_inactive = force_inactive,

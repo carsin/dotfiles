@@ -124,8 +124,8 @@ xnoremap . :norm.<CR>
 nnoremap Y yg_
 
 " Center cursor when doing jumpy motions
-nnoremap n nzzzv
-nnoremap N Nzzzv
+" nnoremap n nzzzv
+" nnoremap N Nzzzv
 " nnoremap { {zz
 " nnoremap } }zz
 nnoremap ]c ]czz

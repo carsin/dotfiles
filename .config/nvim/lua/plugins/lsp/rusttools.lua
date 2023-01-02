@@ -13,7 +13,7 @@ M.opts = {
     inlay_hints = {
       auto = true, -- Automatically set inlay hints (type hints)
       only_current_line = true,
-      -- only_current_line_autocmd = "CursorHold,CursorHoldI",
+      only_current_line_autocmd = "CursorHold,CursorHoldI",
       show_parameter_hints = true, -- whether to show parameter hints with the inlay hints or not
       parameter_hints_prefix = "params: ", -- prefix for parameter hints
       other_hints_prefix = "-> ", -- prefix for all the other hints (type, chaining)
@@ -41,7 +41,7 @@ M.opts = {
   server = {
     settings = {
       ["rust-analyzer"] = {
-        inlayHints = { locationLinks = false },
+        inlayHints = { locationLinks = false }, -- currently broken with rust-tools
         assist = {
           importGranularity = "module",
           importPrefix = "by_self",

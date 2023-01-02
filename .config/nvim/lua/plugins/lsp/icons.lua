@@ -39,6 +39,7 @@ function M.cmp_format()
   return function(_entry, vim_item)
     if M.icons[vim_item.kind] then
       vim_item.kind = M.icons[vim_item.kind] .. vim_item.kind
+      vim_item.abbr = string.sub(vim_item.abbr, 1, 17) -- limit width
     end
     return vim_item
   end

@@ -173,7 +173,11 @@ return {
     "petertriho/nvim-scrollbar",
     event = "BufReadPost",
     config = function()
-      require("scrollbar").setup()
+      require("scrollbar").setup({
+        handle = {
+          color = require("plugins.feline").colors.bg_hi,
+        },
+      })
     end,
   },
   { -- search lens (hl occurrences & number them)
@@ -183,15 +187,15 @@ return {
       -- TODO: setup keymaps with lazy
       local kopts = { noremap = true, silent = true }
       vim.api.nvim_set_keymap('n', 'n',
-        [[<Cmd>execute('normal! ' . v:count1 . 'n')<CR><Cmd>lua require('hlslens').start()<CR>]],
+        [[<Cmd>execute('normal! ' . v:count1 . 'n')<CR><Cmd>lua require('hlslens').start()<CR>zzzv]],
         kopts)
       vim.api.nvim_set_keymap('n', 'N',
-        [[<Cmd>execute('normal! ' . v:count1 . 'N')<CR><Cmd>lua require('hlslens').start()<CR>]],
+        [[<Cmd>execute('normal! ' . v:count1 . 'N')<CR><Cmd>lua require('hlslens').start()<CR>zzzv]],
         kopts)
-      vim.api.nvim_set_keymap('n', '*', [[*<Cmd>lua require('hlslens').start()<CR>]], kopts)
-      vim.api.nvim_set_keymap('n', '#', [[#<Cmd>lua require('hlslens').start()<CR>]], kopts)
-      vim.api.nvim_set_keymap('n', 'g*', [[g*<Cmd>lua require('hlslens').start()<CR>]], kopts)
-      vim.api.nvim_set_keymap('n', 'g#', [[g#<Cmd>lua require('hlslens').start()<CR>]], kopts)
+      vim.api.nvim_set_keymap('n', '*', [[*<Cmd>lua require('hlslens').start()<CR>zzzv]], kopts)
+      vim.api.nvim_set_keymap('n', '#', [[#<Cmd>lua require('hlslens').start()<CR>zzzv]], kopts)
+      vim.api.nvim_set_keymap('n', 'g*', [[g*<Cmd>lua require('hlslens').start()<CR>zzzv]], kopts)
+      vim.api.nvim_set_keymap('n', 'g#', [[g#<Cmd>lua require('hlslens').start()<CR>zzzv]], kopts)
     end
   },
   { -- modernized folds
@@ -215,7 +219,7 @@ return {
           },
         },
         render = function(props)
-          local filename = vim.fn.fnamemodify(vim.api.nvim_buf_get_name(props.buf), ":t")
+          local filename = vim.fn.fnamemodify(vim.api.nvim_buf_get_name(props.buf), ":.")
           local icon, color = require("nvim-web-devicons").get_icon_color(filename)
           return {
             { icon, guifg = color },
