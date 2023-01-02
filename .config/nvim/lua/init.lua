@@ -12,6 +12,12 @@ require("lazy").setup("plugins", { -- opts
   defaults = {
     lazy = false, -- should plugins be lazy-loaded?
   },
+  install = {
+    colorscheme = { "gruvbox-material" },
+  },
   checker = { enabled = false }, -- check for plugin updates
   lockfile = vim.fn.stdpath("data") .. "/lazy-lock.json", -- lockfile generated after running update.
+  change_detection = {
+    notify = false, -- get a notification when changes are found
+  },
 })

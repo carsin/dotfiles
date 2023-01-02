@@ -39,6 +39,8 @@ nnoremap ^ 0
 
 " unbind annoying help page
 nmap <F1> <nop>
+" unbind annoying gQ
+nmap gQ <nop>
 
 " Toggle pastemode
 nnoremap <silent> <C-p> :set invpaste <CR>
@@ -248,27 +250,27 @@ tnoremap <silent> <ESC> <CMD>lua require("FTerm").close()<CR>
 nnoremap <leader>oo <CMD>lua __fterm_ranger()<cr>
 
 " Trouble
-nnoremap <leader>d <cmd>TroubleToggle workspace_diagnostics<cr>
+" nnoremap <leader>d <cmd>TroubleToggle workspace_diagnostics<cr>
 
 " Bufferline
-nnoremap <silent>[b :BufferLineCyclePrev<CR>
-nnoremap <silent>]b :BufferLineCycleNext<CR>
-nnoremap <silent>[B :BufferLineMovePrev<CR>
-nnoremap <silent>]B :BufferLineMoveNext<CR>
-nnoremap <leader>h :BufferLineCyclePrev<CR>
-nnoremap <leader>l :BufferLineCycleNext<CR>
-nnoremap <leader>H :BufferLineMovePrev<CR>
-nnoremap <leader>L :BufferLineMoveNext<CR>
+" nnoremap <silent>[b :BufferLineCyclePrev<CR>
+" nnoremap <silent>]b :BufferLineCycleNext<CR>
+" nnoremap <silent>[B :BufferLineMovePrev<CR>
+" nnoremap <silent>]B :BufferLineMoveNext<CR>
+" nnoremap <leader>h :BufferLineCyclePrev<CR>
+" nnoremap <leader>l :BufferLineCycleNext<CR>
+" nnoremap <leader>H :BufferLineMovePrev<CR>
+" nnoremap <leader>L :BufferLineMoveNext<CR>
 " Switch to buffer
-nnoremap <silent> <leader>1 <Cmd>BufferLineGoToBuffer 1<CR>
-nnoremap <silent> <leader>2 <Cmd>BufferLineGoToBuffer 2<CR>
-nnoremap <silent> <leader>3 <Cmd>BufferLineGoToBuffer 3<CR>
-nnoremap <silent> <leader>4 <Cmd>BufferLineGoToBuffer 4<CR>
-nnoremap <silent> <leader>5 <Cmd>BufferLineGoToBuffer 5<CR>
-nnoremap <silent> <leader>6 <Cmd>BufferLineGoToBuffer 6<CR>
-nnoremap <silent> <leader>7 <Cmd>BufferLineGoToBuffer 7<CR>
-nnoremap <silent> <leader>8 <Cmd>BufferLineGoToBuffer 8<CR>
-nnoremap <silent> <leader>9 <Cmd>BufferLineGoToBuffer 9<CR>
+" nnoremap <silent> <leader>1 <Cmd>BufferLineGoToBuffer 1<CR>
+" nnoremap <silent> <leader>2 <Cmd>BufferLineGoToBuffer 2<CR>
+" nnoremap <silent> <leader>3 <Cmd>BufferLineGoToBuffer 3<CR>
+" nnoremap <silent> <leader>4 <Cmd>BufferLineGoToBuffer 4<CR>
+" nnoremap <silent> <leader>5 <Cmd>BufferLineGoToBuffer 5<CR>
+" nnoremap <silent> <leader>6 <Cmd>BufferLineGoToBuffer 6<CR>
+" nnoremap <silent> <leader>7 <Cmd>BufferLineGoToBuffer 7<CR>
+" nnoremap <silent> <leader>8 <Cmd>BufferLineGoToBuffer 8<CR>
+" nnoremap <silent> <leader>9 <Cmd>BufferLineGoToBuffer 9<CR>
 
 " Bdelete
 " default closes buffer while preserving window layout
@@ -284,9 +286,9 @@ nnoremap <silent><leader>q <Cmd>:Bdelete<CR><Cmd>:bp<CR>
 " nnoremap <leader>e :NvimTreeToggle<CR>
 
 " neotree
-nnoremap <Leader>e :Neotree source=filesystem reveal=true<CR>
+" nnoremap <Leader>e :Neotree source=filesystem reveal=true<CR>
 " nnoremap <Leader>E :Neotree show=true position=left<CR>
-nnoremap <leader>b :Neotree float buffers<CR>
+" nnoremap <leader>b :Neotree float buffers<CR>
 
 " TrueZen
 " nnoremap <leader>zz <cmd>:silent TZAtaraxis<cr><cmd>set rnu<cr><cmd>set nu<cr>
@@ -306,7 +308,6 @@ nmap + <Plug>(PatternIncrement)
 nmap _ <Plug>(PatternDecrement)
 
 " zk-nvim
-" infile maps located in ./lua/settings/zk.lua
 nnoremap <leader>zn <Cmd>ZkNew { title = vim.fn.input('Title: ') }<CR>
 nnoremap <leader>zd <Cmd>ZkNew { dir = "log" }<CR>
 nnoremap <leader>zf <Cmd>ZkNotes<CR>
@@ -317,23 +318,23 @@ nnoremap <leader>zh :e /home/carson/files/documents/wiki/Dashboard.md<CR>
 nnoremap <leader>zw :e /home/carson/files/documents/wiki/Dashboard.md<CR>
 
 " undotree
-nnoremap <leader>u :UndotreeToggle<CR>
+" nnoremap <leader>u :UndotreeToggle<CR>
 
 " neorg
-nnoremap <leader>ogh <Cmd>Neorg workspace home<CR>
-nnoremap <leader>on <Cmd>Neorg workspace notes<CR>
+" nnoremap <leader>ogh <Cmd>Neorg workspace home<CR>
+" nnoremap <leader>on <Cmd>Neorg workspace notes<CR>
 " gtd
-nnoremap <leader>ogg <Cmd>Neorg workspace gtd<CR>
-nnoremap <expr> <leader>ogc exists(":NeorgStart") ? ':NeorgStart silent=true<CR>:Neorg gtd capture<CR>' : ':Neorg gtd capture<CR>'
-nnoremap <expr> <leader>oge exists(":NeorgStart") ? ':NeorgStart silent=true<CR>:Neorg gtd capture<CR>' : ':Neorg gtd edit<CR>'
-nnoremap <expr> <leader>ogt exists(":NeorgStart") ? ':NeorgStart silent=true<CR>:Neorg gtd views<CR>' : ':Neorg gtd views<CR>'
-nnoremap <expr> <leader>ogs exists(":NeorgStart") ? ':NeorgStart silent=true<CR>:Neorg gtd views<CR>' : ':Neorg gtd views<CR>'
+" nnoremap <leader>ogg <Cmd>Neorg workspace gtd<CR>
+" nnoremap <expr> <leader>ogc exists(":NeorgStart") ? ':NeorgStart silent=true<CR>:Neorg gtd capture<CR>' : ':Neorg gtd capture<CR>'
+" nnoremap <expr> <leader>oge exists(":NeorgStart") ? ':NeorgStart silent=true<CR>:Neorg gtd capture<CR>' : ':Neorg gtd edit<CR>'
+" nnoremap <expr> <leader>ogt exists(":NeorgStart") ? ':NeorgStart silent=true<CR>:Neorg gtd views<CR>' : ':Neorg gtd views<CR>'
+" nnoremap <expr> <leader>ogs exists(":NeorgStart") ? ':NeorgStart silent=true<CR>:Neorg gtd views<CR>' : ':Neorg gtd views<CR>'
 
 " symbol outlines
-nnoremap <leader>co <Cmd>SymbolsOutline<CR>
+" nnoremap <leader>co <Cmd>SymbolsOutline<CR>
 
 " asyncrun
-nnoremap <silent> <F10> :call asyncrun#quickfix_toggle(7)<cr>
+" nnoremap <silent> <F10> :call asyncrun#quickfix_toggle(7)<cr>
 
 " dap
 " TODO: to vimscript
@@ -358,13 +359,13 @@ nnoremap <silent> <F10> :call asyncrun#quickfix_toggle(7)<cr>
 " map('n', '<leader>mui', '<cmd>lua require"dapui".toggle()<CR>')
  
 " harpoon
-nnoremap <C-f> <cmd>lua require("harpoon.ui").toggle_quick_menu()<cr>
-nnoremap <C-e> <cmd>lua require("harpoon.ui").toggle_quick_menu()<cr>
-nnoremap <leader>F <cmd>lua require("harpoon.mark").add_file()<cr>
-nnoremap <leader>! <cmd>:lua require("harpoon.ui").nav_file(1)<cr>
-nnoremap <leader>@ <cmd>:lua require("harpoon.ui").nav_file(2)<cr>
-nnoremap <leader># <cmd>:lua require("harpoon.ui").nav_file(3)<cr>
-nnoremap <leader>$ <cmd>:lua require("harpoon.ui").nav_file(4)<cr>
-nnoremap <leader>% <cmd>:lua require("harpoon.ui").nav_file(5)<cr>
-nnoremap <leader>^ <cmd>:lua require("harpoon.ui").nav_file(6)<cr>
-nnoremap <leader>& <cmd>:lua require("harpoon.ui").nav_file(7)<cr>
+" nnoremap <C-f> <cmd>lua require("harpoon.ui").toggle_quick_menu()<cr>
+" nnoremap <C-e> <cmd>lua require("harpoon.ui").toggle_quick_menu()<cr>
+" nnoremap <leader>F <cmd>lua require("harpoon.mark").add_file()<cr>
+" nnoremap <leader>! <cmd>:lua require("harpoon.ui").nav_file(1)<cr>
+" nnoremap <leader>@ <cmd>:lua require("harpoon.ui").nav_file(2)<cr>
+" nnoremap <leader># <cmd>:lua require("harpoon.ui").nav_file(3)<cr>
+" nnoremap <leader>$ <cmd>:lua require("harpoon.ui").nav_file(4)<cr>
+" nnoremap <leader>% <cmd>:lua require("harpoon.ui").nav_file(5)<cr>
+" nnoremap <leader>^ <cmd>:lua require("harpoon.ui").nav_file(6)<cr>
+" nnoremap <leader>& <cmd>:lua require("harpoon.ui").nav_file(7)<cr>

@@ -1,6 +1,6 @@
 local M = {
-    "jose-elias-alvarez/null-ls.nvim",
-      dependencies = { "nvim-lua/plenary.nvim" },
+  "jose-elias-alvarez/null-ls.nvim",
+  dependencies = { "nvim-lua/plenary.nvim" },
 }
 M.config = function()
   local config = require("plugins.lspconfig").get_config()
@@ -36,23 +36,24 @@ M.config = function()
       -- }),
       -- builtins.diagnostics.proselint.with({ -- see https://github.com/jose-elias-alvarez/null-ls.nvim/issues/443
       --   filetypes = { "markdown" },
-        -- parseJson = {
-        -- 	errorsRoot = "data.errors",
-        -- 	line = "line",
-        -- 	column = "column",
-        -- 	message = "[proselint] ${message} (${check})",
-        -- 	security = "severity",
-        -- },
-        -- securities = {
-        -- 	error = "error",
-        -- 	warning = "warning",
-        -- 	info = "suggestion",
-        -- },
+      -- parseJson = {
+      -- 	errorsRoot = "data.errors",
+      -- 	line = "line",
+      -- 	column = "column",
+      -- 	message = "[proselint] ${message} (${check})",
+      -- 	security = "severity",
+      -- },
+      -- securities = {
+      -- 	error = "error",
+      -- 	warning = "warning",
+      -- 	info = "suggestion",
+      -- },
       -- }),
     },
     on_attach = config.on_attach,
     debounce = config.flags.debounce_text_changes,
+    save_after_format = false,
+    root_dir = require("null-ls.utils").root_pattern(".null-ls-root", ".neoconf.json", ".git"),
   })
 end
-
 return M;

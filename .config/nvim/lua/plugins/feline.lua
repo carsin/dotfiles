@@ -194,7 +194,7 @@ M.config = function()
     provider = {
       name = "file_info",
       opts = {
-        type = 'full-path',
+        type = 'relative',
         file_modified_icon = "+",
         file_readonly_icon = " ",
       },
@@ -202,7 +202,7 @@ M.config = function()
     short_provider = {
       name = 'file_info',
       opts = {
-        type = 'short-path',
+        type = 'relative-short',
         file_modified_icon = "+",
         file_readonly_icon = " ",
       }
@@ -212,7 +212,7 @@ M.config = function()
       bg = "bg",
       -- style = 'bold'
     },
-    right_sep = " ",
+    right_sep = "",
   })
 
   -- diffAdd
@@ -224,6 +224,7 @@ M.config = function()
       bg = "bg",
       -- style = 'bold'
     },
+    left_sep = " ",
     right_sep = " ",
   })
 
@@ -250,6 +251,28 @@ M.config = function()
     },
     right_sep = " ",
   })
+  
+  table.insert(components.active[1], {
+    provider = function()
+      return navic.get_location()
+    end,
+    hl = {
+      fg = 'white',
+      style = 'NONE',
+    },
+    left_sep = {
+      {
+        str = " > ",
+        hl = {
+          fg = "white",
+        },
+      },
+    },
+    enabled = function()
+      return navic.is_available()
+    end
+  })
+
 
   -- RIGHT
   -- table.insert(components.active[3], {
@@ -492,13 +515,6 @@ M.config = function()
     right_sep = " ",
   })
 
-  require("feline").setup({
-    theme = colors,
-    vi_mode_colors = vi_mode_colors,
-    components = components,
-    force_inactive = force_inactive,
-  })
-
   -- local treesitter_context = require "settings.treesitter".treesitter_context
   local winbar_components = {
     active = {},
@@ -546,7 +562,7 @@ M.config = function()
     end,
     hl = {
       fg = 'white',
-      bg = 'NONE',
+      bg = 'gray',
       style = 'NONE',
     },
     left_sep = {
@@ -554,7 +570,7 @@ M.config = function()
         str = " > ",
         hl = {
           fg = "white",
-          bg = "NONE",
+          bg = "gray",
         },
       },
     },
@@ -598,6 +614,14 @@ M.config = function()
       return vim.fn.expand("%") ~= "" -- don't display [No Name] buffers
     end
   })
+
+  require("feline").setup({
+    theme = colors,
+    vi_mode_colors = vi_mode_colors,
+    components = components,
+    force_inactive = force_inactive,
+  })
+
 
   -- require("feline").winbar.setup({
   --   components = winbar_components, -- comment for simple filename

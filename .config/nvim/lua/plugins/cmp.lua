@@ -1,55 +1,22 @@
 local M = {
-      "hrsh7th/nvim-cmp",
-      event = "InsertEnter",
-      dependencies = {
-        "hrsh7th/cmp-buffer",
-        "hrsh7th/cmp-path",
-        "hrsh7th/cmp-nvim-lsp",
-        "saadparwaiz1/cmp_luasnip",
-        "rafamadriz/friendly-snippets",
-        "L3MON4D3/LuaSnip",
-        "f3fora/cmp-spell",
-        "hrsh7th/cmp-cmdline",
-        "Furkanzmc/sekme.nvim",
-        "andersevenrud/cmp-tmux",
-        "hrsh7th/cmp-nvim-lsp-signature-help",
-      },
+  "hrsh7th/nvim-cmp",
+  event = "InsertEnter",
+  dependencies = {
+    "hrsh7th/cmp-buffer",
+    "hrsh7th/cmp-path",
+    "hrsh7th/cmp-nvim-lsp",
+    "saadparwaiz1/cmp_luasnip",
+    "f3fora/cmp-spell",
+    "hrsh7th/cmp-cmdline",
+    "Furkanzmc/sekme.nvim",
+    "andersevenrud/cmp-tmux",
+    "hrsh7th/cmp-nvim-lsp-signature-help",
+  },
 }
+
 M.config = function()
   local cmp = require("cmp")
   local luasnip = require("luasnip")
-
-  local icons = {
-    Text = "",
-    Method = "",
-    Function = "",
-    Constructor = "",
-    Field = "",
-    Variable = "",
-    -- Variable = "",
-    Class = "ﴯ",
-    Interface = "",
-    Module = "",
-    Property = "ﰠ",
-    Unit = "",
-    Value = "",
-    Enum = "練",
-    Keyword = "",
-    Snippet = "",
-    Color = "",
-    File = "",
-    -- Reference = "",
-    Reference = "",
-    Folder = "",
-    EnumMember = "",
-    Constant = "",
-    -- Struct = "",
-    Struct = "פּ",
-    -- Event = "",
-    Event = "",
-    Operator = "",
-    TypeParameter = ""
-  }
 
   -- autopairs: If you want insert `(` after select function or method item
   local cmp_autopairs = require('nvim-autopairs.completion.cmp')
@@ -63,56 +30,21 @@ M.config = function()
     return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
   end
 
-  -- load friendlysnippets into LuaSnip
-  vim.cmd([[ lua require("luasnip/loaders/from_vscode").lazy_load() ]])
-
   cmp.setup({
     experimental = {
       native_menu = false,
-      ghost_text = false,
+      ghost_text = {
+        hl_group = "LspCodeLens"
+      },
     },
-    -- confirmation = {
-    --   get_commit_characters = function()
-    --     return {}
-    --   end,
-    -- },
     completion = {
       -- completeopt = "menu,menuone,noinsert",
       keyword_pattern = [[\%(-\?\d\+\%(\.\d\+\)\?\|\h\w*\%(-\w*\)*\)]],
       keyword_length = 1,
     },
     formatting = {
-      fields = { "kind", "abbr", "menu" },
-      format = function(_, vim_item)
-        vim_item.menu = vim_item.kind
-        vim_item.kind = icons[vim_item.kind]
-
-        return vim_item
-      end,
+      format = require("plugins.lsp.icons").cmp_format();
     },
-    -- formatting = {
-    --   format = require("lspkind").cmp_format({
-    --     with_text = true,
-    --     mode = "symbol", -- show only symbol annotations
-    --     maxwidth = 50, -- prevent the popup from showing more than provided characters (e.g 50 will not show more than 50 characters)
-    --     menu = {
-    --       buffer = "[Buffer]",
-    --       nvim_lua = "[VimApi]",
-    --       nvim_lsp = "[LSP]",
-    --       luasnip = "[LuaSnip]",
-    --       tmux = "[Tmux]",
-    --       path = "[Path]",
-    --       -- spell = "[Spell]",
-    --       calc = "[Calc]",
-    --       latex_symbols = "[Latex]",
-    --       crates = "[Crates]",
-    --       neorg = "[Org]",
-    --     },
-    --     before = function(entry, vim_item)
-    --       return vim_item
-    --     end,
-    --   }),
-    -- },
     snippet = {
       expand = function(args)
         luasnip.lsp_expand(args.body)
@@ -127,7 +59,6 @@ M.config = function()
       ["<C-f>"] = cmp.mapping.scroll_docs(4),
       ["<C-Space>"] = cmp.mapping.complete(),
       ["<C-e>"] = cmp.mapping.close(),
-      -- ["<CR>"] = cmp.mapping.confirm({ select = true }),
       ["<CR>"] = cmp.mapping.confirm {
         select = true,
         behavior = cmp.ConfirmBehavior.Replace,
@@ -206,7 +137,6 @@ M.config = function()
         end
         return true
       end
-      return true
     end,
     window = {
       documentation = {
@@ -252,4 +182,5 @@ M.config = function()
     "tmp/**",
   }
 end
+
 return M;
