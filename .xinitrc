@@ -28,7 +28,7 @@ xset r rate 147 52
 xinput --set-prop 'ASUE120D:00 04F3:31FB Touchpad' "libinput Accel Speed" 0.176
 
 # no screen blanking
-xset s 3600 3600 # blank screen after 1 hour
+xset s 36000 36000 # blank screen after 1 hour
 
 /home/carson/.config/suckless/bar/bar.sh & # statusbar
 wal -R # restore wallpaper and colorschemes

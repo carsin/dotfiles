@@ -11,16 +11,37 @@ local M = {
     "Furkanzmc/sekme.nvim",
     "andersevenrud/cmp-tmux",
     "hrsh7th/cmp-nvim-lsp-signature-help",
+    { -- autopairs
+      "windwp/nvim-autopairs",
+      config = function()
+        require('nvim-autopairs').setup {
+          map_cr = true,
+          map_complete = true,
+          auto_select = true,
+          -- ignored_next_char = "[%w%.]", -- will ignore alphanumeric and `.` symbol
+          ignored_next_char = [=[[%%%'%[%"%.%`%$]]=],
+          check_ts = truew,
+          ts_config = {
+            lua = { 'string' },
+            javascript = { 'template_string' },
+          },
+          disable_filetype = { 'TelescopePrompt', 'vim', "markdown" },
+        }
+      end,
+    },
   },
 }
 
 M.config = function()
   local cmp = require("cmp")
   local luasnip = require("luasnip")
+  local npairs = require("nvim-autopairs")
+  local Rule = require("nvim-autopairs.rule")
 
   -- autopairs: If you want insert `(` after select function or method item
   local cmp_autopairs = require('nvim-autopairs.completion.cmp')
-  cmp.event:on('confirm_done', cmp_autopairs.on_confirm_done({ map_char = { tex = '' } }))
+  -- cmp.event:on('confirm_done', cmp_autopairs.on_confirm_done({ map_char = { tex = '' } }))
+  cmp.event:on('confirm_done', cmp_autopairs.on_confirm_done())
 
   -- add a lisp filetype (wrap my-function), FYI: Hardcoded = { "clojure", "clojurescript", "fennel", "janet" }
   -- cmp_autopairs.lisp[#cmp_autopairs.lisp + 1] = "racket"
@@ -30,12 +51,28 @@ M.config = function()
     return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
   end
 
+  -- move past commas and semicolons
+  for _, punct in pairs { ",", ";" } do
+    npairs.add_rules {
+      Rule("", punct)
+          :with_move(function(opts) return opts.char == punct end)
+          :with_pair(function() return false end)
+          :with_del(function() return false end)
+          :with_cr(function() return false end)
+          :use_key(punct)
+    }
+  end
+  npairs.add_rules({
+    Rule("<", ">", "rust")
+        :with_pair(require("nvim-autopairs.conds").not_after_regex("="))-- don't add a pair if the next character is =
+  })
+
   cmp.setup({
     experimental = {
-      native_menu = false,
-      ghost_text = {
-        hl_group = "LspCodeLens"
-      },
+      -- native_menu = false,
+      -- ghost_text = {
+      --   hl_group = "LspCodeLens"
+      -- },
     },
     completion = {
       -- completeopt = "menu,menuone,noinsert",

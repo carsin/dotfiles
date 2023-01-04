@@ -20,6 +20,7 @@ export CARGO_HOME=$XDG_CACHE_HOME/cargo
 export RUSTUP_HOME=$XDG_CACHE_HOME/rustup
 export VAGRANT_HOME=$XDG_CACHE_HOME/.vagrant.d
 export GNUPGHOME=$XDG_CONFIG_HOME/.gnupg
+export WAKATIME_HOME=~/.config/wakatime
 
 # gpg setup
 export GPG_TTY=$(tty)

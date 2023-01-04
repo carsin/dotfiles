@@ -22,23 +22,6 @@ return {
   "wakatime/vim-wakatime", -- track editing statistics
   { "stevearc/dressing.nvim", event = "VeryLazy" }, -- make default UI components look good
   { "skywind3000/asyncrun.vim", lazy = false, keys = { "<F10>", ":call asyncrun#quickfix_toggle(7)" } }, -- asynchronously run tasks such as make
-  { -- autopairs
-    "windwp/nvim-autopairs",
-    config = function()
-      require('nvim-autopairs').setup {
-        map_cr = true,
-        map_complete = true,
-        auto_select = true,
-        ignored_next_char = "[%w%.]", -- will ignore alphanumeric and `.` symbol
-        check_ts = true,
-        ts_config = {
-          lua = { 'string' },
-          javascript = { 'template_string' },
-        },
-        disable_filetype = { 'TelescopePrompt', 'vim', "markdown" },
-      }
-    end,
-  },
   { -- better escape
     "jdhao/better-escape.vim",
     event = "InsertEnter",

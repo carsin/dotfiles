@@ -732,8 +732,8 @@ static const Layout layouts[] = {
        stack axis, secondary stack axis, symbol func } */
     {"[]=", flextile, {1, -1, SPLIT_VERTICAL, LEFT_TO_RIGHT, TOP_TO_BOTTOM, 0, NULL}},           // default tile layout
     {"|M|", flextile, {1, -1, SPLIT_CENTERED_VERTICAL, LEFT_TO_RIGHT, TOP_TO_BOTTOM, TOP_TO_BOTTOM, NULL}}, // centeredmaster
-    {"[]:", flextile, {1, -1, SPLIT_VERTICAL, TOP_TO_BOTTOM, GAPPLESSGRID_ALT2, 0, NULL}},           // tile layout with comfortable stack
     {"-M-", flextile, {1, -1, SPLIT_CENTERED_HORIZONTAL, TOP_TO_BOTTOM, LEFT_TO_RIGHT, LEFT_TO_RIGHT, NULL}}, // centeredmaster horiz
+    {"[]:", flextile, {1, -1, SPLIT_VERTICAL, TOP_TO_BOTTOM, GAPPLESSGRID_ALT2, 0, NULL}},           // tile layout with comfortable stack
     {"[D]", flextile, {1, -1, SPLIT_VERTICAL, TOP_TO_BOTTOM, MONOCLE, 0, NULL}}, // deck
     {"[T]", flextile, {1, -1, SPLIT_VERTICAL, LEFT_TO_RIGHT, TATAMI, 0, NULL}}, // tatami mats
     {"||:", flextile, {2, -1, SPLIT_VERTICAL, LEFT_TO_RIGHT, TOP_TO_BOTTOM, 0, NULL}},           // 2 masters tiled
@@ -1030,7 +1030,7 @@ static Key keys[] = {
     {MODKEY, XK_v, spawn, SHCMD("echo -n 'b' | xclip -sel c && xdotool key --window $(xdotool getactivewindow) 'Control_L+shift+v'") },
     {MODKEY | ShiftMask, XK_F12, spawn, SHCMD("echo -n 'B' | xclip -sel c && xdotool key --window $(xdotool getactivewindow) 'Control_L+shift+v'") },
     {MODKEY | ShiftMask, XK_v, spawn, SHCMD("echo -n 'B' | xclip -sel c && xdotool key --window $(xdotool getactivewindow) 'Control_L+shift+v'") },
-    {MODKEY | ShiftMask, XK_s, spawn, SHCMD("spotify --no-zygote")}, // --no-zygote flag disables hardware (gpu) accel
+    {MODKEY | ShiftMask, XK_s, spawn, SHCMD("spotify")}, // --no-zygote flag disables hardware (gpu) accel
     {MODKEY, XK_backslash, spawn, SHCMD("timeout 3 /home/carson/.local/bin/newpape.sh")},
     {MODKEY | ControlMask, XK_Home, spawn, SHCMD("timeout 3 /home/carson/.local/bin/newpape.sh -i")},
     {Mod4Mask | ShiftMask | ControlMask, XK_l, spawn, SHCMD("slock")},
