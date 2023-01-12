@@ -9,7 +9,8 @@ local M = {
     {"<leader>zf", ":'<,'>ZkMatch<CR>" },
     {"<leader>zh", ":e /home/carson/files/documents/wiki/Dashboard.md<CR>" },
     {"<leader>zw", ":e /home/carson/files/documents/wiki/Dashboard.md<CR>" },
-  }
+  },
+  cmd = "ZkNew"
 }
 M.config = function()
   local lspc = require("plugins.lspconfig").get_config()

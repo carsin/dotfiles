@@ -9,8 +9,8 @@ export XDG_MUSIC_DIR=~/files/music
 export XDG_PICTURES_DIR=~/files/photos
 
 # locale
-# export TZ='Pacific/Honolulu'
-export TZ='America/Los_Angeles'
+export TZ='Pacific/Honolulu'
+# export TZ='America/Los_Angeles'
 export LANGUAGE='en'
 export LANG='en_US.UTF-8'
 
