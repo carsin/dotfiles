@@ -5,12 +5,9 @@ set nocompatible
 filetype plugin indent on " Load plugins according to detected filetype.
 syntax on                 " Enable syntax highlighting.
 
-" Set colors before impatient makes it work for some reason
 if has('termguicolors')
     set termguicolors
 endif
-lua require('compiled/packer_compiled')
-lua require('impatient')
 
 set title            " report title to terminal
 set history=500      " How many lines of history vim has to remember
@@ -69,11 +66,13 @@ let g:gruvbox_material_better_performance = 1
 " matchup + tpope surround
 let g:matchup_surround_enabled = 1
 
-colorscheme gruvbox-material
 " Load plugins
-lua require('plugins')
+let mapleader=" "
+lua require('init')
 " Load lua commands
-lua require('commands')
+" lua require('commands')
+" 
+colorscheme gruvbox-material
 
 augroup jdtls_lsp
     autocmd!
@@ -114,8 +113,17 @@ set whichwrap+=<,>,h,l "          " go to nextline with hl
 set wrapmargin=2
 set sessionoptions-=folds         " ensure sessions don't override default method of buffer
 " Enable persistent undo so that undo history persists across vim sessions
-set undofile
-set undodir=~/.cache/nvim/undo
+if has("persistent_undo")
+   let target_path = expand('~/.cache/nvim/undo')
+    " create the directory and any parent directories
+    " if the location does not exist.
+    if !isdirectory(target_path)
+        call mkdir(target_path, "p", 0700)
+    endif
+
+    let &undodir=target_path
+    set undofile
+endif
 
 set backup
 set backupdir=~/.cache/nvim/backup
@@ -153,7 +161,6 @@ autocmd FileType gitcommit setlocal spell
 set background=dark
 
 " set t_Co=256
-
 set showtabline=0        " No show top tab line
 set nocursorline         " No laggy bar causing many redraws
 set so=7                 " How many lines from cursor to top / bottom of the screen before scrolling
@@ -167,7 +174,7 @@ set ruler                " Always show current position
 set magic                " For regular expressions turn magic on
 set noshowmode           " Remove redundant status bar elements
 set foldenable           " autofold code
-" set nofoldenable         " Don't autofold code
+" set nofoldenable       " Don't autofold code
 set foldlevel=99         " Don't autofold past a certain ident level
 set linespace=0          " No extra space between lines
 set laststatus=3         " Show statusline
@@ -177,10 +184,11 @@ set fillchars+=vert:│    " Change vertical split character to solid line inste
 set shortmess+=W         " Don't pass messages to ins-completion-menu.
 set formatoptions-=cro   " Disable auto insert comment
 set signcolumn=yes:1     " Column for diagnostics & git gutter
-set pumheight=13         " Shorten number of autocomplete suggestions
-set pumwidth=22          " Shorten width of autocomplete suggestions
-set pumblend=0          " Autocomplete background transparency
+set pumheight=22         " Shorten number of autocomplete suggestions
+set pumwidth=15          " Shorten width of autocomplete suggestions
+set pumblend=0           " Autocomplete background transparency
 set viewoptions-=options " storing local options in view session files causes no end of trouble
+set cmdheight=0          " hide cmdbar when unneeded
 let &fcs='eob: '         " No fugly eob tildas
 " link/ shortening
 " set conceallevel=2
@@ -198,17 +206,16 @@ set completeopt=menu,menuone,noselect
 " Avoid showing extra messages when using completion
 set shortmess+=c
 
-
 " Show / hide cursorline/rnu in normal and insert
 augroup dynamicnumbers
   autocmd!
   " autocmd BufLeave,FocusLost,InsertEnter,WinLeave   * if &ft != "alpha" && &nu                  | set nocursorline | endif
   "
-  " autocmd BufEnter,FocusGained,InsertLeave,WinEnter * if &ft != "alpha" && &nu && mode() != "i" | set rnu   | set cursorline   | endif
-  " autocmd BufLeave,FocusLost,InsertEnter,WinLeave   * if &ft != "alpha" && &nu                  | set nornu | set nocursorline | endif
+  autocmd BufEnter,FocusGained,InsertLeave,WinEnter * if &ft != "alpha" && &nu && mode() != "i" | set rnu   | set cursorline   | endif
+  autocmd BufLeave,FocusLost,InsertEnter,WinLeave   * if &ft != "alpha" && &nu                  | set nornu | set nocursorline | endif
 
-  autocmd BufEnter,FocusGained,InsertLeave,WinEnter * if &ft != "alpha" && &nu && mode() != "i" | set rnu   | endif
-  autocmd BufLeave,FocusLost,InsertEnter,WinLeave   * if &ft != "alpha" && &nu                  | set nornu | endif
+  " autocmd BufEnter,FocusGained,InsertLeave,WinEnter * if &ft != "alpha" && &nu && mode() != "i" | set rnu   | endif
+  " autocmd BufLeave,FocusLost,InsertEnter,WinLeave   * if &ft != "alpha" && &nu                  | set nornu | endif
 augroup END
 
 " Fold parsed langs with treesitter

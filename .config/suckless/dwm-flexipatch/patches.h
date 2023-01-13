@@ -115,6 +115,23 @@
  */
 #define BAR_TAGGRID_PATCH 1
 
+/* Hover tag icons to see a preview of the windows on that tag.
+ *
+ * The patch depends on Imlib2 for icon scaling.
+ * You need to uncomment the corresponding line in config.mk to use the -lImlib2 library
+ *
+ * Arch Linux:
+ *     sudo pacman -S imlib2
+ * Debian:
+ *     sudo apt install libimlib2-dev
+ *
+ * As with the winicon patch you may want to consider adding the compiler flags of -O3 and
+ * -march=native to enable auto loop vectorize for better performance.
+ *
+ * https://dwm.suckless.org/patches/tag-previews/
+ */
+#define BAR_TAGPREVIEW_PATCH 0
+
 /* Show status in bar */
 #define BAR_STATUS_PATCH 1
 
@@ -208,7 +225,7 @@
  * you need it.
  */
 #define BAR_TITLE_RIGHT_PAD_PATCH 0
-#define BAR_TITLE_LEFT_PAD_PATCH 0
+#define BAR_TITLE_LEFT_PAD_PATCH 1
 
 /**
  * Bar options
@@ -282,14 +299,6 @@
  */
 #define BAR_CLIENTINDICATOR_PATCH N/A
 
-/* This patch enables color emoji in dwm by removing a workaround for a BadLength error
- * in the Xft library when color glyphs are used.
- * To enable this you will need an updated Xft library that can handle color glyphs otherwise
- * dwm will crash on encountering such characters. Note that you will also need a font that
- * provides color emojis for this to work.
- */
-#define BAR_COLOR_EMOJI_PATCH 0
-
 /* Updates the position of dmenu to match that of the bar. I.e. if topbar is 0 then dmenu
  * will appear at the bottom and if 1 then dmenu will appear at the top.
  * https://dwm.suckless.org/patches/dmenumatchtop
@@ -342,10 +351,24 @@
  */
 #define BAR_IGNORE_XFT_ERRORS_WHEN_DRAWING_TEXT_PATCH 0
 
+/* This patch adds back in the workaround for a BadLength error in the Xft library when color
+ * glyphs are used. This is for systems that do not have an updated version of the Xft library
+ * (or generally prefer monochrome fonts).
+ */
+#define BAR_NO_COLOR_EMOJI_PATCH 0
+
+
 /* This patch adds vertical and horizontal space between the statusbar and the edge of the screen.
  * https://dwm.suckless.org/patches/barpadding/
  */
 #define BAR_PADDING_PATCH 0
+
+/* Same as barpadding patch but specifically tailored for the vanitygaps patch in that the outer
+ * bar padding is derived from the vanitygaps settings. In addition to this the bar padding is
+ * toggled in unison when vanitygaps are toggled. Increasing or decreasing gaps during runtime
+ * will not affect the bar padding.
+ */
+#define BAR_PADDING_VANITYGAPS_PATCH 0
 
 /* This patch adds simple markup for status messages using pango markup.
  * This depends on the pango library v1.44 or greater.
@@ -378,7 +401,7 @@
 /* This patch draws and updates the statusbar on all monitors.
  * https://dwm.suckless.org/patches/statusallmons/
  */
-#define BAR_STATUSALLMONS_PATCH 1
+#define BAR_STATUSALLMONS_PATCH 0
 
 /* This patch enables colored text in the status bar. It changes the way colors are defined
  * in config.h allowing multiple color combinations for use in the status script.
@@ -416,6 +439,11 @@
  * Other patches
  */
 
+/* Adds a window task switcher toggled using alt-tab.
+ * https://dwm.suckless.org/patches/alt-tab/
+ */
+#define ALT_TAB_PATCH 1
+
 /* All floating windows are centered, like the center patch, but without a rule.
  * The center patch takes precedence over this patch.
  * This patch interferes with the center transient windows patches.
@@ -440,7 +468,6 @@
  * https://dwm.suckless.org/patches/attachaside/
  */
 #define ATTACHASIDE_PATCH 0
-
 /* This patch adds new clients below the selected client.
  * This patch takes precedence over ATTACHBOTTOM_PATCH.
  * https://dwm.suckless.org/patches/attachbelow/
@@ -465,6 +492,18 @@
  * https://dwm.suckless.org/patches/autoresize/
  */
 #define AUTORESIZE_PATCH 1
+
+/* This patch adds proper support for Right-To-Left languages. (such as Farsi, Arabic or Hebrew).
+ *
+ * You need to uncomment the corresponding lines in config.mk to use the -lfribidi library
+ * when including this patch.
+ *
+ * This patch depends on the following additional library:
+ *    - fribidi
+ *
+ * https://dwm.suckless.org/patches/bidi/
+ */
+#define BIDI_PATCH 0
 
 /* This patch adds an iscentered rule to automatically center clients on the current monitor.
  * This patch takes precedence over centeredwindowname, alwayscenter and fancybar patches.
@@ -505,7 +544,6 @@
  * hold MOD and then press and hold 1 and 3 together.
  * https://dwm.suckless.org/patches/combo/
  */
-// not working with VIEWONTAG
 #define COMBO_PATCH 0
 
 /* Allow dwm to execute commands from autostart array in your config.h file. When dwm exits
@@ -594,7 +632,7 @@
 #define FLOATPOS_PATCH 1
 
 /* Add-on functionality for the above: make the float positions respect outer (vanity)gaps. */
-#define FLOATPOS_RESPECT_GAPS_PATCH 1
+#define FLOATPOS_RESPECT_GAPS_PATCH 0
 
 /* This patch provides the ability to focus the tag on the immediate left or right of the
  * currently focused tag. It also allows to send the focused window either on the left or
@@ -611,7 +649,7 @@
 /* A simple patch that just puts focus back to the master client.
  * https://dwm.suckless.org/patches/focusmaster/
  */
-#define FOCUSMASTER_PATCH 1
+#define FOCUSMASTER_PATCH 0
 
 /* Switch focus only by mouse click and not sloppy (focus follows mouse pointer).
  * https://dwm.suckless.org/patches/focusonclick/
@@ -747,6 +785,32 @@
  */
 #define MOVESTACK_PATCH 0
 
+/* This patch allows you to change the names of tags during runtime.
+ *
+ * This is a bespoke version implemented specifically in relation to tagicons, which is integrated
+ * into dwm-flexipatch. By default it uses dmenu to retrieve the new name, but this can be
+ * customised via config along with the maximum text length and the format string.
+ *
+ * Special behaviour:
+ *    - if more than one tag is selected then the name change applies to all selected tags
+ *    - if tagicons is configured to have unique tags per monitor then the change only applies
+ *      for the current monitor
+ *    - the name change applies to the tag set that is active for the current tag:
+ *       * if used in combination with BAR_ALTTAGSDECORATION_PATCH and there are clients on the
+ *         given tag then the name change only applies to the ALT_TAGS_DECORATION tag set
+ *       * if used in combination with the BAR_ALTERNATIVE_TAGS_PATCH and alternative tags are
+ *         shown then the name change only applies to the ALTERNATIVE_TAGS tag set
+ *       * if used in combination with both then BAR_ALTTAGSDECORATION_PATCH takes precedence
+ *       * otherwise the name change applies to the DEFAULT_TAGS tag set
+ *
+ * https://dwm.suckless.org/patches/nametag/
+ */
+#define NAMETAG_PATCH 0
+
+/* Variant of the above which prepends the tag number to the given string.
+ * The toggle does nothing on its own and need to be enabled in combination with the above. */
+#define NAMETAG_PREPEND_PATCH 0
+
 /* Adds support for the _NET_CLIENT_LIST_STACKING atom, needed by certain applications like the
  * Zoom video conferencing application.
  * https://github.com/bakkeby/patches/wiki/netclientliststacking/
@@ -757,12 +821,6 @@
  * https://dwm.suckless.org/patches/noborder/
  */
 #define NOBORDER_PATCH 0
-
-/* Enable modifying or removing dmenu in config.def.h which resulted previously in a
- * compilation error because two lines of code hardcode dmenu into dwm.
- * https://dwm.suckless.org/patches/nodmenu/
- */
-#define NODMENU_PATCH 0
 
 /* This patch allows for toggleable client button bindings that have no modifiers.
  * This can, for example, allow you to move or resize using the mouse alone without holding
@@ -784,7 +842,7 @@
  * https://github.com/szatanjl/dwm/commit/1529909466206016f2101457bbf37c67195714c8
  * https://dwm.suckless.org/patches/alpha/dwm-fixborders-6.2.diff
  */
-#define NO_TRANSPARENT_BORDERS_PATCH 1
+#define NO_TRANSPARENT_BORDERS_PATCH 0
 
 /* Port of InstantWM's on_empty_keys functionality allowing keybindings that apply only when
  * a tag is empty. An example use case is being able to launch applications with first hand
@@ -813,7 +871,7 @@
 /* Option to store gaps on a per tag basis rather than on a per monitor basis.
  * Depends on both pertag and vanitygaps patches being enabled.
  */
-#define PERTAG_VANITYGAPS_PATCH 1
+#define PERTAG_VANITYGAPS_PATCH 0
 
 /* This controls whether or not to also store bar position on a per
  * tag basis, or leave it as one bar per monitor.
@@ -837,6 +895,18 @@
  * https://dwm.suckless.org/patches/push/
  */
 #define PUSH_NO_MASTER_PATCH 0
+
+/* Variant of the named scratchpads patch allowing scratch keys to be added or removed
+ * on demand, allowing multiple scratchpad windows to be toggled into and out of view
+ * in unison, as well as including multi-monitor support.
+ *
+ * https://github.com/bakkeby/patches/wiki/renamedscratchpads
+ */
+#define RENAMED_SCRATCHPADS_PATCH 0
+
+/* Renamed scratchpads option to auto-hide scratchpads when moving to a different tag.
+ * This behaviour is similar to that of the (multiple) scratchpads patch. */
+#define RENAMED_SCRATCHPADS_AUTO_HIDE_PATCH 0
 
 /* Shifts all clients per tag to leftmost unoccupied tags.
  *
@@ -916,6 +986,18 @@
  */
 #define SCRATCHPAD_ALT_1_PATCH 0
 
+/* This patch persists some settings across window manager restarts. These include but are not
+ * limited to:
+ *    - client's assigned tag(s) on which monitor
+ *    - the order of clients
+ *    - nmaster
+ *    - selected layout
+ *    - plus various additions depending on what other patches are used
+ *
+ * The above is not persisted across reboots, however.
+ */
+#define SEAMLESS_RESTART_PATCH 1
+
 /* As opposed to the original patch this only adds a rule option allowing fake fullscreen
  * to be enabled for applications when they start. This is intended to be used in combination
  * with the fakefullscreenclient patch and offers no practical functionality without it.
@@ -937,6 +1019,30 @@
  * https://dwm.suckless.org/patches/setborderpx/
  */
 #define SETBORDERPX_PATCH 1
+
+/* Combines shifttag and shiftview. Basically moves the window to the next/prev tag and follows it.
+ * Also see the focusadjacenttag patch.
+ * https://dwm.suckless.org/patches/shift-tools/
+ */
+#define SHIFTBOTH_PATCH 0
+
+/* Swaps all the clients on the current tag with all the client on the next/prev tag.
+ * Depends on the swaptags patch.
+ * https://dwm.suckless.org/patches/shift-tools/
+ */
+#define SHIFTSWAPTAGS_PATCH 0
+
+/* Moves the current selected client to the adjacent tag.
+ * Also see the focusadjacenttag patch.
+ * https://dwm.suckless.org/patches/shift-tools/
+ */
+#define SHIFTTAG_PATCH 0
+
+/* Moves the current selected client to the adjacent tag that has at least one client, if none
+ * then it acts as shifttag.
+ * https://dwm.suckless.org/patches/shift-tools/
+ */
+#define SHIFTTAGCLIENTS_PATCH 0
 
 /* This patch adds keybindings for left and right circular shift through tags.
  * https://github.com/chau-bao-long/dotfiles/blob/master/suckless/dwm/shiftview.diff
@@ -964,6 +1070,19 @@
  * https://dwm.suckless.org/patches/sizehints/
  */
 #define SIZEHINTS_RULED_PATCH 0
+
+/* This patch makes dwm obey even "soft" sizehints for new clients. The isfreesize
+ * version is similar to the sizehints ruled patch except it allows you to specify
+ * via client rules which clients this should apply to. Soft sizehints applies by
+ * default to clients that are not ruled, and will be disabled by default for clients
+ * that are.
+ *
+ * Example client rule enabling soft sizehints:
+ *    - RULE(.wintype = WTYPE "DIALOG", .isfloating = 1, .isfreesize = 1)
+ *
+ * https://dwm.suckless.org/patches/sizehints/
+ */
+#define SIZEHINTS_ISFREESIZE_PATCH 1
 
 /* In a multi-head setup monitor 0 is by default the primary screen, with the left and right
  * screen being monitor 1 and 2 respectively. This patch sorts screens left to right (or
@@ -997,7 +1116,7 @@
  *
  * https://github.com/bakkeby/patches/wiki/steam
  */
-#define STEAM_PATCH 1
+#define STEAM_PATCH 0
 
 /* Adds toggleable keyboard shortcut to make a client 'sticky', i.e. visible on all tags.
  * https://dwm.suckless.org/patches/sticky/
@@ -1051,7 +1170,7 @@
  *   4 as 2, but closing that window reverts the view back to what it was previously (*)
  *
  * (*) except if the client has been moved between tags or to another monitor
-config.h *
+ *
  * https://github.com/bakkeby/patches/blob/master/dwm/dwm-switchtag-6.2.diff
  * Also see https://dwm.suckless.org/patches/switchtotag
  */
@@ -1316,4 +1435,3 @@ config.h *
  * This can be optionally disabled in favour of other layouts.
  */
 #define MONOCLE_LAYOUT 0
-
