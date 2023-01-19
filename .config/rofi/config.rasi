@@ -1,0 +1,20 @@
+configuration {
+	display-drun:                   "Run";
+	display-run:                    "Execute";
+    kb-row-up: "Up,Control+k,Shift+Tab,Shift+ISO_Left_Tab,Control+p";
+    kb-row-down: "Down,Control+j,Control+n";
+    kb-accept-entry: "Control+m,Return,KP_Enter";
+    terminal: "mate-terminal";
+    kb-remove-to-eol: "Control+Shift+e";
+    /*kb-mode-next: "Shift+Right,Control+Tab,Control+l";*/
+    kb-mode-previous: "Shift+Left,Control+Shift+Tab,Control+h";
+    kb-remove-char-back: "BackSpace";
+    modi: "window,drun,combi";
+    font: "terminus 14";
+    combi-modi: "window,drun";
+    show-icons:                     true;
+	sidebar-mode:                   true;
+    icon-theme: "Papirus";
+}
+
+@theme "gruvbox-dark-hard"
