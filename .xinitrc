@@ -26,7 +26,7 @@ fi
 # capslock is ctrl
 setxkbmap -option ctrl:nocaps
 # key repeat
-xset r rate 160 55
+xset r rate 160 60
 
 # no screen blanking
 xset s off
