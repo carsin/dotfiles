@@ -17,10 +17,6 @@ if [ -d /etc/X11/xinit/xinitrc.d ] ; then
 fi 
 
 # input configuration
-# TEMP 
-# disable broken b key on laptop 
-home/carson/.local/bin/disablelaptopb.sh &
-# /home/carson/.local/bin/togglebkey.sh &
 echo b | xclip -sel c
 # capslock is ctrl
 setxkbmap -option ctrl:nocaps

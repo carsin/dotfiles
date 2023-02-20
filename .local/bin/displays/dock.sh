@@ -5,12 +5,7 @@ if [[ "$MODE" == "integrated" ]]; then
     supergfxctl -m hybrid && exit
 fi
 
-# asusctl profile -P balanced # enter higher power mode
-asusctl profile -P performance # turbo cuz brobken fan
-
-# disable broken b key on laptop 
-/home/carson/.local/bin/disablelaptopb.sh &
-echo b | xclip -sel c
+asusctl profile -P balanced # enter higher power mode
 
 # set proper dpi for monitors
 newdpi=109
