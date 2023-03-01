@@ -34,6 +34,7 @@ unclutter & # autohide xcursor
 playerctld daemon # audio control
 easyeffects --gapplication-service & # audio tuning
 asusctltray & # laptop power control tray widget
+asusctl -c 80 # only charge to 80% battery
 
 # start window manager
 while :; do 

@@ -468,9 +468,7 @@ static const int tagrows = 2;
  *    { "Gimp",     NULL,     NULL,  NULL,    1 << 4,    0,          -1 },
  *    { "Firefox",  NULL,     NULL,  NULL,    1 << 7,    0,          -1 },
  *
- * The RULE macro has the default values set for each field allowing you to only
- * specify the values that are relevant for your rule, e.g.
- *
+ * The RULE macro has the default values set *
  *    RULE(.class = "Gimp", .tags = 1 << 4)
  *    RULE(.class = "Firefox", .tags = 1 << 7)
  *
