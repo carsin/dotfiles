@@ -49,6 +49,9 @@ unclutter &
 
 playerctld daemon
 
+# laptop mode
+. /home/carson/bin/displays/laptop.sh
+
 # aw-qt & 
 # /home/carson/bin/displays/dual2.sh
 

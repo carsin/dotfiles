@@ -6,7 +6,7 @@
 xinput --set-prop 'bcm5974' 'libinput Disable While Typing Enabled' 0
 
 # scale base cursor speed 
-xinput --set-prop 'bcm5974' 'libinput Accel Speed' '0.50'
+xinput --set-prop 'bcm5974' 'libinput Accel Speed' '0.45'
 
 # enable acceleration
 xinput --set-prop 'bcm5974' 'libinput Accel Profile Enabled' 1

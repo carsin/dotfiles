@@ -14,7 +14,8 @@ xrandr --output eDP1 --auto --primary --dpi $newdpi
 echo 15 > /sys/class/leds/apple::kbd_backlight/brightness
 
 # set screen brightness based on ambient light
-~/bin/autobrightness
+# ~/bin/autobrightness
+bright 20
        
 # kill apps with incorrect scaling
 killall firefox 
