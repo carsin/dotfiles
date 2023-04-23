@@ -43,6 +43,8 @@ alias config="/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME"
 alias cfg="config"
 
 # comfort
+alias quit="shutdown 3"
+alias disconnect="exit"
 alias cr="cargo run"
 alias crr="cargo run --release"
 alias cb="cargo build"
@@ -137,6 +139,7 @@ alias via="sudo via --no-sandbox"
 alias kanban="kabmat"
 alias km="kabmat"
 alias visual="/usr/local/bin/visual/VisUAL.sh"
+alias fd="fd -H"
 
 # scripts
 alias dock="/home/carson/.local/bin/displays/dock.sh"

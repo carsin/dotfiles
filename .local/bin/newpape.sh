@@ -1,7 +1,5 @@
 #!/bin/sh
 
-clear
-
 # TODO; RENAME NEWPAPES to differentiate ultrawide & laptop
 if [ "$1" = "-i" ]; then
     echo "going thro dir iterative"

@@ -498,7 +498,7 @@ static const Rule rules[] = {
     RULE(.class = "discord", .tags = 1 << 3, .monitor = 2)
     RULE(.class = "obs", .monitor = 1)
     // gaming
-    RULE(.class = "steam_app_", .tags = 1 << 5, .monitor = 0)
+    // RULE(.class = "steam_app_", .tags = 1 << 5, .monitor = 0)
     RULE(.class = "battle.net.exe", .tags = 1 << 5, .monitor = 0)
     RULE(.class = "overwatch.exe", .tags = 1 << 5, .monitor = 0)
     RULE(.title = "Grand Theft Auto V", .tags = 1 << 5, .monitor = 0)
@@ -508,7 +508,7 @@ static const Rule rules[] = {
     RULE(.class = "origin.exe", .tags = 1 << 5, .isfloating = 1, .monitor = 0)
     RULE(.class = "bf5.exe", .tags = 1 << 5, .isfloating = 1, .monitor = 0)
     RULE(.class = "lutris", .tags = 1 << 5, .monitor = 0)
-    RULE(.class = "Steam", .tags = 1 << 5)
+    // RULE(.class = "Steam", .tags = 1 << 5)
     RULE(.class = "eadesktop.exe", .tags = 1 << 5, .monitor = 0)
     RULE(.class = "multimc", .tags = 1 << 5, .monitor = 0)
     RULE(.class = "Minecraft* 1.18.1", .tags = 1 << 5, .monitor = 0)
