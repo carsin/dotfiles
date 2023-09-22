@@ -37,7 +37,7 @@ echo 'Playlist Kloudz 333 finished downloading'
 
 # C$X Test
 echo 'Downloading MEX: C$X Test'
-yt-dlp --download-archive downloaded.txt -f m4a --extract-audio --audio-format best -S'+acodec:140,m4a,mp3' -o '%(title)s - %(uploader)s [%(id)s].%(ext)s' https://www.youtube.com/playlist?list=PL_fNrCkNoX3dXQBHEs429z_F1iTHf2Oe4 --ignore-errors --add-metadata --embed-thumbnail --compat-options embed-metadata --trim-filenames 200
+# yt-dlp --download-archive downloaded.txt -f m4a --extract-audio --audio-format best -S'+acodec:140,m4a,mp3' -o '%(title)s - %(uploader)s [%(id)s].%(ext)s' https://www.youtube.com/playlist?list=PL_fNrCkNoX3dXQBHEs429z_F1iTHf2Oe4 --ignore-errors --add-metadata --embed-thumbnail --compat-options embed-metadata --trim-filenames 200
 echo 'Playlist MEX: C$X Test finished downloading'
 
 # Mex test
@@ -48,13 +48,12 @@ echo 'Playlist MEX Test finished downloading'
 # Luna to the moon
 echo 'Downloading Luna: to the moon'
 # --restrict-filenames fixes undownloadable ascii chars
-# yt-dlp --download-archive downloaded.txt -f m4a --extract-audio --audio-format best -S'+acodec:140,m4a,mp3' -o '%(title)s - (uploader)s [%(id)s].%(ext)s' https://www.youtube.com/playlist?list=PLZL0uQ9nkwWxXdJMaoMntO_CYKjVJrEAE --ignore-errors --add-metadata --embed-thumbnail --compat-options embed-metadata --trim-filenames 200 --restrict-filenames
 yt-dlp --download-archive downloaded.txt -f m4a --extract-audio --audio-format best -S'+acodec:140,m4a,mp3' -o '%(title)s - (uploader)s [%(id)s].%(ext)s' https://www.youtube.com/playlist?list=PLZL0uQ9nkwWxXdJMaoMntO_CYKjVJrEAE --ignore-errors --add-metadata --embed-thumbnail --compat-options embed-metadata --trim-filenames 200 --restrict-filenames
 echo 'Playlist Luna finished downloading'
 
 # Permaban
 echo 'Downloading Permaban'
-yt-dlp --download-archive downloaded.txt -f m4a --extract-audio --audio-format best -S'+acodec:140,m4a,mp3' -o '%(title)s - %(uploader)s [%(id)s].%(ext)s' https://www.youtube.com/playlist?list=PLZW5bl8Qpvk0yx0w9cNoRUtdm8zKuZIqy --ignore-errors --add-metadata --embed-thumbnail --compat-options embed-metadata
+# yt-dlp --download-archive downloaded.txt -f m4a --extract-audio --audio-format best -S'+acodec:140,m4a,mp3' -o '%(title)s - %(uploader)s [%(id)s].%(ext)s' https://www.youtube.com/playlist?list=PLZW5bl8Qpvk0yx0w9cNoRUtdm8zKuZIqy --ignore-errors --add-metadata --embed-thumbnail --compat-options embed-metadata
 echo 'Playlist Permaban finished downloading'
 
 # Neverland
@@ -69,17 +68,17 @@ echo 'Playlist Neverland finished downloading'
 
 # 3am
 echo 'Downloading 3am'
-yt-dlp --download-archive downloaded.txt -f m4a --extract-audio --audio-format best -S'+acodec:140,m4a,mp3' -o '%(title)s - %(uploader)s [%(id)s].%(ext)s' https://www.youtube.com/playlist?list=PL_fNrCkNoX3eVg_mwZ3AA216qCJ_mU2w3 --ignore-errors --add-metadata --embed-thumbnail --compat-options embed-metadata --trim-filenames 200
+# yt-dlp --download-archive downloaded.txt -f m4a --extract-audio --audio-format best -S'+acodec:140,m4a,mp3' -o '%(title)s - %(uploader)s [%(id)s].%(ext)s' https://www.youtube.com/playlist?list=PL_fNrCkNoX3eVg_mwZ3AA216qCJ_mU2w3 --ignore-errors --add-metadata --embed-thumbnail --compat-options embed-metadata --trim-filenames 200
 echo 'Playlist 3am finished downloading'
 
 # Sky
 echo 'Downloading sky'
-yt-dlp --download-archive downloaded.txt -f m4a --extract-audio --audio-format best -S'+acodec:140,m4a,mp3' -o '%(title)s - %(uploader)s [%(id)s].%(ext)s' https://www.youtube.com/playlist?list=PL_fNrCkNoX3dY1X6gsSmfgRK2yA8Pr2Al --ignore-errors --add-metadata --embed-thumbnail --compat-options embed-metadata --trim-filenames 200
+# yt-dlp --download-archive downloaded.txt -f m4a --extract-audio --audio-format best -S'+acodec:140,m4a,mp3' -o '%(title)s - %(uploader)s [%(id)s].%(ext)s' https://www.youtube.com/playlist?list=PL_fNrCkNoX3dY1X6gsSmfgRK2yA8Pr2Al --ignore-errors --add-metadata --embed-thumbnail --compat-options embed-metadata --trim-filenames 200
 echo 'Playlist sky finished downloading'
 
 # KING
 echo 'Downloading KING'
-yt-dlp --download-archive downloaded.txt -f m4a --extract-audio --audio-format best -S'+acodec:140,m4a,mp3' -o '%(title)s - %(uploader)s [%(id)s].%(ext)s' https://www.youtube.com/playlist?list=PL_fNrCkNoX3dXQBHEs429z_F1iTHf2Oe4 --ignore-errors --add-metadata --embed-thumbnail --compat-options embed-metadata --trim-filenames 200
+# yt-dlp --download-archive downloaded.txt -f m4a --extract-audio --audio-format best -S'+acodec:140,m4a,mp3' -o '%(title)s - %(uploader)s [%(id)s].%(ext)s' https://www.youtube.com/playlist?list=PL_fNrCkNoX3dXQBHEs429z_F1iTHf2Oe4 --ignore-errors --add-metadata --embed-thumbnail --compat-options embed-metadata --trim-filenames 200
 echo 'Playlist KING finished downloading'
 
 # firgi Tired
@@ -112,9 +111,10 @@ echo "Downloading tomas secret"
 yt-dlp --download-archive downloaded.txt -f m4a --extract-audio --audio-format best -S'+acodec:140,m4a,mp3' -o '%(title)s - (uploader)s [%(id)s].%(ext)s' https://www.youtube.com/playlist?list=PLjdRAQ9W4wSY8a8zIjU_-xWJmiCcoNzaq --ignore-errors --add-metadata --embed-thumbnail --compat-options embed-metadata --trim-filenames 200
 echo 'Playlist tomas secret finished downloading'
 
-# tomas secret
-echo "Downloading tomas secret"
-yt-dlp --download-archive downloaded.txt -f m4a --extract-audio --audio-format best -S'+acodec:140,m4a,mp3' -o '%(title)s - (uploader)s [%(id)s].%(ext)s' https://www.youtube.com/playlist?list=PLjdRAQ9W4wSY8a8zIjU_-xWJmiCcoNzaq --ignore-errors --add-metadata --embed-thumbnail --compat-options embed-metadata --trim-filenames 200
-echo 'Playlist tomas secret finished downloading'
+# nebula
+echo "Downloading nebula"
+yt-dlp --download-archive downloaded.txt -f m4a --extract-audio --audio-format best -S'+acodec:140,m4a,mp3' -o '%(title)s - (uploader)s [%(id)s].%(ext)s' https://www.youtube.com/playlist?list=PLdqoDgM67Sc3LZsO487fhx-NsUFM071po --ignore-errors --add-metadata --embed-thumbnail --compat-options embed-metadata --trim-filenames 200
+
+# echo 'Playlist tomas secret finished downloading'
 
 echo 'EDM update complete!'

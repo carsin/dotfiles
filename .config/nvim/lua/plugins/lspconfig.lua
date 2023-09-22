@@ -142,14 +142,14 @@ M.config = function()
     }
   })
   require("mason-lspconfig").setup({
-    ensure_installed = { "sumneko_lua", "clangd" }
+    ensure_installed = { "lua_ls", "clangd" }
   })
 
   -- sumneko
   local lua_opts = M.get_config()
   local sumneko = require("plugins.lsp.sumneko")
   lua_opts.settings = sumneko.lua_settings
-  lspconfig.sumneko_lua.setup(lua_opts)
+  lspconfig.lua_ls.setup(lua_opts)
 
   -- clangd
   local clangd_opts = M.get_config()
@@ -215,6 +215,12 @@ M.config = function()
 
   -- gopls
   lspconfig.gopls.setup(M.get_config())
+  
+  -- gopls
+  lspconfig.sqlls.setup(M.get_config())
+  
+  -- java
+  lspconfig.jdtls.setup(M.get_config())
 
   -- start null ls
   require("plugins.nullls").setup(M.get_config())

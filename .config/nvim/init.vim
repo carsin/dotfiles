@@ -66,7 +66,7 @@ let g:gruvbox_material_better_performance = 1
 " matchup + tpope surround
 let g:matchup_surround_enabled = 1
 
-colorscheme gruvbox-material
+" colorscheme gruvbox-material
 " Load plugins
 let mapleader=" "
 lua require('init')

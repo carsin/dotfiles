@@ -2,7 +2,6 @@ return {
   "folke/which-key.nvim",
   "nvim-lua/popup.nvim",
   "nvim-lua/plenary.nvim",
-  "sainnhe/gruvbox-material",
   "norcalli/nvim-colorizer.lua",
   "chaoren/vim-wordmotion", -- more intuitive w/W motion
   "wellle/targets.vim", -- more text objects to target
@@ -19,9 +18,18 @@ return {
   "zhimsel/vim-stay", -- automated view session creation & restore for buffers, sesssions and windows
   "andymass/vim-matchup", -- extend %: highlight, navigate, and operate on sets of matching text
   "SmiteshP/nvim-navic", -- lsp code context winbar component
-  "wakatime/vim-wakatime", -- track editing statistics
+  -- "wakatime/vim-wakatime", -- track editing statistics
   { "stevearc/dressing.nvim", event = "VeryLazy" }, -- make default UI components look good
   { "skywind3000/asyncrun.vim", lazy = false, keys = { "<F10>", ":call asyncrun#quickfix_toggle(7)" } }, -- asynchronously run tasks such as make
+  {
+    "sainnhe/gruvbox-material", -- the colorscheme should be available when starting Neovim
+    lazy = false, -- make sure we load this during startup if it is your main colorscheme
+    priority = 1000, -- make sure to load this before all the other start plugins
+    config = function()
+      -- load the colorscheme here
+      vim.cmd([[colorscheme gruvbox-material]])
+    end,
+  },
   { -- better escape
     "jdhao/better-escape.vim",
     event = "InsertEnter",
