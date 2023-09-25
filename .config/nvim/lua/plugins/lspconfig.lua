@@ -220,7 +220,7 @@ M.config = function()
   lspconfig.sqlls.setup(M.get_config())
   
   -- java
-  lspconfig.jdtls.setup(M.get_config())
+  -- lspconfig.jdtls.setup(M.get_config())
 
   -- start null ls
   require("plugins.nullls").setup(M.get_config())

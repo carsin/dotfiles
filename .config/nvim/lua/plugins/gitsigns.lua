@@ -7,9 +7,9 @@ local M = {
 M.config = function()
   require('gitsigns').setup {
     signcolumn = true,
-    keymaps = {
-      noremap = false,
-    },
+    -- keymaps = {
+    --   noremap = false,
+    -- },
     -- watch_index = {
     --   interval = 1000,
     --   follow_files = true

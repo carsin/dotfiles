@@ -87,6 +87,7 @@ return {
   },
   { -- lsp status widget
     "j-hui/fidget.nvim",
+    branch = "legacy",
     config = function()
       require("fidget").setup({
         text = {

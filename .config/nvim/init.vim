@@ -73,10 +73,10 @@ lua require('init')
 " Load lua commands
 " lua require('commands')
 
-augroup jdtls_lsp
-    autocmd!
-    autocmd FileType java lua require("jdtls").start_or_attach(require'settings.lsp.jdtls'.config)
-augroup end
+" augroup jdtls_lsp
+"     autocmd!
+"     autocmd FileType java lua require("jdtls").start_or_attach(require'settings.lsp.jdtls'.config)
+" augroup end
 
 " }}}
 
