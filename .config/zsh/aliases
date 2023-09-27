@@ -175,7 +175,7 @@ alias paclo='pacman -Qdt' # list orphans
 alias pacro='paclo && sudo pacman -Rns $(pacman -Qtdq)' # remove orphans
 alias pacc='sudo pacman -Scc' # clean cache
 alias paclf='pacman -Ql' # list files
-alias updatemirrors="sudo reflector --country 'United States' --protocol http,https --download-timeout 60 --latest 10 --sort age --save /etc/pacman.d/mirrorlist"
+alias updatemirrors="sudo reflector --country 'Italy' --protocol http,https --download-timeout 60 --latest 10 --sort age --save /etc/pacman.d/mirrorlist"
 
 # make sure everything is done writing from cache before shutting down
 alias shutdown="sync && sync && sync && shutdown 0"
