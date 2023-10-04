@@ -23,7 +23,10 @@ setxkbmap -option ctrl:nocaps
 # key repeat
 xset r rate 147 52
 xinput --set-prop 'ASUE120D:00 04F3:31FB Touchpad' "libinput Accel Speed" 0.176
-xinput --set-prop 'ASUE120D:00 04F3:31FB Touchpad' 361 0 # don't disable pad while typing
+xinput --set-prop 'ASUE120D:00 04F3:31FB Touchpad' "libinput Disable While Typing Enabled" 0 # don't disable pad while typing
+
+# set brightness lower
+brightnessctl s 25%
 
 # no screen blanking
 xset s 36000 36000 # blank screen after 1 hour
