@@ -140,6 +140,7 @@ alias kanban="kabmat"
 alias km="kabmat"
 alias visual="/usr/local/bin/visual/VisUAL.sh"
 alias fd="fd -H"
+alias powertop="sudo powertop"
 
 # scripts
 alias dock="/home/carson/.local/bin/displays/dock.sh"

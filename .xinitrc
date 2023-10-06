@@ -26,7 +26,7 @@ xinput --set-prop 'ASUE120D:00 04F3:31FB Touchpad' "libinput Accel Speed" 0.176
 xinput --set-prop 'ASUE120D:00 04F3:31FB Touchpad' "libinput Disable While Typing Enabled" 0 # don't disable pad while typing
 
 # set brightness lower
-brightnessctl s 25%
+brightnessctl s 22%
 
 # no screen blanking
 xset s 36000 36000 # blank screen after 1 hour
