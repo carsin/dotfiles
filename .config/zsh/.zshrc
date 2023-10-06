@@ -18,6 +18,9 @@ stty stop undef # Disable ctrl-s to freeze terminal.
 # import functions
 source "$ZDOTDIR/functions"
 
+# source node version manager
+source /usr/share/nvm/init-nvm.sh
+
 # History in cache directory:
 HISTSIZE=1000000
 SAVEHIST=1000000
@@ -25,6 +28,7 @@ HISTFILE=$XDG_CACHE_HOME/zsh/.histfile
 
 # completions
 autoload -Uz compinit
+compinit # fix compdef error
 zstyle ':completion:*' menu select
 # zstyle ':completion::complete:lsof:*' menu yes select
 zmodload zsh/complist
@@ -105,7 +109,6 @@ zsh_add_plugin "agkozak/agkozak-zsh-prompt"
 zsh_add_plugin "hlissner/zsh-autopair"
 source ~/.config/zsh/themes/agkozakconfig.zsh-theme
 eval "$(zoxide init zsh)" # zoxide
-
 
 # import aliases
 source "$ZDOTDIR/aliases"
