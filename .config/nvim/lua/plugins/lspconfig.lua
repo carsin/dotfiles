@@ -53,8 +53,8 @@ M.config = function()
     icons = require("plugins.lsp.icons").icons;
     highlight = false,
     separator = ' > ',
-    depth = 10, -- limit for amount of context shown
-    depth_limit_indicator = "...", -- indicator used when context hits depth limit
+    depth_limit = 7, -- limit for amount of context shown
+    depth_limit_indicator = "…", -- indicator used when context hits depth limit
   }
 
   -- global config
@@ -215,15 +215,26 @@ M.config = function()
 
   -- gopls
   lspconfig.gopls.setup(M.get_config())
-  
+
   -- gopls
   lspconfig.sqlls.setup(M.get_config())
+
+  -- typescript
+  lspconfig.tsserver.setup(M.get_config())
+
+  -- typescript
+  lspconfig.volar.setup(M.get_config())
   
+  -- emmet
+  lspconfig.emmet_language_server.setup(M.get_config())
+
   -- java
   -- lspconfig.jdtls.setup(M.get_config())
 
   -- start null ls
-  require("plugins.nullls").setup(M.get_config())
+  require("plugins.nullls").setup(M.get_config()) -- TODO: remove deprecated
+  
+  require("ufo").setup()
 end
 
 return M

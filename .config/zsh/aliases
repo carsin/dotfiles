@@ -31,6 +31,7 @@ alias watch="watch --color"
 alias w2="/home/carson/.local/bin/newpape2.sh"
 alias rw="/home/carson/.local/bin/newpape.sh"
 alias cw="/home/carson/.local/bin/choosepape.sh"
+alias pape="/home/carson/.local/bin/choosepape.sh"
 # archive current wallpaper by moving out of selection pool
 function archivePape {
     mv $(sed -n '2p' ~/.fehbg | awk -F"'" '{print $4}') ~/files/photos/oldpapes

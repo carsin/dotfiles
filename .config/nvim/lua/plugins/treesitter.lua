@@ -2,8 +2,9 @@ local M = {
   "nvim-treesitter/nvim-treesitter",
   dependencies = {
     "nvim-treesitter/nvim-treesitter-textobjects",
-    "p00f/nvim-ts-rainbow",
+    "hiphish/rainbow-delimiters.nvim",
     "RRethy/nvim-treesitter-endwise",
+    "windwp/nvim-ts-autotag",
   },
   build = ":TSUpdate",
   event = "BufReadPost",
@@ -32,6 +33,9 @@ M.config = function()
   -- }
 
   require("nvim-treesitter.configs").setup({
+    autotag = {
+      enable = true,
+    },
     highlight = {
       enable = true,
       additional_vim_regex_highlighting = { "markdown" },
@@ -44,9 +48,9 @@ M.config = function()
     incremental_selection = {
       enable = true,
       keymaps = {
-        init_selection = "gnn", -- maps in normal mode to init the node/scope selection
-        scope_incremental = "gnn", -- increment to the upper scope (as defined in locals.scm)
-        node_incremental = "<TAB>", -- increment to the upper named parent
+        init_selection = "gnn",       -- maps in normal mode to init the node/scope selection
+        scope_incremental = "gnn",    -- increment to the upper scope (as defined in locals.scm)
+        node_incremental = "<TAB>",   -- increment to the upper named parent
         node_decremental = "<S-TAB>", -- decrement to the previous node
       },
     },

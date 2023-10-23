@@ -33,6 +33,7 @@
 (setq scroll-margin 10) ; How many lines from cursor to top / bottom of the screen before scrolling
 (setq doom-theme 'doom-gruvbox)
 (setq org-hide-emphasis-markers t)
+(doom/set-frame-opacity 0.88) ; set opacity
 
 ;;
 ;; Hooks

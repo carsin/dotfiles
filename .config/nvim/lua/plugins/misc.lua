@@ -2,7 +2,6 @@ return {
   "folke/which-key.nvim",
   "nvim-lua/popup.nvim",
   "nvim-lua/plenary.nvim",
-  "norcalli/nvim-colorizer.lua",
   "chaoren/vim-wordmotion", -- more intuitive w/W motion
   "wellle/targets.vim", -- more text objects to target
   "tpope/vim-surround",
@@ -21,6 +20,12 @@ return {
   -- "wakatime/vim-wakatime", -- track editing statistics
   { "stevearc/dressing.nvim", event = "VeryLazy" }, -- make default UI components look good
   { "skywind3000/asyncrun.vim", lazy = false, keys = { "<F10>", ":call asyncrun#quickfix_toggle(7)" } }, -- asynchronously run tasks such as make
+  {
+    "norcalli/nvim-colorizer.lua",
+    config = function()
+      require'colorizer'.setup()
+    end,
+  },
   {
     "sainnhe/gruvbox-material", -- the colorscheme should be available when starting Neovim
     lazy = false, -- make sure we load this during startup if it is your main colorscheme
@@ -75,13 +80,14 @@ return {
   },
   { -- blankline indent indicator
     "lukas-reineke/indent-blankline.nvim",
+    main = "ibl",
+    opts = {},
     event = "BufRead",
     config = function()
-      require("indent_blankline").setup({
-        buftype_exclude = { "terminal" },
-        filetype_exclude = { "alpha" },
-        show_current_context_start = false,
-        show_current_context = true,
+      require("ibl").setup({
+        -- indent = {
+        --   char = "|",
+        -- }
       })
     end,
   },
@@ -196,7 +202,14 @@ return {
       "kevinhwang91/promise-async"
     },
     config = function()
-      require("ufo").setup()
+      vim.o.foldcolumn = '1' -- '0' is not bad
+      vim.o.foldlevel = 99   -- Using ufo provider need a large value, feel free to decrease the value
+      vim.o.foldlevelstart = 99
+      vim.o.foldenable = true
+
+      -- Using ufo provider need remap `zR` and `zM`. If Neovim is 0.6.1, remap yourself
+      vim.keymap.set('n', 'zR', require('ufo').openAllFolds)
+      vim.keymap.set('n', 'zM', require('ufo').closeAllFolds)
     end
   },
   { -- floating filename statuslines
