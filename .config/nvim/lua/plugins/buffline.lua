@@ -29,14 +29,14 @@ M.config = function()
         style = 'icon',
         icon = " > ",
       },
-      buffer_close_icon = "",
+      buffer_close_icon = "",
       modified_icon = "+",
-      close_icon = "",
+      close_icon = "",
       left_trunc_marker = "…",
       right_trunc_marker = "…",
       max_name_length = 18,
       max_prefix_length = 16, -- prefix used when a buffer is de-duplicated
-      tab_size = 21,
+      tab_size = 10,
       enforce_regular_tabs = false,
       show_close_icon = false,
       close_command = "lua require('bufdelete').bufdelete(0, true)",
@@ -55,7 +55,10 @@ M.config = function()
           local sym = e == "error" and "E " or (e == "warning" and "! " or "? " or "i ")
           s = s .. n .. sym
         end
-        return s
+        if context.buffer:current() then
+          return s
+        end
+        return ''
       end,
       -- diagnostics_indicator = function(count, level, diagnostics_dict, context)
       --   local icon = level:match("error") and "! " or "? "

@@ -32,3 +32,5 @@ export ZK_NOTEBOOK_DIR=$HOME/files/documents/wiki
 export COLORTERM=truecolor
 export GOPATH=/home/carson/dev/projects/go
 export SUDO_EDITOR=/usr/bin/nvim
+export CAPACITOR_ANDROID_STUDIO_PATH=/usr/bin/android-studio
+export ANDROID_SDK_ROOT=/home/carson/Android/Sdk/

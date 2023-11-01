@@ -160,7 +160,7 @@ autocmd FileType gitcommit setlocal spell
 set background=dark
 
 " set t_Co=256
-set showtabline=0        " No show top tab line
+set showtabline=2        " No show top tab line
 set nocursorline         " No laggy bar causing many redraws
 set so=7                 " How many lines from cursor to top / bottom of the screen before scrolling
 set number               " file line numbering
@@ -176,6 +176,7 @@ set foldenable           " autofold code
 " set nofoldenable       " Don't autofold code
 set foldlevel=99         " Don't autofold past a certain ident level
 set linespace=0          " No extra space between lines
+set foldcolumn=0         " no fold gutter
 set laststatus=3         " Show statusline
 set splitbelow           " Always vertically split below
 set splitright           " Always horizontally split to the right

@@ -234,7 +234,14 @@ return {
         end,
       })
     end
-  }
+  },
+  { -- bufferline
+    'akinsho/bufferline.nvim',
+    requires = 'nvim-tree/nvim-web-devicons',
+    config = function()
+      require("plugins.buffline").config()
+    end,
+  },
   -- { -- symboloutline column
   --   "simrat39/symbols-outline.nvim",
   --   config = function()
@@ -253,12 +260,6 @@ return {
   -- 		})
   -- 	end,
   -- })
-  -- { -- bufferline
-  --   'akinsho/bufferline.nvim',
-  --   config = function()
-  --     -- require("plugins.bufferline")
-  --   end,
-  -- }
 
   -- use({ -- better quick fix buffer
   -- 	"kevinhwang91/nvim-bqf",

@@ -77,11 +77,12 @@ nnoremap <silent> <C-b> :split<CR>
 " nnoremap <leader>c :close<CR>
 nnoremap <C-c> :close<CR>
 
-" Vim plug ease of use bindings
-nnoremap <leader>ps :PackerSync<CR>
-nnoremap <leader>pc :PackerCompile profile=true<CR>
-nnoremap <leader>pC :PackerClean<CR>
-nnoremap <leader>pd :PackerProfile<CR>
+" Package management ease of use bindings
+nnoremap <leader>ps :Lazy update<CR>
+" nnoremap <leader>ps :PackerSync<CR>
+" nnoremap <leader>pc :PackerCompile profile=true<CR>
+" nnoremap <leader>pC :PackerClean<CR>
+" nnoremap <leader>pd :PackerProfile<CR>
 
 " Quit everything with :qq / Q
 cmap qq qa!
@@ -243,24 +244,24 @@ endfunction
 " nnoremap <leader>d <cmd>TroubleToggle workspace_diagnostics<cr>
 
 " Bufferline
-" nnoremap <silent>[b :BufferLineCyclePrev<CR>
-" nnoremap <silent>]b :BufferLineCycleNext<CR>
-" nnoremap <silent>[B :BufferLineMovePrev<CR>
-" nnoremap <silent>]B :BufferLineMoveNext<CR>
-" nnoremap <leader>h :BufferLineCyclePrev<CR>
-" nnoremap <leader>l :BufferLineCycleNext<CR>
-" nnoremap <leader>H :BufferLineMovePrev<CR>
-" nnoremap <leader>L :BufferLineMoveNext<CR>
+nnoremap <silent>[b :BufferLineCyclePrev<CR>
+nnoremap <silent>]b :BufferLineCycleNext<CR>
+nnoremap <silent>[B :BufferLineMovePrev<CR>
+nnoremap <silent>]B :BufferLineMoveNext<CR>
+nnoremap <leader>h :BufferLineCyclePrev<CR>
+nnoremap <leader>l :BufferLineCycleNext<CR>
+nnoremap <leader>H :BufferLineMovePrev<CR>
+nnoremap <leader>L :BufferLineMoveNext<CR>
 " Switch to buffer
-" nnoremap <silent> <leader>1 <Cmd>BufferLineGoToBuffer 1<CR>
-" nnoremap <silent> <leader>2 <Cmd>BufferLineGoToBuffer 2<CR>
-" nnoremap <silent> <leader>3 <Cmd>BufferLineGoToBuffer 3<CR>
-" nnoremap <silent> <leader>4 <Cmd>BufferLineGoToBuffer 4<CR>
-" nnoremap <silent> <leader>5 <Cmd>BufferLineGoToBuffer 5<CR>
-" nnoremap <silent> <leader>6 <Cmd>BufferLineGoToBuffer 6<CR>
-" nnoremap <silent> <leader>7 <Cmd>BufferLineGoToBuffer 7<CR>
-" nnoremap <silent> <leader>8 <Cmd>BufferLineGoToBuffer 8<CR>
-" nnoremap <silent> <leader>9 <Cmd>BufferLineGoToBuffer 9<CR>
+nnoremap <silent> <leader>1 <Cmd>BufferLineGoToBuffer 1<CR>
+nnoremap <silent> <leader>2 <Cmd>BufferLineGoToBuffer 2<CR>
+nnoremap <silent> <leader>3 <Cmd>BufferLineGoToBuffer 3<CR>
+nnoremap <silent> <leader>4 <Cmd>BufferLineGoToBuffer 4<CR>
+nnoremap <silent> <leader>5 <Cmd>BufferLineGoToBuffer 5<CR>
+nnoremap <silent> <leader>6 <Cmd>BufferLineGoToBuffer 6<CR>
+nnoremap <silent> <leader>7 <Cmd>BufferLineGoToBuffer 7<CR>
+nnoremap <silent> <leader>8 <Cmd>BufferLineGoToBuffer 8<CR>
+nnoremap <silent> <leader>9 <Cmd>BufferLineGoToBuffer 9<CR>
 
 " Bdelete
 " default closes buffer while preserving window layout

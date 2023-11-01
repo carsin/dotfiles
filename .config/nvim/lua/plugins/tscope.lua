@@ -12,9 +12,9 @@ local M = {
   },
   cmd = { "Telescope" },
   keys = {
-    { "<leader>f", "<cmd>Telescope find_files<cr>" },
-    { "<leader>r", "<cmd>lua require('telescope').extensions.frecency.frecency()<cr>" },
-    { "S", "<cmd>Telescope live_grep<cr>" },
+    { "<leader>f",  "<cmd>Telescope find_files<cr>" },
+    { "<leader>r",  "<cmd>lua require('telescope').extensions.frecency.frecency()<cr>" },
+    { "S",          "<cmd>Telescope live_grep<cr>" },
     { "<leader>pp", "<cmd>lua require'telescope'.extensions.project.project{ display_type = 'full' }<cr>" },
     { "<leader>ph", "<cmd>SessionManager load_session<cr>" },
     -- nnoremap <leader>pz <cmd>Telescope zoxide list<cr>
@@ -107,10 +107,10 @@ M.config = function()
   telescope.setup({
     extensions = {
       fzf = {
-        fuzzy = true, -- false will only do exact matching
+        fuzzy = true,                   -- false will only do exact matching
         override_generic_sorter = true, -- override the generic sorter
-        override_file_sorter = true, -- override the file sorter
-        case_mode = "smart_case", -- or "ignore_case" or "respect_case"
+        override_file_sorter = true,    -- override the file sorter
+        case_mode = "smart_case",       -- or "ignore_case" or "respect_case"
       },
       project = {
         hidden_files = true,
@@ -135,10 +135,10 @@ M.config = function()
             match_filename = true,
           },
 
-          generic = { -- options for sorting all other items
-            enable = true, -- override default telescope generic item sorter
+          generic = {                 -- options for sorting all other items
+            enable = true,            -- override default telescope generic item sorter
             highlight_results = true, -- highlight matching text in results
-            match_filename = false, -- disable zf filename match priority
+            match_filename = false,   -- disable zf filename match priority
           },
         },
       },
