@@ -24,21 +24,21 @@ M.config = function()
   require("bufferline").setup {
     options = {
       mode = "buffers",
-      always_show_bufferline = true,
+      always_show_bufferline = false,
       indicator = {
         style = 'icon',
         icon = " > ",
       },
-      buffer_close_icon = "",
+      show_close_icon = false,
+      buffer_close_icon = "", -- 
       modified_icon = "+",
-      close_icon = "",
+      close_icon = "", -- 
       left_trunc_marker = "…",
       right_trunc_marker = "…",
-      max_name_length = 18,
+      max_name_length = 22,
       max_prefix_length = 16, -- prefix used when a buffer is de-duplicated
-      tab_size = 10,
+      tab_size = 0,
       enforce_regular_tabs = false,
-      show_close_icon = false,
       close_command = "lua require('bufdelete').bufdelete(0, true)",
       right_mouse_command = "vertical sbuffer %d", -- vertical split
       diagnostics = "nvim_lsp",
@@ -65,14 +65,15 @@ M.config = function()
       --   return " " .. icon .. count
       -- end,
       numbers = function(opts)
-        return string.format("%s:", opts.ordinal)
+        return string.format("%s", opts.ordinal)
       end,
       offsets = {
         {
-          filetype = "NvimTree",
+          filetype = "neo-tree",
           text = "Files",
           highlight = "Directory",
           text_align = "left",
+          separator = true,
         },
       },
       custom_areas = { -- LSP diagnostics in top right

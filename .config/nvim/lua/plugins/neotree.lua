@@ -69,7 +69,7 @@ M.config = function()
     },
     window = {
       position = "left",
-      width = 35,
+      width = 30,
       mappings = {
         ["<space>"] = "toggle_node",
         ["<2-LeftMouse>"] = "open",

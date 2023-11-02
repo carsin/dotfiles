@@ -42,6 +42,7 @@ M.config = function()
   M.colors = {
     bg = "#282828",
     bg_hi = "#383838",
+    bg_hihi = "#585858",
     black = "#282828",
     yellow = "#d79921",
     byellow = "#fadb2f",

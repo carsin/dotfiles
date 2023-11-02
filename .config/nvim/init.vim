@@ -66,6 +66,15 @@ let g:gruvbox_material_better_performance = 1
 " matchup + tpope surround
 let g:matchup_surround_enabled = 1
 
+" let g:minimap_width = 9
+" let g:minimap_auto_start = 1
+" let g:minimap_auto_start_win_enter = 1
+" let g:minimap_close_filetypes = ['startify', 'netrw', 'vim-plug', 'alpha']
+" let g:minimap_highlight_search = 1
+" let g:minimap_background_processing = 1
+" let g:minimap_git_colors = 1
+" let g:minimap_enable_highlight_colorgroup = 1
+
 " colorscheme gruvbox-material
 " Load plugins
 let mapleader=" "
@@ -78,6 +87,7 @@ lua require('init')
 "     autocmd FileType java lua require("jdtls").start_or_attach(require'settings.lsp.jdtls'.config)
 " augroup end
 
+" minimap
 " }}}
 
 " Editing

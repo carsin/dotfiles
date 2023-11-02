@@ -3,7 +3,7 @@ return {
   "nvim-lua/popup.nvim",
   "nvim-lua/plenary.nvim",
   "chaoren/vim-wordmotion", -- more intuitive w/W motion
-  "wellle/targets.vim", -- more text objects to target
+  "wellle/targets.vim",     -- more text objects to target
   "tpope/vim-surround",
   "tpope/vim-repeat",
   "tpope/vim-unimpaired", -- handy ][ mappings that should be builtin
@@ -12,24 +12,25 @@ return {
   "famiu/bufdelete.nvim",
   "antoinemadec/FixCursorHold.nvim", -- Needed while issue https://github.com/neovim/neovim/issues/12587 is still open
   "kyazdani42/nvim-web-devicons",
-  { "mbbill/undotree", keys = { "<leader>u", "UndotreeToggle<CR>" } },
+  { "mbbill/undotree",          keys = { "<leader>u", "UndotreeToggle<CR>" } },
   "ThePrimeagen/harpoon",
-  "zhimsel/vim-stay", -- automated view session creation & restore for buffers, sesssions and windows
-  "andymass/vim-matchup", -- extend %: highlight, navigate, and operate on sets of matching text
-  "SmiteshP/nvim-navic", -- lsp code context winbar component
+  "zhimsel/vim-stay",                                                                                    -- automated view session creation & restore for buffers, sesssions and windows
+  "andymass/vim-matchup",                                                                                -- extend %: highlight, navigate, and operate on sets of matching text
+  "SmiteshP/nvim-navic",                                                                                 -- lsp code context winbar component
   -- "wakatime/vim-wakatime", -- track editing statistics
-  { "stevearc/dressing.nvim", event = "VeryLazy" }, -- make default UI components look good
-  { "skywind3000/asyncrun.vim", lazy = false, keys = { "<F10>", ":call asyncrun#quickfix_toggle(7)" } }, -- asynchronously run tasks such as make
+  { "stevearc/dressing.nvim",   event = "VeryLazy" },                                                    -- make default UI components look good
+  { "skywind3000/asyncrun.vim", lazy = false,                                keys = { "<F10>",
+    ":call asyncrun#quickfix_toggle(7)" } },                                                             -- asynchronously run tasks such as make
   {
     "norcalli/nvim-colorizer.lua",
     config = function()
-      require'colorizer'.setup()
+      require 'colorizer'.setup()
     end,
   },
   {
     "sainnhe/gruvbox-material", -- the colorscheme should be available when starting Neovim
-    lazy = false, -- make sure we load this during startup if it is your main colorscheme
-    priority = 1000, -- make sure to load this before all the other start plugins
+    lazy = false,               -- make sure we load this during startup if it is your main colorscheme
+    priority = 1000,            -- make sure to load this before all the other start plugins
     config = function()
       -- load the colorscheme here
       vim.cmd([[colorscheme gruvbox-material]])
@@ -110,7 +111,7 @@ return {
         },
         align = {
           bottom = true, -- align fidgets along bottom edge of buffer
-          right = true, -- align fidgets along right edge of buffer
+          right = true,  -- align fidgets along right edge of buffer
         },
         timer = {
           task_decay = 2000, -- how long to keep around completed task, in ms
@@ -144,7 +145,7 @@ return {
       require("lightspeed").opts.safe_labels = {}
     end,
     keys = {
-      { "s", "<Plug>Lightspeed_omni_s" },
+      { "s",  "<Plug>Lightspeed_omni_s" },
       { "gs", "<Plug>Lightspeed_omni_gs" },
       { "gS", "<Plug>Lightspeed_omni_gS" },
     }
@@ -173,7 +174,7 @@ return {
     config = function()
       require("scrollbar").setup({
         handle = {
-          color = require("plugins.feline").colors.bg_hi,
+          color = require("plugins.feline").colors.bg_hihi,
         },
       })
     end,
@@ -182,6 +183,7 @@ return {
     "kevinhwang91/nvim-hlslens",
     config = function()
       require('hlslens').setup()
+      -- require("scrollbar.handlers.search").setup()
       -- TODO: setup keymaps with lazy
       local kopts = { noremap = true, silent = true }
       vim.api.nvim_set_keymap('n', 'n',
@@ -242,6 +244,12 @@ return {
       require("plugins.buffline").config()
     end,
   },
+  {
+    'lewis6991/gitsigns.nvim',
+    config = function ()
+      require('gitsigns').setup()
+    end
+  }
   -- { -- symboloutline column
   --   "simrat39/symbols-outline.nvim",
   --   config = function()
