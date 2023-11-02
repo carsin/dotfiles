@@ -13,7 +13,7 @@ set title            " report title to terminal
 set history=500      " How many lines of history vim has to remember
 set encoding=utf8    " Set utf8 as standard encoding and en_US as the standard language
 set ffs=unix,dos,mac " Use Unix as the standard file type
-set updatetime=250   " Time before plugins and inserthold is fired
+set updatetime=200   " Time before plugins and inserthold is fired
 set mouse=a          " Set proper mouse mode
 
 " Turn swap off, since most stuff is in SVN, git etc anyway...

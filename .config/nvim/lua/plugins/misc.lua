@@ -16,7 +16,6 @@ return {
   "ThePrimeagen/harpoon",
   "zhimsel/vim-stay",                                                                                    -- automated view session creation & restore for buffers, sesssions and windows
   "andymass/vim-matchup",                                                                                -- extend %: highlight, navigate, and operate on sets of matching text
-  "SmiteshP/nvim-navic",                                                                                 -- lsp code context winbar component
   -- "wakatime/vim-wakatime", -- track editing statistics
   { "stevearc/dressing.nvim",   event = "VeryLazy" },                                                    -- make default UI components look good
   { "skywind3000/asyncrun.vim", lazy = false,                                keys = { "<F10>",
@@ -26,6 +25,45 @@ return {
     config = function()
       require 'colorizer'.setup()
     end,
+  },
+  { -- winbar breadcrumbs
+    "utilyre/barbecue.nvim",
+    name = "barbecue",
+    version = "*",
+    dependencies = {
+      "SmiteshP/nvim-navic",
+    },
+    opts = {
+      show_modified = true,
+      -- context_follow_icon_color = true,
+      symbols = {
+        modified = "+",
+      },
+      kinds = require("plugins.lsp.icons").icons
+    },
+    config = function()
+      -- better performance when scrolling
+      vim.opt.updatetime = 200
+
+      require("barbecue").setup({
+        create_autocmd = false, -- prevent barbecue from updating itself automatically
+      })
+
+      vim.api.nvim_create_autocmd({
+        "WinScrolled", -- or WinResized on NVIM-v0.9 and higher
+        "BufWinEnter",
+        "CursorHold",
+        "InsertLeave",
+
+        -- include this if you have set `show_modified` to `true`
+        "BufModifiedSet",
+      }, {
+        group = vim.api.nvim_create_augroup("barbecue.updater", {}),
+        callback = function()
+          require("barbecue.ui").update()
+        end,
+      })
+    end
   },
   {
     "sainnhe/gruvbox-material", -- the colorscheme should be available when starting Neovim
@@ -214,29 +252,29 @@ return {
       vim.keymap.set('n', 'zM', require('ufo').closeAllFolds)
     end
   },
-  { -- floating filename statuslines
-    "b0o/incline.nvim",
-    event = "BufReadPre",
-    config = function()
-      require("incline").setup({
-        window = {
-          margin = {
-            vertical = 0,
-            horizontal = 1,
-          },
-        },
-        render = function(props)
-          local filename = vim.fn.fnamemodify(vim.api.nvim_buf_get_name(props.buf), ":.")
-          local icon, color = require("nvim-web-devicons").get_icon_color(filename)
-          return {
-            { icon, guifg = color },
-            { " " },
-            { filename },
-          }
-        end,
-      })
-    end
-  },
+  -- { -- floating filename statuslines
+  --   "b0o/incline.nvim",
+  --   event = "BufReadPre",
+  --   config = function()
+  --     require("incline").setup({
+  --       window = {
+  --         margin = {
+  --           vertical = 0,
+  --           horizontal = 1,
+  --         },
+  --       },
+  --       render = function(props)
+  --         local filename = vim.fn.fnamemodify(vim.api.nvim_buf_get_name(props.buf), ":.")
+  --         local icon, color = require("nvim-web-devicons").get_icon_color(filename)
+  --         return {
+  --           { icon, guifg = color },
+  --           { " " },
+  --           { filename },
+  --         }
+  --       end,
+  --     })
+  --   end
+  -- },
   { -- bufferline
     'akinsho/bufferline.nvim',
     requires = 'nvim-tree/nvim-web-devicons',

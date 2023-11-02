@@ -118,7 +118,7 @@ M.config = function()
       enable = true,
     },
     lsp_interop = {
-      enable = false,
+      enable = true,
     },
     ensure_installed = { "c", "rust", "lua", "norg", "comment" },
   })

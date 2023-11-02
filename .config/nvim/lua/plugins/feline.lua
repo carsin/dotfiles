@@ -254,26 +254,26 @@ M.config = function()
     left_sep = " ",
   })
 
-  table.insert(components.active[1], {
-    provider = function()
-      return navic.get_location()
-    end,
-    hl = {
-      fg = 'white',
-      style = 'NONE',
-    },
-    left_sep = {
-      {
-        str = " > ",
-        hl = {
-          fg = "white",
-        },
-      },
-    },
-    enabled = function()
-      return navic.is_available()
-    end
-  })
+  -- table.insert(components.active[1], {
+  --   provider = function()
+  --     return navic.get_location()
+  --   end,
+  --   hl = {
+  --     fg = 'white',
+  --     style = 'NONE',
+  --   },
+  --   left_sep = {
+  --     {
+  --       str = " > ",
+  --       hl = {
+  --         fg = "white",
+  --       },
+  --     },
+  --   },
+  --   enabled = function()
+  --     return navic.is_available()
+  --   end
+  -- })
 
 
   -- RIGHT
