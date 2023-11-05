@@ -220,10 +220,6 @@ autocmd FileType markdown nnoremap <buffer> <silent> _ :StayWinToggle keeppatter
 " nmap gs <Plug>Lightspeed_omni_gs
 " nmap gS <Plug>Lightspeed_omni_gS
 " inline f/t replacer
-nmap <expr> f reg_recording() . reg_executing() == "" ? "<Plug>Lightspeed_f" : "f"
-nmap <expr> F reg_recording() . reg_executing() == "" ? "<Plug>Lightspeed_F" : "F"
-nmap <expr> t reg_recording() . reg_executing() == "" ? "<Plug>Lightspeed_t" : "t"
-nmap <expr> T reg_recording() . reg_executing() == "" ? "<Plug>Lightspeed_T" : "T"
 
 
 " Save buffer before opening fterm, but not in startup screen
@@ -322,13 +318,16 @@ nmap _ <Plug>(PatternDecrement)
 " map('n', '<leader>mui', '<cmd>lua require"dapui".toggle()<CR>')
 
 " harpoon
-nnoremap <C-f> <cmd>lua require("harpoon.ui").toggle_quick_menu()<cr>
-nnoremap <C-e> <cmd>lua require("harpoon.ui").toggle_quick_menu()<cr>
-nnoremap <leader>F <cmd>lua require("harpoon.mark").add_file()<cr>
-nnoremap <leader>! <cmd>:lua require("harpoon.ui").nav_file(1)<cr>
-nnoremap <leader>@ <cmd>:lua require("harpoon.ui").nav_file(2)<cr>
-nnoremap <leader># <cmd>:lua require("harpoon.ui").nav_file(3)<cr>
-nnoremap <leader>$ <cmd>:lua require("harpoon.ui").nav_file(4)<cr>
-nnoremap <leader>% <cmd>:lua require("harpoon.ui").nav_file(5)<cr>
-nnoremap <leader>^ <cmd>:lua require("harpoon.ui").nav_file(6)<cr>
-nnoremap <leader>& <cmd>:lua require("harpoon.ui").nav_file(7)<cr>
+" nnoremap <C-f> <cmd>lua require("harpoon.ui").toggle_quick_menu()<cr>
+" nnoremap <C-e> <cmd>lua require("harpoon.ui").toggle_quick_menu()<cr>
+" nnoremap <leader>F <cmd>lua require("harpoon.mark").add_file()<cr>
+" nnoremap <leader>! <cmd>:lua require("harpoon.ui").nav_file(1)<cr>
+" nnoremap <leader>@ <cmd>:lua require("harpoon.ui").nav_file(2)<cr>
+" nnoremap <leader># <cmd>:lua require("harpoon.ui").nav_file(3)<cr>
+" nnoremap <leader>$ <cmd>:lua require("harpoon.ui").nav_file(4)<cr>
+" nnoremap <leader>% <cmd>:lua require("harpoon.ui").nav_file(5)<cr>
+" nnoremap <leader>^ <cmd>:lua require("harpoon.ui").nav_file(6)<cr>
+" nnoremap <leader>& <cmd>:lua require("harpoon.ui").nav_file(7)<cr>
+
+" color picker
+nnoremap <leader>cc <cmd>CccPick<cr>

@@ -753,7 +753,7 @@ M.config = function()
       button(".", "  > Directory Session ", ":SessionManager load_current_dir_session<cr>"),
       button("h", "  > Browse Sessions", "<cmd>SessionManager load_session<cr>"),
       button("f", "类 > Find File", ":Telescope find_files<CR>"),
-      button("r", "  > Frequent Files", "<cmd>lua require('telescope').extensions.frecency.frecency()<cr>"),
+      button("r", "  > Frequent Files", "<cmd>lua require('telescope').extensions.smart_open.smart_open()<cr>"),
       button("p", "  > Browse Projects",
         "<cmd>lua require'telescope'.extensions.project.project{ display_type = 'full' }<cr>"),
       button("s", "  > Search Directory", ":Telescope live_grep<CR>"),

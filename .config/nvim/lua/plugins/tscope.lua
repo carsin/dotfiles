@@ -7,14 +7,14 @@ local M = {
     "nvim-telescope/telescope-project.nvim",
     "natecraddock/telescope-zf-native.nvim",
     "tami5/sqlite.lua",
-    "nvim-telescope/telescope-frecency.nvim",
+    -- "nvim-telescope/telescope-frecency.nvim",
     { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
   },
   cmd = { "Telescope" },
   keys = {
     { "<leader>f",  "<cmd>Telescope find_files<cr>" },
-    { "<leader>r",  "<cmd>lua require('telescope').extensions.frecency.frecency()<cr>" },
-    { "S",          "<cmd>Telescope live_grep<cr>" },
+    { "<leader>r",  "<cmd>lua require('telescope').extensions.smart_open.smart_open()<cr>" },
+    { "<leader>s",  "<cmd>Telescope live_grep<cr>" },
     { "<leader>pp", "<cmd>lua require'telescope'.extensions.project.project{ display_type = 'full' }<cr>" },
     { "<leader>ph", "<cmd>SessionManager load_session<cr>" },
     -- nnoremap <leader>pz <cmd>Telescope zoxide list<cr>
@@ -127,19 +127,20 @@ M.config = function()
           ["studies"] = "/home/carson/files/dev/studies/",
         },
       },
-      extensions = {
-        ["zf-native"] = {
-          file = {
-            enable = true, -- override default telescope file sorter
-            highlight_results = true,
-            match_filename = true,
-          },
+      smart_open = {
+        show_scores = true,
+      },
+      ["zf-native"] = {
+        file = {
+          enable = true, -- override default telescope file sorter
+          highlight_results = true,
+          match_filename = true,
+        },
 
-          generic = {                 -- options for sorting all other items
-            enable = true,            -- override default telescope generic item sorter
-            highlight_results = true, -- highlight matching text in results
-            match_filename = false,   -- disable zf filename match priority
-          },
+        generic = {                 -- options for sorting all other items
+          enable = true,            -- override default telescope generic item sorter
+          highlight_results = true, -- highlight matching text in results
+          match_filename = false,   -- disable zf filename match priority
         },
       },
     },
@@ -281,13 +282,13 @@ M.config = function()
 
   telescope.load_extension("fzf")
   telescope.load_extension("project")
-  telescope.load_extension("frecency")
+  -- telescope.load_extension("frecency")
   -- telescope.load_extension("dap")
   -- telescope.load_extension("zoxide")
   -- telescope.load_extension("env")
   -- telescope.load_extension("ui-select")
   telescope.load_extension("zf-native")
-  telescope.load_extension('harpoon')
+  telescope.load_extension("smart_open")
   -- telescope.load_extension('sessions')
   -- telescope.load_extension('notify')
 end

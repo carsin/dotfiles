@@ -12,8 +12,7 @@ return {
   "famiu/bufdelete.nvim",
   "antoinemadec/FixCursorHold.nvim", -- Needed while issue https://github.com/neovim/neovim/issues/12587 is still open
   "kyazdani42/nvim-web-devicons",
-  { "mbbill/undotree",          keys = { "<leader>u", "UndotreeToggle<CR>" } },
-  "ThePrimeagen/harpoon",
+  { "mbbill/undotree",          keys = { "<leader>u", "<Cmd>UndotreeToggle<CR>" } },
   "zhimsel/vim-stay",                                                                                    -- automated view session creation & restore for buffers, sesssions and windows
   "andymass/vim-matchup",                                                                                -- extend %: highlight, navigate, and operate on sets of matching text
   -- "wakatime/vim-wakatime", -- track editing statistics
@@ -54,9 +53,7 @@ return {
         "BufWinEnter",
         "CursorHold",
         "InsertLeave",
-
-        -- include this if you have set `show_modified` to `true`
-        "BufModifiedSet",
+        "BufModifiedSet", -- include this if you have set `show_modified` to `true`
       }, {
         group = vim.api.nvim_create_augroup("barbecue.updater", {}),
         callback = function()
@@ -64,6 +61,12 @@ return {
         end,
       })
     end
+  },
+  {
+    "uga-rosa/ccc.nvim",
+    config = function ()
+      require("ccc").setup()
+    end,
   },
   {
     "sainnhe/gruvbox-material", -- the colorscheme should be available when starting Neovim
@@ -177,16 +180,25 @@ return {
     end,
   },
   { -- jetpack
-    "ggandor/lightspeed.nvim",
+    "ggandor/leap.nvim",
     config = function()
-      require("lightspeed").opts.ignore_case = false
-      require("lightspeed").opts.safe_labels = {}
+      require('leap').add_default_mappings()
     end,
-    keys = {
-      { "s",  "<Plug>Lightspeed_omni_s" },
-      { "gs", "<Plug>Lightspeed_omni_gs" },
-      { "gS", "<Plug>Lightspeed_omni_gS" },
-    }
+  },
+  {
+    "danielfalk/smart-open.nvim",
+    branch = "0.2.x",
+    config = function()
+    end,
+    dependencies = {
+      "kkharji/sqlite.lua",
+    },
+  },
+  {
+    'ggandor/flit.nvim',
+    config = function()
+      require('flit').setup()
+    end
   },
   { -- increment numbers & more with +/-
     "zegervdv/nrpattern.nvim",
