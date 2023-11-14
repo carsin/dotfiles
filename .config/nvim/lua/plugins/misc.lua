@@ -183,6 +183,28 @@ return {
     "ggandor/leap.nvim",
     config = function()
       require('leap').add_default_mappings()
+      -- bidirectional search
+      vim.keymap.set('n', 's', function()
+        local current_window = vim.fn.win_getid()
+        require('leap').leap { target_windows = { current_window } }
+      end)
+      -- Lightspeed colors
+      vim.api.nvim_set_hl(0, 'LeapBackdrop', { link = 'Comment' }) -- or some grey
+      vim.api.nvim_set_hl(0, 'LeapMatch', {
+        -- For light themes, set to 'black' or similar.
+        fg = 'white',
+        bold = true,
+        nocombine = true,
+      })
+
+      vim.api.nvim_set_hl(0, 'LeapLabelPrimary', {
+        fg = 'red', bold = true, nocombine = true,
+      })
+      vim.api.nvim_set_hl(0, 'LeapLabelSecondary', {
+        fg = 'blue', bold = true, nocombine = true,
+      })
+      -- Try it without this setting first, you might find you don't even miss it.
+      require('leap').opts.highlight_unlabeled_phase_one_targets = true
     end,
   },
   {
@@ -229,6 +251,13 @@ return {
       })
     end,
   },
+  -- { -- new scrollbar (waiting for neovim 0.10)
+  --   "lewis6991/satellite.nvim",
+  --   event = "BufReadPost",
+  --   config = function()
+  --     require('satellite').setup { }
+  --   end,
+  -- },
   { -- search lens (hl occurrences & number them)
     "kevinhwang91/nvim-hlslens",
     config = function()
@@ -258,7 +287,6 @@ return {
       vim.o.foldlevel = 99   -- Using ufo provider need a large value, feel free to decrease the value
       vim.o.foldlevelstart = 99
       vim.o.foldenable = true
-
       -- Using ufo provider need remap `zR` and `zM`. If Neovim is 0.6.1, remap yourself
       vim.keymap.set('n', 'zR', require('ufo').openAllFolds)
       vim.keymap.set('n', 'zM', require('ufo').closeAllFolds)
@@ -296,16 +324,26 @@ return {
   },
   {
     'lewis6991/gitsigns.nvim',
-    config = function ()
+    config = function()
       require('gitsigns').setup()
     end
+  },
+  { -- symbols outline
+    'stevearc/aerial.nvim',
+    opts = {},
+    config = function()
+      require("aerial").setup({
+        -- optionally use on_attach to set keymaps when aerial has attached to a buffer
+        on_attach = function(bufnr)
+          -- Jump forwards/backwards with '{' and '}'
+          vim.keymap.set("n", "{", "<cmd>AerialPrev<CR>", { buffer = bufnr })
+          vim.keymap.set("n", "}", "<cmd>AerialNext<CR>", { buffer = bufnr })
+        end,
+      })
+      -- You probably also want to set a keymap to toggle aerial
+      vim.keymap.set("n", "<leader>co", "<cmd>AerialToggle!<CR>")
+    end
   }
-  -- { -- symboloutline column
-  --   "simrat39/symbols-outline.nvim",
-  --   config = function()
-  --     -- require("plugins.symbolsoutline")
-  --   end,
-  -- },
   -- ############## DUNGEON -- HERE LIE TEMP, OLD & DEPRECATED PLUGINS ##################
   -- use({ -- keep windows in position
   -- 	"luukvbaal/stabilize.nvim",
@@ -318,7 +356,6 @@ return {
   -- 		})
   -- 	end,
   -- })
-
   -- use({ -- better quick fix buffer
   -- 	"kevinhwang91/nvim-bqf",
   -- 	config = function()

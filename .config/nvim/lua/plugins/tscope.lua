@@ -15,6 +15,8 @@ local M = {
     { "<leader>f",  "<cmd>Telescope find_files<cr>" },
     { "<leader>r",  "<cmd>lua require('telescope').extensions.smart_open.smart_open()<cr>" },
     { "<leader>s",  "<cmd>Telescope live_grep<cr>" },
+    { "<leader>S",  "<cmd>Telescope live_grep<cr>" },
+    { "S",  "<cmd>Telescope live_grep<cr>" },
     { "<leader>pp", "<cmd>lua require'telescope'.extensions.project.project{ display_type = 'full' }<cr>" },
     { "<leader>ph", "<cmd>SessionManager load_session<cr>" },
     -- nnoremap <leader>pz <cmd>Telescope zoxide list<cr>
