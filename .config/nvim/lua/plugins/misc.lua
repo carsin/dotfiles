@@ -343,7 +343,7 @@ return {
       -- You probably also want to set a keymap to toggle aerial
       vim.keymap.set("n", "<leader>co", "<cmd>AerialToggle!<CR>")
     end
-  }
+  },
   -- ############## DUNGEON -- HERE LIE TEMP, OLD & DEPRECATED PLUGINS ##################
   -- use({ -- keep windows in position
   -- 	"luukvbaal/stabilize.nvim",
@@ -362,7 +362,6 @@ return {
   -- 		require("plugins.bqf")
   -- 	end,
   -- })
-
   -- use({
   -- 	"michaelb/sniprun",
   -- 	run = "bash ./install.sh",
