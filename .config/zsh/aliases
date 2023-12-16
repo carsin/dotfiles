@@ -81,14 +81,14 @@ alias sony="bluetuith"
 alias lg="lazygit"
 alias discord="LIBVA_DRIVER_NAME=i915 discord --ignore-gpu-blocklist --disable-features=UseOzonePlatform --enable-features=VaapiVideoDecoder --use-gl=desktop --enable-gpu-rasterization --enable-zero-copy"
 alias nf="fastfetch"
-alias fff="fastfetch"
 # random cow and fortune
 function randomCowsay {
     cowsay -W 60 -f $(cowsay -l | sed '1d' | tr ' ' '\n' | sort -R | head -1)
 }
 # alias ff="fastfetch && tput setaf 6; fortune -n 400 -s | randomCowsay; tput sgr0"
-alias fastfetch=''
-alias ff="fastfetch --load-config /home/carson/.config/fastfetch/configsm.conf && tput setaf 6; fortune -n 400 -s | randomCowsay; tput sgr0"
+# alias fastfetch=''
+alias ff="fastfetch --config /home/carson/.config/fastfetch/configsm.jsonc && tput setaf 6; fortune -n 400 -s | randomCowsay; tput sgr0"
+alias fff='fastfetch --load-config /home/carson/.config/fastfetch/config.jsonc'
 alias zath="zathura"
 alias e="nvim"
 alias v="vim"
@@ -96,7 +96,6 @@ alias se="sudoedit"
 alias magit="nvim -c Neogit"
 alias tt="tt -quotes en -t 30 -theme carson -showwpm -bold -noskip"
 alias tt10="tt -words 1000en -n 120 -g 5 -t 60 -theme carson -showwpm -bold -noskip"
-alias fastfetch='fastfetch --load-config /home/carson/.config/fastfetch/config.conf'
 alias reddit="tuir"
 alias doom="~/.config/emacs/bin/doom"
 alias rtv="tuir"
@@ -177,7 +176,7 @@ alias paclo='pacman -Qdt' # list orphans
 alias pacro='paclo && sudo pacman -Rns $(pacman -Qtdq)' # remove orphans
 alias pacc='sudo pacman -Scc' # clean cache
 alias paclf='pacman -Ql' # list files
-alias updatemirrors="sudo reflector --country 'Italy' --protocol http,https --download-timeout 60 --latest 10 --sort age --save /etc/pacman.d/mirrorlist"
+alias updatemirrors="sudo reflector --country 'United States' --protocol http,https --download-timeout 61 --latest 10 --sort age --save /etc/pacman.d/mirrorlist"
 
 # make sure everything is done writing from cache before shutting down
 alias shutdown="sync && sync && sync && shutdown 0"

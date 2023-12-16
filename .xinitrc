@@ -37,6 +37,7 @@ picom & # start window compositor
 unclutter & # autohide xcursor
 playerctld daemon # audio control
 easyeffects --gapplication-service & # audio tuning
+rog-control-center &
 # asusctl -c 100 # only charge to 80% battery
 
 # start window manager
