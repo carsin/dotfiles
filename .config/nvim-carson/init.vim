@@ -284,4 +284,4 @@ set foldtext=CustomFoldText('.')
 
 " }}}
 " Binds & Mappings
-source ~/.config/nvim/mappings.vim
+source ~/.config/nvim-carson/mappings.vim

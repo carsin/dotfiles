@@ -90,7 +90,8 @@ function randomCowsay {
 alias ff="fastfetch --config /home/carson/.config/fastfetch/configsm.jsonc && tput setaf 6; fortune -n 400 -s | randomCowsay; tput sgr0"
 alias fff='fastfetch --load-config /home/carson/.config/fastfetch/config.jsonc'
 alias zath="zathura"
-alias e="nvim"
+alias e="NVIM_APPNAME=nvim-lazy nvim"
+alias ec="NVIM_APPNAME=nvim-carson nvim"
 alias v="vim"
 alias se="sudoedit"
 alias magit="nvim -c Neogit"
@@ -141,6 +142,18 @@ alias km="kabmat"
 alias visual="/usr/local/bin/visual/VisUAL.sh"
 alias fd="fd -H"
 alias powertop="sudo powertop"
+
+# neovim config switcher
+ee() {
+  # Assumes all configs exist in directories named ~/.config/nvim-*
+  local config=$(fd --max-depth 1 --glob 'nvim-*' ~/.config | fzf --prompt="Neovim Configs > " --height=~50% --layout=reverse --border --exit-0)
+ 
+  # If I exit fzf without selecting a config, don't open Neovim
+  [[ -z $config ]] && echo "No config selected" && return
+ 
+  # Open Neovim with the selected config
+  NVIM_APPNAME=$(basename $config) nvim
+}
 
 # scripts
 alias dock="/home/carson/.local/bin/displays/dock.sh"
