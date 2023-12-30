@@ -15,7 +15,7 @@ nnoremap <expr> k v:count ? (v:count > 5 ? "m'" . v:count : '') . 'k' : 'gk'
 " nnoremap <leader>r :source ~/.config/nvim/init.vim<CR>
 
 " Save
-function! WriteSavePosition()
+function! WriteSavePosition() 
     let pos = getpos(".")
     :wa
     call setpos('.', pos)
