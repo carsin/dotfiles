@@ -11,27 +11,6 @@ local M = {
 }
 
 M.config = function()
-  -- ensure neorg is properly setup before treesitter loads its defaults
-  local parser_configs = require("nvim-treesitter.parsers").get_parser_configs()
-
-  -- These two are optional and provide syntax highlighting
-  -- for Neorg tables and the @document.meta tag
-  -- parser_configs.norg_meta = {
-  --     install_info = {
-  --         url = "https://github.com/nvim-neorg/tree-sitter-norg-meta",
-  --         files = { "src/parser.c" },
-  --         branch = "main"
-  --     },
-  -- }
-  --
-  -- parser_configs.norg_table = {
-  --     install_info = {
-  --         url = "https://github.com/nvim-neorg/tree-sitter-norg-table",
-  --         files = { "src/parser.c" },
-  --         branch = "main"
-  --     },
-  -- }
-
   require("nvim-treesitter.configs").setup({
     autotag = {
       enable = true,
@@ -48,9 +27,9 @@ M.config = function()
     incremental_selection = {
       enable = true,
       keymaps = {
-        init_selection = "gnn",       -- maps in normal mode to init the node/scope selection
-        scope_incremental = "gnn",    -- increment to the upper scope (as defined in locals.scm)
-        node_incremental = "<TAB>",   -- increment to the upper named parent
+        init_selection = "gnn", -- maps in normal mode to init the node/scope selection
+        scope_incremental = "gnn", -- increment to the upper scope (as defined in locals.scm)
+        node_incremental = "<TAB>", -- increment to the upper named parent
         node_decremental = "<S-TAB>", -- decrement to the previous node
       },
     },

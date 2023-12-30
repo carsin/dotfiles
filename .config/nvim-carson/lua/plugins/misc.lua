@@ -3,7 +3,7 @@ return {
   "nvim-lua/popup.nvim",
   "nvim-lua/plenary.nvim",
   "chaoren/vim-wordmotion", -- more intuitive w/W motion
-  "wellle/targets.vim",     -- more text objects to target
+  "wellle/targets.vim", -- more text objects to target
   "tpope/vim-surround",
   "tpope/vim-repeat",
   "tpope/vim-unimpaired", -- handy ][ mappings that should be builtin
@@ -12,17 +12,20 @@ return {
   "famiu/bufdelete.nvim",
   "antoinemadec/FixCursorHold.nvim", -- Needed while issue https://github.com/neovim/neovim/issues/12587 is still open
   "kyazdani42/nvim-web-devicons",
-  { "mbbill/undotree",          keys = { "<leader>u", "<Cmd>UndotreeToggle<CR>" } },
-  "zhimsel/vim-stay",                                                                                    -- automated view session creation & restore for buffers, sesssions and windows
-  "andymass/vim-matchup",                                                                                -- extend %: highlight, navigate, and operate on sets of matching text
+  { "mbbill/undotree", keys = { "<leader>u", "<Cmd>UndotreeToggle<CR>" } },
+  "zhimsel/vim-stay", -- automated view session creation & restore for buffers, sesssions and windows
+  "andymass/vim-matchup", -- extend %: highlight, navigate, and operate on sets of matching text
   -- "wakatime/vim-wakatime", -- track editing statistics
-  { "stevearc/dressing.nvim",   event = "VeryLazy" },                                                    -- make default UI components look good
-  { "skywind3000/asyncrun.vim", lazy = false,                                keys = { "<F10>",
-    ":call asyncrun#quickfix_toggle(7)" } },                                                             -- asynchronously run tasks such as make
+  { "stevearc/dressing.nvim", event = "VeryLazy" }, -- make default UI components look good
+  {
+    "skywind3000/asyncrun.vim",
+    lazy = false,
+    keys = { "<F10>", ":call asyncrun#quickfix_toggle(7)" },
+  }, -- asynchronously run tasks such as make
   {
     "norcalli/nvim-colorizer.lua",
     config = function()
-      require 'colorizer'.setup()
+      require("colorizer").setup()
     end,
   },
   { -- winbar breadcrumbs
@@ -38,7 +41,7 @@ return {
       symbols = {
         modified = "+",
       },
-      kinds = require("plugins.lsp.icons").icons
+      kinds = require("plugins.lsp.icons").icons,
     },
     config = function()
       -- better performance when scrolling
@@ -60,18 +63,18 @@ return {
           require("barbecue.ui").update()
         end,
       })
-    end
+    end,
   },
   {
     "uga-rosa/ccc.nvim",
-    config = function ()
+    config = function()
       require("ccc").setup()
     end,
   },
   {
     "sainnhe/gruvbox-material", -- the colorscheme should be available when starting Neovim
-    lazy = false,               -- make sure we load this during startup if it is your main colorscheme
-    priority = 1000,            -- make sure to load this before all the other start plugins
+    lazy = false, -- make sure we load this during startup if it is your main colorscheme
+    priority = 1000, -- make sure to load this before all the other start plugins
     config = function()
       -- load the colorscheme here
       vim.cmd([[colorscheme gruvbox-material]])
@@ -99,7 +102,7 @@ return {
           exists = true,
           filename_is_not = {},
           filetype_is_not = {},
-          modifiable = true
+          modifiable = true,
         },
       })
     end,
@@ -145,21 +148,21 @@ return {
         sources = {
           ["null-ls"] = {
             ignore = true,
-          }
+          },
         },
         window = {
           blend = 10, -- &winblend for the window
         },
         align = {
           bottom = true, -- align fidgets along bottom edge of buffer
-          right = true,  -- align fidgets along right edge of buffer
+          right = true, -- align fidgets along right edge of buffer
         },
         timer = {
           task_decay = 2000, -- how long to keep around completed task, in ms
         },
         fmt = {
           max_width = 50,
-        }
+        },
       })
     end,
   },
@@ -182,45 +185,48 @@ return {
   { -- jetpack
     "ggandor/leap.nvim",
     config = function()
-      require('leap').add_default_mappings()
+      require("leap").add_default_mappings()
       -- bidirectional search
-      vim.keymap.set('n', 's', function()
+      vim.keymap.set("n", "s", function()
         local current_window = vim.fn.win_getid()
-        require('leap').leap { target_windows = { current_window } }
+        require("leap").leap({ target_windows = { current_window } })
       end)
       -- Lightspeed colors
-      vim.api.nvim_set_hl(0, 'LeapBackdrop', { link = 'Comment' }) -- or some grey
-      vim.api.nvim_set_hl(0, 'LeapMatch', {
+      vim.api.nvim_set_hl(0, "LeapBackdrop", { link = "Comment" }) -- or some grey
+      vim.api.nvim_set_hl(0, "LeapMatch", {
         -- For light themes, set to 'black' or similar.
-        fg = 'white',
+        fg = "white",
         bold = true,
         nocombine = true,
       })
 
-      vim.api.nvim_set_hl(0, 'LeapLabelPrimary', {
-        fg = 'red', bold = true, nocombine = true,
+      vim.api.nvim_set_hl(0, "LeapLabelPrimary", {
+        fg = "red",
+        bold = true,
+        nocombine = true,
       })
-      vim.api.nvim_set_hl(0, 'LeapLabelSecondary', {
-        fg = 'blue', bold = true, nocombine = true,
+      vim.api.nvim_set_hl(0, "LeapLabelSecondary", {
+        fg = "blue",
+        bold = true,
+        nocombine = true,
       })
       -- Try it without this setting first, you might find you don't even miss it.
-      require('leap').opts.highlight_unlabeled_phase_one_targets = true
+      require("leap").opts.highlight_unlabeled_phase_one_targets = true
     end,
   },
   {
     "danielfalk/smart-open.nvim",
     branch = "0.2.x",
-    config = function()
-    end,
+    config = function() end,
     dependencies = {
       "kkharji/sqlite.lua",
     },
   },
   {
-    'ggandor/flit.nvim',
+    "ggandor/flit.nvim",
     config = function()
-      require('flit').setup()
-    end
+      require("flit").setup()
+    end,
   },
   { -- increment numbers & more with +/-
     "zegervdv/nrpattern.nvim",
@@ -261,36 +267,42 @@ return {
   { -- search lens (hl occurrences & number them)
     "kevinhwang91/nvim-hlslens",
     config = function()
-      require('hlslens').setup()
+      require("hlslens").setup()
       -- require("scrollbar.handlers.search").setup()
       -- TODO: setup keymaps with lazy
       local kopts = { noremap = true, silent = true }
-      vim.api.nvim_set_keymap('n', 'n',
+      vim.api.nvim_set_keymap(
+        "n",
+        "n",
         [[<Cmd>execute('normal! ' . v:count1 . 'n')<CR><Cmd>lua require('hlslens').start()<CR>zzzv]],
-        kopts)
-      vim.api.nvim_set_keymap('n', 'N',
+        kopts
+      )
+      vim.api.nvim_set_keymap(
+        "n",
+        "N",
         [[<Cmd>execute('normal! ' . v:count1 . 'N')<CR><Cmd>lua require('hlslens').start()<CR>zzzv]],
-        kopts)
-      vim.api.nvim_set_keymap('n', '*', [[*<Cmd>lua require('hlslens').start()<CR>zzzv]], kopts)
-      vim.api.nvim_set_keymap('n', '#', [[#<Cmd>lua require('hlslens').start()<CR>zzzv]], kopts)
-      vim.api.nvim_set_keymap('n', 'g*', [[g*<Cmd>lua require('hlslens').start()<CR>zzzv]], kopts)
-      vim.api.nvim_set_keymap('n', 'g#', [[g#<Cmd>lua require('hlslens').start()<CR>zzzv]], kopts)
-    end
+        kopts
+      )
+      vim.api.nvim_set_keymap("n", "*", [[*<Cmd>lua require('hlslens').start()<CR>zzzv]], kopts)
+      vim.api.nvim_set_keymap("n", "#", [[#<Cmd>lua require('hlslens').start()<CR>zzzv]], kopts)
+      vim.api.nvim_set_keymap("n", "g*", [[g*<Cmd>lua require('hlslens').start()<CR>zzzv]], kopts)
+      vim.api.nvim_set_keymap("n", "g#", [[g#<Cmd>lua require('hlslens').start()<CR>zzzv]], kopts)
+    end,
   },
   { -- modernized folds
     "kevinhwang91/nvim-ufo",
     dependencies = {
-      "kevinhwang91/promise-async"
+      "kevinhwang91/promise-async",
     },
     config = function()
-      vim.o.foldcolumn = '1' -- '0' is not bad
-      vim.o.foldlevel = 99   -- Using ufo provider need a large value, feel free to decrease the value
+      vim.o.foldcolumn = "1" -- '0' is not bad
+      vim.o.foldlevel = 99 -- Using ufo provider need a large value, feel free to decrease the value
       vim.o.foldlevelstart = 99
       vim.o.foldenable = true
       -- Using ufo provider need remap `zR` and `zM`. If Neovim is 0.6.1, remap yourself
-      vim.keymap.set('n', 'zR', require('ufo').openAllFolds)
-      vim.keymap.set('n', 'zM', require('ufo').closeAllFolds)
-    end
+      vim.keymap.set("n", "zR", require("ufo").openAllFolds)
+      vim.keymap.set("n", "zM", require("ufo").closeAllFolds)
+    end,
   },
   -- { -- floating filename statuslines
   --   "b0o/incline.nvim",
@@ -316,20 +328,20 @@ return {
   --   end
   -- },
   { -- bufferline
-    'akinsho/bufferline.nvim',
-    requires = 'nvim-tree/nvim-web-devicons',
+    "akinsho/bufferline.nvim",
+    requires = "nvim-tree/nvim-web-devicons",
     config = function()
       require("plugins.buffline").config()
     end,
   },
   {
-    'lewis6991/gitsigns.nvim',
+    "lewis6991/gitsigns.nvim",
     config = function()
-      require('gitsigns').setup()
-    end
+      require("gitsigns").setup()
+    end,
   },
   { -- symbols outline
-    'stevearc/aerial.nvim',
+    "stevearc/aerial.nvim",
     opts = {},
     config = function()
       require("aerial").setup({
@@ -342,7 +354,7 @@ return {
       })
       -- You probably also want to set a keymap to toggle aerial
       vim.keymap.set("n", "<leader>co", "<cmd>AerialToggle!<CR>")
-    end
+    end,
   },
   -- ############## DUNGEON -- HERE LIE TEMP, OLD & DEPRECATED PLUGINS ##################
   -- use({ -- keep windows in position
