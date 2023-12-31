@@ -1,0 +1,172 @@
+# Configuration for Alacritty, the GPU enhanced terminal emulator.
+
+# Proper truecolor via https://gist.github.com/andersevenrud/015e61af2fd264371032763d4ed965b6
+env:
+  TERM: xterm-256color
+window:
+  # Blank space added around the window in pixels. This padding is scaled
+  # by DPI and the specified value is always added at both opposing sides.
+  padding:
+   x: 5
+   y: 5
+  dimensions:
+    columns: 120
+    lines: 50
+  opacity: 0.83
+  dynamic_padding: false # Spread additional padding evenly around the terminal content.
+  decorations: full
+  startup_mode: Windowed
+  # Window title
+  title: Alacritty
+  dynamic_title: true # Allow terminal applications to change Alacritty's window title.
+  # Window class (Linux/BSD only):
+  class:
+    instance: Alacritty # Application instance name
+    general: Alacritty # General application class
+
+  # GTK theme variant (Linux/BSD only)
+  # Override the variant of the GTK theme. Commonly supported values are `dark`
+  # and `light`. Set this to `None` to use the default theme variant.
+  #gtk_theme_variant: None
+
+scrolling:
+  history: 10000
+  multiplier: 3
+
+# Font configuration
+font:
+  size: 10
+  normal:
+    family: Terminus
+    style: Medium
+  bold:
+    family: Terminus
+    style: Bold
+  italic:
+    family: Terminus
+    style: Italic
+  bold_italic:
+    family: Terminus
+    style: Bold Italic
+  offset:
+   x: 0
+   y: 0
+
+selection:
+  # This string contains all characters that are used as separators for
+  # "semantic words" in Alacritty.
+  semantic_escape_chars: ",│`|:\"' ()[]{}<>\t"
+
+  # When set to `true`, selected text will be copied to the primary clipboard.
+  save_to_clipboard: false
+
+cursor:
+  # Cursor style
+  style:
+    # Cursor shape
+    #
+    # Values for `shape`:
+    #   - ▇ Block
+    #   - _ Underline
+    #   - | Beam
+    shape: Block
+
+    # Cursor blinking state
+    #
+    # Values for `blinking`:
+    #   - Never: Prevent the cursor from ever blinking
+    #   - Off: Disable blinking by default
+    #   - On: Enable blinking by default
+    #   - Always: Force the cursor to always blink
+    blinking: always
+
+  # Vi mode cursor style
+  #
+  # If the vi mode cursor style is `None` or not specified, it will fall back to
+  # the style of the active value of the normal cursor.
+  #
+  # See `cursor.style` for available options.
+  #vi_mode_style: None
+
+  # Cursor blinking interval in milliseconds.
+  blink_interval: 400
+
+  # If this is `true`, the cursor will be rendered as a hollow box when the
+  # window is not focused.
+  unfocused_hollow: true
+
+  # Thickness of the cursor relative to the cell width as floating point number
+  # from `0.0` to `1.0`.
+  #thickness: 0.15
+
+live_config_reload: true
+
+working_directory: None # startup in directory of parent process
+
+# Send ESC (\x1b) before characters when alt is pressed.
+#alt_send_esc: true
+
+# Offer IPC using `alacritty msg` (unix only)
+#ipc_socket: true
+
+key_bindings:
+  - { key: Return,   mods: Control|Shift,      action: SpawnNewInstance }
+  - { key: PageUp,   mods: Shift|Control,        action: ScrollPageUp,  }
+  - { key: PageDown, mods: Shift|Control,        action: ScrollPageDown }
+  - { key: P,         mods: Shift|Control,        action: ScrollPageUp,  }
+  - { key: N,        mods: Shift|Control,        action: ScrollPageDown }
+  # - { key: Home,     mods: Shift,        action: ScrollToTop,   }
+  # - { key: End,      mods: Shift,        action: ScrollToBottom }
+    
+mouse:
+  # Click settings
+  #
+  # The `double_click` and `triple_click` settings control the time
+  # alacritty should wait for accepting multiple clicks as one double
+  # or triple click.
+  #double_click: { threshold: 300 }
+  #triple_click: { threshold: 300 }
+
+  # If this is `true`, the cursor is temporarily hidden when typing.
+  hide_when_typing: true
+    
+# Base16 Gruvbox dark, hard - alacritty color config
+# Dawid Kurek (dawikur@gmail.com), morhetz (https://github.com/morhetz/gruvbox)
+colors:
+  # Default colors
+  transparent_background_colors: true
+  draw_bold_text_with_bright_colors: true
+  # Colors the cursor will use if `custom_cursor_colors` is true
+  # cursor:
+  #   text: '0x1d2021'
+  #   cursor: '0xd5c4a1'
+
+  # Normal colors
+  # normal:
+  #   black:   '0x1d2021'
+  #   red:     '0xfb4934'
+  #   green:   '0xb8bb26'
+  #   yellow:  '0xfabd2f'
+  #   blue:    '0x83a598'
+  #   magenta: '0xd3869b'
+  #   cyan:    '0x8ec07c'
+  #   white:   '0xd5c4a1'
+
+  # Bright colors
+  # bright:
+  #   black:   '0x665c54'
+  #   red:     '0xfe8019'
+  #   green:   '0x3c3836'
+  #   yellow:  '0x504945'
+  #   blue:    '0xbdae93'
+  #   magenta: '0xebdbb2'
+  #   cyan:    '0xd65d0e'
+  #   white:   '0xfbf1c7'
+  #   
+mappings:
+    - { key: E, mods:  Control|Shift, chars: "\x1b[69;5u" }
+    
+      
+import:
+  - /home/carson/.cache/wal/colors-alacritty.yml
+
