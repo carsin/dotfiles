@@ -2,6 +2,7 @@
 export EDITOR="nvim"
 export TERMINAL="alacritty"
 export BROWSER="firefox"
+export MOZ_ENABLE_WAYLAND=1
 
 # Default less settings
 export LESS='-g -i -M -S -w -z-5'
